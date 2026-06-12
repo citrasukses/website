@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">Viet Nhat Special Tools</title>
+  <desc id="desc">Brand mark placeholder for Viet Nhat Special Tools.</desc>
+  <rect width="640" height="360" fill="#f6f7f8"/>
+  <rect x="58" y="58" width="524" height="244" fill="#ffffff" stroke="#d0d5dc" stroke-width="4"/>
+  <path d="M94 126h452" stroke="#bf2f2f" stroke-width="10"/>
+  <text x="94" y="188" fill="#151a22" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="700" letter-spacing="2">VIET NHAT</text>
+  <text x="96" y="235" fill="#183d61" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" letter-spacing="5">SPECIAL TOOLS</text>
+  <path d="M96 268h448" stroke="#d0d5dc" stroke-width="3"/>
+</svg>

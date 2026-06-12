@@ -1,0 +1,10 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/brands/page": "/brands",
+  "/about/page": "/about",
+  "/industries/page": "/industries",
+  "/partners/page": "/partners",
+  "/contact/page": "/contact",
+  "/page": "/",
+  "/brands/[slug]/page": "/brands/[slug]"
+}
