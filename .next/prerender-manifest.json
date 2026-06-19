@@ -1,1 +1,37 @@
-{"version":4,"routes":{"/brands/tohnichi":{},"/brands/nac":{},"/brands/fuji-star":{},"/brands/nippon-unit-brush":{},"/brands/smbc":{},"/brands/viet-nhat":{}},"dynamicRoutes":{"/brands/[slug]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/brands/[slug]","routeRegex":"^\\/brands\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"ba82f17afc043ff1e30aa03b97bb117c","previewModeSigningKey":"546933b4caa918a56a874fd8afcc3f4a172a44403d939338e03bbc75ab7110b6","previewModeEncryptionKey":"7c98ec863c8327c2f2a7cfb0adfa4cfc7f5e83b722dd212529af9732fbb7e769"}}
+{
+  "version": 4,
+  "routes": {
+    "/_not-found": {
+      "initialStatus": 404,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/_not-found",
+      "dataRoute": "/_not-found.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    }
+  },
+  "dynamicRoutes": {},
+  "notFoundRoutes": [],
+  "preview": {
+    "previewModeId": "f2e120fd3298292bbee047eea46fabb5",
+    "previewModeSigningKey": "6843f08552e92c85fd77ecc59baed8bcbcb858dff9f432d3285f5a8b0d1acb05",
+    "previewModeEncryptionKey": "e244565b8b2fda0fc98fb8f490454fba46dff34fa39045f94cb4e9f3a7cfa638"
+  }
+}

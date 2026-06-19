@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ArrowRight, ClipboardCheck, Handshake, PackageCheck, Wrench } from "lucide-react";
+import { AuthorizedDistributorStrip } from "@/components/AuthorizedDistributorStrip";
 import { BrandCard } from "@/components/BrandCard";
 import { CTAButton } from "@/components/CTAButton";
 import { CustomerLogoCloud } from "@/components/CustomerLogoCloud";
@@ -114,8 +115,8 @@ export default async function HomePage({ searchParams }: PageProps) {
             <div className="max-w-5xl">
               <h1 className="max-w-full text-balance text-2xl font-bold leading-tight tracking-normal text-graphite-900 sm:text-4xl md:text-6xl">
                 {lang === "en"
-                  ? "Indonesia's industrial sourcing partner."
-                  : "Industrial sourcing partner untuk pabrik di Indonesia."}
+                  ? "Industrial tools, spare parts, and consumables for factories in Indonesia."
+                  : "Industrial tools, spare parts dan consumables untuk pabrik di Indonesia."}
               </h1>
               <p className="mt-6 max-w-3xl text-base leading-7 text-graphite-600 md:text-lg md:leading-8">
                 {lang === "en"
@@ -187,6 +188,8 @@ export default async function HomePage({ searchParams }: PageProps) {
           </div>
         </div>
       </section>
+
+      <AuthorizedDistributorStrip lang={lang} />
 
       <section className="bg-signal-500 py-16 text-white">
         <div className="container-page">

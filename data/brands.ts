@@ -45,7 +45,7 @@ export const brands: Brand[] = [
       id: "Torque tools, torque wrench, dan sistem tightening",
       en: "Torque tools, torque wrenches, and tightening systems"
     },
-    logo: "/assets/brands/tohnichi/products/CL100NX15D.jpg",
+    logo: "/assets/brands/tohnichi/logo.png",
     heroImage: "/assets/brands/tohnichi/products/CL100NX15D.jpg",
     featured: true,
     summary: {
@@ -372,7 +372,7 @@ export const brands: Brand[] = [
       id: "Abrasive dan industrial supplies",
       en: "Abrasives and industrial supplies"
     },
-    logo: "/assets/brands/fuji-star/products/Fujistar - Abrasive.jpg",
+    logo: "/assets/brands/fuji-star/logo.png",
     heroImage: "/assets/brands/fuji-star/products/Fujistar - Abrasive.jpg",
     summary: {
       id: "Produk abrasive dan supplies untuk proses produksi dan finishing.",
@@ -441,7 +441,7 @@ export const brands: Brand[] = [
       id: "Brush industri presisi untuk deburring, polishing, cleaning, dan surface treatment",
       en: "Precision industrial brushes for deburring, polishing, cleaning, and surface treatment"
     },
-    logo: "/assets/brands/nippon-unit-brush/logo.svg",
+    logo: "/assets/brands/nippon-unit-brush/logo.gif",
     heroImage: "/assets/brands/nippon-unit-brush/logo.svg",
     featured: true,
     summary: {
