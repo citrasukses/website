@@ -11,6 +11,7 @@ export function ProductCard({ product, lang }: { product: Product; lang: Languag
         label={product.name}
         className="h-48 border-0 border-b border-graphite-200 bg-graphite-50"
         imageClassName="object-contain p-6 transition duration-500 group-hover:scale-105"
+        sizes="(max-width: 768px) 100vw, 33vw"
       />
       <div className="p-5">
         <h4 className="text-lg font-bold text-graphite-900">{product.name}</h4>

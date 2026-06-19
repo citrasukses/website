@@ -18,6 +18,7 @@ export function BrandCard({ brand, lang }: { brand: BrandCardBrand; lang: Langua
         label={brand.name}
         className="h-44 border-0 border-b border-graphite-200 bg-graphite-50"
         imageClassName="object-cover transition duration-500 group-hover:scale-105"
+        sizes="(max-width: 768px) 100vw, 33vw"
       />
       <div className="flex flex-1 flex-col p-6">
         <div className="flex items-start justify-between gap-4">

@@ -11,6 +11,7 @@ export function IndustryCard({ industry, lang }: { industry: Industry; lang: Lan
         label={text(industry.title, lang)}
         className="min-h-56 border-0 bg-graphite-100 md:min-h-full md:border-r md:border-graphite-200"
         imageClassName="transition duration-500 group-hover:scale-105"
+        sizes="(max-width: 768px) 100vw, 42vw"
       />
       <div className="p-6">
         <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">{industry.slug}</p>

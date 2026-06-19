@@ -31,6 +31,7 @@ export function NewsCard({ item, lang }: NewsCardProps) {
         label={item.brandName ?? text(item.category, lang)}
         className="min-h-[210px] border-0 border-b border-graphite-200 bg-graphite-50 md:border-b-0 md:border-r"
         imageClassName="object-cover transition duration-500 group-hover:scale-105"
+        sizes="(max-width: 768px) 100vw, 38vw"
       />
       <div className="flex min-w-0 flex-col p-6">
         <div className="flex flex-wrap items-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-graphite-500">

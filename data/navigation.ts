@@ -20,7 +20,7 @@ export const company = {
   tagline: "Your Industrial Sourcing Partner",
   email: "cse@citra-sukses.com",
   positioning: {
-    id: "Industrial sourcing partner untuk pabrik di Indonesia. CSE membantu procurement dan engineering mencari produk industri dari Jepang dan Asia, mengecek kecocokan teknis, menyediakan alternatif, dan mempercepat proses RFQ.",
+    id: "Industrial sourcing partner untuk pabrik di Indonesia. CSE membantu procurement dan engineering mencari produk industri dari Jepang dan Asia, memeriksa kecocokan teknis, menyediakan alternatif, dan mempercepat proses RFQ.",
     en: "Indonesia's industrial sourcing partner. CSE helps procurement and engineering teams find industrial products from Japan and Asia, check technical fit, provide alternatives, and speed up the RFQ process."
   } satisfies LocalizedText,
   partnerPositioning: {

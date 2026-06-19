@@ -5,6 +5,7 @@ import { customerLogoMetadata, preferredCustomerLogoOrder, type Customer } from 
 const customerLogoDirectory = path.join(process.cwd(), "public", "assets", "customers");
 const supportedLogoExtensions = new Set([".jpeg", ".jpg", ".png", ".webp"]);
 const preferredLogoIndex = new Map(preferredCustomerLogoOrder.map((fileName, index) => [fileName, index]));
+let cachedCustomerLogos: Customer[] | null = null;
 
 function formatCustomerName(fileName: string) {
   return fileName
@@ -26,7 +27,11 @@ function sortCustomerLogoFiles(fileNameA: string, fileNameB: string) {
 }
 
 export function getCustomerLogos(): Customer[] {
-  return readdirSync(customerLogoDirectory, { withFileTypes: true })
+  if (cachedCustomerLogos) {
+    return cachedCustomerLogos;
+  }
+
+  cachedCustomerLogos = readdirSync(customerLogoDirectory, { withFileTypes: true })
     .filter((entry) => entry.isFile() && supportedLogoExtensions.has(path.extname(entry.name).toLowerCase()))
     .map((entry) => entry.name)
     .sort(sortCustomerLogoFiles)
@@ -39,4 +44,6 @@ export function getCustomerLogos(): Customer[] {
         logoScale: metadata?.logoScale
       };
     });
+
+  return cachedCustomerLogos;
 }

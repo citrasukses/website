@@ -65,8 +65,8 @@ export default async function AboutPage({ searchParams }: PageProps) {
             title={lang === "en" ? "Focused on credible supply, technical fit, and responsive inquiry handling." : "Fokus pada supply kredibel, kecocokan teknis, dan respons inquiry."}
             description={
               lang === "en"
-                ? "CSE is not being built as an ecommerce site. The first website experience is designed around trust, brand discovery, and clear RFQ paths for B2B buyers."
-                : "CSE tidak dibangun sebagai ecommerce. Pengalaman website v1 diarahkan untuk membangun trust, memudahkan pencarian brand, dan memperjelas jalur RFQ untuk buyer B2B."
+                ? "CSE helps facilitate access to credible, hard-to-reach, and technically suitable industrial products for factories."
+                : "CSE membantu mempermudah akses ke produk industri yang kredibel, sulit dijangkau, dan cocok dengan kebutuhan pabrik."
             }
           />
           <FeatureGrid items={capabilities} />

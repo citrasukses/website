@@ -64,10 +64,43 @@ textarea {
 }
 
 .technical-grid {
+  background-color: #f7f8fa;
   background-image:
-    linear-gradient(rgba(21, 26, 34, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(21, 26, 34, 0.06) 1px, transparent 1px);
-  background-size: 28px 28px;
+    linear-gradient(120deg, rgba(255, 255, 255, 0.96) 0 38%, rgba(255, 255, 255, 0.68) 38% 62%, transparent 62%),
+    url("/assets/company/sourcing-background.svg"),
+    linear-gradient(90deg, transparent 0 62px, rgba(191, 47, 47, 0.14) 62px 64px, transparent 64px 100%),
+    repeating-linear-gradient(135deg, transparent 0 19px, rgba(31, 79, 124, 0.05) 19px 20px),
+    linear-gradient(rgba(21, 26, 34, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21, 26, 34, 0.055) 1px, transparent 1px),
+    linear-gradient(rgba(21, 26, 34, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21, 26, 34, 0.028) 1px, transparent 1px);
+  background-position:
+    0 0,
+    right -4rem top 1rem,
+    right 9rem top 0,
+    0 0,
+    -1px -1px,
+    -1px -1px,
+    -1px -1px,
+    -1px -1px;
+  background-size:
+    100% 100%,
+    min(78rem, 118vw) auto,
+    220px 100%,
+    26px 26px,
+    156px 156px,
+    156px 156px,
+    39px 39px,
+    39px 39px;
+  background-repeat:
+    no-repeat,
+    no-repeat,
+    repeat,
+    repeat,
+    repeat,
+    repeat,
+    repeat,
+    repeat;
 }
 
 .blueprint-soft {

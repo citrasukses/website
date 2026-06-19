@@ -3,12 +3,14 @@ import { ArrowRight, ClipboardCheck, Handshake, PackageCheck, Wrench } from "luc
 import { BrandCard } from "@/components/BrandCard";
 import { CTAButton } from "@/components/CTAButton";
 import { CustomerLogoCloud } from "@/components/CustomerLogoCloud";
+import { HomeBackgroundItems } from "@/components/HomeBackgroundItems";
 import { IndustryCard } from "@/components/IndustryCard";
 import { RFQForm } from "@/components/InquiryForms";
 import { NewsSection } from "@/components/NewsSection";
 import { SectionHeader } from "@/components/SectionHeader";
 import { brands } from "@/data/brands";
 import { stats } from "@/data/customers";
+import { homeBackgroundItems } from "@/data/home-background";
 import { company } from "@/data/navigation";
 import { industries } from "@/data/industries";
 import { resolveLanguage, text, type SearchParams, withLang } from "@/lib/i18n";
@@ -104,8 +106,10 @@ export default async function HomePage({ searchParams }: PageProps) {
 
   return (
     <>
-      <section className="technical-grid bg-white">
-        <div className="container-page py-16 lg:py-12">
+      <section className="technical-grid relative isolate overflow-hidden bg-white">
+        <HomeBackgroundItems items={homeBackgroundItems} />
+
+        <div className="container-page relative z-10 py-16 lg:py-12">
           <div className="grid gap-10 lg:grid-cols-[1.25fr_0.95fr] lg:items-center">
             <div className="max-w-5xl">
               <h1 className="max-w-full text-balance text-2xl font-bold leading-tight tracking-normal text-graphite-900 sm:text-4xl md:text-6xl">

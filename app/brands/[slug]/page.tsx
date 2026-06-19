@@ -155,6 +155,7 @@ export default async function BrandDetailPage({ params, searchParams }: PageProp
                       label={item.name}
                       className="h-40 border-0 bg-graphite-50"
                       imageClassName="object-contain p-4"
+                      sizes="(max-width: 768px) 100vw, 18vw"
                     />
                     <p className="mt-4 text-sm font-bold text-graphite-900">{item.name}</p>
                   </div>
