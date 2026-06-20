@@ -38,7 +38,7 @@ export function AuthorizedDistributorStrip({ lang }: AuthorizedDistributorStripP
           href={withLang("/brands", lang)}
           className="focus-ring border-l-2 border-signal-500 pl-3 text-sm font-semibold leading-6 text-graphite-700 transition-colors hover:text-signal-600"
         >
-          Authorized distributor dari Tohnichi, NAC, Fuji Star, Nippon Unit.
+          Authorized distributor dari 
         </Link>
 
         <div className="grid grid-cols-2 items-center gap-x-5 gap-y-4 sm:grid-cols-4 md:flex md:gap-7">

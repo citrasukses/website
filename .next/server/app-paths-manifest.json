@@ -1,9 +1,1 @@
-{
-  "/page": "app/page.js",
-  "/brands/[slug]/page": "app/brands/[slug]/page.js",
-  "/contact/page": "app/contact/page.js",
-  "/brands/page": "app/brands/page.js",
-  "/about/page": "app/about/page.js",
-  "/industries/page": "app/industries/page.js",
-  "/partners/page": "app/partners/page.js"
-}
+{}

@@ -5,20 +5,10 @@
         "app/page": {
           "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fandrehusni%2FDocuments%2FCSE%2FCSE%20-%20Website%2Fapp%2Factions%2Finquiry.ts%22%2C%5B%7B%22id%22%3A%22601066194d62b6e95908a93908705edad37d5cde55%22%2C%22exportedName%22%3A%22submitPartnerInquiry%22%2C%22filename%22%3A%22app%2Factions%2Finquiry.ts%22%7D%2C%7B%22id%22%3A%22609897d65ad2674c771e7bd7b4dc453de33e7a585a%22%2C%22exportedName%22%3A%22submitBuyerInquiry%22%2C%22filename%22%3A%22app%2Factions%2Finquiry.ts%22%7D%5D%5D%5D&__client_imported__=true!",
           "async": false
-        },
-        "app/contact/page": {
-          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fandrehusni%2FDocuments%2FCSE%2FCSE%20-%20Website%2Fapp%2Factions%2Finquiry.ts%22%2C%5B%7B%22id%22%3A%22601066194d62b6e95908a93908705edad37d5cde55%22%2C%22exportedName%22%3A%22submitPartnerInquiry%22%2C%22filename%22%3A%22app%2Factions%2Finquiry.ts%22%7D%2C%7B%22id%22%3A%22609897d65ad2674c771e7bd7b4dc453de33e7a585a%22%2C%22exportedName%22%3A%22submitBuyerInquiry%22%2C%22filename%22%3A%22app%2Factions%2Finquiry.ts%22%7D%5D%5D%5D&__client_imported__=true!",
-          "async": false
-        },
-        "app/partners/page": {
-          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fandrehusni%2FDocuments%2FCSE%2FCSE%20-%20Website%2Fapp%2Factions%2Finquiry.ts%22%2C%5B%7B%22id%22%3A%22601066194d62b6e95908a93908705edad37d5cde55%22%2C%22exportedName%22%3A%22submitPartnerInquiry%22%2C%22filename%22%3A%22app%2Factions%2Finquiry.ts%22%7D%2C%7B%22id%22%3A%22609897d65ad2674c771e7bd7b4dc453de33e7a585a%22%2C%22exportedName%22%3A%22submitBuyerInquiry%22%2C%22filename%22%3A%22app%2Factions%2Finquiry.ts%22%7D%5D%5D%5D&__client_imported__=true!",
-          "async": false
         }
       },
       "layer": {
-        "app/page": "action-browser",
-        "app/contact/page": "action-browser",
-        "app/partners/page": "action-browser"
+        "app/page": "action-browser"
       },
       "filename": "app/actions/inquiry.ts",
       "exportedName": "submitPartnerInquiry"
@@ -28,20 +18,10 @@
         "app/page": {
           "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fandrehusni%2FDocuments%2FCSE%2FCSE%20-%20Website%2Fapp%2Factions%2Finquiry.ts%22%2C%5B%7B%22id%22%3A%22601066194d62b6e95908a93908705edad37d5cde55%22%2C%22exportedName%22%3A%22submitPartnerInquiry%22%2C%22filename%22%3A%22app%2Factions%2Finquiry.ts%22%7D%2C%7B%22id%22%3A%22609897d65ad2674c771e7bd7b4dc453de33e7a585a%22%2C%22exportedName%22%3A%22submitBuyerInquiry%22%2C%22filename%22%3A%22app%2Factions%2Finquiry.ts%22%7D%5D%5D%5D&__client_imported__=true!",
           "async": false
-        },
-        "app/contact/page": {
-          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fandrehusni%2FDocuments%2FCSE%2FCSE%20-%20Website%2Fapp%2Factions%2Finquiry.ts%22%2C%5B%7B%22id%22%3A%22601066194d62b6e95908a93908705edad37d5cde55%22%2C%22exportedName%22%3A%22submitPartnerInquiry%22%2C%22filename%22%3A%22app%2Factions%2Finquiry.ts%22%7D%2C%7B%22id%22%3A%22609897d65ad2674c771e7bd7b4dc453de33e7a585a%22%2C%22exportedName%22%3A%22submitBuyerInquiry%22%2C%22filename%22%3A%22app%2Factions%2Finquiry.ts%22%7D%5D%5D%5D&__client_imported__=true!",
-          "async": false
-        },
-        "app/partners/page": {
-          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fandrehusni%2FDocuments%2FCSE%2FCSE%20-%20Website%2Fapp%2Factions%2Finquiry.ts%22%2C%5B%7B%22id%22%3A%22601066194d62b6e95908a93908705edad37d5cde55%22%2C%22exportedName%22%3A%22submitPartnerInquiry%22%2C%22filename%22%3A%22app%2Factions%2Finquiry.ts%22%7D%2C%7B%22id%22%3A%22609897d65ad2674c771e7bd7b4dc453de33e7a585a%22%2C%22exportedName%22%3A%22submitBuyerInquiry%22%2C%22filename%22%3A%22app%2Factions%2Finquiry.ts%22%7D%5D%5D%5D&__client_imported__=true!",
-          "async": false
         }
       },
       "layer": {
-        "app/page": "action-browser",
-        "app/contact/page": "action-browser",
-        "app/partners/page": "action-browser"
+        "app/page": "action-browser"
       },
       "filename": "app/actions/inquiry.ts",
       "exportedName": "submitBuyerInquiry"
