@@ -7,6 +7,29 @@ export type HomeBackgroundItem = {
   enabled?: boolean;
 };
 
+export type HomeBackgroundImage = {
+  src: string;
+  position?: string;
+  overlayClassName?: string;
+};
+
+// Set this to an image configuration to replace the product collage with one
+// full-bleed hero image. Keep it null to use homeBackgroundItems below.
+// Example:
+// {
+//   src: "/assets/company/hero-background.jpg",
+//   position: "center",
+//   overlayClassName: "bg-gradient-to-r from-white/95 via-white/80 to-white/40"
+// }
+
+export const homeBackgroundImage: HomeBackgroundImage | null = {
+  src: "assets/company/hero-background.png",
+  position: "center",
+  overlayClassName: "bg-gradient-to-r from-white/95 via-white/80 to-white/40"
+};
+
+// export const homeBackgroundImage: HomeBackgroundImage | null = null;
+
 // Add or tune homepage background products here.
 // - src: image path under /public.
 // - slotClassName: responsive grid cell, rotation, opacity, and visibility.

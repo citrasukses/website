@@ -51,3 +51,5 @@ Thumbs.db
 .stylelintcache
 .cache/
 .turbo/
+.tmp/
+data/catalog.local.json

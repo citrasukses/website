@@ -10,21 +10,21 @@ const distributors = [
   {
     name: "Tohnichi",
     slug: "tohnichi",
-    logo: "/assets/brands/tohnichi/logo.png",
+    logo: "/assets/brands/logos/tohnichi--nobg.png",
     width: 120,
     height: 73
   },
   {
     name: "Fuji Star",
     slug: "fuji-star",
-    logo: "/assets/brands/fuji-star/logo.png",
-    width: 154,
+    logo: "/assets/brands/logos/fuji-star.png",
+    width: 120,
     height: 27
   },
   {
     name: "Nippon Unit",
     slug: "nippon-unit-brush",
-    logo: "/assets/brands/nippon-unit-brush/logo.gif",
+    logo: "/assets/brands/logos/nippon-unit-brush.gif",
     width: 148,
     height: 40
   }

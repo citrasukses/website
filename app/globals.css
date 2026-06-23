@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: "NAC Logo";
-  src: url("/assets/brands/nac/nac-logo.woff") format("woff");
+  src: url("/assets/brands/fonts/nac-logo.woff") format("woff");
   font-display: block;
   font-style: normal;
   font-weight: 400;
@@ -124,6 +124,13 @@ textarea {
     28px 28px;
 }
 
+.blueprint-dark {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.25) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.25) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
 .dot-matrix {
   background-image: radial-gradient(rgba(21, 26, 34, 0.14) 1px, transparent 1.5px);
   background-size: 18px 18px;
@@ -176,4 +183,27 @@ textarea {
 
 .font-nac-logo {
   font-family: "NAC Logo";
+}
+
+@keyframes expertise-slide-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(24px, 0, 0) scale(0.995);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.expertise-slide-enter {
+  animation: expertise-slide-enter 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .expertise-slide-enter {
+    animation: none;
+  }
 }

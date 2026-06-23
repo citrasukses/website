@@ -1,10 +1,19 @@
+"use client";
+
+import { ArrowRight } from "lucide-react";
 import type { Industry } from "@/data/industries";
 import { text, type Language } from "@/lib/i18n";
 import { AssetSlot } from "@/components/AssetSlot";
 
-export function IndustryCard({ industry, lang }: { industry: Industry; lang: Language }) {
+type IndustryCardProps = {
+  industry: Industry;
+  lang: Language;
+  onSelect?: () => void;
+};
+
+export function IndustryCard({ industry, lang, onSelect }: IndustryCardProps) {
   return (
-    <article className="group grid overflow-hidden border border-graphite-200 bg-white shadow-sm transition duration-300 hover:border-industrial-600 hover:shadow-panel md:grid-cols-[0.85fr_1.15fr]">
+    <article className="group relative grid overflow-hidden border border-graphite-200 bg-white shadow-sm transition duration-300 hover:border-industrial-600 hover:shadow-panel md:grid-cols-[0.85fr_1.15fr]">
       <AssetSlot
         src={industry.image}
         alt={text(industry.title, lang)}
@@ -24,7 +33,25 @@ export function IndustryCard({ industry, lang }: { industry: Industry; lang: Lan
             </p>
           ))}
         </div>
+        {onSelect ? (
+          <span className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-industrial-700" aria-hidden="true">
+            {lang === "en" ? "View brand application diagram" : "Lihat diagram aplikasi brand"}
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </span>
+        ) : null}
       </div>
+      {onSelect ? (
+        <button
+          type="button"
+          onClick={onSelect}
+          className="absolute inset-0 z-10 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-industrial-600"
+          aria-label={
+            lang === "en"
+              ? `Open ${text(industry.title, lang)} brand application case study`
+              : `Buka studi kasus aplikasi brand untuk ${text(industry.title, lang)}`
+          }
+        />
+      ) : null}
     </article>
   );
 }

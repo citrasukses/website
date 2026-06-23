@@ -58,7 +58,7 @@ export const industries: Industry[] = [
       id: "Solusi pengadaan untuk pabrik, workshop, dan distributor teknis yang membutuhkan brand industrial terpercaya.",
       en: "Procurement support for factories, workshops, and technical distributors that need trusted industrial brands."
     },
-    image: "/assets/brands/tohnichi/products/general_industry.avif",
+    image: "/assets/brands/products/tohnichi/general_industry.avif",
     applications: [
       { id: "Factory supplies", en: "Factory supplies" },
       { id: "Production tools", en: "Production tools" },

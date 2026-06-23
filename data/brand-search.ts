@@ -59,6 +59,7 @@ export function toSearchableBrandCard(brand: Brand): SearchableBrandCard {
       name: brand.name,
       country: brand.country,
       category: brand.category,
+      logo: brand.logo,
       heroImage: brand.heroImage,
       summary: brand.summary
     },

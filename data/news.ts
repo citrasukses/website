@@ -29,7 +29,7 @@ export const newsItems: NewsItem[] = [
   //   },
   //   category: { id: "Product news", en: "Product news" },
   //   publishedAt: "2026-06-12",
-  //   image: "/assets/brands/tohnichi/products/QL100N4.jpg",
+  //   image: "/assets/brands/products/tohnichi/QL100N4.jpg",
   //   brandName: "Tohnichi",
   //   brandSlug: "tohnichi",
   //   productName: "QL / CL Series",

@@ -300,7 +300,7 @@ public/assets/
 Files inside `public` are referenced from the site like:
 
 ```text
-/assets/brands/tohnichi/logo.png
+/assets/brands/logos/tohnichi.png
 /assets/customers/toyota.png
 ```
 

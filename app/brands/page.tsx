@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { BrandsSearchCatalog } from "@/components/BrandsSearchCatalog";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTAButton } from "@/components/CTAButton";
+import { IndustryCaseStudyExplorer } from "@/components/IndustryCaseStudyExplorer";
 import { SectionHeader } from "@/components/SectionHeader";
 import { SupplyMap } from "@/components/SupplyMap";
 import { toSearchableBrandCard } from "@/data/brand-search";
-import { brands } from "@/data/brands";
+import { industries } from "@/data/industries";
 import { supplyCountries } from "@/data/supply-map";
-import { tradingBrandCount, tradingBrands } from "@/data/trading-brands";
+import { getCatalogBrands } from "@/lib/catalog";
 import { resolveLanguage, type SearchParams, withLang } from "@/lib/i18n";
 
 export const metadata: Metadata = {
@@ -21,7 +22,9 @@ type PageProps = {
 
 export default async function BrandsPage({ searchParams }: PageProps) {
   const lang = resolveLanguage(await searchParams);
-  const representedBrands = brands.map(toSearchableBrandCard);
+  const catalog = await getCatalogBrands();
+  const representedBrands = catalog.filter((brand) => brand.brandType === "represented").map(toSearchableBrandCard);
+  const tradingBrands = catalog.filter((brand) => brand.brandType === "general-trading");
 
   return (
     <>
@@ -40,7 +43,28 @@ export default async function BrandsPage({ searchParams }: PageProps) {
           <BrandsSearchCatalog
             representedBrands={representedBrands}
             tradingBrands={tradingBrands}
-            tradingBrandCount={tradingBrandCount}
+            tradingBrandCount={tradingBrands.length}
+            lang={lang}
+          />
+        </div>
+      </section>
+      <section className="technical-grid bg-white py-16">
+        <div className="container-page">
+          <SectionHeader
+            eyebrow={lang === "en" ? "Brand application case studies" : "Studi kasus aplikasi brand"}
+            title={
+              lang === "en"
+                ? "See how brands work together across industrial applications."
+                : "Lihat bagaimana brand bekerja bersama dalam aplikasi industri."
+            }
+            description={
+              lang === "en"
+                ? "Choose an industry to explore an interactive workflow showing each brand's role, solution, and operational value."
+                : "Pilih industri untuk menjelajahi workflow interaktif yang menunjukkan peran, solusi, dan nilai operasional setiap brand."
+            }
+          />
+          <IndustryCaseStudyExplorer
+            industries={industries.filter((industry) => industry.slug !== "oil-gas")}
             lang={lang}
           />
         </div>

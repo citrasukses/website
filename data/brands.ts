@@ -45,8 +45,8 @@ export const brands: Brand[] = [
       id: "Torque tools, torque wrench, dan sistem tightening",
       en: "Torque tools, torque wrenches, and tightening systems"
     },
-    logo: "/assets/brands/tohnichi/logo.png",
-    heroImage: "/assets/brands/tohnichi/products/CL100NX15D.jpg",
+    logo: "/assets/brands/logos/tohnichi.png",
+    heroImage: "/assets/brands/products/tohnichi/CL100NX15D.jpg",
     featured: true,
     summary: {
       id: "Solusi torque control Jepang untuk assembly, inspection, calibration, dan error proofing.",
@@ -82,7 +82,7 @@ export const brands: Brand[] = [
         products: [
           {
             name: "DB / CDB Series",
-            image: "/assets/brands/tohnichi/products/DB100N-S.jpg",
+            image: "/assets/brands/products/tohnichi/DB100N-S.jpg",
             summary: {
               id: "Dial indicating torque wrench untuk pembacaan torque pada inspeksi dan pengukuran.",
               en: "Dial indicating torque wrench for torque reading during inspection and measurement."
@@ -94,7 +94,7 @@ export const brands: Brand[] = [
           },
           {
             name: "CEM3-G",
-            image: "/assets/brands/tohnichi/products/CEM3-BTLA.jpg",
+            image: "/assets/brands/products/tohnichi/CEM3-BTLA.jpg",
             summary: {
               id: "Digital torque wrench untuk pencatatan data dan kontrol proses tightening.",
               en: "Digital torque wrench for data recording and tightening process control."
@@ -106,7 +106,7 @@ export const brands: Brand[] = [
           },
           {
             name: "CES-G",
-            image: "/assets/brands/tohnichi/products/CES-G Background Removed.png",
+            image: "/assets/brands/products/tohnichi/CES-G Background Removed.png",
             summary: {
               id: "Solusi digital untuk tightening dengan kebutuhan integrasi dan quality assurance.",
               en: "Digital tightening solution for integration and quality assurance needs."
@@ -128,7 +128,7 @@ export const brands: Brand[] = [
         products: [
           {
             name: "QL / CL Series",
-            image: "/assets/brands/tohnichi/products/QL100N4.jpg",
+            image: "/assets/brands/products/tohnichi/QL100N4.jpg",
             summary: {
               id: "Click type torque wrench untuk pengencangan harian dengan target torque yang jelas.",
               en: "Click type torque wrench for daily tightening with defined torque targets."
@@ -140,7 +140,7 @@ export const brands: Brand[] = [
           },
           {
             name: "CSPFDD-AD",
-            image: "/assets/brands/tohnichi/products/CSPFDD100N3x15D-AD.jpg",
+            image: "/assets/brands/products/tohnichi/CSPFDD100N3x15D-AD.jpg",
             summary: {
               id: "Torque wrench digital dengan data capture untuk proses pengencangan yang membutuhkan bukti.",
               en: "Digital torque wrench with data capture for tightening processes that need evidence."
@@ -152,7 +152,7 @@ export const brands: Brand[] = [
           },
           {
             name: "FDD Series",
-            image: "/assets/brands/tohnichi/products/tohnichi_fdd.jpg",
+            image: "/assets/brands/products/tohnichi/tohnichi_fdd.jpg",
             summary: {
               id: "Model digital untuk pengencangan dan pencatatan data di lini perakitan.",
               en: "Digital model for tightening and data recording on assembly lines."
@@ -174,7 +174,7 @@ export const brands: Brand[] = [
         products: [
           {
             name: "RTD / RTDFH",
-            image: "/assets/brands/tohnichi/products/RTD120CN.jpg",
+            image: "/assets/brands/products/tohnichi/RTD120CN.jpg",
             summary: {
               id: "Torque screwdriver dan tester pendukung untuk aplikasi torque kecil.",
               en: "Torque screwdrivers and supporting testers for low torque applications."
@@ -186,7 +186,7 @@ export const brands: Brand[] = [
           },
           {
             name: "RNTD Series",
-            image: "/assets/brands/tohnichi/products/tohnichi_rntd120cn.jpg",
+            image: "/assets/brands/products/tohnichi/tohnichi_rntd120cn.jpg",
             summary: {
               id: "Tipe preset untuk membantu mencegah perubahan setting yang tidak disengaja.",
               en: "Preset type to help prevent accidental setting changes."
@@ -198,7 +198,7 @@ export const brands: Brand[] = [
           },
           {
             name: "FTD / FTD-S",
-            image: "/assets/brands/tohnichi/products/20FTD2-A-S.jpg",
+            image: "/assets/brands/products/tohnichi/20FTD2-A-S.jpg",
             summary: {
               id: "Obeng torsi inspeksi manual untuk pengecekan dan pengukuran.",
               en: "Manual inspection torque screwdriver for checking and measurement."
@@ -210,7 +210,7 @@ export const brands: Brand[] = [
           },
           {
             name: "STC2-G",
-            image: "/assets/brands/tohnichi/products/STC50CN.jpg",
+            image: "/assets/brands/products/tohnichi/STC50CN.jpg",
             summary: {
               id: "Solusi digital untuk inspeksi torsi kecil dengan kebutuhan pencatatan.",
               en: "Digital solution for small torque inspection with recording needs."
@@ -232,7 +232,7 @@ export const brands: Brand[] = [
         products: [
           {
             name: "TCC2-G",
-            image: "/assets/brands/tohnichi/products/Tohnichi TCC2-G.jpg",
+            image: "/assets/brands/products/tohnichi/Tohnichi TCC2-G.jpg",
             summary: {
               id: "Perangkat pendukung untuk pengelolaan dan pengecekan kalibrasi torque tools.",
               en: "Supporting equipment for torque tool calibration management and checks."
@@ -244,7 +244,7 @@ export const brands: Brand[] = [
           },
           {
             name: "DOTE-G",
-            image: "/assets/brands/tohnichi/products/DOTE100N4-G.jpg",
+            image: "/assets/brands/products/tohnichi/DOTE100N4-G.jpg",
             summary: {
               id: "Tester untuk pengecekan dan verifikasi alat torsi secara berkala.",
               en: "Tester for periodic torque tool checking and verification."
@@ -266,7 +266,7 @@ export const brands: Brand[] = [
         products: [
           {
             name: "R-CM / M-FH",
-            image: "/assets/brands/tohnichi/products/R-CM+M-FH.jpg",
+            image: "/assets/brands/products/tohnichi/R-CM+M-FH.jpg",
             summary: {
               id: "Receiver dan perangkat komunikasi untuk proses tightening assurance.",
               en: "Receiver and communication devices for tightening assurance processes."
@@ -278,7 +278,7 @@ export const brands: Brand[] = [
           },
           {
             name: "TME Series",
-            image: "/assets/brands/tohnichi/products/TME200CN3-BTL.jpg",
+            image: "/assets/brands/products/tohnichi/TME200CN3-BTL.jpg",
             summary: {
               id: "Perangkat pendukung untuk monitoring dan pengendalian proses tightening.",
               en: "Supporting device for tightening process monitoring and control."
@@ -301,8 +301,8 @@ export const brands: Brand[] = [
       id: "Industrial tools dan socket",
       en: "Industrial tools and sockets"
     },
-    logo: "/assets/brands/nac/products/NAC Cover Img.jpg",
-    heroImage: "/assets/brands/nac/products/NAC Cover Img.jpg",
+    logo: "/assets/brands/products/nac/NAC Cover Img.jpg",
+    heroImage: "/assets/brands/products/nac/NAC Cover Img.jpg",
     summary: {
       id: "Brand industrial Jepang untuk kebutuhan tools dan socket di lingkungan produksi.",
       en: "Japanese industrial brand for tool and socket needs in production environments."
@@ -337,7 +337,7 @@ export const brands: Brand[] = [
         products: [
           {
             name: "Industrial Sockets",
-            image: "/assets/brands/nac/products/NAC socket.jpg",
+            image: "/assets/brands/products/nac/NAC socket.jpg",
             summary: {
               id: "Socket industrial untuk pekerjaan fastening dan maintenance.",
               en: "Industrial sockets for fastening and maintenance work."
@@ -349,7 +349,7 @@ export const brands: Brand[] = [
           },
           {
             name: "Screwdriver Bit Attachments",
-            image: "/assets/brands/nac/products/NAC_ScrewdriverBit_Attachments_image1-300x300.jpg",
+            image: "/assets/brands/products/nac/NAC_ScrewdriverBit_Attachments_image1-300x300.jpg",
             summary: {
               id: "Attachment bit untuk kebutuhan assembly dan pekerjaan berulang.",
               en: "Bit attachments for assembly needs and repeated work."
@@ -372,8 +372,8 @@ export const brands: Brand[] = [
       id: "Abrasive dan industrial supplies",
       en: "Abrasives and industrial supplies"
     },
-    logo: "/assets/brands/fuji-star/logo.png",
-    heroImage: "/assets/brands/fuji-star/products/Fujistar - Abrasive.jpg",
+    logo: "/assets/brands/logos/fuji-star.png",
+    heroImage: "/assets/brands/products/fuji-star/Fujistar - Abrasive.jpg",
     summary: {
       id: "Produk abrasive dan supplies untuk proses produksi dan finishing.",
       en: "Abrasive products and supplies for production and finishing processes."
@@ -406,7 +406,7 @@ export const brands: Brand[] = [
         products: [
           {
             name: "Abrasive Disc",
-            image: "/assets/brands/fuji-star/products/Fujistar - Abrasive.jpg",
+            image: "/assets/brands/products/fuji-star/Fujistar - Abrasive.jpg",
             summary: {
               id: "Produk abrasive untuk kebutuhan grinding, finishing, dan surface preparation.",
               en: "Abrasive products for grinding, finishing, and surface preparation needs."
@@ -418,7 +418,7 @@ export const brands: Brand[] = [
           },
           {
             name: "Industrial Brush",
-            image: "/assets/brands/fuji-star/products/industrial brush.webp",
+            image: "/assets/brands/products/fuji-star/industrial brush.webp",
             summary: {
               id: "Brush industrial untuk pembersihan permukaan dan pekerjaan finishing.",
               en: "Industrial brushes for surface cleaning and finishing work."
@@ -441,8 +441,8 @@ export const brands: Brand[] = [
       id: "Brush industri presisi untuk deburring, polishing, cleaning, dan surface treatment",
       en: "Precision industrial brushes for deburring, polishing, cleaning, and surface treatment"
     },
-    logo: "/assets/brands/nippon-unit-brush/logo.gif",
-    heroImage: "/assets/brands/nippon-unit-brush/logo.svg",
+    logo: "/assets/brands/logos/nippon-unit-brush.gif",
+    heroImage: "/assets/brands/logos/nippon-unit-brush--vector.svg",
     featured: true,
     summary: {
       id: "Brand Jepang dengan sejarah panjang dalam industrial brush, dikenal untuk channel brush, abrasive nylon brush, dan solusi brush untuk kebutuhan manufaktur.",
@@ -491,7 +491,7 @@ export const brands: Brand[] = [
         products: [
           {
             name: "Strip Brushes",
-            image: "/assets/brands/nippon-unit-brush/logo.svg",
+            image: "/assets/brands/logos/nippon-unit-brush--vector.svg",
             summary: {
               id: "Channel atau strip brush untuk dust prevention, sealing, conveyor cleaning, dan aplikasi cleaning di area produksi.",
               en: "Channel or strip brushes for dust prevention, sealing, conveyor cleaning, and cleaning applications in production areas."
@@ -503,7 +503,7 @@ export const brands: Brand[] = [
           },
           {
             name: "Roll / Scratch Brushes",
-            image: "/assets/brands/nippon-unit-brush/logo.svg",
+            image: "/assets/brands/logos/nippon-unit-brush--vector.svg",
             summary: {
               id: "Roll brush untuk cleaning, polishing, dan surface treatment pada workpiece dengan permukaan relatif datar.",
               en: "Roll brushes for cleaning, polishing, and surface treatment on relatively flat workpiece surfaces."
@@ -515,7 +515,7 @@ export const brands: Brand[] = [
           },
           {
             name: "Wheel & Cup Brushes",
-            image: "/assets/brands/nippon-unit-brush/logo.svg",
+            image: "/assets/brands/logos/nippon-unit-brush--vector.svg",
             summary: {
               id: "Wheel brush dan cup brush untuk deburring, polishing, rust removal, dan finishing permukaan.",
               en: "Wheel brushes and cup brushes for deburring, polishing, rust removal, and surface finishing."
@@ -527,7 +527,7 @@ export const brands: Brand[] = [
           },
           {
             name: "Twisted Brushes",
-            image: "/assets/brands/nippon-unit-brush/logo.svg",
+            image: "/assets/brands/logos/nippon-unit-brush--vector.svg",
             summary: {
               id: "Twisted brush untuk deburring dan polishing pada lubang, area dalam, dan bagian yang sulit dijangkau setelah proses machining.",
               en: "Twisted brushes for deburring and polishing holes, internal areas, and hard-to-reach sections after machining."
@@ -539,7 +539,7 @@ export const brands: Brand[] = [
           },
           {
             name: "Cylindrical, Umbrella & Flat Brushes",
-            image: "/assets/brands/nippon-unit-brush/logo.svg",
+            image: "/assets/brands/logos/nippon-unit-brush--vector.svg",
             summary: {
               id: "Brush dengan bentuk khusus untuk detailed deburring, cleaning, polishing, dan finishing pada komponen industri.",
               en: "Special-shaped brushes for detailed deburring, cleaning, polishing, and finishing of industrial components."
@@ -562,8 +562,8 @@ export const brands: Brand[] = [
       id: "Brush industri dan solusi amplas untuk kebutuhan produksi dan maintenance",
       en: "Industrial brushes and sanding solutions for production and maintenance needs"
     },
-    logo: "/assets/brands/smbc/logo.png",
-    heroImage: "/assets/brands/smbc/logo.png",
+    logo: "/assets/brands/logos/smbc.png",
+    heroImage: "/assets/brands/logos/smbc.png",
     featured: true,
     summary: {
       id: "Brand Thailand untuk brush industri dan solusi abrasif yang cost-effective dengan lead time lebih cepat.",
@@ -608,7 +608,7 @@ export const brands: Brand[] = [
         products: [
           {
             name: "Industrial Brush",
-            image: "/assets/brands/smbc/logo.png",
+            image: "/assets/brands/logos/smbc.png",
             summary: {
               id: "Brush industri untuk membantu proses pembersihan, finishing, dan perawatan komponen maupun mesin.",
               en: "Industrial brushes for cleaning, finishing, and maintaining components or machinery."
@@ -620,7 +620,7 @@ export const brands: Brand[] = [
           },
           {
             name: "Deburring Brush",
-            image: "/assets/brands/smbc/logo.png",
+            image: "/assets/brands/logos/smbc.png",
             summary: {
               id: "Brush untuk membantu menghilangkan burr dan merapikan permukaan komponen setelah proses machining atau cutting.",
               en: "Brushes for removing burrs and improving component surfaces after machining or cutting processes."
@@ -632,7 +632,7 @@ export const brands: Brand[] = [
           },
           {
             name: "Sanding / Abrasive Solution",
-            image: "/assets/brands/smbc/logo.png",
+            image: "/assets/brands/logos/smbc.png",
             summary: {
               id: "Solusi abrasif dan amplas untuk surface finishing, preparation, dan kebutuhan maintenance.",
               en: "Abrasive and sanding solutions for surface finishing, preparation, and maintenance needs."
@@ -655,8 +655,8 @@ export const brands: Brand[] = [
       id: "Cutting tools khusus dan solusi tooling presisi untuk kebutuhan machining industri",
       en: "Custom cutting tools and precision tooling solutions for industrial machining needs"
     },
-    logo: "/assets/brands/viet-nhat/logo.svg",
-    heroImage: "/assets/brands/viet-nhat/logo.svg",
+    logo: "/assets/brands/logos/viet-nhat.svg",
+    heroImage: "/assets/brands/logos/viet-nhat.svg",
     featured: true,
     summary: {
       id: "Produsen cutting tools Vietnam dengan kualitas terpercaya, digunakan oleh manufaktur Jepang di Vietnam dan mendukung kebutuhan ekspor ke Jepang.",
@@ -707,7 +707,7 @@ export const brands: Brand[] = [
         products: [
           {
             name: "Custom Carbide Tools",
-            image: "/assets/brands/viet-nhat/logo.svg",
+            image: "/assets/brands/logos/viet-nhat.svg",
             summary: {
               id: "Cutting tools carbide yang dapat dibuat sesuai drawing, sample, atau spesifikasi proses machining pelanggan.",
               en: "Carbide cutting tools that can be manufactured based on customer drawings, samples, or machining process specifications."
@@ -719,7 +719,7 @@ export const brands: Brand[] = [
           },
           {
             name: "PCD Tools",
-            image: "/assets/brands/viet-nhat/logo.svg",
+            image: "/assets/brands/logos/viet-nhat.svg",
             summary: {
               id: "Solusi PCD tools untuk machining presisi, terutama pada aplikasi yang membutuhkan cutting performance dan tool life yang stabil.",
               en: "PCD tooling solutions for precision machining, especially for applications requiring stable cutting performance and tool life."
@@ -731,7 +731,7 @@ export const brands: Brand[] = [
           },
           {
             name: "Drills, Reamers & Milling Cutters",
-            image: "/assets/brands/viet-nhat/logo.svg",
+            image: "/assets/brands/logos/viet-nhat.svg",
             summary: {
               id: "Mata bor, reamer, milling cutter, dan special cutter untuk kebutuhan produksi machining industri.",
               en: "Drills, reamers, milling cutters, and special cutters for industrial machining production needs."
@@ -743,7 +743,7 @@ export const brands: Brand[] = [
           },
           {
             name: "Tool Regrinding & Reconditioning",
-            image: "/assets/brands/viet-nhat/logo.svg",
+            image: "/assets/brands/logos/viet-nhat.svg",
             summary: {
               id: "Layanan regrinding dan reconditioning untuk memperpanjang umur pakai tools dan menjaga performa cutting.",
               en: "Regrinding and reconditioning services to extend tool life and maintain cutting performance."

@@ -4,6 +4,7 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { RFQForm } from "@/components/InquiryForms";
 import { SectionHeader } from "@/components/SectionHeader";
 import { company } from "@/data/navigation";
+import { getCatalogBrands } from "@/lib/catalog";
 import { resolveLanguage, type SearchParams, withLang } from "@/lib/i18n";
 
 export const metadata: Metadata = {
@@ -17,6 +18,7 @@ type PageProps = {
 
 export default async function ContactPage({ searchParams }: PageProps) {
   const lang = resolveLanguage(await searchParams);
+  const brands = await getCatalogBrands();
 
   return (
     <>
@@ -46,7 +48,7 @@ export default async function ContactPage({ searchParams }: PageProps) {
               </p>
             </div>
           </div>
-          <RFQForm lang={lang} />
+          <RFQForm lang={lang} brands={brands.map(({ slug, name }) => ({ slug, name }))} />
         </div>
       </section>
     </>

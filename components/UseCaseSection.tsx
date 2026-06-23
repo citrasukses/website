@@ -1,8 +1,8 @@
-import type { ProductGroup } from "@/data/brands";
+import type { CatalogProductGroup } from "@/data/catalog-types";
 import { ProductCard } from "@/components/ProductCard";
 import { text, type Language } from "@/lib/i18n";
 
-export function UseCaseSection({ group, lang }: { group: ProductGroup; lang: Language }) {
+export function UseCaseSection({ group, brandSlug, lang }: { group: CatalogProductGroup; brandSlug: string; lang: Language }) {
   return (
     <section id={group.slug} className="border-t border-graphite-200 py-10 first:border-t-0 first:pt-0">
       <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
@@ -13,7 +13,7 @@ export function UseCaseSection({ group, lang }: { group: ProductGroup; lang: Lan
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
           {group.products.map((product) => (
-            <ProductCard key={product.name} product={product} lang={lang} />
+            <ProductCard key={product.slug} product={product} brandSlug={brandSlug} lang={lang} />
           ))}
         </div>
       </div>

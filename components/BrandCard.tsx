@@ -3,8 +3,9 @@ import { ArrowUpRight } from "lucide-react";
 import type { Brand } from "@/data/brands";
 import { text, type Language, withLang } from "@/lib/i18n";
 import { AssetSlot } from "@/components/AssetSlot";
+import { BrandLogo } from "@/components/BrandLogo";
 
-export type BrandCardBrand = Pick<Brand, "slug" | "name" | "country" | "category" | "heroImage" | "summary">;
+export type BrandCardBrand = Pick<Brand, "slug" | "name" | "country" | "category" | "logo" | "heroImage" | "summary">;
 
 export function BrandCard({ brand, lang }: { brand: BrandCardBrand; lang: Language }) {
   return (
@@ -12,14 +13,23 @@ export function BrandCard({ brand, lang }: { brand: BrandCardBrand; lang: Langua
       href={withLang(`/brands/${brand.slug}`, lang)}
       className="group grid overflow-hidden border border-graphite-200 bg-white transition duration-300 hover:-translate-y-1 hover:border-industrial-600 hover:shadow-panel"
     >
-      <AssetSlot
-        src={brand.heroImage}
-        alt={`${brand.name} products`}
-        label={brand.name}
-        className="h-44 border-0 border-b border-graphite-200 bg-graphite-50"
-        imageClassName="object-cover transition duration-500 group-hover:scale-105"
-        sizes="(max-width: 768px) 100vw, 33vw"
-      />
+      <div className="relative">
+        <AssetSlot
+          src={brand.heroImage}
+          alt={`${brand.name} products`}
+          label={brand.name}
+          className="h-44 border-0 border-b border-graphite-200 bg-graphite-50"
+          imageClassName="object-cover transition duration-500 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, 33vw"
+        />
+        <BrandLogo
+          name={brand.name}
+          slug={brand.slug}
+          src={brand.logo}
+          className="absolute bottom-4 left-4 h-20 w-48 border border-graphite-200 shadow-sm"
+          sizes="160px"
+        />
+      </div>
       <div className="flex flex-1 flex-col p-6">
         <div className="flex items-start justify-between gap-4">
           <div>

@@ -8,7 +8,8 @@ import { FeatureGrid } from "@/components/FeatureGrid";
 import { Hero } from "@/components/Hero";
 import { SectionHeader } from "@/components/SectionHeader";
 import { UseCaseSection } from "@/components/UseCaseSection";
-import { brands, getBrandBySlug } from "@/data/brands";
+import { seedCatalog } from "@/data/catalog-seed";
+import { getCatalogBrandBySlug } from "@/lib/catalog";
 import { resolveLanguage, text, type SearchParams, withLang } from "@/lib/i18n";
 
 type PageProps = {
@@ -17,12 +18,12 @@ type PageProps = {
 };
 
 export function generateStaticParams() {
-  return brands.map((brand) => ({ slug: brand.slug }));
+  return seedCatalog.map((brand) => ({ slug: brand.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const brand = getBrandBySlug(slug);
+  const brand = await getCatalogBrandBySlug(slug);
 
   if (!brand) {
     return {};
@@ -37,7 +38,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function BrandDetailPage({ params, searchParams }: PageProps) {
   const [{ slug }, resolvedSearchParams] = await Promise.all([params, searchParams]);
   const lang = resolveLanguage(resolvedSearchParams);
-  const brand = getBrandBySlug(slug);
+  const brand = await getCatalogBrandBySlug(slug);
 
   if (!brand) {
     notFound();
@@ -89,7 +90,7 @@ export default async function BrandDetailPage({ params, searchParams }: PageProp
               <div className="overflow-hidden border border-graphite-200 bg-graphite-900 shadow-panel">
                 <video
                   className="aspect-video w-full object-cover"
-                  src="/assets/brands/tohnichi/products/Torque Wrench QL CL video english version_1080.mp4"
+                  src="/assets/brands/products/tohnichi/Torque Wrench QL CL video english version_1080.mp4"
                   autoPlay
                   muted
                   loop
@@ -144,9 +145,9 @@ export default async function BrandDetailPage({ params, searchParams }: PageProp
               </div>
               <div className="grid gap-px overflow-hidden border border-graphite-200 bg-graphite-200 md:grid-cols-3">
                 {[
-                  { name: "QL+", image: "/assets/brands/tohnichi/products/QL5N+.png" },
-                  { name: "CL+", image: "/assets/brands/tohnichi/products/CL2NX6D+.png" },
-                  { name: "Interchangeable Head", image: "/assets/brands/tohnichi/products/SB-FH2.jpg" }
+                  { name: "QL+", image: "/assets/brands/products/tohnichi/QL5N+.png" },
+                  { name: "CL+", image: "/assets/brands/products/tohnichi/CL2NX6D+.png" },
+                  { name: "Interchangeable Head", image: "/assets/brands/products/tohnichi/SB-FH2.jpg" }
                 ].map((item) => (
                   <div key={item.name} className="bg-white p-4">
                     <AssetSlot
@@ -195,13 +196,13 @@ export default async function BrandDetailPage({ params, searchParams }: PageProp
           <div className="mt-10 border-t border-graphite-200">
             {hasProducts ? (
               brand.productGroups.map((group) => (
-                <UseCaseSection key={group.slug} group={group} lang={lang} />
+                <UseCaseSection key={group.slug} group={group} brandSlug={brand.slug} lang={lang} />
               ))
             ) : (
               <div className="border border-dashed border-graphite-300 bg-white p-8 text-sm leading-6 text-graphite-500">
                 {lang === "en"
-                  ? "Add product groups to data/brands.ts and product assets under public/assets/brands to populate this page."
-                  : "Tambahkan product groups di data/brands.ts dan asset produk di public/assets/brands untuk mengisi halaman ini."}
+                  ? "Product categories and models for this brand are being prepared. Send an RFQ with the required model or specification."
+                  : "Kategori dan model produk untuk brand ini sedang disiapkan. Kirim RFQ dengan model atau spesifikasi yang dibutuhkan."}
               </div>
             )}
           </div>

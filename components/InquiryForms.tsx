@@ -4,7 +4,6 @@ import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { Send } from "lucide-react";
 import { useSearchParams } from "next/navigation";
-import { brands } from "@/data/brands";
 import { submitBuyerInquiry, submitPartnerInquiry, type InquiryState } from "@/app/actions/inquiry";
 import type { Language } from "@/lib/i18n";
 
@@ -66,13 +65,14 @@ function TextArea({ label, name, required = false }: { label: string; name: stri
   );
 }
 
-export function RFQForm({ lang }: { lang: Language }) {
+export function RFQForm({ lang, brands }: { lang: Language; brands: Array<{ slug: string; name: string }> }) {
   const [state, formAction] = useActionState(submitBuyerInquiry, initialState);
   const searchParams = useSearchParams();
   const selectedBrand = (() => {
     const brandSlug = searchParams.get("brand");
     return brands.find((brand) => brand.slug === brandSlug)?.name ?? "";
   })();
+  const selectedProduct = searchParams.get("product") ?? "";
 
   return (
     <form action={formAction} className="grid gap-5 border border-graphite-200 bg-white p-6 shadow-panel">
@@ -95,7 +95,10 @@ export function RFQForm({ lang }: { lang: Language }) {
             ))}
           </select>
         </label>
-        <Field label={lang === "en" ? "Product / model" : "Produk / model"} name="product" />
+        <label className="grid gap-2 text-sm font-semibold text-graphite-800">
+          {lang === "en" ? "Product / model" : "Produk / model"}
+          <input name="product" defaultValue={selectedProduct} className="focus-ring min-h-11 border border-graphite-300 bg-white px-3 text-sm font-normal text-graphite-900" />
+        </label>
         <Field label={lang === "en" ? "Quantity" : "Kuantitas"} name="quantity" />
         <Field label={lang === "en" ? "Application / use case" : "Aplikasi / kebutuhan"} name="application" />
       </div>

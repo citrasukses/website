@@ -4,19 +4,20 @@ import Link from "next/link";
 import { ArrowUpRight, PackageSearch, Search, X } from "lucide-react";
 import { useDeferredValue, useMemo, useState } from "react";
 import { BrandCard } from "@/components/BrandCard";
+import { BrandLogo } from "@/components/BrandLogo";
 import type { SearchableBrandCard } from "@/data/brand-search";
-import type { TradingBrand } from "@/data/trading-brands";
+import type { CatalogBrand } from "@/data/catalog-types";
 import { text, type Language, withLang } from "@/lib/i18n";
 
 type BrandsSearchCatalogProps = {
   representedBrands: SearchableBrandCard[];
-  tradingBrands: TradingBrand[];
+  tradingBrands: CatalogBrand[];
   tradingBrandCount: number;
   lang: Language;
 };
 
 type IndexedTradingBrand = {
-  brand: TradingBrand;
+  brand: CatalogBrand;
   searchIndex: string;
 };
 
@@ -24,14 +25,14 @@ function normalize(value: string) {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
 }
 
-function tradingBrandSearchIndex(brand: TradingBrand) {
+function tradingBrandSearchIndex(brand: CatalogBrand) {
   return normalize(
     [
       brand.name,
       brand.country,
       text(brand.category, "id"),
       text(brand.category, "en"),
-      ...brand.searchTerms
+      ...(brand.searchTerms ?? [])
     ]
       .filter(Boolean)
       .join(" ")
@@ -51,31 +52,40 @@ function matchesSearch(searchIndex: string, normalizedQuery: string) {
   return tokens.length > 0 && tokens.every((token) => searchIndex.includes(token));
 }
 
-function TradingBrandCard({ brand, lang }: { brand: TradingBrand; lang: Language }) {
-  const href = withLang(`/contact?brand=${encodeURIComponent(brand.name)}`, lang);
+function TradingBrandCard({ brand, lang }: { brand: CatalogBrand; lang: Language }) {
+  const href = withLang(`/brands/${brand.slug}`, lang);
 
   return (
     <Link
       href={href}
-      className="group flex min-h-[180px] flex-col justify-between border border-dashed border-graphite-300 bg-white p-5 transition duration-300 hover:-translate-y-1 hover:border-signal-500 hover:bg-signal-50/50 hover:shadow-panel"
+      className="group flex min-h-[260px] flex-col border border-dashed border-graphite-300 bg-white transition duration-300 hover:-translate-y-1 hover:border-signal-500 hover:bg-signal-50/50 hover:shadow-panel"
     >
-      <div>
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-graphite-500">
-              {lang === "en" ? "General trading" : "General trading"}
-            </p>
-            <h3 className="mt-2 text-xl font-bold text-graphite-900">{brand.name}</h3>
+      <BrandLogo
+        name={brand.name}
+        slug={brand.slug}
+        src={brand.logo}
+        className="h-24 w-full border-b border-dashed border-graphite-200 bg-graphite-50"
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+      />
+      <div className="flex flex-1 flex-col justify-between p-5">
+        <div>
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-graphite-500">
+                {lang === "en" ? "General trading" : "General trading"}
+              </p>
+              <h3 className="mt-2 text-xl font-bold text-graphite-900">{brand.name}</h3>
+            </div>
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-dashed border-graphite-300 bg-white transition group-hover:border-signal-500 group-hover:bg-signal-600">
+              <ArrowUpRight className="h-4 w-4 text-graphite-500 transition group-hover:text-white" aria-hidden="true" />
+            </span>
           </div>
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-dashed border-graphite-300 bg-white transition group-hover:border-signal-500 group-hover:bg-signal-600">
-            <ArrowUpRight className="h-4 w-4 text-graphite-500 transition group-hover:text-white" aria-hidden="true" />
-          </span>
+          <p className="mt-4 text-sm font-semibold leading-6 text-industrial-700">{text(brand.category, lang)}</p>
         </div>
-        <p className="mt-4 text-sm font-semibold leading-6 text-industrial-700">{text(brand.category, lang)}</p>
-      </div>
-      <div className="mt-5 flex items-center justify-between gap-3 border-t border-dashed border-graphite-200 pt-4 text-xs font-semibold text-graphite-500">
-        <span>{brand.country ?? (lang === "en" ? "Multiple origins" : "Berbagai negara")}</span>
-        <span>{lang === "en" ? "RFQ supply" : "Supply RFQ"}</span>
+        <div className="mt-5 flex items-center justify-between gap-3 border-t border-dashed border-graphite-200 pt-4 text-xs font-semibold text-graphite-500">
+          <span>{brand.country || (lang === "en" ? "Multiple origins" : "Berbagai negara")}</span>
+          <span>{lang === "en" ? "RFQ supply" : "Supply RFQ"}</span>
+        </div>
       </div>
     </Link>
   );
@@ -90,7 +100,7 @@ export function BrandsSearchCatalog({ representedBrands, tradingBrands, tradingB
     () =>
       tradingBrands
         .map((brand) => ({ brand, searchIndex: tradingBrandSearchIndex(brand) }))
-        .sort((a, b) => (b.brand.priority ?? 0) - (a.brand.priority ?? 0) || a.brand.name.localeCompare(b.brand.name)),
+        .sort((a, b) => (a.brand.popularityRank ?? Number.MAX_SAFE_INTEGER) - (b.brand.popularityRank ?? Number.MAX_SAFE_INTEGER) || a.brand.name.localeCompare(b.brand.name)),
     [tradingBrands]
   );
 
@@ -192,8 +202,8 @@ export function BrandsSearchCatalog({ representedBrands, tradingBrands, tradingB
             </h2>
             <p className="mt-3 text-sm leading-6 text-graphite-500">
               {lang === "en"
-                ? "These are sourcing and trading items, separate from brands where CSE is an authorized representative. Cards stay lightweight so the catalog can grow without loading hundreds of logos."
-                : "Ini adalah item sourcing dan trading, terpisah dari brand di mana CSE menjadi authorized representative. Kartu dibuat ringan agar katalog bisa bertambah tanpa memuat ratusan logo."}
+                ? "These are sourcing and trading items, separate from brands where CSE is an authorized representative. Available brand logos are shown directly on each card."
+                : "Ini adalah item sourcing dan trading, terpisah dari brand di mana CSE menjadi authorized representative. Logo brand yang tersedia ditampilkan langsung pada setiap kartu."}
             </p>
           </div>
           <div className="grid grid-cols-2 gap-3 text-sm font-semibold text-graphite-700 sm:grid-cols-4 md:grid-cols-2">
@@ -208,7 +218,7 @@ export function BrandsSearchCatalog({ representedBrands, tradingBrands, tradingB
         <div className="mt-6 flex flex-col justify-between gap-3 md:flex-row md:items-end">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
-              {lang === "en" ? "Text-first cards" : "Kartu ringan"}
+              {lang === "en" ? "Brand directory" : "Direktori brand"}
             </p>
             <h3 className="mt-2 text-2xl font-bold text-graphite-900">
               {lang === "en" ? "General trading brand matches" : "Brand general trading yang cocok"}
@@ -221,8 +231,8 @@ export function BrandsSearchCatalog({ representedBrands, tradingBrands, tradingB
 
         {tradingMatches.length > 0 ? (
           <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {tradingMatches.map((brand) => (
-              <TradingBrandCard key={brand.name} brand={brand} lang={lang} />
+              {tradingMatches.map((brand) => (
+              <TradingBrandCard key={brand.slug} brand={brand} lang={lang} />
             ))}
           </div>
         ) : (

@@ -4,16 +4,18 @@ import { AuthorizedDistributorStrip } from "@/components/AuthorizedDistributorSt
 import { BrandCard } from "@/components/BrandCard";
 import { CTAButton } from "@/components/CTAButton";
 import { CustomerLogoCloud } from "@/components/CustomerLogoCloud";
+import { ExpertiseShowcase } from "@/components/ExpertiseShowcase";
 import { HomeBackgroundItems } from "@/components/HomeBackgroundItems";
-import { IndustryCard } from "@/components/IndustryCard";
+import { IndustryCaseStudyExplorer } from "@/components/IndustryCaseStudyExplorer";
 import { RFQForm } from "@/components/InquiryForms";
 import { NewsSection } from "@/components/NewsSection";
 import { SectionHeader } from "@/components/SectionHeader";
-import { brands } from "@/data/brands";
 import { stats } from "@/data/customers";
-import { homeBackgroundItems } from "@/data/home-background";
+import { expertiseAreas } from "@/data/expertise";
+import { homeBackgroundImage, homeBackgroundItems } from "@/data/home-background";
 import { company } from "@/data/navigation";
 import { industries } from "@/data/industries";
+import { getCatalogBrands } from "@/lib/catalog";
 import { resolveLanguage, text, type SearchParams, withLang } from "@/lib/i18n";
 
 export const metadata: Metadata = {
@@ -28,6 +30,8 @@ type PageProps = {
 
 export default async function HomePage({ searchParams }: PageProps) {
   const lang = resolveLanguage(await searchParams);
+  const catalogBrands = await getCatalogBrands();
+  const brands = catalogBrands.filter((brand) => brand.brandType === "represented");
 
   const serviceItems = lang === "en"
     ? [
@@ -108,7 +112,7 @@ export default async function HomePage({ searchParams }: PageProps) {
   return (
     <>
       <section className="technical-grid relative isolate overflow-hidden bg-white">
-        <HomeBackgroundItems items={homeBackgroundItems} />
+        <HomeBackgroundItems items={homeBackgroundItems} singleImage={homeBackgroundImage} />
 
         <div className="container-page relative z-10 py-16 lg:py-12">
           <div className="grid gap-10 lg:grid-cols-[1.25fr_0.95fr] lg:items-center">
@@ -190,6 +194,30 @@ export default async function HomePage({ searchParams }: PageProps) {
       </section>
 
       <AuthorizedDistributorStrip lang={lang} />
+
+      <section className="bg-graphite-50 py-16">
+        <div className="container-page">
+          <SectionHeader
+            eyebrow={lang === "en" ? "Customers" : "Pelanggan"}
+            title={lang === "en" ? "Trusted by industrial customers across Indonesia." : "Dipercaya pelanggan industrial di Indonesia."}
+            description={
+              lang === "en"
+                ? "CSE works with manufacturing and industrial teams that require reliable sourcing and clear technical communication."
+                : "CSE bekerja dengan tim manufaktur dan industrial yang membutuhkan sourcing andal dan komunikasi teknis yang jelas."
+            }
+          />
+          <div className="mt-8">
+            <CustomerLogoCloud />
+          </div>
+          <p className="mt-4 border-t border-graphite-200 pt-4 text-xs leading-5 text-graphite-500">
+            {lang === "en"
+              ? "Logos are displayed as customer/supply-history references. All trademarks belong to their respective owners."
+              : "Logo ditampilkan sebagai referensi pelanggan/riwayat suplai. Seluruh merek dagang adalah milik masing-masing pemiliknya."}
+          </p>
+        </div>
+      </section>
+
+      <ExpertiseShowcase areas={expertiseAreas} lang={lang} />
 
       <section className="bg-signal-500 py-16 text-white">
         <div className="container-page">
@@ -289,28 +317,10 @@ export default async function HomePage({ searchParams }: PageProps) {
                 : "CSE melayani buyer industrial yang membutuhkan produk kredibel, pemilihan model yang praktis, dan dukungan supply yang responsif."
             }
           />
-          <div className="mt-10 grid gap-5 md:grid-cols-2">
-            {industries.map((industry) => (
-              <IndustryCard key={industry.slug} industry={industry} lang={lang} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-graphite-50 py-16">
-        <div className="container-page">
-          <SectionHeader
-            eyebrow={lang === "en" ? "Customers" : "Pelanggan"}
-            title={lang === "en" ? "Trusted by industrial customers across Indonesia." : "Dipercaya pelanggan industrial di Indonesia."}
-            description={
-              lang === "en"
-                ? "CSE works with manufacturing and industrial teams that require reliable sourcing and clear technical communication."
-                : "CSE bekerja dengan tim manufaktur dan industrial yang membutuhkan sourcing andal dan komunikasi teknis yang jelas."
-            }
+          <IndustryCaseStudyExplorer
+            industries={industries.filter((industry) => industry.slug !== "oil-gas")}
+            lang={lang}
           />
-          <div className="mt-8">
-            <CustomerLogoCloud />
-          </div>
         </div>
       </section>
 
@@ -353,7 +363,7 @@ export default async function HomePage({ searchParams }: PageProps) {
                 : "Kirim brand, model, kuantitas, dan detail aplikasi agar CSE dapat meninjau kebutuhan dengan konteks teknis yang tepat."}
             </p>
           </div>
-          <RFQForm lang={lang} />
+          <RFQForm lang={lang} brands={catalogBrands.map(({ slug, name }) => ({ slug, name }))} />
         </div>
       </section>
     </>

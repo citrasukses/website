@@ -26,13 +26,15 @@ export function AssetSlot({
           </span>
         </div>
       ) : null}
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        sizes={sizes}
-        className={`relative object-cover transition duration-500 ${imageClassName}`}
-      />
+      {src ? (
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes={sizes}
+          className={`relative object-cover transition duration-500 ${imageClassName}`}
+        />
+      ) : null}
     </div>
   );
 }

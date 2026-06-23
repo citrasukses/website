@@ -1,10 +1,30 @@
-import type { HomeBackgroundItem } from "@/data/home-background";
+import type { HomeBackgroundImage, HomeBackgroundItem } from "@/data/home-background";
 
 type HomeBackgroundItemsProps = {
   items: HomeBackgroundItem[];
+  singleImage?: HomeBackgroundImage | null;
 };
 
-export function HomeBackgroundItems({ items }: HomeBackgroundItemsProps) {
+export function HomeBackgroundItems({ items, singleImage }: HomeBackgroundItemsProps) {
+  if (singleImage) {
+    return (
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url("${singleImage.src}")`,
+            backgroundPosition: singleImage.position
+          }}
+        />
+        <div
+          className={`absolute inset-0 ${
+            singleImage.overlayClassName ?? "bg-gradient-to-r from-white/95 via-white/80 to-white/40"
+          }`}
+        />
+      </div>
+    );
+  }
+
   const visibleItems = items.filter((item) => item.enabled !== false);
 
   return (
