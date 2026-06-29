@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTAButton } from "@/components/CTAButton";
-import { IndustryCard } from "@/components/IndustryCard";
+import { IndustryCaseStudyExplorer } from "@/components/IndustryCaseStudyExplorer";
 import { SectionHeader } from "@/components/SectionHeader";
 import { industries } from "@/data/industries";
 import { resolveLanguage, type SearchParams, withLang } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "Industries",
-  description: "Industries served by CSE, including automotive, heavy equipment, oil and gas, and general industry."
+  description: "Industries served by CSE, including automotive, heavy equipment, and general industry."
 };
 
 type PageProps = {
@@ -32,11 +32,10 @@ export default async function IndustriesPage({ searchParams }: PageProps) {
                 : "Website CSE disusun mengikuti cara buyer mencari: brand, aplikasi, dan konteks industri."
             }
           />
-          <div className="mt-10 grid gap-5">
-            {industries.map((industry) => (
-              <IndustryCard key={industry.slug} industry={industry} lang={lang} />
-            ))}
-          </div>
+          <IndustryCaseStudyExplorer
+            industries={industries.filter((industry) => industry.slug !== "oil-gas")}
+            lang={lang}
+          />
         </div>
       </section>
       <section className="bg-graphite-900 py-16 text-white">
