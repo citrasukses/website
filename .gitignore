@@ -15,7 +15,7 @@
 /coverage/
 /.nyc_output/
 
-# Vercel project metadata and local builds
+# Deployment project metadata and local builds
 /.vercel/
 
 # Environment files (keep documented templates)

@@ -2,12 +2,8 @@ export type Language = "id" | "en";
 
 export type LocalizedText = Record<Language, string>;
 
-export type SearchParams = Record<string, string | string[] | undefined>;
-
-export function resolveLanguage(searchParams?: SearchParams): Language {
-  const lang = searchParams?.lang;
-  const value = Array.isArray(lang) ? lang[0] : lang;
-  return value === "en" ? "en" : "id";
+export function staticLanguage(): Language {
+  return "id";
 }
 
 export function text(value: LocalizedText, lang: Language): string {

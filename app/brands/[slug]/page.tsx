@@ -10,11 +10,10 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { UseCaseSection } from "@/components/UseCaseSection";
 import { seedCatalog } from "@/data/catalog-seed";
 import { getCatalogBrandBySlug } from "@/lib/catalog";
-import { resolveLanguage, text, type SearchParams, withLang } from "@/lib/i18n";
+import { staticLanguage, text, withLang } from "@/lib/i18n";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
-  searchParams?: Promise<SearchParams>;
 };
 
 export function generateStaticParams() {
@@ -35,9 +34,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function BrandDetailPage({ params, searchParams }: PageProps) {
-  const [{ slug }, resolvedSearchParams] = await Promise.all([params, searchParams]);
-  const lang = resolveLanguage(resolvedSearchParams);
+export default async function BrandDetailPage({ params }: PageProps) {
+  const { slug } = await params;
+  const lang = staticLanguage();
   const brand = await getCatalogBrandBySlug(slug);
 
   if (!brand) {

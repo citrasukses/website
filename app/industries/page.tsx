@@ -4,19 +4,15 @@ import { CTAButton } from "@/components/CTAButton";
 import { IndustryCaseStudyExplorer } from "@/components/IndustryCaseStudyExplorer";
 import { SectionHeader } from "@/components/SectionHeader";
 import { industries } from "@/data/industries";
-import { resolveLanguage, type SearchParams, withLang } from "@/lib/i18n";
+import { staticLanguage, withLang } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "Industries",
   description: "Industries served by CSE, including automotive, heavy equipment, and general industry."
 };
 
-type PageProps = {
-  searchParams?: Promise<SearchParams>;
-};
-
-export default async function IndustriesPage({ searchParams }: PageProps) {
-  const lang = resolveLanguage(await searchParams);
+export default function IndustriesPage() {
+  const lang = staticLanguage();
 
   return (
     <>

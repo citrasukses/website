@@ -1,26 +1,47 @@
 "use client";
 
-import { useActionState } from "react";
-import { useFormStatus } from "react-dom";
+import { useEffect, useState, type FormEvent } from "react";
 import { Send } from "lucide-react";
-import { useSearchParams } from "next/navigation";
-import { submitBuyerInquiry, submitPartnerInquiry, type InquiryState } from "@/app/actions/inquiry";
+import { company } from "@/data/navigation";
 import type { Language } from "@/lib/i18n";
 
-const initialState: InquiryState = { ok: false, message: "" };
+type FormStatus = {
+  ok: boolean;
+  message: string;
+};
 
-function SubmitButton({ label, pendingLabel }: { label: string; pendingLabel: string }) {
-  const { pending } = useFormStatus();
+function value(formData: FormData, name: string) {
+  return String(formData.get(name) ?? "").trim();
+}
 
+function mailtoHref(subject: string, fields: Record<string, string>) {
+  const body = Object.entries(fields)
+    .filter(([, fieldValue]) => fieldValue.length > 0)
+    .map(([label, fieldValue]) => `${label}: ${fieldValue}`)
+    .join("\n");
+
+  return `mailto:${company.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+function SubmitButton({ label }: { label: string }) {
   return (
     <button
       type="submit"
-      disabled={pending}
-      className="focus-ring inline-flex min-h-11 items-center justify-center gap-2 bg-signal-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-signal-600 disabled:cursor-not-allowed disabled:opacity-70"
+      className="focus-ring inline-flex min-h-11 items-center justify-center gap-2 bg-signal-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-signal-600"
     >
       <Send className="h-4 w-4" aria-hidden="true" />
-      {pending ? pendingLabel : label}
+      {label}
     </button>
+  );
+}
+
+function StatusMessage({ status }: { status: FormStatus }) {
+  if (!status.message) return null;
+
+  return (
+    <p className={`text-sm font-semibold ${status.ok ? "text-industrial-700" : "text-signal-600"}`}>
+      {status.message}
+    </p>
   );
 }
 
@@ -65,18 +86,66 @@ function TextArea({ label, name, required = false }: { label: string; name: stri
   );
 }
 
-export function RFQForm({ lang, brands }: { lang: Language; brands: Array<{ slug: string; name: string }> }) {
-  const [state, formAction] = useActionState(submitBuyerInquiry, initialState);
-  const searchParams = useSearchParams();
-  const selectedBrand = (() => {
-    const brandSlug = searchParams.get("brand");
-    return brands.find((brand) => brand.slug === brandSlug)?.name ?? "";
-  })();
-  const selectedProduct = searchParams.get("product") ?? "";
+export function RFQForm({
+  lang,
+  brands,
+  selectedBrand = "",
+  selectedProduct = ""
+}: {
+  lang: Language;
+  brands: Array<{ slug: string; name: string }>;
+  selectedBrand?: string;
+  selectedProduct?: string;
+}) {
+  const [status, setStatus] = useState<FormStatus>({ ok: false, message: "" });
+  const [brandValue, setBrandValue] = useState(selectedBrand);
+  const [productValue, setProductValue] = useState(selectedProduct);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const brandSlug = params.get("brand");
+    const product = params.get("product");
+
+    if (brandSlug) {
+      setBrandValue(brands.find((brand) => brand.slug === brandSlug)?.name ?? "");
+    }
+    if (product) {
+      setProductValue(product);
+    }
+  }, [brands]);
+
+  function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const fields = {
+      Name: value(formData, "name"),
+      Company: value(formData, "company"),
+      Email: value(formData, "email"),
+      "Phone / WhatsApp": value(formData, "phone"),
+      "Brand interested": value(formData, "brand"),
+      "Product / model": value(formData, "product"),
+      Quantity: value(formData, "quantity"),
+      "Application / use case": value(formData, "application"),
+      Message: value(formData, "message")
+    };
+
+    if (!fields.Name || !fields.Company || !fields.Email || !fields.Message) {
+      setStatus({
+        ok: false,
+        message: lang === "en" ? "Please complete the required fields." : "Mohon lengkapi field yang wajib diisi."
+      });
+      return;
+    }
+
+    setStatus({
+      ok: true,
+      message: lang === "en" ? "Opening your email client..." : "Membuka aplikasi email Anda..."
+    });
+    window.location.href = mailtoHref(`CSE RFQ: ${fields.Company} - ${fields["Brand interested"] || "General inquiry"}`, fields);
+  }
 
   return (
-    <form action={formAction} className="grid gap-5 border border-graphite-200 bg-white p-6 shadow-panel">
-      <input type="hidden" name="lang" value={lang} />
+    <form onSubmit={submit} className="grid gap-5 border border-graphite-200 bg-white p-6 shadow-panel">
       <div className="grid gap-5 md:grid-cols-2">
         <Field label={lang === "en" ? "Name" : "Nama"} name="name" required />
         <Field label={lang === "en" ? "Company" : "Perusahaan"} name="company" required />
@@ -86,7 +155,8 @@ export function RFQForm({ lang, brands }: { lang: Language; brands: Array<{ slug
           {lang === "en" ? "Brand interested" : "Brand yang diminati"}
           <select
             name="brand"
-            defaultValue={selectedBrand}
+            value={brandValue}
+            onChange={(event) => setBrandValue(event.target.value)}
             className="focus-ring min-h-11 border border-graphite-300 bg-white px-3 text-sm font-normal text-graphite-900"
           >
             <option value="">{lang === "en" ? "General" : "Umum"}</option>
@@ -97,30 +167,60 @@ export function RFQForm({ lang, brands }: { lang: Language; brands: Array<{ slug
         </label>
         <label className="grid gap-2 text-sm font-semibold text-graphite-800">
           {lang === "en" ? "Product / model" : "Produk / model"}
-          <input name="product" defaultValue={selectedProduct} className="focus-ring min-h-11 border border-graphite-300 bg-white px-3 text-sm font-normal text-graphite-900" />
+          <input
+            name="product"
+            value={productValue}
+            onChange={(event) => setProductValue(event.target.value)}
+            className="focus-ring min-h-11 border border-graphite-300 bg-white px-3 text-sm font-normal text-graphite-900"
+          />
         </label>
         <Field label={lang === "en" ? "Quantity" : "Kuantitas"} name="quantity" />
         <Field label={lang === "en" ? "Application / use case" : "Aplikasi / kebutuhan"} name="application" />
       </div>
       <TextArea label={lang === "en" ? "Message" : "Pesan"} name="message" required />
       <div className="flex flex-wrap items-center gap-4">
-        <SubmitButton label={lang === "en" ? "Send RFQ" : "Kirim RFQ"} pendingLabel={lang === "en" ? "Sending..." : "Mengirim..."} />
-        {state.message ? (
-          <p className={`text-sm font-semibold ${state.ok ? "text-industrial-700" : "text-signal-600"}`}>
-            {state.message}
-          </p>
-        ) : null}
+        <SubmitButton label={lang === "en" ? "Send RFQ by email" : "Kirim RFQ via email"} />
+        <StatusMessage status={status} />
       </div>
     </form>
   );
 }
 
 export function PartnerInquiryForm({ lang }: { lang: Language }) {
-  const [state, formAction] = useActionState(submitPartnerInquiry, initialState);
+  const [status, setStatus] = useState<FormStatus>({ ok: false, message: "" });
+
+  function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const fields = {
+      Name: value(formData, "name"),
+      Company: value(formData, "company"),
+      Email: value(formData, "email"),
+      Country: value(formData, "country"),
+      Website: value(formData, "website"),
+      "Product category": value(formData, "category"),
+      "Current export markets": value(formData, "markets"),
+      "Support needed in Indonesia": value(formData, "support"),
+      Message: value(formData, "message")
+    };
+
+    if (!fields.Name || !fields.Company || !fields.Email || !fields.Country || !fields.Message) {
+      setStatus({
+        ok: false,
+        message: lang === "en" ? "Please complete the required fields." : "Mohon lengkapi field yang wajib diisi."
+      });
+      return;
+    }
+
+    setStatus({
+      ok: true,
+      message: lang === "en" ? "Opening your email client..." : "Membuka aplikasi email Anda..."
+    });
+    window.location.href = mailtoHref(`CSE Partner Inquiry: ${fields.Company} (${fields.Country})`, fields);
+  }
 
   return (
-    <form action={formAction} className="grid gap-5 border border-graphite-200 bg-white p-6 shadow-panel">
-      <input type="hidden" name="lang" value={lang} />
+    <form onSubmit={submit} className="grid gap-5 border border-graphite-200 bg-white p-6 shadow-panel">
       <div className="grid gap-5 md:grid-cols-2">
         <Field label={lang === "en" ? "Name" : "Nama"} name="name" required />
         <Field label={lang === "en" ? "Company" : "Perusahaan"} name="company" required />
@@ -134,14 +234,9 @@ export function PartnerInquiryForm({ lang }: { lang: Language }) {
       <TextArea label={lang === "en" ? "Message" : "Pesan"} name="message" required />
       <div className="flex flex-wrap items-center gap-4">
         <SubmitButton
-          label={lang === "en" ? "Send partner inquiry" : "Kirim inquiry partner"}
-          pendingLabel={lang === "en" ? "Sending..." : "Mengirim..."}
+          label={lang === "en" ? "Send partner inquiry by email" : "Kirim inquiry partner via email"}
         />
-        {state.message ? (
-          <p className={`text-sm font-semibold ${state.ok ? "text-industrial-700" : "text-signal-600"}`}>
-            {state.message}
-          </p>
-        ) : null}
+        <StatusMessage status={status} />
       </div>
     </form>
   );

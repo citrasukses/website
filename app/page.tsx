@@ -16,7 +16,7 @@ import { homeBackgroundImage, homeBackgroundItems } from "@/data/home-background
 import { company } from "@/data/navigation";
 import { industries } from "@/data/industries";
 import { getCatalogBrands } from "@/lib/catalog";
-import { resolveLanguage, text, type SearchParams, withLang } from "@/lib/i18n";
+import { staticLanguage, text, withLang } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "Industrial Goods Supplier Indonesia",
@@ -24,12 +24,8 @@ export const metadata: Metadata = {
     "PT Citra Sukses Ekapratama, Indonesia's industrial sourcing partner. CSE helps procurement and engineering teams find industrial products from Japan and Asia, check technical fit, provide alternatives, and speed up the RFQ process."
 };
 
-type PageProps = {
-  searchParams?: Promise<SearchParams>;
-};
-
-export default async function HomePage({ searchParams }: PageProps) {
-  const lang = resolveLanguage(await searchParams);
+export default async function HomePage() {
+  const lang = staticLanguage();
   const catalogBrands = await getCatalogBrands();
   const brands = catalogBrands.filter((brand) => brand.brandType === "represented");
 

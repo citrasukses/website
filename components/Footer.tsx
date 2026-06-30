@@ -3,13 +3,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Mail } from "lucide-react";
-import { useSearchParams } from "next/navigation";
 import { company, navigationItems } from "@/data/navigation";
-import { text, withLang, type Language } from "@/lib/i18n";
+import { staticLanguage, text, withLang } from "@/lib/i18n";
 
 export function Footer() {
-  const searchParams = useSearchParams();
-  const lang: Language = searchParams.get("lang") === "en" ? "en" : "id";
+  const lang = staticLanguage();
 
   return (
     <footer className="relative overflow-hidden bg-graphite-900 text-white">

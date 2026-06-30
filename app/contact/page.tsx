@@ -5,19 +5,15 @@ import { RFQForm } from "@/components/InquiryForms";
 import { SectionHeader } from "@/components/SectionHeader";
 import { company } from "@/data/navigation";
 import { getCatalogBrands } from "@/lib/catalog";
-import { resolveLanguage, type SearchParams, withLang } from "@/lib/i18n";
+import { staticLanguage, withLang } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "Contact / RFQ",
   description: "Send an RFQ, product consultation request, or email inquiry to CSE."
 };
 
-type PageProps = {
-  searchParams?: Promise<SearchParams>;
-};
-
-export default async function ContactPage({ searchParams }: PageProps) {
-  const lang = resolveLanguage(await searchParams);
+export default async function ContactPage() {
+  const lang = staticLanguage();
   const brands = await getCatalogBrands();
 
   return (
@@ -48,7 +44,10 @@ export default async function ContactPage({ searchParams }: PageProps) {
               </p>
             </div>
           </div>
-          <RFQForm lang={lang} brands={brands.map(({ slug, name }) => ({ slug, name }))} />
+          <RFQForm
+            lang={lang}
+            brands={brands.map(({ slug, name }) => ({ slug, name }))}
+          />
         </div>
       </section>
     </>

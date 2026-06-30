@@ -6,11 +6,10 @@ import { CTAButton } from "@/components/CTAButton";
 import { ProductGallery } from "@/components/ProductGallery";
 import { seedCatalog } from "@/data/catalog-seed";
 import { getCatalogBrandBySlug } from "@/lib/catalog";
-import { resolveLanguage, text, type SearchParams, withLang } from "@/lib/i18n";
+import { staticLanguage, text, withLang } from "@/lib/i18n";
 
 type PageProps = {
   params: Promise<{ slug: string; productSlug: string }>;
-  searchParams?: Promise<SearchParams>;
 };
 
 export function generateStaticParams() {
@@ -26,9 +25,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return product ? { title: `${product.name} | ${brand?.name}`, description: product.summary.en } : {};
 }
 
-export default async function ProductDetailPage({ params, searchParams }: PageProps) {
-  const [{ slug, productSlug }, resolvedSearchParams] = await Promise.all([params, searchParams]);
-  const lang = resolveLanguage(resolvedSearchParams);
+export default async function ProductDetailPage({ params }: PageProps) {
+  const { slug, productSlug } = await params;
+  const lang = staticLanguage();
   const brand = await getCatalogBrandBySlug(slug);
   if (!brand) notFound();
   const group = brand.productGroups.find((candidate) => candidate.products.some((product) => product.slug === productSlug));
@@ -90,4 +89,3 @@ export default async function ProductDetailPage({ params, searchParams }: PagePr
     </>
   );
 }
-

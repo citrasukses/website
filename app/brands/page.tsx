@@ -9,19 +9,15 @@ import { toSearchableBrandCard } from "@/data/brand-search";
 import { industries } from "@/data/industries";
 import { supplyCountries } from "@/data/supply-map";
 import { getCatalogBrands } from "@/lib/catalog";
-import { resolveLanguage, type SearchParams, withLang } from "@/lib/i18n";
+import { staticLanguage, withLang } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "Brands",
   description: "Industrial brands represented and supplied by CSE for Indonesian buyers."
 };
 
-type PageProps = {
-  searchParams?: Promise<SearchParams>;
-};
-
-export default async function BrandsPage({ searchParams }: PageProps) {
-  const lang = resolveLanguage(await searchParams);
+export default async function BrandsPage() {
+  const lang = staticLanguage();
   const catalog = await getCatalogBrands();
   const representedBrands = catalog.filter((brand) => brand.brandType === "represented").map(toSearchableBrandCard);
   const tradingBrands = catalog.filter((brand) => brand.brandType === "general-trading");

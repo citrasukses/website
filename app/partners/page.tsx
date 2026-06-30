@@ -6,19 +6,15 @@ import { PartnerInquiryForm } from "@/components/InquiryForms";
 import { SectionHeader } from "@/components/SectionHeader";
 import { brands } from "@/data/brands";
 import { company } from "@/data/navigation";
-import { resolveLanguage, text, type SearchParams, withLang } from "@/lib/i18n";
+import { staticLanguage, text, withLang } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "For Partners",
   description: "For overseas industrial brands interested in Indonesian distribution with CSE."
 };
 
-type PageProps = {
-  searchParams?: Promise<SearchParams>;
-};
-
-export default async function PartnersPage({ searchParams }: PageProps) {
-  const lang = resolveLanguage(await searchParams);
+export default function PartnersPage() {
+  const lang = staticLanguage();
 
   const points = lang === "en"
     ? [

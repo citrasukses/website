@@ -6,19 +6,15 @@ import { Hero } from "@/components/Hero";
 import { SectionHeader } from "@/components/SectionHeader";
 import { StatsSection } from "@/components/StatsSection";
 import { company } from "@/data/navigation";
-import { resolveLanguage, text, type SearchParams, withLang } from "@/lib/i18n";
+import { staticLanguage, text, withLang } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "About",
   description: "About PT Citra Sukses Ekapratama and CSE's industrial supply focus in Indonesia."
 };
 
-type PageProps = {
-  searchParams?: Promise<SearchParams>;
-};
-
-export default async function AboutPage({ searchParams }: PageProps) {
-  const lang = resolveLanguage(await searchParams);
+export default function AboutPage() {
+  const lang = staticLanguage();
 
   const capabilities = lang === "en"
     ? [
