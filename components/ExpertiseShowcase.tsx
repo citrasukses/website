@@ -65,7 +65,7 @@ export function ExpertiseShowcase({ areas, lang }: ExpertiseShowcaseProps) {
 
     const timer = window.setInterval(() => {
       setActiveIndex((currentIndex) => (currentIndex + 1) % visibleAreas.length);
-    }, 3000);
+    }, 10000);
 
     return () => window.clearInterval(timer);
   }, [activeIndex, isInView, isPaused, visibleAreas.length]);

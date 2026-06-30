@@ -11,12 +11,33 @@ export const metadata: Metadata = {
   },
   description:
     "PT Citra Sukses Ekapratama supplies industrial goods from Japan and overseas manufacturers to Indonesia's automotive and industrial sectors.",
-  metadataBase: new URL("https://citra-sukses.com"),
+  metadataBase: new URL("https://cse.co.id"),
+  alternates: {
+    canonical: "/"
+  },
   openGraph: {
     title: "CSE | PT Citra Sukses Ekapratama",
     description:
       "Industrial goods supplier and distribution partner for Indonesia's automotive and industrial sectors.",
+    url: "https://cse.co.id",
+    siteName: "PT Citra Sukses Ekapratama",
+    images: [
+      {
+        url: "/assets/company/og-authorized-distributor.png",
+        width: 1200,
+        height: 630,
+        alt: "CSE authorized distributor for Tohnichi, NAC, Fuji Star, and Nippon Unit"
+      }
+    ],
+    locale: "id_ID",
     type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CSE | PT Citra Sukses Ekapratama",
+    description:
+      "Industrial goods supplier and distribution partner for Indonesia's automotive and industrial sectors.",
+    images: ["/assets/company/og-authorized-distributor.png"]
   }
 };
 
