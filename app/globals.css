@@ -111,6 +111,80 @@ textarea {
     repeat;
 }
 
+.tohnichi-calibration-field {
+  background-color: #f3f1ec;
+  background-image:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.66), rgba(255, 255, 255, 0) 42%),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 71px,
+      rgba(21, 26, 34, 0.04) 71px,
+      rgba(21, 26, 34, 0.04) 72px
+    );
+}
+
+.tohnichi-calibration-field::before {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 0;
+  height: 18px;
+  border-bottom: 1px solid rgba(31, 79, 124, 0.16);
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(31, 79, 124, 0.34) 0,
+    rgba(31, 79, 124, 0.34) 1px,
+    transparent 1px,
+    transparent 24px
+  );
+  content: "";
+  pointer-events: none;
+}
+
+.tohnichi-calibration-field::after {
+  position: absolute;
+  inset: 18px 18px 18px auto;
+  z-index: 0;
+  width: 12px;
+  border-left: 1px solid rgba(31, 79, 124, 0.12);
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(31, 79, 124, 0.28) 0,
+    rgba(31, 79, 124, 0.28) 1px,
+    transparent 1px,
+    transparent 18px
+  );
+  content: "";
+  pointer-events: none;
+}
+
+.tohnichi-reference-spine {
+  left: max(1.25rem, calc((100vw - 1180px) / 2 - 1.75rem));
+}
+
+.tohnichi-margin-label {
+  left: max(0.2rem, calc((100vw - 1180px) / 2 - 4rem));
+}
+
+.tohnichi-instrument-surface {
+  background-color: #edf1f2;
+  background-image:
+    linear-gradient(
+      90deg,
+      transparent calc(50% - 0.5px),
+      rgba(31, 79, 124, 0.13) calc(50% - 0.5px),
+      rgba(31, 79, 124, 0.13) calc(50% + 0.5px),
+      transparent calc(50% + 0.5px)
+    ),
+    linear-gradient(
+      0deg,
+      transparent calc(50% - 0.5px),
+      rgba(31, 79, 124, 0.09) calc(50% - 0.5px),
+      rgba(31, 79, 124, 0.09) calc(50% + 0.5px),
+      transparent calc(50% + 0.5px)
+    );
+}
+
 .blueprint-soft {
   background-image:
     linear-gradient(rgba(31, 79, 124, 0.08) 1px, transparent 1px),

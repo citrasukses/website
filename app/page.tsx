@@ -4,14 +4,13 @@ import { AuthorizedDistributorStrip } from "@/components/AuthorizedDistributorSt
 import { BrandCard } from "@/components/BrandCard";
 import { CTAButton } from "@/components/CTAButton";
 import { CustomerLogoCloud } from "@/components/CustomerLogoCloud";
-import { ExpertiseShowcase } from "@/components/ExpertiseShowcase";
 import { HomeBackgroundItems } from "@/components/HomeBackgroundItems";
 import { IndustryCaseStudyExplorer } from "@/components/IndustryCaseStudyExplorer";
 import { RFQForm } from "@/components/InquiryForms";
 import { NewsSection } from "@/components/NewsSection";
 import { SectionHeader } from "@/components/SectionHeader";
+import { TohnichiTighteningSection } from "@/components/TohnichiTighteningSection";
 import { stats } from "@/data/customers";
-import { expertiseAreas } from "@/data/expertise";
 import { homeBackgroundImage, homeBackgroundItems } from "@/data/home-background";
 import { company } from "@/data/navigation";
 import { industries } from "@/data/industries";
@@ -189,6 +188,8 @@ export default async function HomePage() {
         </div>
       </section>
 
+      <TohnichiTighteningSection lang={lang} />
+
       <AuthorizedDistributorStrip lang={lang} />
 
       <section className="bg-graphite-50 py-16">
@@ -212,8 +213,6 @@ export default async function HomePage() {
           </p>
         </div>
       </section>
-
-      <ExpertiseShowcase areas={expertiseAreas} lang={lang} />
 
       <section className="bg-signal-500 py-16 text-white">
         <div className="container-page">
