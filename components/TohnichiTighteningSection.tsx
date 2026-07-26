@@ -9,6 +9,7 @@ import {
   ShieldCheck
 } from "lucide-react";
 import { CTAButton } from "@/components/CTAButton";
+import { TohnichiTorqueCarousel } from "@/components/TohnichiTorqueCarousel";
 import { text, withLang, type Language, type LocalizedText } from "@/lib/i18n";
 
 type TohnichiTighteningSectionProps = {
@@ -189,18 +190,49 @@ function TighteningRiskVisual({
 
       <div className="absolute inset-x-5 bottom-5">
         {challenge.id === "over-tightening" ? (
-          <div className="grid grid-cols-[1fr_auto] items-end gap-4">
-            <div className="relative h-16">
-              <div className="absolute bottom-0 left-0 h-10 w-10 rounded-full border-[6px] border-industrial-700 bg-white" />
-              <div className="absolute bottom-4 left-9 h-px w-28 -rotate-6 bg-graphite-500" />
-              <div className="absolute bottom-7 left-32 h-5 w-5 rotate-45 border-2 border-signal-500 bg-white" />
-              <span className="absolute bottom-0 left-16 text-[10px] font-bold uppercase tracking-[0.14em] text-signal-600">
-                {lang === "en" ? "Joint stress" : "Stress pada joint"}
-              </span>
+          <div className="grid gap-5">
+            <div>
+              <div className="mb-2 flex items-center justify-between text-[9px] font-bold uppercase tracking-[0.14em]">
+                <span className="text-graphite-500">
+                  {lang === "en" ? "Applied torque" : "Torsi aktual"}
+                </span>
+                <span className="text-signal-600">
+                  {lang === "en" ? "Exceeds target" : "Melebihi target"}
+                </span>
+              </div>
+              <div className="relative h-3 bg-white">
+                <div className="absolute inset-y-0 left-0 w-[68%] bg-industrial-700" />
+                <div className="absolute inset-y-0 left-[68%] right-0 bg-signal-500" />
+                <div className="absolute -top-1 left-[68%] h-5 w-px bg-graphite-900" />
+                <span className="absolute left-[68%] top-5 -translate-x-1/2 whitespace-nowrap text-[8px] font-bold uppercase tracking-[0.12em] text-graphite-700">
+                  {lang === "en" ? "Target torque" : "Torsi target"}
+                </span>
+              </div>
             </div>
-            <div className="border-l-2 border-signal-500 pl-3 text-right">
-              <p className="text-[9px] font-bold uppercase tracking-[0.15em] text-graphite-500">Set 5.0 N·m</p>
-              <p className="mt-1 text-2xl font-black text-signal-600">&gt; 5.0</p>
+
+            <div className="grid grid-cols-[1fr_auto] items-center gap-4 border-t border-graphite-200 pt-4">
+              <div
+                className="relative h-12"
+                role="img"
+                aria-label={
+                  lang === "en"
+                    ? "Bolted joint compressed by excessive torque"
+                    : "Sambungan baut tertekan akibat torsi berlebih"
+                }
+              >
+                <div className="absolute inset-x-0 top-3 h-3 border border-graphite-200 bg-white" />
+                <div className="absolute inset-x-0 top-6 h-3 border-x border-b border-industrial-700/30 bg-industrial-700/15" />
+                <div className="absolute left-1/2 top-1 h-10 w-2 -translate-x-1/2 bg-graphite-700" />
+                <div className="absolute left-1/2 top-0 h-3 w-8 -translate-x-1/2 bg-graphite-800 [clip-path:polygon(25%_0,75%_0,100%_50%,75%_100%,25%_100%,0_50%)]" />
+                <div className="absolute left-1/2 top-8 h-3 w-7 -translate-x-1/2 border-2 border-signal-500 bg-white [clip-path:polygon(25%_0,75%_0,100%_50%,75%_100%,25%_100%,0_50%)]" />
+                <div className="absolute left-[calc(50%+1rem)] top-3 h-px w-10 rotate-[16deg] bg-signal-500" />
+                <div className="absolute left-[calc(50%+1rem)] top-6 h-px w-8 -rotate-[14deg] bg-signal-500" />
+              </div>
+              <div className="border-l-2 border-signal-500 pl-3">
+                <p className="max-w-24 text-[10px] font-black uppercase leading-4 tracking-[0.12em] text-signal-600">
+                  {lang === "en" ? "Excess joint stress" : "Stress joint berlebih"}
+                </p>
+              </div>
             </div>
           </div>
         ) : null}
@@ -351,25 +383,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
       className="tohnichi-calibration-field relative isolate overflow-hidden border-y border-graphite-200 text-graphite-900"
       aria-labelledby="tohnichi-expertise-title"
     >
-      <span
-        className="tohnichi-reference-spine pointer-events-none absolute inset-y-0 z-0 w-px bg-signal-500/55"
-        aria-hidden="true"
-      />
-      <p
-        className="tohnichi-margin-label pointer-events-none absolute top-1/2 hidden -translate-y-1/2 text-[9px] font-bold uppercase tracking-[0.34em] text-industrial-700/45 [writing-mode:vertical-rl] 2xl:block"
-        aria-hidden="true"
-      >
-        Tohnichi · Torque control · Manufacturing reference 01
-      </p>
-
-      <div className="container-page relative py-20 lg:py-24">
-        <div className="mb-10 flex items-center gap-3 text-[9px] font-bold uppercase tracking-[0.24em] text-graphite-500">
-          <span className="flex h-5 w-5 items-center justify-center border border-industrial-600/35 text-industrial-700">+</span>
-          <span>Document ref. TC–01 / Indonesia</span>
-          <span className="h-px flex-1 bg-graphite-200" aria-hidden="true" />
-          <span>Rev. 01</span>
-        </div>
-
+      <div className="container-page py-16 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:items-center">
           <div>
             <div className="inline-flex items-center gap-3 border border-graphite-200 bg-white px-4 py-2 shadow-sm">
@@ -428,40 +442,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
               </span>
             </div>
 
-            <div className="tohnichi-instrument-surface relative min-h-[280px] overflow-hidden px-6 py-10 sm:min-h-[330px] sm:px-10">
-              <div className="absolute right-5 top-2 text-[8rem] font-black leading-none text-industrial-700/[0.06] sm:text-[11rem]" aria-hidden="true">
-                01
-              </div>
-              <div className="absolute left-6 top-8 border-l border-signal-500 pl-3 sm:left-10">
-                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-graphite-500">
-                  {lang === "en" ? "Set point" : "Set point"}
-                </p>
-                <p className="mt-1 text-xl font-bold text-graphite-900">N·m</p>
-              </div>
-
-              <div className="relative mx-auto mt-12 h-32 w-full sm:mt-14 sm:h-40">
-                <Image
-                  src="/assets/company/background-items/tohnichi-digital-torque-wrench.png"
-                  alt={
-                    lang === "en"
-                      ? "Tohnichi digital torque wrench for controlled tightening and data capture"
-                      : "Digital torque wrench Tohnichi untuk tightening terkendali dan pencatatan data"
-                  }
-                  fill
-                  sizes="(min-width: 1024px) 620px, 90vw"
-                  className="object-contain drop-shadow-[0_24px_30px_rgba(0,0,0,0.45)]"
-                />
-              </div>
-
-              <div className="absolute bottom-5 right-5 text-right sm:bottom-7 sm:right-8">
-                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-graphite-500">
-                  {lang === "en" ? "Process result" : "Hasil proses"}
-                </p>
-                <p className="mt-1 text-sm font-bold text-graphite-900">
-                  {lang === "en" ? "Measured · Counted · Verified" : "Terukur · Terhitung · Terverifikasi"}
-                </p>
-              </div>
-            </div>
+            <TohnichiTorqueCarousel lang={lang} />
 
             <ol className="grid gap-px bg-graphite-200 sm:grid-cols-3">
               {controlLayers.map((layer) => (
@@ -570,7 +551,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
             <p className="mt-3 max-w-3xl text-2xl font-bold leading-snug text-white sm:text-3xl">
               {lang === "en"
                 ? "Do not inspect quality into the product. Control it at every bolt."
-                : "Jangan menunggu quality ditemukan saat inspeksi. Kendalikan sejak setiap baut dikencangkan."}
+                : "Jangan menunggu masalah quality ditemukan saat inspeksi. Kendalikan sejak setiap baut dikencangkan."}
             </p>
           </div>
           <div className="flex flex-col justify-center bg-industrial-700 p-7 text-white sm:p-9">
