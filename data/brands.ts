@@ -1,7 +1,9 @@
 import type { LocalizedText } from "@/lib/i18n";
+import nacProductGroups from "@/data/nac-products.json";
 import tohnichiProductGroups from "@/data/tohnichi-products.json";
 
 export type Product = {
+  slug?: string;
   name: string;
   model?: string;
   image: string;
@@ -81,22 +83,23 @@ export const brands: Brand[] = [
     countryCode: "JP",
     country: "Japan",
     category: {
-      id: "Industrial tools dan socket",
-      en: "Industrial tools and sockets"
+      id: "Custom-made socket, industrial bits, dan quick couplings",
+      en: "Custom-made sockets, industrial bits, and quick couplings"
     },
     logo: "/assets/brands/products/nac/NAC Cover Img.jpg",
     heroImage: "/assets/brands/products/nac/NAC Cover Img.jpg",
     summary: {
-      id: "Brand industrial Jepang untuk kebutuhan tools dan socket di lingkungan produksi.",
-      en: "Japanese industrial brand for tool and socket needs in production environments."
+      id: "Spesialis Jepang untuk socket berkualitas—terutama custom-made socket dalam volume rendah—industrial bits, dan quick couplings.",
+      en: "A Japanese specialist in quality sockets—especially low-volume custom-made sockets—industrial bits, and quick couplings."
     },
     description: {
-      id: "NAC tersedia sebagai bagian dari portofolio brand CSE untuk kebutuhan procurement industrial.",
-      en: "NAC is available as part of CSE's industrial procurement brand portfolio."
+      id: "NAC dikenal sebagai spesialis socket berkualitas, terutama custom-made socket. Mereka mampu membuat beragam tipe socket bahkan untuk kebutuhan dalam jumlah kecil, sekaligus menyediakan quick coupling industri untuk berbagai fluida, pressure range, dan metode koneksi.",
+      en: "NAC is known for quality sockets, especially custom-made sockets. They can produce many socket types even in small quantities, alongside industrial quick couplings for different fluids, pressure ranges, and connection methods."
     },
     strengths: [
-      { id: "Produk untuk workshop dan produksi", en: "Products for workshops and production" },
-      { id: "Kebutuhan tooling industrial", en: "Industrial tooling needs" }
+      { id: "Custom-made socket, termasuk kebutuhan volume rendah", en: "Custom-made sockets, including low-volume requirements" },
+      { id: "Standard socket, industrial bits, dan special fastening tools", en: "Standard sockets, industrial bits, and special fastening tools" },
+      { id: "Quick couplings low, medium, high pressure, vacuum, dan non-drip", en: "Low-, medium-, and high-pressure, vacuum, and non-drip quick couplings" }
     ],
     searchTerms: [
       "socket",
@@ -107,108 +110,177 @@ export const brands: Brand[] = [
       "screwdriver bit",
       "attachment",
       "tooling",
-      "maintenance"
+      "maintenance",
+      "square drive",
+      "extension bar",
+      "universal joint",
+      "b-30",
+      "b-40",
+      "b-10",
+      "torx",
+      "automatic assembly",
+      "quick coupling",
+      "couplings",
+      "cal",
+      "cat",
+      "ctl",
+      "cns",
+      "non-drip",
+      "cspe",
+      "csp",
+      "high pressure",
+      "vacuum",
+      "mold coolant",
+      "custom socket",
+      "low quantity"
     ],
-    productGroups: [
-      {
-        slug: "socket-tools",
-        title: { id: "Socket & Bit Tools", en: "Socket & Bit Tools" },
-        description: {
-          id: "Socket, bit, dan attachment untuk kebutuhan tooling di lini produksi dan workshop.",
-          en: "Sockets, bits, and attachments for production line and workshop tooling needs."
-        },
-        products: [
-          {
-            name: "Industrial Sockets",
-            image: "/assets/brands/products/nac/NAC socket.jpg",
-            summary: {
-              id: "Socket industrial untuk pekerjaan fastening dan maintenance.",
-              en: "Industrial sockets for fastening and maintenance work."
-            },
-            tags: [
-              { id: "Tooling", en: "Tooling" },
-              { id: "Maintenance", en: "Maintenance" }
-            ]
-          },
-          {
-            name: "Screwdriver Bit Attachments",
-            image: "/assets/brands/products/nac/NAC_ScrewdriverBit_Attachments_image1-300x300.jpg",
-            summary: {
-              id: "Attachment bit untuk kebutuhan assembly dan pekerjaan berulang.",
-              en: "Bit attachments for assembly needs and repeated work."
-            },
-            tags: [
-              { id: "Assembly", en: "Assembly" },
-              { id: "Workshop", en: "Workshop" }
-            ]
-          }
-        ]
-      }
-    ]
+    productGroups: nacProductGroups
   },
   {
     slug: "fuji-star",
-    name: "Fuji Star",
+    name: "Sankyo Rikagaku",
     countryCode: "JP",
     country: "Japan",
     category: {
-      id: "Abrasive dan industrial supplies",
-      en: "Abrasives and industrial supplies"
+      id: "Abrasive FUJISTAR, polishing tools, dan surface-finishing systems",
+      en: "FUJISTAR abrasives, polishing tools, and surface-finishing systems"
     },
     logo: "/assets/brands/logos/fuji-star.png",
-    heroImage: "/assets/brands/products/fuji-star/Fujistar - Abrasive.jpg",
+    heroImage: "/assets/brands/products/fuji-star/car_body_abrasive.webp",
+    featured: true,
     summary: {
-      id: "Produk abrasive dan supplies untuk proses produksi dan finishing.",
-      en: "Abrasive products and supplies for production and finishing processes."
+      id: "Produsen Jepang di balik FUJISTAR, dengan abrasive paper, cloth, film, belt, non-woven, polishing tools, dan finishing supplies sejak 1930.",
+      en: "The Japanese manufacturer behind FUJISTAR, with abrasive paper, cloth, film, belts, non-woven products, polishing tools, and finishing supplies since 1930."
     },
     description: {
-      id: "Fuji Star melengkapi pilihan brand CSE untuk kebutuhan pabrik dan general industry.",
-      en: "Fuji Star expands CSE's brand options for factory and general industry requirements."
+      id: "CSE membantu memilih produk Sankyo Rikagaku berdasarkan material workpiece, target removal dan finish, grit, backing, bentuk produk, attachment, mesin, serta kondisi proses. FUJISTAR digunakan sebagai identitas lini abrasive dari Sankyo Rikagaku.",
+      en: "CSE helps select Sankyo Rikagaku products by workpiece material, removal and finish target, grit, backing, product form, attachment, machine, and process conditions. FUJISTAR identifies Sankyo Rikagaku's abrasive product line."
     },
     strengths: [
-      { id: "Abrasive untuk proses produksi", en: "Abrasives for production processes" },
-      { id: "Dukungan kebutuhan finishing", en: "Finishing needs support" }
+      { id: "Enam keluarga produk dengan katalog model yang lengkap", en: "Six product families with complete model catalogues" },
+      { id: "Solusi dari surface preparation hingga final finish", en: "Solutions from surface preparation through final finishing" },
+      { id: "Untuk automotive, steel, woodworking, electronics, dan general industry", en: "For automotive, steel, woodworking, electronics, and general industry" }
     ],
     searchTerms: [
+      "sankyo rikagaku",
+      "sankyo chemical",
+      "fujistar",
+      "fuji star",
       "abrasive",
       "abrasives",
       "sandpaper",
       "sanding",
       "finishing",
       "surface preparation",
-      "brush"
+      "polishing",
+      "abrasive paper",
+      "abrasive disc",
+      "abrasive belt",
+      "abrasive roll",
+      "non-woven abrasive",
+      "kenmaron"
     ],
     productGroups: [
       {
-        slug: "abrasives",
-        title: { id: "Abrasive & Finishing", en: "Abrasive & Finishing" },
+        slug: "abrasive-product-formats",
+        title: { id: "Format Produk Abrasive", en: "Abrasive Product Formats" },
         description: {
-          id: "Abrasive dan brush untuk proses finishing, body repair, dan preparation.",
-          en: "Abrasives and brushes for finishing, body repair, and preparation processes."
+          id: "Pilih keluarga berdasarkan bentuk produk, metode attachment, mesin, dan area kerja. Setiap halaman menampilkan model dan pilihan resmi di dalam keluarga tersebut.",
+          en: "Choose a family by product form, attachment method, machine, and working area. Every page shows the official models and options within that family."
         },
         products: [
           {
-            name: "Abrasive Disc",
-            image: "/assets/brands/products/fuji-star/Fujistar - Abrasive.jpg",
+            slug: "sheet-products",
+            name: "Sheet Products / Abrasive Sheets",
+            image: "/assets/brands/products/fuji-star/catalog/wet-dry-sanding-paper.jpg",
             summary: {
-              id: "Produk abrasive untuk kebutuhan grinding, finishing, dan surface preparation.",
-              en: "Abrasive products for grinding, finishing, and surface preparation needs."
+              id: "Abrasive paper, cloth, film, hook-and-loop, pressure-sensitive, dan non-woven dalam format sheet.",
+              en: "Abrasive paper, cloth, film, hook-and-loop, pressure-sensitive, and non-woven products in sheet form."
             },
             tags: [
-              { id: "Finishing", en: "Finishing" },
-              { id: "Production supplies", en: "Production supplies" }
+              { id: "Hand sanding", en: "Hand sanding" },
+              { id: "Dry & wet", en: "Dry & wet" },
+              { id: "Surface preparation", en: "Surface preparation" }
             ]
           },
           {
-            name: "Industrial Brush",
-            image: "/assets/brands/products/fuji-star/industrial brush.webp",
+            slug: "disc-products",
+            name: "Disc Products / Abrasive Discs",
+            image: "/assets/brands/products/fuji-star/catalog/econo-disc.jpg",
             summary: {
-              id: "Brush industrial untuk pembersihan permukaan dan pekerjaan finishing.",
-              en: "Industrial brushes for surface cleaning and finishing work."
+              id: "Film, hook-and-loop, pressure-sensitive, paper, dan fiber disc untuk sander serta grinder.",
+              en: "Film, hook-and-loop, pressure-sensitive, paper, and fiber discs for sanders and grinders."
             },
             tags: [
-              { id: "Surface prep", en: "Surface prep" },
-              { id: "General industry", en: "General industry" }
+              { id: "Machine sanding", en: "Machine sanding" },
+              { id: "Automotive repair", en: "Automotive repair" },
+              { id: "Paint & metal", en: "Paint & metal" }
+            ]
+          },
+          {
+            slug: "belt-products",
+            name: "Belt Products / Abrasive Belts",
+            image: "/assets/brands/products/fuji-star/catalog/abrasive-cloth-belt-rseries.jpg",
+            summary: {
+              id: "Cloth, paper, narrow, wide, flexible, dan cork belts untuk metal, woodworking, serta contour finishing.",
+              en: "Cloth, paper, narrow, wide, flexible, and cork belts for metal, woodworking, and contour finishing."
+            },
+            tags: [
+              { id: "Belt sanding", en: "Belt sanding" },
+              { id: "Steel & aluminium", en: "Steel & aluminum" },
+              { id: "Woodworking", en: "Woodworking" }
+            ]
+          },
+          {
+            slug: "rolled-products",
+            name: "Rolled Products / Abrasive Rolls",
+            image: "/assets/brands/products/fuji-star/catalog/hipitch-roll.jpg",
+            summary: {
+              id: "Hook-and-loop, pressure-sensitive, clog-resistant, mesh, dan slitted roll untuk dipotong sesuai kebutuhan.",
+              en: "Hook-and-loop, pressure-sensitive, clog-resistant, mesh, and slitted rolls cut to the required length."
+            },
+            tags: [
+              { id: "Cut to length", en: "Cut to length" },
+              { id: "Hand file & pad", en: "Hand file & pad" },
+              { id: "Body repair", en: "Body repair" }
+            ]
+          },
+          {
+            slug: "non-woven-products",
+            name: "Non-woven Abrasives",
+            image: "/assets/brands/products/fuji-star/catalog/kenmalon-super.jpg",
+            summary: {
+              id: "Kenmaron sheet, pad, belt, disc, wheel, cup, dan laminated products untuk conditioning serta finishing.",
+              en: "Kenmaron sheets, pads, belts, discs, wheels, cups, and laminated products for conditioning and finishing."
+            },
+            tags: [
+              { id: "Cleaning & blending", en: "Cleaning & blending" },
+              { id: "Light deburring", en: "Light deburring" },
+              { id: "Stainless finishing", en: "Stainless finishing" }
+            ]
+          }
+        ]
+      },
+      {
+        slug: "polishing-tools-and-supplies",
+        title: { id: "Polishing Tools & Finishing Supplies", en: "Polishing Tools & Finishing Supplies" },
+        description: {
+          id: "Machine, accessory, dan consumable pendukung untuk menyusun proses sanding, polishing, buffing, masking, coating, serta cleanup.",
+          en: "Supporting machines, accessories, and consumables for sanding, polishing, buffing, masking, coating, and cleanup processes."
+        },
+        products: [
+          {
+            slug: "other-products",
+            name: "Other Products / Finishing Support",
+            image: "/assets/brands/products/fuji-star/catalog/cordless-polisher-eb351-6-21.jpg",
+            summary: {
+              id: "Sander, polisher, pad, hand file, buff, compound, coating material, masking products, dan wiping cloth.",
+              en: "Sanders, polishers, pads, hand files, buffs, compounds, coating materials, masking products, and wiping cloths."
+            },
+            tags: [
+              { id: "Sanding & polishing", en: "Sanding & polishing" },
+              { id: "Pads & buffing", en: "Pads & buffing" },
+              { id: "Masking & compounds", en: "Masking & compounds" }
             ]
           }
         ]

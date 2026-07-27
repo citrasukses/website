@@ -10,11 +10,10 @@ export function HomeBackgroundItems({ items, singleImage }: HomeBackgroundItemsP
     return (
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url("${singleImage.src}")`,
-            backgroundPosition: singleImage.position
-          }}
+          className={`absolute inset-x-0 top-0 h-[42rem] bg-cover bg-no-repeat ${
+            singleImage.imageClassName ?? "bg-center"
+          }`}
+          style={{ backgroundImage: `url("${singleImage.src}")` }}
         />
         <div
           className={`absolute inset-0 ${

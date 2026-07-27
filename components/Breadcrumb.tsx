@@ -8,7 +8,7 @@ type BreadcrumbItem = {
 
 export function Breadcrumb({ items, homeHref = "/" }: { items: BreadcrumbItem[]; homeHref?: string }) {
   return (
-    <nav aria-label="Breadcrumb" className="container-page pt-6 text-sm text-graphite-500">
+    <nav aria-label="Breadcrumb" className="container-page py-6 text-sm text-graphite-500">
       <ol className="flex flex-wrap items-center gap-2">
         <li>
           <Link href={homeHref} className="hover:text-industrial-700">CSE</Link>

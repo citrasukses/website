@@ -1,0 +1,802 @@
+[
+  {
+    "slug": "sockets-and-accessories",
+    "title": {
+      "id": "Sockets & Aksesori",
+      "en": "Sockets & Accessories"
+    },
+    "description": {
+      "id": "Square drive sockets, adapter, extension bar, universal joint, dan attachment untuk fastening produksi, workshop, serta kebutuhan khusus.",
+      "en": "Square drive sockets, adapters, extension bars, universal joints, and attachments for production fastening, workshop work, and special applications."
+    },
+    "products": [
+      {
+        "name": "Square Drive Sockets",
+        "image": "/assets/brands/products/nac/NAC socket.jpg",
+        "summary": {
+          "id": "Socket standard, deep, single hex, dan double hex dengan square drive dari 1/4 inci (6.35 mm) hingga 2-1/2 inci (63.5 mm).",
+          "en": "Standard, deep, single-hex, and double-hex sockets with square drives from 1/4 inch (6.35 mm) through 2-1/2 inches (63.5 mm)."
+        },
+        "tags": [
+          {
+            "id": "Square drive",
+            "en": "Square drive"
+          },
+          {
+            "id": "Standard & deep",
+            "en": "Standard & deep"
+          },
+          {
+            "id": "6PT / 12PT",
+            "en": "6PT / 12PT"
+          },
+          {
+            "id": "Fastening",
+            "en": "Fastening"
+          }
+        ]
+      },
+      {
+        "name": "Adapters, Extension Bars & Universal Joints",
+        "image": "/assets/brands/products/nac/catalog-adapters-joints.png",
+        "summary": {
+          "id": "Komponen untuk konversi square drive, menambah jangkauan, dan mengakses fastener pada sudut atau area yang terbatas.",
+          "en": "Components for square-drive conversion, extended reach, and access to fasteners at an angle or in restricted spaces."
+        },
+        "tags": [
+          {
+            "id": "Konversi drive",
+            "en": "Drive conversion"
+          },
+          {
+            "id": "Jangkauan panjang",
+            "en": "Extended reach"
+          },
+          {
+            "id": "Akses bersudut",
+            "en": "Angular access"
+          }
+        ]
+      },
+      {
+        "name": "Special & Custom Parts",
+        "image": "/assets/brands/products/nac/catalog-special-parts.png",
+        "summary": {
+          "id": "Special parts dan custom-made tooling untuk bentuk fastener, proses assembly, atau akses kerja yang tidak dapat ditangani produk standar.",
+          "en": "Special parts and custom-made tooling for fastener profiles, assembly processes, or access conditions that standard products cannot address."
+        },
+        "tags": [
+          {
+            "id": "Custom-made",
+            "en": "Custom-made"
+          },
+          {
+            "id": "Fastener khusus",
+            "en": "Special fasteners"
+          },
+          {
+            "id": "Tooling produksi",
+            "en": "Production tooling"
+          }
+        ]
+      },
+      {
+        "name": "Bit Through Sockets",
+        "image": "/assets/brands/products/nac/catalog-bit-through-sockets.png",
+        "summary": {
+          "id": "Socket pengganti cepat untuk berpindah dari screw-fastening ke nut dan bolt fastening, tersedia dalam tipe single, double, magnetic, dan one-touch slide.",
+          "en": "Quick-change sockets for moving from screw-fastening to nut and bolt fastening, including single, double, magnetic, and one-touch slide types."
+        },
+        "tags": [
+          {
+            "id": "Quick change",
+            "en": "Quick change"
+          },
+          {
+            "id": "Bolt & nut fastening",
+            "en": "Bolt & nut fastening"
+          },
+          {
+            "id": "Opsi magnetic",
+            "en": "Magnetic options"
+          }
+        ]
+      },
+      {
+        "name": "Fastening Attachments",
+        "image": "/assets/brands/products/nac/NAC_ScrewdriverBit_Attachments_image1-300x300.jpg",
+        "summary": {
+          "id": "Die holder, tap holder, socket adapter, tap holder bit, dan die bit untuk thread repair serta pekerjaan fastening khusus.",
+          "en": "Die holders, tap holders, socket adapters, tap-holder bits, and die bits for thread repair and specialized fastening work."
+        },
+        "tags": [
+          {
+            "id": "Die & tap holder",
+            "en": "Die & tap holder"
+          },
+          {
+            "id": "Socket adapter",
+            "en": "Socket adapter"
+          },
+          {
+            "id": "Thread repair",
+            "en": "Thread repair"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "driver-sockets-and-bits",
+    "title": {
+      "id": "Driver Sockets & Bits",
+      "en": "Driver Sockets & Bits"
+    },
+    "description": {
+      "id": "B-series driver sockets dan bits untuk electric tool, pneumatic tool, rechargeable drill, dan automatic assembly machine.",
+      "en": "B-series driver sockets and bits for electric tools, pneumatic tools, rechargeable drills, and automatic assembly machines."
+    },
+    "products": [
+      {
+        "name": "B-30 Driver Sockets & Bits",
+        "model": "B-30",
+        "image": "/assets/brands/products/nac/catalog-b30-driver-sockets.png",
+        "summary": {
+          "id": "Sistem shank H6.35 mm (1/4 inci) dengan driver socket single/double hex, hexagon bits, angle bits, dan pilihan B-35 serta B-38.",
+          "en": "H6.35 mm (1/4-inch) shank system with single/double-hex driver sockets, hexagon bits, angle bits, and B-35 or B-38 options."
+        },
+        "tags": [
+          {
+            "id": "H6.35 mm",
+            "en": "H6.35 mm"
+          },
+          {
+            "id": "1/4 inci",
+            "en": "1/4 inch"
+          },
+          {
+            "id": "Driver socket",
+            "en": "Driver socket"
+          },
+          {
+            "id": "Assembly",
+            "en": "Assembly"
+          }
+        ]
+      },
+      {
+        "name": "B-40 Driver Sockets & Bits",
+        "model": "B-40",
+        "image": "/assets/brands/products/nac/catalog-b40-driver-bits.png",
+        "summary": {
+          "id": "B-40 memakai shank H6.35 mm dan mencakup driver socket, double-ended driver bit, tapping-screw bit, countersunk-screw bit, serta hexagon bit.",
+          "en": "B-40 uses an H6.35 mm shank and covers driver sockets, double-ended driver bits, tapping-screw bits, countersunk-screw bits, and hexagon bits."
+        },
+        "tags": [
+          {
+            "id": "H6.35 mm",
+            "en": "H6.35 mm"
+          },
+          {
+            "id": "Double-ended bit",
+            "en": "Double-ended bit"
+          },
+          {
+            "id": "Tapping screw",
+            "en": "Tapping screw"
+          },
+          {
+            "id": "Hexagon bit",
+            "en": "Hexagon bit"
+          }
+        ]
+      },
+      {
+        "name": "B-10 Driver Sockets & Bits",
+        "model": "B-10",
+        "image": "/assets/brands/products/nac/catalog-b10-driver-sockets.png",
+        "summary": {
+          "id": "Sistem shank H5 mm untuk driver socket single hex, hexagon driver bit, dan double-ended bit dalam beberapa panjang kerja.",
+          "en": "H5 mm shank system for single-hex driver sockets, hexagon driver bits, and double-ended bits in several working lengths."
+        },
+        "tags": [
+          {
+            "id": "H5 mm",
+            "en": "H5 mm"
+          },
+          {
+            "id": "Driver socket",
+            "en": "Driver socket"
+          },
+          {
+            "id": "Hexagon bit",
+            "en": "Hexagon bit"
+          },
+          {
+            "id": "Double-ended bit",
+            "en": "Double-ended bit"
+          }
+        ]
+      },
+      {
+        "name": "B-37 / B-45 Power Tool Bits",
+        "model": "B-37 / B-45",
+        "image": "/assets/brands/products/nac/catalog-b37-b45-power-bits.png",
+        "summary": {
+          "id": "B-37 H6.35 mm untuk rechargeable drill dan driver, serta B-45 H8 mm untuk double-ended Phillips bits.",
+          "en": "B-37 H6.35 mm bits for rechargeable drills and drivers, plus B-45 H8 mm double-ended Phillips bits."
+        },
+        "tags": [
+          {
+            "id": "Rechargeable drill",
+            "en": "Rechargeable drill"
+          },
+          {
+            "id": "H6.35 mm / H8 mm",
+            "en": "H6.35 mm / H8 mm"
+          },
+          {
+            "id": "Phillips & slotted",
+            "en": "Phillips & slotted"
+          },
+          {
+            "id": "Power tool",
+            "en": "Power tool"
+          }
+        ]
+      },
+      {
+        "name": "Automatic Assembly Machine Bits",
+        "image": "/assets/brands/products/nac/catalog-automatic-assembly-bits.png",
+        "summary": {
+          "id": "Bits H4, H5, DB, dan threaded M5/M6 untuk automatic screw-fastening equipment serta robot assembly.",
+          "en": "H4, H5, DB, and threaded M5/M6 bits for automatic screw-fastening equipment and robotic assembly."
+        },
+        "tags": [
+          {
+            "id": "Automatic assembly",
+            "en": "Automatic assembly"
+          },
+          {
+            "id": "Robot fastening",
+            "en": "Robot fastening"
+          },
+          {
+            "id": "H4 / H5 / DB",
+            "en": "H4 / H5 / DB"
+          },
+          {
+            "id": "M5 / M6",
+            "en": "M5 / M6"
+          }
+        ]
+      },
+      {
+        "name": "TORX® Sockets & Driver Bits",
+        "model": "TORX®",
+        "image": "/assets/brands/products/nac/catalog-torx-tools.png",
+        "summary": {
+          "id": "Rangkaian 1/4, 3/8, dan 1/2 inci TORX socket, internal driver bit, tamper-resistant bit, external driver socket, dan magnetic screw holder.",
+          "en": "A range of 1/4, 3/8, and 1/2-inch TORX sockets, internal driver bits, tamper-resistant bits, external driver sockets, and magnetic screw holders."
+        },
+        "tags": [
+          {
+            "id": "Internal TORX",
+            "en": "Internal TORX"
+          },
+          {
+            "id": "External TORX",
+            "en": "External TORX"
+          },
+          {
+            "id": "Tamper resistant",
+            "en": "Tamper resistant"
+          },
+          {
+            "id": "Power tool",
+            "en": "Power tool"
+          }
+        ]
+      },
+      {
+        "name": "Magnetic Rings & Magnetizer",
+        "image": "/assets/brands/products/nac/catalog-magnetic-rings.png",
+        "summary": {
+          "id": "Detachable magnetic rings untuk screwdriver bits dan magnetizer BMD200 untuk membantu menahan screw pada ujung bit.",
+          "en": "Detachable magnetic rings for screwdriver bits and the BMD200 magnetizer to help retain screws at the bit tip."
+        },
+        "tags": [
+          {
+            "id": "Magnetic holder",
+            "en": "Magnetic holder"
+          },
+          {
+            "id": "Screw retention",
+            "en": "Screw retention"
+          },
+          {
+            "id": "Bit accessory",
+            "en": "Bit accessory"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "quick-couplings",
+    "title": {
+      "id": "Quick Couplings",
+      "en": "Quick Couplings"
+    },
+    "description": {
+      "id": "Quick coupling NAC untuk udara, air, oli, vacuum, hydraulic pressure, mold cooling, dan koneksi khusus—dari low pressure hingga high pressure.",
+      "en": "NAC quick couplings for air, water, oil, vacuum, hydraulic pressure, mold cooling, and special connections—from low through high pressure."
+    },
+    "products": [
+      {
+        "slug": "cal-type-20",
+        "name": "CAL Type 20 Quick Couplings",
+        "model": "CAL21 / CAL22 / CAL23 / CAL24",
+        "image": "/assets/brands/products/nac/couplings/catalog-coupling-cal-type-20.png",
+        "summary": {
+          "id": "Seri low-pressure single-valve paling populer untuk factory air piping dan air tools, dengan pilihan steel, brass, atau SUS304.",
+          "en": "NAC's most popular low-pressure, single-valve series for factory air piping and air tools, in steel, brass, or SUS304."
+        },
+        "tags": [
+          {
+            "id": "Low pressure",
+            "en": "Low pressure"
+          },
+          {
+            "id": "Udara & oli",
+            "en": "Air & oil"
+          },
+          {
+            "id": "Single valve",
+            "en": "Single valve"
+          },
+          {
+            "id": "1/8–1/2 inci",
+            "en": "1/8–1/2 inch"
+          }
+        ],
+        "officialUrl": "https://nac-corp.co.jp/en/products"
+      },
+      {
+        "slug": "cal-type-40",
+        "name": "CAL Type 40 Quick Couplings",
+        "model": "CAL44 / CAL46 / CAL48",
+        "image": "/assets/brands/products/nac/couplings/catalog-coupling-cal-type-40.png",
+        "summary": {
+          "id": "Quick coupling low-pressure single-valve dengan bore lebih besar untuk aliran udara, air, atau oli pada koneksi 1/2 hingga 1 inci.",
+          "en": "A larger-bore, low-pressure single-valve coupling for air, water, or oil connections from 1/2 through 1 inch."
+        },
+        "tags": [
+          {
+            "id": "Low pressure",
+            "en": "Low pressure"
+          },
+          {
+            "id": "Aliran besar",
+            "en": "High flow"
+          },
+          {
+            "id": "Single valve",
+            "en": "Single valve"
+          },
+          {
+            "id": "1/2–1 inci",
+            "en": "1/2–1 inch"
+          }
+        ],
+        "officialUrl": "https://nac-corp.co.jp/en/products"
+      },
+      {
+        "slug": "cat-type",
+        "name": "CAT Type One-Touch Couplings",
+        "model": "CAT21 / CAT22 / CAT23 / CAT24",
+        "image": "/assets/brands/products/nac/couplings/catalog-coupling-cat-type.png",
+        "summary": {
+          "id": "Socket one-touch untuk penyambungan satu tangan pada jalur udara low-pressure; kompatibel dengan plug CAL Type 20.",
+          "en": "A one-touch socket for single-handed connection on low-pressure air lines, compatible with CAL Type 20 plugs."
+        },
+        "tags": [
+          {
+            "id": "One-touch",
+            "en": "One-touch"
+          },
+          {
+            "id": "Jalur udara",
+            "en": "Air line"
+          },
+          {
+            "id": "Single valve",
+            "en": "Single valve"
+          },
+          {
+            "id": "CAL20 compatible",
+            "en": "CAL20 compatible"
+          }
+        ],
+        "officialUrl": "https://nac-corp.co.jp/en/products"
+      },
+      {
+        "slug": "multi-connection",
+        "name": "Multi-Connection Couplings",
+        "model": "CAL2L / CAL5L / CAL2WRL / CAT2L / CAT5L / CAT2WRL",
+        "image": "/assets/brands/products/nac/couplings/catalog-coupling-multi-connection.png",
+        "summary": {
+          "id": "Manifold dua atau empat outlet untuk membagi satu suplai udara, tersedia dalam tipe straight dan rotary untuk membantu mencegah hose twisting.",
+          "en": "Two- or four-outlet manifolds for branching one air supply, with straight and rotary versions that help prevent hose twisting."
+        },
+        "tags": [
+          {
+            "id": "Air branching",
+            "en": "Air branching"
+          },
+          {
+            "id": "2 / 4 outlet",
+            "en": "2 / 4 outlets"
+          },
+          {
+            "id": "Rotary",
+            "en": "Rotary"
+          },
+          {
+            "id": "Manifold",
+            "en": "Manifold"
+          }
+        ],
+        "officialUrl": "https://nac-corp.co.jp/en/products"
+      },
+      {
+        "slug": "cal-type-10",
+        "name": "CAL Type 10 Compact Couplings",
+        "model": "CAL11 / CAL12",
+        "image": "/assets/brands/products/nac/couplings/catalog-coupling-cal-type-10.png",
+        "summary": {
+          "id": "Quick coupling compact dan ringan untuk pipa 1/8 atau 1/4 inci, dengan one-touch connection dan air leakage rendah.",
+          "en": "A compact, lightweight coupling for 1/8- or 1/4-inch piping, with one-touch connection and reduced air leakage."
+        },
+        "tags": [
+          {
+            "id": "Compact",
+            "en": "Compact"
+          },
+          {
+            "id": "One-touch",
+            "en": "One-touch"
+          },
+          {
+            "id": "Air leakage rendah",
+            "en": "Low air leakage"
+          },
+          {
+            "id": "1/8–1/4 inci",
+            "en": "1/8–1/4 inch"
+          }
+        ],
+        "officialUrl": "https://nac-corp.co.jp/en/products"
+      },
+      {
+        "slug": "ctl-type",
+        "name": "CTL Type Valveless Couplings",
+        "model": "CTL01 / CTL02 / CTL03 / CTL04 / CTL06 / CTL08 / CTL10 / CTL12 / CTL16",
+        "image": "/assets/brands/products/nac/couplings/catalog-coupling-ctl-type.png",
+        "summary": {
+          "id": "Coupling medium-pressure valveless dengan flow resistance rendah untuk udara, air, oli, dan fluida berviskositas tinggi.",
+          "en": "A valveless, medium-pressure coupling with low flow resistance for air, water, oil, and higher-viscosity fluids."
+        },
+        "tags": [
+          {
+            "id": "Medium pressure",
+            "en": "Medium pressure"
+          },
+          {
+            "id": "Valveless",
+            "en": "Valveless"
+          },
+          {
+            "id": "Pressure loss rendah",
+            "en": "Low pressure loss"
+          },
+          {
+            "id": "1/8–2 inci",
+            "en": "1/8–2 inch"
+          }
+        ],
+        "officialUrl": "https://nac-corp.co.jp/en/products"
+      },
+      {
+        "slug": "cns-type",
+        "name": "CNS Type Non-Drip Safety Couplings",
+        "model": "CNS02 / CNS03 / CNS04 / CNS06 / CNS08",
+        "image": "/assets/brands/products/nac/couplings/catalog-coupling-cns-type.png",
+        "summary": {
+          "id": "Quick coupling SUS304 twin-valve yang mengurangi tetesan saat disconnection sekitar 99,8% dibanding SPE pada pengujian NAC.",
+          "en": "A SUS304 twin-valve safety coupling that cuts disconnection drip by approximately 99.8% versus SPE in NAC testing."
+        },
+        "tags": [
+          {
+            "id": "Non-drip safety",
+            "en": "Non-drip safety"
+          },
+          {
+            "id": "Twin valve",
+            "en": "Twin valve"
+          },
+          {
+            "id": "SUS304",
+            "en": "SUS304"
+          },
+          {
+            "id": "3.5 MPa",
+            "en": "3.5 MPa"
+          }
+        ],
+        "officialUrl": "https://nac-corp.co.jp/en/products"
+      },
+      {
+        "slug": "cspe-type",
+        "name": "CSPE Type Large-Flow Couplings",
+        "model": "CSPE01 / CSPE02 / CSPE03 / CSPE04 / CSPE06 / CSPE08",
+        "image": "/assets/brands/products/nac/couplings/catalog-coupling-cspe-type.png",
+        "summary": {
+          "id": "Coupling twin-valve medium-pressure dengan jalur aliran besar dan halus untuk membantu mengurangi pressure loss dan konsumsi energi.",
+          "en": "A medium-pressure twin-valve coupling with a large, smooth flow path to reduce pressure loss and energy consumption."
+        },
+        "tags": [
+          {
+            "id": "Large flow",
+            "en": "Large flow"
+          },
+          {
+            "id": "Energy saving",
+            "en": "Energy saving"
+          },
+          {
+            "id": "Twin valve",
+            "en": "Twin valve"
+          },
+          {
+            "id": "1/8–1 inci",
+            "en": "1/8–1 inch"
+          }
+        ],
+        "officialUrl": "https://nac-corp.co.jp/en/products"
+      },
+      {
+        "slug": "csp-type",
+        "name": "CSP Type Twin-Valve Couplings",
+        "model": "CSP01 / CSP02 / CSP03 / CSP04 / CSP06 / CSP08 / CSP10 / CSP12 / CSP16",
+        "image": "/assets/brands/products/nac/couplings/catalog-coupling-csp-type.png",
+        "summary": {
+          "id": "Quick coupling medium-pressure dengan automatic shut-off valve di socket dan plug untuk membantu menahan fluida pada kedua sisi.",
+          "en": "A medium-pressure coupling with automatic shut-off valves in both socket and plug to retain fluid on both sides."
+        },
+        "tags": [
+          {
+            "id": "Medium pressure",
+            "en": "Medium pressure"
+          },
+          {
+            "id": "Twin valve",
+            "en": "Twin valve"
+          },
+          {
+            "id": "Automatic shut-off",
+            "en": "Automatic shut-off"
+          },
+          {
+            "id": "1/8–2 inci",
+            "en": "1/8–2 inch"
+          }
+        ],
+        "officialUrl": "https://nac-corp.co.jp/en/products"
+      },
+      {
+        "slug": "csp-v-type",
+        "name": "CSP-V Type Vacuum Couplings",
+        "model": "CSP02-V / CSP03-V",
+        "image": "/assets/brands/products/nac/couplings/catalog-coupling-csp-v-type.png",
+        "summary": {
+          "id": "Versi vacuum twin-valve untuk jalur air-conditioner dan vacuum service, dengan performa vacuum hingga 1,3 × 10⁻¹ Pa.",
+          "en": "A twin-valve vacuum version for air-conditioning and vacuum service, with vacuum performance to 1.3 × 10⁻¹ Pa."
+        },
+        "tags": [
+          {
+            "id": "Vacuum",
+            "en": "Vacuum"
+          },
+          {
+            "id": "Twin valve",
+            "en": "Twin valve"
+          },
+          {
+            "id": "Air conditioner",
+            "en": "Air conditioner"
+          },
+          {
+            "id": "1/4–3/8 inci",
+            "en": "1/4–3/8 inch"
+          }
+        ],
+        "officialUrl": "https://nac-corp.co.jp/en/products"
+      },
+      {
+        "slug": "chp-type",
+        "name": "CHP Type High-Pressure Couplings",
+        "model": "CHP02 / CHP03 / CHP04 / CHP06 / CHP08 / CHP10 / CHP12 / CHP16",
+        "image": "/assets/brands/products/nac/couplings/catalog-coupling-chp-type.png",
+        "summary": {
+          "id": "Coupling twin-valve untuk hydraulic equipment dan jalur high-pressure hingga normal working pressure 20,5 MPa.",
+          "en": "A twin-valve coupling for hydraulic equipment and high-pressure lines with working pressure up to 20.5 MPa."
+        },
+        "tags": [
+          {
+            "id": "High pressure",
+            "en": "High pressure"
+          },
+          {
+            "id": "20.5 MPa",
+            "en": "20.5 MPa"
+          },
+          {
+            "id": "Hydraulic",
+            "en": "Hydraulic"
+          },
+          {
+            "id": "Chrome-moly steel",
+            "en": "Chrome-moly steel"
+          }
+        ],
+        "officialUrl": "https://nac-corp.co.jp/en/products"
+      },
+      {
+        "slug": "csh-type",
+        "name": "CSH Type Stainless High-Pressure Couplings",
+        "model": "CSH02 / CSH03 / CSH04 / CSH06 / CSH08",
+        "image": "/assets/brands/products/nac/couplings/catalog-coupling-csh-type.png",
+        "summary": {
+          "id": "High-pressure coupling SUS304/FKM dengan double-sleeve lock untuk membantu menahan vibrasi, impact, dan pelepasan tidak disengaja.",
+          "en": "A SUS304/FKM high-pressure coupling with a double-sleeve lock to resist vibration, impact, and unintended release."
+        },
+        "tags": [
+          {
+            "id": "High pressure",
+            "en": "High pressure"
+          },
+          {
+            "id": "SUS304",
+            "en": "SUS304"
+          },
+          {
+            "id": "Double-sleeve lock",
+            "en": "Double-sleeve lock"
+          },
+          {
+            "id": "20.5 MPa",
+            "en": "20.5 MPa"
+          }
+        ],
+        "officialUrl": "https://nac-corp.co.jp/en/products"
+      },
+      {
+        "slug": "ckc-type",
+        "name": "CKC Type Mold-Coolant Couplings",
+        "model": "CKC01 / CKC02 / CKC03",
+        "image": "/assets/brands/products/nac/couplings/catalog-coupling-ckc-type.png",
+        "summary": {
+          "id": "Coupling brass untuk sirkuit cooling-water mold dengan sleeve panjang agar pemasangan dan penggantian mold lebih mudah.",
+          "en": "A brass coupling for mold cooling-water circuits with an extended sleeve for easier connection and mold replacement."
+        },
+        "tags": [
+          {
+            "id": "Mold coolant",
+            "en": "Mold coolant"
+          },
+          {
+            "id": "Cooling water",
+            "en": "Cooling water"
+          },
+          {
+            "id": "Long sleeve",
+            "en": "Long sleeve"
+          },
+          {
+            "id": "1/8–3/8 inci",
+            "en": "1/8–3/8 inch"
+          }
+        ],
+        "officialUrl": "https://nac-corp.co.jp/en/products"
+      },
+      {
+        "slug": "dust-covers",
+        "name": "Quick-Coupling Dust Covers",
+        "model": "SDC / PDC",
+        "image": "/assets/brands/products/nac/couplings/catalog-coupling-dust-covers.png",
+        "summary": {
+          "id": "Cover socket dan plug untuk membantu mencegah debu masuk, melindungi sealing surface, dan memperpanjang masa pakai coupling.",
+          "en": "Socket and plug covers that help exclude dust, protect sealing surfaces, and extend coupling service life."
+        },
+        "tags": [
+          {
+            "id": "Dust protection",
+            "en": "Dust protection"
+          },
+          {
+            "id": "Socket cover",
+            "en": "Socket cover"
+          },
+          {
+            "id": "Plug cover",
+            "en": "Plug cover"
+          },
+          {
+            "id": "SDC / PDC",
+            "en": "SDC / PDC"
+          }
+        ],
+        "officialUrl": "https://nac-corp.co.jp/en/products"
+      },
+      {
+        "slug": "cch-type",
+        "name": "CCH Type Coil Tubes with Couplings",
+        "model": "CCH0805 / CCH1065 / CCH1208",
+        "image": "/assets/brands/products/nac/couplings/catalog-coupling-cch-type.png",
+        "summary": {
+          "id": "Polyurethane coil tube ringan dan fleksibel dengan opsi CAL20 atau CAT coupling untuk jalur udara workshop.",
+          "en": "Lightweight, flexible polyurethane coil tube supplied with CAL20 or CAT coupling options for workshop air lines."
+        },
+        "tags": [
+          {
+            "id": "Coil tube",
+            "en": "Coil tube"
+          },
+          {
+            "id": "Polyurethane",
+            "en": "Polyurethane"
+          },
+          {
+            "id": "Air line",
+            "en": "Air line"
+          },
+          {
+            "id": "2.5–10 m",
+            "en": "2.5–10 m"
+          }
+        ],
+        "officialUrl": "https://nac-corp.co.jp/en/products"
+      },
+      {
+        "slug": "special-couplings",
+        "name": "Special & Custom Couplings",
+        "model": "Made to drawing / application",
+        "image": "/assets/brands/products/nac/couplings/catalog-coupling-special-couplings.png",
+        "summary": {
+          "id": "Coupling custom untuk geometri, material, sealing, automatic actuation, vacuum, atau pressure duty yang tidak dapat dipenuhi produk standar.",
+          "en": "Custom couplings for geometry, materials, sealing, automatic actuation, vacuum, or pressure duties beyond standard products."
+        },
+        "tags": [
+          {
+            "id": "Custom-made",
+            "en": "Custom-made"
+          },
+          {
+            "id": "Special connection",
+            "en": "Special connection"
+          },
+          {
+            "id": "Low quantity",
+            "en": "Low quantity"
+          },
+          {
+            "id": "Made to drawing",
+            "en": "Made to drawing"
+          }
+        ],
+        "officialUrl": "https://nac-corp.co.jp/en/products"
+      }
+    ]
+  }
+]

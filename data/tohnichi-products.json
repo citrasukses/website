@@ -6,32 +6,32 @@
       "en": "Torque Screwdrivers"
     },
     "description": {
-      "id": "Lini lengkap obeng torsi click type, indicating, dan Pokayoke untuk pengencangan serta inspeksi torsi kecil.",
-      "en": "Complete click-type, indicating, and Pokayoke torque screwdriver lineup for tightening and small-torque inspection."
+      "id": "Obeng torsi mengendalikan besarnya torsi saat mengencangkan sekrup kecil agar sambungan tidak kurang kencang atau mengalami over-torque. Pilih tipe click untuk pengencangan, tipe indicating untuk membaca atau memeriksa torsi, dan tipe Pokayoke untuk membantu mencegah pekerjaan yang terlewat.",
+      "en": "Torque screwdrivers control the torque applied to small screws so joints are neither under-tightened nor over-torqued. Choose click type for tightening, indicating type for torque reading or inspection, and Pokayoke type to help prevent missed operations."
     },
     "products": [
       {
         "name": "RTD",
         "image": "/assets/brands/products/tohnichi/catalog/torque-screwdrivers/rtd.png",
         "summary": {
-          "id": "RTD merupakan famili Click Type dalam lini Obeng Torsi Tohnichi.",
-          "en": "RTD is part of Tohnichi's Click Type lineup within Torque Screwdrivers."
+          "id": "RTD adalah obeng torsi adjustable dengan mekanisme rotary-slip yang membantu mencegah over-torque, dari produksi massal hingga pekerjaan maintenance.",
+          "en": "RTD is an adjustable rotary-slip torque screwdriver that helps prevent over-torque in work ranging from mass production to maintenance."
         },
         "tags": [
           {
-            "id": "Click Type",
+            "id": "Tipe Klik",
             "en": "Click Type"
           },
           {
-            "id": "Torque Screwdriver",
+            "id": "Obeng Torsi",
             "en": "Torque Screwdriver"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Maintenance",
+            "id": "Perawatan",
             "en": "Maintenance"
           }
         ],
@@ -41,24 +41,24 @@
         "name": "LTD",
         "image": "/assets/brands/products/tohnichi/catalog/torque-screwdrivers/ltd.png",
         "summary": {
-          "id": "LTD merupakan famili Click Type dalam lini Obeng Torsi Tohnichi.",
-          "en": "LTD is part of Tohnichi's Click Type lineup within Torque Screwdrivers."
+          "id": "LTD adalah obeng torsi adjustable standar untuk mengencangkan fastener kecil dengan setelan yang dapat dibaca pada skala.",
+          "en": "LTD is a standard adjustable torque screwdriver for tightening small fasteners with a scale-readable setting."
         },
         "tags": [
           {
-            "id": "Click Type",
+            "id": "Tipe Klik",
             "en": "Click Type"
           },
           {
-            "id": "Torque Screwdriver",
+            "id": "Obeng Torsi",
             "en": "Torque Screwdriver"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Maintenance",
+            "id": "Perawatan",
             "en": "Maintenance"
           }
         ],
@@ -68,20 +68,20 @@
         "name": "AMRD/ BMRD2",
         "image": "/assets/brands/products/tohnichi/catalog/torque-screwdrivers/amrd-bmrd2.png",
         "summary": {
-          "id": "AMRD/ BMRD2 merupakan famili Click Type dalam lini Obeng Torsi Tohnichi.",
-          "en": "AMRD/ BMRD2 is part of Tohnichi's Click Type lineup within Torque Screwdrivers."
+          "id": "AMRD/BMRD2 adalah obeng torsi rotary-slip untuk pengencangan presisi sekrup sangat kecil pada perangkat elektronik dan instrumen presisi.",
+          "en": "AMRD/BMRD2 is a rotary-slip torque screwdriver for precision tightening of very small screws in electronics and precision instruments."
         },
         "tags": [
           {
-            "id": "Click Type",
+            "id": "Tipe Klik",
             "en": "Click Type"
           },
           {
-            "id": "Torque Screwdriver",
+            "id": "Obeng Torsi",
             "en": "Torque Screwdriver"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -91,20 +91,20 @@
         "name": "AMLD/BMLD2",
         "image": "/assets/brands/products/tohnichi/catalog/torque-screwdrivers/amld-bmld2.png",
         "summary": {
-          "id": "AMLD/BMLD2 merupakan famili Click Type dalam lini Obeng Torsi Tohnichi.",
-          "en": "AMLD/BMLD2 is part of Tohnichi's Click Type lineup within Torque Screwdrivers."
+          "id": "AMLD/BMLD2 adalah obeng torsi adjustable untuk pengencangan presisi sekrup sangat kecil pada perangkat elektronik dan instrumen presisi.",
+          "en": "AMLD/BMLD2 is an adjustable torque screwdriver for precision tightening of very small screws in electronics and precision instruments."
         },
         "tags": [
           {
-            "id": "Click Type",
+            "id": "Tipe Klik",
             "en": "Click Type"
           },
           {
-            "id": "Torque Screwdriver",
+            "id": "Obeng Torsi",
             "en": "Torque Screwdriver"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -114,24 +114,24 @@
         "name": "RNTD",
         "image": "/assets/brands/products/tohnichi/catalog/torque-screwdrivers/rntd.jpg",
         "summary": {
-          "id": "RNTD merupakan famili Click Type dalam lini Obeng Torsi Tohnichi.",
-          "en": "RNTD is part of Tohnichi's Click Type lineup within Torque Screwdrivers."
+          "id": "RNTD adalah obeng torsi preset dengan mekanisme rotary-slip untuk pengencangan berulang tanpa over-tightening.",
+          "en": "RNTD is a preset rotary-slip torque screwdriver for repeated tightening without over-tightening."
         },
         "tags": [
           {
-            "id": "Click Type",
+            "id": "Tipe Klik",
             "en": "Click Type"
           },
           {
-            "id": "Torque Screwdriver",
+            "id": "Obeng Torsi",
             "en": "Torque Screwdriver"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Maintenance",
+            "id": "Perawatan",
             "en": "Maintenance"
           }
         ],
@@ -141,24 +141,24 @@
         "name": "NTD",
         "image": "/assets/brands/products/tohnichi/catalog/torque-screwdrivers/ntd.jpg",
         "summary": {
-          "id": "NTD merupakan famili Click Type dalam lini Obeng Torsi Tohnichi.",
-          "en": "NTD is part of Tohnichi's Click Type lineup within Torque Screwdrivers."
+          "id": "NTD adalah obeng torsi preset yang menghasilkan sensasi klik saat torsi yang ditentukan tercapai.",
+          "en": "NTD is a preset torque screwdriver that produces a click when the specified torque is reached."
         },
         "tags": [
           {
-            "id": "Click Type",
+            "id": "Tipe Klik",
             "en": "Click Type"
           },
           {
-            "id": "Torque Screwdriver",
+            "id": "Obeng Torsi",
             "en": "Torque Screwdriver"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Maintenance",
+            "id": "Perawatan",
             "en": "Maintenance"
           }
         ],
@@ -168,16 +168,16 @@
         "name": "RTDZ",
         "image": "/assets/brands/products/tohnichi/catalog/torque-screwdrivers/rtdz.jpg",
         "summary": {
-          "id": "RTDZ merupakan famili Click Type dalam lini Obeng Torsi Tohnichi.",
-          "en": "RTDZ is part of Tohnichi's Click Type lineup within Torque Screwdrivers."
+          "id": "RTDZ adalah obeng torsi adjustable berinsulasi untuk pekerjaan yang memiliki potensi bahaya sengatan listrik.",
+          "en": "RTDZ is an insulated adjustable torque screwdriver for work with potential electrical-shock hazards."
         },
         "tags": [
           {
-            "id": "Click Type",
+            "id": "Tipe Klik",
             "en": "Click Type"
           },
           {
-            "id": "Torque Screwdriver",
+            "id": "Obeng Torsi",
             "en": "Torque Screwdriver"
           }
         ],
@@ -187,16 +187,16 @@
         "name": "RNTDZ",
         "image": "/assets/brands/products/tohnichi/catalog/torque-screwdrivers/rntdz.jpg",
         "summary": {
-          "id": "RNTDZ merupakan famili Click Type dalam lini Obeng Torsi Tohnichi.",
-          "en": "RNTDZ is part of Tohnichi's Click Type lineup within Torque Screwdrivers."
+          "id": "RNTDZ adalah obeng torsi preset rotary-slip berinsulasi untuk pengencangan berulang pada area yang memerlukan perlindungan listrik.",
+          "en": "RNTDZ is an insulated preset rotary-slip torque screwdriver for repeated tightening where electrical protection is required."
         },
         "tags": [
           {
-            "id": "Click Type",
+            "id": "Tipe Klik",
             "en": "Click Type"
           },
           {
-            "id": "Torque Screwdriver",
+            "id": "Obeng Torsi",
             "en": "Torque Screwdriver"
           }
         ],
@@ -206,8 +206,8 @@
         "name": "RTDLS/RNTDLS",
         "image": "/assets/brands/products/tohnichi/catalog/torque-screwdrivers/rtdls-rntdls.jpg",
         "summary": {
-          "id": "RTDLS/RNTDLS merupakan famili Pokayoke dalam lini Obeng Torsi Tohnichi.",
-          "en": "RTDLS/RNTDLS is part of Tohnichi's Pokayoke lineup within Torque Screwdrivers."
+          "id": "RTDLS/RNTDLS adalah obeng torsi rotary-slip dengan output limit switch untuk membantu mendeteksi pengencangan yang terlewat.",
+          "en": "RTDLS/RNTDLS is a rotary-slip torque screwdriver with limit-switch output to help detect missed tightening."
         },
         "tags": [
           {
@@ -215,15 +215,15 @@
             "en": "Pokayoke"
           },
           {
-            "id": "Torque Screwdriver",
+            "id": "Obeng Torsi",
             "en": "Torque Screwdriver"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -233,8 +233,8 @@
         "name": "RTDFH / RNTDFH",
         "image": "/assets/brands/products/tohnichi/catalog/torque-screwdrivers/rtdfh-rntdfh.jpg",
         "summary": {
-          "id": "RTDFH / RNTDFH merupakan famili Pokayoke dalam lini Obeng Torsi Tohnichi.",
-          "en": "RTDFH / RNTDFH is part of Tohnichi's Pokayoke lineup within Torque Screwdrivers."
+          "id": "RTDFH/RNTDFH adalah obeng torsi rotary-slip nirkabel untuk sistem Pokayoke tanpa kabel pada area kerja.",
+          "en": "RTDFH/RNTDFH is a wireless rotary-slip torque screwdriver for a cable-free Pokayoke system."
         },
         "tags": [
           {
@@ -242,19 +242,19 @@
             "en": "Pokayoke"
           },
           {
-            "id": "Torque Screwdriver",
+            "id": "Obeng Torsi",
             "en": "Torque Screwdriver"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Wireless",
+            "id": "Nirkabel",
             "en": "Wireless"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -264,8 +264,8 @@
         "name": "MNTD",
         "image": "/assets/brands/products/tohnichi/catalog/torque-screwdrivers/mntd.jpg",
         "summary": {
-          "id": "MNTD merupakan famili Pokayoke dalam lini Obeng Torsi Tohnichi.",
-          "en": "MNTD is part of Tohnichi's Pokayoke lineup within Torque Screwdrivers."
+          "id": "MNTD adalah obeng torsi preset yang memberi tanda pada kepala sekrup atau baut setelah torsi target tercapai sebagai bukti pengencangan.",
+          "en": "MNTD is a preset torque screwdriver that marks a screw or bolt head after target torque is reached, providing visible tightening evidence."
         },
         "tags": [
           {
@@ -273,19 +273,19 @@
             "en": "Pokayoke"
           },
           {
-            "id": "Torque Screwdriver",
+            "id": "Obeng Torsi",
             "en": "Torque Screwdriver"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           },
           {
-            "id": "Measurement",
+            "id": "Pengukuran",
             "en": "Measurement"
           }
         ],
@@ -295,28 +295,28 @@
         "name": "STC2-G / STC2-G-BT",
         "image": "/assets/brands/products/tohnichi/catalog/torque-screwdrivers/stc2-g-stc2-g-bt.jpg",
         "summary": {
-          "id": "STC2-G / STC2-G-BT merupakan famili Indicating dalam lini Obeng Torsi Tohnichi.",
-          "en": "STC2-G / STC2-G-BT is part of Tohnichi's Indicating lineup within Torque Screwdrivers."
+          "id": "STC2-G/STC2-G-BT adalah obeng torsi digital untuk pengencangan presisi dan inspeksi, dengan indikator visual dan suara untuk status judgment.",
+          "en": "STC2-G/STC2-G-BT is a digital torque screwdriver for precision tightening and inspection, with visual and audible judgment feedback."
         },
         "tags": [
           {
-            "id": "Indicating",
+            "id": "Tipe Penunjuk",
             "en": "Indicating"
           },
           {
-            "id": "Torque Screwdriver",
+            "id": "Obeng Torsi",
             "en": "Torque Screwdriver"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Maintenance",
+            "id": "Perawatan",
             "en": "Maintenance"
           }
         ],
@@ -326,24 +326,24 @@
         "name": "FTD-S",
         "image": "/assets/brands/products/tohnichi/catalog/torque-screwdrivers/ftd-s.jpg",
         "summary": {
-          "id": "FTD-S merupakan famili Indicating dalam lini Obeng Torsi Tohnichi.",
-          "en": "FTD-S is part of Tohnichi's Indicating lineup within Torque Screwdrivers."
+          "id": "FTD-S adalah tipe indicating yang menampilkan nilai torsi untuk pengukuran atau inspeksi. Model ini mendukung inspeksi dan pengencangan.",
+          "en": "FTD-S is an indicating model that displays torque for measurement or inspection. This model supports inspection and tightening."
         },
         "tags": [
           {
-            "id": "Indicating",
+            "id": "Tipe Penunjuk",
             "en": "Indicating"
           },
           {
-            "id": "Torque Screwdriver",
+            "id": "Obeng Torsi",
             "en": "Torque Screwdriver"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -353,24 +353,24 @@
         "name": "FTD",
         "image": "/assets/brands/products/tohnichi/catalog/torque-screwdrivers/ftd.jpg",
         "summary": {
-          "id": "FTD merupakan famili Indicating dalam lini Obeng Torsi Tohnichi.",
-          "en": "FTD is part of Tohnichi's Indicating lineup within Torque Screwdrivers."
+          "id": "FTD adalah tipe indicating yang menampilkan nilai torsi untuk pengukuran atau inspeksi. Model ini mendukung inspeksi dan pengencangan.",
+          "en": "FTD is an indicating model that displays torque for measurement or inspection. This model supports inspection and tightening."
         },
         "tags": [
           {
-            "id": "Indicating",
+            "id": "Tipe Penunjuk",
             "en": "Indicating"
           },
           {
-            "id": "Torque Screwdriver",
+            "id": "Obeng Torsi",
             "en": "Torque Screwdriver"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -380,24 +380,24 @@
         "name": "MTD",
         "image": "/assets/brands/products/tohnichi/catalog/torque-screwdrivers/mtd.jpg",
         "summary": {
-          "id": "MTD merupakan famili Indicating dalam lini Obeng Torsi Tohnichi.",
-          "en": "MTD is part of Tohnichi's Indicating lineup within Torque Screwdrivers."
+          "id": "MTD adalah tipe indicating yang menampilkan nilai torsi untuk pengukuran atau inspeksi. Model ini mendukung inspeksi dan pengencangan.",
+          "en": "MTD is an indicating model that displays torque for measurement or inspection. This model supports inspection and tightening."
         },
         "tags": [
           {
-            "id": "Indicating",
+            "id": "Tipe Penunjuk",
             "en": "Indicating"
           },
           {
-            "id": "Torque Screwdriver",
+            "id": "Obeng Torsi",
             "en": "Torque Screwdriver"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -412,16 +412,16 @@
       "en": "Torque Wrenches"
     },
     "description": {
-      "id": "Kunci torsi adjustable, preset, Pokayoke, angle, wireless, digital, dial, dan beam type.",
-      "en": "Adjustable, preset, Pokayoke, angle, wireless, digital, dial, and beam-type torque wrenches."
+      "id": "Kunci torsi memberikan torsi yang terukur pada baut dan mur untuk pekerjaan assembly, maintenance, atau inspeksi. Pilih mekanisme adjustable, pre-lock, atau preset sesuai frekuensi perubahan setelan; tersedia juga versi Pokayoke, pengukuran sudut, dial, dan beam untuk kebutuhan proses khusus.",
+      "en": "Torque wrenches apply measured torque to bolts and nuts during assembly, maintenance, or inspection. Choose adjustable, pre-lock, or preset mechanisms based on how often settings change; Pokayoke, angle, dial, and beam versions cover specialized processes."
     },
     "products": [
       {
         "name": "QL/QLE2",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/ql-qle2.jpg",
         "summary": {
-          "id": "QL/QLE2 merupakan famili Adjustable dalam lini Kunci Torsi Tohnichi.",
-          "en": "QL/QLE2 is part of Tohnichi's Adjustable lineup within Torque Wrenches."
+          "id": "QL/QLE2 adalah kunci torsi adjustable berkepala ratchet untuk berbagai pekerjaan pengencangan umum.",
+          "en": "QL/QLE2 is an adjustable ratchet-head torque wrench for a broad range of general tightening work."
         },
         "tags": [
           {
@@ -429,11 +429,11 @@
             "en": "Adjustable"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -443,8 +443,8 @@
         "name": "QL+",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/ql.jpg",
         "summary": {
-          "id": "QL+ merupakan famili Adjustable dalam lini Kunci Torsi Tohnichi.",
-          "en": "QL+ is part of Tohnichi's Adjustable lineup within Torque Wrenches."
+          "id": "QL+ adalah kunci torsi adjustable untuk rentang torsi rendah dengan skala yang mudah dibaca dan bentuk yang sesuai untuk ruang terbatas.",
+          "en": "QL+ is a low-range adjustable torque wrench with a clear scale and a compact form suited to restricted spaces."
         },
         "tags": [
           {
@@ -452,11 +452,11 @@
             "en": "Adjustable"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -466,8 +466,8 @@
         "name": "QL-MH",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/ql-mh.jpg",
         "summary": {
-          "id": "QL-MH merupakan famili Adjustable dalam lini Kunci Torsi Tohnichi.",
-          "en": "QL-MH is part of Tohnichi's Adjustable lineup within Torque Wrenches."
+          "id": "QL-MH adalah tipe adjustable dengan setelan torsi yang dapat diubah.",
+          "en": "QL-MH is an adjustable model with a user-set torque value."
         },
         "tags": [
           {
@@ -475,7 +475,7 @@
             "en": "Adjustable"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           }
         ],
@@ -485,8 +485,8 @@
         "name": "DQL/DQLE2",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/dql-dqle2.png",
         "summary": {
-          "id": "DQL/DQLE2 merupakan famili Adjustable dalam lini Kunci Torsi Tohnichi.",
-          "en": "DQL/DQLE2 is part of Tohnichi's Adjustable lineup within Torque Wrenches."
+          "id": "DQL/DQLE2 adalah kunci torsi adjustable dengan dual square drive untuk pengencangan dua arah.",
+          "en": "DQL/DQLE2 is an adjustable torque wrench with dual square drives for bidirectional tightening."
         },
         "tags": [
           {
@@ -494,11 +494,11 @@
             "en": "Adjustable"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -508,8 +508,8 @@
         "name": "MTQL",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/mtql.png",
         "summary": {
-          "id": "MTQL merupakan famili Adjustable dalam lini Kunci Torsi Tohnichi.",
-          "en": "MTQL is part of Tohnichi's Adjustable lineup within Torque Wrenches."
+          "id": "MTQL adalah kunci torsi dengan rentang lebar untuk maintenance sepeda, sepeda motor, mobil, dan aplikasi motorsport.",
+          "en": "MTQL is a wide-range torque wrench for bicycle, motorcycle, automotive, and motorsport maintenance."
         },
         "tags": [
           {
@@ -517,11 +517,11 @@
             "en": "Adjustable"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Maintenance",
+            "id": "Perawatan",
             "en": "Maintenance"
           }
         ],
@@ -531,8 +531,8 @@
         "name": "PHL/PHLE2",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/phl-phle2.jpg",
         "summary": {
-          "id": "PHL/PHLE2 merupakan famili Adjustable dalam lini Kunci Torsi Tohnichi.",
-          "en": "PHL/PHLE2 is part of Tohnichi's Adjustable lineup within Torque Wrenches."
+          "id": "PHL/PHLE2 adalah kunci torsi adjustable berkepala pipe wrench untuk pekerjaan pipa dan pengencangan sambungan berulir.",
+          "en": "PHL/PHLE2 is an adjustable pipe-wrench-head torque wrench for piping and threaded-joint tightening."
         },
         "tags": [
           {
@@ -540,11 +540,11 @@
             "en": "Adjustable"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -554,8 +554,8 @@
         "name": "TW2",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/tw2.png",
         "summary": {
-          "id": "TW2 merupakan famili Adjustable dalam lini Kunci Torsi Tohnichi.",
-          "en": "TW2 is part of Tohnichi's Adjustable lineup within Torque Wrenches."
+          "id": "TW2 adalah kunci torsi dengan multiplier untuk pengencangan mur roda kendaraan besar oleh satu operator.",
+          "en": "TW2 is a torque wrench with a multiplier for one-person tightening of wheel nuts on large vehicles."
         },
         "tags": [
           {
@@ -563,11 +563,11 @@
             "en": "Adjustable"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -577,8 +577,8 @@
         "name": "PQL",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/pql.png",
         "summary": {
-          "id": "PQL merupakan famili Pre-lock dalam lini Kunci Torsi Tohnichi.",
-          "en": "PQL is part of Tohnichi's Pre-lock lineup within Torque Wrenches."
+          "id": "PQL adalah tipe pre-lock yang membatasi perubahan setelan selama digunakan. Model ini mendukung pengencangan.",
+          "en": "PQL is a pre-lock model that restricts setting changes during use. This model supports tightening."
         },
         "tags": [
           {
@@ -586,11 +586,11 @@
             "en": "Pre-lock"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -600,8 +600,8 @@
         "name": "PQLZ",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/pqlz.png",
         "summary": {
-          "id": "PQLZ merupakan famili Pre-lock dalam lini Kunci Torsi Tohnichi.",
-          "en": "PQLZ is part of Tohnichi's Pre-lock lineup within Torque Wrenches."
+          "id": "PQLZ adalah tipe pre-lock yang membatasi perubahan setelan selama digunakan.",
+          "en": "PQLZ is a pre-lock model that restricts setting changes during use."
         },
         "tags": [
           {
@@ -609,7 +609,7 @@
             "en": "Pre-lock"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           }
         ],
@@ -619,8 +619,8 @@
         "name": "TiQL / TiLQL / TiEQL(E)",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/tiql-tilql-tieql-e.jpg",
         "summary": {
-          "id": "TiQL / TiLQL / TiEQL(E) merupakan famili Pre-lock dalam lini Kunci Torsi Tohnichi.",
-          "en": "TiQL / TiLQL / TiEQL(E) is part of Tohnichi's Pre-lock lineup within Torque Wrenches."
+          "id": "TiQL / TiLQL / TiEQL(E) adalah tipe pre-lock yang membatasi perubahan setelan selama digunakan.",
+          "en": "TiQL / TiLQL / TiEQL(E) is a pre-lock model that restricts setting changes during use."
         },
         "tags": [
           {
@@ -628,7 +628,7 @@
             "en": "Pre-lock"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           }
         ],
@@ -638,8 +638,8 @@
         "name": "MT70N",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/mt70n.png",
         "summary": {
-          "id": "MT70N merupakan famili Pre-lock dalam lini Kunci Torsi Tohnichi.",
-          "en": "MT70N is part of Tohnichi's Pre-lock lineup within Torque Wrenches."
+          "id": "MT70N adalah tipe pre-lock yang membatasi perubahan setelan selama digunakan. Model ini mendukung perawatan.",
+          "en": "MT70N is a pre-lock model that restricts setting changes during use. This model supports maintenance."
         },
         "tags": [
           {
@@ -647,11 +647,11 @@
             "en": "Pre-lock"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Maintenance",
+            "id": "Perawatan",
             "en": "Maintenance"
           }
         ],
@@ -661,8 +661,8 @@
         "name": "QSP/QSP-MH",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/qsp-qsp-mh.jpg",
         "summary": {
-          "id": "QSP/QSP-MH merupakan famili Preset dalam lini Kunci Torsi Tohnichi.",
-          "en": "QSP/QSP-MH is part of Tohnichi's Preset lineup within Torque Wrenches."
+          "id": "QSP/QSP-MH adalah tipe preset untuk pekerjaan berulang pada satu nilai torsi. Model ini mendukung pengencangan.",
+          "en": "QSP/QSP-MH is a preset model for repeated work at one torque setting. This model supports tightening."
         },
         "tags": [
           {
@@ -670,11 +670,11 @@
             "en": "Preset"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -684,8 +684,8 @@
         "name": "QSPCA",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/qspca.jpg",
         "summary": {
-          "id": "QSPCA merupakan famili Preset dalam lini Kunci Torsi Tohnichi.",
-          "en": "QSPCA is part of Tohnichi's Preset lineup within Torque Wrenches."
+          "id": "QSPCA adalah kunci torsi preset tipe slip yang tidak menambah torsi setelah nilai set tercapai, sehingga membantu mencegah over-torque.",
+          "en": "QSPCA is a preset slip-type torque wrench that stops adding torque after the set value is reached, helping prevent over-torque."
         },
         "tags": [
           {
@@ -693,11 +693,11 @@
             "en": "Preset"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -707,8 +707,8 @@
         "name": "BQSP",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/bqsp.jpg",
         "summary": {
-          "id": "BQSP merupakan famili Preset dalam lini Kunci Torsi Tohnichi.",
-          "en": "BQSP is part of Tohnichi's Preset lineup within Torque Wrenches."
+          "id": "BQSP adalah tipe preset untuk pekerjaan berulang pada satu nilai torsi. Model ini mendukung pengencangan.",
+          "en": "BQSP is a preset model for repeated work at one torque setting. This model supports tightening."
         },
         "tags": [
           {
@@ -716,11 +716,11 @@
             "en": "Preset"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -730,8 +730,8 @@
         "name": "QSPZ",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/qspz.png",
         "summary": {
-          "id": "QSPZ merupakan famili Preset dalam lini Kunci Torsi Tohnichi.",
-          "en": "QSPZ is part of Tohnichi's Preset lineup within Torque Wrenches."
+          "id": "QSPZ adalah tipe preset untuk pekerjaan berulang pada satu nilai torsi.",
+          "en": "QSPZ is a preset model for repeated work at one torque setting."
         },
         "tags": [
           {
@@ -739,7 +739,7 @@
             "en": "Preset"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           }
         ],
@@ -749,8 +749,8 @@
         "name": "SP/SP2/SP2-MH",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/sp-sp2-sp2-mh.jpg",
         "summary": {
-          "id": "SP/SP2/SP2-MH merupakan famili Preset dalam lini Kunci Torsi Tohnichi.",
-          "en": "SP/SP2/SP2-MH is part of Tohnichi's Preset lineup within Torque Wrenches."
+          "id": "SP/SP2/SP2-MH adalah kunci torsi preset berkepala open-end untuk pengencangan berulang pada ukuran fastener tertentu.",
+          "en": "SP/SP2/SP2-MH is a preset open-end torque wrench for repeated tightening of a specified fastener size."
         },
         "tags": [
           {
@@ -758,11 +758,11 @@
             "en": "Preset"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -772,8 +772,8 @@
         "name": "RSP2/RSP2-MH",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/rsp2-rsp2-mh.jpg",
         "summary": {
-          "id": "RSP2/RSP2-MH merupakan famili Preset dalam lini Kunci Torsi Tohnichi.",
-          "en": "RSP2/RSP2-MH is part of Tohnichi's Preset lineup within Torque Wrenches."
+          "id": "RSP2/RSP2-MH adalah kunci torsi preset berkepala ring untuk assembly dan produksi massal.",
+          "en": "RSP2/RSP2-MH is a preset ring-head torque wrench for assembly and mass production."
         },
         "tags": [
           {
@@ -781,11 +781,11 @@
             "en": "Preset"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -795,8 +795,8 @@
         "name": "SP2-H",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/sp2-h.jpg",
         "summary": {
-          "id": "SP2-H merupakan famili Preset dalam lini Kunci Torsi Tohnichi.",
-          "en": "SP2-H is part of Tohnichi's Preset lineup within Torque Wrenches."
+          "id": "SP2-H adalah kunci torsi preset berkepala ramping untuk pengencangan pipa hidrolik di ruang sempit.",
+          "en": "SP2-H is a slim-head preset torque wrench for hydraulic-pipe tightening in confined spaces."
         },
         "tags": [
           {
@@ -804,11 +804,11 @@
             "en": "Preset"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -818,8 +818,8 @@
         "name": "SP2-N/SP2-N-MH",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/sp2-n-sp2-n-mh.jpg",
         "summary": {
-          "id": "SP2-N/SP2-N-MH merupakan famili Preset dalam lini Kunci Torsi Tohnichi.",
-          "en": "SP2-N/SP2-N-MH is part of Tohnichi's Preset lineup within Torque Wrenches."
+          "id": "SP2-N/SP2-N-MH adalah kunci torsi preset dengan notched head untuk flare nut pada sistem rem dan sambungan serupa.",
+          "en": "SP2-N/SP2-N-MH is a preset notched-head torque wrench for brake flare nuts and similar joints."
         },
         "tags": [
           {
@@ -827,7 +827,7 @@
             "en": "Preset"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           }
         ],
@@ -837,8 +837,8 @@
         "name": "QRSP2",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/qrsp2.jpg",
         "summary": {
-          "id": "QRSP2 merupakan famili Preset dalam lini Kunci Torsi Tohnichi.",
-          "en": "QRSP2 is part of Tohnichi's Preset lineup within Torque Wrenches."
+          "id": "QRSP2 adalah tipe preset untuk pekerjaan berulang pada satu nilai torsi.",
+          "en": "QRSP2 is a preset model for repeated work at one torque setting."
         },
         "tags": [
           {
@@ -846,7 +846,7 @@
             "en": "Preset"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           }
         ],
@@ -856,8 +856,8 @@
         "name": "NSP",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/nsp.png",
         "summary": {
-          "id": "NSP merupakan famili Preset dalam lini Kunci Torsi Tohnichi.",
-          "en": "NSP is part of Tohnichi's Preset lineup within Torque Wrenches."
+          "id": "NSP adalah tipe preset untuk pekerjaan berulang pada satu nilai torsi. Model ini mendukung pengencangan.",
+          "en": "NSP is a preset model for repeated work at one torque setting. This model supports tightening."
         },
         "tags": [
           {
@@ -865,11 +865,11 @@
             "en": "Preset"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -879,8 +879,8 @@
         "name": "QSPCAMS/QSPCALS",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/qspcams-qspcals.jpg",
         "summary": {
-          "id": "QSPCAMS/QSPCALS merupakan famili Pokayoke dalam lini Kunci Torsi Tohnichi.",
-          "en": "QSPCAMS/QSPCALS is part of Tohnichi's Pokayoke lineup within Torque Wrenches."
+          "id": "QSPCAMS/QSPCALS adalah tipe Pokayoke untuk membantu mendeteksi atau mencegah kesalahan pengencangan. Model ini mendukung pengencangan dan pencegahan kesalahan.",
+          "en": "QSPCAMS/QSPCALS is a Pokayoke model designed to detect or prevent tightening errors. This model supports tightening and error proofing."
         },
         "tags": [
           {
@@ -888,15 +888,15 @@
             "en": "Pokayoke"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -906,8 +906,8 @@
         "name": "FH",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/fh.jpg",
         "summary": {
-          "id": "FH merupakan famili Pokayoke dalam lini Kunci Torsi Tohnichi.",
-          "en": "FH is part of Tohnichi's Pokayoke lineup within Torque Wrenches."
+          "id": "FH adalah tipe Pokayoke untuk membantu mendeteksi atau mencegah kesalahan pengencangan. Model ini mendukung pengencangan dan pencegahan kesalahan.",
+          "en": "FH is a Pokayoke model designed to detect or prevent tightening errors. This model supports tightening and error proofing."
         },
         "tags": [
           {
@@ -915,19 +915,19 @@
             "en": "Pokayoke"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Wireless",
+            "id": "Nirkabel",
             "en": "Wireless"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -937,8 +937,8 @@
         "name": "QSPCAFH",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/qspcafh.png",
         "summary": {
-          "id": "QSPCAFH merupakan famili Pokayoke dalam lini Kunci Torsi Tohnichi.",
-          "en": "QSPCAFH is part of Tohnichi's Pokayoke lineup within Torque Wrenches."
+          "id": "QSPCAFH adalah tipe Pokayoke untuk membantu mendeteksi atau mencegah kesalahan pengencangan. Model ini mendukung pengencangan dan pencegahan kesalahan.",
+          "en": "QSPCAFH is a Pokayoke model designed to detect or prevent tightening errors. This model supports tightening and error proofing."
         },
         "tags": [
           {
@@ -946,19 +946,19 @@
             "en": "Pokayoke"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Wireless",
+            "id": "Nirkabel",
             "en": "Wireless"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -968,8 +968,8 @@
         "name": "T-BLA/QLBLA",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/t-bla-qlbla.png",
         "summary": {
-          "id": "T-BLA/QLBLA merupakan famili Pokayoke dalam lini Kunci Torsi Tohnichi.",
-          "en": "T-BLA/QLBLA is part of Tohnichi's Pokayoke lineup within Torque Wrenches."
+          "id": "T-BLA/QLBLA adalah tipe Pokayoke untuk membantu mendeteksi atau mencegah kesalahan pengencangan. Model ini mendukung pengencangan dan pencegahan kesalahan.",
+          "en": "T-BLA/QLBLA is a Pokayoke model designed to detect or prevent tightening errors. This model supports tightening and error proofing."
         },
         "tags": [
           {
@@ -977,19 +977,19 @@
             "en": "Pokayoke"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Wireless",
+            "id": "Nirkabel",
             "en": "Wireless"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -999,8 +999,8 @@
         "name": "MPQL/MQL",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/mpql-mql.jpg",
         "summary": {
-          "id": "MPQL/MQL merupakan famili Pokayoke dalam lini Kunci Torsi Tohnichi.",
-          "en": "MPQL/MQL is part of Tohnichi's Pokayoke lineup within Torque Wrenches."
+          "id": "MPQL/MQL adalah marking torque wrench yang membuat hasil pengencangan terlihat untuk membantu mendeteksi pekerjaan terlewat atau torsi yang kurang.",
+          "en": "MPQL/MQL is a marking torque wrench that makes tightening evidence visible, helping reveal missed or insufficient tightening."
         },
         "tags": [
           {
@@ -1008,15 +1008,15 @@
             "en": "Pokayoke"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -1026,8 +1026,8 @@
         "name": "CMQSP",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/cmqsp.png",
         "summary": {
-          "id": "CMQSP merupakan famili Pokayoke dalam lini Kunci Torsi Tohnichi.",
-          "en": "CMQSP is part of Tohnichi's Pokayoke lineup within Torque Wrenches."
+          "id": "CMQSP adalah tipe Pokayoke untuk membantu mendeteksi atau mencegah kesalahan pengencangan. Model ini mendukung inspeksi, pengencangan, dan pencegahan kesalahan.",
+          "en": "CMQSP is a Pokayoke model designed to detect or prevent tightening errors. This model supports inspection, tightening, and error proofing."
         },
         "tags": [
           {
@@ -1035,19 +1035,19 @@
             "en": "Pokayoke"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -1057,8 +1057,8 @@
         "name": "MQSP",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/mqsp.jpg",
         "summary": {
-          "id": "MQSP merupakan famili Pokayoke dalam lini Kunci Torsi Tohnichi.",
-          "en": "MQSP is part of Tohnichi's Pokayoke lineup within Torque Wrenches."
+          "id": "MQSP adalah tipe Pokayoke untuk membantu mendeteksi atau mencegah kesalahan pengencangan. Model ini mendukung pengencangan dan pencegahan kesalahan.",
+          "en": "MQSP is a Pokayoke model designed to detect or prevent tightening errors. This model supports tightening and error proofing."
         },
         "tags": [
           {
@@ -1066,15 +1066,15 @@
             "en": "Pokayoke"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -1084,8 +1084,8 @@
         "name": "FHM/FH",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/fhm-fh.jpg",
         "summary": {
-          "id": "FHM/FH merupakan famili Pokayoke dalam lini Kunci Torsi Tohnichi.",
-          "en": "FHM/FH is part of Tohnichi's Pokayoke lineup within Torque Wrenches."
+          "id": "FHM/FH adalah tipe Pokayoke untuk membantu mendeteksi atau mencegah kesalahan pengencangan. Model ini mendukung inspeksi, pengencangan, dan pencegahan kesalahan.",
+          "en": "FHM/FH is a Pokayoke model designed to detect or prevent tightening errors. This model supports inspection, tightening, and error proofing."
         },
         "tags": [
           {
@@ -1093,19 +1093,19 @@
             "en": "Pokayoke"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -1115,8 +1115,8 @@
         "name": "T-FHP",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/t-fhp.png",
         "summary": {
-          "id": "T-FHP merupakan famili Pokayoke dalam lini Kunci Torsi Tohnichi.",
-          "en": "T-FHP is part of Tohnichi's Pokayoke lineup within Torque Wrenches."
+          "id": "T-FHP adalah tipe Pokayoke untuk membantu mendeteksi atau mencegah kesalahan pengencangan. Model ini mendukung pengencangan dan pencegahan kesalahan.",
+          "en": "T-FHP is a Pokayoke model designed to detect or prevent tightening errors. This model supports tightening and error proofing."
         },
         "tags": [
           {
@@ -1124,19 +1124,19 @@
             "en": "Pokayoke"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Wireless",
+            "id": "Nirkabel",
             "en": "Wireless"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -1146,8 +1146,8 @@
         "name": "QSPCAFHP/QSPCAFHLSM",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/qspcafhp-qspcafhlsm.jpg",
         "summary": {
-          "id": "QSPCAFHP/QSPCAFHLSM merupakan famili Pokayoke dalam lini Kunci Torsi Tohnichi.",
-          "en": "QSPCAFHP/QSPCAFHLSM is part of Tohnichi's Pokayoke lineup within Torque Wrenches."
+          "id": "QSPCAFHP/QSPCAFHLSM adalah tipe Pokayoke untuk membantu mendeteksi atau mencegah kesalahan pengencangan. Model ini mendukung pengencangan dan pencegahan kesalahan.",
+          "en": "QSPCAFHP/QSPCAFHLSM is a Pokayoke model designed to detect or prevent tightening errors. This model supports tightening and error proofing."
         },
         "tags": [
           {
@@ -1155,15 +1155,15 @@
             "en": "Pokayoke"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -1173,8 +1173,8 @@
         "name": "FH256MC",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/fh256mc.jpg",
         "summary": {
-          "id": "FH256MC merupakan famili Pokayoke dalam lini Kunci Torsi Tohnichi.",
-          "en": "FH256MC is part of Tohnichi's Pokayoke lineup within Torque Wrenches."
+          "id": "FH256MC adalah tipe Pokayoke untuk membantu mendeteksi atau mencegah kesalahan pengencangan. Model ini mendukung pengencangan dan pencegahan kesalahan.",
+          "en": "FH256MC is a Pokayoke model designed to detect or prevent tightening errors. This model supports tightening and error proofing."
         },
         "tags": [
           {
@@ -1182,15 +1182,15 @@
             "en": "Pokayoke"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -1200,20 +1200,20 @@
         "name": "DWQL / M-DW",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/dwql-m-dw.png",
         "summary": {
-          "id": "DWQL / M-DW merupakan famili Angle dalam lini Kunci Torsi Tohnichi.",
-          "en": "DWQL / M-DW is part of Tohnichi's Angle lineup within Torque Wrenches."
+          "id": "DWQL/M-DW menggabungkan kunci torsi analog dengan modul sudut digital untuk metode pengencangan torque-and-angle.",
+          "en": "DWQL/M-DW combines an analog torque wrench with a digital angle module for torque-and-angle tightening."
         },
         "tags": [
           {
-            "id": "Angle",
+            "id": "Pengukuran Sudut",
             "en": "Angle"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -1223,20 +1223,20 @@
         "name": "WQL",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/wql.jpg",
         "summary": {
-          "id": "WQL merupakan famili Angle dalam lini Kunci Torsi Tohnichi.",
-          "en": "WQL is part of Tohnichi's Angle lineup within Torque Wrenches."
+          "id": "WQL adalah tipe pengukuran sudut untuk metode pengencangan torque-and-angle. Model ini mendukung pengencangan.",
+          "en": "WQL is an angle-measuring model for torque-and-angle tightening. This model supports tightening."
         },
         "tags": [
           {
-            "id": "Angle",
+            "id": "Pengukuran Sudut",
             "en": "Angle"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -1246,24 +1246,24 @@
         "name": "DB/DBE/DBR",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/db-dbe-dbr.png",
         "summary": {
-          "id": "DB/DBE/DBR merupakan famili Dial Indicating dalam lini Kunci Torsi Tohnichi.",
-          "en": "DB/DBE/DBR is part of Tohnichi's Dial Indicating lineup within Torque Wrenches."
+          "id": "DB/DBE/DBR adalah kunci torsi penunjuk dial untuk inspeksi dan pengencangan dengan pembacaan langsung.",
+          "en": "DB/DBE/DBR is a dial-indicating torque wrench for inspection and tightening with direct readings."
         },
         "tags": [
           {
-            "id": "Dial Indicating",
+            "id": "Penunjuk Dial",
             "en": "Dial Indicating"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -1273,24 +1273,24 @@
         "name": "T-S",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/t-s.jpg",
         "summary": {
-          "id": "T-S merupakan famili Dial Indicating dalam lini Kunci Torsi Tohnichi.",
-          "en": "T-S is part of Tohnichi's Dial Indicating lineup within Torque Wrenches."
+          "id": "T-S adalah tipe penunjuk dial untuk membaca torsi secara langsung. Model ini mendukung inspeksi dan pengencangan.",
+          "en": "T-S is a dial-indicating model for direct torque readings. This model supports inspection and tightening."
         },
         "tags": [
           {
-            "id": "Dial Indicating",
+            "id": "Penunjuk Dial",
             "en": "Dial Indicating"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -1300,24 +1300,24 @@
         "name": "SF/F",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/sf-f.png",
         "summary": {
-          "id": "SF/F merupakan famili Beam Type dalam lini Kunci Torsi Tohnichi.",
-          "en": "SF/F is part of Tohnichi's Beam Type lineup within Torque Wrenches."
+          "id": "SF/F adalah tipe beam untuk pembacaan torsi langsung saat inspeksi atau pengencangan. Model ini mendukung inspeksi dan pengencangan.",
+          "en": "SF/F is a beam-type model for direct torque readings during inspection or tightening. This model supports inspection and tightening."
         },
         "tags": [
           {
-            "id": "Beam Type",
+            "id": "Tipe Beam",
             "en": "Beam Type"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -1327,24 +1327,24 @@
         "name": "FR",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/fr.jpg",
         "summary": {
-          "id": "FR merupakan famili Beam Type dalam lini Kunci Torsi Tohnichi.",
-          "en": "FR is part of Tohnichi's Beam Type lineup within Torque Wrenches."
+          "id": "FR adalah tipe beam untuk pembacaan torsi langsung saat inspeksi atau pengencangan. Model ini mendukung inspeksi dan pengencangan.",
+          "en": "FR is a beam-type model for direct torque readings during inspection or tightening. This model supports inspection and tightening."
         },
         "tags": [
           {
-            "id": "Beam Type",
+            "id": "Tipe Beam",
             "en": "Beam Type"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -1354,24 +1354,24 @@
         "name": "QF/QFR",
         "image": "/assets/brands/products/tohnichi/catalog/torque-wrenches/qf-qfr.png",
         "summary": {
-          "id": "QF/QFR merupakan famili Beam Type dalam lini Kunci Torsi Tohnichi.",
-          "en": "QF/QFR is part of Tohnichi's Beam Type lineup within Torque Wrenches."
+          "id": "QF/QFR adalah tipe beam untuk pembacaan torsi langsung saat inspeksi atau pengencangan. Model ini mendukung inspeksi dan pengencangan.",
+          "en": "QF/QFR is a beam-type model for direct torque readings during inspection or tightening. This model supports inspection and tightening."
         },
         "tags": [
           {
-            "id": "Beam Type",
+            "id": "Tipe Beam",
             "en": "Beam Type"
           },
           {
-            "id": "Torque Wrench",
+            "id": "Kunci Torsi",
             "en": "Torque Wrench"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -1386,24 +1386,24 @@
       "en": "Interchangeable Head Torque Wrenches"
     },
     "description": {
-      "id": "Kunci torsi dengan kepala yang dapat diganti untuk beragam bentuk fastener, ruang terbatas, pengencangan, dan inspeksi.",
-      "en": "Torque wrenches with interchangeable heads for varied fasteners, confined spaces, tightening, and inspection."
+      "id": "Kunci torsi kepala interchangeable memakai satu badan wrench dengan pilihan kepala ratchet, open-end, ring, atau bentuk khusus. Konfigurasi ini cocok ketika satu proses membutuhkan beberapa ukuran fastener, akses di ruang terbatas, inspeksi digital, atau pencatatan data pengencangan.",
+      "en": "Interchangeable-head torque wrenches pair one wrench body with ratchet, open-end, ring, or special-purpose heads. This configuration suits processes that need several fastener sizes, restricted access, digital inspection, or tightening-data capture."
     },
     "products": [
       {
         "name": "CL/CLE2",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/cl-cle2.jpg",
         "summary": {
-          "id": "CL/CLE2 merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "CL/CLE2 is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "CL/CLE2 adalah kunci torsi adjustable dengan kepala interchangeable untuk berbagai bentuk dan ukuran fastener di lini produksi.",
+          "en": "CL/CLE2 is an adjustable interchangeable-head torque wrench for different fastener profiles and sizes on production lines."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -1413,16 +1413,16 @@
         "name": "CL+",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/cl.jpg",
         "summary": {
-          "id": "CL+ merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "CL+ is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "CL+ adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head. Model ini mendukung pengencangan.",
+          "en": "CL+ is an interchangeable-head model that accepts several head styles. This model supports tightening."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -1432,12 +1432,12 @@
         "name": "CL-MH",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/cl-mh.png",
         "summary": {
-          "id": "CL-MH merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "CL-MH is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "CL-MH adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head.",
+          "en": "CL-MH is an interchangeable-head model that accepts several head styles."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           }
         ],
@@ -1447,16 +1447,16 @@
         "name": "PCL",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/pcl.png",
         "summary": {
-          "id": "PCL merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "PCL is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "PCL adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head. Model ini mendukung pengencangan.",
+          "en": "PCL is an interchangeable-head model that accepts several head styles. This model supports tightening."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -1466,16 +1466,16 @@
         "name": "YCL2",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/ycl2.jpg",
         "summary": {
-          "id": "YCL2 merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "YCL2 is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "YCL2 adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head. Model ini mendukung pengencangan.",
+          "en": "YCL2 is an interchangeable-head model that accepts several head styles. This model supports tightening."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -1485,16 +1485,16 @@
         "name": "SCL",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/scl.png",
         "summary": {
-          "id": "SCL merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "SCL is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "SCL adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head. Model ini mendukung pengencangan.",
+          "en": "SCL is an interchangeable-head model that accepts several head styles. This model supports tightening."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -1504,16 +1504,16 @@
         "name": "SCSP",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/scsp.png",
         "summary": {
-          "id": "SCSP merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "SCSP is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "SCSP adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head. Model ini mendukung pengencangan.",
+          "en": "SCSP is an interchangeable-head model that accepts several head styles. This model supports tightening."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -1523,16 +1523,16 @@
         "name": "SCL-MH",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/scl-mh.jpg",
         "summary": {
-          "id": "SCL-MH merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "SCL-MH is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "SCL-MH adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head. Model ini mendukung pengencangan.",
+          "en": "SCL-MH is an interchangeable-head model that accepts several head styles. This model supports tightening."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -1542,20 +1542,20 @@
         "name": "CEM3/CEM3-G",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/cem3-cem3-g.jpg",
         "summary": {
-          "id": "CEM3/CEM3-G merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "CEM3/CEM3-G is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "CEM3/CEM3-G adalah kunci torsi digital berkepala interchangeable dengan tampilan ganda untuk inspeksi atau pengencangan.",
+          "en": "CEM3/CEM3-G is a digital interchangeable-head torque wrench with dual displays for inspection or tightening."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -1565,28 +1565,28 @@
         "name": "CES/CES-G",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/ces-ces-g.jpg",
         "summary": {
-          "id": "CES/CES-G merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "CES/CES-G is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "CES/CES-G adalah kunci torsi digital compact untuk rentang torsi rendah; modul Bluetooth opsional mendukung pengelolaan data.",
+          "en": "CES/CES-G is a compact digital torque wrench for low-torque work, with an optional Bluetooth module for data management."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Wireless",
+            "id": "Nirkabel",
             "en": "Wireless"
           },
           {
-            "id": "Data management",
+            "id": "Manajemen Data",
             "en": "Data management"
           }
         ],
@@ -1596,20 +1596,20 @@
         "name": "CTA2/CTA2-G",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/cta2-cta2-g.png",
         "summary": {
-          "id": "CTA2/CTA2-G merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "CTA2/CTA2-G is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "CTA2/CTA2-G adalah kunci torsi digital untuk pengencangan berdasarkan snug torque dan sudut putar.",
+          "en": "CTA2/CTA2-G is a digital torque wrench for tightening by snug torque and rotation angle."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Wireless",
+            "id": "Nirkabel",
             "en": "Wireless"
           }
         ],
@@ -1619,20 +1619,20 @@
         "name": "CTB2/CTB2-G",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/ctb2-ctb2-g.png",
         "summary": {
-          "id": "CTB2/CTB2-G merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "CTB2/CTB2-G is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "CTB2/CTB2-G adalah kunci torsi digital untuk memperkirakan torsi pengencangan awal melalui metode retightening.",
+          "en": "CTB2/CTB2-G is a digital torque wrench for estimating original tightening torque by the retightening method."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -1642,28 +1642,28 @@
         "name": "CEM3-P",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/cem3-p.png",
         "summary": {
-          "id": "CEM3-P merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "CEM3-P is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "CEM3-P adalah kunci torsi digital programmable untuk inspeksi kualitas, pengelolaan hasil, dan error-proof tightening.",
+          "en": "CEM3-P is a programmable digital torque wrench for quality inspection, result management, and error-proof tightening."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Data management",
+            "id": "Manajemen Data",
             "en": "Data management"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -1673,20 +1673,20 @@
         "name": "CPT/CPT-G",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/cpt-cpt-g.png",
         "summary": {
-          "id": "CPT/CPT-G merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "CPT/CPT-G is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "CPT/CPT-G adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head. Model ini mendukung inspeksi dan pengencangan.",
+          "en": "CPT/CPT-G is an interchangeable-head model that accepts several head styles. This model supports inspection and tightening."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -1696,16 +1696,16 @@
         "name": "SCSP-MH",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/scsp-mh.jpg",
         "summary": {
-          "id": "SCSP-MH merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "SCSP-MH is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "SCSP-MH adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head. Model ini mendukung pengencangan.",
+          "en": "SCSP-MH is an interchangeable-head model that accepts several head styles. This model supports tightening."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -1715,16 +1715,16 @@
         "name": "CSP/CSP-MH",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/csp-csp-mh.png",
         "summary": {
-          "id": "CSP/CSP-MH merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "CSP/CSP-MH is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "CSP/CSP-MH adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head. Model ini mendukung pengencangan.",
+          "en": "CSP/CSP-MH is an interchangeable-head model that accepts several head styles. This model supports tightening."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -1734,16 +1734,16 @@
         "name": "CSP6D",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/csp6d.jpg",
         "summary": {
-          "id": "CSP6D merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "CSP6D is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "CSP6D adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head. Model ini mendukung pengencangan.",
+          "en": "CSP6D is an interchangeable-head model that accepts several head styles. This model supports tightening."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -1753,16 +1753,16 @@
         "name": "BCSP",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/bcsp.jpg",
         "summary": {
-          "id": "BCSP merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "BCSP is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "BCSP adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head. Model ini mendukung pengencangan.",
+          "en": "BCSP is an interchangeable-head model that accepts several head styles. This model supports tightening."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -1772,20 +1772,20 @@
         "name": "QLLS/CLLS/PQLLS/PCLLS/TiQLLS/YCLLS",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/qlls-clls-pqlls-pclls-tiqlls-yclls.png",
         "summary": {
-          "id": "QLLS/CLLS/PQLLS/PCLLS/TiQLLS/YCLLS merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "QLLS/CLLS/PQLLS/PCLLS/TiQLLS/YCLLS is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "QLLS/CLLS/PQLLS/PCLLS/TiQLLS/YCLLS adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head. Model ini mendukung pengencangan dan pencegahan kesalahan.",
+          "en": "QLLS/CLLS/PQLLS/PCLLS/TiQLLS/YCLLS is an interchangeable-head model that accepts several head styles. This model supports tightening and error proofing."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -1795,20 +1795,20 @@
         "name": "QSPLS/CSPLS/QRSPLS/SPLS/SPLS-MH/RSPLS/RSPLS-MH/SPLS-N",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/qspls-cspls-qrspls-spls-spls-mh-rspls-rspls-mh-spls-n.jpg",
         "summary": {
-          "id": "QSPLS/CSPLS/QRSPLS/SPLS/SPLS-MH/RSPLS/RSPLS-MH/SPLS-N merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "QSPLS/CSPLS/QRSPLS/SPLS/SPLS-MH/RSPLS/RSPLS-MH/SPLS-N is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "QSPLS/CSPLS/QRSPLS/SPLS/SPLS-MH/RSPLS/RSPLS-MH/SPLS-N adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head. Model ini mendukung pengencangan dan pencegahan kesalahan.",
+          "en": "QSPLS/CSPLS/QRSPLS/SPLS/SPLS-MH/RSPLS/RSPLS-MH/SPLS-N is an interchangeable-head model that accepts several head styles. This model supports tightening and error proofing."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -1818,20 +1818,20 @@
         "name": "CSPFHW",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/cspfhw.jpg",
         "summary": {
-          "id": "CSPFHW merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "CSPFHW is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "CSPFHW adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head. Model ini mendukung pengencangan dan pencegahan kesalahan.",
+          "en": "CSPFHW is an interchangeable-head model that accepts several head styles. This model supports tightening and error proofing."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -1841,24 +1841,24 @@
         "name": "CSPLD",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/cspld.png",
         "summary": {
-          "id": "CSPLD merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "CSPLD is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "CSPLD adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head. Model ini mendukung pengencangan dan pengelolaan data.",
+          "en": "CSPLD is an interchangeable-head model that accepts several head styles. This model supports tightening and data management."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Wireless",
+            "id": "Nirkabel",
             "en": "Wireless"
           },
           {
-            "id": "Data management",
+            "id": "Manajemen Data",
             "en": "Data management"
           }
         ],
@@ -1868,20 +1868,20 @@
         "name": "MPCL",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/mpcl.jpg",
         "summary": {
-          "id": "MPCL merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "MPCL is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "MPCL adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head. Model ini mendukung pengencangan dan pencegahan kesalahan.",
+          "en": "MPCL is an interchangeable-head model that accepts several head styles. This model supports tightening and error proofing."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -1891,20 +1891,20 @@
         "name": "MCSP",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/mcsp.png",
         "summary": {
-          "id": "MCSP merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "MCSP is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "MCSP adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head. Model ini mendukung pengencangan dan pencegahan kesalahan.",
+          "en": "MCSP is an interchangeable-head model that accepts several head styles. This model supports tightening and error proofing."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -1914,28 +1914,28 @@
         "name": "CEM3-G-BT",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/cem3-g-bt.jpg",
         "summary": {
-          "id": "CEM3-G-BT merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "CEM3-G-BT is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "CEM3-G-BT adalah kunci torsi digital Bluetooth untuk transfer data inspeksi atau pengencangan dan opsi pengukuran sudut.",
+          "en": "CEM3-G-BT is a Bluetooth digital torque wrench for inspection or tightening data transfer, with angle-measurement capability."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Wireless",
+            "id": "Nirkabel",
             "en": "Wireless"
           },
           {
-            "id": "Data management",
+            "id": "Manajemen Data",
             "en": "Data management"
           }
         ],
@@ -1945,28 +1945,28 @@
         "name": "CEM3-WF/CEM3-G-WF",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/cem3-wf-cem3-g-wf.png",
         "summary": {
-          "id": "CEM3-WF/CEM3-G-WF merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "CEM3-WF/CEM3-G-WF is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "CEM3-WF/CEM3-G-WF adalah kunci torsi digital dengan komunikasi wireless LAN untuk pencatatan dan pengelolaan data di area kerja.",
+          "en": "CEM3-WF/CEM3-G-WF is a digital torque wrench with wireless LAN for work-area data logging and management."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Wireless",
+            "id": "Nirkabel",
             "en": "Wireless"
           },
           {
-            "id": "Data management",
+            "id": "Manajemen Data",
             "en": "Data management"
           }
         ],
@@ -1976,28 +1976,28 @@
         "name": "FD/FDD",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/fd-fdd.jpg",
         "summary": {
-          "id": "FD/FDD merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "FD/FDD is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "FD/FDD adalah kunci torsi tipe klik yang mentransfer data pengencangan secara nirkabel saat wrench mencapai nilai set.",
+          "en": "FD/FDD is a click-type torque wrench that wirelessly transfers tightening data when the wrench reaches its set value."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Wireless",
+            "id": "Nirkabel",
             "en": "Wireless"
           },
           {
-            "id": "Data management",
+            "id": "Manajemen Data",
             "en": "Data management"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -2007,24 +2007,24 @@
         "name": "FDD-AD",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/fdd-ad.jpg",
         "summary": {
-          "id": "FDD-AD merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "FDD-AD is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "FDD-AD adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head. Model ini mendukung pengencangan, pengelolaan data, dan pencegahan kesalahan.",
+          "en": "FDD-AD is an interchangeable-head model that accepts several head styles. This model supports tightening, data management, and error proofing."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Data management",
+            "id": "Manajemen Data",
             "en": "Data management"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -2034,20 +2034,20 @@
         "name": "CDB-S",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/cdb-s.jpg",
         "summary": {
-          "id": "CDB-S merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "CDB-S is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "CDB-S adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head. Model ini mendukung inspeksi dan pengencangan.",
+          "en": "CDB-S is an interchangeable-head model that accepts several head styles. This model supports inspection and tightening."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -2057,20 +2057,20 @@
         "name": "SCDB-S",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/scdb-s.png",
         "summary": {
-          "id": "SCDB-S merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "SCDB-S is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "SCDB-S adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head. Model ini mendukung inspeksi dan pengencangan.",
+          "en": "SCDB-S is an interchangeable-head model that accepts several head styles. This model supports inspection and tightening."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -2080,20 +2080,20 @@
         "name": "CSF/CF",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/csf-cf.jpg",
         "summary": {
-          "id": "CSF/CF merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "CSF/CF is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "CSF/CF adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head. Model ini mendukung inspeksi dan pengencangan.",
+          "en": "CSF/CF is an interchangeable-head model that accepts several head styles. This model supports inspection and tightening."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -2103,20 +2103,20 @@
         "name": "FHD256",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/fhd256.jpg",
         "summary": {
-          "id": "FHD256 merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "FHD256 is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "FHD256 adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head. Model ini mendukung pengencangan dan pengelolaan data.",
+          "en": "FHD256 is an interchangeable-head model that accepts several head styles. This model supports tightening and data management."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Data management",
+            "id": "Manajemen Data",
             "en": "Data management"
           }
         ],
@@ -2126,20 +2126,20 @@
         "name": "FHDS256",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/fhds256.jpg",
         "summary": {
-          "id": "FHDS256 merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "FHDS256 is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "FHDS256 adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head. Model ini mendukung pengencangan dan pengelolaan data.",
+          "en": "FHDS256 is an interchangeable-head model that accepts several head styles. This model supports tightening and data management."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Data management",
+            "id": "Manajemen Data",
             "en": "Data management"
           }
         ],
@@ -2149,28 +2149,28 @@
         "name": "CEM3-G-BTA",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/cem3-g-bta.png",
         "summary": {
-          "id": "CEM3-G-BTA merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "CEM3-G-BTA is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "CEM3-G-BTA adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head. Model ini mendukung pengencangan, pengelolaan data, dan pencegahan kesalahan.",
+          "en": "CEM3-G-BTA is an interchangeable-head model that accepts several head styles. This model supports tightening, data management, and error proofing."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Wireless",
+            "id": "Nirkabel",
             "en": "Wireless"
           },
           {
-            "id": "Data management",
+            "id": "Manajemen Data",
             "en": "Data management"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -2180,28 +2180,28 @@
         "name": "CEM3-G-BTS/CEM3-G-BTD",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/cem3-g-bts-cem3-g-btd.jpg",
         "summary": {
-          "id": "CEM3-G-BTS/CEM3-G-BTD merupakan famili Interchangeable Head dalam lini Kunci Torsi Kepala Interchangeable Tohnichi.",
-          "en": "CEM3-G-BTS/CEM3-G-BTD is part of Tohnichi's Interchangeable Head lineup within Interchangeable Head Torque Wrenches."
+          "id": "CEM3-G-BTS/CEM3-G-BTD adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head. Model ini mendukung inspeksi, pengencangan, dan pengelolaan data.",
+          "en": "CEM3-G-BTS/CEM3-G-BTD is an interchangeable-head model that accepts several head styles. This model supports inspection, tightening, and data management."
         },
         "tags": [
           {
-            "id": "Interchangeable Head",
+            "id": "Kepala Interchangeable",
             "en": "Interchangeable Head"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Wireless",
+            "id": "Nirkabel",
             "en": "Wireless"
           },
           {
-            "id": "Data management",
+            "id": "Manajemen Data",
             "en": "Data management"
           }
         ],
@@ -2212,24 +2212,24 @@
   {
     "slug": "power-torque-tools",
     "title": {
-      "id": "Power Torque Tools",
+      "id": "Alat Torsi Bertenaga",
       "en": "Power Torque Tools"
     },
     "description": {
-      "id": "Power torque screwdriver dan wrench pneumatik, elektrik, serta battery-powered untuk proses produksi.",
-      "en": "Pneumatic, electric, and battery-powered torque screwdrivers and wrenches for production."
+      "id": "Power torque tools menggunakan tenaga pneumatik, elektrik, atau baterai untuk mempercepat pengencangan berulang dengan kontrol torsi yang konsisten. Pilih obeng torsi bertenaga untuk sekrup kecil dan kunci torsi bertenaga untuk baut, mur, atau kebutuhan torsi yang lebih besar.",
+      "en": "Power torque tools use pneumatic, electric, or battery power to speed up repeated tightening while maintaining consistent torque control. Choose powered torque screwdrivers for small screws and powered torque wrenches for bolts, nuts, or higher-torque work."
     },
     "products": [
       {
         "name": "AUR-mk2",
         "image": "/assets/brands/products/tohnichi/catalog/power-torque-tools/aur-mk2.jpg",
         "summary": {
-          "id": "AUR-mk2 merupakan famili Power Torque Screwdriver dalam lini Power Torque Tools Tohnichi.",
-          "en": "AUR-mk2 is part of Tohnichi's Power Torque Screwdriver lineup within Power Torque Tools."
+          "id": "AUR-mk2 adalah obeng torsi pneumatik berkecepatan tinggi untuk pengencangan presisi pada assembly dan produksi massal.",
+          "en": "AUR-mk2 is a high-speed pneumatic torque screwdriver for precision tightening in assembly and mass production."
         },
         "tags": [
           {
-            "id": "Power Torque Screwdriver",
+            "id": "Obeng Torsi Bertenaga",
             "en": "Power Torque Screwdriver"
           },
           {
@@ -2237,11 +2237,11 @@
             "en": "Power Tool"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Calibration",
+            "id": "Kalibrasi",
             "en": "Calibration"
           }
         ],
@@ -2251,12 +2251,12 @@
         "name": "PTA-G-BT",
         "image": "/assets/brands/products/tohnichi/catalog/power-torque-tools/pta-g-bt.jpg",
         "summary": {
-          "id": "PTA-G-BT merupakan famili Power Torque Screwdriver dalam lini Power Torque Tools Tohnichi.",
-          "en": "PTA-G-BT is part of Tohnichi's Power Torque Screwdriver lineup within Power Torque Tools."
+          "id": "PTA-G-BT adalah obeng torsi elektrik otomatis dengan sensor torsi internal untuk pengencangan presisi dan pengelolaan data.",
+          "en": "PTA-G-BT is a fully automatic electric torque screwdriver with an internal torque sensor for precision tightening and data management."
         },
         "tags": [
           {
-            "id": "Power Torque Screwdriver",
+            "id": "Obeng Torsi Bertenaga",
             "en": "Power Torque Screwdriver"
           },
           {
@@ -2264,15 +2264,15 @@
             "en": "Power Tool"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Data management",
+            "id": "Manajemen Data",
             "en": "Data management"
           }
         ],
@@ -2282,12 +2282,12 @@
         "name": "U/UR",
         "image": "/assets/brands/products/tohnichi/catalog/power-torque-tools/u-ur.jpg",
         "summary": {
-          "id": "U/UR merupakan famili Power Torque Screwdriver dalam lini Power Torque Tools Tohnichi.",
-          "en": "U/UR is part of Tohnichi's Power Torque Screwdriver lineup within Power Torque Tools."
+          "id": "U/UR adalah obeng torsi pneumatik untuk pengencangan volume tinggi pada machine screw, plastic screw, dan tapping screw.",
+          "en": "U/UR is a pneumatic torque screwdriver for high-volume tightening of machine, plastic, and tapping screws."
         },
         "tags": [
           {
-            "id": "Power Torque Screwdriver",
+            "id": "Obeng Torsi Bertenaga",
             "en": "Power Torque Screwdriver"
           },
           {
@@ -2295,7 +2295,7 @@
             "en": "Power Tool"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -2305,12 +2305,12 @@
         "name": "AC3",
         "image": "/assets/brands/products/tohnichi/catalog/power-torque-tools/ac3.png",
         "summary": {
-          "id": "AC3 merupakan famili Power Torque Wrench dalam lini Power Torque Tools Tohnichi.",
-          "en": "AC3 is part of Tohnichi's Power Torque Wrench lineup within Power Torque Tools."
+          "id": "AC3 adalah kunci torsi bertenaga untuk pengencangan baut dan mur. Model ini mendukung pengencangan.",
+          "en": "AC3 is a powered torque wrench for bolt and nut tightening. This model supports tightening."
         },
         "tags": [
           {
-            "id": "Power Torque Wrench",
+            "id": "Kunci Torsi Bertenaga",
             "en": "Power Torque Wrench"
           },
           {
@@ -2318,7 +2318,7 @@
             "en": "Power Tool"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -2328,12 +2328,12 @@
         "name": "A3/A4",
         "image": "/assets/brands/products/tohnichi/catalog/power-torque-tools/a3-a4.jpg",
         "summary": {
-          "id": "A3/A4 merupakan famili Power Torque Wrench dalam lini Power Torque Tools Tohnichi.",
-          "en": "A3/A4 is part of Tohnichi's Power Torque Wrench lineup within Power Torque Tools."
+          "id": "A3/A4 adalah kunci torsi bertenaga untuk pengencangan baut dan mur. Model ini mendukung pengencangan.",
+          "en": "A3/A4 is a powered torque wrench for bolt and nut tightening. This model supports tightening."
         },
         "tags": [
           {
-            "id": "Power Torque Wrench",
+            "id": "Kunci Torsi Bertenaga",
             "en": "Power Torque Wrench"
           },
           {
@@ -2341,7 +2341,7 @@
             "en": "Power Tool"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -2351,12 +2351,12 @@
         "name": "AP2",
         "image": "/assets/brands/products/tohnichi/catalog/power-torque-tools/ap2.png",
         "summary": {
-          "id": "AP2 merupakan famili Power Torque Wrench dalam lini Power Torque Tools Tohnichi.",
-          "en": "AP2 is part of Tohnichi's Power Torque Wrench lineup within Power Torque Tools."
+          "id": "AP2 adalah kunci torsi bertenaga untuk pengencangan baut dan mur. Model ini mendukung pengencangan.",
+          "en": "AP2 is a powered torque wrench for bolt and nut tightening. This model supports tightening."
         },
         "tags": [
           {
-            "id": "Power Torque Wrench",
+            "id": "Kunci Torsi Bertenaga",
             "en": "Power Torque Wrench"
           },
           {
@@ -2364,7 +2364,7 @@
             "en": "Power Tool"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -2374,12 +2374,12 @@
         "name": "HA/HAC/HACQSPDY",
         "image": "/assets/brands/products/tohnichi/catalog/power-torque-tools/ha-hac-hacqspdy.jpg",
         "summary": {
-          "id": "HA/HAC/HACQSPDY merupakan famili Power Torque Wrench dalam lini Power Torque Tools Tohnichi.",
-          "en": "HA/HAC/HACQSPDY is part of Tohnichi's Power Torque Wrench lineup within Power Torque Tools."
+          "id": "HA/HAC/HACQSPDY adalah kunci torsi bertenaga untuk pengencangan baut dan mur. Model ini mendukung pengencangan, kalibrasi, dan pengelolaan data.",
+          "en": "HA/HAC/HACQSPDY is a powered torque wrench for bolt and nut tightening. This model supports tightening, calibration, and data management."
         },
         "tags": [
           {
-            "id": "Power Torque Wrench",
+            "id": "Kunci Torsi Bertenaga",
             "en": "Power Torque Wrench"
           },
           {
@@ -2387,15 +2387,15 @@
             "en": "Power Tool"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Calibration",
+            "id": "Kalibrasi",
             "en": "Calibration"
           },
           {
-            "id": "Data management",
+            "id": "Manajemen Data",
             "en": "Data management"
           }
         ],
@@ -2405,12 +2405,12 @@
         "name": "A",
         "image": "/assets/brands/products/tohnichi/catalog/power-torque-tools/a.jpg",
         "summary": {
-          "id": "A merupakan famili Power Torque Wrench dalam lini Power Torque Tools Tohnichi.",
-          "en": "A is part of Tohnichi's Power Torque Wrench lineup within Power Torque Tools."
+          "id": "A adalah kunci torsi bertenaga untuk pengencangan baut dan mur. Model ini mendukung pengencangan.",
+          "en": "A is a powered torque wrench for bolt and nut tightening. This model supports tightening."
         },
         "tags": [
           {
-            "id": "Power Torque Wrench",
+            "id": "Kunci Torsi Bertenaga",
             "en": "Power Torque Wrench"
           },
           {
@@ -2418,7 +2418,7 @@
             "en": "Power Tool"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -2428,12 +2428,12 @@
         "name": "AC2",
         "image": "/assets/brands/products/tohnichi/catalog/power-torque-tools/ac2.jpg",
         "summary": {
-          "id": "AC2 merupakan famili Power Torque Wrench dalam lini Power Torque Tools Tohnichi.",
-          "en": "AC2 is part of Tohnichi's Power Torque Wrench lineup within Power Torque Tools."
+          "id": "AC2 adalah kunci torsi bertenaga untuk pengencangan baut dan mur. Model ini mendukung pengencangan.",
+          "en": "AC2 is a powered torque wrench for bolt and nut tightening. This model supports tightening."
         },
         "tags": [
           {
-            "id": "Power Torque Wrench",
+            "id": "Kunci Torsi Bertenaga",
             "en": "Power Torque Wrench"
           },
           {
@@ -2441,7 +2441,7 @@
             "en": "Power Tool"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -2452,28 +2452,28 @@
   {
     "slug": "multiple-units",
     "title": {
-      "id": "Multiple Unit",
+      "id": "Unit Pengencangan Multi-spindle",
       "en": "Multiple Units"
     },
     "description": {
-      "id": "Nutrunner pneumatik dan elektrik untuk peralatan pengencangan multi-spindle.",
-      "en": "Pneumatic and electric nutrunners for multi-spindle tightening equipment."
+      "id": "Multiple unit adalah nutrunner untuk mesin pengencangan multi-spindle yang mengencangkan beberapa baut secara bersamaan. Unit dipilih berdasarkan ukuran fastener, jumlah spindle, rentang torsi, dan kebutuhan integrasi ke mesin otomatis.",
+      "en": "Multiple units are nutrunners for multi-spindle machines that tighten several bolts at the same time. Select a unit by fastener size, spindle count, torque range, and the required level of machine integration."
     },
     "products": [
       {
         "name": "MG/MF",
         "image": "/assets/brands/products/tohnichi/catalog/multiple-units/mg-mf.png",
         "summary": {
-          "id": "MG/MF merupakan famili Multiple Unit dalam lini Multiple Unit Tohnichi.",
-          "en": "MG/MF is part of Tohnichi's Multiple Unit lineup within Multiple Units."
+          "id": "MG/MF adalah unit pneumatik untuk otomatisasi pengencangan multi-spindle pada sekrup ukuran kecil.",
+          "en": "MG/MF is a pneumatic unit for automated multi-spindle tightening of small screws."
         },
         "tags": [
           {
-            "id": "Multiple Unit",
+            "id": "Unit Multi-spindle",
             "en": "Multiple Unit"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -2483,16 +2483,16 @@
         "name": "ME/MC2",
         "image": "/assets/brands/products/tohnichi/catalog/multiple-units/me-mc2.jpg",
         "summary": {
-          "id": "ME/MC2 merupakan famili Multiple Unit dalam lini Multiple Unit Tohnichi.",
-          "en": "ME/MC2 is part of Tohnichi's Multiple Unit lineup within Multiple Units."
+          "id": "ME/MC2 adalah unit pengencangan untuk otomatisasi multi-spindle pada fastener berukuran menengah hingga besar.",
+          "en": "ME/MC2 is a tightening unit for automated multi-spindle work on medium-to-large fasteners."
         },
         "tags": [
           {
-            "id": "Multiple Unit",
+            "id": "Unit Multi-spindle",
             "en": "Multiple Unit"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -2503,24 +2503,24 @@
   {
     "slug": "tester-checker",
     "title": {
-      "id": "Tester / Checker",
-      "en": "Tester / Checker"
+      "id": "Tester / Checker Torsi",
+      "en": "Torque Tester / Checker"
     },
     "description": {
-      "id": "Tester untuk kalibrasi dan checker untuk pemeriksaan akurasi harian peralatan torsi.",
-      "en": "Testers for calibration and checkers for daily torque-equipment accuracy checks."
+      "id": "Tester digunakan untuk kalibrasi dan penyetelan alat torsi, sedangkan checker dipakai untuk pemeriksaan cepat atau inspeksi harian di dekat lini produksi. Pilih perangkat sesuai jenis tool, rentang torsi, metode pembebanan, serta kebutuhan judgment dan pengelolaan data.",
+      "en": "Testers are used to calibrate and adjust torque tools, while checkers support quick or daily inspections near the production line. Select equipment by tool type, torque range, loading method, and judgment or data-management requirements."
     },
     "products": [
       {
         "name": "TDT3/TDT3-G",
         "image": "/assets/brands/products/tohnichi/catalog/tester-checker/tdt3-tdt3-g.png",
         "summary": {
-          "id": "TDT3/TDT3-G merupakan famili Torque Screwdriver Tester dalam lini Tester / Checker Tohnichi.",
-          "en": "TDT3/TDT3-G is part of Tohnichi's Torque Screwdriver Tester lineup within Tester / Checker."
+          "id": "TDT3/TDT3-G adalah tester untuk kalibrasi dan penyetelan obeng torsi. Model ini mendukung kalibrasi, pencegahan kesalahan, dan pengukuran.",
+          "en": "TDT3/TDT3-G is a tester for torque screwdriver calibration and adjustment. This model supports calibration, error proofing, and measurement."
         },
         "tags": [
           {
-            "id": "Torque Screwdriver Tester",
+            "id": "Tester Obeng Torsi",
             "en": "Torque Screwdriver Tester"
           },
           {
@@ -2528,15 +2528,15 @@
             "en": "Tester / Checker"
           },
           {
-            "id": "Calibration",
+            "id": "Kalibrasi",
             "en": "Calibration"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           },
           {
-            "id": "Measurement",
+            "id": "Pengukuran",
             "en": "Measurement"
           }
         ],
@@ -2546,12 +2546,12 @@
         "name": "TCC2/TCC2-G",
         "image": "/assets/brands/products/tohnichi/catalog/tester-checker/tcc2-tcc2-g.jpg",
         "summary": {
-          "id": "TCC2/TCC2-G merupakan famili Torque Calibrator and Controller dalam lini Tester / Checker Tohnichi.",
-          "en": "TCC2/TCC2-G is part of Tohnichi's Torque Calibrator and Controller lineup within Tester / Checker."
+          "id": "TCC2/TCC2-G adalah kalibrator dan controller untuk kalibrasi serta pengelolaan data alat torsi. Model ini mendukung kalibrasi dan pengelolaan data.",
+          "en": "TCC2/TCC2-G is a calibrator and controller for torque-tool calibration and data management. This model supports calibration and data management."
         },
         "tags": [
           {
-            "id": "Torque Calibrator and Controller",
+            "id": "Kalibrator dan Controller Torsi",
             "en": "Torque Calibrator and Controller"
           },
           {
@@ -2559,11 +2559,11 @@
             "en": "Tester / Checker"
           },
           {
-            "id": "Calibration",
+            "id": "Kalibrasi",
             "en": "Calibration"
           },
           {
-            "id": "Data management",
+            "id": "Manajemen Data",
             "en": "Data management"
           }
         ],
@@ -2573,12 +2573,12 @@
         "name": "DOTE4 / DOTE4-G",
         "image": "/assets/brands/products/tohnichi/catalog/tester-checker/dote4-dote4-g.png",
         "summary": {
-          "id": "DOTE4 / DOTE4-G merupakan famili Torque Wrench Tester dalam lini Tester / Checker Tohnichi.",
-          "en": "DOTE4 / DOTE4-G is part of Tohnichi's Torque Wrench Tester lineup within Tester / Checker."
+          "id": "DOTE4/DOTE4-G adalah tester kunci torsi digital dengan color judgment untuk kalibrasi dan penyetelan.",
+          "en": "DOTE4/DOTE4-G is a digital torque wrench tester with color judgment for calibration and adjustment."
         },
         "tags": [
           {
-            "id": "Torque Wrench Tester",
+            "id": "Tester Kunci Torsi",
             "en": "Torque Wrench Tester"
           },
           {
@@ -2586,7 +2586,7 @@
             "en": "Tester / Checker"
           },
           {
-            "id": "Calibration",
+            "id": "Kalibrasi",
             "en": "Calibration"
           }
         ],
@@ -2596,12 +2596,12 @@
         "name": "DOTE4-MD2 / DOTE4-G-MD2",
         "image": "/assets/brands/products/tohnichi/catalog/tester-checker/dote4-md2-dote4-g-md2.png",
         "summary": {
-          "id": "DOTE4-MD2 / DOTE4-G-MD2 merupakan famili Torque Wrench Tester dalam lini Tester / Checker Tohnichi.",
-          "en": "DOTE4-MD2 / DOTE4-G-MD2 is part of Tohnichi's Torque Wrench Tester lineup within Tester / Checker."
+          "id": "DOTE4-MD2 / DOTE4-G-MD2 adalah tester untuk kalibrasi dan penyetelan kunci torsi. Model ini mendukung kalibrasi.",
+          "en": "DOTE4-MD2 / DOTE4-G-MD2 is a tester for torque wrench calibration and adjustment. This model supports calibration."
         },
         "tags": [
           {
-            "id": "Torque Wrench Tester",
+            "id": "Tester Kunci Torsi",
             "en": "Torque Wrench Tester"
           },
           {
@@ -2609,7 +2609,7 @@
             "en": "Tester / Checker"
           },
           {
-            "id": "Calibration",
+            "id": "Kalibrasi",
             "en": "Calibration"
           }
         ],
@@ -2619,12 +2619,12 @@
         "name": "TF",
         "image": "/assets/brands/products/tohnichi/catalog/tester-checker/tf.jpg",
         "summary": {
-          "id": "TF merupakan famili Torque Wrench Tester dalam lini Tester / Checker Tohnichi.",
-          "en": "TF is part of Tohnichi's Torque Wrench Tester lineup within Tester / Checker."
+          "id": "TF adalah tester untuk kalibrasi dan penyetelan kunci torsi. Model ini mendukung kalibrasi dan pengukuran.",
+          "en": "TF is a tester for torque wrench calibration and adjustment. This model supports calibration and measurement."
         },
         "tags": [
           {
-            "id": "Torque Wrench Tester",
+            "id": "Tester Kunci Torsi",
             "en": "Torque Wrench Tester"
           },
           {
@@ -2632,11 +2632,11 @@
             "en": "Tester / Checker"
           },
           {
-            "id": "Calibration",
+            "id": "Kalibrasi",
             "en": "Calibration"
           },
           {
-            "id": "Measurement",
+            "id": "Pengukuran",
             "en": "Measurement"
           }
         ],
@@ -2646,12 +2646,12 @@
         "name": "DOT",
         "image": "/assets/brands/products/tohnichi/catalog/tester-checker/dot.jpg",
         "summary": {
-          "id": "DOT merupakan famili Torque Wrench Tester dalam lini Tester / Checker Tohnichi.",
-          "en": "DOT is part of Tohnichi's Torque Wrench Tester lineup within Tester / Checker."
+          "id": "DOT adalah tester untuk kalibrasi dan penyetelan kunci torsi. Model ini mendukung kalibrasi.",
+          "en": "DOT is a tester for torque wrench calibration and adjustment. This model supports calibration."
         },
         "tags": [
           {
-            "id": "Torque Wrench Tester",
+            "id": "Tester Kunci Torsi",
             "en": "Torque Wrench Tester"
           },
           {
@@ -2659,7 +2659,7 @@
             "en": "Tester / Checker"
           },
           {
-            "id": "Calibration",
+            "id": "Kalibrasi",
             "en": "Calibration"
           }
         ],
@@ -2669,12 +2669,12 @@
         "name": "DOTE3/DOTE3-G",
         "image": "/assets/brands/products/tohnichi/catalog/tester-checker/dote3-dote3-g.jpg",
         "summary": {
-          "id": "DOTE3/DOTE3-G merupakan famili Torque Wrench Tester dalam lini Tester / Checker Tohnichi.",
-          "en": "DOTE3/DOTE3-G is part of Tohnichi's Torque Wrench Tester lineup within Tester / Checker."
+          "id": "DOTE3/DOTE3-G adalah tester untuk kalibrasi dan penyetelan kunci torsi. Model ini mendukung kalibrasi dan pengelolaan data.",
+          "en": "DOTE3/DOTE3-G is a tester for torque wrench calibration and adjustment. This model supports calibration and data management."
         },
         "tags": [
           {
-            "id": "Torque Wrench Tester",
+            "id": "Tester Kunci Torsi",
             "en": "Torque Wrench Tester"
           },
           {
@@ -2682,11 +2682,11 @@
             "en": "Tester / Checker"
           },
           {
-            "id": "Calibration",
+            "id": "Kalibrasi",
             "en": "Calibration"
           },
           {
-            "id": "Data management",
+            "id": "Manajemen Data",
             "en": "Data management"
           }
         ],
@@ -2696,12 +2696,12 @@
         "name": "DOT(E3)-MD/DOT(E3-G)-MD",
         "image": "/assets/brands/products/tohnichi/catalog/tester-checker/dot-e3-md-dot-e3-g-md.jpg",
         "summary": {
-          "id": "DOT(E3)-MD/DOT(E3-G)-MD merupakan famili Torque Wrench Tester dalam lini Tester / Checker Tohnichi.",
-          "en": "DOT(E3)-MD/DOT(E3-G)-MD is part of Tohnichi's Torque Wrench Tester lineup within Tester / Checker."
+          "id": "DOT(E3)-MD/DOT(E3-G)-MD adalah tester untuk kalibrasi dan penyetelan kunci torsi. Model ini mendukung kalibrasi.",
+          "en": "DOT(E3)-MD/DOT(E3-G)-MD is a tester for torque wrench calibration and adjustment. This model supports calibration."
         },
         "tags": [
           {
-            "id": "Torque Wrench Tester",
+            "id": "Tester Kunci Torsi",
             "en": "Torque Wrench Tester"
           },
           {
@@ -2709,7 +2709,7 @@
             "en": "Tester / Checker"
           },
           {
-            "id": "Calibration",
+            "id": "Kalibrasi",
             "en": "Calibration"
           }
         ],
@@ -2719,12 +2719,12 @@
         "name": "LC3/LC3-G",
         "image": "/assets/brands/products/tohnichi/catalog/tester-checker/lc3-lc3-g.png",
         "summary": {
-          "id": "LC3/LC3-G merupakan famili Torque Wrench Checker dalam lini Tester / Checker Tohnichi.",
-          "en": "LC3/LC3-G is part of Tohnichi's Torque Wrench Checker lineup within Tester / Checker."
+          "id": "LC3/LC3-G adalah line checker digital untuk pemeriksaan rutin akurasi kunci torsi di dekat lini produksi.",
+          "en": "LC3/LC3-G is a digital line checker for routine torque wrench accuracy checks near the production line."
         },
         "tags": [
           {
-            "id": "Torque Wrench Checker",
+            "id": "Checker Kunci Torsi",
             "en": "Torque Wrench Checker"
           },
           {
@@ -2732,15 +2732,15 @@
             "en": "Tester / Checker"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Calibration",
+            "id": "Kalibrasi",
             "en": "Calibration"
           }
         ],
@@ -2750,12 +2750,12 @@
         "name": "ST3-G/ST3-G-BT",
         "image": "/assets/brands/products/tohnichi/catalog/tester-checker/st3-g-st3-g-bt.jpg",
         "summary": {
-          "id": "ST3-G/ST3-G-BT merupakan famili Torque Wrench Checker dalam lini Tester / Checker Tohnichi.",
-          "en": "ST3-G/ST3-G-BT is part of Tohnichi's Torque Wrench Checker lineup within Tester / Checker."
+          "id": "ST3-G/ST3-G-BT adalah checker untuk pemeriksaan rutin kunci torsi. Model ini mendukung inspeksi, pengencangan, dan perawatan.",
+          "en": "ST3-G/ST3-G-BT is a checker for routine torque wrench verification. This model supports inspection, tightening, and maintenance."
         },
         "tags": [
           {
-            "id": "Torque Wrench Checker",
+            "id": "Checker Kunci Torsi",
             "en": "Torque Wrench Checker"
           },
           {
@@ -2763,15 +2763,15 @@
             "en": "Tester / Checker"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Maintenance",
+            "id": "Perawatan",
             "en": "Maintenance"
           }
         ],
@@ -2781,12 +2781,12 @@
         "name": "DLC/DLC-G",
         "image": "/assets/brands/products/tohnichi/catalog/tester-checker/dlc-dlc-g.jpg",
         "summary": {
-          "id": "DLC/DLC-G merupakan famili Torque Screwdriver Checker dalam lini Tester / Checker Tohnichi.",
-          "en": "DLC/DLC-G is part of Tohnichi's Torque Screwdriver Checker lineup within Tester / Checker."
+          "id": "DLC/DLC-G adalah checker obeng torsi untuk pemeriksaan harian yang cepat sebelum proses produksi dimulai.",
+          "en": "DLC/DLC-G is a torque screwdriver checker for quick daily checks before production starts."
         },
         "tags": [
           {
-            "id": "Torque Screwdriver Checker",
+            "id": "Checker Obeng Torsi",
             "en": "Torque Screwdriver Checker"
           },
           {
@@ -2794,11 +2794,11 @@
             "en": "Tester / Checker"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Maintenance",
+            "id": "Perawatan",
             "en": "Maintenance"
           }
         ],
@@ -2813,16 +2813,16 @@
       "en": "Torque Measuring Equipment"
     },
     "description": {
-      "id": "Torque gauge, meter, sensor, serta calibration kit untuk pengukuran dari torsi sangat kecil hingga industrial.",
-      "en": "Torque gauges, meters, sensors, and calibration kits from minute-torque to industrial measurement."
+      "id": "Peralatan pengukuran torsi membaca torsi putar pada komponen, tool, cap, atau mekanisme lain untuk inspeksi dan pengembangan proses. Pilih torque gauge untuk pengukuran genggam, torque meter untuk benda uji, torque sensor untuk sistem terintegrasi, atau calibration kit untuk verifikasi standar.",
+      "en": "Torque measuring equipment reads rotational torque on components, tools, caps, or other mechanisms for inspection and process development. Choose a torque gauge for handheld measurement, torque meter for test pieces, torque sensor for integrated systems, or a calibration kit for standards verification."
     },
     "products": [
       {
         "name": "ATG/BTG(-S)",
         "image": "/assets/brands/products/tohnichi/catalog/torque-measuring-equipment/atg-btg-s.png",
         "summary": {
-          "id": "ATG/BTG(-S) merupakan famili Torque Gauge dalam lini Peralatan Pengukuran Torsi Tohnichi.",
-          "en": "ATG/BTG(-S) is part of Tohnichi's Torque Gauge lineup within Torque Measuring Equipment."
+          "id": "ATG/BTG(-S) adalah torque gauge analog untuk pengukuran, inspeksi, atau pengencangan pada rentang torsi sangat kecil.",
+          "en": "ATG/BTG(-S) is an analog torque gauge for measurement, inspection, or tightening in very small torque ranges."
         },
         "tags": [
           {
@@ -2830,15 +2830,15 @@
             "en": "Torque Gauge"
           },
           {
-            "id": "Measurement",
+            "id": "Pengukuran",
             "en": "Measurement"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -2848,8 +2848,8 @@
         "name": "ATGE/ATGE-G",
         "image": "/assets/brands/products/tohnichi/catalog/torque-measuring-equipment/atge-atge-g.png",
         "summary": {
-          "id": "ATGE/ATGE-G merupakan famili Torque Gauge dalam lini Peralatan Pengukuran Torsi Tohnichi.",
-          "en": "ATGE/ATGE-G is part of Tohnichi's Torque Gauge lineup within Torque Measuring Equipment."
+          "id": "ATGE/ATGE-G adalah torque gauge untuk mengukur torsi sangat kecil. Model ini mendukung pengukuran, inspeksi, dan pengencangan.",
+          "en": "ATGE/ATGE-G is a torque gauge for very small torque measurement. This model supports measurement, inspection, and tightening."
         },
         "tags": [
           {
@@ -2857,15 +2857,15 @@
             "en": "Torque Gauge"
           },
           {
-            "id": "Measurement",
+            "id": "Pengukuran",
             "en": "Measurement"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -2875,8 +2875,8 @@
         "name": "BTGE/BTGE-G",
         "image": "/assets/brands/products/tohnichi/catalog/torque-measuring-equipment/btge-btge-g.png",
         "summary": {
-          "id": "BTGE/BTGE-G merupakan famili Torque Gauge dalam lini Peralatan Pengukuran Torsi Tohnichi.",
-          "en": "BTGE/BTGE-G is part of Tohnichi's Torque Gauge lineup within Torque Measuring Equipment."
+          "id": "BTGE/BTGE-G adalah torque gauge untuk mengukur torsi sangat kecil. Model ini mendukung pengukuran, inspeksi, dan pengencangan.",
+          "en": "BTGE/BTGE-G is a torque gauge for very small torque measurement. This model supports measurement, inspection, and tightening."
         },
         "tags": [
           {
@@ -2884,15 +2884,15 @@
             "en": "Torque Gauge"
           },
           {
-            "id": "Measurement",
+            "id": "Pengukuran",
             "en": "Measurement"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -2902,8 +2902,8 @@
         "name": "TME3-G",
         "image": "/assets/brands/products/tohnichi/catalog/torque-measuring-equipment/tme3-g.jpg",
         "summary": {
-          "id": "TME3-G merupakan famili Torque Meter dalam lini Peralatan Pengukuran Torsi Tohnichi.",
-          "en": "TME3-G is part of Tohnichi's Torque Meter lineup within Torque Measuring Equipment."
+          "id": "TME3-G adalah torque meter digital untuk mengukur opening torque pada bottle cap dan benda uji putar serupa.",
+          "en": "TME3-G is a digital torque meter for bottle-cap opening torque and similar rotational test pieces."
         },
         "tags": [
           {
@@ -2911,7 +2911,7 @@
             "en": "Torque Meter"
           },
           {
-            "id": "Measurement",
+            "id": "Pengukuran",
             "en": "Measurement"
           }
         ],
@@ -2921,8 +2921,8 @@
         "name": "5TM",
         "image": "/assets/brands/products/tohnichi/catalog/torque-measuring-equipment/5tm.jpg",
         "summary": {
-          "id": "5TM merupakan famili Torque Meter dalam lini Peralatan Pengukuran Torsi Tohnichi.",
-          "en": "5TM is part of Tohnichi's Torque Meter lineup within Torque Measuring Equipment."
+          "id": "5TM adalah torque meter untuk mengukur torsi putar pada benda uji. Model ini mendukung pengukuran dan pengencangan.",
+          "en": "5TM is a torque meter for rotational torque measurement on test pieces. This model supports measurement and tightening."
         },
         "tags": [
           {
@@ -2930,11 +2930,11 @@
             "en": "Torque Meter"
           },
           {
-            "id": "Measurement",
+            "id": "Pengukuran",
             "en": "Measurement"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -2944,8 +2944,8 @@
         "name": "TM",
         "image": "/assets/brands/products/tohnichi/catalog/torque-measuring-equipment/tm.jpg",
         "summary": {
-          "id": "TM merupakan famili Torque Meter dalam lini Peralatan Pengukuran Torsi Tohnichi.",
-          "en": "TM is part of Tohnichi's Torque Meter lineup within Torque Measuring Equipment."
+          "id": "TM adalah torque meter untuk mengukur torsi putar pada benda uji. Model ini mendukung pengukuran, inspeksi, dan pengencangan.",
+          "en": "TM is a torque meter for rotational torque measurement on test pieces. This model supports measurement, inspection, and tightening."
         },
         "tags": [
           {
@@ -2953,15 +2953,15 @@
             "en": "Torque Meter"
           },
           {
-            "id": "Measurement",
+            "id": "Pengukuran",
             "en": "Measurement"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -2971,8 +2971,8 @@
         "name": "TME2",
         "image": "/assets/brands/products/tohnichi/catalog/torque-measuring-equipment/tme2.jpg",
         "summary": {
-          "id": "TME2 merupakan famili Torque Meter dalam lini Peralatan Pengukuran Torsi Tohnichi.",
-          "en": "TME2 is part of Tohnichi's Torque Meter lineup within Torque Measuring Equipment."
+          "id": "TME2 adalah torque meter untuk mengukur torsi putar pada benda uji. Model ini mendukung pengukuran, inspeksi, dan pengelolaan data.",
+          "en": "TME2 is a torque meter for rotational torque measurement on test pieces. This model supports measurement, inspection, and data management."
         },
         "tags": [
           {
@@ -2980,15 +2980,15 @@
             "en": "Torque Meter"
           },
           {
-            "id": "Measurement",
+            "id": "Pengukuran",
             "en": "Measurement"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Data management",
+            "id": "Manajemen Data",
             "en": "Data management"
           }
         ],
@@ -2998,20 +2998,20 @@
         "name": "TCF",
         "image": "/assets/brands/products/tohnichi/catalog/torque-measuring-equipment/tcf.jpg",
         "summary": {
-          "id": "TCF merupakan famili Torque Sensor dalam lini Peralatan Pengukuran Torsi Tohnichi.",
-          "en": "TCF is part of Tohnichi's Torque Sensor lineup within Torque Measuring Equipment."
+          "id": "TCF adalah sensor torsi fixed-type untuk memeriksa torque tool, nutrunner, dan perangkat penghasil torsi lainnya.",
+          "en": "TCF is a fixed torque sensor for checking torque tools, nutrunners, and other torque-generating equipment."
         },
         "tags": [
           {
-            "id": "Torque Sensor",
+            "id": "Sensor Torsi",
             "en": "Torque Sensor"
           },
           {
-            "id": "Measurement",
+            "id": "Pengukuran",
             "en": "Measurement"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           }
         ],
@@ -3021,20 +3021,20 @@
         "name": "TCR",
         "image": "/assets/brands/products/tohnichi/catalog/torque-measuring-equipment/tcr.jpg",
         "summary": {
-          "id": "TCR merupakan famili Torque Sensor dalam lini Peralatan Pengukuran Torsi Tohnichi.",
-          "en": "TCR is part of Tohnichi's Torque Sensor lineup within Torque Measuring Equipment."
+          "id": "TCR adalah sensor torsi untuk pengukuran yang terintegrasi ke alat atau sistem. Model ini mendukung pengukuran dan pengencangan.",
+          "en": "TCR is a torque sensor for measurement integrated into tools or systems. This model supports measurement and tightening."
         },
         "tags": [
           {
-            "id": "Torque Sensor",
+            "id": "Sensor Torsi",
             "en": "Torque Sensor"
           },
           {
-            "id": "Measurement",
+            "id": "Pengukuran",
             "en": "Measurement"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -3044,8 +3044,8 @@
         "name": "Calibration Kit",
         "image": "/assets/brands/products/tohnichi/catalog/torque-measuring-equipment/calibration-kit.jpg",
         "summary": {
-          "id": "Calibration Kit merupakan famili Calibration Kit dalam lini Peralatan Pengukuran Torsi Tohnichi.",
-          "en": "Calibration Kit is part of Tohnichi's Calibration Kit lineup within Torque Measuring Equipment."
+          "id": "Calibration Kit adalah calibration kit untuk verifikasi alat ukur torsi. Model ini mendukung pengukuran, inspeksi, dan kalibrasi.",
+          "en": "Calibration Kit is a calibration kit for torque measuring equipment verification. This model supports measurement, inspection, and calibration."
         },
         "tags": [
           {
@@ -3053,15 +3053,15 @@
             "en": "Calibration Kit"
           },
           {
-            "id": "Measurement",
+            "id": "Pengukuran",
             "en": "Measurement"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Calibration",
+            "id": "Kalibrasi",
             "en": "Calibration"
           }
         ],
@@ -3076,16 +3076,16 @@
       "en": "Force Measuring Instruments"
     },
     "description": {
-      "id": "Instrumen pengukuran dan stabilisasi axial bolt tension secara hydraulic maupun ultrasonic.",
-      "en": "Hydraulic and ultrasonic instruments for measuring and stabilizing axial bolt tension."
+      "id": "Instrumen pengukuran gaya mengevaluasi axial tension pada baut, bukan hanya nilai torsi yang diberikan. Produk ini membantu analisis hubungan torsi-tension, pemeriksaan non-destruktif, kalibrasi, dan stabilisasi bolt tension pada sambungan kritis.",
+      "en": "Force measuring instruments evaluate bolt axial tension rather than only the applied torque. They support torque-tension analysis, non-destructive inspection, calibration, and bolt-tension stabilization on critical joints."
     },
     "products": [
       {
         "name": "TT3000",
         "image": "/assets/brands/products/tohnichi/catalog/force-measuring-instruments/tt3000.jpg",
         "summary": {
-          "id": "TT3000 merupakan famili Tension Meter dalam lini Instrumen Pengukuran Gaya Tohnichi.",
-          "en": "TT3000 is part of Tohnichi's Tension Meter lineup within Force Measuring Instruments."
+          "id": "TT3000 adalah ultrasonic tension meter untuk mengukur dan memantau perubahan axial tension baut secara non-destruktif.",
+          "en": "TT3000 is an ultrasonic tension meter for non-destructive measurement and monitoring of bolt axial tension."
         },
         "tags": [
           {
@@ -3093,7 +3093,7 @@
             "en": "Tension Meter"
           },
           {
-            "id": "Force Measurement",
+            "id": "Pengukuran Gaya",
             "en": "Force Measurement"
           }
         ],
@@ -3103,8 +3103,8 @@
         "name": "BTM/B-BTM",
         "image": "/assets/brands/products/tohnichi/catalog/force-measuring-instruments/btm-b-btm.jpg",
         "summary": {
-          "id": "BTM/B-BTM merupakan famili Tension Meter dalam lini Instrumen Pengukuran Gaya Tohnichi.",
-          "en": "BTM/B-BTM is part of Tohnichi's Tension Meter lineup within Force Measuring Instruments."
+          "id": "BTM/B-BTM adalah bolt tension meter hidrolik untuk mengevaluasi koefisien torsi dan kekuatan baut.",
+          "en": "BTM/B-BTM is a hydraulic bolt-tension meter for evaluating torque coefficient and bolt strength."
         },
         "tags": [
           {
@@ -3112,11 +3112,11 @@
             "en": "Tension Meter"
           },
           {
-            "id": "Force Measurement",
+            "id": "Pengukuran Gaya",
             "en": "Force Measurement"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -3126,8 +3126,8 @@
         "name": "AFC-20G2",
         "image": "/assets/brands/products/tohnichi/catalog/force-measuring-instruments/afc-20g2.jpg",
         "summary": {
-          "id": "AFC-20G2 merupakan famili Tension Meter dalam lini Instrumen Pengukuran Gaya Tohnichi.",
-          "en": "AFC-20G2 is part of Tohnichi's Tension Meter lineup within Force Measuring Instruments."
+          "id": "AFC-20G2 adalah perangkat kalibrasi axial tension untuk mendukung pengukuran menggunakan ultrasonic tension meter seri TT.",
+          "en": "AFC-20G2 is an axial-tension calibration device for measurements made with TT-series ultrasonic tension meters."
         },
         "tags": [
           {
@@ -3135,19 +3135,19 @@
             "en": "Tension Meter"
           },
           {
-            "id": "Force Measurement",
+            "id": "Pengukuran Gaya",
             "en": "Force Measurement"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Calibration",
+            "id": "Kalibrasi",
             "en": "Calibration"
           },
           {
-            "id": "Measurement",
+            "id": "Pengukuran",
             "en": "Measurement"
           }
         ],
@@ -3157,8 +3157,8 @@
         "name": "TT2000",
         "image": "/assets/brands/products/tohnichi/catalog/force-measuring-instruments/tt2000.jpg",
         "summary": {
-          "id": "TT2000 merupakan famili Tension Meter dalam lini Instrumen Pengukuran Gaya Tohnichi.",
-          "en": "TT2000 is part of Tohnichi's Tension Meter lineup within Force Measuring Instruments."
+          "id": "TT2000 adalah tension meter untuk mengevaluasi axial tension pada baut.",
+          "en": "TT2000 is a tension meter for evaluating bolt axial tension."
         },
         "tags": [
           {
@@ -3166,7 +3166,7 @@
             "en": "Tension Meter"
           },
           {
-            "id": "Force Measurement",
+            "id": "Pengukuran Gaya",
             "en": "Force Measurement"
           }
         ],
@@ -3176,20 +3176,20 @@
         "name": "Fcon",
         "image": "/assets/brands/products/tohnichi/catalog/force-measuring-instruments/fcon.jpg",
         "summary": {
-          "id": "Fcon merupakan famili Bolt Tension Stabilization dalam lini Instrumen Pengukuran Gaya Tohnichi.",
-          "en": "Fcon is part of Tohnichi's Bolt Tension Stabilization lineup within Force Measuring Instruments."
+          "id": "Fcon adalah solusi untuk menstabilkan axial tension pada sambungan baut. Model ini mendukung pengencangan.",
+          "en": "Fcon is a solution for stabilizing axial tension in bolted joints. This model supports tightening."
         },
         "tags": [
           {
-            "id": "Bolt Tension Stabilization",
+            "id": "Stabilisasi Bolt Tension",
             "en": "Bolt Tension Stabilization"
           },
           {
-            "id": "Force Measurement",
+            "id": "Pengukuran Gaya",
             "en": "Force Measurement"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -3204,28 +3204,28 @@
       "en": "Optional Equipment"
     },
     "description": {
-      "id": "Attachment, indicator, receiver, perangkat verifikasi, pemrosesan data, dan torque attachment.",
-      "en": "Attachments, indicators, receivers, verification equipment, data processing, and torque attachments."
+      "id": "Peralatan opsional melengkapi torque tools dan alat ukur dengan receiver, indicator, interface I/O, printer, software, attachment, serta perangkat komunikasi. Pilih opsi berdasarkan tool utama, jenis sinyal, metode transfer data, dan fungsi Pokayoke yang akan dibangun.",
+      "en": "Optional equipment extends torque tools and measuring instruments with receivers, indicators, I/O interfaces, printers, software, attachments, and communication devices. Select options by the primary tool, signal type, data-transfer method, and required Pokayoke function."
     },
     "products": [
       {
         "name": "TP/DTF/TTF+ATF",
         "image": "/assets/brands/products/tohnichi/catalog/optional-equipment/tp-dtf-ttf-atf.jpg",
         "summary": {
-          "id": "TP/DTF/TTF+ATF merupakan famili Attachment for TCF dalam lini Peralatan Opsional Tohnichi.",
-          "en": "TP/DTF/TTF+ATF is part of Tohnichi's Attachment for TCF lineup within Optional Equipment."
+          "id": "TP/DTF/TTF+ATF adalah attachment untuk membantu pengukuran menggunakan sensor TCF. Model ini mendukung pengukuran.",
+          "en": "TP/DTF/TTF+ATF is an attachment that supports measurement with a TCF sensor. This model supports measurement."
         },
         "tags": [
           {
-            "id": "Attachment for TCF",
+            "id": "Attachment untuk TCF",
             "en": "Attachment for TCF"
           },
           {
-            "id": "Optional Equipment",
+            "id": "Peralatan Opsional",
             "en": "Optional Equipment"
           },
           {
-            "id": "Measurement",
+            "id": "Pengukuran",
             "en": "Measurement"
           }
         ],
@@ -3235,20 +3235,20 @@
         "name": "CD5",
         "image": "/assets/brands/products/tohnichi/catalog/optional-equipment/cd5.jpg",
         "summary": {
-          "id": "CD5 merupakan famili Torque Indicator dalam lini Peralatan Opsional Tohnichi.",
-          "en": "CD5 is part of Tohnichi's Torque Indicator lineup within Optional Equipment."
+          "id": "CD5 adalah indikator digital untuk menampilkan hasil dari sensor torsi. Model ini mendukung pengukuran.",
+          "en": "CD5 is a digital indicator for displaying torque-sensor results. This model supports measurement."
         },
         "tags": [
           {
-            "id": "Torque Indicator",
+            "id": "Indikator Torsi",
             "en": "Torque Indicator"
           },
           {
-            "id": "Optional Equipment",
+            "id": "Peralatan Opsional",
             "en": "Optional Equipment"
           },
           {
-            "id": "Measurement",
+            "id": "Pengukuran",
             "en": "Measurement"
           }
         ],
@@ -3258,28 +3258,28 @@
         "name": "R-CM",
         "image": "/assets/brands/products/tohnichi/catalog/optional-equipment/r-cm.png",
         "summary": {
-          "id": "R-CM merupakan famili Torque Verification Equipment dalam lini Peralatan Opsional Tohnichi.",
-          "en": "R-CM is part of Tohnichi's Torque Verification Equipment lineup within Optional Equipment."
+          "id": "R-CM adalah receiver nirkabel modular untuk menerima sinyal dari torque tool Pokayoke dan meneruskannya ke sistem lini.",
+          "en": "R-CM is a modular wireless receiver that collects signals from Pokayoke torque tools and passes them to the line system."
         },
         "tags": [
           {
-            "id": "Torque Verification Equipment",
+            "id": "Peralatan Verifikasi Torsi",
             "en": "Torque Verification Equipment"
           },
           {
-            "id": "Optional Equipment",
+            "id": "Peralatan Opsional",
             "en": "Optional Equipment"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Wireless",
+            "id": "Nirkabel",
             "en": "Wireless"
           },
           {
-            "id": "Data management",
+            "id": "Manajemen Data",
             "en": "Data management"
           }
         ],
@@ -3289,24 +3289,24 @@
         "name": "IO-CM",
         "image": "/assets/brands/products/tohnichi/catalog/optional-equipment/io-cm.png",
         "summary": {
-          "id": "IO-CM merupakan famili Torque Verification Equipment dalam lini Peralatan Opsional Tohnichi.",
-          "en": "IO-CM is part of Tohnichi's Torque Verification Equipment lineup within Optional Equipment."
+          "id": "IO-CM adalah perangkat verifikasi untuk membangun fungsi judgment atau Pokayoke. Model ini mendukung pencegahan kesalahan.",
+          "en": "IO-CM is a verification device for judgment or Pokayoke functions. This model supports error proofing."
         },
         "tags": [
           {
-            "id": "Torque Verification Equipment",
+            "id": "Peralatan Verifikasi Torsi",
             "en": "Torque Verification Equipment"
           },
           {
-            "id": "Optional Equipment",
+            "id": "Peralatan Opsional",
             "en": "Optional Equipment"
           },
           {
-            "id": "Wireless",
+            "id": "Nirkabel",
             "en": "Wireless"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -3316,24 +3316,24 @@
         "name": "BZ-CM",
         "image": "/assets/brands/products/tohnichi/catalog/optional-equipment/bz-cm.png",
         "summary": {
-          "id": "BZ-CM merupakan famili Torque Verification Equipment dalam lini Peralatan Opsional Tohnichi.",
-          "en": "BZ-CM is part of Tohnichi's Torque Verification Equipment lineup within Optional Equipment."
+          "id": "BZ-CM adalah perangkat verifikasi untuk membangun fungsi judgment atau Pokayoke. Model ini mendukung inspeksi.",
+          "en": "BZ-CM is a verification device for judgment or Pokayoke functions. This model supports inspection."
         },
         "tags": [
           {
-            "id": "Torque Verification Equipment",
+            "id": "Peralatan Verifikasi Torsi",
             "en": "Torque Verification Equipment"
           },
           {
-            "id": "Optional Equipment",
+            "id": "Peralatan Opsional",
             "en": "Optional Equipment"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Wireless",
+            "id": "Nirkabel",
             "en": "Wireless"
           }
         ],
@@ -3343,28 +3343,28 @@
         "name": "SB-FH2",
         "image": "/assets/brands/products/tohnichi/catalog/optional-equipment/sb-fh2.png",
         "summary": {
-          "id": "SB-FH2 merupakan famili Torque Verification Equipment dalam lini Peralatan Opsional Tohnichi.",
-          "en": "SB-FH2 is part of Tohnichi's Torque Verification Equipment lineup within Optional Equipment."
+          "id": "SB-FH2 adalah perangkat verifikasi untuk membangun fungsi judgment atau Pokayoke. Model ini mendukung pengelolaan data dan pencegahan kesalahan.",
+          "en": "SB-FH2 is a verification device for judgment or Pokayoke functions. This model supports data management and error proofing."
         },
         "tags": [
           {
-            "id": "Torque Verification Equipment",
+            "id": "Peralatan Verifikasi Torsi",
             "en": "Torque Verification Equipment"
           },
           {
-            "id": "Optional Equipment",
+            "id": "Peralatan Opsional",
             "en": "Optional Equipment"
           },
           {
-            "id": "Wireless",
+            "id": "Nirkabel",
             "en": "Wireless"
           },
           {
-            "id": "Data management",
+            "id": "Manajemen Data",
             "en": "Data management"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -3374,24 +3374,24 @@
         "name": "CNA-4mk3",
         "image": "/assets/brands/products/tohnichi/catalog/optional-equipment/cna-4mk3.jpg",
         "summary": {
-          "id": "CNA-4mk3 merupakan famili Torque Verification Equipment dalam lini Peralatan Opsional Tohnichi.",
-          "en": "CNA-4mk3 is part of Tohnichi's Torque Verification Equipment lineup within Optional Equipment."
+          "id": "CNA-4mk3 adalah count checker Pokayoke untuk memverifikasi jumlah pengencangan dan membantu mencegah titik yang terlewat.",
+          "en": "CNA-4mk3 is a Pokayoke count checker that verifies tightening counts and helps prevent missed points."
         },
         "tags": [
           {
-            "id": "Torque Verification Equipment",
+            "id": "Peralatan Verifikasi Torsi",
             "en": "Torque Verification Equipment"
           },
           {
-            "id": "Optional Equipment",
+            "id": "Peralatan Opsional",
             "en": "Optional Equipment"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -3401,28 +3401,28 @@
         "name": "R-BT",
         "image": "/assets/brands/products/tohnichi/catalog/optional-equipment/r-bt.jpg",
         "summary": {
-          "id": "R-BT merupakan famili Torque Verification Equipment dalam lini Peralatan Opsional Tohnichi.",
-          "en": "R-BT is part of Tohnichi's Torque Verification Equipment lineup within Optional Equipment."
+          "id": "R-BT adalah perangkat verifikasi untuk membangun fungsi judgment atau Pokayoke. Model ini mendukung inspeksi dan pengencangan.",
+          "en": "R-BT is a verification device for judgment or Pokayoke functions. This model supports inspection and tightening."
         },
         "tags": [
           {
-            "id": "Torque Verification Equipment",
+            "id": "Peralatan Verifikasi Torsi",
             "en": "Torque Verification Equipment"
           },
           {
-            "id": "Optional Equipment",
+            "id": "Peralatan Opsional",
             "en": "Optional Equipment"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Wireless",
+            "id": "Nirkabel",
             "en": "Wireless"
           }
         ],
@@ -3432,16 +3432,16 @@
         "name": "I/O-FH256",
         "image": "/assets/brands/products/tohnichi/catalog/optional-equipment/i-o-fh256.jpg",
         "summary": {
-          "id": "I/O-FH256 merupakan famili Torque Verification Equipment dalam lini Peralatan Opsional Tohnichi.",
-          "en": "I/O-FH256 is part of Tohnichi's Torque Verification Equipment lineup within Optional Equipment."
+          "id": "I/O-FH256 adalah perangkat verifikasi untuk membangun fungsi judgment atau Pokayoke.",
+          "en": "I/O-FH256 is a verification device for judgment or Pokayoke functions."
         },
         "tags": [
           {
-            "id": "Torque Verification Equipment",
+            "id": "Peralatan Verifikasi Torsi",
             "en": "Torque Verification Equipment"
           },
           {
-            "id": "Optional Equipment",
+            "id": "Peralatan Opsional",
             "en": "Optional Equipment"
           }
         ],
@@ -3451,24 +3451,24 @@
         "name": "SB-FH256",
         "image": "/assets/brands/products/tohnichi/catalog/optional-equipment/sb-fh256.jpg",
         "summary": {
-          "id": "SB-FH256 merupakan famili Torque Verification Equipment dalam lini Peralatan Opsional Tohnichi.",
-          "en": "SB-FH256 is part of Tohnichi's Torque Verification Equipment lineup within Optional Equipment."
+          "id": "SB-FH256 adalah perangkat verifikasi untuk membangun fungsi judgment atau Pokayoke. Model ini mendukung pencegahan kesalahan.",
+          "en": "SB-FH256 is a verification device for judgment or Pokayoke functions. This model supports error proofing."
         },
         "tags": [
           {
-            "id": "Torque Verification Equipment",
+            "id": "Peralatan Verifikasi Torsi",
             "en": "Torque Verification Equipment"
           },
           {
-            "id": "Optional Equipment",
+            "id": "Peralatan Opsional",
             "en": "Optional Equipment"
           },
           {
-            "id": "Wireless",
+            "id": "Nirkabel",
             "en": "Wireless"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -3478,28 +3478,28 @@
         "name": "TDMS App",
         "image": "/assets/brands/products/tohnichi/catalog/optional-equipment/tdms-app.png",
         "summary": {
-          "id": "TDMS App merupakan famili Data Processing Equipment dalam lini Peralatan Opsional Tohnichi.",
-          "en": "TDMS App is part of Tohnichi's Data Processing Equipment lineup within Optional Equipment."
+          "id": "TDMS App adalah aplikasi pengelolaan data yang menerima, menyimpan, dan mengolah hasil dari perangkat Tohnichi berkemampuan Bluetooth.",
+          "en": "TDMS App is a data-management application that receives, stores, and processes results from Bluetooth-enabled Tohnichi devices."
         },
         "tags": [
           {
-            "id": "Data Processing Equipment",
+            "id": "Peralatan Pemrosesan Data",
             "en": "Data Processing Equipment"
           },
           {
-            "id": "Optional Equipment",
+            "id": "Peralatan Opsional",
             "en": "Optional Equipment"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Wireless",
+            "id": "Nirkabel",
             "en": "Wireless"
           }
         ],
@@ -3509,28 +3509,28 @@
         "name": "TPC/TPC2",
         "image": "/assets/brands/products/tohnichi/catalog/optional-equipment/tpc-tpc2.jpg",
         "summary": {
-          "id": "TPC/TPC2 merupakan famili Data Processing Equipment dalam lini Peralatan Opsional Tohnichi.",
-          "en": "TPC/TPC2 is part of Tohnichi's Data Processing Equipment lineup within Optional Equipment."
+          "id": "TPC/TPC2 adalah protocol converter untuk menghubungkan produk Tohnichi ke sistem lini dengan format komunikasi yang berbeda.",
+          "en": "TPC/TPC2 is a protocol converter that connects Tohnichi products to line systems using different communication formats."
         },
         "tags": [
           {
-            "id": "Data Processing Equipment",
+            "id": "Peralatan Pemrosesan Data",
             "en": "Data Processing Equipment"
           },
           {
-            "id": "Optional Equipment",
+            "id": "Peralatan Opsional",
             "en": "Optional Equipment"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Data management",
+            "id": "Manajemen Data",
             "en": "Data management"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -3540,24 +3540,24 @@
         "name": "EPP16M3",
         "image": "/assets/brands/products/tohnichi/catalog/optional-equipment/epp16m3.jpg",
         "summary": {
-          "id": "EPP16M3 merupakan famili Data Processing Equipment dalam lini Peralatan Opsional Tohnichi.",
-          "en": "EPP16M3 is part of Tohnichi's Data Processing Equipment lineup within Optional Equipment."
+          "id": "EPP16M3 adalah perangkat pemrosesan untuk transfer, pencatatan, atau pengelolaan data torsi. Model ini mendukung pengelolaan data dan pengukuran.",
+          "en": "EPP16M3 is a processing device for torque-data transfer, logging, or management. This model supports data management and measurement."
         },
         "tags": [
           {
-            "id": "Data Processing Equipment",
+            "id": "Peralatan Pemrosesan Data",
             "en": "Data Processing Equipment"
           },
           {
-            "id": "Optional Equipment",
+            "id": "Peralatan Opsional",
             "en": "Optional Equipment"
           },
           {
-            "id": "Data management",
+            "id": "Manajemen Data",
             "en": "Data management"
           },
           {
-            "id": "Measurement",
+            "id": "Pengukuran",
             "en": "Measurement"
           }
         ],
@@ -3567,16 +3567,16 @@
         "name": "BP-100-3",
         "image": "/assets/brands/products/tohnichi/catalog/optional-equipment/bp-100-3.jpg",
         "summary": {
-          "id": "BP-100-3 merupakan famili Data Processing Equipment dalam lini Peralatan Opsional Tohnichi.",
-          "en": "BP-100-3 is part of Tohnichi's Data Processing Equipment lineup within Optional Equipment."
+          "id": "BP-100-3 adalah perangkat pemrosesan untuk transfer, pencatatan, atau pengelolaan data torsi.",
+          "en": "BP-100-3 is a processing device for torque-data transfer, logging, or management."
         },
         "tags": [
           {
-            "id": "Data Processing Equipment",
+            "id": "Peralatan Pemrosesan Data",
             "en": "Data Processing Equipment"
           },
           {
-            "id": "Optional Equipment",
+            "id": "Peralatan Opsional",
             "en": "Optional Equipment"
           }
         ],
@@ -3586,16 +3586,16 @@
         "name": "BP-100-4",
         "image": "/assets/brands/products/tohnichi/catalog/optional-equipment/bp-100-4.jpg",
         "summary": {
-          "id": "BP-100-4 merupakan famili Data Processing Equipment dalam lini Peralatan Opsional Tohnichi.",
-          "en": "BP-100-4 is part of Tohnichi's Data Processing Equipment lineup within Optional Equipment."
+          "id": "BP-100-4 adalah perangkat pemrosesan untuk transfer, pencatatan, atau pengelolaan data torsi.",
+          "en": "BP-100-4 is a processing device for torque-data transfer, logging, or management."
         },
         "tags": [
           {
-            "id": "Data Processing Equipment",
+            "id": "Peralatan Pemrosesan Data",
             "en": "Data Processing Equipment"
           },
           {
-            "id": "Optional Equipment",
+            "id": "Peralatan Opsional",
             "en": "Optional Equipment"
           }
         ],
@@ -3605,20 +3605,20 @@
         "name": "R-DT999",
         "image": "/assets/brands/products/tohnichi/catalog/optional-equipment/r-dt999.jpg",
         "summary": {
-          "id": "R-DT999 merupakan famili Data Processing Equipment dalam lini Peralatan Opsional Tohnichi.",
-          "en": "R-DT999 is part of Tohnichi's Data Processing Equipment lineup within Optional Equipment."
+          "id": "R-DT999 adalah perangkat pemrosesan untuk transfer, pencatatan, atau pengelolaan data torsi. Model ini mendukung pengelolaan data.",
+          "en": "R-DT999 is a processing device for torque-data transfer, logging, or management. This model supports data management."
         },
         "tags": [
           {
-            "id": "Data Processing Equipment",
+            "id": "Peralatan Pemrosesan Data",
             "en": "Data Processing Equipment"
           },
           {
-            "id": "Optional Equipment",
+            "id": "Peralatan Opsional",
             "en": "Optional Equipment"
           },
           {
-            "id": "Data management",
+            "id": "Manajemen Data",
             "en": "Data management"
           }
         ],
@@ -3628,28 +3628,28 @@
         "name": "TDMS/TDMSHT TDMS-C/TDMSHT-C TDMS-E/TDMSHT-E",
         "image": "/assets/brands/products/tohnichi/catalog/optional-equipment/tdms-tdmsht-tdms-c-tdmsht-c-tdms-e-tdmsht-e.jpg",
         "summary": {
-          "id": "TDMS/TDMSHT TDMS-C/TDMSHT-C TDMS-E/TDMSHT-E merupakan famili Data Processing Equipment dalam lini Peralatan Opsional Tohnichi.",
-          "en": "TDMS/TDMSHT TDMS-C/TDMSHT-C TDMS-E/TDMSHT-E is part of Tohnichi's Data Processing Equipment lineup within Optional Equipment."
+          "id": "TDMS/TDMSHT TDMS-C/TDMSHT-C TDMS-E/TDMSHT-E adalah perangkat pemrosesan untuk transfer, pencatatan, atau pengelolaan data torsi. Model ini mendukung inspeksi, pengencangan, dan pengelolaan data.",
+          "en": "TDMS/TDMSHT TDMS-C/TDMSHT-C TDMS-E/TDMSHT-E is a processing device for torque-data transfer, logging, or management. This model supports inspection, tightening, and data management."
         },
         "tags": [
           {
-            "id": "Data Processing Equipment",
+            "id": "Peralatan Pemrosesan Data",
             "en": "Data Processing Equipment"
           },
           {
-            "id": "Optional Equipment",
+            "id": "Peralatan Opsional",
             "en": "Optional Equipment"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Data management",
+            "id": "Manajemen Data",
             "en": "Data management"
           }
         ],
@@ -3659,24 +3659,24 @@
         "name": "DECA2/DECA",
         "image": "/assets/brands/products/tohnichi/catalog/optional-equipment/deca2-deca.jpg",
         "summary": {
-          "id": "DECA2/DECA merupakan famili Torque Attachment dalam lini Peralatan Opsional Tohnichi.",
-          "en": "DECA2/DECA is part of Tohnichi's Torque Attachment lineup within Optional Equipment."
+          "id": "DECA2/DECA adalah torque multiplier rasio 10:1 untuk pengencangan baut besar pada kebutuhan torsi tinggi.",
+          "en": "DECA2/DECA is a 10:1 torque multiplier for high-torque tightening of large bolts."
         },
         "tags": [
           {
-            "id": "Torque Attachment",
+            "id": "Attachment Torsi",
             "en": "Torque Attachment"
           },
           {
-            "id": "Optional Equipment",
+            "id": "Peralatan Opsional",
             "en": "Optional Equipment"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Calibration",
+            "id": "Kalibrasi",
             "en": "Calibration"
           }
         ],
@@ -3686,16 +3686,16 @@
         "name": "RAmk2/RA",
         "image": "/assets/brands/products/tohnichi/catalog/optional-equipment/ramk2-ra.jpg",
         "summary": {
-          "id": "RAmk2/RA merupakan famili Torque Attachment dalam lini Peralatan Opsional Tohnichi.",
-          "en": "RAmk2/RA is part of Tohnichi's Torque Attachment lineup within Optional Equipment."
+          "id": "RAmk2/RA adalah attachment yang memperluas fungsi tool atau tester torsi.",
+          "en": "RAmk2/RA is an attachment that extends the function of a torque tool or tester."
         },
         "tags": [
           {
-            "id": "Torque Attachment",
+            "id": "Attachment Torsi",
             "en": "Torque Attachment"
           },
           {
-            "id": "Optional Equipment",
+            "id": "Peralatan Opsional",
             "en": "Optional Equipment"
           }
         ],
@@ -3710,32 +3710,32 @@
       "en": "Accessories"
     },
     "description": {
-      "id": "Auxiliary equipment, interchangeable head, bit, socket, dan opsi untuk memperluas aplikasi torque tools.",
-      "en": "Auxiliary equipment, interchangeable heads, bits, sockets, and options that expand torque-tool applications."
+      "id": "Aksesori menyesuaikan torque tool dengan bentuk fastener dan kondisi kerja melalui pilihan head, bit, socket, kabel, baterai, serta alat bantu penyetelan. Pastikan ukuran koneksi, kapasitas torsi, dan kompatibilitas seri sebelum memilih.",
+      "en": "Accessories adapt torque tools to fastener profiles and working conditions through heads, bits, sockets, cables, batteries, and setting aids. Confirm connection size, torque capacity, and series compatibility before selecting."
     },
     "products": [
       {
         "name": "For power torque tools",
         "image": "/assets/brands/products/tohnichi/catalog/accessories/for-power-torque-tools.jpg",
         "summary": {
-          "id": "For power torque tools merupakan famili Auxiliary Equipment dalam lini Aksesori Tohnichi.",
-          "en": "For power torque tools is part of Tohnichi's Auxiliary Equipment lineup within Accessories."
+          "id": "For power torque tools adalah peralatan pendukung untuk pemasangan, penyetelan, atau penggunaan torque tool. Model ini mendukung kalibrasi dan perawatan.",
+          "en": "For power torque tools is an auxiliary equipment for torque-tool setup, adjustment, or use. This model supports calibration and maintenance."
         },
         "tags": [
           {
-            "id": "Auxiliary Equipment",
+            "id": "Peralatan Pendukung",
             "en": "Auxiliary Equipment"
           },
           {
-            "id": "Accessory",
+            "id": "Aksesori",
             "en": "Accessory"
           },
           {
-            "id": "Calibration",
+            "id": "Kalibrasi",
             "en": "Calibration"
           },
           {
-            "id": "Maintenance",
+            "id": "Perawatan",
             "en": "Maintenance"
           }
         ],
@@ -3745,20 +3745,20 @@
         "name": "Multi-spindle equipment",
         "image": "/assets/brands/products/tohnichi/catalog/accessories/multi-spindle-equipment.jpg",
         "summary": {
-          "id": "Multi-spindle equipment merupakan famili Auxiliary Equipment dalam lini Aksesori Tohnichi.",
-          "en": "Multi-spindle equipment is part of Tohnichi's Auxiliary Equipment lineup within Accessories."
+          "id": "Multi-spindle equipment adalah peralatan pendukung untuk pemasangan, penyetelan, atau penggunaan torque tool. Model ini mendukung pengukuran.",
+          "en": "Multi-spindle equipment is an auxiliary equipment for torque-tool setup, adjustment, or use. This model supports measurement."
         },
         "tags": [
           {
-            "id": "Auxiliary Equipment",
+            "id": "Peralatan Pendukung",
             "en": "Auxiliary Equipment"
           },
           {
-            "id": "Accessory",
+            "id": "Aksesori",
             "en": "Accessory"
           },
           {
-            "id": "Measurement",
+            "id": "Pengukuran",
             "en": "Measurement"
           }
         ],
@@ -3768,20 +3768,20 @@
         "name": "Torque screwdriver/special tools for torque wrench",
         "image": "/assets/brands/products/tohnichi/catalog/accessories/torque-screwdriver-special-tools-for-torque-wrench.jpg",
         "summary": {
-          "id": "Torque screwdriver/special tools for torque wrench merupakan famili Auxiliary Equipment dalam lini Aksesori Tohnichi.",
-          "en": "Torque screwdriver/special tools for torque wrench is part of Tohnichi's Auxiliary Equipment lineup within Accessories."
+          "id": "Torque screwdriver/special tools for torque wrench adalah peralatan pendukung untuk pemasangan, penyetelan, atau penggunaan torque tool. Model ini mendukung kalibrasi.",
+          "en": "Torque screwdriver/special tools for torque wrench is an auxiliary equipment for torque-tool setup, adjustment, or use. This model supports calibration."
         },
         "tags": [
           {
-            "id": "Auxiliary Equipment",
+            "id": "Peralatan Pendukung",
             "en": "Auxiliary Equipment"
           },
           {
-            "id": "Accessory",
+            "id": "Aksesori",
             "en": "Accessory"
           },
           {
-            "id": "Calibration",
+            "id": "Kalibrasi",
             "en": "Calibration"
           }
         ],
@@ -3791,20 +3791,20 @@
         "name": "Interchangeable Head",
         "image": "/assets/brands/products/tohnichi/catalog/accessories/interchangeable-head.jpg",
         "summary": {
-          "id": "Interchangeable Head merupakan famili Accessories dalam lini Aksesori Tohnichi.",
-          "en": "Interchangeable Head is part of Tohnichi's Accessories lineup within Accessories."
+          "id": "Interchangeable Head adalah aksesori untuk menyesuaikan koneksi torque tool dengan aplikasi. Model ini mendukung pengencangan.",
+          "en": "Interchangeable Head is an accessory that adapts a torque-tool connection to the application. This model supports tightening."
         },
         "tags": [
           {
-            "id": "Accessories",
-            "en": "Accessories"
-          },
-          {
-            "id": "Accessory",
+            "id": "Aksesori",
             "en": "Accessory"
           },
           {
-            "id": "Tightening",
+            "id": "Aksesori",
+            "en": "Accessory"
+          },
+          {
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -3814,24 +3814,24 @@
         "name": "Interchangeable Bit",
         "image": "/assets/brands/products/tohnichi/catalog/accessories/interchangeable-bit.jpg",
         "summary": {
-          "id": "Interchangeable Bit merupakan famili Accessories dalam lini Aksesori Tohnichi.",
-          "en": "Interchangeable Bit is part of Tohnichi's Accessories lineup within Accessories."
+          "id": "Interchangeable Bit adalah aksesori untuk menyesuaikan koneksi torque tool dengan aplikasi. Model ini mendukung inspeksi dan pengencangan.",
+          "en": "Interchangeable Bit is an accessory that adapts a torque-tool connection to the application. This model supports inspection and tightening."
         },
         "tags": [
           {
-            "id": "Accessories",
-            "en": "Accessories"
-          },
-          {
-            "id": "Accessory",
+            "id": "Aksesori",
             "en": "Accessory"
           },
           {
-            "id": "Inspection",
+            "id": "Aksesori",
+            "en": "Accessory"
+          },
+          {
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -3841,20 +3841,20 @@
         "name": "Interchangeable Socket",
         "image": "/assets/brands/products/tohnichi/catalog/accessories/interchangeable-socket.jpg",
         "summary": {
-          "id": "Interchangeable Socket merupakan famili Accessories dalam lini Aksesori Tohnichi.",
-          "en": "Interchangeable Socket is part of Tohnichi's Accessories lineup within Accessories."
+          "id": "Interchangeable Socket adalah aksesori untuk menyesuaikan koneksi torque tool dengan aplikasi. Model ini mendukung pengencangan.",
+          "en": "Interchangeable Socket is an accessory that adapts a torque-tool connection to the application. This model supports tightening."
         },
         "tags": [
           {
-            "id": "Accessories",
-            "en": "Accessories"
-          },
-          {
-            "id": "Accessory",
+            "id": "Aksesori",
             "en": "Accessory"
           },
           {
-            "id": "Tightening",
+            "id": "Aksesori",
+            "en": "Accessory"
+          },
+          {
+            "id": "Pengencangan",
             "en": "Tightening"
           }
         ],
@@ -3864,16 +3864,16 @@
         "name": "Option",
         "image": "/assets/brands/products/tohnichi/catalog/accessories/option.jpg",
         "summary": {
-          "id": "Option merupakan famili Accessories dalam lini Aksesori Tohnichi.",
-          "en": "Option is part of Tohnichi's Accessories lineup within Accessories."
+          "id": "Option adalah aksesori untuk menyesuaikan koneksi torque tool dengan aplikasi.",
+          "en": "Option is an accessory that adapts a torque-tool connection to the application."
         },
         "tags": [
           {
-            "id": "Accessories",
-            "en": "Accessories"
+            "id": "Aksesori",
+            "en": "Accessory"
           },
           {
-            "id": "Accessory",
+            "id": "Aksesori",
             "en": "Accessory"
           }
         ],
@@ -3883,16 +3883,16 @@
         "name": "Optional Accessories for MPQL",
         "image": "/assets/brands/products/tohnichi/catalog/accessories/optional-accessories-for-mpql.jpg",
         "summary": {
-          "id": "Optional Accessories for MPQL merupakan famili Accessories dalam lini Aksesori Tohnichi.",
-          "en": "Optional Accessories for MPQL is part of Tohnichi's Accessories lineup within Accessories."
+          "id": "Optional Accessories for MPQL adalah aksesori untuk menyesuaikan koneksi torque tool dengan aplikasi.",
+          "en": "Optional Accessories for MPQL is an accessory that adapts a torque-tool connection to the application."
         },
         "tags": [
           {
-            "id": "Accessories",
-            "en": "Accessories"
+            "id": "Aksesori",
+            "en": "Accessory"
           },
           {
-            "id": "Accessory",
+            "id": "Aksesori",
             "en": "Accessory"
           }
         ],
@@ -3907,20 +3907,20 @@
       "en": "Tightening Assurance Systems"
     },
     "description": {
-      "id": "Sistem pengelolaan tools, inspeksi, data, dan Pokayoke untuk mencegah kesalahan pengencangan.",
-      "en": "Tool, inspection, data, and Pokayoke systems designed to prevent tightening errors."
+      "id": "Tightening assurance system menghubungkan tool, sensor, receiver, dan software untuk memastikan setiap titik pengencangan dikerjakan sesuai urutan dan spesifikasi. Pilih arsitektur sistem menurut jenis tool manual atau pneumatik, kebutuhan Pokayoke, pencatatan hasil, dan integrasi lini.",
+      "en": "Tightening assurance systems connect tools, sensors, receivers, and software so every fastening point is completed in the correct sequence and to specification. Select the system architecture by manual or pneumatic tool type, Pokayoke needs, result logging, and line integration."
     },
     "products": [
       {
         "name": "Inspection Data Management System",
         "image": "/assets/brands/products/tohnichi/CEM3-BTLA.jpg",
         "summary": {
-          "id": "Inspection Data Management System merupakan famili System Solution dalam lini Sistem Tightening Assurance Tohnichi.",
-          "en": "Inspection Data Management System is part of Tohnichi's System Solution lineup within Tightening Assurance Systems."
+          "id": "Inspection Data Management System adalah solusi sistem untuk mengendalikan proses dan data pengencangan. Model ini mendukung inspeksi, pengencangan, dan pengelolaan data.",
+          "en": "Inspection Data Management System is a system solution for tightening-process and data control. This model supports inspection, tightening, and data management."
         },
         "tags": [
           {
-            "id": "System Solution",
+            "id": "Solusi Sistem",
             "en": "System Solution"
           },
           {
@@ -3928,15 +3928,15 @@
             "en": "Tightening Assurance"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Data management",
+            "id": "Manajemen Data",
             "en": "Data management"
           }
         ],
@@ -3946,12 +3946,12 @@
         "name": "Management system for manual tools",
         "image": "/assets/brands/products/tohnichi/Tohnichi TCC2-G.jpg",
         "summary": {
-          "id": "Management system for manual tools merupakan famili System Solution dalam lini Sistem Tightening Assurance Tohnichi.",
-          "en": "Management system for manual tools is part of Tohnichi's System Solution lineup within Tightening Assurance Systems."
+          "id": "Management system for manual tools adalah solusi sistem untuk mengendalikan proses dan data pengencangan. Model ini mendukung inspeksi dan kalibrasi.",
+          "en": "Management system for manual tools is a system solution for tightening-process and data control. This model supports inspection and calibration."
         },
         "tags": [
           {
-            "id": "System Solution",
+            "id": "Solusi Sistem",
             "en": "System Solution"
           },
           {
@@ -3959,11 +3959,11 @@
             "en": "Tightening Assurance"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Calibration",
+            "id": "Kalibrasi",
             "en": "Calibration"
           }
         ],
@@ -3973,12 +3973,12 @@
         "name": "Tightening assurance system (Pokayoke)",
         "image": "/assets/brands/products/tohnichi/R-CM+M-FH.jpg",
         "summary": {
-          "id": "Tightening assurance system (Pokayoke) merupakan famili System Solution dalam lini Sistem Tightening Assurance Tohnichi.",
-          "en": "Tightening assurance system (Pokayoke) is part of Tohnichi's System Solution lineup within Tightening Assurance Systems."
+          "id": "Tightening assurance system (Pokayoke) adalah solusi sistem untuk mengendalikan proses dan data pengencangan. Model ini mendukung pengencangan dan pencegahan kesalahan.",
+          "en": "Tightening assurance system (Pokayoke) is a system solution for tightening-process and data control. This model supports tightening and error proofing."
         },
         "tags": [
           {
-            "id": "System Solution",
+            "id": "Solusi Sistem",
             "en": "System Solution"
           },
           {
@@ -3986,15 +3986,15 @@
             "en": "Tightening Assurance"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Wireless",
+            "id": "Nirkabel",
             "en": "Wireless"
           },
           {
-            "id": "Error proofing",
+            "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
           }
         ],
@@ -4004,12 +4004,12 @@
         "name": "Management system for pneumatic tools",
         "image": "/assets/brands/products/tohnichi/TME200CN3-BTL.jpg",
         "summary": {
-          "id": "Management system for pneumatic tools merupakan famili System Solution dalam lini Sistem Tightening Assurance Tohnichi.",
-          "en": "Management system for pneumatic tools is part of Tohnichi's System Solution lineup within Tightening Assurance Systems."
+          "id": "Management system for pneumatic tools adalah solusi sistem untuk mengendalikan proses dan data pengencangan. Model ini mendukung inspeksi dan kalibrasi.",
+          "en": "Management system for pneumatic tools is a system solution for tightening-process and data control. This model supports inspection and calibration."
         },
         "tags": [
           {
-            "id": "System Solution",
+            "id": "Solusi Sistem",
             "en": "System Solution"
           },
           {
@@ -4017,11 +4017,11 @@
             "en": "Tightening Assurance"
           },
           {
-            "id": "Inspection",
+            "id": "Inspeksi",
             "en": "Inspection"
           },
           {
-            "id": "Calibration",
+            "id": "Kalibrasi",
             "en": "Calibration"
           }
         ],
@@ -4031,12 +4031,12 @@
         "name": "Tightening data control system for pneumatic tools",
         "image": "/assets/brands/products/tohnichi/tohnichi_cem100bta.png",
         "summary": {
-          "id": "Tightening data control system for pneumatic tools merupakan famili System Solution dalam lini Sistem Tightening Assurance Tohnichi.",
-          "en": "Tightening data control system for pneumatic tools is part of Tohnichi's System Solution lineup within Tightening Assurance Systems."
+          "id": "Tightening data control system for pneumatic tools adalah solusi sistem untuk mengendalikan proses dan data pengencangan. Model ini mendukung pengukuran.",
+          "en": "Tightening data control system for pneumatic tools is a system solution for tightening-process and data control. This model supports measurement."
         },
         "tags": [
           {
-            "id": "System Solution",
+            "id": "Solusi Sistem",
             "en": "System Solution"
           },
           {
@@ -4044,7 +4044,7 @@
             "en": "Tightening Assurance"
           },
           {
-            "id": "Measurement",
+            "id": "Pengukuran",
             "en": "Measurement"
           }
         ],
@@ -4054,12 +4054,12 @@
         "name": "Tightening data control system for manual tools",
         "image": "/assets/brands/products/tohnichi/catalog/tightening-assurance-systems/tightening-data-control-system-for-manual-tools.png",
         "summary": {
-          "id": "Tightening data control system for manual tools merupakan famili System Solution dalam lini Sistem Tightening Assurance Tohnichi.",
-          "en": "Tightening data control system for manual tools is part of Tohnichi's System Solution lineup within Tightening Assurance Systems."
+          "id": "Tightening data control system for manual tools adalah solusi sistem untuk mengendalikan proses dan data pengencangan. Model ini mendukung pengencangan dan pengelolaan data.",
+          "en": "Tightening data control system for manual tools is a system solution for tightening-process and data control. This model supports tightening and data management."
         },
         "tags": [
           {
-            "id": "System Solution",
+            "id": "Solusi Sistem",
             "en": "System Solution"
           },
           {
@@ -4067,15 +4067,15 @@
             "en": "Tightening Assurance"
           },
           {
-            "id": "Tightening",
+            "id": "Pengencangan",
             "en": "Tightening"
           },
           {
-            "id": "Wireless",
+            "id": "Nirkabel",
             "en": "Wireless"
           },
           {
-            "id": "Data management",
+            "id": "Manajemen Data",
             "en": "Data management"
           }
         ],

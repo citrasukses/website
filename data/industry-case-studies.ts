@@ -49,7 +49,7 @@ const automotiveSteps: IndustryCaseStudyStep[] = [
   },
   {
     brandSlug: "fuji-star",
-    brandName: "Fuji Star",
+    brandName: "Sankyo Rikagaku",
     phase: { id: "Surface preparation", en: "Surface preparation" },
     application: {
       id: "Menyiapkan permukaan body, panel, atau komponen sebelum coating dan finishing.",
@@ -136,7 +136,7 @@ const heavyEquipmentSteps: IndustryCaseStudyStep[] = [
   },
   {
     brandSlug: "fuji-star",
-    brandName: "Fuji Star",
+    brandName: "Sankyo Rikagaku",
     phase: { id: "Coating preparation", en: "Coating preparation" },
     application: {
       id: "Grinding ringan dan surface preparation sebelum painting atau recoating.",
@@ -223,7 +223,7 @@ const generalIndustrySteps: IndustryCaseStudyStep[] = [
   },
   {
     brandSlug: "fuji-star",
-    brandName: "Fuji Star",
+    brandName: "Sankyo Rikagaku",
     phase: { id: "Surface finishing", en: "Surface finishing" },
     application: {
       id: "Grinding, sanding, dan surface preparation pada fabrikasi atau repair.",
@@ -323,4 +323,3 @@ export const industryCaseStudies: IndustryCaseStudy[] = [
     steps: generalIndustrySteps
   }
 ];
-

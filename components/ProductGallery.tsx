@@ -14,14 +14,16 @@ export function ProductGallery({ images, productName }: { images: string[]; prod
         alt={productName}
         label={productName}
         className="aspect-square border-graphite-200 bg-graphite-50"
-        imageClassName="object-contain p-8"
+        imageClassName="p-8"
+        fit="contain"
+        priority
         sizes="(max-width: 1024px) 100vw, 50vw"
       />
       {availableImages.length > 1 ? (
         <div className="mt-3 grid grid-cols-4 gap-3">
           {availableImages.map((image) => (
             <button key={image} type="button" onClick={() => setSelected(image)} className={`border bg-white ${selected === image ? "border-signal-500" : "border-graphite-200"}`}>
-              <AssetSlot src={image} alt="" className="aspect-square border-0" imageClassName="object-contain p-2" sizes="120px" />
+              <AssetSlot src={image} alt="" className="aspect-square border-0" imageClassName="p-2" fit="contain" sizes="120px" />
             </button>
           ))}
         </div>
@@ -29,4 +31,3 @@ export function ProductGallery({ images, productName }: { images: string[]; prod
     </div>
   );
 }
-

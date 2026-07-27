@@ -8,9 +8,11 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { UseCaseSection } from "@/components/UseCaseSection";
 import { text, type Language, type LocalizedText } from "@/lib/i18n";
 
-type TohnichiProductExplorerProps = {
+type BrandProductExplorerProps = {
   groups: CatalogProductGroup[];
   lang: Language;
+  brandSlug: string;
+  brandName: string;
 };
 
 function normalize(value: string) {
@@ -21,13 +23,15 @@ function normalize(value: string) {
     .replace(/[^a-z0-9]+/g, " ")
     .trim();
 }
-
-export function TohnichiProductExplorer({ groups, lang }: TohnichiProductExplorerProps) {
+export function BrandProductExplorer({ groups, lang, brandSlug, brandName }: BrandProductExplorerProps) {
   const [query, setQuery] = useState("");
   const [purpose, setPurpose] = useState("");
   const [category, setCategory] = useState("");
   const deferredQuery = useDeferredValue(query);
   const normalizedQuery = normalize(deferredQuery);
+  const isTohnichi = brandSlug === "tohnichi";
+  const isNac = brandSlug === "nac";
+  const isSankyoRikagaku = brandSlug === "fuji-star";
 
   const indexedProducts = useMemo(
     () =>
@@ -91,36 +95,76 @@ export function TohnichiProductExplorer({ groups, lang }: TohnichiProductExplore
   }
 
   return (
-    <section id="tohnichi-products" className="bg-white py-16">
+    <section id={`${brandSlug}-products`} className="bg-white py-16">
       <div className="container-page">
         <SectionHeader
-          eyebrow={lang === "en" ? "Tohnichi product lineups" : "Lini produk Tohnichi"}
+          eyebrow={lang === "en" ? `${brandName} product lineups` : `Lini produk ${brandName}`}
           title={
-            lang === "en"
-              ? "Explore Tohnichi models by process."
-              : "Jelajahi model Tohnichi berdasarkan proses."
+            isTohnichi
+              ? lang === "en"
+                ? "Explore Tohnichi models by process."
+                : "Jelajahi model Tohnichi berdasarkan proses."
+              : isNac
+                ? lang === "en"
+                  ? "Explore NAC fastening tools and quick couplings."
+                  : "Jelajahi fastening tools dan quick coupling NAC."
+              : isSankyoRikagaku
+                ? lang === "en"
+                  ? "Explore the FUJISTAR catalogue by product format."
+                  : "Jelajahi katalog FUJISTAR berdasarkan format produk."
+              : lang === "en"
+                ? `Explore ${brandName} products by category.`
+                : `Jelajahi produk ${brandName} berdasarkan kategori.`
           }
           description={
-            lang === "en"
-              ? "Browse every lineup below, or search by model, task, purpose, and product category to find related products."
-              : "Jelajahi seluruh lini di bawah, atau cari berdasarkan model, tugas, tujuan, dan kategori produk untuk menemukan produk terkait."
+            isTohnichi
+              ? lang === "en"
+                ? "Browse every lineup below, or search by model, task, purpose, and product category to find related products."
+                : "Jelajahi seluruh lini di bawah, atau cari berdasarkan model, tugas, tujuan, dan kategori produk untuk menemukan produk terkait."
+              : isNac
+                ? lang === "en"
+                  ? "Search all 28 catalogue families by model, socket or bit interface, fluid, pressure range, valve type, connection, and application."
+                  : "Cari seluruh 28 keluarga katalog berdasarkan model, interface socket atau bit, fluida, pressure range, valve type, koneksi, dan aplikasi."
+              : isSankyoRikagaku
+                ? lang === "en"
+                  ? "Open any family to see its current Sankyo Rikagaku models and options, or filter by sanding method, workpiece, application, and product form."
+                  : "Buka setiap keluarga untuk melihat model dan pilihan Sankyo Rikagaku, atau filter berdasarkan metode sanding, workpiece, aplikasi, dan bentuk produk."
+              : lang === "en"
+                ? "Browse the catalogue families below, or search by series, drive size, fastener type, application, and product category."
+                : "Jelajahi keluarga produk di bawah, atau cari berdasarkan seri, ukuran drive, jenis fastener, aplikasi, dan kategori produk."
           }
         />
 
         <div className="mt-8 border border-graphite-200 bg-graphite-50 p-4 md:p-5">
           <div className="grid gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(220px,0.85fr)_minmax(220px,0.75fr)]">
             <div>
-              <label htmlFor="tohnichi-search" className="text-xs font-bold uppercase tracking-[0.15em] text-graphite-600">
+              <label htmlFor={`${brandSlug}-search`} className="text-xs font-bold uppercase tracking-[0.15em] text-graphite-600">
                 {lang === "en" ? "Search product or application" : "Cari produk atau aplikasi"}
               </label>
               <div className="relative mt-2">
                 <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-graphite-400" aria-hidden="true" />
                 <input
-                  id="tohnichi-search"
+                  id={`${brandSlug}-search`}
                   type="search"
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
-                  placeholder={lang === "en" ? "e.g. inspection, calibration, CEM3-G" : "contoh: inspection, kalibrasi, CEM3-G"}
+                  placeholder={
+                    isTohnichi
+                      ? lang === "en"
+                        ? "e.g. inspection, calibration, CEM3-G"
+                        : "contoh: inspection, kalibrasi, CEM3-G"
+                      : isNac
+                        ? lang === "en"
+                          ? "e.g. custom socket, CNS, CSPE, 20.5 MPa"
+                          : "contoh: custom socket, CNS, CSPE, 20,5 MPa"
+                      : isSankyoRikagaku
+                        ? lang === "en"
+                          ? "e.g. sheet, disc, belt, non-woven"
+                          : "contoh: sheet, disc, belt, non-woven"
+                      : lang === "en"
+                        ? "e.g. socket, B-30, H6.35, TORX"
+                        : "contoh: socket, B-30, H6.35, TORX"
+                  }
                   className="focus-ring h-12 w-full border border-graphite-300 bg-white pl-12 pr-11 text-sm font-semibold text-graphite-900 placeholder:font-normal placeholder:text-graphite-400"
                 />
                 {query ? (
@@ -137,11 +181,11 @@ export function TohnichiProductExplorer({ groups, lang }: TohnichiProductExplore
             </div>
 
             <div>
-              <label htmlFor="tohnichi-purpose" className="text-xs font-bold uppercase tracking-[0.15em] text-graphite-600">
+              <label htmlFor={`${brandSlug}-purpose`} className="text-xs font-bold uppercase tracking-[0.15em] text-graphite-600">
                 {lang === "en" ? "Task / purpose" : "Tugas / tujuan"}
               </label>
               <select
-                id="tohnichi-purpose"
+                id={`${brandSlug}-purpose`}
                 value={purpose}
                 onChange={(event) => setPurpose(event.target.value)}
                 className="focus-ring mt-2 h-12 w-full border border-graphite-300 bg-white px-3 text-sm font-semibold text-graphite-800"
@@ -156,11 +200,11 @@ export function TohnichiProductExplorer({ groups, lang }: TohnichiProductExplore
             </div>
 
             <div>
-              <label htmlFor="tohnichi-category" className="text-xs font-bold uppercase tracking-[0.15em] text-graphite-600">
+              <label htmlFor={`${brandSlug}-category`} className="text-xs font-bold uppercase tracking-[0.15em] text-graphite-600">
                 {lang === "en" ? "Product category" : "Kategori produk"}
               </label>
               <select
-                id="tohnichi-category"
+                id={`${brandSlug}-category`}
                 value={category}
                 onChange={(event) => setCategory(event.target.value)}
                 className="focus-ring mt-2 h-12 w-full border border-graphite-300 bg-white px-3 text-sm font-semibold text-graphite-800"
@@ -233,7 +277,7 @@ export function TohnichiProductExplorer({ groups, lang }: TohnichiProductExplore
                   <ProductCard
                     key={`${group.slug}-${product.slug}`}
                     product={product}
-                    brandSlug="tohnichi"
+                    brandSlug={brandSlug}
                     lang={lang}
                     eyebrow={text(group.title, lang)}
                   />
@@ -264,7 +308,7 @@ export function TohnichiProductExplorer({ groups, lang }: TohnichiProductExplore
         ) : (
           <div className="mt-10 border-t border-graphite-200">
             {groups.map((group) => (
-              <UseCaseSection key={group.slug} group={group} brandSlug="tohnichi" lang={lang} />
+              <UseCaseSection key={group.slug} group={group} brandSlug={brandSlug} lang={lang} />
             ))}
           </div>
         )}

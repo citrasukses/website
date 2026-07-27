@@ -221,7 +221,7 @@ export function BrandsSearchCatalog({ representedBrands, tradingBrands, tradingB
               {lang === "en" ? "Brand directory" : "Direktori brand"}
             </p>
             <h3 className="mt-2 text-2xl font-bold text-graphite-900">
-              {lang === "en" ? "General trading brand matches" : "Brand general trading yang cocok"}
+              {lang === "en" ? "General trading brands" : "Brand general trading"}
             </h3>
           </div>
           <p className="text-sm font-semibold text-graphite-500">

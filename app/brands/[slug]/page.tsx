@@ -3,11 +3,13 @@ import { notFound } from "next/navigation";
 import { AlertTriangle, CheckCircle2, RadioTower } from "lucide-react";
 import { AssetSlot } from "@/components/AssetSlot";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { BrandProductExplorer } from "@/components/BrandProductExplorer";
 import { CTAButton } from "@/components/CTAButton";
 import { FeatureGrid } from "@/components/FeatureGrid";
 import { Hero } from "@/components/Hero";
+import { NacBrandOverview } from "@/components/NacBrandOverview";
+import { SankyoRikagakuBrandOverview } from "@/components/SankyoRikagakuBrandOverview";
 import { SectionHeader } from "@/components/SectionHeader";
-import { TohnichiProductExplorer } from "@/components/TohnichiProductExplorer";
 import { UseCaseSection } from "@/components/UseCaseSection";
 import { seedCatalog } from "@/data/catalog-seed";
 import { getCatalogBrandBySlug } from "@/lib/catalog";
@@ -29,9 +31,27 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {};
   }
 
+  const isSankyoRikagaku = brand.slug === "fuji-star";
+  const title = isSankyoRikagaku
+    ? "Sankyo Rikagaku (FUJISTAR) Indonesia - Katalog Abrasive"
+    : brand.name;
+  const keywords = isSankyoRikagaku
+    ? [
+        "Sankyo Rikagaku Indonesia",
+        "FUJISTAR Indonesia",
+        "Fuji Star abrasive",
+        "abrasive paper Indonesia",
+        "abrasive disc",
+        "abrasive belt",
+        "non-woven abrasive",
+        "polishing tools"
+      ]
+    : undefined;
+
   return {
-    title: brand.name,
+    title,
     description: brand.summary.id,
+    keywords,
     alternates: {
       canonical: `/brands/${brand.slug}`
     },
@@ -40,6 +60,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: brand.summary.id,
       url: `/brands/${brand.slug}`,
       images: brand.heroImage ? [{ url: brand.heroImage, alt: `${brand.name} products in Indonesia` }] : undefined
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${brand.name} Indonesia | CSE`,
+      description: brand.summary.id,
+      images: brand.heroImage ? [brand.heroImage] : undefined
     }
   };
 }
@@ -55,9 +81,45 @@ export default async function BrandDetailPage({ params }: PageProps) {
 
   const hasProducts = brand.productGroups.length > 0;
   const isTohnichi = brand.slug === "tohnichi";
+  const isNac = brand.slug === "nac";
+  const isSankyoRikagaku = brand.slug === "fuji-star";
+  const hasProductExplorer = isTohnichi || isNac || isSankyoRikagaku;
+  const sankyoRikagakuJsonLd = isSankyoRikagaku
+    ? [
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Sankyo Rikagaku Co., Ltd.",
+          alternateName: ["FUJISTAR", "Fuji Star"],
+          foundingDate: "1930",
+          url: "https://en.fujistar.com/",
+          logo: "https://cse.co.id/assets/brands/logos/fuji-star.png",
+          description: brand.summary.id
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: "Katalog produk Sankyo Rikagaku FUJISTAR Indonesia",
+          itemListElement: brand.productGroups
+            .flatMap((group) => group.products)
+            .map((product, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              name: product.name,
+              url: `https://cse.co.id/brands/${brand.slug}/products/${product.slug}`
+            }))
+        }
+      ]
+    : null;
 
   return (
     <>
+      {sankyoRikagakuJsonLd ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(sankyoRikagakuJsonLd) }}
+        />
+      ) : null}
       <Breadcrumb
         homeHref={withLang("/", lang)}
         items={[
@@ -75,7 +137,15 @@ export default async function BrandDetailPage({ params }: PageProps) {
         secondaryLabel={lang === "en" ? "All brands" : "Semua brand"}
         image={brand.heroImage}
         imageLabel={`${brand.name} products`}
-        imageClassName={isTohnichi ? "object-[55%_50%]" : ""}
+        imageClassName={
+          isTohnichi
+            ? "object-[55%_50%]"
+            : isNac
+              ? "object-center"
+              : isSankyoRikagaku
+                ? "object-[58%_50%]"
+                : ""
+        }
         highlights={brand.strengths.slice(0, 3).map((item) => text(item, lang))}
       />
 
@@ -164,7 +234,8 @@ export default async function BrandDetailPage({ params }: PageProps) {
                       alt={item.name}
                       label={item.name}
                       className="h-40 border-0 bg-graphite-50"
-                      imageClassName="object-contain p-4"
+                      imageClassName="p-4"
+                      fit="contain"
                       sizes="(max-width: 768px) 100vw, 18vw"
                     />
                     <p className="mt-4 text-sm font-bold text-graphite-900">{item.name}</p>
@@ -174,6 +245,10 @@ export default async function BrandDetailPage({ params }: PageProps) {
             </div>
           </section>
         </>
+      ) : isNac ? (
+        <NacBrandOverview lang={lang} />
+      ) : isSankyoRikagaku ? (
+        <SankyoRikagakuBrandOverview lang={lang} />
       ) : (
         <section className="bg-white py-16">
           <div className="container-page grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
@@ -187,8 +262,13 @@ export default async function BrandDetailPage({ params }: PageProps) {
         </section>
       )}
 
-      {isTohnichi ? (
-        <TohnichiProductExplorer groups={brand.productGroups} lang={lang} />
+      {hasProductExplorer ? (
+        <BrandProductExplorer
+          groups={brand.productGroups}
+          lang={lang}
+          brandSlug={brand.slug}
+          brandName={brand.name}
+        />
       ) : (
         <section className="bg-white py-16">
           <div className="container-page">
@@ -226,23 +306,41 @@ export default async function BrandDetailPage({ params }: PageProps) {
         <div className="container-page grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/70">
-              {isTohnichi ? "Tightening assurance" : brand.name}
+              {isTohnichi
+                ? "Tightening assurance"
+                : isNac
+                  ? "Fastener selection"
+                  : isSankyoRikagaku
+                    ? "Abrasive selection"
+                    : brand.name}
             </p>
             <h2 className="mt-3 max-w-3xl text-3xl font-bold">
               {isTohnichi
                 ? lang === "en"
                   ? "How do you prevent miss-tightening in your process?"
                   : "Bagaimana cara menghindari miss-tightening di proses Anda?"
+                : isNac
+                  ? lang === "en"
+                    ? "Which drive, fastener profile, and working length does your process need?"
+                    : "Drive, profil fastener, dan panjang kerja apa yang dibutuhkan proses Anda?"
+                  : isSankyoRikagaku
+                    ? lang === "en"
+                      ? "Which workpiece, grit sequence, backing, and product form does your finish require?"
+                      : "Material, grit sequence, backing, dan bentuk produk apa yang dibutuhkan finish Anda?"
                 : lang === "en"
                   ? "Need help choosing the correct model?"
                   : "Butuh bantuan memilih model yang tepat?"}
             </h2>
-            {isTohnichi ? (
+            {isTohnichi || isSankyoRikagaku ? (
               <p className="mt-4 flex items-center gap-2 text-sm font-semibold text-white/75">
                 <CheckCircle2 className="h-4 w-4 text-white" aria-hidden="true" />
-                {lang === "en"
-                  ? "Consult CSE about building and implementing a tightening assurance system."
-                  : "Konsultasikan cara membangun dan mengimplementasi tightening assurance system."}
+                {isTohnichi
+                  ? lang === "en"
+                    ? "Consult CSE about building and implementing a tightening assurance system."
+                    : "Konsultasikan cara membangun dan mengimplementasi tightening assurance system."
+                  : lang === "en"
+                    ? "Share a sample, current abrasive code, finish target, and machine details for a selection review."
+                    : "Kirim sample, kode abrasive saat ini, target finish, dan detail mesin untuk review pemilihan."}
               </p>
             ) : null}
           </div>

@@ -16,6 +16,7 @@ export function ProductCard({
   eyebrow?: string;
 }) {
   const href = `/brands/${brandSlug}/products/${product.slug}${lang === "en" ? "?lang=en" : ""}`;
+  const isSankyoRikagaku = brandSlug === "fuji-star";
   return (
     <article className="group overflow-hidden border border-graphite-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-industrial-600 hover:shadow-panel">
       <Link href={href}>
@@ -24,7 +25,8 @@ export function ProductCard({
           alt={product.name}
           label={product.name}
           className="h-48 border-0 border-b border-graphite-200 bg-graphite-50"
-          imageClassName="object-contain p-6 transition duration-500 group-hover:scale-105"
+          imageClassName="p-5 transition duration-500 group-hover:scale-[1.03]"
+          fit="contain"
           sizes="(max-width: 768px) 100vw, 33vw"
         />
       </Link>
@@ -54,9 +56,13 @@ export function ProductCard({
           ))}
         </div>
         <Link href={href} className="mt-5 inline-flex text-sm font-bold text-industrial-700 hover:text-signal-600">
-          {lang === "en"
-            ? `${product.name} details and specifications`
-            : `Detail dan spesifikasi ${product.name}`}
+          {isSankyoRikagaku
+            ? lang === "en"
+              ? `${product.name} models and options`
+              : `Model dan pilihan ${product.name}`
+            : lang === "en"
+              ? `${product.name} details and specifications`
+              : `Detail dan spesifikasi ${product.name}`}
         </Link>
       </div>
     </article>

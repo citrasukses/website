@@ -17,7 +17,7 @@ function lookupKey(value: string) {
 }
 
 function toCatalogProduct(product: Product, index: number): CatalogProduct {
-  const slug = slugify(product.model || product.name) || `product-${index + 1}`;
+  const slug = product.slug || slugify(product.model || product.name) || `product-${index + 1}`;
   return {
     ...product,
     slug,
@@ -34,7 +34,9 @@ function toCatalogGroup(group: ProductGroup): CatalogProductGroup {
 }
 
 const representedAliases = new Map<string, string>([
-  [lookupKey("UNIT"), "nippon-unit-brush"]
+  [lookupKey("UNIT"), "nippon-unit-brush"],
+  [lookupKey("FUJI STAR"), "fuji-star"],
+  [lookupKey("FUJISTAR"), "fuji-star"]
 ]);
 
 const representedByKey = new Map(representedBrands.map((brand) => [lookupKey(brand.name), brand]));

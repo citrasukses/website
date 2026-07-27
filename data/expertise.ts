@@ -246,16 +246,16 @@ export const expertiseAreas: ExpertiseArea[] = [
     id: "abrasive-polishing",
     enabled: true,
     eyebrow: {
-      id: "Keahlian Sankyo Fujistar abrasive",
-      en: "Sankyo Fujistar abrasive expertise"
+      id: "Keahlian abrasive Sankyo Rikagaku (FUJISTAR)",
+      en: "Sankyo Rikagaku (FUJISTAR) abrasive expertise"
     },
     title: {
       id: "Abrasive yang tepat dimulai dari material, permukaan, dan target finish.",
       en: "The right abrasive starts with the material, surface, and finish target."
     },
     description: {
-      id: "CSE membantu memilih solusi abrasive Fujistar berdasarkan workpiece, bentuk produk, grit, metode sanding, dan kualitas permukaan yang dibutuhkan proses.",
-      en: "CSE helps select Fujistar abrasive solutions around the workpiece, product format, grit, sanding method, and surface quality required by the process."
+      id: "CSE membantu memilih solusi abrasive Sankyo Rikagaku FUJISTAR berdasarkan workpiece, bentuk produk, grit, metode sanding, dan kualitas permukaan yang dibutuhkan proses.",
+      en: "CSE helps select Sankyo Rikagaku FUJISTAR abrasive solutions around the workpiece, product format, grit, sanding method, and surface quality required by the process."
     },
     visual: {
       images: [
@@ -329,7 +329,7 @@ export const expertiseAreas: ExpertiseArea[] = [
       href: "/contact"
     },
     secondaryCta: {
-      label: { id: "Lihat solusi Fujistar", en: "Explore Fujistar solutions" },
+      label: { id: "Lihat solusi Sankyo Rikagaku", en: "Explore Sankyo Rikagaku solutions" },
       href: "/brands/fuji-star"
     }
   },

@@ -26,6 +26,24 @@ export const metadata: Metadata = {
   }
 };
 
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://cse.co.id/#organization",
+  name: company.publicName,
+  alternateName: [company.shortName, company.longName],
+  url: "https://cse.co.id/",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://cse.co.id/assets/company/cse_logo.png",
+    contentUrl: "https://cse.co.id/assets/company/cse_logo.png",
+    width: 396,
+    height: 160
+  },
+  email: `mailto:${company.email}`,
+  description: company.positioning.en
+};
+
 export default async function HomePage() {
   const lang = staticLanguage();
   const catalogBrands = await getCatalogBrands();
@@ -109,12 +127,18 @@ export default async function HomePage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c")
+        }}
+      />
       <section className="technical-grid relative isolate overflow-hidden bg-white">
         <HomeBackgroundItems items={homeBackgroundItems} singleImage={homeBackgroundImage} />
 
         <div className="container-page relative z-10 py-16 lg:py-12">
-          <div className="grid gap-10 lg:grid-cols-[1.25fr_0.95fr] lg:items-center">
-            <div className="max-w-5xl">
+          <div className="grid gap-x-10 gap-y-8 lg:grid-cols-[1.25fr_0.95fr] lg:items-center lg:gap-y-10">
+            <div className="order-1 max-w-5xl">
               <h1 className="max-w-full text-balance text-2xl font-bold leading-tight tracking-normal text-graphite-900 sm:text-4xl md:text-6xl">
                 {lang === "en"
                   ? "Industrial tools, spare parts, and consumables for factories in Indonesia."
@@ -136,9 +160,22 @@ export default async function HomePage() {
                   {lang === "en" ? "View brand portfolio" : "Lihat portofolio brand"}
                 </CTAButton>
               </div>
+
+              <div className="mt-8 grid min-w-0 grid-cols-3 gap-px overflow-hidden border border-graphite-200 bg-graphite-200 shadow-sm">
+                {stats.map((stat) => (
+                  <div key={stat.value} className="min-w-0 bg-white/95 px-3 py-4 sm:px-4 sm:py-5">
+                    <p className="text-2xl font-bold leading-none text-graphite-900 sm:text-3xl">{stat.value}</p>
+                    <p className="mt-2 text-[9px] font-bold uppercase leading-4 tracking-[0.1em] text-graphite-500 sm:text-[10px] sm:tracking-[0.12em]">
+                      {text(stat.label, lang)}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="min-w-0 border border-graphite-200 bg-white shadow-panel">
+            <AuthorizedDistributorStrip lang={lang} className="order-2 lg:order-4 lg:col-span-2" />
+
+            <div className="order-4 min-w-0 border border-graphite-200 bg-white shadow-panel lg:order-2">
               <div className="border-b border-graphite-200 bg-graphite-900 p-6 text-white">
                 <div className="flex items-center gap-3">
                   <span className="flex h-10 w-10 items-center justify-center border border-white/20">
@@ -177,23 +214,10 @@ export default async function HomePage() {
               </div>
             </div>
           </div>
-
-          <div className="mt-10 grid min-w-0 gap-px overflow-hidden border border-graphite-200 bg-graphite-200 shadow-panel sm:grid-cols-3">
-            {stats.map((stat) => (
-              <div key={stat.value} className="bg-white p-6">
-                <p className="text-4xl font-bold text-graphite-900">{stat.value}</p>
-                <p className="mt-2 text-sm font-semibold uppercase tracking-[0.14em] text-graphite-500">
-                  {text(stat.label, lang)}
-                </p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
       <TohnichiTighteningSection lang={lang} />
-
-      <AuthorizedDistributorStrip lang={lang} />
 
       <section className="bg-graphite-50 py-16">
         <div className="container-page">

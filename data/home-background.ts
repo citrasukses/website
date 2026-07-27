@@ -9,7 +9,7 @@ export type HomeBackgroundItem = {
 
 export type HomeBackgroundImage = {
   src: string;
-  position?: string;
+  imageClassName?: string;
   overlayClassName?: string;
 };
 
@@ -18,14 +18,16 @@ export type HomeBackgroundImage = {
 // Example:
 // {
 //   src: "/assets/company/hero-background.jpg",
-//   position: "center",
+//   imageClassName: "bg-center opacity-70",
 //   overlayClassName: "bg-gradient-to-r from-white/95 via-white/80 to-white/40"
 // }
 
 export const homeBackgroundImage: HomeBackgroundImage | null = {
-  src: "assets/company/hero-background.png",
-  position: "center",
-  overlayClassName: "bg-gradient-to-r from-white/95 via-white/80 to-white/40"
+  src: "/assets/company/hero-background-curated-v2.png",
+  imageClassName:
+    "bg-[position:43%_center] opacity-[0.22] sm:opacity-[0.32] md:inset-0 md:h-auto md:bg-center md:opacity-[0.48] lg:opacity-[0.7]",
+  overlayClassName:
+    "bg-gradient-to-b from-white/25 via-white/45 to-white md:bg-gradient-to-r md:from-white/65 md:via-white/35 md:to-white/10"
 };
 
 // export const homeBackgroundImage: HomeBackgroundImage | null = null;

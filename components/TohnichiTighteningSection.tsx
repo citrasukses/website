@@ -8,15 +8,16 @@ import {
   ChevronLeft,
   ChevronRight,
   ClipboardCheck,
+  Database,
   Gauge,
   ListChecks,
   Pause,
   Play,
-  ScanLine,
   ShieldCheck
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { CTAButton } from "@/components/CTAButton";
+import { TohnichiFourMOverview } from "@/components/TohnichiFourMOverview";
 import { TohnichiTorqueCarousel } from "@/components/TohnichiTorqueCarousel";
 import { text, withLang, type Language, type LocalizedText } from "@/lib/i18n";
 
@@ -48,8 +49,8 @@ const challenges: TighteningChallenge[] = [
       en: "Over-tightening"
     },
     title: {
-      id: "Mencegah over-tightening",
-      en: "Prevent over-tightening"
+      id: "Komponen rusak karena over-tightening",
+      en: "Components damaged by over-tightening"
     },
     problem: {
       id: "Takt time yang ketat dan hasil operator yang tidak konsisten dapat merusak komponen—bahkan baru terlihat setelah produk dikirim.",
@@ -74,66 +75,34 @@ const challenges: TighteningChallenge[] = [
   },
   {
     id: "missed-tightening",
-    icon: ScanLine,
+    icon: ListChecks,
     topic: {
-      id: "Missed tightening",
-      en: "Missed tightening"
+      id: "Missed tightening / jumlah baut tidak lengkap",
+      en: "Missed tightening / incomplete bolt count"
     },
     title: {
-      id: "Menemukan missed tightening",
-      en: "Expose missed tightening"
+      id: "Assembly tidak lengkap karena titik tightening terlewat",
+      en: "Incomplete assemblies caused by missed fastening points"
     },
     problem: {
-      id: "Tanda manual bisa dibuat walaupun baut belum dikencangkan, sehingga proses terlihat selesai padahal satu titik terlewat.",
-      en: "A manual mark can be applied even when a bolt was never tightened, making an incomplete process look finished."
+      id: "Pada assembly dengan banyak baut, tanda manual atau ingatan operator dapat membuat proses terlihat selesai padahal satu atau lebih titik belum dikencangkan.",
+      en: "On multi-bolt assemblies, manual marks or operator memory can make the process look complete even when one or more fastening points were skipped."
     },
     solutionTitle: {
-      id: "Marking torque wrench",
-      en: "Marking torque wrench"
+      id: "Marking wrench atau signal wrench + counter / PLC",
+      en: "Marking wrench or signal wrench + counter / PLC"
     },
     solution: {
-      id: "Marking torque wrench membuat tanda melalui mekanisme internal hanya setelah set torque tercapai—bukan berdasarkan ingatan operator.",
-      en: "A marking torque wrench applies its mark through an internal mechanism only after the set torque is reached—not from operator memory."
+      id: "Marking torque wrench hanya memberi tanda setelah set torque tercapai, sementara signal wrench mengirim konfirmasi ke counter atau PLC untuk menghitung setiap tightening yang valid.",
+      en: "A marking torque wrench marks only after the set torque is reached, while a signal wrench confirms every valid tightening event to a counter or PLC."
     },
     result: {
-      id: "Status tightening dapat diverifikasi secara visual.",
-      en: "Tightening status becomes visually verifiable."
+      id: "Setiap titik tightening terkonfirmasi secara visual atau melalui hitungan sistem.",
+      en: "Every fastening point is confirmed visually or through the system count."
     },
     product: {
       src: "/assets/brands/products/tohnichi/CSPFDD100N3x15D-AD.jpg",
       name: "Marking Torque Wrench"
-    }
-  },
-  {
-    id: "bolt-count",
-    icon: ListChecks,
-    topic: {
-      id: "Jumlah baut tidak lengkap",
-      en: "Incomplete bolt count"
-    },
-    title: {
-      id: "Memastikan seluruh baut selesai",
-      en: "Confirm every fastening point"
-    },
-    problem: {
-      id: "Pada assembly dengan banyak baut, operator dapat mengira semua titik sudah dikerjakan meskipun jumlahnya belum lengkap.",
-      en: "On multi-bolt assemblies, an operator can believe the job is complete even when one fastening point was skipped."
-    },
-    solutionTitle: {
-      id: "Signal wrench + counter atau PLC",
-      en: "Signal wrench + counter or PLC"
-    },
-    solution: {
-      id: "Torque wrench dengan output signal mengirim konfirmasi ke counter atau PLC. Opsi wired dan wireless membantu menghitung setiap tightening yang valid.",
-      en: "Signal-output torque wrenches send completion to a counter or PLC. Wired and wireless options can count every valid tightening event."
-    },
-    result: {
-      id: "Jumlah tightening sesuai work instruction.",
-      en: "The tightening count matches the work instruction."
-    },
-    product: {
-      src: "/assets/brands/products/tohnichi/R-CM+M-FH.jpg",
-      name: "R-CM / M-FH"
     }
   },
   {
@@ -144,8 +113,8 @@ const challenges: TighteningChallenge[] = [
       en: "Torque wrench drift"
     },
     title: {
-      id: "Mendeteksi drift sebelum kalibrasi berikutnya",
-      en: "Catch drift before the next calibration"
+      id: "Produk tidak sesuai akibat torque wrench drift",
+      en: "Nonconforming products caused by torque-wrench drift"
     },
     problem: {
       id: "Torque wrench dapat keluar dari toleransi di antara jadwal kalibrasi dan membuat produk tidak sesuai terus mengalir.",
@@ -176,8 +145,8 @@ const challenges: TighteningChallenge[] = [
       en: "Nutrunner verification"
     },
     title: {
-      id: "Memeriksa nutrunner secara in-house",
-      en: "Check nutrunners in-house"
+      id: "Produksi terganggu saat nutrunner diperiksa",
+      en: "Production disrupted during nutrunner checks"
     },
     problem: {
       id: "Melepas nutrunner untuk torque check mengganggu produksi, membutuhkan unit cadangan, dan menambah biaya.",
@@ -195,16 +164,42 @@ const challenges: TighteningChallenge[] = [
       id: "Downtime lebih rendah, abnormalitas lebih cepat terdeteksi.",
       en: "Less downtime and earlier abnormality detection."
     }
+  },
+  {
+    id: "traceability",
+    icon: Database,
+    topic: {
+      id: "Traceability",
+      en: "Traceability"
+    },
+    title: {
+      id: "Hasil tightening tidak dapat ditelusuri",
+      en: "Tightening results cannot be traced"
+    },
+    problem: {
+      id: "Pencatatan manual atau data yang tersebar membuat nilai torque, sudut, waktu, dan identitas pekerjaan sulit dibuktikan saat audit atau investigasi defect.",
+      en: "Manual records or scattered data make torque, angle, time, and work identity difficult to prove during audits or defect investigations."
+    },
+    solutionTitle: {
+      id: "Digital torque wrench + TDMS",
+      en: "Digital torque wrench + TDMS"
+    },
+    solution: {
+      id: "CEM3-G-BT/BTA, CEM3-WF/G-WF, dan CES-G menyimpan hasil tightening dan mengirimkannya melalui Bluetooth, wireless LAN, atau koneksi data ke TDMS atau PC untuk pencatatan terpusat dan backup.",
+      en: "CEM3-G-BT/BTA, CEM3-WF/G-WF, and CES-G store tightening results and send them through Bluetooth, wireless LAN, or a data connection to TDMS or a PC for centralized logging and backup."
+    },
+    result: {
+      id: "Setiap hasil tightening tersimpan, terhubung ke pekerjaan, dan siap ditelusuri kembali.",
+      en: "Every tightening result is stored, linked to the job, and ready to be traced."
+    },
+    product: {
+      src: "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/cem3-g-bta.png",
+      name: "CEM3-G-BTA · Digital Torque & Angle Wrench"
+    }
   }
 ];
 
-const manufacturingProblems = [
-  challenges[1],
-  challenges[0],
-  challenges[2],
-  challenges[3],
-  challenges[4]
-];
+const manufacturingProblems = challenges;
 
 function TighteningRiskVisual({
   challenge,
@@ -275,38 +270,29 @@ function TighteningRiskVisual({
         ) : null}
 
         {challenge.id === "missed-tightening" ? (
-          <div>
-            <div className="flex items-center justify-between gap-3 border-b border-graphite-300 pb-5">
-              {[1, 2, 3, 4].map((bolt) => (
-                <span
-                  key={bolt}
-                  className={`flex h-10 w-10 items-center justify-center rounded-full border-4 bg-white text-xs font-black ${
-                    bolt === 4
-                      ? "border-signal-500 text-signal-600"
-                      : "border-industrial-700 text-industrial-700"
-                  }`}
-                >
-                  {bolt}
-                </span>
-              ))}
-            </div>
-            <p className="mt-3 text-right text-[10px] font-bold uppercase tracking-[0.16em] text-signal-600">
-              {lang === "en" ? "01 point not confirmed" : "01 titik belum terkonfirmasi"}
-            </p>
-          </div>
-        ) : null}
-
-        {challenge.id === "bolt-count" ? (
-          <div className="grid grid-cols-[1fr_auto] items-end gap-5 border-t border-graphite-300 pt-4">
+          <div className="grid grid-cols-[1fr_auto] items-end gap-5">
             <div>
-              <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-graphite-500">
-                {lang === "en" ? "Required tightening" : "Target tightening"}
+              <div className="flex items-center justify-between gap-2 border-b border-graphite-300 pb-3">
+                {[1, 2, 3, 4].map((bolt) => (
+                  <span
+                    key={bolt}
+                    className={`flex h-9 w-9 items-center justify-center rounded-full border-4 bg-white text-xs font-black ${
+                      bolt === 4
+                        ? "border-signal-500 text-signal-600"
+                        : "border-industrial-700 text-industrial-700"
+                    }`}
+                  >
+                    {bolt}
+                  </span>
+                ))}
+              </div>
+              <p className="mt-3 text-[9px] font-bold uppercase tracking-[0.14em] text-signal-600">
+                {lang === "en" ? "01 point not confirmed" : "01 titik belum terkonfirmasi"}
               </p>
-              <p className="mt-1 text-sm font-bold text-graphite-700">10 bolts / workpiece</p>
             </div>
             <div className="bg-graphite-900 px-4 py-3 text-right text-white shadow-sm">
               <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-white/60">Count</p>
-              <p className="font-mono text-3xl font-black text-[#e8b923]">09 / 10</p>
+              <p className="font-mono text-2xl font-black text-[#e8b923]">09 / 10</p>
             </div>
           </div>
         ) : null}
@@ -343,6 +329,37 @@ function TighteningRiskVisual({
             </div>
             <p className="mt-4 text-right text-[10px] font-bold uppercase tracking-[0.16em] text-signal-600">
               {lang === "en" ? "Avoid removing the machine" : "Tanpa melepas mesin"}
+            </p>
+          </div>
+        ) : null}
+
+        {challenge.id === "traceability" ? (
+          <div>
+            <div className="grid grid-cols-3 gap-px overflow-hidden border border-graphite-300 bg-graphite-300">
+              <div className="bg-white p-3">
+                <p className="text-[8px] font-bold uppercase tracking-[0.14em] text-graphite-500">
+                  Torque
+                </p>
+                <p className="mt-2 font-mono text-lg font-black text-graphite-900">20.0</p>
+                <p className="text-[8px] font-bold text-graphite-500">N·m</p>
+              </div>
+              <div className="bg-white p-3">
+                <p className="text-[8px] font-bold uppercase tracking-[0.14em] text-graphite-500">
+                  Work ID
+                </p>
+                <p className="mt-3 font-mono text-sm font-black text-graphite-400">--</p>
+              </div>
+              <div className="bg-[#fff2ee] p-3">
+                <p className="text-[8px] font-bold uppercase tracking-[0.14em] text-signal-600">
+                  Record
+                </p>
+                <p className="mt-3 text-[9px] font-black uppercase leading-4 text-signal-600">
+                  {lang === "en" ? "Not saved" : "Tidak tersimpan"}
+                </p>
+              </div>
+            </div>
+            <p className="mt-3 text-right text-[9px] font-bold uppercase tracking-[0.16em] text-signal-600">
+              {lang === "en" ? "No audit trail" : "Tidak ada audit trail"}
             </p>
           </div>
         ) : null}
@@ -454,20 +471,20 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
       <div className="container-page py-16 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:items-center">
           <div>
-            <div className="inline-flex max-w-full flex-col overflow-hidden border border-graphite-200 bg-white shadow-sm">
-              <div className="flex items-center gap-3 px-4 py-2.5">
+            <div className="inline-flex w-fit max-w-full flex-col overflow-hidden border border-graphite-200 bg-white shadow-sm">
+              <div className="flex items-center gap-4 px-5 py-3.5 sm:px-6 sm:py-4">
                 <Image
                   src="/assets/brands/logos/tohnichi--nobg.png"
                   alt="Tohnichi"
-                  width={132}
-                  height={61}
-                  className="h-10 w-auto object-contain"
+                  width={181}
+                  height={84}
+                  className="h-12 w-auto object-contain sm:h-14"
                 />
-                <span className="border-l border-graphite-200 pl-3 text-[10px] font-bold uppercase tracking-[0.18em] text-graphite-500">
+                <span className="border-l border-graphite-200 py-1 pl-4 text-xs font-bold uppercase tracking-[0.22em] text-graphite-500 sm:text-sm">
                   Japan
                 </span>
               </div>
-              <div className="flex items-center gap-3 bg-industrial-700 px-4 py-3 text-white">
+              <div className="flex items-center gap-3 bg-industrial-700 px-5 py-3.5 text-white">
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-white/20 bg-white/10">
                   <BadgeCheck className="h-5 w-5 text-[#e8c63d]" aria-hidden="true" />
                 </span>
@@ -475,7 +492,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
                   <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-white/60">
                     {lang === "en" ? "Official partnership" : "Kemitraan resmi"}
                   </p>
-                  <p className="mt-0.5 text-base font-bold leading-tight sm:text-lg">
+                  <p className="mt-0.5 text-base font-bold leading-tight sm:whitespace-nowrap sm:text-lg">
                     {lang === "en"
                       ? "Authorized Distributor of Tohnichi"
                       : "Distributor Resmi Tohnichi"}
@@ -546,8 +563,10 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
           </div>
         </div>
 
+        <TohnichiFourMOverview lang={lang} />
+
         <div
-          className="mt-16 overflow-hidden border border-graphite-200 bg-white shadow-panel lg:mt-20"
+          className="mt-8 overflow-hidden border border-graphite-200 bg-white shadow-panel lg:mt-10"
           role="region"
           aria-roledescription="carousel"
           aria-label={lang === "en" ? "Manufacturing problems and Tohnichi solutions" : "Masalah manufaktur dan solusi Tohnichi"}
@@ -607,7 +626,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
 
           <div className="overflow-x-auto border-b border-graphite-200">
             <div
-              className="grid min-w-[860px] grid-cols-5"
+              className="grid min-w-[960px] grid-cols-5"
               aria-label={lang === "en" ? "Manufacturing problem topics" : "Topik masalah manufaktur"}
             >
               {manufacturingProblems.map((challenge, index) => {

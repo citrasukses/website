@@ -5,6 +5,17 @@ import { Footer } from "@/components/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  applicationName: "CSE",
+  icons: {
+    icon: [
+      {
+        url: "/icon.png",
+        type: "image/png",
+        sizes: "512x512"
+      }
+    ],
+    shortcut: "/icon.png"
+  },
   title: {
     default: "CSE | PT Citra Sukses Ekapratama",
     template: "%s | CSE"
@@ -23,7 +34,7 @@ export const metadata: Metadata = {
         url: "/assets/company/og-authorized-distributor.png",
         width: 1200,
         height: 630,
-        alt: "CSE authorized distributor for Tohnichi, NAC, Fuji Star, and Nippon Unit"
+        alt: "CSE authorized distributor for Tohnichi, NAC, Sankyo Rikagaku, and Nippon Unit"
       }
     ],
     locale: "id_ID",
