@@ -1,0 +1,1462 @@
+{
+  "sheet-products": [
+    {
+      "slug": "kenmalon-super",
+      "name": "Non-woven abrasives-Kenmaron Super",
+      "image": "/assets/brands/products/fuji-star/catalog/kenmalon-super.jpg",
+      "officialUrl": "https://en.fujistar.com/products/kenmalon-super/",
+      "type": "Non-woven Fabric Products Sheet products",
+      "formats": [
+        "Non-woven Fabric Products Sheet products",
+        "Kenmaron"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Stainless steel",
+        "Construction and Woodworking Industry",
+        "Steel Industry"
+      ]
+    },
+    {
+      "slug": "frnz",
+      "name": "FRNZ",
+      "image": "/assets/brands/products/fuji-star/catalog/frnz.png",
+      "officialUrl": "https://en.fujistar.com/products/frnz/",
+      "type": "Film",
+      "formats": [
+        "Film",
+        "Magic Type"
+      ],
+      "applications": [
+        "Automotive Repair Industry"
+      ]
+    },
+    {
+      "slug": "wet-dry-sanding-paper",
+      "name": "Water Resistant Abrasive Paper",
+      "image": "/assets/brands/products/fuji-star/catalog/wet-dry-sanding-paper.jpg",
+      "officialUrl": "https://en.fujistar.com/products/wet-dry-sanding-paper/",
+      "type": "Waterproof Abrasive Paper",
+      "formats": [
+        "Waterproof Abrasive Paper"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Construction and Woodworking Industry"
+      ]
+    },
+    {
+      "slug": "dry-sanding-paper",
+      "name": "Air Abrasive Paper",
+      "image": "/assets/brands/products/fuji-star/catalog/dry-sanding-paper.jpg",
+      "officialUrl": "https://en.fujistar.com/products/dry-sanding-paper/",
+      "type": "Dry Abrasive Paper",
+      "formats": [
+        "Dry Abrasive Paper"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Construction and Woodworking Industry"
+      ]
+    },
+    {
+      "slug": "abrasive-cloth-sheet",
+      "name": "Abrasive Cloth Sheet / Lapros",
+      "image": "/assets/brands/products/fuji-star/catalog/abrasive-cloth-sheet.png",
+      "officialUrl": "https://en.fujistar.com/products/abrasive-cloth-sheet/",
+      "type": "Abrasive Cloth",
+      "formats": [
+        "Abrasive Cloth"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Construction and Woodworking Industry"
+      ]
+    },
+    {
+      "slug": "najimi",
+      "name": "NAJIMI",
+      "image": "/assets/brands/products/fuji-star/catalog/najimi.jpg",
+      "officialUrl": "https://en.fujistar.com/products/najimi/",
+      "type": "Magic Type",
+      "formats": [
+        "Magic Type"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Body"
+      ]
+    },
+    {
+      "slug": "clog-free",
+      "name": "High Pitch Clog Free",
+      "image": "/assets/brands/products/fuji-star/catalog/clog-free.jpg",
+      "officialUrl": "https://en.fujistar.com/products/clog-free/",
+      "type": "Magic Type",
+      "formats": [
+        "Magic Type"
+      ],
+      "applications": [
+        "Automotive Repair Industry",
+        "Other Industries",
+        "Bumpers & Resin Parts"
+      ]
+    },
+    {
+      "slug": "hipitch-sheet",
+      "name": "Hook and Loop fasteners Paper ”High－Pitch” sheet",
+      "image": "/assets/brands/products/fuji-star/catalog/hipitch-sheet.jpg",
+      "officialUrl": "https://en.fujistar.com/products/hipitch-sheet/",
+      "type": "Magic Type",
+      "formats": [
+        "Magic Type"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Construction and Woodworking Industry",
+        "Other Industries",
+        "Building Materials & Furniture"
+      ]
+    },
+    {
+      "slug": "hipitch-grand-super",
+      "name": "Hook and Loop fasteners Paper ”High Pitch Grand super”",
+      "image": "/assets/brands/products/fuji-star/catalog/hipitch-grand-super.jpg",
+      "officialUrl": "https://en.fujistar.com/products/hipitch-grand-super/",
+      "type": "Magic Type",
+      "formats": [
+        "Magic Type"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Construction and Woodworking Industry",
+        "Other Industries",
+        "Building Materials & Furniture"
+      ]
+    },
+    {
+      "slug": "pressure-sensitive-paper",
+      "name": "Pressure-Sensitive Adhesive Paper products",
+      "image": "/assets/brands/products/fuji-star/catalog/pressure-sensitive-paper.jpg",
+      "officialUrl": "https://en.fujistar.com/products/pressure-sensitive-paper/",
+      "type": "PS Type",
+      "formats": [
+        "PS Type"
+      ],
+      "applications": [
+        "Automotive Repair Industry",
+        "Construction and Woodworking Industry",
+        "Building Materials & Furniture"
+      ]
+    },
+    {
+      "slug": "auto-net",
+      "name": "Auto Net",
+      "image": "/assets/brands/products/fuji-star/catalog/auto-net.jpg",
+      "officialUrl": "https://en.fujistar.com/products/auto-net/",
+      "type": "Magic Type",
+      "formats": [
+        "Magic Type"
+      ],
+      "applications": [
+        "Automotive Repair Industry",
+        "Other Industries",
+        "Bodies"
+      ]
+    },
+    {
+      "slug": "lapping-film",
+      "name": "Lapping film",
+      "image": "/assets/brands/products/fuji-star/catalog/lapping-film.jpg",
+      "officialUrl": "https://en.fujistar.com/products/lapping-film/",
+      "type": "Films",
+      "formats": [
+        "Films"
+      ],
+      "applications": [
+        "High-tech Industry",
+        "Other Industries",
+        "Rolls / Fiber Optics"
+      ]
+    },
+    {
+      "slug": "hipitch-disc",
+      "name": "Hook and Loop fasteners Paper \"Hi-Pitch\" Disk (Circular)",
+      "image": "/assets/brands/products/fuji-star/catalog/hipitch-disc.jpg",
+      "officialUrl": "https://en.fujistar.com/products/hipitch-disc/",
+      "type": "Magic Type",
+      "formats": [
+        "Magic Type"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Construction and Woodworking Industry",
+        "Other Industries",
+        "Building Materials & Furniture"
+      ]
+    },
+    {
+      "slug": "mirro-film",
+      "name": "Mirror film",
+      "image": "/assets/brands/products/fuji-star/catalog/mirro-film.jpg",
+      "officialUrl": "https://en.fujistar.com/products/mirro-film/",
+      "type": "Films",
+      "formats": [
+        "Films"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Shafts",
+        "High-tech Industry"
+      ]
+    },
+    {
+      "slug": "kenmalon",
+      "name": "Non-woven abrasives-Kenmaron",
+      "image": "/assets/brands/products/fuji-star/catalog/kenmalon.jpg",
+      "officialUrl": "https://en.fujistar.com/products/kenmalon/",
+      "type": "Non-woven Fabric Products Sheet products",
+      "formats": [
+        "Non-woven Fabric Products Sheet products",
+        "Kenmaron"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Construction and Woodworking Industry",
+        "Steel Industry",
+        "Stainless steel"
+      ]
+    },
+    {
+      "slug": "kenmalon-soft",
+      "name": "Nonwoven Abrasive - Kenmaron Soft",
+      "image": "/assets/brands/products/fuji-star/catalog/kenmalon-soft.jpg",
+      "officialUrl": "https://en.fujistar.com/products/kenmalon-soft/",
+      "type": "Non-woven Fabric Products Sheet products",
+      "formats": [
+        "Non-woven Fabric Products Sheet products",
+        "Kenmaron"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Stainless steel",
+        "Steel Industry"
+      ]
+    },
+    {
+      "slug": "magiclon",
+      "name": "Non-woven Abrasives-Magiclon",
+      "image": "/assets/brands/products/fuji-star/catalog/magiclon.jpg",
+      "officialUrl": "https://en.fujistar.com/products/magiclon/",
+      "type": "Non-woven Fabric Products Sheet products",
+      "formats": [
+        "Non-woven Fabric Products Sheet products"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Stainless steel",
+        "Steel Industry"
+      ]
+    },
+    {
+      "slug": "sabitolon",
+      "name": "Nonwoven Abrasive - Rustron",
+      "image": "/assets/brands/products/fuji-star/catalog/sabitolon.jpg",
+      "officialUrl": "https://en.fujistar.com/products/sabitolon/",
+      "type": "Non-woven Fabric Products Sheet products",
+      "formats": [
+        "Non-woven Fabric Products Sheet products"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Stainless steel",
+        "Steel Industry"
+      ]
+    }
+  ],
+  "disc-products": [
+    {
+      "slug": "frnz",
+      "name": "FRNZ",
+      "image": "/assets/brands/products/fuji-star/catalog/frnz.png",
+      "officialUrl": "https://en.fujistar.com/products/frnz/",
+      "type": "Film",
+      "formats": [
+        "Film",
+        "Magic Type"
+      ],
+      "applications": [
+        "Automotive Repair Industry"
+      ]
+    },
+    {
+      "slug": "najimi",
+      "name": "NAJIMI",
+      "image": "/assets/brands/products/fuji-star/catalog/najimi.jpg",
+      "officialUrl": "https://en.fujistar.com/products/najimi/",
+      "type": "Magic Type",
+      "formats": [
+        "Magic Type"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Body"
+      ]
+    },
+    {
+      "slug": "clog-free",
+      "name": "High Pitch Clog Free",
+      "image": "/assets/brands/products/fuji-star/catalog/clog-free.jpg",
+      "officialUrl": "https://en.fujistar.com/products/clog-free/",
+      "type": "Magic Type",
+      "formats": [
+        "Magic Type"
+      ],
+      "applications": [
+        "Automotive Repair Industry",
+        "Other Industries",
+        "Bumpers & Resin Parts"
+      ]
+    },
+    {
+      "slug": "hipitch-grand-super",
+      "name": "Hook and Loop fasteners Paper ”High Pitch Grand super”",
+      "image": "/assets/brands/products/fuji-star/catalog/hipitch-grand-super.jpg",
+      "officialUrl": "https://en.fujistar.com/products/hipitch-grand-super/",
+      "type": "Magic Type",
+      "formats": [
+        "Magic Type"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Construction and Woodworking Industry",
+        "Other Industries",
+        "Building Materials & Furniture"
+      ]
+    },
+    {
+      "slug": "auto-net",
+      "name": "Auto Net",
+      "image": "/assets/brands/products/fuji-star/catalog/auto-net.jpg",
+      "officialUrl": "https://en.fujistar.com/products/auto-net/",
+      "type": "Magic Type",
+      "formats": [
+        "Magic Type"
+      ],
+      "applications": [
+        "Automotive Repair Industry",
+        "Other Industries",
+        "Bodies"
+      ]
+    },
+    {
+      "slug": "hipitch-disc",
+      "name": "Hook and Loop fasteners Paper \"Hi-Pitch\" Disk (Circular)",
+      "image": "/assets/brands/products/fuji-star/catalog/hipitch-disc.jpg",
+      "officialUrl": "https://en.fujistar.com/products/hipitch-disc/",
+      "type": "Magic Type",
+      "formats": [
+        "Magic Type"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Construction and Woodworking Industry",
+        "Other Industries",
+        "Building Materials & Furniture"
+      ]
+    },
+    {
+      "slug": "pressure-sensitive-grand-super",
+      "name": "Abrasive paper with glue \"PS Grand Super",
+      "image": "/assets/brands/products/fuji-star/catalog/pressure-sensitive-grand-super.jpg",
+      "officialUrl": "https://en.fujistar.com/products/pressure-sensitive-grand-super/",
+      "type": "PS Type",
+      "formats": [
+        "PS Type"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Construction and Woodworking Industry",
+        "Building Materials & Furniture"
+      ]
+    },
+    {
+      "slug": "dress-paper",
+      "name": "Dressing Paper",
+      "image": "/assets/brands/products/fuji-star/catalog/dress-paper.jpg",
+      "officialUrl": "https://en.fujistar.com/products/dress-paper/",
+      "type": "PS Type",
+      "formats": [
+        "PS Type"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Building Materials & Furniture"
+      ]
+    },
+    {
+      "slug": "econo-disc",
+      "name": "Econo Disc",
+      "image": "/assets/brands/products/fuji-star/catalog/econo-disc.jpg",
+      "officialUrl": "https://en.fujistar.com/products/econo-disc/",
+      "type": "",
+      "formats": [],
+      "applications": [
+        "Automotive Repair Industry",
+        "Body (Paint)",
+        "Other Industries"
+      ]
+    },
+    {
+      "slug": "star-disc",
+      "name": "Star Disc",
+      "image": "/assets/brands/products/fuji-star/catalog/star-disc.jpg",
+      "officialUrl": "https://en.fujistar.com/products/star-disc/",
+      "type": "",
+      "formats": [],
+      "applications": [
+        "Automotive Repair Industry",
+        "Body (Paint)",
+        "Other Industries"
+      ]
+    },
+    {
+      "slug": "q-disc",
+      "name": "Q Disc (Fiber Disc)",
+      "image": "/assets/brands/products/fuji-star/catalog/q-disc.jpg",
+      "officialUrl": "https://en.fujistar.com/products/q-disc/",
+      "type": "",
+      "formats": [],
+      "applications": [
+        "Automotive Repair Industry",
+        "Other Industries",
+        "Shipbuilding"
+      ]
+    }
+  ],
+  "belt-products": [
+    {
+      "slug": "abrasive-cloth-belt-rseries",
+      "name": "Cloth Belt R Series",
+      "image": "/assets/brands/products/fuji-star/catalog/abrasive-cloth-belt-rseries.jpg",
+      "officialUrl": "https://en.fujistar.com/products/abrasive-cloth-belt-rseries/",
+      "type": "Cloth belt",
+      "formats": [
+        "Cloth belt"
+      ],
+      "applications": [
+        "Steel Industry",
+        "High-tech Industry",
+        "Other Industries",
+        "Aluminum"
+      ]
+    },
+    {
+      "slug": "abrasive-paper-belt-cwtseries",
+      "name": "Belt - Abrasive Paper for Coating",
+      "image": "/assets/brands/products/fuji-star/catalog/abrasive-paper-belt-cwtseries.jpg",
+      "officialUrl": "https://en.fujistar.com/products/abrasive-paper-belt-cwtseries/",
+      "type": "Paper belt",
+      "formats": [
+        "Paper belt"
+      ],
+      "applications": [
+        "Construction and Woodworking Industry",
+        "Instruments"
+      ]
+    },
+    {
+      "slug": "abrasive-cloth-belt-wide",
+      "name": "Belt - Abrasive Paper for Wide Belt Sander",
+      "image": "/assets/brands/products/fuji-star/catalog/abrasive-cloth-belt-wide.jpg",
+      "officialUrl": "https://en.fujistar.com/products/abrasive-cloth-belt-wide/",
+      "type": "Paper belt",
+      "formats": [
+        "Paper belt"
+      ],
+      "applications": [
+        "Construction and Woodworking Industry",
+        "Boards and calcium silicate boards"
+      ]
+    },
+    {
+      "slug": "resin-cloth-belt",
+      "name": "Belt - Resin Cloth for Woodworking",
+      "image": "/assets/brands/products/fuji-star/catalog/resin-cloth-belt.jpg",
+      "officialUrl": "https://en.fujistar.com/products/resin-cloth-belt/",
+      "type": "Cloth belt",
+      "formats": [
+        "Cloth belt"
+      ],
+      "applications": [
+        "Construction and Woodworking Industry",
+        "Building Materials & Furniture"
+      ]
+    },
+    {
+      "slug": "abrasive-cloth-belt-dseries",
+      "name": "Cloth Belt D Series",
+      "image": "/assets/brands/products/fuji-star/catalog/abrasive-cloth-belt-dseries.jpg",
+      "officialUrl": "https://en.fujistar.com/products/abrasive-cloth-belt-dseries/",
+      "type": "Cloth belt",
+      "formats": [
+        "Cloth belt"
+      ],
+      "applications": [
+        "Steel Industry",
+        "Other Industries",
+        "Aluminum"
+      ]
+    },
+    {
+      "slug": "abrasive-cloth-belt-zirseries",
+      "name": "Cloth Belt/Zir Series",
+      "image": "/assets/brands/products/fuji-star/catalog/abrasive-cloth-belt-zirseries.jpg",
+      "officialUrl": "https://en.fujistar.com/products/abrasive-cloth-belt-zirseries/",
+      "type": "Cloth belt",
+      "formats": [
+        "Cloth belt"
+      ],
+      "applications": [
+        "Stainless steel",
+        "Steel Industry"
+      ]
+    },
+    {
+      "slug": "abrasive-cloth-belt-narrow",
+      "name": "Narrow Belt Series",
+      "image": "/assets/brands/products/fuji-star/catalog/abrasive-cloth-belt-narrow.jpg",
+      "officialUrl": "https://en.fujistar.com/products/abrasive-cloth-belt-narrow/",
+      "type": "Cloth belt",
+      "formats": [
+        "Cloth belt"
+      ],
+      "applications": [
+        "Stainless steel",
+        "Steel Industry"
+      ]
+    },
+    {
+      "slug": "abrasive-cloth-belt-jwtseries",
+      "name": "Belts - Faucet Series",
+      "image": "/assets/brands/products/fuji-star/catalog/abrasive-cloth-belt-jwtseries.jpg",
+      "officialUrl": "https://en.fujistar.com/products/abrasive-cloth-belt-jwtseries/",
+      "type": "Cloth belt",
+      "formats": [
+        "Cloth belt"
+      ],
+      "applications": [
+        "Faucet fittings",
+        "Steel Industry"
+      ]
+    },
+    {
+      "slug": "abrasive-cloth-belt-flexible",
+      "name": "Cloth Belt for Curved Surface",
+      "image": "/assets/brands/products/fuji-star/catalog/abrasive-cloth-belt-flexible.jpg",
+      "officialUrl": "https://en.fujistar.com/products/abrasive-cloth-belt-flexible/",
+      "type": "Cloth belt",
+      "formats": [
+        "Cloth belt"
+      ],
+      "applications": [
+        "Construction and Woodworking Industry",
+        "Building Materials & Furniture"
+      ]
+    },
+    {
+      "slug": "abrasive-cloth-belt-tseries",
+      "name": "Cloth Belt T Series",
+      "image": "/assets/brands/products/fuji-star/catalog/abrasive-cloth-belt-tseries.jpg",
+      "officialUrl": "https://en.fujistar.com/products/abrasive-cloth-belt-tseries/",
+      "type": "Cloth belt",
+      "formats": [
+        "Cloth belt"
+      ],
+      "applications": [
+        "Steel Industry",
+        "Other Industries",
+        "Aluminum"
+      ]
+    },
+    {
+      "slug": "abrasive-cloth-belt-cork",
+      "name": "Cork Belt",
+      "image": "/assets/brands/products/fuji-star/catalog/abrasive-cloth-belt-cork.jpg",
+      "officialUrl": "https://en.fujistar.com/products/abrasive-cloth-belt-cork/",
+      "type": "Cloth belt",
+      "formats": [
+        "Cloth belt"
+      ],
+      "applications": [
+        "Steel Industry",
+        "Stainless steel"
+      ]
+    }
+  ],
+  "rolled-products": [
+    {
+      "slug": "clog-free",
+      "name": "High Pitch Clog Free",
+      "image": "/assets/brands/products/fuji-star/catalog/clog-free.jpg",
+      "officialUrl": "https://en.fujistar.com/products/clog-free/",
+      "type": "Magic Type",
+      "formats": [
+        "Magic Type"
+      ],
+      "applications": [
+        "Automotive Repair Industry",
+        "Other Industries",
+        "Bumpers & Resin Parts"
+      ]
+    },
+    {
+      "slug": "hipitch-grand-super",
+      "name": "Hook and Loop fasteners Paper ”High Pitch Grand super”",
+      "image": "/assets/brands/products/fuji-star/catalog/hipitch-grand-super.jpg",
+      "officialUrl": "https://en.fujistar.com/products/hipitch-grand-super/",
+      "type": "Magic Type",
+      "formats": [
+        "Magic Type"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Construction and Woodworking Industry",
+        "Other Industries",
+        "Building Materials & Furniture"
+      ]
+    },
+    {
+      "slug": "pressure-sensitive-paper",
+      "name": "Pressure-Sensitive Adhesive Paper products",
+      "image": "/assets/brands/products/fuji-star/catalog/pressure-sensitive-paper.jpg",
+      "officialUrl": "https://en.fujistar.com/products/pressure-sensitive-paper/",
+      "type": "PS Type",
+      "formats": [
+        "PS Type"
+      ],
+      "applications": [
+        "Automotive Repair Industry",
+        "Construction and Woodworking Industry",
+        "Building Materials & Furniture"
+      ]
+    },
+    {
+      "slug": "auto-net",
+      "name": "Auto Net",
+      "image": "/assets/brands/products/fuji-star/catalog/auto-net.jpg",
+      "officialUrl": "https://en.fujistar.com/products/auto-net/",
+      "type": "Magic Type",
+      "formats": [
+        "Magic Type"
+      ],
+      "applications": [
+        "Automotive Repair Industry",
+        "Other Industries",
+        "Bodies"
+      ]
+    },
+    {
+      "slug": "hipitch-roll",
+      "name": "Velcro Paper \"Hi-Pitch\" Rolls",
+      "image": "/assets/brands/products/fuji-star/catalog/hipitch-roll.jpg",
+      "officialUrl": "https://en.fujistar.com/products/hipitch-roll/",
+      "type": "velcro",
+      "formats": [
+        "velcro"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Construction and Woodworking Industry",
+        "Other Industries",
+        "Building Materials & Furniture"
+      ]
+    },
+    {
+      "slug": "slit-roll",
+      "name": "Slitted Roll",
+      "image": "/assets/brands/products/fuji-star/catalog/slit-roll.jpg",
+      "officialUrl": "https://en.fujistar.com/products/slit-roll/",
+      "type": "",
+      "formats": [],
+      "applications": [
+        "Construction and Woodworking Industry",
+        "Body (Coating film)"
+      ]
+    },
+    {
+      "slug": "cushion-pad",
+      "name": "Cushion Pad",
+      "image": "/assets/brands/products/fuji-star/catalog/cushion-pad.jpg",
+      "officialUrl": "https://en.fujistar.com/products/cushion-pad/",
+      "type": "Pads for sanders",
+      "formats": [
+        "Pads for sanders",
+        "velcro",
+        "Pads & Hand Sharpening Products"
+      ],
+      "applications": [
+        "Automotive Repair Industry"
+      ]
+    }
+  ],
+  "non-woven-products": [
+    {
+      "slug": "kenmalon-super",
+      "name": "Non-woven abrasives-Kenmaron Super",
+      "image": "/assets/brands/products/fuji-star/catalog/kenmalon-super.jpg",
+      "officialUrl": "https://en.fujistar.com/products/kenmalon-super/",
+      "type": "Non-woven Fabric Products Sheet products",
+      "formats": [
+        "Non-woven Fabric Products Sheet products",
+        "Kenmaron"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Stainless steel",
+        "Construction and Woodworking Industry",
+        "Steel Industry"
+      ]
+    },
+    {
+      "slug": "kenmalon",
+      "name": "Non-woven abrasives-Kenmaron",
+      "image": "/assets/brands/products/fuji-star/catalog/kenmalon.jpg",
+      "officialUrl": "https://en.fujistar.com/products/kenmalon/",
+      "type": "Non-woven Fabric Products Sheet products",
+      "formats": [
+        "Non-woven Fabric Products Sheet products",
+        "Kenmaron"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Construction and Woodworking Industry",
+        "Steel Industry",
+        "Stainless steel"
+      ]
+    },
+    {
+      "slug": "kenmalon-soft",
+      "name": "Nonwoven Abrasive - Kenmaron Soft",
+      "image": "/assets/brands/products/fuji-star/catalog/kenmalon-soft.jpg",
+      "officialUrl": "https://en.fujistar.com/products/kenmalon-soft/",
+      "type": "Non-woven Fabric Products Sheet products",
+      "formats": [
+        "Non-woven Fabric Products Sheet products",
+        "Kenmaron"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Stainless steel",
+        "Steel Industry"
+      ]
+    },
+    {
+      "slug": "magiclon",
+      "name": "Non-woven Abrasives-Magiclon",
+      "image": "/assets/brands/products/fuji-star/catalog/magiclon.jpg",
+      "officialUrl": "https://en.fujistar.com/products/magiclon/",
+      "type": "Non-woven Fabric Products Sheet products",
+      "formats": [
+        "Non-woven Fabric Products Sheet products"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Stainless steel",
+        "Steel Industry"
+      ]
+    },
+    {
+      "slug": "sabitolon",
+      "name": "Nonwoven Abrasive - Rustron",
+      "image": "/assets/brands/products/fuji-star/catalog/sabitolon.jpg",
+      "officialUrl": "https://en.fujistar.com/products/sabitolon/",
+      "type": "Non-woven Fabric Products Sheet products",
+      "formats": [
+        "Non-woven Fabric Products Sheet products"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Stainless steel",
+        "Steel Industry"
+      ]
+    },
+    {
+      "slug": "punching-belt",
+      "name": "Nonwoven Abrasive Belt",
+      "image": "/assets/brands/products/fuji-star/catalog/punching-belt.jpg",
+      "officialUrl": "https://en.fujistar.com/products/punching-belt/",
+      "type": "Kenmaron",
+      "formats": [
+        "Kenmaron"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Body"
+      ]
+    },
+    {
+      "slug": "eraser-belt",
+      "name": "Nonwoven Abrasive - Eraser Belt",
+      "image": "/assets/brands/products/fuji-star/catalog/eraser-belt.jpg",
+      "officialUrl": "https://en.fujistar.com/products/eraser-belt/",
+      "type": "Kenmaron",
+      "formats": [
+        "Kenmaron"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Body"
+      ]
+    },
+    {
+      "slug": "flap-wheel",
+      "name": "Nonwoven Abrasive - Flap Wheel",
+      "image": "/assets/brands/products/fuji-star/catalog/flap-wheel.jpg",
+      "officialUrl": "https://en.fujistar.com/products/flap-wheel/",
+      "type": "",
+      "formats": [],
+      "applications": [
+        "Automotive Industry",
+        "Construction and Woodworking Industry",
+        "Body (frame)"
+      ]
+    },
+    {
+      "slug": "tarflon-wheel",
+      "name": "Nonwoven Abrasive - Taflon Wheel",
+      "image": "/assets/brands/products/fuji-star/catalog/tarflon-wheel.jpg",
+      "officialUrl": "https://en.fujistar.com/products/tarflon-wheel/",
+      "type": "",
+      "formats": [],
+      "applications": [
+        "Automotive Industry",
+        "Body (frame)",
+        "Steel Industry"
+      ]
+    },
+    {
+      "slug": "non-woven-laminated",
+      "name": "Nonwoven Abrasive - Laminated",
+      "image": "/assets/brands/products/fuji-star/catalog/non-woven-laminated.jpg",
+      "officialUrl": "https://en.fujistar.com/products/non-woven-laminated/",
+      "type": "",
+      "formats": [],
+      "applications": [
+        "Steel Industry",
+        "Other Industries",
+        "Stainless steel"
+      ]
+    },
+    {
+      "slug": "hipitch-kenmalon",
+      "name": "Nonwoven Abrasive - High Pitch Kenmaron",
+      "image": "/assets/brands/products/fuji-star/catalog/hipitch-kenmalon.jpg",
+      "officialUrl": "https://en.fujistar.com/products/hipitch-kenmalon/",
+      "type": "Kenmaron",
+      "formats": [
+        "Kenmaron"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Construction and Woodworking Industry",
+        "Stainless steel"
+      ]
+    },
+    {
+      "slug": "soft-pad",
+      "name": "Nonwoven Abrasive - Soft Pad",
+      "image": "/assets/brands/products/fuji-star/catalog/soft-pad.jpg",
+      "officialUrl": "https://en.fujistar.com/products/soft-pad/",
+      "type": "Kenmaron",
+      "formats": [
+        "Kenmaron"
+      ],
+      "applications": [
+        "Automotive Repair Industry",
+        "Stainless steel",
+        "Steel Industry"
+      ]
+    },
+    {
+      "slug": "ml-cup-ml-disc",
+      "name": "Nonwoven Abrasive - ML Cup II / ML Disc",
+      "image": "/assets/brands/products/fuji-star/catalog/ml-cup-ml-disc.jpg",
+      "officialUrl": "https://en.fujistar.com/products/ml-cup-ml-disc/",
+      "type": "",
+      "formats": [],
+      "applications": [
+        "Automotive Industry",
+        "Stainless steel",
+        "Construction and Woodworking Industry",
+        "Steel Industry"
+      ]
+    }
+  ],
+  "other-products": [
+    {
+      "slug": "frnz-black-cutter",
+      "name": "FRNZ BLACK CUTTER",
+      "image": "/assets/brands/products/fuji-star/catalog/frnz-black-cutter.png",
+      "officialUrl": "https://en.fujistar.com/products/frnz%e3%80%80black%e3%80%80cutter/",
+      "type": "Sanders",
+      "formats": [
+        "Sanders"
+      ],
+      "applications": [
+        "Automotive Repair Industry"
+      ]
+    },
+    {
+      "slug": "double-action-sander-n-975bd",
+      "name": "Double Action Sander N-975BD",
+      "image": "/assets/brands/products/fuji-star/catalog/double-action-sander-n-975bd.jpg",
+      "officialUrl": "https://en.fujistar.com/products/double-action-sander-n-975bd/",
+      "type": "Sanders",
+      "formats": [
+        "Sanders"
+      ],
+      "applications": [
+        "Polishing",
+        "Construction and Woodworking Industry"
+      ]
+    },
+    {
+      "slug": "cushion-pad",
+      "name": "Cushion Pad",
+      "image": "/assets/brands/products/fuji-star/catalog/cushion-pad.jpg",
+      "officialUrl": "https://en.fujistar.com/products/cushion-pad/",
+      "type": "Pads for sanders",
+      "formats": [
+        "Pads for sanders",
+        "velcro",
+        "Pads & Hand Sharpening Products"
+      ],
+      "applications": [
+        "Automotive Repair Industry"
+      ]
+    },
+    {
+      "slug": "red-buff",
+      "name": "Red buff",
+      "image": "/assets/brands/products/fuji-star/catalog/red-buff.jpg",
+      "officialUrl": "https://en.fujistar.com/products/red-buff/",
+      "type": "Buffing",
+      "formats": [
+        "Buffing"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Polishing"
+      ]
+    },
+    {
+      "slug": "cordless-polisher-eb351-6-21",
+      "name": "Cordless double action polisher EB351-6/21",
+      "image": "/assets/brands/products/fuji-star/catalog/cordless-polisher-eb351-6-21.jpg",
+      "officialUrl": "https://en.fujistar.com/products/cordless-polisher-eb351-6-21/",
+      "type": "Polisher",
+      "formats": [
+        "Polisher"
+      ],
+      "applications": [
+        "Polishing"
+      ]
+    },
+    {
+      "slug": "g3-pro",
+      "name": "G3 PRO",
+      "image": "/assets/brands/products/fuji-star/catalog/g3-pro.jpg",
+      "officialUrl": "https://en.fujistar.com/products/g3-pro/",
+      "type": "Compounds",
+      "formats": [
+        "Compounds"
+      ],
+      "applications": [
+        "Automotive Repair Industry",
+        "Polishing"
+      ]
+    },
+    {
+      "slug": "poli-lab-coating",
+      "name": "Coating agent (1-component - water repellent type) \"POLI Lab for coating\".",
+      "image": "/assets/brands/products/fuji-star/catalog/poli-lab-coating.jpg",
+      "officialUrl": "https://en.fujistar.com/products/poli-lab-coating/",
+      "type": "Coating Material",
+      "formats": [
+        "Coating Material"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Body"
+      ]
+    },
+    {
+      "slug": "wiping-cloth-fukitoru",
+      "name": "High grade rag: FUKITTORU",
+      "image": "/assets/brands/products/fuji-star/catalog/wiping-cloth-fukitoru.jpg",
+      "officialUrl": "https://en.fujistar.com/products/wiping-cloth-fukitoru/",
+      "type": "Cloths and rags",
+      "formats": [
+        "Cloths and rags"
+      ],
+      "applications": [
+        "Automotive Repair Industry"
+      ]
+    },
+    {
+      "slug": "fuji-masker-super",
+      "name": "Fuji Masker Paper S",
+      "image": "/assets/brands/products/fuji-star/catalog/fuji-masker-super.jpg",
+      "officialUrl": "https://en.fujistar.com/products/fuji-masker-super/",
+      "type": "Tape & Curing Products",
+      "formats": [
+        "Tape & Curing Products"
+      ],
+      "applications": [
+        "Automotive Repair Industry"
+      ]
+    },
+    {
+      "slug": "b-cotton",
+      "name": "B-cotton",
+      "image": "/assets/brands/products/fuji-star/catalog/b-cotton.jpg",
+      "officialUrl": "https://en.fujistar.com/products/b-cotton/",
+      "type": "Buffing",
+      "formats": [
+        "Buffing"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Polishing"
+      ]
+    },
+    {
+      "slug": "g3-extra",
+      "name": "G3 Extra",
+      "image": "/assets/brands/products/fuji-star/catalog/g3-extra.jpg",
+      "officialUrl": "https://en.fujistar.com/products/g3-extra/",
+      "type": "Compounds",
+      "formats": [
+        "Compounds"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Polishing"
+      ]
+    },
+    {
+      "slug": "hipitch-buff-cleaner",
+      "name": "HP Buff Cleaner",
+      "image": "/assets/brands/products/fuji-star/catalog/hipitch-buff-cleaner.jpg",
+      "officialUrl": "https://en.fujistar.com/products/hipitch-buff-cleaner/",
+      "type": "Buffing",
+      "formats": [
+        "Buffing"
+      ],
+      "applications": [
+        "Automotive Repair Industry",
+        "Polishing"
+      ]
+    },
+    {
+      "slug": "mk-block",
+      "name": "MK Blocks",
+      "image": "/assets/brands/products/fuji-star/catalog/mk-block.jpg",
+      "officialUrl": "https://en.fujistar.com/products/mk-block/",
+      "type": "Pads & Hand Sharpening Products",
+      "formats": [
+        "Pads & Hand Sharpening Products"
+      ],
+      "applications": [
+        "Automotive Repair Industry"
+      ]
+    },
+    {
+      "slug": "new-g3",
+      "name": "NEW G3",
+      "image": "/assets/brands/products/fuji-star/catalog/new-g3.jpg",
+      "officialUrl": "https://en.fujistar.com/products/new-g3/",
+      "type": "Compounds",
+      "formats": [
+        "Compounds"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Polishing"
+      ]
+    },
+    {
+      "slug": "pl-c7",
+      "name": "PL C7",
+      "image": "/assets/brands/products/fuji-star/catalog/pl-c7.jpg",
+      "officialUrl": "https://en.fujistar.com/products/pl-c7/",
+      "type": "Compounds",
+      "formats": [
+        "Compounds"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Polishing"
+      ]
+    },
+    {
+      "slug": "g-super",
+      "name": "Urethane Buff-G Super",
+      "image": "/assets/brands/products/fuji-star/catalog/g-super.jpg",
+      "officialUrl": "https://en.fujistar.com/products/g-super/",
+      "type": "Buffing",
+      "formats": [
+        "Buffing"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Polishing"
+      ]
+    },
+    {
+      "slug": "brilliant-yellow",
+      "name": "Urethane Buffing Brilliant Yellow",
+      "image": "/assets/brands/products/fuji-star/catalog/brilliant-yellow.jpg",
+      "officialUrl": "https://en.fujistar.com/products/brilliant-yellow/",
+      "type": "Buffing",
+      "formats": [
+        "Buffing"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Polishing"
+      ]
+    },
+    {
+      "slug": "cross-wool-65",
+      "name": "Cross Wool 65/Cross Wool 65 Soft",
+      "image": "/assets/brands/products/fuji-star/catalog/cross-wool-65.jpg",
+      "officialUrl": "https://en.fujistar.com/products/cross-wool-65/",
+      "type": "Buffing",
+      "formats": [
+        "Buffing"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Polishing"
+      ]
+    },
+    {
+      "slug": "dots-block",
+      "name": "Dot Blocks",
+      "image": "/assets/brands/products/fuji-star/catalog/dots-block.jpg",
+      "officialUrl": "https://en.fujistar.com/products/dots-block/",
+      "type": "Pads & Hand Sharpening Products",
+      "formats": [
+        "Pads & Hand Sharpening Products"
+      ],
+      "applications": [
+        "Automotive Repair Industry"
+      ]
+    },
+    {
+      "slug": "new-cross-wool-chidori",
+      "name": "New Crosswool CHIDORI Soft",
+      "image": "/assets/brands/products/fuji-star/catalog/new-cross-wool-chidori.jpg",
+      "officialUrl": "https://en.fujistar.com/products/new-cross-wool-chidori/",
+      "type": "Buffing",
+      "formats": [
+        "Buffing"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Polishing"
+      ]
+    },
+    {
+      "slug": "hyper-tuck-tape",
+      "name": "Hyper Tack Tape",
+      "image": "/assets/brands/products/fuji-star/catalog/hyper-tuck-tape.jpg",
+      "officialUrl": "https://en.fujistar.com/products/hyper-tuck-tape/",
+      "type": "Tape & Curing Products",
+      "formats": [
+        "Tape & Curing Products"
+      ],
+      "applications": [
+        "Automotive Repair Industry"
+      ]
+    },
+    {
+      "slug": "hipitch-tape",
+      "name": "High Pitch Tape",
+      "image": "/assets/brands/products/fuji-star/catalog/hipitch-tape.jpg",
+      "officialUrl": "https://en.fujistar.com/products/hipitch-tape/",
+      "type": "Pads for sanders",
+      "formats": [
+        "Pads for sanders",
+        "Pads & Hand Sharpening Products"
+      ],
+      "applications": [
+        "Automotive Repair Industry"
+      ]
+    },
+    {
+      "slug": "hipitch-pad",
+      "name": "High Pitch Pad",
+      "image": "/assets/brands/products/fuji-star/catalog/hipitch-pad.jpg",
+      "officialUrl": "https://en.fujistar.com/products/hipitch-pad/",
+      "type": "Pads for sanders",
+      "formats": [
+        "Pads for sanders",
+        "Sanders",
+        "Pads & Hand Sharpening Products"
+      ],
+      "applications": [
+        "Automotive Repair Industry"
+      ]
+    },
+    {
+      "slug": "hipitch-file",
+      "name": "High Pitch Files (Hook and Loop Type)",
+      "image": "/assets/brands/products/fuji-star/catalog/hipitch-file.jpg",
+      "officialUrl": "https://en.fujistar.com/products/hipitch-file/",
+      "type": "Pads & Hand Sharpening Products",
+      "formats": [
+        "Pads & Hand Sharpening Products"
+      ],
+      "applications": [
+        "Automotive Repair Industry"
+      ]
+    },
+    {
+      "slug": "final-cotton-buff",
+      "name": "Final Cotton Buffing Wheel",
+      "image": "/assets/brands/products/fuji-star/catalog/final-cotton-buff.jpg",
+      "officialUrl": "https://en.fujistar.com/products/final-cotton-buff/",
+      "type": "Buffing",
+      "formats": [
+        "Buffing"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Polishing"
+      ]
+    },
+    {
+      "slug": "form-tape",
+      "name": "Foam tape",
+      "image": "/assets/brands/products/fuji-star/catalog/form-tape.jpg",
+      "officialUrl": "https://en.fujistar.com/products/form-tape/",
+      "type": "Tape & Curing Products",
+      "formats": [
+        "Tape & Curing Products"
+      ],
+      "applications": [
+        "Automotive Repair Industry"
+      ]
+    },
+    {
+      "slug": "fuji-masker-jumbo",
+      "name": "Fuji Masker Jumbo",
+      "image": "/assets/brands/products/fuji-star/catalog/fuji-masker-super.jpg",
+      "officialUrl": "https://en.fujistar.com/products/fuji-masker-jumbo/",
+      "type": "Tape & Curing Products",
+      "formats": [
+        "Tape & Curing Products"
+      ],
+      "applications": [
+        "Automotive Repair Industry"
+      ]
+    },
+    {
+      "slug": "fuji-masker-tankal",
+      "name": "Fuji Masker Tankaru",
+      "image": "/assets/brands/products/fuji-star/catalog/fuji-masker-tankal.jpg",
+      "officialUrl": "https://en.fujistar.com/products/fuji-masker-tankal/",
+      "type": "Tape & Curing Products",
+      "formats": [
+        "Tape & Curing Products"
+      ],
+      "applications": [
+        "Automotive Repair Industry"
+      ]
+    },
+    {
+      "slug": "fuji-masker-full-easy",
+      "name": "Fuji Masker Full Easy",
+      "image": "/assets/brands/products/fuji-star/catalog/fuji-masker-full-easy.jpg",
+      "officialUrl": "https://en.fujistar.com/products/fuji-masker-full-easy/",
+      "type": "Tape & Curing Products",
+      "formats": [
+        "Tape & Curing Products"
+      ],
+      "applications": [
+        "Automotive Repair Industry"
+      ]
+    },
+    {
+      "slug": "fuji-masker-barrier",
+      "name": "Fuji Masker Barrier",
+      "image": "/assets/brands/products/fuji-star/catalog/fuji-masker-barrier.png",
+      "officialUrl": "https://en.fujistar.com/products/fuji-masker-barrier/",
+      "type": "Tape & Curing Products",
+      "formats": [
+        "Tape & Curing Products"
+      ],
+      "applications": [
+        "Automotive Repair Industry"
+      ]
+    },
+    {
+      "slug": "black-wool",
+      "name": "Black Wool",
+      "image": "/assets/brands/products/fuji-star/catalog/black-wool.jpg",
+      "officialUrl": "https://en.fujistar.com/products/black-wool/",
+      "type": "Buffing",
+      "formats": [
+        "Buffing"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Polishing"
+      ]
+    },
+    {
+      "slug": "primero-buff",
+      "name": "Primero Buff / Primero Buff Soft / Primero Buff Medium",
+      "image": "/assets/brands/products/fuji-star/catalog/primero-buff.jpg",
+      "officialUrl": "https://en.fujistar.com/products/primero-buff/",
+      "type": "Buffing",
+      "formats": [
+        "Buffing"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Polishing"
+      ]
+    },
+    {
+      "slug": "white-buff",
+      "name": "White Buffing",
+      "image": "/assets/brands/products/fuji-star/catalog/white-buff.jpg",
+      "officialUrl": "https://en.fujistar.com/products/white-buff/",
+      "type": "Buffing",
+      "formats": [
+        "Buffing"
+      ],
+      "applications": [
+        "Automotive Industry",
+        "Automotive Repair Industry",
+        "Polishing"
+      ]
+    },
+    {
+      "slug": "luci",
+      "name": "Lucifer",
+      "image": "/assets/brands/products/fuji-star/catalog/luci.jpg",
+      "officialUrl": "https://en.fujistar.com/products/luci/",
+      "type": "Compounds",
+      "formats": [
+        "Compounds"
+      ],
+      "applications": [
+        "Automotive Repair Industry",
+        "Polishing"
+      ]
+    },
+    {
+      "slug": "compact-sander-840",
+      "name": "840 Sander",
+      "image": "/assets/brands/products/fuji-star/catalog/compact-sander-840.jpg",
+      "officialUrl": "https://en.fujistar.com/products/compact-sander-840/",
+      "type": "Sanders",
+      "formats": [
+        "Sanders"
+      ],
+      "applications": [
+        "Polishing",
+        "Construction and Woodworking Industry"
+      ]
+    },
+    {
+      "slug": "dust-cutter",
+      "name": "DUST CUTTER",
+      "image": "/assets/brands/products/fuji-star/catalog/dust-cutter.jpg",
+      "officialUrl": "https://en.fujistar.com/products/dust-cutter/",
+      "type": "Sanders",
+      "formats": [
+        "Sanders"
+      ],
+      "applications": [
+        "Polishing"
+      ]
+    },
+    {
+      "slug": "gear-action-sander-giamaru",
+      "name": "Gear Action Sander Gear Mal",
+      "image": "/assets/brands/products/fuji-star/catalog/gear-action-sander-giamaru.jpg",
+      "officialUrl": "https://en.fujistar.com/products/gear-action-sander-giamaru/",
+      "type": "Sanders",
+      "formats": [
+        "Sanders"
+      ],
+      "applications": [
+        "Polishing",
+        "Construction and Woodworking Industry"
+      ]
+    },
+    {
+      "slug": "double-action-sander-minimaru",
+      "name": "Double Action Sander Minimal",
+      "image": "/assets/brands/products/fuji-star/catalog/double-action-sander-minimaru.jpg",
+      "officialUrl": "https://en.fujistar.com/products/double-action-sander-minimaru/",
+      "type": "Sanders",
+      "formats": [
+        "Sanders"
+      ],
+      "applications": [
+        "Polishing",
+        "Automotive Repair Industry",
+        "Construction and Woodworking Industry"
+      ]
+    },
+    {
+      "slug": "937f-single-sander",
+      "name": "Pseudo single sander 937F",
+      "image": "/assets/brands/products/fuji-star/catalog/937f-single-sander.jpg",
+      "officialUrl": "https://en.fujistar.com/products/937f_single_sander/",
+      "type": "Sanders",
+      "formats": [
+        "Sanders"
+      ],
+      "applications": [
+        "Polishing",
+        "Construction and Woodworking Industry"
+      ]
+    }
+  ]
+}

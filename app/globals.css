@@ -1,0 +1,232 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "NAC Logo";
+  src: url("/assets/brands/fonts/nac-logo.woff") format("woff");
+  font-display: block;
+  font-style: normal;
+  font-weight: 400;
+}
+
+:root {
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  background: #f6f7f8;
+  color: #151a22;
+  font-family: var(--font-sans);
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+span {
+  overflow-wrap: break-word;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: #bf2f2f;
+  color: #ffffff;
+}
+
+.container-page {
+  margin-inline: auto;
+  width: min(calc(100% - 2rem), 1180px);
+}
+
+.technical-grid {
+  background-color: #f7f8fa;
+  background-image:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.96) 0 38%, rgba(255, 255, 255, 0.68) 38% 62%, transparent 62%),
+    url("/assets/company/sourcing-background.svg"),
+    linear-gradient(90deg, transparent 0 62px, rgba(191, 47, 47, 0.14) 62px 64px, transparent 64px 100%),
+    repeating-linear-gradient(135deg, transparent 0 19px, rgba(31, 79, 124, 0.05) 19px 20px),
+    linear-gradient(rgba(21, 26, 34, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21, 26, 34, 0.055) 1px, transparent 1px),
+    linear-gradient(rgba(21, 26, 34, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21, 26, 34, 0.028) 1px, transparent 1px);
+  background-position:
+    0 0,
+    right -4rem top 1rem,
+    right 9rem top 0,
+    0 0,
+    -1px -1px,
+    -1px -1px,
+    -1px -1px,
+    -1px -1px;
+  background-size:
+    100% 100%,
+    min(78rem, 118vw) auto,
+    220px 100%,
+    26px 26px,
+    156px 156px,
+    156px 156px,
+    39px 39px,
+    39px 39px;
+  background-repeat:
+    no-repeat,
+    no-repeat,
+    repeat,
+    repeat,
+    repeat,
+    repeat,
+    repeat,
+    repeat;
+}
+
+.tohnichi-calibration-field {
+  background-color: #f3f1ec;
+}
+
+.tohnichi-instrument-surface {
+  background-color: #edf1f2;
+  background-image:
+    linear-gradient(
+      90deg,
+      transparent calc(50% - 0.5px),
+      rgba(31, 79, 124, 0.13) calc(50% - 0.5px),
+      rgba(31, 79, 124, 0.13) calc(50% + 0.5px),
+      transparent calc(50% + 0.5px)
+    ),
+    linear-gradient(
+      0deg,
+      transparent calc(50% - 0.5px),
+      rgba(31, 79, 124, 0.09) calc(50% - 0.5px),
+      rgba(31, 79, 124, 0.09) calc(50% + 0.5px),
+      transparent calc(50% + 0.5px)
+    );
+}
+
+.blueprint-soft {
+  background-image:
+    linear-gradient(rgba(31, 79, 124, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(31, 79, 124, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(31, 79, 124, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(31, 79, 124, 0.035) 1px, transparent 1px);
+  background-size:
+    112px 112px,
+    112px 112px,
+    28px 28px,
+    28px 28px;
+}
+
+.blueprint-dark {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.25) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.25) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.dot-matrix {
+  background-image: radial-gradient(rgba(21, 26, 34, 0.14) 1px, transparent 1.5px);
+  background-size: 18px 18px;
+}
+
+.drafting-lines {
+  background-image:
+    linear-gradient(rgba(21, 26, 34, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21, 26, 34, 0.055) 1px, transparent 1px),
+    repeating-linear-gradient(135deg, rgba(31, 79, 124, 0.055) 0 1px, transparent 1px 18px);
+  background-size:
+    32px 32px,
+    32px 32px,
+    auto;
+}
+
+.crosshair-field {
+  background-image:
+    linear-gradient(rgba(21, 26, 34, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21, 26, 34, 0.05) 1px, transparent 1px),
+    linear-gradient(rgba(191, 47, 47, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(191, 47, 47, 0.12) 1px, transparent 1px);
+  background-size:
+    30px 30px,
+    30px 30px,
+    240px 240px,
+    240px 240px;
+}
+
+.panel-grid {
+  background-image:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.2)),
+    linear-gradient(rgba(21, 26, 34, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21, 26, 34, 0.055) 1px, transparent 1px);
+  background-size:
+    auto,
+    34px 34px,
+    34px 34px;
+}
+
+.asset-slot {
+  background:
+    linear-gradient(135deg, rgba(40, 93, 143, 0.12), rgba(21, 26, 34, 0.04)),
+    repeating-linear-gradient(45deg, rgba(21, 26, 34, 0.04) 0 1px, transparent 1px 12px);
+}
+
+.focus-ring {
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-industrial-600 focus-visible:ring-offset-2;
+}
+
+.font-nac-logo {
+  font-family: "NAC Logo";
+}
+
+@keyframes expertise-slide-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(24px, 0, 0) scale(0.995);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.expertise-slide-enter {
+  animation: expertise-slide-enter 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .expertise-slide-enter {
+    animation: none;
+  }
+}

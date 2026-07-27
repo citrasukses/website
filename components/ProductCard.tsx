@@ -1,0 +1,70 @@
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import type { CatalogProduct } from "@/data/catalog-types";
+import { text, type Language } from "@/lib/i18n";
+import { AssetSlot } from "@/components/AssetSlot";
+
+export function ProductCard({
+  product,
+  brandSlug,
+  lang,
+  eyebrow
+}: {
+  product: CatalogProduct;
+  brandSlug: string;
+  lang: Language;
+  eyebrow?: string;
+}) {
+  const href = `/brands/${brandSlug}/products/${product.slug}${lang === "en" ? "?lang=en" : ""}`;
+  const isSankyoRikagaku = brandSlug === "fuji-star";
+  return (
+    <article className="group overflow-hidden border border-graphite-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-industrial-600 hover:shadow-panel">
+      <Link href={href}>
+        <AssetSlot
+          src={product.image || product.images[0] || ""}
+          alt={product.name}
+          label={product.name}
+          className="h-48 border-0 border-b border-graphite-200 bg-graphite-50"
+          imageClassName="p-5 transition duration-500 group-hover:scale-[1.03]"
+          fit="contain"
+          sizes="(max-width: 768px) 100vw, 33vw"
+        />
+      </Link>
+      <div className="p-5">
+        {eyebrow ? (
+          <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.16em] text-signal-600">{eyebrow}</p>
+        ) : null}
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <h4 className="text-lg font-bold text-graphite-900"><Link href={href}>{product.name}</Link></h4>
+            {product.model ? <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-graphite-500">{product.model}</p> : null}
+          </div>
+          <Link
+            href={href}
+            aria-label={lang === "en" ? `View ${product.name}` : `Lihat ${product.name}`}
+            className="flex h-9 w-9 shrink-0 items-center justify-center border border-graphite-200 text-industrial-700"
+          >
+            <ArrowUpRight className="h-4 w-4" />
+          </Link>
+        </div>
+        <p className="mt-3 text-sm leading-6 text-graphite-500">{text(product.summary, lang)}</p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {product.tags.map((tag) => (
+            <span key={text(tag, lang)} className="border border-graphite-200 bg-graphite-50 px-2.5 py-1 text-xs font-semibold text-graphite-600">
+              {text(tag, lang)}
+            </span>
+          ))}
+        </div>
+        <Link href={href} className="mt-5 inline-flex text-sm font-bold text-industrial-700 hover:text-signal-600">
+          {isSankyoRikagaku
+            ? lang === "en"
+              ? `${product.name} models and options`
+              : `Model dan pilihan ${product.name}`
+            : lang === "en"
+              ? `${product.name} details and specifications`
+              : `Detail dan spesifikasi ${product.name}`}
+        </Link>
+      </div>
+    </article>
+  );
+}
