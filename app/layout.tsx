@@ -12,9 +12,6 @@ export const metadata: Metadata = {
   description:
     "PT Citra Sukses Ekapratama supplies industrial goods from Japan and overseas manufacturers to Indonesia's automotive and industrial sectors.",
   metadataBase: new URL("https://cse.co.id"),
-  alternates: {
-    canonical: "/"
-  },
   openGraph: {
     title: "CSE | PT Citra Sukses Ekapratama",
     description:

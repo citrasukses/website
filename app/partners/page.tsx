@@ -10,7 +10,10 @@ import { staticLanguage, text, withLang } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "For Partners",
-  description: "For overseas industrial brands interested in Indonesian distribution with CSE."
+  description: "For overseas industrial brands interested in Indonesian distribution with CSE.",
+  alternates: {
+    canonical: "/partners"
+  }
 };
 
 export default function PartnersPage() {

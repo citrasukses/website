@@ -1,13 +1,21 @@
+"use client";
+
 import Image from "next/image";
 import {
   ArrowRight,
+  BadgeCheck,
   Check,
+  ChevronLeft,
+  ChevronRight,
   ClipboardCheck,
   Gauge,
   ListChecks,
+  Pause,
+  Play,
   ScanLine,
   ShieldCheck
 } from "lucide-react";
+import { useEffect, useState } from "react";
 import { CTAButton } from "@/components/CTAButton";
 import { TohnichiTorqueCarousel } from "@/components/TohnichiTorqueCarousel";
 import { text, withLang, type Language, type LocalizedText } from "@/lib/i18n";
@@ -19,6 +27,7 @@ type TohnichiTighteningSectionProps = {
 type TighteningChallenge = {
   id: string;
   icon: typeof Gauge;
+  topic: LocalizedText;
   title: LocalizedText;
   problem: LocalizedText;
   solutionTitle: LocalizedText;
@@ -34,6 +43,10 @@ const challenges: TighteningChallenge[] = [
   {
     id: "over-tightening",
     icon: Gauge,
+    topic: {
+      id: "Over-tightening",
+      en: "Over-tightening"
+    },
     title: {
       id: "Mencegah over-tightening",
       en: "Prevent over-tightening"
@@ -62,6 +75,10 @@ const challenges: TighteningChallenge[] = [
   {
     id: "missed-tightening",
     icon: ScanLine,
+    topic: {
+      id: "Missed tightening",
+      en: "Missed tightening"
+    },
     title: {
       id: "Menemukan missed tightening",
       en: "Expose missed tightening"
@@ -90,6 +107,10 @@ const challenges: TighteningChallenge[] = [
   {
     id: "bolt-count",
     icon: ListChecks,
+    topic: {
+      id: "Jumlah baut tidak lengkap",
+      en: "Incomplete bolt count"
+    },
     title: {
       id: "Memastikan seluruh baut selesai",
       en: "Confirm every fastening point"
@@ -118,6 +139,10 @@ const challenges: TighteningChallenge[] = [
   {
     id: "calibration-drift",
     icon: ShieldCheck,
+    topic: {
+      id: "Torque wrench drift",
+      en: "Torque wrench drift"
+    },
     title: {
       id: "Mendeteksi drift sebelum kalibrasi berikutnya",
       en: "Catch drift before the next calibration"
@@ -146,6 +171,10 @@ const challenges: TighteningChallenge[] = [
   {
     id: "nutrunner-check",
     icon: ClipboardCheck,
+    topic: {
+      id: "Verifikasi nutrunner",
+      en: "Nutrunner verification"
+    },
     title: {
       id: "Memeriksa nutrunner secara in-house",
       en: "Check nutrunners in-house"
@@ -167,6 +196,14 @@ const challenges: TighteningChallenge[] = [
       en: "Less downtime and earlier abnormality detection."
     }
   }
+];
+
+const manufacturingProblems = [
+  challenges[1],
+  challenges[0],
+  challenges[2],
+  challenges[3],
+  challenges[4]
 ];
 
 function TighteningRiskVisual({
@@ -377,6 +414,37 @@ const controlLayers = [
 ];
 
 export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionProps) {
+  const [activeProblemIndex, setActiveProblemIndex] = useState(0);
+  const [rotationPaused, setRotationPaused] = useState(false);
+  const [isInteracting, setIsInteracting] = useState(false);
+  const activeChallenge = manufacturingProblems[activeProblemIndex];
+  const isAutoRotationPaused = rotationPaused || isInteracting;
+
+  useEffect(() => {
+    if (
+      isAutoRotationPaused ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      setActiveProblemIndex((current) => (current + 1) % manufacturingProblems.length);
+    }, 7000);
+
+    return () => window.clearTimeout(timer);
+  }, [activeProblemIndex, isAutoRotationPaused]);
+
+  const showPreviousProblem = () => {
+    setActiveProblemIndex(
+      (current) => (current - 1 + manufacturingProblems.length) % manufacturingProblems.length
+    );
+  };
+
+  const showNextProblem = () => {
+    setActiveProblemIndex((current) => (current + 1) % manufacturingProblems.length);
+  };
+
   return (
     <section
       id="expertise"
@@ -386,17 +454,34 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
       <div className="container-page py-16 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:items-center">
           <div>
-            <div className="inline-flex items-center gap-3 border border-graphite-200 bg-white px-4 py-2 shadow-sm">
-              <Image
-                src="/assets/brands/logos/tohnichi--nobg.png"
-                alt="Tohnichi"
-                width={132}
-                height={61}
-                className="h-10 w-auto object-contain"
-              />
-              <span className="border-l border-graphite-200 pl-3 text-[10px] font-bold uppercase tracking-[0.18em] text-graphite-500">
-                Japan
-              </span>
+            <div className="inline-flex max-w-full flex-col overflow-hidden border border-graphite-200 bg-white shadow-sm">
+              <div className="flex items-center gap-3 px-4 py-2.5">
+                <Image
+                  src="/assets/brands/logos/tohnichi--nobg.png"
+                  alt="Tohnichi"
+                  width={132}
+                  height={61}
+                  className="h-10 w-auto object-contain"
+                />
+                <span className="border-l border-graphite-200 pl-3 text-[10px] font-bold uppercase tracking-[0.18em] text-graphite-500">
+                  Japan
+                </span>
+              </div>
+              <div className="flex items-center gap-3 bg-industrial-700 px-4 py-3 text-white">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-white/20 bg-white/10">
+                  <BadgeCheck className="h-5 w-5 text-[#e8c63d]" aria-hidden="true" />
+                </span>
+                <div>
+                  <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-white/60">
+                    {lang === "en" ? "Official partnership" : "Kemitraan resmi"}
+                  </p>
+                  <p className="mt-0.5 text-base font-bold leading-tight sm:text-lg">
+                    {lang === "en"
+                      ? "Authorized Distributor of Tohnichi"
+                      : "Distributor Resmi Tohnichi"}
+                  </p>
+                </div>
+              </div>
             </div>
 
             <p className="mt-8 border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-industrial-700">
@@ -461,86 +546,190 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
           </div>
         </div>
 
-        <div className="mt-20 border-t border-graphite-200 pt-10">
-          <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-            <h3 className="max-w-2xl text-balance text-3xl font-bold leading-tight text-graphite-900 sm:text-4xl">
-              {lang === "en"
-                ? "What Tohnichi solves on the factory floor."
-                : "Masalah yang Tohnichi selesaikan di lantai produksi."}
-            </h3>
-            <p className="max-w-2xl text-sm leading-7 text-graphite-600 lg:justify-self-end">
-              {lang === "en"
-                ? "The attached field guide describes five common failure modes. The right Tohnichi setup addresses each risk at the point where it begins—during tightening, completion confirmation, or tool verification."
-                : "Panduan aplikasi Tohnichi merangkum lima failure mode yang umum terjadi. Solusi yang tepat mengendalikan setiap risiko di titik awalnya—saat tightening, konfirmasi penyelesaian, atau verifikasi kondisi alat."}
-            </p>
+        <div
+          className="mt-16 overflow-hidden border border-graphite-200 bg-white shadow-panel lg:mt-20"
+          role="region"
+          aria-roledescription="carousel"
+          aria-label={lang === "en" ? "Manufacturing problems and Tohnichi solutions" : "Masalah manufaktur dan solusi Tohnichi"}
+          onMouseEnter={() => setIsInteracting(true)}
+          onMouseLeave={() => setIsInteracting(false)}
+          onFocusCapture={() => setIsInteracting(true)}
+          onBlurCapture={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+              setIsInteracting(false);
+            }
+          }}
+        >
+          <div className="flex flex-col gap-5 border-b border-graphite-200 px-5 py-6 sm:flex-row sm:items-end sm:justify-between sm:px-7">
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-signal-600">
+                Tohnichi application guide
+              </p>
+              <h3 className="mt-2 text-2xl font-bold leading-tight text-graphite-900 sm:text-3xl">
+                Manufacturing Problems
+              </h3>
+              <p className="mt-2 max-w-2xl text-sm leading-6 text-graphite-500">
+                {lang === "en"
+                  ? "Select a failure mode to see where it begins and how the right Tohnichi setup controls it."
+                  : "Pilih failure mode untuk melihat sumber masalah dan bagaimana setup Tohnichi yang tepat mengendalikannya."}
+              </p>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setRotationPaused((current) => !current)}
+              className="flex min-h-10 shrink-0 items-center gap-2 self-start border border-graphite-200 bg-graphite-50 px-3 text-[10px] font-bold uppercase tracking-[0.14em] text-graphite-700 transition-colors hover:border-industrial-700 hover:text-industrial-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-industrial-700 sm:self-auto"
+              aria-pressed={rotationPaused}
+              aria-label={
+                rotationPaused
+                  ? lang === "en"
+                    ? "Resume automatic problem rotation"
+                    : "Lanjutkan pergantian masalah otomatis"
+                  : lang === "en"
+                    ? "Pause automatic problem rotation"
+                    : "Jeda pergantian masalah otomatis"
+              }
+            >
+              {rotationPaused ? (
+                <Play className="h-3.5 w-3.5" aria-hidden="true" />
+              ) : (
+                <Pause className="h-3.5 w-3.5" aria-hidden="true" />
+              )}
+              {rotationPaused
+                ? lang === "en"
+                  ? "Resume"
+                  : "Lanjutkan"
+                : lang === "en"
+                  ? "Auto rotation"
+                  : "Rotasi otomatis"}
+            </button>
           </div>
 
-          <ol className="mt-10 grid gap-5 lg:grid-cols-6">
-            {challenges.map((challenge, index) => {
-              const cardWidth = index < 3 ? "lg:col-span-2" : "lg:col-span-3";
+          <div className="overflow-x-auto border-b border-graphite-200">
+            <div
+              className="grid min-w-[860px] grid-cols-5"
+              aria-label={lang === "en" ? "Manufacturing problem topics" : "Topik masalah manufaktur"}
+            >
+              {manufacturingProblems.map((challenge, index) => {
+                const active = index === activeProblemIndex;
 
-              return (
-                <li
-                  key={challenge.id}
-                  className={`${cardWidth} relative flex flex-col overflow-hidden border border-graphite-200 bg-white text-graphite-900 shadow-panel`}
-                >
-                  <div className="flex items-stretch border-b border-graphite-200 bg-white">
-                    <div className="flex w-24 shrink-0 flex-col justify-center bg-[#e2b91d] px-4 py-3 text-graphite-900">
-                      <span className="text-[9px] font-black uppercase leading-4 tracking-[0.12em]">
-                        Trouble
-                        <br />
-                        shooting
-                      </span>
-                      <span className="mt-1 text-[9px] font-bold uppercase tracking-[0.12em]">
-                        Case {index + 1}
-                      </span>
-                    </div>
-                    <div className="flex flex-1 items-center justify-between gap-4 px-5 py-4">
-                      <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-graphite-500">
-                        {lang === "en" ? "Manufacturing risk" : "Risiko manufaktur"}
-                      </p>
-                      <span className="text-2xl font-black text-graphite-100">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                    </div>
-                  </div>
+                return (
+                  <button
+                    id={`manufacturing-problem-${challenge.id}`}
+                    key={challenge.id}
+                    type="button"
+                    onClick={() => setActiveProblemIndex(index)}
+                    className={`group relative flex min-h-24 items-center gap-3 border-r border-graphite-200 px-5 text-left transition-colors last:border-r-0 focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-industrial-700 ${
+                      active
+                        ? "bg-industrial-700 text-white"
+                        : "bg-white text-graphite-700 hover:bg-graphite-50 hover:text-industrial-700"
+                    }`}
+                    aria-pressed={active}
+                    aria-controls="active-manufacturing-problem"
+                  >
+                    <span
+                      className={`text-[10px] font-black tracking-[0.16em] ${
+                        active ? "text-[#e8c63d]" : "text-signal-500"
+                      }`}
+                    >
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-sm font-bold leading-5">
+                      {text(challenge.topic, lang)}
+                    </span>
+                    {index < manufacturingProblems.length - 1 ? (
+                      <ChevronRight
+                        className={`absolute right-2 h-4 w-4 ${
+                          active ? "text-white/45" : "text-graphite-200 group-hover:text-industrial-700/40"
+                        }`}
+                        aria-hidden="true"
+                      />
+                    ) : null}
+                    {active ? (
+                      <span className="absolute inset-x-0 bottom-0 h-1 bg-[#e8c63d]" aria-hidden="true" />
+                    ) : null}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
 
-                  <div className="grid flex-1 gap-6 p-5 sm:p-6">
+          <div
+            id="active-manufacturing-problem"
+            role="group"
+            aria-labelledby={`manufacturing-problem-${activeChallenge.id}`}
+            aria-live={isAutoRotationPaused ? "polite" : "off"}
+          >
+            <div key={activeChallenge.id} className="grid lg:grid-cols-[0.92fr_1.08fr]">
+              <article className="border-b border-graphite-200 bg-white p-5 sm:p-7 lg:border-b-0 lg:border-r">
+                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-graphite-500">
+                  {lang === "en" ? "Manufacturing risk" : "Risiko manufaktur"} ·{" "}
+                  {String(activeProblemIndex + 1).padStart(2, "0")}
+                </p>
+                <h4 className="mt-3 text-xl font-bold leading-snug text-graphite-900 sm:text-2xl">
+                  {text(activeChallenge.title, lang)}
+                </h4>
+                <p className="mt-3 min-h-[4.5rem] text-sm leading-6 text-graphite-500">
+                  {text(activeChallenge.problem, lang)}
+                </p>
+                <div className="mt-5">
+                  <TighteningRiskVisual challenge={activeChallenge} lang={lang} />
+                </div>
+              </article>
+
+              <article className="bg-[#fffaf0] p-5 sm:p-7">
+                <div className="inline-flex bg-[#e2b91d] px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-graphite-900">
+                  {lang === "en" ? "Tohnichi solution" : "Solusi Tohnichi"}
+                </div>
+                <h5 className="mt-4 text-xl font-bold leading-snug text-graphite-900 sm:text-2xl">
+                  {text(activeChallenge.solutionTitle, lang)}
+                </h5>
+                <p className="mt-3 min-h-[4.5rem] text-sm leading-6 text-graphite-600">
+                  {text(activeChallenge.solution, lang)}
+                </p>
+
+                <div className="mt-5 grid gap-5 sm:grid-cols-[1fr_11rem] sm:items-center">
+                  <div className="flex items-start gap-3 border-y border-[#dfd4a0] py-4">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-signal-500" aria-hidden="true" />
                     <div>
-                      <h4 className="text-xl font-bold leading-snug">{text(challenge.title, lang)}</h4>
-                      <p className="mt-3 text-sm leading-6 text-graphite-500">{text(challenge.problem, lang)}</p>
-                    </div>
-                    <TighteningRiskVisual challenge={challenge} lang={lang} />
-                  </div>
-
-                  <div className="flex justify-center py-3" aria-hidden="true">
-                    <span className="h-12 w-14 bg-[#e2b91d] [clip-path:polygon(18%_0,82%_0,82%_48%,100%_48%,50%_100%,0_48%,18%_48%)]" />
-                  </div>
-
-                  <div className="border-t border-[#d8c979] bg-[#fffaf0] p-5 sm:p-6">
-                    <div className="inline-flex bg-[#e2b91d] px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-graphite-900">
-                      {lang === "en" ? "Solution" : "Solusi"}
-                    </div>
-
-                    <div className="mt-5 grid gap-5 sm:grid-cols-[1fr_9rem] sm:items-start">
-                      <div>
-                        <h5 className="text-base font-bold leading-snug text-graphite-900">
-                          {text(challenge.solutionTitle, lang)}
-                        </h5>
-                        <p className="mt-3 text-sm leading-6 text-graphite-600">{text(challenge.solution, lang)}</p>
-                      </div>
-                      <SolutionVisual challenge={challenge} lang={lang} />
-                    </div>
-
-                    <div className="mt-5 flex items-start gap-3 border-t border-[#dfd4a0] pt-4">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-signal-500" aria-hidden="true" />
-                      <p className="text-xs font-bold leading-5 text-graphite-700">{text(challenge.result, lang)}</p>
+                      <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-graphite-500">
+                        {lang === "en" ? "Controlled result" : "Hasil terkendali"}
+                      </p>
+                      <p className="mt-1 text-sm font-bold leading-6 text-graphite-700">
+                        {text(activeChallenge.result, lang)}
+                      </p>
                     </div>
                   </div>
-                </li>
-              );
-            })}
-          </ol>
+                  <SolutionVisual challenge={activeChallenge} lang={lang} />
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between border-t border-graphite-200 bg-graphite-50 px-5 py-4 sm:px-7">
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-graphite-500">
+              {String(activeProblemIndex + 1).padStart(2, "0")} /{" "}
+              {String(manufacturingProblems.length).padStart(2, "0")}
+            </p>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={showPreviousProblem}
+                className="flex h-10 w-10 items-center justify-center border border-graphite-200 bg-white text-graphite-900 transition-colors hover:border-industrial-700 hover:text-industrial-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-industrial-700"
+                aria-label={lang === "en" ? "Previous manufacturing problem" : "Masalah manufaktur sebelumnya"}
+              >
+                <ChevronLeft className="h-4 w-4" aria-hidden="true" />
+              </button>
+              <button
+                type="button"
+                onClick={showNextProblem}
+                className="flex h-10 w-10 items-center justify-center border border-graphite-200 bg-white text-graphite-900 transition-colors hover:border-industrial-700 hover:text-industrial-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-industrial-700"
+                aria-label={lang === "en" ? "Next manufacturing problem" : "Masalah manufaktur berikutnya"}
+              >
+                <ChevronRight className="h-4 w-4" aria-hidden="true" />
+              </button>
+            </div>
+          </div>
         </div>
 
         <div className="mt-10 grid gap-px border border-graphite-200 bg-graphite-200 shadow-panel md:grid-cols-[1.2fr_0.8fr]">

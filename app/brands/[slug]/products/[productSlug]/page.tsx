@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FileText, RadioTower } from "lucide-react";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTAButton } from "@/components/CTAButton";
+import { ProductCard } from "@/components/ProductCard";
 import { ProductGallery } from "@/components/ProductGallery";
+import { SectionHeader } from "@/components/SectionHeader";
 import { seedCatalog } from "@/data/catalog-seed";
 import { getCatalogBrandBySlug } from "@/lib/catalog";
 import { staticLanguage, text, withLang } from "@/lib/i18n";
@@ -22,7 +25,24 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug, productSlug } = await params;
   const brand = await getCatalogBrandBySlug(slug);
   const product = brand?.productGroups.flatMap((group) => group.products).find((candidate) => candidate.slug === productSlug);
-  return product ? { title: `${product.name} | ${brand?.name}`, description: product.summary.en } : {};
+  if (!product || !brand) {
+    return {};
+  }
+
+  const canonical = `/brands/${brand.slug}/products/${product.slug}`;
+  return {
+    title: `${product.name} | ${brand.name}`,
+    description: product.summary.id,
+    alternates: {
+      canonical
+    },
+    openGraph: {
+      title: `${product.name} ${brand.name} Indonesia | CSE`,
+      description: product.summary.id,
+      url: canonical,
+      images: product.image ? [{ url: product.image, alt: `${brand.name} ${product.name}` }] : undefined
+    }
+  };
 }
 
 export default async function ProductDetailPage({ params }: PageProps) {
@@ -34,8 +54,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const product = group?.products.find((candidate) => candidate.slug === productSlug);
   if (!product || !group) notFound();
 
-  const images = [product.image, ...product.images];
+  const images = Array.from(new Set([product.image, ...product.images].filter(Boolean)));
   const rfqPath = withLang(`/contact?brand=${encodeURIComponent(brand.slug)}&product=${encodeURIComponent(product.model || product.name)}`, lang);
+  const relatedProducts = group.products.filter((candidate) => candidate.slug !== product.slug).slice(0, 3);
+  const otherGroups = brand.productGroups.filter((candidate) => candidate.slug !== group.slug);
+  const brandGroupHref = (groupSlug: string) =>
+    `/brands/${brand.slug}${lang === "en" ? "?lang=en" : ""}#${groupSlug}`;
 
   return (
     <>
@@ -83,6 +107,110 @@ export default async function ProductDetailPage({ params }: PageProps) {
             )) : (
               <p className="p-6 text-sm leading-6 text-graphite-500">{lang === "en" ? "Specifications have not been published yet. Include the target model and required parameters in the RFQ." : "Spesifikasi belum dipublikasikan. Sertakan model target dan parameter yang dibutuhkan dalam RFQ."}</p>
             )}
+          </div>
+        </div>
+      </section>
+      <section className="bg-white py-14">
+        <div className="container-page grid gap-8 lg:grid-cols-[0.72fr_1.28fr]">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
+              {lang === "en" ? "Product selection guidance" : "Panduan pemilihan produk"}
+            </p>
+            <h2 className="mt-3 text-3xl font-bold text-graphite-900">
+              {lang === "en"
+                ? `Where ${product.name} fits`
+                : `Kesesuaian ${product.name} untuk aplikasi Anda`}
+            </h2>
+            <p className="mt-4 text-sm leading-6 text-graphite-500">
+              {text(group.description, lang)}
+            </p>
+          </div>
+          <div className="grid gap-px overflow-hidden border border-graphite-200 bg-graphite-200 sm:grid-cols-3">
+            {[
+              {
+                title: lang === "en" ? "Define the application" : "Tentukan aplikasi",
+                body:
+                  lang === "en"
+                    ? "Share the task, working conditions, target range, and how often the tool will be used."
+                    : "Sampaikan pekerjaan, kondisi penggunaan, range target, dan frekuensi pemakaian."
+              },
+              {
+                title: lang === "en" ? "Match the configuration" : "Sesuaikan konfigurasi",
+                body:
+                  lang === "en"
+                    ? "Confirm the required head, operation method, data capture, and quality-control needs."
+                    : "Konfirmasikan kebutuhan head, metode operasi, pencatatan data, dan quality control."
+              },
+              {
+                title: lang === "en" ? "Verify before ordering" : "Verifikasi sebelum memesan",
+                body:
+                  lang === "en"
+                    ? "CSE will help confirm the final model, specification, and availability for the application."
+                    : "CSE membantu mengonfirmasi model, spesifikasi, dan ketersediaan untuk aplikasi tersebut."
+              }
+            ].map((item) => (
+              <div key={item.title} className="bg-white p-5">
+                <h3 className="text-base font-bold text-graphite-900">{item.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-graphite-500">{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      {relatedProducts.length ? (
+        <section className="bg-graphite-50 py-14">
+          <div className="container-page">
+            <SectionHeader
+              eyebrow={text(group.title, lang)}
+              title={lang === "en" ? `Related ${brand.name} products` : `Produk ${brand.name} terkait`}
+              description={
+                lang === "en"
+                  ? `Compare other products in the ${text(group.title, lang)} lineup before selecting a model.`
+                  : `Bandingkan produk lain dalam lini ${text(group.title, lang)} sebelum menentukan model.`
+              }
+            />
+            <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {relatedProducts.map((relatedProduct) => (
+                <ProductCard
+                  key={relatedProduct.slug}
+                  product={relatedProduct}
+                  brandSlug={brand.slug}
+                  lang={lang}
+                  eyebrow={text(group.title, lang)}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+      <section className="border-t border-graphite-200 bg-white py-12">
+        <div className="container-page">
+          <div className="grid gap-6 border border-graphite-200 p-6 md:grid-cols-[0.72fr_1.28fr] md:items-start md:p-8">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
+                {lang === "en" ? `${brand.name} product lineups` : `Lini produk ${brand.name}`}
+              </p>
+              <h2 className="mt-3 text-2xl font-bold text-graphite-900">
+                {lang === "en" ? "Continue exploring by application." : "Lanjutkan berdasarkan aplikasi."}
+              </h2>
+            </div>
+            <nav aria-label={lang === "en" ? `${brand.name} product lineups` : `Lini produk ${brand.name}`} className="grid gap-3 sm:grid-cols-2">
+              <Link
+                href={brandGroupHref(group.slug)}
+                className="focus-ring border border-industrial-300 bg-industrial-50 px-4 py-3 text-sm font-bold text-industrial-800 hover:border-industrial-600"
+              >
+                {lang === "en" ? `All ${text(group.title, lang)} products` : `Semua produk ${text(group.title, lang)}`}
+              </Link>
+              {otherGroups.map((otherGroup) => (
+                <Link
+                  key={otherGroup.slug}
+                  href={brandGroupHref(otherGroup.slug)}
+                  className="focus-ring border border-graphite-200 px-4 py-3 text-sm font-bold text-graphite-700 hover:border-industrial-600 hover:text-industrial-800"
+                >
+                  {text(otherGroup.title, lang)} ({otherGroup.products.length})
+                </Link>
+              ))}
+            </nav>
           </div>
         </div>
       </section>

@@ -20,7 +20,10 @@ import { staticLanguage, text, withLang } from "@/lib/i18n";
 export const metadata: Metadata = {
   title: "Industrial Goods Supplier Indonesia",
   description:
-    "PT Citra Sukses Ekapratama, Indonesia's industrial sourcing partner. CSE helps procurement and engineering teams find industrial products from Japan and Asia, check technical fit, provide alternatives, and speed up the RFQ process."
+    "PT Citra Sukses Ekapratama, Indonesia's industrial sourcing partner. CSE helps procurement and engineering teams find industrial products from Japan and Asia, check technical fit, provide alternatives, and speed up the RFQ process.",
+  alternates: {
+    canonical: "/"
+  }
 };
 
 export default async function HomePage() {

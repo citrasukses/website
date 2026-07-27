@@ -8,7 +8,10 @@ import { staticLanguage, withLang } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "Industries",
-  description: "Industries served by CSE, including automotive, heavy equipment, and general industry."
+  description: "Industries served by CSE, including automotive, heavy equipment, and general industry.",
+  alternates: {
+    canonical: "/industries"
+  }
 };
 
 export default function IndustriesPage() {

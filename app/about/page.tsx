@@ -10,7 +10,10 @@ import { staticLanguage, text, withLang } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "About PT Citra Sukses Ekapratama and CSE's industrial supply focus in Indonesia."
+  description: "About PT Citra Sukses Ekapratama and CSE's industrial supply focus in Indonesia.",
+  alternates: {
+    canonical: "/about"
+  }
 };
 
 export default function AboutPage() {

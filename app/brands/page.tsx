@@ -13,7 +13,10 @@ import { staticLanguage, withLang } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "Brands",
-  description: "Industrial brands represented and supplied by CSE for Indonesian buyers."
+  description: "Industrial brands represented and supplied by CSE for Indonesian buyers.",
+  alternates: {
+    canonical: "/brands"
+  }
 };
 
 export default async function BrandsPage() {

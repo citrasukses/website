@@ -7,6 +7,7 @@ import { CTAButton } from "@/components/CTAButton";
 import { FeatureGrid } from "@/components/FeatureGrid";
 import { Hero } from "@/components/Hero";
 import { SectionHeader } from "@/components/SectionHeader";
+import { TohnichiProductExplorer } from "@/components/TohnichiProductExplorer";
 import { UseCaseSection } from "@/components/UseCaseSection";
 import { seedCatalog } from "@/data/catalog-seed";
 import { getCatalogBrandBySlug } from "@/lib/catalog";
@@ -30,7 +31,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: brand.name,
-    description: brand.summary.en
+    description: brand.summary.id,
+    alternates: {
+      canonical: `/brands/${brand.slug}`
+    },
+    openGraph: {
+      title: `${brand.name} Indonesia | CSE`,
+      description: brand.summary.id,
+      url: `/brands/${brand.slug}`,
+      images: brand.heroImage ? [{ url: brand.heroImage, alt: `${brand.name} products in Indonesia` }] : undefined
+    }
   };
 }
 
@@ -177,36 +187,40 @@ export default async function BrandDetailPage({ params }: PageProps) {
         </section>
       )}
 
-      <section className="bg-white py-16">
-        <div className="container-page">
-          <SectionHeader
-            eyebrow={lang === "en" ? "Product lines" : "Lini Produk"}
-            title={hasProducts ? (lang === "en" ? `${brand.name} by process and use case` : `${brand.name} berdasarkan proses dan kebutuhan`) : (lang === "en" ? "Discuss this brand with CSE" : "Diskusikan brand ini dengan CSE")}
-            description={
-              hasProducts
-                ? lang === "en"
-                  ? "Contact CSE for the complete product line, model selection, and availability."
-                  : "Hubungi CSE untuk melihat full product line, pemilihan model, dan ketersediaan."
-                : lang === "en"
-                  ? "Send the product category, model target, and application details for sourcing review."
-                  : "Kirim kategori produk, target model, dan detail aplikasi untuk review sourcing."
-            }
-          />
-          <div className="mt-10 border-t border-graphite-200">
-            {hasProducts ? (
-              brand.productGroups.map((group) => (
-                <UseCaseSection key={group.slug} group={group} brandSlug={brand.slug} lang={lang} />
-              ))
-            ) : (
-              <div className="border border-dashed border-graphite-300 bg-white p-8 text-sm leading-6 text-graphite-500">
-                {lang === "en"
-                  ? "Product categories and models for this brand are being prepared. Send an RFQ with the required model or specification."
-                  : "Kategori dan model produk untuk brand ini sedang disiapkan. Kirim RFQ dengan model atau spesifikasi yang dibutuhkan."}
-              </div>
-            )}
+      {isTohnichi ? (
+        <TohnichiProductExplorer groups={brand.productGroups} lang={lang} />
+      ) : (
+        <section className="bg-white py-16">
+          <div className="container-page">
+            <SectionHeader
+              eyebrow={lang === "en" ? "Product lines" : "Lini Produk"}
+              title={hasProducts ? (lang === "en" ? `${brand.name} by process and use case` : `${brand.name} berdasarkan proses dan kebutuhan`) : (lang === "en" ? "Discuss this brand with CSE" : "Diskusikan brand ini dengan CSE")}
+              description={
+                hasProducts
+                  ? lang === "en"
+                    ? "Contact CSE for the complete product line, model selection, and availability."
+                    : "Hubungi CSE untuk melihat full product line, pemilihan model, dan ketersediaan."
+                  : lang === "en"
+                    ? "Send the product category, model target, and application details for sourcing review."
+                    : "Kirim kategori produk, target model, dan detail aplikasi untuk review sourcing."
+              }
+            />
+            <div className="mt-10 border-t border-graphite-200">
+              {hasProducts ? (
+                brand.productGroups.map((group) => (
+                  <UseCaseSection key={group.slug} group={group} brandSlug={brand.slug} lang={lang} />
+                ))
+              ) : (
+                <div className="border border-dashed border-graphite-300 bg-white p-8 text-sm leading-6 text-graphite-500">
+                  {lang === "en"
+                    ? "Product categories and models for this brand are being prepared. Send an RFQ with the required model or specification."
+                    : "Kategori dan model produk untuk brand ini sedang disiapkan. Kirim RFQ dengan model atau spesifikasi yang dibutuhkan."}
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <section className="bg-industrial-800 py-16 text-white">
         <div className="container-page grid gap-8 md:grid-cols-[1fr_auto] md:items-center">

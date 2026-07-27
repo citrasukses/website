@@ -9,7 +9,10 @@ import { staticLanguage, withLang } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "Contact / RFQ",
-  description: "Send an RFQ, product consultation request, or email inquiry to CSE."
+  description: "Send an RFQ, product consultation request, or email inquiry to CSE.",
+  alternates: {
+    canonical: "/contact"
+  }
 };
 
 export default async function ContactPage() {
