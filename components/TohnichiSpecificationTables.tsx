@@ -1,7 +1,8 @@
-import { CheckCircle2, ChevronDown, ExternalLink, Info } from "lucide-react";
+import { CheckCircle2, ExternalLink, Info } from "lucide-react";
 import type {
   TohnichiProductFamilyDetail,
-  TohnichiSpecificationTable
+  TohnichiSpecificationTable,
+  TohnichiTechnicalDetail
 } from "@/data/tohnichi-product-details";
 import { text, type Language } from "@/lib/i18n";
 
@@ -53,6 +54,7 @@ const indonesiaLabelReplacements: Array<[RegExp, string]> = [
   [/\bPRICES?\b/gi, "Harga"],
   [/\bCOMMON STEEL\b/gi, "Baja umum"],
   [/\bHIGH TENSION\b/gi, "Baja high-tension"],
+  [/\bCATEGORY\b/gi, "Kategori"],
   [/\bVALUE\b/gi, "Nilai"]
 ];
 
@@ -64,75 +66,115 @@ function technicalLabel(label: string, lang: Language) {
   );
 }
 
-function tableTitle(title: string, index: number, lang: Language) {
-  if (/^Model options \d+$/i.test(title)) {
-    return lang === "en" ? `Model options ${index + 1}` : `Pilihan model ${index + 1}`;
-  }
-  if (/^Specifications(?: \d+)?$/i.test(title)) {
-    return lang === "en" ? title : title.replace("Specifications", "Spesifikasi");
-  }
-  return technicalLabel(title, lang);
+function normalizedColumnKey(label: string) {
+  const normalized = label
+    .normalize("NFKC")
+    .replace(/[’′]/g, "'")
+    .replace(/\bMETIRC\b/gi, "METRIC")
+    .replace(/\bDIMENSIONS\b/gi, "DIMENSION")
+    .replace(/\bS\.I\.\s*RANGE\b/gi, "S.I. RANGE")
+    .replace(/\s+/g, " ")
+    .replace(/\s*([/[\]()])\s*/g, "$1")
+    .replace(/MIN\.?\s*-\s*MAX\.?/gi, "MIN.-MAX.")
+    .trim()
+    .toUpperCase();
+
+  if (/^MODEL\/TYPE(?:\s|$|\()/.test(normalized)) return "MODEL/TYPE";
+  return normalized;
 }
 
-function CommonSpecificationTable({
+function isGenericTableTitle(title: string) {
+  return /^Model options \d+$/i.test(title) || /^Specifications(?: \d+)?$/i.test(title);
+}
+
+type ConsolidatedRow = {
+  key: string;
+  values: string[];
+};
+
+type ConsolidatedSpecification = {
+  columns: string[];
+  rows: ConsolidatedRow[];
+  commonSpecifications: TohnichiTechnicalDetail[];
+};
+
+function consolidateTables(
+  tables: TohnichiSpecificationTable[]
+): ConsolidatedSpecification {
+  const modelTables = tables.filter((table) => table.rows.length && table.columns.length);
+  const commonSpecifications: TohnichiTechnicalDetail[] = [];
+  const commonKeys = new Set<string>();
+
+  for (const table of tables) {
+    for (const specification of table.commonSpecifications ?? []) {
+      const key = `${normalizedColumnKey(specification.label)}\u0000${specification.value}`;
+      if (commonKeys.has(key)) continue;
+      commonKeys.add(key);
+      commonSpecifications.push(specification);
+    }
+  }
+
+  if (!modelTables.length) {
+    return { columns: [], rows: [], commonSpecifications };
+  }
+
+  const includeCategory =
+    modelTables.length > 1 && modelTables.every((table) => !isGenericTableTitle(table.title));
+  const columnLabels = new Map<string, string>();
+  if (includeCategory) columnLabels.set("__CATEGORY__", "CATEGORY");
+
+  for (const table of modelTables) {
+    for (const column of table.columns) {
+      const key = normalizedColumnKey(column);
+      if (!columnLabels.has(key)) columnLabels.set(key, column);
+    }
+  }
+
+  const richerModelNames = new Set(
+    modelTables
+      .filter((table) => table.columns.length > 1)
+      .flatMap((table) => table.rows.map((row) => row.model.trim().toUpperCase()))
+  );
+  const columns = Array.from(columnLabels.values());
+  const columnKeys = Array.from(columnLabels.keys());
+  const seenRows = new Set<string>();
+  const rows: ConsolidatedRow[] = [];
+
+  for (const [tableIndex, table] of modelTables.entries()) {
+    const tableColumnKeys = table.columns.map(normalizedColumnKey);
+    for (const [rowIndex, row] of table.rows.entries()) {
+      const normalizedModel = row.model.trim().toUpperCase();
+      if (table.columns.length === 1 && richerModelNames.has(normalizedModel)) continue;
+
+      const valuesByColumn = new Map<string, string>();
+      if (includeCategory) valuesByColumn.set("__CATEGORY__", table.title);
+      tableColumnKeys.forEach((key, index) => {
+        valuesByColumn.set(key, row.values[index] ?? "");
+      });
+      const values = columnKeys.map((key) => valuesByColumn.get(key) ?? "");
+      const rowSignature = values.join("\u0001");
+      if (seenRows.has(rowSignature)) continue;
+      seenRows.add(rowSignature);
+      rows.push({
+        key: `${tableIndex}-${row.key || rowIndex}`,
+        values
+      });
+    }
+  }
+
+  return { columns, rows, commonSpecifications };
+}
+
+function ConsolidatedModelTable({
   productName,
-  table,
+  specification,
   lang
 }: {
   productName: string;
-  table: TohnichiSpecificationTable;
+  specification: ConsolidatedSpecification;
   lang: Language;
 }) {
-  if (!table.commonSpecifications?.length) return null;
-  return (
-    <div className="overflow-hidden border border-graphite-200 bg-white">
-      <table className="w-full border-collapse text-left">
-        <caption className="sr-only">
-          {lang === "en"
-            ? `${productName} common specifications`
-            : `Spesifikasi umum ${productName}`}
-        </caption>
-        <thead>
-          <tr className="bg-graphite-800 text-white">
-            <th scope="col" className="px-4 py-3 text-xs font-bold uppercase tracking-[0.08em]">
-              {lang === "en" ? "Parameter" : "Parameter"}
-            </th>
-            <th scope="col" className="px-4 py-3 text-xs font-bold uppercase tracking-[0.08em]">
-              {lang === "en" ? "Specification" : "Spesifikasi"}
-            </th>
-          </tr>
-        </thead>
-        <tbody className="divide-y divide-graphite-200">
-          {table.commonSpecifications.map((specification, index) => (
-            <tr key={`${specification.label}-${index}`} className={index % 2 ? "bg-graphite-50/70" : "bg-white"}>
-              <th scope="row" className="w-[38%] px-4 py-3 text-sm font-bold text-graphite-800">
-                {technicalLabel(specification.label, lang)}
-              </th>
-              <td className="px-4 py-3 text-sm leading-6 text-graphite-600">
-                {specification.value}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-}
-
-function ModelOptionTable({
-  productName,
-  table,
-  lang
-}: {
-  productName: string;
-  table: TohnichiSpecificationTable;
-  lang: Language;
-}) {
-  if (!table.rows.length || !table.columns.length) return null;
-  const visibleColumns = new Set(table.columns);
-  const hasAdditionalDetails = table.rows.some((row) =>
-    row.details.some((detail) => !visibleColumns.has(detail.label))
-  );
+  if (!specification.rows.length || !specification.columns.length) return null;
 
   return (
     <>
@@ -150,9 +192,9 @@ function ModelOptionTable({
           </caption>
           <thead>
             <tr className="border-b border-graphite-300 bg-graphite-800 text-white">
-              {table.columns.map((column) => (
+              {specification.columns.map((column, columnIndex) => (
                 <th
-                  key={column}
+                  key={`${columnIndex}-${column}`}
                   scope="col"
                   className="min-w-[130px] border-r border-graphite-600 px-3 py-3 text-center text-xs font-bold uppercase tracking-[0.06em] last:border-r-0"
                 >
@@ -162,11 +204,11 @@ function ModelOptionTable({
             </tr>
           </thead>
           <tbody className="divide-y divide-graphite-200">
-            {table.rows.map((row, rowIndex) => (
+            {specification.rows.map((row, rowIndex) => (
               <tr key={row.key} className={rowIndex % 2 ? "bg-graphite-50/70" : "bg-white"}>
                 {row.values.map((value, valueIndex) => (
                   <td
-                    key={`${row.key}-${table.columns[valueIndex]}`}
+                    key={`${row.key}-${valueIndex}-${specification.columns[valueIndex]}`}
                     className={`whitespace-nowrap border-r border-graphite-200 px-3 py-3 text-center text-sm last:border-r-0 ${
                       valueIndex === 0 ? "font-bold text-graphite-900" : "text-graphite-600"
                     }`}
@@ -179,49 +221,52 @@ function ModelOptionTable({
           </tbody>
         </table>
       </div>
-
-      {hasAdditionalDetails ? (
-        <details className="group mt-4 border border-graphite-200 bg-white">
-          <summary className="focus-ring flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-sm font-bold text-graphite-800">
-            <span>
-              {lang === "en"
-                ? "Complete dimensions and technical details for every model"
-                : "Dimensi dan detail teknis lengkap setiap model"}
-            </span>
-            <ChevronDown className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180" aria-hidden="true" />
-          </summary>
-          <div className="border-t border-graphite-200 p-4">
-            <div className="grid gap-3 lg:grid-cols-2">
-              {table.rows.map((row) => {
-                const additionalDetails = row.details.filter(
-                  (detail) => !visibleColumns.has(detail.label)
-                );
-                if (!additionalDetails.length) return null;
-                return (
-                  <article key={`${row.key}-details`} className="border border-graphite-200">
-                    <h4 className="bg-graphite-50 px-4 py-3 text-sm font-bold text-graphite-900">
-                      {row.model}
-                    </h4>
-                    <dl className="divide-y divide-graphite-100">
-                      {additionalDetails.map((detail, index) => (
-                        <div key={`${detail.label}-${index}`} className="grid grid-cols-[0.52fr_0.48fr] gap-3 px-4 py-2.5">
-                          <dt className="text-xs font-semibold leading-5 text-graphite-600">
-                            {technicalLabel(detail.label, lang)}
-                          </dt>
-                          <dd className="text-right text-xs leading-5 text-graphite-700">
-                            {detail.value}
-                          </dd>
-                        </div>
-                      ))}
-                    </dl>
-                  </article>
-                );
-              })}
-            </div>
-          </div>
-        </details>
-      ) : null}
     </>
+  );
+}
+
+function CommonSpecificationTable({
+  productName,
+  specifications,
+  lang
+}: {
+  productName: string;
+  specifications: TohnichiTechnicalDetail[];
+  lang: Language;
+}) {
+  if (!specifications.length) return null;
+  return (
+    <div className="overflow-hidden border border-graphite-200 bg-white shadow-sm">
+      <table className="w-full border-collapse text-left">
+        <caption className="sr-only">
+          {lang === "en"
+            ? `${productName} specifications`
+            : `Spesifikasi ${productName}`}
+        </caption>
+        <thead>
+          <tr className="bg-graphite-800 text-white">
+            <th scope="col" className="px-4 py-3 text-xs font-bold uppercase tracking-[0.08em]">
+              Parameter
+            </th>
+            <th scope="col" className="px-4 py-3 text-xs font-bold uppercase tracking-[0.08em]">
+              {lang === "en" ? "Specification" : "Spesifikasi"}
+            </th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-graphite-200">
+          {specifications.map((specification, index) => (
+            <tr key={`${specification.label}-${index}`} className={index % 2 ? "bg-graphite-50/70" : "bg-white"}>
+              <th scope="row" className="w-[38%] px-4 py-3 text-sm font-bold text-graphite-800">
+                {technicalLabel(specification.label, lang)}
+              </th>
+              <td className="px-4 py-3 text-sm leading-6 text-graphite-600">
+                {specification.value}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
@@ -234,7 +279,9 @@ export function TohnichiSpecificationTables({
   detail: TohnichiProductFamilyDetail;
   lang: Language;
 }) {
-  const hasTables = detail.specificationTables.length > 0;
+  const consolidated = consolidateTables(detail.specificationTables);
+  const hasTables =
+    consolidated.rows.length > 0 || consolidated.commonSpecifications.length > 0;
 
   return (
     <section className="bg-graphite-50 py-14">
@@ -273,23 +320,20 @@ export function TohnichiSpecificationTables({
         </div>
 
         {hasTables ? (
-          <div className="mt-8 space-y-9">
-            {detail.specificationTables.map((table, index) => (
-              <article key={`${table.title}-${index}`}>
-                <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-                  <h3 className="text-xl font-bold text-graphite-900">
-                    {tableTitle(table.title, index, lang)}
-                  </h3>
-                  {table.accuracy && table.accuracy !== detail.accuracy ? (
-                    <span className="border border-graphite-200 bg-white px-3 py-1.5 text-xs font-bold text-graphite-700">
-                      {lang === "en" ? "Accuracy" : "Akurasi"} {table.accuracy}
-                    </span>
-                  ) : null}
-                </div>
-                <ModelOptionTable productName={productName} table={table} lang={lang} />
-                <CommonSpecificationTable productName={productName} table={table} lang={lang} />
-              </article>
-            ))}
+          <div className="mt-8">
+            {consolidated.rows.length ? (
+              <ConsolidatedModelTable
+                productName={productName}
+                specification={consolidated}
+                lang={lang}
+              />
+            ) : (
+              <CommonSpecificationTable
+                productName={productName}
+                specifications={consolidated.commonSpecifications}
+                lang={lang}
+              />
+            )}
           </div>
         ) : (
           <div className="mt-8 overflow-hidden border border-graphite-200 bg-white">
