@@ -49,7 +49,7 @@ export const brands: Brand[] = [
       id: "Torque tools, torque wrench, dan sistem tightening",
       en: "Torque tools, torque wrenches, and tightening systems"
     },
-    logo: "/assets/brands/logos/tohnichi.png",
+    logo: "/assets/brands/logos/tohnichi--nobg.png",
     heroImage: "/assets/brands/products/tohnichi/tohnichi_torque-wrench.jpg",
     featured: true,
     summary: {

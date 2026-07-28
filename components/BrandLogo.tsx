@@ -30,7 +30,7 @@ export function BrandLogo({ name, slug, src = "", className = "", sizes = "160px
             alt={`${name} logo`}
             fill
             sizes={sizes}
-            className={`object-contain ${isTohnichi ? "scale-[2]" : ""}`}
+            className={`object-contain ${isTohnichi ? "scale-[1.2]" : ""}`}
           />
         ) : (
           <span

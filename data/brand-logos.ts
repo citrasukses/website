@@ -36,7 +36,7 @@ const logoByBrandSlug: Record<string, string> = {
   "tdk-lambda": "/assets/brands/logos/tdk-lambda--mark.png",
   testo: "/assets/brands/logos/testo.jpg",
   thk: "/assets/brands/logos/thk.png",
-  tohnichi: "/assets/brands/logos/tohnichi.png",
+  tohnichi: "/assets/brands/logos/tohnichi--nobg.png",
   tsubakimoto: "/assets/brands/logos/tsubakimoto.png",
   tungaloy: "/assets/brands/logos/tungaloy.png",
   ulvac: "/assets/brands/logos/ulvac.png",
