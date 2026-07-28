@@ -11,17 +11,26 @@ type BrandLogoProps = {
 
 export function BrandLogo({ name, slug, src = "", className = "", sizes = "160px" }: BrandLogoProps) {
   const logo = src || getBrandLogoPath(slug);
+  const isNac = slug === "nac";
+  const isTohnichi = slug === "tohnichi";
 
   return (
     <div className={`relative flex items-center justify-center overflow-hidden bg-white ${className}`}>
       <div className="relative flex h-14 w-40 max-w-[calc(100%-1.5rem)] items-center justify-center">
-        {logo ? (
+        {isNac ? (
+          <span
+            className="font-nac-logo block whitespace-nowrap text-center text-[30px] leading-none text-graphite-900"
+            aria-label={`${name} logo`}
+          >
+            {"\ue90b"}
+          </span>
+        ) : logo ? (
           <Image
             src={logo}
             alt={`${name} logo`}
             fill
             sizes={sizes}
-            className="object-contain"
+            className={`object-contain ${isTohnichi ? "scale-[2]" : ""}`}
           />
         ) : (
           <span

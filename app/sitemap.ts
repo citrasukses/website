@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { seedCatalog } from "@/data/catalog-seed";
+import { isBrandPubliclyAvailable } from "@/lib/brand-visibility";
 
 const baseUrl = "https://cse.co.id";
 
@@ -44,7 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const brandRoutes: MetadataRoute.Sitemap = seedCatalog
-    .filter((brand) => brand.published)
+    .filter((brand) => brand.published && isBrandPubliclyAvailable(brand.slug))
     .map((brand) => ({
       url: absoluteUrl(`/brands/${brand.slug}`),
       changeFrequency: "monthly",
@@ -52,7 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }));
 
   const productRoutes: MetadataRoute.Sitemap = seedCatalog
-    .filter((brand) => brand.published)
+    .filter((brand) => brand.published && isBrandPubliclyAvailable(brand.slug))
     .flatMap((brand) =>
       brand.productGroups.flatMap((group) =>
         group.products.map((product) => ({

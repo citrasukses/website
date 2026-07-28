@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight, Factory, MapPin } from "lucide-react";
+import { ArrowUpRight, Construction, Factory, MapPin } from "lucide-react";
 import { useMemo, useState } from "react";
 import type { SupplyMapCountry } from "@/data/supply-map";
+import { canViewBrandDraft, isBrandPubliclyAvailable } from "@/lib/brand-visibility";
 import { text, type Language, withLang } from "@/lib/i18n";
 
 function brandCountLabel(count: number, lang: Language) {
@@ -121,22 +122,54 @@ export function SupplyMap({ countries, lang }: { countries: SupplyMapCountry[]; 
           {brandCountLabel(activeCountry.brands.length, lang)}
         </p>
         <div className="mt-4 divide-y divide-graphite-200 border-y border-graphite-200">
-          {activeCountry.brands.map((brand) => (
-            <Link
-              key={`${activeCountry.code}-${brand.name}`}
-              href={brandHref(brand, lang)}
-              className="group flex min-h-14 items-center justify-between gap-3 py-3 text-sm font-semibold text-graphite-900 transition hover:text-industrial-700"
-            >
-              <span className="inline-flex items-center gap-2">
-                <Factory className="h-4 w-4 text-graphite-400 transition group-hover:text-industrial-700" aria-hidden="true" />
-                {brand.name}
-              </span>
-              <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-[0.12em] text-graphite-500 transition group-hover:text-industrial-700">
-                {brand.slug ? (lang === "en" ? "View" : "Lihat") : "RFQ"}
-                <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
-              </span>
-            </Link>
-          ))}
+          {activeCountry.brands.map((brand) => {
+            const isPublic = brand.slug ? isBrandPubliclyAvailable(brand.slug) : false;
+            const canOpen = brand.slug ? canViewBrandDraft(brand.slug) : true;
+            const content = (
+              <>
+                <span className="inline-flex items-center gap-2">
+                  <Factory className="h-4 w-4 text-graphite-400 transition group-hover:text-industrial-700" aria-hidden="true" />
+                  {brand.name}
+                </span>
+                <span
+                  className={`inline-flex items-center gap-1 text-xs font-bold uppercase tracking-[0.12em] ${
+                    brand.slug && !isPublic
+                      ? "text-signal-600"
+                      : "text-graphite-500 transition group-hover:text-industrial-700"
+                  }`}
+                >
+                  {brand.slug ? (isPublic ? (lang === "en" ? "View" : "Lihat") : "On progress") : "RFQ"}
+                  {brand.slug && !isPublic ? (
+                    <Construction className="h-3.5 w-3.5" aria-hidden="true" />
+                  ) : (
+                    <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  )}
+                </span>
+              </>
+            );
+
+            if (brand.slug && !canOpen) {
+              return (
+                <div
+                  key={`${activeCountry.code}-${brand.name}`}
+                  aria-label={`${brand.name}: on progress`}
+                  className="flex min-h-14 items-center justify-between gap-3 py-3 text-sm font-semibold text-graphite-900"
+                >
+                  {content}
+                </div>
+              );
+            }
+
+            return (
+              <Link
+                key={`${activeCountry.code}-${brand.name}`}
+                href={brandHref(brand, lang)}
+                className="group flex min-h-14 items-center justify-between gap-3 py-3 text-sm font-semibold text-graphite-900 transition hover:text-industrial-700"
+              >
+                {content}
+              </Link>
+            );
+          })}
         </div>
 
         <div className="mt-6 grid gap-2 sm:grid-cols-3 lg:grid-cols-1">

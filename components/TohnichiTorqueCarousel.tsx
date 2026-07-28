@@ -21,7 +21,7 @@ const torqueTools: TorqueToolSlide[] = [
   {
     src: "/assets/brands/products/tohnichi/CES-G Background Removed.png",
     name: "CES Series",
-    href: "/brands/tohnichi/products/ces-g",
+    href: "/brands/tohnichi/products/ces-ces-g",
     category: {
       id: "Torque wrench",
       en: "Torque wrench"
@@ -64,7 +64,7 @@ const torqueTools: TorqueToolSlide[] = [
   {
     src: "/assets/brands/products/tohnichi/QL5N+.png",
     name: "QL+ Series",
-    href: "/brands/tohnichi/products/ql-cl-series",
+    href: "/brands/tohnichi/products/ql",
     category: {
       id: "Torque wrench",
       en: "Torque wrench"
@@ -77,7 +77,7 @@ const torqueTools: TorqueToolSlide[] = [
   {
     src: "/assets/brands/products/tohnichi/CL2NX6D+.png",
     name: "CL+ Series",
-    href: "/brands/tohnichi/products/ql-cl-series",
+    href: "/brands/tohnichi/products/cl",
     category: {
       id: "Torque wrench",
       en: "Torque wrench"
@@ -90,7 +90,7 @@ const torqueTools: TorqueToolSlide[] = [
   {
     src: "/assets/brands/products/tohnichi/tohnichi_cem100bta.png",
     name: "CEM3-BTA Series",
-    href: "/brands/tohnichi/products/cem3-g",
+    href: "/brands/tohnichi/products/cem3-g-bta",
     category: {
       id: "Torque wrench",
       en: "Torque wrench"
@@ -105,7 +105,7 @@ const torqueTools: TorqueToolSlide[] = [
   {
     src: "/assets/brands/products/tohnichi/CSPFDD100N3x15D-AD.jpg",
     name: "CSPFDD-AD",
-    href: "/brands/tohnichi/products/cspfdd-ad",
+    href: "/brands/tohnichi/products/fdd-ad",
     category: {
       id: "Torque wrench",
       en: "Torque wrench"
@@ -120,7 +120,7 @@ const torqueTools: TorqueToolSlide[] = [
   {
     src: "/assets/brands/products/tohnichi/tohnichi_DB100N-s.png",
     name: "DB / CDB Series",
-    href: "/brands/tohnichi/products/db-cdb-series",
+    href: "/brands/tohnichi/products/db-dbe-dbr",
     category: {
       id: "Torque wrench",
       en: "Torque wrench"

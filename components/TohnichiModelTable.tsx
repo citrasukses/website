@@ -56,7 +56,7 @@ export function TohnichiModelTable({
         </p>
 
         <div className="mt-3 max-w-full overflow-x-auto border border-graphite-200 bg-white shadow-sm md:mt-7">
-          <table className="w-full min-w-[1180px] border-collapse text-left">
+          <table className="w-full min-w-[900px] border-collapse text-left">
             <caption className="sr-only">
               {lang === "en" ? `${productName} model specifications` : `Spesifikasi model ${productName}`}
             </caption>
@@ -73,12 +73,6 @@ export function TohnichiModelTable({
                 </th>
                 <th colSpan={2} scope="colgroup" className="border-l border-emerald-300 bg-emerald-100 px-3 py-3 text-center text-xs font-bold uppercase tracking-[0.08em] text-emerald-950">
                   {lang === "en" ? "Torque [kgf·cm]" : "Torsi [kgf·cm]"}
-                </th>
-                <th rowSpan={2} scope="col" className="border-l border-sky-300 bg-sky-100 px-3 py-3 text-center text-xs font-bold uppercase tracking-[0.08em] text-sky-950">
-                  {lang === "en" ? "American model" : "Model Amerika"}
-                </th>
-                <th colSpan={2} scope="colgroup" className="border-l border-sky-300 bg-sky-100 px-3 py-3 text-center text-xs font-bold uppercase tracking-[0.08em] text-sky-950">
-                  {lang === "en" ? "American torque" : "Torsi Amerika"}
                 </th>
                 <th rowSpan={2} scope="col" className="border-l border-graphite-300 bg-graphite-200 px-3 py-3 text-center text-xs font-bold uppercase tracking-[0.08em] text-graphite-800">
                   {lang === "en" ? "Overall length [mm]" : "Panjang total [mm]"}
@@ -100,12 +94,6 @@ export function TohnichiModelTable({
                 <th scope="col" className="border-l border-emerald-300 bg-emerald-50 px-3 py-2 text-center text-xs font-bold text-emerald-950">
                   Grad.
                 </th>
-                <th scope="col" className="border-l border-sky-300 bg-sky-50 px-3 py-2 text-center text-xs font-bold text-sky-950">
-                  {lang === "en" ? "Min.-max." : "Min.-maks."}
-                </th>
-                <th scope="col" className="border-l border-sky-300 bg-sky-50 px-3 py-2 text-center text-xs font-bold text-sky-950">
-                  Grad.
-                </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-graphite-200">
@@ -117,9 +105,6 @@ export function TohnichiModelTable({
                   <Value strong>{model.metricModel}</Value>
                   <Value>{model.metricRange}</Value>
                   <Value>{model.metricGraduation}</Value>
-                  <Value strong>{model.americanModel}</Value>
-                  <Value>{model.americanRange}</Value>
-                  <Value>{model.americanGraduation}</Value>
                   <Value>{model.overallLengthMm}</Value>
                   <Value>{model.weightG}</Value>
                 </tr>

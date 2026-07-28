@@ -7,7 +7,7 @@
     "predev": "npm run generate:image-backgrounds",
     "dev": "next dev",
     "prebuild": "npm run generate:image-backgrounds",
-    "build:next": "next build",
+    "build:next": "node scripts/build-bilingual-site.mjs",
     "build": "npm run build:next && node scripts/prepare-sites-build.mjs",
     "build:sites": "npm run build",
     "lint": "eslint ."
