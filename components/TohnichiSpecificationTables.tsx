@@ -480,9 +480,6 @@ export function TohnichiSpecificationTables({
                 {lang === "en" ? "Accuracy" : "Akurasi"} {detail.accuracy}
               </span>
             ) : null}
-            <p className="max-w-2xl text-sm leading-6 text-graphite-500 lg:text-right">
-              {text(detail.catalogueReference, lang)}
-            </p>
             <a
               href={detail.officialUrl}
               target="_blank"
