@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Suspense, type ReactNode } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { staticLanguage } from "@/lib/i18n";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -50,8 +51,10 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  const lang = staticLanguage();
+
   return (
-    <html lang="id">
+    <html lang={lang}>
       <body>
         <Suspense fallback={<div className="h-16 border-b border-graphite-200 bg-white" />}>
           <Navbar />

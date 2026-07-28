@@ -25,7 +25,7 @@ export type HomeBackgroundImage = {
 export const homeBackgroundImage: HomeBackgroundImage | null = {
   src: "/assets/company/hero-background-curated-v2.png",
   imageClassName:
-    "bg-[position:43%_center] opacity-[0.22] sm:opacity-[0.32] md:inset-0 md:h-auto md:bg-center md:opacity-[0.48] lg:opacity-[0.7]",
+    "bg-[position:72%_center] opacity-[0.22] sm:opacity-[0.32] md:inset-0 md:h-auto md:bg-center md:opacity-[0.48] lg:opacity-[0.7]",
   overlayClassName:
     "bg-gradient-to-b from-white/25 via-white/45 to-white md:bg-gradient-to-r md:from-white/65 md:via-white/35 md:to-white/10"
 };

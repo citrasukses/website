@@ -156,6 +156,9 @@ Style target:
 - Controlled red accent if useful
 - Dense enough for B2B buyers, but still polished
 
+Detailed palette, surface, and technical-illustration rules are documented in
+[`docs/visual-language.md`](docs/visual-language.md).
+
 Avoid:
 
 - Generic SaaS look

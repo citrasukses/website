@@ -50,7 +50,7 @@ export const brands: Brand[] = [
       en: "Torque tools, torque wrenches, and tightening systems"
     },
     logo: "/assets/brands/logos/tohnichi.png",
-    heroImage: "/assets/brands/products/tohnichi/CL100NX15D.jpg",
+    heroImage: "/assets/brands/products/tohnichi/tohnichi_torque-wrench.jpg",
     featured: true,
     summary: {
       id: "Solusi torque control Jepang untuk assembly, inspection, calibration, dan error proofing.",

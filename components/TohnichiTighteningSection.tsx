@@ -758,8 +758,8 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
             </p>
             <p className="mt-3 max-w-3xl text-2xl font-bold leading-snug text-white sm:text-3xl">
               {lang === "en"
-                ? "Do not inspect quality into the product. Control it at every bolt."
-                : "Jangan menunggu masalah quality ditemukan saat inspeksi. Kendalikan sejak setiap baut dikencangkan."}
+                ? "Do not postpone quality inspection. Control it at every bolt."
+                : "Jangan menunda inspeksi quality. Kendalikan sejak setiap baut dikencangkan."}
             </p>
           </div>
           <div className="flex flex-col justify-center bg-industrial-700 p-7 text-white sm:p-9">

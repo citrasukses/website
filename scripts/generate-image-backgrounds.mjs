@@ -39,6 +39,57 @@ function toHex(red, green, blue) {
     .join("")}`;
 }
 
+function sampleMatchingCorners(data, info) {
+  const cornerSize = borderWidth;
+  const corners = [
+    [0, 0],
+    [info.width - cornerSize, 0],
+    [0, info.height - cornerSize],
+    [info.width - cornerSize, info.height - cornerSize]
+  ];
+  const representatives = [];
+
+  for (const [startX, startY] of corners) {
+    const pixels = [];
+
+    for (let y = startY; y < startY + cornerSize; y += 1) {
+      for (let x = startX; x < startX + cornerSize; x += 1) {
+        const offset = (y * info.width + x) * info.channels;
+
+        if (data[offset + 3] >= 230) {
+          pixels.push([data[offset], data[offset + 1], data[offset + 2]]);
+        }
+      }
+    }
+
+    if (pixels.length < cornerSize * cornerSize * 0.3) {
+      return null;
+    }
+
+    representatives.push([
+      median(pixels.map((pixel) => pixel[0])),
+      median(pixels.map((pixel) => pixel[1])),
+      median(pixels.map((pixel) => pixel[2]))
+    ]);
+  }
+
+  const cornersMatch = representatives.every((left) =>
+    representatives.every((right) =>
+      left.every((channel, index) => Math.abs(channel - right[index]) <= 40)
+    )
+  );
+
+  if (!cornersMatch) {
+    return null;
+  }
+
+  return toHex(
+    median(representatives.map((pixel) => pixel[0])),
+    median(representatives.map((pixel) => pixel[1])),
+    median(representatives.map((pixel) => pixel[2]))
+  );
+}
+
 async function sampleBackground(filePath) {
   const { data, info } = await sharp(filePath, { animated: false })
     .resize(sampleSize, sampleSize, { fit: "fill" })
@@ -93,9 +144,10 @@ async function sampleBackground(filePath) {
     (left, right) => right.length - left.length
   )[0];
 
-  // Only use a color when the image actually has a consistent edge/background.
+  // Prefer the broad edge color; matching corners cover textured letterbox
+  // backgrounds without making the sampler sensitive to the product itself.
   if (!dominantPixels || dominantPixels.length < pixels.length * 0.25) {
-    return null;
+    return sampleMatchingCorners(data, info);
   }
 
   return toHex(

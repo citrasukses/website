@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, BadgeCheck } from "lucide-react";
+import { ArrowUpRight, BadgeCheck, Construction } from "lucide-react";
+import type { ReactNode } from "react";
+import { canViewBrandDraft, isBrandPubliclyAvailable } from "@/lib/brand-visibility";
 import { withLang, type Language } from "@/lib/i18n";
 
 type AuthorizedDistributorStripProps = {
@@ -32,10 +34,51 @@ const distributors = [
   }
 ] as const;
 
+type DistributorTileProps = {
+  slug: string;
+  name: string;
+  lang: Language;
+  className?: string;
+  children: ReactNode;
+};
+
+function DistributorTile({ slug, name, lang, className = "", children }: DistributorTileProps) {
+  const isPublic = isBrandPubliclyAvailable(slug);
+  const canOpen = canViewBrandDraft(slug);
+  const tileClassName = `relative flex min-h-24 items-center justify-center overflow-hidden bg-white p-5 lg:min-h-32 ${className} ${
+    canOpen ? "focus-ring group transition-colors hover:bg-graphite-50" : ""
+  }`;
+  const content = (
+    <>
+      {children}
+      {!isPublic ? (
+        <span className="absolute right-2 top-2 inline-flex items-center gap-1 border border-signal-200 bg-white px-2 py-1 text-[9px] font-bold uppercase tracking-[0.1em] text-signal-600 shadow-sm">
+          <Construction className="h-3 w-3" aria-hidden="true" />
+          On progress
+        </span>
+      ) : null}
+    </>
+  );
+
+  if (!canOpen) {
+    return (
+      <div aria-label={`${name}: on progress`} className={tileClassName}>
+        {content}
+      </div>
+    );
+  }
+
+  return (
+    <Link href={withLang(`/brands/${slug}`, lang)} aria-label={name} className={tileClassName}>
+      {content}
+    </Link>
+  );
+}
+
 export function AuthorizedDistributorStrip({ lang, className = "" }: AuthorizedDistributorStripProps) {
   return (
     <aside
-      className={`relative isolate overflow-hidden border border-signal-600 bg-signal-500 text-white shadow-panel ${className}`}
+      className={`relative isolate overflow-hidden bg-signal-500 text-white shadow-panel ${className}`}
       aria-label={lang === "en" ? "Authorized distributors" : "Distributor resmi"}
     >
       <div className="blueprint-dark pointer-events-none absolute inset-0 -z-10 opacity-[0.08]" aria-hidden="true" />
@@ -66,51 +109,58 @@ export function AuthorizedDistributorStrip({ lang, className = "" }: AuthorizedD
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 gap-px border-t border-white/25 bg-white/25 lg:grid-cols-4 lg:border-l lg:border-t-0">
-          <Link
-            href={withLang("/brands/tohnichi", lang)}
-            aria-label="Tohnichi"
-            className="focus-ring group flex min-h-24 items-center justify-center overflow-hidden bg-white p-4 transition-colors hover:bg-graphite-50 lg:min-h-40"
+        <div className="grid grid-cols-2 border-t border-white/20 bg-white lg:grid-cols-4 lg:border-l lg:border-t-0">
+          <DistributorTile
+            slug="tohnichi"
+            name="Tohnichi"
+            lang={lang}
+            className="border-b border-graphite-200 after:absolute after:inset-y-5 after:right-0 after:w-0.5 after:bg-signal-500/70 after:content-[''] lg:border-b-0"
           >
-            <div className="relative h-16 w-full max-w-[170px] overflow-hidden">
+            <div className="relative h-14 w-full max-w-[150px] overflow-hidden">
               <Image
                 src={distributors[0].logo}
                 alt="Tohnichi"
                 fill
-                sizes="170px"
+                sizes="150px"
                 className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
               />
             </div>
-          </Link>
+          </DistributorTile>
 
-          <Link
-            href={withLang("/brands/nac", lang)}
-            aria-label="NAC"
-            className="focus-ring group flex min-h-24 items-center justify-center overflow-hidden bg-white p-4 text-graphite-900 transition-colors hover:bg-graphite-50 lg:min-h-40"
+          <DistributorTile
+            slug="nac"
+            name="NAC"
+            lang={lang}
+            className="border-b border-graphite-200 text-graphite-900 lg:border-b-0 lg:after:absolute lg:after:inset-y-5 lg:after:right-0 lg:after:w-0.5 lg:after:bg-signal-500/70 lg:after:content-['']"
           >
             <span
-              className="font-nac-logo block w-full max-w-full whitespace-nowrap text-center text-[20px] leading-none transition-transform duration-300 group-hover:scale-105 sm:text-[27px] lg:text-[30px]"
+              className="font-nac-logo block w-full max-w-full whitespace-nowrap text-center text-[20px] leading-none transition-transform duration-300 group-hover:scale-105 sm:text-[25px] lg:text-[26px]"
               aria-hidden="true"
             >
               {"\ue90b"}
             </span>
-          </Link>
+          </DistributorTile>
 
           {distributors.slice(1).map((distributor) => (
-            <Link
+            <DistributorTile
               key={distributor.slug}
-              href={withLang(`/brands/${distributor.slug}`, lang)}
-              aria-label={distributor.name}
-              className="focus-ring group flex min-h-24 items-center justify-center overflow-hidden bg-white p-4 transition-colors hover:bg-graphite-50 lg:min-h-40"
+              slug={distributor.slug}
+              name={distributor.name}
+              lang={lang}
+              className={
+                distributor.slug === "fuji-star"
+                  ? "after:absolute after:inset-y-5 after:right-0 after:w-0.5 after:bg-signal-500/70 after:content-['']"
+                  : ""
+              }
             >
               <Image
                 src={distributor.logo}
                 alt={distributor.name}
                 width={distributor.width}
                 height={distributor.height}
-                className="max-h-14 w-full max-w-[165px] object-contain transition-transform duration-300 group-hover:scale-105"
+                className="max-h-11 w-full max-w-[150px] object-contain transition-transform duration-300 group-hover:scale-105"
               />
-            </Link>
+            </DistributorTile>
           ))}
         </div>
       </div>

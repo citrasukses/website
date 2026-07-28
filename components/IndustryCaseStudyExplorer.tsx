@@ -2,11 +2,12 @@
 
 import { useEffect, useRef, useState, type MouseEvent } from "react";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Factory, X } from "lucide-react";
+import { ArrowRight, CheckCircle2, Construction, Factory, X } from "lucide-react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { IndustryCard } from "@/components/IndustryCard";
 import type { Industry } from "@/data/industries";
 import { industryCaseStudies } from "@/data/industry-case-studies";
+import { canViewBrandDraft, isBrandPubliclyAvailable } from "@/lib/brand-visibility";
 import { text, type Language, withLang } from "@/lib/i18n";
 
 type IndustryCaseStudyExplorerProps = {
@@ -20,6 +21,8 @@ export function IndustryCaseStudyExplorer({ industries, lang }: IndustryCaseStud
   const [activeBrandSlug, setActiveBrandSlug] = useState<string | null>(null);
   const activeCaseStudy = industryCaseStudies.find((item) => item.industrySlug === activeIndustrySlug) ?? null;
   const activeStep = activeCaseStudy?.steps.find((step) => step.brandSlug === activeBrandSlug) ?? activeCaseStudy?.steps[0];
+  const activeStepIsPublic = activeStep ? isBrandPubliclyAvailable(activeStep.brandSlug) : false;
+  const canOpenActiveStep = activeStep ? canViewBrandDraft(activeStep.brandSlug) : false;
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -227,13 +230,27 @@ export function IndustryCaseStudyExplorer({ industries, lang }: IndustryCaseStud
                     : "Diagram ini adalah contoh aplikasi. Pemilihan produk akhir bergantung pada proses, material, dimensi, dan spesifikasi teknis."}
                 </p>
                 <div className="flex flex-wrap gap-3">
-                  <Link
-                    href={withLang(`/brands/${activeStep.brandSlug}`, lang)}
-                    className="focus-ring inline-flex items-center gap-2 border border-graphite-200 px-4 py-3 text-sm font-bold text-graphite-800 transition hover:border-industrial-600 hover:text-industrial-700"
-                  >
-                    {lang === "en" ? `View ${activeStep.brandName}` : `Lihat ${activeStep.brandName}`}
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </Link>
+                  {canOpenActiveStep ? (
+                    <Link
+                      href={withLang(`/brands/${activeStep.brandSlug}`, lang)}
+                      className="focus-ring inline-flex items-center gap-2 border border-graphite-200 px-4 py-3 text-sm font-bold text-graphite-800 transition hover:border-industrial-600 hover:text-industrial-700"
+                    >
+                      {activeStepIsPublic
+                        ? lang === "en"
+                          ? `View ${activeStep.brandName}`
+                          : `Lihat ${activeStep.brandName}`
+                        : `On progress: ${activeStep.brandName}`}
+                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                    </Link>
+                  ) : (
+                    <span
+                      aria-label={`${activeStep.brandName}: on progress`}
+                      className="inline-flex items-center gap-2 border border-signal-200 bg-signal-50 px-4 py-3 text-sm font-bold text-signal-700"
+                    >
+                      On progress: {activeStep.brandName}
+                      <Construction className="h-4 w-4" aria-hidden="true" />
+                    </span>
+                  )}
                   <Link
                     href={withLang("/contact", lang)}
                     className="focus-ring inline-flex items-center gap-2 bg-signal-500 px-4 py-3 text-sm font-bold text-white transition hover:bg-signal-600"

@@ -1,14 +1,14 @@
-import { CheckCircle2, ChevronDown, ExternalLink, Info } from "lucide-react";
+import { CheckCircle2, ExternalLink, Info } from "lucide-react";
 import type {
   TohnichiProductFamilyDetail,
-  TohnichiSpecificationTable
+  TohnichiSpecificationTable,
+  TohnichiTechnicalDetail
 } from "@/data/tohnichi-product-details";
 import { text, type Language } from "@/lib/i18n";
 
 const indonesiaLabelReplacements: Array<[RegExp, string]> = [
   [/\bS\.?\s*I\.?\s*MODEL\b/gi, "Model S.I."],
   [/\bMETRIC MODEL\b/gi, "Model metrik"],
-  [/\bAMERICAN MODEL\b/gi, "Model Amerika"],
   [/\bMODEL\s*\/\s*TYPE\b/gi, "Model/tipe"],
   [/\bMODEL\b/gi, "Model"],
   [/\bTORQUE RANGE\b/gi, "Rentang torsi"],
@@ -53,6 +53,7 @@ const indonesiaLabelReplacements: Array<[RegExp, string]> = [
   [/\bPRICES?\b/gi, "Harga"],
   [/\bCOMMON STEEL\b/gi, "Baja umum"],
   [/\bHIGH TENSION\b/gi, "Baja high-tension"],
+  [/\bCATEGORY\b/gi, "Kategori"],
   [/\bVALUE\b/gi, "Nilai"]
 ];
 
@@ -64,46 +65,372 @@ function technicalLabel(label: string, lang: Language) {
   );
 }
 
-function tableTitle(title: string, index: number, lang: Language) {
-  if (/^Model options \d+$/i.test(title)) {
-    return lang === "en" ? `Model options ${index + 1}` : `Pilihan model ${index + 1}`;
+function normalizedColumnKey(label: string) {
+  const normalized = label
+    .normalize("NFKC")
+    .replace(/[’′]/g, "'")
+    .replace(/\bMETIRC\b/gi, "METRIC")
+    .replace(/\bDIMENSIONS\b/gi, "DIMENSION")
+    .replace(/\bS\.I\.\s*RANGE\b/gi, "S.I. RANGE")
+    .replace(/\s+/g, " ")
+    .replace(/\s*([/[\]()])\s*/g, "$1")
+    .replace(/MIN\.?\s*-\s*MAX\.?/gi, "MIN.-MAX.")
+    .trim()
+    .toUpperCase();
+
+  if (/^MODEL\/TYPE(?:\s|$|\()/.test(normalized)) return "MODEL/TYPE";
+  return normalized;
+}
+
+function isGenericTableTitle(title: string) {
+  return /^Model options \d+$/i.test(title) || /^Specifications(?: \d+)?$/i.test(title);
+}
+
+function isAmericanColumn(label: string) {
+  const normalized = normalizedColumnKey(label);
+  if (normalized.includes("AMERICAN") && normalized.includes("MODEL")) return true;
+
+  return /(?:LBF|OZF)\s*[・·.]?\s*(?:IN|FT)/.test(normalized);
+}
+
+type ConsolidatedRow = {
+  key: string;
+  values: string[];
+};
+
+type ConsolidatedSpecification = {
+  columns: string[];
+  rows: ConsolidatedRow[];
+  commonSpecifications: TohnichiTechnicalDetail[];
+};
+
+function consolidateTables(
+  tables: TohnichiSpecificationTable[]
+): ConsolidatedSpecification {
+  const modelTables = tables
+    .map((table) => ({
+      table,
+      columns: table.columns
+        .map((label, originalIndex) => ({ label, originalIndex }))
+        .filter(({ label }) => !isAmericanColumn(label))
+    }))
+    .filter(({ table, columns }) => table.rows.length && columns.length);
+  const commonSpecifications: TohnichiTechnicalDetail[] = [];
+  const commonKeys = new Set<string>();
+
+  for (const table of tables) {
+    for (const specification of table.commonSpecifications ?? []) {
+      const key = `${normalizedColumnKey(specification.label)}\u0000${specification.value}`;
+      if (commonKeys.has(key)) continue;
+      commonKeys.add(key);
+      commonSpecifications.push(specification);
+    }
   }
-  if (/^Specifications(?: \d+)?$/i.test(title)) {
-    return lang === "en" ? title : title.replace("Specifications", "Spesifikasi");
+
+  if (!modelTables.length) {
+    return { columns: [], rows: [], commonSpecifications };
   }
-  return technicalLabel(title, lang);
+
+  const includeCategory =
+    modelTables.length > 1 &&
+    modelTables.every(({ table }) => !isGenericTableTitle(table.title));
+  const columnLabels = new Map<string, string>();
+  if (includeCategory) columnLabels.set("__CATEGORY__", "CATEGORY");
+
+  for (const { columns: tableColumns } of modelTables) {
+    for (const column of tableColumns) {
+      const key = normalizedColumnKey(column.label);
+      if (!columnLabels.has(key)) columnLabels.set(key, column.label);
+    }
+  }
+
+  const richerModelNames = new Set(
+    modelTables
+      .filter(({ columns: tableColumns }) => tableColumns.length > 1)
+      .flatMap(({ table }) => table.rows.map((row) => row.model.trim().toUpperCase()))
+  );
+  const columns = Array.from(columnLabels.values());
+  const columnKeys = Array.from(columnLabels.keys());
+  const seenRows = new Set<string>();
+  const rows: ConsolidatedRow[] = [];
+
+  for (const [tableIndex, { table, columns: tableColumns }] of modelTables.entries()) {
+    const tableColumnKeys = tableColumns.map(({ label }) => normalizedColumnKey(label));
+    for (const [rowIndex, row] of table.rows.entries()) {
+      const normalizedModel = row.model.trim().toUpperCase();
+      if (tableColumns.length === 1 && richerModelNames.has(normalizedModel)) continue;
+
+      const valuesByColumn = new Map<string, string>();
+      if (includeCategory) valuesByColumn.set("__CATEGORY__", table.title);
+      tableColumnKeys.forEach((key, index) => {
+        valuesByColumn.set(key, row.values[tableColumns[index].originalIndex] ?? "");
+      });
+      const values = columnKeys.map((key) => valuesByColumn.get(key) ?? "");
+      const rowSignature = values.join("\u0001");
+      if (seenRows.has(rowSignature)) continue;
+      seenRows.add(rowSignature);
+      rows.push({
+        key: `${tableIndex}-${row.key || rowIndex}`,
+        values
+      });
+    }
+  }
+
+  return { columns, rows, commonSpecifications };
+}
+
+type HeaderTone = "amber" | "emerald" | "sky" | "graphite";
+
+const headerToneClasses: Record<
+  HeaderTone,
+  { top: string; sub: string }
+> = {
+  amber: {
+    top: "border-amber-300 bg-amber-100 text-amber-950",
+    sub: "border-amber-300 bg-amber-50 text-amber-950"
+  },
+  emerald: {
+    top: "border-emerald-300 bg-emerald-100 text-emerald-950",
+    sub: "border-emerald-300 bg-emerald-50 text-emerald-950"
+  },
+  sky: {
+    top: "border-sky-300 bg-sky-100 text-sky-950",
+    sub: "border-sky-300 bg-sky-50 text-sky-950"
+  },
+  graphite: {
+    top: "border-graphite-300 bg-graphite-200 text-graphite-800",
+    sub: "border-graphite-300 bg-graphite-100 text-graphite-800"
+  }
+};
+
+function headerTone(label: string): HeaderTone {
+  const normalized = normalizedColumnKey(label);
+
+  if (normalized.includes("METRIC MODEL") || normalized.includes("KGF")) {
+    return "emerald";
+  }
+  if (
+    normalized.includes("S.I. MODEL") ||
+    /(?:^|\[)(?:C?N)[・·.]?M(?:\]|$)/.test(normalized) ||
+    /^(MODEL|MODEL\/TYPE)(?:\s|$|\()/.test(normalized)
+  ) {
+    return "amber";
+  }
+  if (
+    /(DIMENSION|LENGTH|WIDTH|THICKNESS|WEIGHT|SQ\.?DRIVE|BODY SIZE)/.test(
+      normalized
+    )
+  ) {
+    return "graphite";
+  }
+  return "sky";
+}
+
+type HeaderColumn = {
+  index: number;
+  label: string;
+  groupLabel: string;
+  subLabel: string | null;
+  tone: HeaderTone;
+};
+
+type HeaderGroup = {
+  key: string;
+  label: string;
+  tone: HeaderTone;
+  columns: HeaderColumn[];
+  grouped: boolean;
+};
+
+function splitHeaderLabel(label: string) {
+  let roundDepth = 0;
+  let squareDepth = 0;
+
+  for (let index = 0; index < label.length; index += 1) {
+    const character = label[index];
+    if (character === "(") roundDepth += 1;
+    if (character === ")") roundDepth = Math.max(0, roundDepth - 1);
+    if (character === "[") squareDepth += 1;
+    if (character === "]") squareDepth = Math.max(0, squareDepth - 1);
+
+    if (
+      character === "/" &&
+      roundDepth === 0 &&
+      squareDepth === 0 &&
+      /\s/.test(label[index - 1] ?? "") &&
+      /\s/.test(label[index + 1] ?? "")
+    ) {
+      return {
+        groupLabel: label.slice(0, index).trim(),
+        subLabel: label.slice(index + 1).trim()
+      };
+    }
+  }
+
+  return { groupLabel: label, subLabel: null };
+}
+
+function buildHeaderGroups(columns: string[]) {
+  const headerColumns: HeaderColumn[] = columns.map((label, index) => {
+    const { groupLabel, subLabel } = splitHeaderLabel(label);
+    return {
+      index,
+      label,
+      groupLabel,
+      subLabel,
+      tone: headerTone(groupLabel)
+    };
+  });
+  const groups: HeaderGroup[] = [];
+
+  for (const column of headerColumns) {
+    const previous = groups.at(-1);
+    const canJoinPrevious =
+      Boolean(column.subLabel) &&
+      previous?.grouped &&
+      previous.tone === column.tone &&
+      normalizedColumnKey(previous.label) === normalizedColumnKey(column.groupLabel);
+
+    if (canJoinPrevious && previous) {
+      previous.columns.push(column);
+      continue;
+    }
+
+    groups.push({
+      key: `${column.index}-${column.groupLabel}`,
+      label: column.subLabel ? column.groupLabel : column.label,
+      tone: column.tone,
+      columns: [column],
+      grouped: Boolean(column.subLabel)
+    });
+  }
+
+  return {
+    groups,
+    hasSubHeaders: headerColumns.some(({ subLabel }) => Boolean(subLabel))
+  };
+}
+
+function ConsolidatedModelTable({
+  productName,
+  specification,
+  lang
+}: {
+  productName: string;
+  specification: ConsolidatedSpecification;
+  lang: Language;
+}) {
+  if (!specification.rows.length || !specification.columns.length) return null;
+  const { groups, hasSubHeaders } = buildHeaderGroups(specification.columns);
+  const minimumTableWidth = Math.max(720, specification.columns.length * 130);
+
+  return (
+    <>
+      <p className="mb-2 text-xs font-semibold text-graphite-500 md:hidden">
+        {lang === "en"
+          ? "Swipe or scroll sideways to compare every model."
+          : "Geser tabel ke samping untuk membandingkan seluruh model."}
+      </p>
+      <div className="max-w-full overflow-x-auto border border-graphite-200 bg-white shadow-sm">
+        <table
+          className="w-full border-collapse text-left"
+          style={{ minWidth: `${minimumTableWidth}px` }}
+        >
+          <caption className="sr-only">
+            {lang === "en"
+              ? `${productName} model and option specifications`
+              : `Spesifikasi model dan opsi ${productName}`}
+          </caption>
+          <thead>
+            <tr className="border-b border-graphite-300">
+              {groups.map((group) => (
+                <th
+                  key={group.key}
+                  scope={group.grouped ? "colgroup" : "col"}
+                  colSpan={group.grouped ? group.columns.length : undefined}
+                  rowSpan={!group.grouped && hasSubHeaders ? 2 : undefined}
+                  className={`min-w-[130px] border-r px-3 py-3 text-center text-xs font-bold uppercase tracking-[0.06em] last:border-r-0 ${headerToneClasses[group.tone].top}`}
+                >
+                  {technicalLabel(group.label, lang)}
+                </th>
+              ))}
+            </tr>
+            {hasSubHeaders ? (
+              <tr className="border-b border-graphite-300">
+                {groups.flatMap((group) =>
+                  group.grouped
+                    ? group.columns.map((column) => (
+                        <th
+                          key={`${column.index}-${column.subLabel}`}
+                          scope="col"
+                          className={`min-w-[130px] border-r px-3 py-2 text-center text-xs font-bold last:border-r-0 ${headerToneClasses[column.tone].sub}`}
+                        >
+                          {technicalLabel(column.subLabel ?? "", lang)}
+                        </th>
+                      ))
+                    : []
+                )}
+              </tr>
+            ) : null}
+          </thead>
+          <tbody className="divide-y divide-graphite-200">
+            {specification.rows.map((row, rowIndex) => (
+              <tr key={row.key} className={rowIndex % 2 ? "bg-graphite-50/70" : "bg-white"}>
+                {row.values.map((value, valueIndex) => (
+                  <td
+                    key={`${row.key}-${valueIndex}-${specification.columns[valueIndex]}`}
+                    className={`whitespace-nowrap border-r border-graphite-200 px-3 py-3 text-center text-sm last:border-r-0 ${
+                      valueIndex === 0 ? "font-bold text-graphite-900" : "text-graphite-600"
+                    }`}
+                  >
+                    {value || "—"}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
+  );
 }
 
 function CommonSpecificationTable({
   productName,
-  table,
+  specifications,
   lang
 }: {
   productName: string;
-  table: TohnichiSpecificationTable;
+  specifications: TohnichiTechnicalDetail[];
   lang: Language;
 }) {
-  if (!table.commonSpecifications?.length) return null;
+  if (!specifications.length) return null;
   return (
-    <div className="overflow-hidden border border-graphite-200 bg-white">
+    <div className="overflow-hidden border border-graphite-200 bg-white shadow-sm">
       <table className="w-full border-collapse text-left">
         <caption className="sr-only">
           {lang === "en"
-            ? `${productName} common specifications`
-            : `Spesifikasi umum ${productName}`}
+            ? `${productName} specifications`
+            : `Spesifikasi ${productName}`}
         </caption>
         <thead>
-          <tr className="bg-graphite-800 text-white">
-            <th scope="col" className="px-4 py-3 text-xs font-bold uppercase tracking-[0.08em]">
-              {lang === "en" ? "Parameter" : "Parameter"}
+          <tr className="border-b border-graphite-300">
+            <th
+              scope="col"
+              className="border-r border-amber-300 bg-amber-100 px-4 py-3 text-xs font-bold uppercase tracking-[0.08em] text-amber-950"
+            >
+              Parameter
             </th>
-            <th scope="col" className="px-4 py-3 text-xs font-bold uppercase tracking-[0.08em]">
+            <th
+              scope="col"
+              className="bg-emerald-100 px-4 py-3 text-xs font-bold uppercase tracking-[0.08em] text-emerald-950"
+            >
               {lang === "en" ? "Specification" : "Spesifikasi"}
             </th>
           </tr>
         </thead>
         <tbody className="divide-y divide-graphite-200">
-          {table.commonSpecifications.map((specification, index) => (
+          {specifications.map((specification, index) => (
             <tr key={`${specification.label}-${index}`} className={index % 2 ? "bg-graphite-50/70" : "bg-white"}>
               <th scope="row" className="w-[38%] px-4 py-3 text-sm font-bold text-graphite-800">
                 {technicalLabel(specification.label, lang)}
@@ -119,112 +446,6 @@ function CommonSpecificationTable({
   );
 }
 
-function ModelOptionTable({
-  productName,
-  table,
-  lang
-}: {
-  productName: string;
-  table: TohnichiSpecificationTable;
-  lang: Language;
-}) {
-  if (!table.rows.length || !table.columns.length) return null;
-  const visibleColumns = new Set(table.columns);
-  const hasAdditionalDetails = table.rows.some((row) =>
-    row.details.some((detail) => !visibleColumns.has(detail.label))
-  );
-
-  return (
-    <>
-      <p className="mb-2 text-xs font-semibold text-graphite-500 md:hidden">
-        {lang === "en"
-          ? "Swipe or scroll sideways to compare every model."
-          : "Geser tabel ke samping untuk membandingkan seluruh model."}
-      </p>
-      <div className="max-w-full overflow-x-auto border border-graphite-200 bg-white shadow-sm">
-        <table className="w-full min-w-[1180px] border-collapse text-left">
-          <caption className="sr-only">
-            {lang === "en"
-              ? `${productName} model and option specifications`
-              : `Spesifikasi model dan opsi ${productName}`}
-          </caption>
-          <thead>
-            <tr className="border-b border-graphite-300 bg-graphite-800 text-white">
-              {table.columns.map((column) => (
-                <th
-                  key={column}
-                  scope="col"
-                  className="min-w-[130px] border-r border-graphite-600 px-3 py-3 text-center text-xs font-bold uppercase tracking-[0.06em] last:border-r-0"
-                >
-                  {technicalLabel(column, lang)}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-graphite-200">
-            {table.rows.map((row, rowIndex) => (
-              <tr key={row.key} className={rowIndex % 2 ? "bg-graphite-50/70" : "bg-white"}>
-                {row.values.map((value, valueIndex) => (
-                  <td
-                    key={`${row.key}-${table.columns[valueIndex]}`}
-                    className={`whitespace-nowrap border-r border-graphite-200 px-3 py-3 text-center text-sm last:border-r-0 ${
-                      valueIndex === 0 ? "font-bold text-graphite-900" : "text-graphite-600"
-                    }`}
-                  >
-                    {value || "—"}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      {hasAdditionalDetails ? (
-        <details className="group mt-4 border border-graphite-200 bg-white">
-          <summary className="focus-ring flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-sm font-bold text-graphite-800">
-            <span>
-              {lang === "en"
-                ? "Complete dimensions and technical details for every model"
-                : "Dimensi dan detail teknis lengkap setiap model"}
-            </span>
-            <ChevronDown className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180" aria-hidden="true" />
-          </summary>
-          <div className="border-t border-graphite-200 p-4">
-            <div className="grid gap-3 lg:grid-cols-2">
-              {table.rows.map((row) => {
-                const additionalDetails = row.details.filter(
-                  (detail) => !visibleColumns.has(detail.label)
-                );
-                if (!additionalDetails.length) return null;
-                return (
-                  <article key={`${row.key}-details`} className="border border-graphite-200">
-                    <h4 className="bg-graphite-50 px-4 py-3 text-sm font-bold text-graphite-900">
-                      {row.model}
-                    </h4>
-                    <dl className="divide-y divide-graphite-100">
-                      {additionalDetails.map((detail, index) => (
-                        <div key={`${detail.label}-${index}`} className="grid grid-cols-[0.52fr_0.48fr] gap-3 px-4 py-2.5">
-                          <dt className="text-xs font-semibold leading-5 text-graphite-600">
-                            {technicalLabel(detail.label, lang)}
-                          </dt>
-                          <dd className="text-right text-xs leading-5 text-graphite-700">
-                            {detail.value}
-                          </dd>
-                        </div>
-                      ))}
-                    </dl>
-                  </article>
-                );
-              })}
-            </div>
-          </div>
-        </details>
-      ) : null}
-    </>
-  );
-}
-
 export function TohnichiSpecificationTables({
   productName,
   detail,
@@ -234,7 +455,9 @@ export function TohnichiSpecificationTables({
   detail: TohnichiProductFamilyDetail;
   lang: Language;
 }) {
-  const hasTables = detail.specificationTables.length > 0;
+  const consolidated = consolidateTables(detail.specificationTables);
+  const hasTables =
+    consolidated.rows.length > 0 || consolidated.commonSpecifications.length > 0;
 
   return (
     <section className="bg-graphite-50 py-14">
@@ -273,23 +496,20 @@ export function TohnichiSpecificationTables({
         </div>
 
         {hasTables ? (
-          <div className="mt-8 space-y-9">
-            {detail.specificationTables.map((table, index) => (
-              <article key={`${table.title}-${index}`}>
-                <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-                  <h3 className="text-xl font-bold text-graphite-900">
-                    {tableTitle(table.title, index, lang)}
-                  </h3>
-                  {table.accuracy && table.accuracy !== detail.accuracy ? (
-                    <span className="border border-graphite-200 bg-white px-3 py-1.5 text-xs font-bold text-graphite-700">
-                      {lang === "en" ? "Accuracy" : "Akurasi"} {table.accuracy}
-                    </span>
-                  ) : null}
-                </div>
-                <ModelOptionTable productName={productName} table={table} lang={lang} />
-                <CommonSpecificationTable productName={productName} table={table} lang={lang} />
-              </article>
-            ))}
+          <div className="mt-8">
+            {consolidated.rows.length ? (
+              <ConsolidatedModelTable
+                productName={productName}
+                specification={consolidated}
+                lang={lang}
+              />
+            ) : (
+              <CommonSpecificationTable
+                productName={productName}
+                specifications={consolidated.commonSpecifications}
+                lang={lang}
+              />
+            )}
           </div>
         ) : (
           <div className="mt-8 overflow-hidden border border-graphite-200 bg-white">
@@ -299,15 +519,31 @@ export function TohnichiSpecificationTables({
                   ? `${productName} selection information`
                   : `Informasi pemilihan ${productName}`}
               </caption>
+              <thead>
+                <tr className="border-b border-graphite-300">
+                  <th
+                    scope="col"
+                    className="border-r border-amber-300 bg-amber-100 px-5 py-3 text-xs font-bold uppercase tracking-[0.08em] text-amber-950"
+                  >
+                    Parameter
+                  </th>
+                  <th
+                    scope="col"
+                    className="bg-emerald-100 px-5 py-3 text-xs font-bold uppercase tracking-[0.08em] text-emerald-950"
+                  >
+                    {lang === "en" ? "Specification" : "Spesifikasi"}
+                  </th>
+                </tr>
+              </thead>
               <tbody className="divide-y divide-graphite-200">
                 <tr>
-                  <th scope="row" className="w-[38%] bg-graphite-50 px-5 py-4 text-sm font-bold text-graphite-800">
+                  <th scope="row" className="w-[38%] border-r border-graphite-200 px-5 py-4 text-sm font-bold text-graphite-800">
                     {lang === "en" ? "Product family" : "Product family"}
                   </th>
                   <td className="px-5 py-4 text-sm text-graphite-600">{productName}</td>
                 </tr>
-                <tr>
-                  <th scope="row" className="bg-graphite-50 px-5 py-4 text-sm font-bold text-graphite-800">
+                <tr className="bg-graphite-50/70">
+                  <th scope="row" className="border-r border-graphite-200 px-5 py-4 text-sm font-bold text-graphite-800">
                     {lang === "en" ? "Configuration" : "Konfigurasi"}
                   </th>
                   <td className="px-5 py-4 text-sm leading-6 text-graphite-600">
@@ -317,7 +553,7 @@ export function TohnichiSpecificationTables({
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row" className="bg-graphite-50 px-5 py-4 text-sm font-bold text-graphite-800">
+                  <th scope="row" className="border-r border-graphite-200 px-5 py-4 text-sm font-bold text-graphite-800">
                     {lang === "en" ? "Ordering information" : "Informasi pemesanan"}
                   </th>
                   <td className="px-5 py-4 text-sm leading-6 text-graphite-600">

@@ -1,5 +1,6 @@
 import type { Brand } from "@/data/brands";
 import type { BrandCardBrand } from "@/components/BrandCard";
+import { isBrandPubliclyAvailable } from "@/lib/brand-visibility";
 import { text } from "@/lib/i18n";
 
 export type SearchableBrandCard = {
@@ -16,6 +17,21 @@ function compact(values: Array<string | undefined>) {
 }
 
 export function buildRepresentedBrandSearchIndex(brand: Brand) {
+  if (!isBrandPubliclyAvailable(brand.slug)) {
+    return normalize(
+      compact([
+        brand.name,
+        brand.slug,
+        brand.country,
+        brand.countryCode,
+        text(brand.category, "id"),
+        text(brand.category, "en"),
+        text(brand.summary, "id"),
+        text(brand.summary, "en")
+      ])
+    );
+  }
+
   const productText = brand.productGroups
     .flatMap((group) => [
       group.slug,
