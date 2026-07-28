@@ -20,6 +20,10 @@ await Promise.all(
     })
   )
 );
+await rm(path.join(distributionDirectory, "client", "en", "assets"), {
+  recursive: true,
+  force: true
+});
 await cp(
   path.join(projectRoot, "worker", "static-export.js"),
   path.join(distributionDirectory, "server", "index.js")
