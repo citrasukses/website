@@ -3,7 +3,7 @@ export type Language = "id" | "en";
 export type LocalizedText = Record<Language, string>;
 
 export function staticLanguage(): Language {
-  return "id";
+  return process.env.NEXT_PUBLIC_SITE_LANGUAGE === "en" ? "en" : "id";
 }
 
 export function text(value: LocalizedText, lang: Language): string {

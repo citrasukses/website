@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FileText, RadioTower } from "lucide-react";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { BrandPageProgress } from "@/components/BrandPageProgress";
 import { CTAButton } from "@/components/CTAButton";
 import { NacFamilyDetails } from "@/components/NacFamilyDetails";
 import { ProductCard } from "@/components/ProductCard";
@@ -16,6 +17,7 @@ import { nacCouplingProductDetails } from "@/data/nac-coupling-product-details";
 import { nacProductDetails } from "@/data/nac-product-details";
 import { sankyoRikagakuProductDetails } from "@/data/sankyo-rikagaku-product-details";
 import { tohnichiProductDetails } from "@/data/tohnichi-product-details";
+import { canViewBrandDraft, isBrandPubliclyAvailable } from "@/lib/brand-visibility";
 import { getCatalogBrandBySlug } from "@/lib/catalog";
 import { staticLanguage, text, withLang } from "@/lib/i18n";
 
@@ -34,6 +36,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const product = brand?.productGroups.flatMap((group) => group.products).find((candidate) => candidate.slug === productSlug);
   if (!product || !brand) {
     return {};
+  }
+
+  if (!isBrandPubliclyAvailable(brand.slug)) {
+    return {
+      title: `${brand.name} | On progress`,
+      description: `${brand.name} product information is being prepared by CSE.`,
+      robots: {
+        index: false,
+        follow: false
+      }
+    };
   }
 
   const canonical = `/brands/${brand.slug}/products/${product.slug}`;
@@ -98,6 +111,10 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const group = brand.productGroups.find((candidate) => candidate.products.some((product) => product.slug === productSlug));
   const product = group?.products.find((candidate) => candidate.slug === productSlug);
   if (!product || !group) notFound();
+
+  if (!canViewBrandDraft(brand.slug)) {
+    return <BrandPageProgress brandName={brand.name} lang={lang} />;
+  }
 
   const tohnichiDetail = brand.slug === "tohnichi" ? tohnichiProductDetails[product.slug] : undefined;
   const nacDetail =

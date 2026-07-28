@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight, PackageSearch, Search, X } from "lucide-react";
+import { ArrowUpRight, Construction, PackageSearch, Search, X } from "lucide-react";
 import { useDeferredValue, useMemo, useState } from "react";
 import { BrandCard } from "@/components/BrandCard";
 import { BrandLogo } from "@/components/BrandLogo";
 import type { SearchableBrandCard } from "@/data/brand-search";
 import type { CatalogBrand } from "@/data/catalog-types";
+import { canViewBrandDraft, isBrandPubliclyAvailable } from "@/lib/brand-visibility";
 import { text, type Language, withLang } from "@/lib/i18n";
 
 type BrandsSearchCatalogProps = {
@@ -54,19 +55,26 @@ function matchesSearch(searchIndex: string, normalizedQuery: string) {
 
 function TradingBrandCard({ brand, lang }: { brand: CatalogBrand; lang: Language }) {
   const href = withLang(`/brands/${brand.slug}`, lang);
+  const isPublic = isBrandPubliclyAvailable(brand.slug);
+  const canOpen = canViewBrandDraft(brand.slug);
 
-  return (
-    <Link
-      href={href}
-      className="group flex min-h-[260px] flex-col border border-dashed border-graphite-300 bg-white transition duration-300 hover:-translate-y-1 hover:border-signal-500 hover:bg-signal-50/50 hover:shadow-panel"
-    >
-      <BrandLogo
-        name={brand.name}
-        slug={brand.slug}
-        src={brand.logo}
-        className="h-24 w-full border-b border-dashed border-graphite-200 bg-graphite-50"
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-      />
+  const content = (
+    <>
+      <div className="relative">
+        <BrandLogo
+          name={brand.name}
+          slug={brand.slug}
+          src={brand.logo}
+          className="h-24 w-full border-b border-dashed border-graphite-200 bg-graphite-50"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+        />
+        {!isPublic ? (
+          <span className="absolute right-3 top-3 inline-flex items-center gap-1.5 border border-signal-200 bg-white px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.12em] text-signal-600 shadow-sm">
+            <Construction className="h-3 w-3" aria-hidden="true" />
+            On progress
+          </span>
+        ) : null}
+      </div>
       <div className="flex flex-1 flex-col justify-between p-5">
         <div>
           <div className="flex items-start justify-between gap-4">
@@ -76,17 +84,49 @@ function TradingBrandCard({ brand, lang }: { brand: CatalogBrand; lang: Language
               </p>
               <h3 className="mt-2 text-xl font-bold text-graphite-900">{brand.name}</h3>
             </div>
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-dashed border-graphite-300 bg-white transition group-hover:border-signal-500 group-hover:bg-signal-600">
-              <ArrowUpRight className="h-4 w-4 text-graphite-500 transition group-hover:text-white" aria-hidden="true" />
+            <span
+              className={`flex h-9 w-9 shrink-0 items-center justify-center border border-dashed ${
+                canOpen
+                  ? "border-graphite-300 bg-white transition group-hover:border-signal-500 group-hover:bg-signal-600"
+                  : "border-signal-200 bg-signal-50"
+              }`}
+            >
+              {canOpen ? (
+                <ArrowUpRight className="h-4 w-4 text-graphite-500 transition group-hover:text-white" aria-hidden="true" />
+              ) : (
+                <Construction className="h-4 w-4 text-signal-600" aria-hidden="true" />
+              )}
             </span>
           </div>
           <p className="mt-4 text-sm font-semibold leading-6 text-industrial-700">{text(brand.category, lang)}</p>
         </div>
         <div className="mt-5 flex items-center justify-between gap-3 border-t border-dashed border-graphite-200 pt-4 text-xs font-semibold text-graphite-500">
           <span>{brand.country || (lang === "en" ? "Multiple origins" : "Berbagai negara")}</span>
-          <span>{lang === "en" ? "RFQ supply" : "Supply RFQ"}</span>
+          <span className={!isPublic ? "font-bold uppercase tracking-[0.1em] text-signal-600" : ""}>
+            {!isPublic ? "On progress" : lang === "en" ? "RFQ supply" : "Supply RFQ"}
+          </span>
         </div>
       </div>
+    </>
+  );
+
+  if (!canOpen) {
+    return (
+      <article
+        aria-label={`${brand.name}: on progress`}
+        className="flex min-h-[260px] flex-col border border-dashed border-graphite-300 bg-white"
+      >
+        {content}
+      </article>
+    );
+  }
+
+  return (
+    <Link
+      href={href}
+      className="group flex min-h-[260px] flex-col border border-dashed border-graphite-300 bg-white transition duration-300 hover:-translate-y-1 hover:border-signal-500 hover:bg-signal-50/50 hover:shadow-panel"
+    >
+      {content}
     </Link>
   );
 }
