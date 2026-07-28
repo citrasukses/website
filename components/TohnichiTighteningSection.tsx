@@ -697,7 +697,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
             </div>
 
             <p className="mt-8 border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-industrial-700">
-              {lang === "en" ? "Expertise 01 · Tightening control" : "Expertise 01 · Tightening control"}
+              {lang === "en" ? "Expertise 01 · Tightening Assurance System" : "Expertise 01 · Tightening Assurance System"}
             </p>
             <h2
               id="tohnichi-expertise-title"
