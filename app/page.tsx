@@ -17,14 +17,55 @@ import { industries } from "@/data/industries";
 import { getCatalogBrands } from "@/lib/catalog";
 import { staticLanguage, text, withLang } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  title: "Industrial Goods Supplier Indonesia",
-  description:
-    "PT Citra Sukses Ekapratama, Indonesia's industrial sourcing partner. CSE helps procurement and engineering teams find industrial products from Japan and Asia, check technical fit, provide alternatives, and speed up the RFQ process.",
-  alternates: {
-    canonical: "/"
+const homepageMetadata = {
+  id: {
+    title: "Distributor Resmi & Solusi Pengadaan Industri | CSE",
+    description:
+      "Distributor resmi TOHNICHI, NAC, FUJISTAR, dan NIPPON UNIT serta pengadaan brand general. Supplier peralatan dan kebutuhan industri untuk manufaktur di Indonesia."
+  },
+  en: {
+    title: "Industrial Goods Supplier Indonesia | CSE",
+    description:
+      "PT Citra Sukses Ekapratama, Indonesia's industrial sourcing partner. CSE helps procurement and engineering teams find industrial products from Japan and Asia, check technical fit, provide alternatives, and speed up the RFQ process."
   }
-};
+} as const;
+
+export function generateMetadata(): Metadata {
+  const lang = staticLanguage();
+  const { title, description } = homepageMetadata[lang];
+
+  return {
+    title: {
+      absolute: title
+    },
+    description,
+    alternates: {
+      canonical: "/"
+    },
+    openGraph: {
+      title,
+      description,
+      url: "https://cse.co.id",
+      siteName: "PT Citra Sukses Ekapratama",
+      images: [
+        {
+          url: "/assets/company/og-authorized-distributor.png",
+          width: 1200,
+          height: 630,
+          alt: "CSE authorized distributor for Tohnichi, NAC, Fujistar, and Nippon Unit"
+        }
+      ],
+      locale: lang === "en" ? "en_US" : "id_ID",
+      type: "website"
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/assets/company/og-authorized-distributor.png"]
+    }
+  };
+}
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
@@ -47,7 +88,12 @@ const organizationJsonLd = {
 export default async function HomePage() {
   const lang = staticLanguage();
   const catalogBrands = await getCatalogBrands();
-  const brands = catalogBrands.filter((brand) => brand.brandType === "represented");
+  const brands = catalogBrands
+    .filter((brand) => brand.brandType === "represented")
+    .sort((a, b) => {
+      const priority = (slug: string) => (slug === "tohnichi" ? 0 : slug === "nac" ? 1 : 2);
+      return priority(a.slug) - priority(b.slug);
+    });
 
   const serviceItems = lang === "en"
     ? [
@@ -139,10 +185,16 @@ export default async function HomePage() {
         <div className="container-page relative z-10 py-16 lg:py-12">
           <div className="grid gap-x-10 gap-y-8 lg:grid-cols-[1.25fr_0.95fr] lg:items-center lg:gap-y-10">
             <div className="order-1 max-w-5xl">
-              <h1 className="max-w-full text-balance text-2xl font-bold leading-tight tracking-normal text-graphite-900 sm:text-4xl md:text-6xl">
-                {lang === "en"
-                  ? "Industrial tools, spare parts, and consumables for factories in Indonesia."
-                  : "Industrial tools, spare parts dan consumables untuk pabrik di Indonesia."}
+              <h1 className="max-w-full font-bold leading-tight tracking-normal text-graphite-900">
+                <span className="block text-2xl sm:text-4xl md:text-5xl">Industrial Tools</span>
+                <span className="mt-1 block text-2xl sm:text-4xl md:text-5xl">
+                  Spare Parts &amp; Consumables
+                </span>
+                <span className="mt-3 block text-base font-semibold leading-snug text-graphite-600 sm:text-xl md:text-2xl">
+                  {lang === "en"
+                    ? "for manufacturers in Indonesia"
+                    : "untuk industri manufaktur di Indonesia"}
+                </span>
               </h1>
               <p className="mt-6 max-w-3xl text-base leading-7 text-graphite-600 md:text-lg md:leading-8">
                 {lang === "en"

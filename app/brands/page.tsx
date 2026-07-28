@@ -22,7 +22,13 @@ export const metadata: Metadata = {
 export default async function BrandsPage() {
   const lang = staticLanguage();
   const catalog = await getCatalogBrands();
-  const representedBrands = catalog.filter((brand) => brand.brandType === "represented").map(toSearchableBrandCard);
+  const representedBrands = catalog
+    .filter((brand) => brand.brandType === "represented")
+    .sort((a, b) => {
+      const priority = (slug: string) => (slug === "tohnichi" ? 0 : slug === "nac" ? 1 : 2);
+      return priority(a.slug) - priority(b.slug);
+    })
+    .map(toSearchableBrandCard);
   const tradingBrands = catalog.filter((brand) => brand.brandType === "general-trading");
 
   return (

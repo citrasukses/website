@@ -158,12 +158,11 @@ export function TohnichiFourMOverview({ lang }: { lang: Language }) {
       aria-labelledby="tohnichi-four-m-title"
     >
       <div className="border-b border-graphite-900/15 pb-4">
-        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-signal-600">4M</p>
         <h3
           id="tohnichi-four-m-title"
           className="mt-2 text-xl font-bold leading-tight text-graphite-900 sm:text-2xl"
         >
-          {lang === "en" ? "Four sources of tightening defects." : "Empat sumber defect tightening."}
+          {lang === "en" ? "Sources of tightening defects" : "Penyebab defect tightening"}
         </h3>
       </div>
 

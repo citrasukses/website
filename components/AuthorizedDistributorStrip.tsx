@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, BadgeCheck, Construction } from "lucide-react";
+import { ArrowUpRight, BadgeCheck } from "lucide-react";
 import type { ReactNode } from "react";
-import { canViewBrandDraft, isBrandPubliclyAvailable } from "@/lib/brand-visibility";
+import { canViewBrandDraft } from "@/lib/brand-visibility";
 import { withLang, type Language } from "@/lib/i18n";
 
 type AuthorizedDistributorStripProps = {
@@ -43,34 +43,22 @@ type DistributorTileProps = {
 };
 
 function DistributorTile({ slug, name, lang, className = "", children }: DistributorTileProps) {
-  const isPublic = isBrandPubliclyAvailable(slug);
   const canOpen = canViewBrandDraft(slug);
   const tileClassName = `relative flex min-h-24 items-center justify-center overflow-hidden bg-white p-5 lg:min-h-32 ${className} ${
     canOpen ? "focus-ring group transition-colors hover:bg-graphite-50" : ""
   }`;
-  const content = (
-    <>
-      {children}
-      {!isPublic ? (
-        <span className="absolute right-2 top-2 inline-flex items-center gap-1 border border-signal-200 bg-white px-2 py-1 text-[9px] font-bold uppercase tracking-[0.1em] text-signal-600 shadow-sm">
-          <Construction className="h-3 w-3" aria-hidden="true" />
-          On progress
-        </span>
-      ) : null}
-    </>
-  );
 
   if (!canOpen) {
     return (
-      <div aria-label={`${name}: on progress`} className={tileClassName}>
-        {content}
+      <div aria-label={name} className={tileClassName}>
+        {children}
       </div>
     );
   }
 
   return (
     <Link href={withLang(`/brands/${slug}`, lang)} aria-label={name} className={tileClassName}>
-      {content}
+      {children}
     </Link>
   );
 }
