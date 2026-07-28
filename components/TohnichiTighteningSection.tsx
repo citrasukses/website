@@ -15,7 +15,7 @@ import {
   Play,
   ShieldCheck
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 import { CTAButton } from "@/components/CTAButton";
 import { TohnichiFourMOverview } from "@/components/TohnichiFourMOverview";
 import { TohnichiTorqueCarousel } from "@/components/TohnichiTorqueCarousel";
@@ -77,8 +77,8 @@ const challenges: TighteningChallenge[] = [
     id: "missed-tightening",
     icon: ListChecks,
     topic: {
-      id: "Missed tightening / jumlah baut tidak lengkap",
-      en: "Missed tightening / incomplete bolt count"
+      id: "Missed tightening",
+      en: "Missed tightening"
     },
     title: {
       id: "Assembly tidak lengkap karena titik tightening terlewat",
@@ -163,6 +163,10 @@ const challenges: TighteningChallenge[] = [
     result: {
       id: "Downtime lebih rendah, abnormalitas lebih cepat terdeteksi.",
       en: "Less downtime and earlier abnormality detection."
+    },
+    product: {
+      src: "/assets/brands/products/tohnichi/catalog/tester-checker/st3-g-st3-g-bt.jpg",
+      name: "ST3-G / ST3-G-BT Peak Torque Meter"
     }
   },
   {
@@ -201,6 +205,89 @@ const challenges: TighteningChallenge[] = [
 
 const manufacturingProblems = challenges;
 
+type RiskStepTone = "default" | "attention" | "risk";
+
+const riskStepToneClasses: Record<RiskStepTone, string> = {
+  default: "border-graphite-200 bg-white",
+  attention: "border-amber-300 bg-amber-50",
+  risk: "border-signal-500 bg-[#fff2ee]"
+};
+
+function RiskFlowStep({
+  number,
+  label,
+  tone = "default",
+  children
+}: {
+  number: string;
+  label: string;
+  tone?: RiskStepTone;
+  children: ReactNode;
+}) {
+  return (
+    <div
+      className={`flex min-h-36 flex-col border p-3.5 ${riskStepToneClasses[tone]}`}
+    >
+      <div className="flex items-center gap-2">
+        <span className="text-[10px] font-black tracking-[0.16em] text-signal-500">
+          {number}
+        </span>
+        <span className="h-px flex-1 bg-graphite-200" aria-hidden="true" />
+      </div>
+      <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.13em] text-graphite-500">
+        {label}
+      </p>
+      <div className="mt-auto pt-3">{children}</div>
+    </div>
+  );
+}
+
+function RiskFlowArrow() {
+  return (
+    <span
+      className="flex h-7 items-center justify-center text-graphite-300 sm:h-auto"
+      aria-hidden="true"
+    >
+      <ArrowRight className="h-4 w-4 rotate-90 sm:rotate-0" />
+    </span>
+  );
+}
+
+function RiskFlow({
+  ariaLabel,
+  children
+}: {
+  ariaLabel: string;
+  children: ReactNode;
+}) {
+  return (
+    <div
+      className="grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)_auto_minmax(0,1fr)] sm:items-stretch"
+      role="img"
+      aria-label={ariaLabel}
+    >
+      {children}
+    </div>
+  );
+}
+
+function TighteningPointDots({ confirmed }: { confirmed: number }) {
+  return (
+    <div className="mt-3 grid grid-cols-5 gap-1.5" aria-hidden="true">
+      {Array.from({ length: 10 }, (_, index) => (
+        <span
+          key={index}
+          className={`h-2.5 w-2.5 rounded-full border ${
+            index < confirmed
+              ? "border-industrial-700 bg-industrial-700"
+              : "border-signal-500 bg-white"
+          }`}
+        />
+      ))}
+    </div>
+  );
+}
+
 function TighteningRiskVisual({
   challenge,
   lang
@@ -209,161 +296,253 @@ function TighteningRiskVisual({
   lang: Language;
 }) {
   const Icon = challenge.icon;
+  let riskFlow: ReactNode;
+
+  if (challenge.id === "over-tightening") {
+    riskFlow = (
+      <RiskFlow
+        ariaLabel={
+          lang === "en"
+            ? "Applied torque reaches 125 percent, exceeds the 100 percent target, and overloads the joint"
+            : "Torsi aktual mencapai 125 persen, melewati target 100 persen, dan membebani joint secara berlebih"
+        }
+      >
+        <RiskFlowStep
+          number="01"
+          label={lang === "en" ? "Applied torque" : "Torsi aktual"}
+        >
+          <p className="font-mono text-2xl font-black text-graphite-900">125%</p>
+          <div className="mt-3 flex h-2 overflow-hidden bg-graphite-200">
+            <span className="w-4/5 bg-industrial-700" />
+            <span className="flex-1 bg-signal-500" />
+          </div>
+          <p className="mt-2 text-[10px] font-semibold text-graphite-500">
+            {lang === "en" ? "Target marker: 100%" : "Penanda target: 100%"}
+          </p>
+        </RiskFlowStep>
+        <RiskFlowArrow />
+        <RiskFlowStep
+          number="02"
+          label={lang === "en" ? "Control limit" : "Batas kontrol"}
+          tone="attention"
+        >
+          <p className="font-mono text-2xl font-black text-signal-600">+25%</p>
+          <p className="mt-2 text-xs font-bold leading-5 text-graphite-700">
+            {lang === "en" ? "Target exceeded" : "Target terlewati"}
+          </p>
+        </RiskFlowStep>
+        <RiskFlowArrow />
+        <RiskFlowStep
+          number="03"
+          label={lang === "en" ? "Joint outcome" : "Dampak pada joint"}
+          tone="risk"
+        >
+          <p className="text-base font-black leading-5 text-signal-600">
+            {lang === "en" ? "Excess joint stress" : "Stress joint berlebih"}
+          </p>
+          <p className="mt-2 text-[10px] font-semibold leading-4 text-graphite-600">
+            {lang === "en" ? "Component damage risk" : "Risiko kerusakan komponen"}
+          </p>
+        </RiskFlowStep>
+      </RiskFlow>
+    );
+  } else if (challenge.id === "missed-tightening") {
+    riskFlow = (
+      <RiskFlow
+        ariaLabel={
+          lang === "en"
+            ? "Ten fastening points are required, only nine are confirmed, and one point is missed"
+            : "Sepuluh titik tightening diwajibkan, hanya sembilan terkonfirmasi, dan satu titik terlewat"
+        }
+      >
+        <RiskFlowStep
+          number="01"
+          label={lang === "en" ? "Required points" : "Titik wajib"}
+        >
+          <p className="font-mono text-2xl font-black text-graphite-900">10</p>
+          <TighteningPointDots confirmed={10} />
+        </RiskFlowStep>
+        <RiskFlowArrow />
+        <RiskFlowStep
+          number="02"
+          label={lang === "en" ? "Confirmed count" : "Hitungan terkonfirmasi"}
+          tone="attention"
+        >
+          <p className="font-mono text-2xl font-black text-graphite-900">09 / 10</p>
+          <TighteningPointDots confirmed={9} />
+        </RiskFlowStep>
+        <RiskFlowArrow />
+        <RiskFlowStep
+          number="03"
+          label={lang === "en" ? "Assembly outcome" : "Hasil assembly"}
+          tone="risk"
+        >
+          <p className="text-base font-black leading-5 text-signal-600">
+            {lang === "en" ? "1 point missed" : "1 titik terlewat"}
+          </p>
+          <p className="mt-2 text-[10px] font-semibold leading-4 text-graphite-600">
+            {lang === "en" ? "Assembly is incomplete" : "Assembly tidak lengkap"}
+          </p>
+        </RiskFlowStep>
+      </RiskFlow>
+    );
+  } else if (challenge.id === "calibration-drift") {
+    riskFlow = (
+      <RiskFlow
+        ariaLabel={
+          lang === "en"
+            ? "The target is 10 newton metres, the daily check reads 9.2, and the tool is out of tolerance"
+            : "Target adalah 10 newton meter, daily check menunjukkan 9,2, dan alat berada di luar toleransi"
+        }
+      >
+        <RiskFlowStep
+          number="01"
+          label={lang === "en" ? "Set torque" : "Set torque"}
+        >
+          <p className="font-mono text-2xl font-black text-graphite-900">10.0</p>
+          <p className="mt-1 text-xs font-bold text-graphite-500">N·m</p>
+        </RiskFlowStep>
+        <RiskFlowArrow />
+        <RiskFlowStep
+          number="02"
+          label={lang === "en" ? "Daily check" : "Daily check"}
+          tone="attention"
+        >
+          <p className="font-mono text-2xl font-black text-signal-600">9.2</p>
+          <div className="relative mt-3 h-2 bg-graphite-200">
+            <span className="absolute inset-y-0 left-[42%] w-[36%] bg-industrial-700" />
+            <span className="absolute -top-1 left-[12%] h-4 w-0.5 bg-signal-500" />
+          </div>
+          <p className="mt-2 text-[10px] font-semibold text-graphite-500">
+            {lang === "en" ? "Allowed: 9.8–10.2" : "Batas: 9,8–10,2"}
+          </p>
+        </RiskFlowStep>
+        <RiskFlowArrow />
+        <RiskFlowStep
+          number="03"
+          label={lang === "en" ? "Tool status" : "Status alat"}
+          tone="risk"
+        >
+          <p className="text-base font-black leading-5 text-signal-600">
+            {lang === "en" ? "Out of tolerance" : "Di luar toleransi"}
+          </p>
+          <p className="mt-2 text-[10px] font-semibold leading-4 text-graphite-600">
+            {lang === "en" ? "Nonconforming torque risk" : "Risiko torque tidak sesuai"}
+          </p>
+        </RiskFlowStep>
+      </RiskFlow>
+    );
+  } else if (challenge.id === "nutrunner-check") {
+    riskFlow = (
+      <RiskFlow
+        ariaLabel={
+          lang === "en"
+            ? "The nutrunner is running on the line, must be removed for verification, and production is interrupted"
+            : "Nutrunner beroperasi di lini, harus dilepas untuk verifikasi, dan produksi terganggu"
+        }
+      >
+        <RiskFlowStep
+          number="01"
+          label={lang === "en" ? "Production tool" : "Tool produksi"}
+        >
+          <p className="text-base font-black leading-5 text-graphite-900">Nutrunner</p>
+          <p className="mt-2 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.12em] text-industrial-700">
+            <Play className="h-3.5 w-3.5 fill-current" aria-hidden="true" />
+            {lang === "en" ? "On line" : "Di lini"}
+          </p>
+        </RiskFlowStep>
+        <RiskFlowArrow />
+        <RiskFlowStep
+          number="02"
+          label={lang === "en" ? "Verification gap" : "Gap verifikasi"}
+          tone="attention"
+        >
+          <p className="text-base font-black leading-5 text-graphite-900">
+            {lang === "en" ? "Tool removed" : "Tool dilepas"}
+          </p>
+          <p className="mt-2 text-[10px] font-semibold leading-4 text-graphite-600">
+            {lang === "en" ? "Checked away from station" : "Diperiksa di luar station"}
+          </p>
+        </RiskFlowStep>
+        <RiskFlowArrow />
+        <RiskFlowStep
+          number="03"
+          label={lang === "en" ? "Line impact" : "Dampak ke lini"}
+          tone="risk"
+        >
+          <p className="inline-flex items-center gap-2 text-base font-black leading-5 text-signal-600">
+            <Pause className="h-4 w-4 fill-current" aria-hidden="true" />
+            {lang === "en" ? "Downtime" : "Downtime"}
+          </p>
+          <p className="mt-2 text-[10px] font-semibold leading-4 text-graphite-600">
+            {lang === "en" ? "Production is interrupted" : "Produksi terganggu"}
+          </p>
+        </RiskFlowStep>
+      </RiskFlow>
+    );
+  } else {
+    riskFlow = (
+      <RiskFlow
+        ariaLabel={
+          lang === "en"
+            ? "A tightening result exists, the work identity is missing, and the record cannot be saved or traced"
+            : "Hasil tightening tersedia, identitas pekerjaan tidak ada, dan record tidak dapat disimpan atau ditelusuri"
+        }
+      >
+        <RiskFlowStep
+          number="01"
+          label={lang === "en" ? "Tightening result" : "Hasil tightening"}
+        >
+          <p className="font-mono text-2xl font-black text-graphite-900">20.0</p>
+          <p className="mt-1 text-xs font-bold text-graphite-500">N·m</p>
+        </RiskFlowStep>
+        <RiskFlowArrow />
+        <RiskFlowStep
+          number="02"
+          label={lang === "en" ? "Work identity" : "Identitas pekerjaan"}
+          tone="attention"
+        >
+          <p className="font-mono text-2xl font-black text-signal-600">—</p>
+          <p className="mt-2 text-xs font-bold text-graphite-700">Work ID</p>
+        </RiskFlowStep>
+        <RiskFlowArrow />
+        <RiskFlowStep
+          number="03"
+          label={lang === "en" ? "Data record" : "Record data"}
+          tone="risk"
+        >
+          <p className="text-base font-black leading-5 text-signal-600">
+            {lang === "en" ? "Not saved" : "Tidak tersimpan"}
+          </p>
+          <p className="mt-2 text-[10px] font-semibold leading-4 text-graphite-600">
+            {lang === "en" ? "No audit trail" : "Tidak ada audit trail"}
+          </p>
+        </RiskFlowStep>
+      </RiskFlow>
+    );
+  }
 
   return (
-    <div className="relative min-h-52 overflow-hidden border border-graphite-200 bg-[#eef0ec] p-5">
-      <span className="absolute right-4 top-4 text-[9px] font-bold uppercase tracking-[0.2em] text-graphite-500">
-        {lang === "en" ? "Process condition" : "Kondisi proses"}
-      </span>
-
-      <div className="absolute left-5 top-5 flex h-12 w-12 items-center justify-center rounded-full border border-industrial-700/20 bg-white text-industrial-700 shadow-sm">
-        <Icon className="h-6 w-6" aria-hidden="true" />
-      </div>
-
-      <div className="absolute inset-x-5 bottom-5">
-        {challenge.id === "over-tightening" ? (
-          <div className="grid gap-5">
-            <div>
-              <div className="mb-2 flex items-center justify-between text-[9px] font-bold uppercase tracking-[0.14em]">
-                <span className="text-graphite-500">
-                  {lang === "en" ? "Applied torque" : "Torsi aktual"}
-                </span>
-                <span className="text-signal-600">
-                  {lang === "en" ? "Exceeds target" : "Melebihi target"}
-                </span>
-              </div>
-              <div className="relative h-3 bg-white">
-                <div className="absolute inset-y-0 left-0 w-[68%] bg-industrial-700" />
-                <div className="absolute inset-y-0 left-[68%] right-0 bg-signal-500" />
-                <div className="absolute -top-1 left-[68%] h-5 w-px bg-graphite-900" />
-                <span className="absolute left-[68%] top-5 -translate-x-1/2 whitespace-nowrap text-[8px] font-bold uppercase tracking-[0.12em] text-graphite-700">
-                  {lang === "en" ? "Target torque" : "Torsi target"}
-                </span>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-[1fr_auto] items-center gap-4 border-t border-graphite-200 pt-4">
-              <div
-                className="relative h-12"
-                role="img"
-                aria-label={
-                  lang === "en"
-                    ? "Bolted joint compressed by excessive torque"
-                    : "Sambungan baut tertekan akibat torsi berlebih"
-                }
-              >
-                <div className="absolute inset-x-0 top-3 h-3 border border-graphite-200 bg-white" />
-                <div className="absolute inset-x-0 top-6 h-3 border-x border-b border-industrial-700/30 bg-industrial-700/15" />
-                <div className="absolute left-1/2 top-1 h-10 w-2 -translate-x-1/2 bg-graphite-700" />
-                <div className="absolute left-1/2 top-0 h-3 w-8 -translate-x-1/2 bg-graphite-800 [clip-path:polygon(25%_0,75%_0,100%_50%,75%_100%,25%_100%,0_50%)]" />
-                <div className="absolute left-1/2 top-8 h-3 w-7 -translate-x-1/2 border-2 border-signal-500 bg-white [clip-path:polygon(25%_0,75%_0,100%_50%,75%_100%,25%_100%,0_50%)]" />
-                <div className="absolute left-[calc(50%+1rem)] top-3 h-px w-10 rotate-[16deg] bg-signal-500" />
-                <div className="absolute left-[calc(50%+1rem)] top-6 h-px w-8 -rotate-[14deg] bg-signal-500" />
-              </div>
-              <div className="border-l-2 border-signal-500 pl-3">
-                <p className="max-w-24 text-[10px] font-black uppercase leading-4 tracking-[0.12em] text-signal-600">
-                  {lang === "en" ? "Excess joint stress" : "Stress joint berlebih"}
-                </p>
-              </div>
-            </div>
-          </div>
-        ) : null}
-
-        {challenge.id === "missed-tightening" ? (
-          <div className="grid grid-cols-[1fr_auto] items-end gap-5">
-            <div>
-              <div className="flex items-center justify-between gap-2 border-b border-graphite-300 pb-3">
-                {[1, 2, 3, 4].map((bolt) => (
-                  <span
-                    key={bolt}
-                    className={`flex h-9 w-9 items-center justify-center rounded-full border-4 bg-white text-xs font-black ${
-                      bolt === 4
-                        ? "border-signal-500 text-signal-600"
-                        : "border-industrial-700 text-industrial-700"
-                    }`}
-                  >
-                    {bolt}
-                  </span>
-                ))}
-              </div>
-              <p className="mt-3 text-[9px] font-bold uppercase tracking-[0.14em] text-signal-600">
-                {lang === "en" ? "01 point not confirmed" : "01 titik belum terkonfirmasi"}
-              </p>
-            </div>
-            <div className="bg-graphite-900 px-4 py-3 text-right text-white shadow-sm">
-              <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-white/60">Count</p>
-              <p className="font-mono text-2xl font-black text-[#e8b923]">09 / 10</p>
-            </div>
-          </div>
-        ) : null}
-
-        {challenge.id === "calibration-drift" ? (
-          <div className="grid grid-cols-2 gap-px overflow-hidden border border-graphite-300 bg-graphite-300">
-            <div className="bg-white p-4">
-              <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-graphite-500">Target</p>
-              <p className="mt-2 font-mono text-2xl font-black text-graphite-900">10.0</p>
-              <p className="text-[9px] font-bold text-graphite-500">N·m</p>
-            </div>
-            <div className="bg-[#fff7db] p-4">
-              <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-signal-600">Daily check</p>
-              <p className="mt-2 font-mono text-2xl font-black text-signal-600">9.2</p>
-              <p className="text-[9px] font-bold text-signal-600">NG · OUT OF RANGE</p>
-            </div>
-          </div>
-        ) : null}
-
-        {challenge.id === "nutrunner-check" ? (
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="flex h-12 flex-1 items-center justify-center border border-graphite-400 bg-white text-[10px] font-black uppercase tracking-[0.12em] text-graphite-700">
-                Nutrunner
-              </span>
-              <span className="h-px w-5 bg-graphite-500" />
-              <span className="flex h-12 w-16 items-center justify-center border-2 border-signal-500 bg-[#fff7db] text-sm font-black text-signal-600">
-                ST
-              </span>
-              <span className="h-px w-5 bg-graphite-500" />
-              <span className="flex h-12 w-16 items-center justify-center rounded-r-full border border-graphite-400 bg-white text-[10px] font-black uppercase text-graphite-700">
-                Socket
-              </span>
-            </div>
-            <p className="mt-4 text-right text-[10px] font-bold uppercase tracking-[0.16em] text-signal-600">
-              {lang === "en" ? "Avoid removing the machine" : "Tanpa melepas mesin"}
+    <div className="overflow-hidden border border-graphite-200 bg-graphite-50">
+      <div className="flex items-center justify-between gap-4 border-b border-graphite-200 bg-graphite-900 px-4 py-3 text-white">
+        <div className="flex min-w-0 items-center gap-3">
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-white/20 bg-white/5">
+            <Icon className="h-4 w-4" aria-hidden="true" />
+          </span>
+          <div className="min-w-0">
+            <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-white/55">
+              {lang === "en" ? "Risk path" : "Alur risiko"}
+            </p>
+            <p className="truncate text-sm font-bold text-white">
+              {text(challenge.topic, lang)}
             </p>
           </div>
-        ) : null}
-
-        {challenge.id === "traceability" ? (
-          <div>
-            <div className="grid grid-cols-3 gap-px overflow-hidden border border-graphite-300 bg-graphite-300">
-              <div className="bg-white p-3">
-                <p className="text-[8px] font-bold uppercase tracking-[0.14em] text-graphite-500">
-                  Torque
-                </p>
-                <p className="mt-2 font-mono text-lg font-black text-graphite-900">20.0</p>
-                <p className="text-[8px] font-bold text-graphite-500">N·m</p>
-              </div>
-              <div className="bg-white p-3">
-                <p className="text-[8px] font-bold uppercase tracking-[0.14em] text-graphite-500">
-                  Work ID
-                </p>
-                <p className="mt-3 font-mono text-sm font-black text-graphite-400">--</p>
-              </div>
-              <div className="bg-[#fff2ee] p-3">
-                <p className="text-[8px] font-bold uppercase tracking-[0.14em] text-signal-600">
-                  Record
-                </p>
-                <p className="mt-3 text-[9px] font-black uppercase leading-4 text-signal-600">
-                  {lang === "en" ? "Not saved" : "Tidak tersimpan"}
-                </p>
-              </div>
-            </div>
-            <p className="mt-3 text-right text-[9px] font-bold uppercase tracking-[0.16em] text-signal-600">
-              {lang === "en" ? "No audit trail" : "Tidak ada audit trail"}
-            </p>
-          </div>
-        ) : null}
+        </div>
+        <span className="shrink-0 border border-signal-500 bg-signal-500 px-2 py-1 text-[9px] font-black uppercase tracking-[0.14em] text-white">
+          {lang === "en" ? "Risk detected" : "Risiko terdeteksi"}
+        </span>
       </div>
+      <div className="p-4">{riskFlow}</div>
     </div>
   );
 }
@@ -377,20 +556,28 @@ function SolutionVisual({
 }) {
   if (challenge.product) {
     return (
-      <div className="relative h-32 w-full overflow-hidden border border-graphite-200 bg-white">
+      <div className="relative h-full min-h-48 w-full overflow-hidden bg-white">
         <Image
           src={challenge.product.src}
           alt={`${challenge.product.name} — ${text(challenge.solutionTitle, lang)}`}
           fill
-          sizes="(min-width: 1024px) 200px, 45vw"
-          className="object-contain p-3"
+          sizes="(min-width: 1024px) 38vw, 90vw"
+          className="object-contain px-4 pb-14 pt-4 sm:px-5"
         />
+        <div className="absolute inset-x-0 bottom-0 border-t border-graphite-200 bg-white/95 px-4 py-3 backdrop-blur-sm">
+          <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-graphite-500">
+            {lang === "en" ? "Recommended equipment" : "Equipment yang direkomendasikan"}
+          </p>
+          <p className="mt-0.5 text-xs font-bold leading-5 text-graphite-900">
+            {challenge.product.name}
+          </p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="flex h-32 w-full items-center justify-center border border-graphite-200 bg-white p-4">
+    <div className="relative flex h-full min-h-48 w-full items-center justify-center bg-white px-5 pb-14 pt-4">
       <div className="grid w-full grid-cols-[1fr_auto_1fr] items-center gap-2">
         <span className="h-px bg-graphite-300" />
         <span className="flex h-16 w-20 flex-col items-center justify-center border-2 border-signal-500 bg-[#fff7db]">
@@ -398,6 +585,14 @@ function SolutionVisual({
           <span className="text-[8px] font-bold uppercase tracking-[0.12em] text-graphite-500">Peak N·m</span>
         </span>
         <span className="h-px bg-graphite-300" />
+      </div>
+      <div className="absolute inset-x-0 bottom-0 border-t border-graphite-200 bg-white px-4 py-3">
+        <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-graphite-500">
+          {lang === "en" ? "Recommended equipment" : "Equipment yang direkomendasikan"}
+        </p>
+        <p className="mt-0.5 text-xs font-bold leading-5 text-graphite-900">
+          ST Peak Torque Meter
+        </p>
       </div>
     </div>
   );
@@ -585,7 +780,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
                 Tohnichi application guide
               </p>
               <h3 className="mt-2 text-2xl font-bold leading-tight text-graphite-900 sm:text-3xl">
-                Manufacturing Problems
+                Tantangan Quality pada Industri Manufaktur
               </h3>
               <p className="mt-2 max-w-2xl text-sm leading-6 text-graphite-500">
                 {lang === "en"
@@ -696,7 +891,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
                 </div>
               </article>
 
-              <article className="bg-[#fffaf0] p-5 sm:p-7">
+              <article className="flex h-full flex-col bg-[#fffaf0] p-5 sm:p-7">
                 <div className="inline-flex bg-[#e2b91d] px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-graphite-900">
                   {lang === "en" ? "Tohnichi solution" : "Solusi Tohnichi"}
                 </div>
@@ -707,15 +902,23 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
                   {text(activeChallenge.solution, lang)}
                 </p>
 
-                <div className="mt-5 grid gap-5 sm:grid-cols-[1fr_11rem] sm:items-center">
-                  <div className="flex items-start gap-3 border-y border-[#dfd4a0] py-4">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-signal-500" aria-hidden="true" />
+                <div className="mt-5 grid flex-1 gap-px overflow-hidden border border-[#dfd4a0] bg-[#dfd4a0] sm:grid-cols-[minmax(13rem,0.72fr)_minmax(0,1.28fr)] sm:items-stretch">
+                  <div className="flex min-h-48 flex-col bg-white p-5">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-industrial-700 text-white">
+                      <Check className="h-5 w-5" aria-hidden="true" />
+                    </div>
                     <div>
-                      <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-graphite-500">
+                      <p className="mt-4 text-[9px] font-bold uppercase tracking-[0.16em] text-graphite-500">
                         {lang === "en" ? "Controlled result" : "Hasil terkendali"}
                       </p>
-                      <p className="mt-1 text-sm font-bold leading-6 text-graphite-700">
+                      <p className="mt-2 text-base font-bold leading-6 text-graphite-900">
                         {text(activeChallenge.result, lang)}
+                      </p>
+                    </div>
+                    <div className="mt-auto flex items-center gap-2 border-t border-graphite-200 pt-4">
+                      <span className="h-2 w-2 shrink-0 rounded-full bg-industrial-700" aria-hidden="true" />
+                      <p className="text-[9px] font-black uppercase tracking-[0.15em] text-industrial-700">
+                        {lang === "en" ? "Risk control active" : "Kontrol risiko aktif"}
                       </p>
                     </div>
                   </div>
