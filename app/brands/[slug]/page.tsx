@@ -156,7 +156,7 @@ export default async function BrandDetailPage({ params }: PageProps) {
         imageLabel={`${brand.name} products`}
         imageClassName={
           isTohnichi
-            ? "object-[55%_50%]"
+            ? "object-[50%_28%]"
             : isNac
               ? "object-center"
               : isSankyoRikagaku
