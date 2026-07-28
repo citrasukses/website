@@ -627,7 +627,7 @@ const controlLayers = [
 
 export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionProps) {
   const [activeProblemIndex, setActiveProblemIndex] = useState(0);
-  const [rotationPaused, setRotationPaused] = useState(false);
+  const [rotationPaused, setRotationPaused] = useState(true);
   const [isInteracting, setIsInteracting] = useState(false);
   const activeChallenge = manufacturingProblems[activeProblemIndex];
   const isAutoRotationPaused = rotationPaused || isInteracting;
@@ -697,7 +697,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
             </div>
 
             <p className="mt-8 border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-industrial-700">
-              {lang === "en" ? "Expertise 01 · Tightening Assurance System" : "Expertise 01 · Tightening Assurance System"}
+              {lang === "en" ? "Tightening Assurance System" : "Tightening Assurance System"}
             </p>
             <h2
               id="tohnichi-expertise-title"
