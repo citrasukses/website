@@ -5,12 +5,21 @@ import { fileURLToPath } from "node:url";
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const exportDirectory = path.join(projectRoot, "out");
 const distributionDirectory = path.join(projectRoot, "dist");
+const draftBrandProductDirectories = ["fuji-star", "nac", "nippon-unit-brush"];
 
 await rm(distributionDirectory, { recursive: true, force: true });
 await mkdir(path.join(distributionDirectory, "client"), { recursive: true });
 await mkdir(path.join(distributionDirectory, "server"), { recursive: true });
 
 await cp(exportDirectory, path.join(distributionDirectory, "client"), { recursive: true });
+await Promise.all(
+  draftBrandProductDirectories.map((slug) =>
+    rm(path.join(distributionDirectory, "client", "assets", "brands", "products", slug), {
+      recursive: true,
+      force: true
+    })
+  )
+);
 await cp(
   path.join(projectRoot, "worker", "static-export.js"),
   path.join(distributionDirectory, "server", "index.js")
