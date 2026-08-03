@@ -208,6 +208,14 @@ export default async function BrandDetailPage({ params }: PageProps) {
                   playsInline
                   controls
                 />
+                <a
+                  href="https://www.youtube.com/watch?v=vtZKwdSp5Ow"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="focus-ring block border-t border-white/15 bg-graphite-900 px-5 py-4 text-sm font-bold leading-6 text-white underline decoration-white/30 underline-offset-4 transition hover:bg-industrial-800 hover:decoration-white"
+                >
+                  &quot;Tohnichi QL+ CL+ Torque Wrench&quot; Watch in Tohnichi&apos;s Official Youtube
+                </a>
               </div>
             </div>
           </section>
