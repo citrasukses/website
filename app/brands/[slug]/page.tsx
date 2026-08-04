@@ -41,6 +41,10 @@ const TOHNICHI_SEO_KEYWORDS = [
   "PT Citra Sukses Ekapratama"
 ];
 
+function staticExportPath(path: string, lang: "id" | "en") {
+  return lang === "en" ? `/en${path}` : path;
+}
+
 export function generateStaticParams() {
   return seedCatalog.map((brand) => ({ slug: brand.slug }));
 }
@@ -67,6 +71,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const isTohnichi = brand.slug === "tohnichi";
   const isSankyoRikagaku = brand.slug === "fuji-star";
+  const brandPath = `/brands/${brand.slug}`;
+  const canonicalPath = isTohnichi && lang === "en" ? `/en${brandPath}` : brandPath;
   const title = isTohnichi
     ? TOHNICHI_SEO_TITLE
     : isSankyoRikagaku
@@ -93,12 +99,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description,
     keywords,
     alternates: {
-      canonical: `/brands/${brand.slug}`
+      canonical: canonicalPath,
+      languages: isTohnichi
+        ? {
+            "id-ID": TOHNICHI_PAGE_PATH,
+            en: `/en${TOHNICHI_PAGE_PATH}`,
+            "x-default": TOHNICHI_PAGE_PATH
+          }
+        : undefined
     },
     openGraph: {
       title: isTohnichi ? `${TOHNICHI_SEO_TITLE} | CSE` : `${brand.name} Indonesia | CSE`,
       description,
-      url: `/brands/${brand.slug}`,
+      url: canonicalPath,
       locale: lang === "en" ? "en_US" : "id_ID",
       images: brand.heroImage ? [{ url: brand.heroImage, alt: `${brand.name} products in Indonesia` }] : undefined
     },
@@ -129,6 +142,7 @@ export default async function BrandDetailPage({ params }: PageProps) {
   const isNac = brand.slug === "nac";
   const isSankyoRikagaku = brand.slug === "fuji-star";
   const hasProductExplorer = isTohnichi || isNac || isSankyoRikagaku;
+  const localizedTohnichiPagePath = staticExportPath(TOHNICHI_PAGE_PATH, lang);
   const tohnichiJsonLd = isTohnichi
     ? [
         {
@@ -140,7 +154,7 @@ export default async function BrandDetailPage({ params }: PageProps) {
               ? "Tohnichi Indonesia: Torque Wrenches & Torque Tools"
               : "Tohnichi Indonesia: Torque Wrench & Torque Tools",
           description: TOHNICHI_SEO_DESCRIPTION[lang],
-          url: `https://cse.co.id${TOHNICHI_PAGE_PATH}`,
+          url: `https://cse.co.id${localizedTohnichiPagePath}`,
           inLanguage: lang === "en" ? "en-ID" : "id-ID",
           citation: TOHNICHI_DISTRIBUTOR_URL,
           about: {
@@ -169,7 +183,10 @@ export default async function BrandDetailPage({ params }: PageProps) {
                 "@type": "ListItem",
                 position: index + 1,
                 name: product.name,
-                url: `https://cse.co.id/brands/${brand.slug}/products/${product.slug}`
+                url: `https://cse.co.id${staticExportPath(
+                  `/brands/${brand.slug}/products/${product.slug}`,
+                  lang
+                )}`
               }))
           }
         },
@@ -187,13 +204,13 @@ export default async function BrandDetailPage({ params }: PageProps) {
               "@type": "ListItem",
               position: 2,
               name: lang === "en" ? "Brands" : "Brand",
-              item: "https://cse.co.id/brands"
+              item: `https://cse.co.id${staticExportPath("/brands", lang)}`
             },
             {
               "@type": "ListItem",
               position: 3,
               name: "Tohnichi Indonesia",
-              item: `https://cse.co.id${TOHNICHI_PAGE_PATH}`
+              item: `https://cse.co.id${localizedTohnichiPagePath}`
             }
           ]
         }
