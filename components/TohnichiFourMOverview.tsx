@@ -134,19 +134,30 @@ function FourMVisualization({
 
   return (
     <svg {...sharedProps}>
-      <rect x="27" y="60" width="186" height="46" rx="2" />
-      <rect x="97" y="17" width="46" height="126" rx="2" />
-      <path d="M96 62l10-17h28l10 17-10 18h-28z" />
-      <circle cx="120" cy="62" r="10" />
-      <path d="M73 60v46M168 60v46" opacity="0.25" />
-      <path d="M145 83l10-7 8 9 9-6 12 11" className="text-signal-500" />
-      <path d="M52 114h56M132 114h56" opacity="0.35" />
-      <path d="M120 8v144" strokeDasharray="3 7" opacity="0.2" />
+      <path d="M35 61h170v29H35z" />
+      <path d="M35 96h170v29H35z" />
+      <path d="M35 90h170M35 96h170" opacity="0.18" />
+      <path d="M35 76h66M139 76h66M35 111h68M141 111h64" opacity="0.22" />
+
+      <path d="M103 24h34l10 12-10 12h-34L93 36z" />
+      <path d="M108 48v77h24V48" />
+      <path d="M99 55h42" opacity="0.45" />
+      <path d="M101 125h38l9 11-9 11h-38l-9-11z" />
+
+      <path d="M101 61v29M139 61v29" opacity="0.35" />
+      <path d="M103 96v29M141 96v29" opacity="0.35" />
+      <path d="M98 84h9M98 102h9" className="text-signal-500" />
+      <path d="M98 84l4-4M98 84l4 4M98 102l4-4M98 102l4 4" className="text-signal-500" />
+
+      <path d="M166 61l-8 10 10 7-7 9 12 9-7 9" className="text-signal-500" />
+      <path d="M111 105l17 8M111 113l17 8M112 121l14 6" opacity="0.45" />
+      <path d="M120 8v144" strokeDasharray="3 7" opacity="0.16" />
       <path
-        d="M207 40c0 10-7 17-16 17-8 0-14-6-14-14 0-9 14-24 14-24s16 13 16 21z"
+        d="M201 38c0 9-6 15-14 15-7 0-12-5-12-12 0-8 12-21 12-21s14 11 14 18z"
         className="text-signal-500"
       />
-      <path d="M185 44c1 4 4 6 8 6" className="text-signal-500" />
+      <path d="M181 42c1 3 4 5 7 5" className="text-signal-500" />
+      <path d="M135 105c3 2 4 5 4 8" className="text-signal-500" />
     </svg>
   );
 }

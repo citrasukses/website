@@ -93,6 +93,11 @@ function isAmericanColumn(label: string) {
   return /(?:LBF|OZF)\s*[・·.]?\s*(?:IN|FT)/.test(normalized);
 }
 
+function isModelColumn(label: string) {
+  const normalized = normalizedColumnKey(label);
+  return /^(?:(?:S\.I\.|METRIC)\s+)?MODEL(?:\/TYPE)?(?:\s|$|\()/.test(normalized);
+}
+
 type ConsolidatedRow = {
   key: string;
   values: string[];
@@ -104,10 +109,55 @@ type ConsolidatedSpecification = {
   commonSpecifications: TohnichiTechnicalDetail[];
 };
 
+function modelTableSignature({
+  table,
+  columns
+}: {
+  table: TohnichiSpecificationTable;
+  columns: Array<{ label: string; originalIndex: number }>;
+}) {
+  const titleKey = isGenericTableTitle(table.title)
+    ? "__GENERIC__"
+    : normalizedColumnKey(table.title);
+  const columnKey = columns.map(({ label }) => normalizedColumnKey(label)).join("\u0001");
+  const rowKey = table.rows
+    .map((row) =>
+      columns
+        .map(({ originalIndex }) => row.values[originalIndex]?.trim() ?? "")
+        .join("\u0001")
+    )
+    .join("\u0002");
+
+  return `${titleKey}\u0000${columnKey}\u0000${rowKey}`;
+}
+
+function isEmbeddedHeaderValue(value: string) {
+  const normalized = normalizedColumnKey(value);
+  return /^(?:MIN\.-MAX\.|MIN\s*~\s*MAX|GRAD(?:UATION)?\.?|1 DIGIT|OVERALL LENGTH|APPROX\.? WEIGHT(?: \[KG\])?|WEIGHT(?: \[KG\])?|L'|L|ΦD|Φd|ℓ1|ℓ2)$/.test(
+    normalized
+  );
+}
+
+function isEmbeddedHeaderRow(
+  row: TohnichiSpecificationTable["rows"][number],
+  columns: Array<{ label: string; originalIndex: number }>
+) {
+  if (columns.length < 2) return false;
+
+  const specificationValues = columns
+    .slice(1)
+    .map(({ originalIndex }) => row.values[originalIndex]?.trim() ?? "")
+    .filter(Boolean);
+  if (specificationValues.length < 2) return false;
+
+  const headerValueCount = specificationValues.filter(isEmbeddedHeaderValue).length;
+  return headerValueCount >= 2 && headerValueCount / specificationValues.length >= 0.6;
+}
+
 function consolidateTables(
   tables: TohnichiSpecificationTable[]
 ): ConsolidatedSpecification {
-  const modelTables = tables
+  const candidateModelTables = tables
     .map((table) => ({
       table,
       columns: table.columns
@@ -115,6 +165,13 @@ function consolidateTables(
         .filter(({ label }) => !isAmericanColumn(label))
     }))
     .filter(({ table, columns }) => table.rows.length && columns.length);
+  const seenTableSignatures = new Set<string>();
+  const modelTables = candidateModelTables.filter((modelTable) => {
+    const signature = modelTableSignature(modelTable);
+    if (seenTableSignatures.has(signature)) return false;
+    seenTableSignatures.add(signature);
+    return true;
+  });
   const commonSpecifications: TohnichiTechnicalDetail[] = [];
   const commonKeys = new Set<string>();
 
@@ -147,16 +204,43 @@ function consolidateTables(
   const richerModelNames = new Set(
     modelTables
       .filter(({ columns: tableColumns }) => tableColumns.length > 1)
-      .flatMap(({ table }) => table.rows.map((row) => row.model.trim().toUpperCase()))
+      .flatMap(({ table, columns: tableColumns }) =>
+        table.rows
+          .filter((row) => !isEmbeddedHeaderRow(row, tableColumns))
+          .map((row) => row.model.trim().toUpperCase())
+      )
   );
   const columns = Array.from(columnLabels.values());
   const columnKeys = Array.from(columnLabels.keys());
+  const modelColumnIndexes = columnKeys
+    .map((key, index) => ({ key, index }))
+    .filter(({ key }) => key !== "__CATEGORY__" && isModelColumn(key))
+    .map(({ index }) => index);
+  const fallbackModelColumnIndex = columnKeys.findIndex(
+    (key) => key !== "__CATEGORY__"
+  );
+  const identityColumnIndexes = new Set(
+    modelColumnIndexes.length
+      ? modelColumnIndexes
+      : fallbackModelColumnIndex >= 0
+        ? [fallbackModelColumnIndex]
+        : []
+  );
+  const specificationColumnIndexes = columnKeys
+    .map((key, index) => ({ key, index }))
+    .filter(
+      ({ key, index }) =>
+        key !== "__CATEGORY__" && !identityColumnIndexes.has(index)
+    )
+    .map(({ index }) => index);
   const seenRows = new Set<string>();
   const rows: ConsolidatedRow[] = [];
 
   for (const [tableIndex, { table, columns: tableColumns }] of modelTables.entries()) {
     const tableColumnKeys = tableColumns.map(({ label }) => normalizedColumnKey(label));
     for (const [rowIndex, row] of table.rows.entries()) {
+      if (isEmbeddedHeaderRow(row, tableColumns)) continue;
+
       const normalizedModel = row.model.trim().toUpperCase();
       if (tableColumns.length === 1 && richerModelNames.has(normalizedModel)) continue;
 
@@ -166,6 +250,12 @@ function consolidateTables(
         valuesByColumn.set(key, row.values[tableColumns[index].originalIndex] ?? "");
       });
       const values = columnKeys.map((key) => valuesByColumn.get(key) ?? "");
+      if (
+        specificationColumnIndexes.length > 0 &&
+        specificationColumnIndexes.every((index) => !values[index]?.trim())
+      ) {
+        continue;
+      }
       const rowSignature = values.join("\u0001");
       if (seenRows.has(rowSignature)) continue;
       seenRows.add(rowSignature);
@@ -480,9 +570,6 @@ export function TohnichiSpecificationTables({
                 {lang === "en" ? "Accuracy" : "Akurasi"} {detail.accuracy}
               </span>
             ) : null}
-            <p className="max-w-2xl text-sm leading-6 text-graphite-500 lg:text-right">
-              {text(detail.catalogueReference, lang)}
-            </p>
             <a
               href={detail.officialUrl}
               target="_blank"

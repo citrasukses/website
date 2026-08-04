@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { AlertTriangle, CheckCircle2, RadioTower } from "lucide-react";
-import { AssetSlot } from "@/components/AssetSlot";
+import { CheckCircle2, RadioTower } from "lucide-react";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { BrandPageProgress } from "@/components/BrandPageProgress";
 import { BrandProductExplorer } from "@/components/BrandProductExplorer";
@@ -11,6 +10,7 @@ import { Hero } from "@/components/Hero";
 import { NacBrandOverview } from "@/components/NacBrandOverview";
 import { SankyoRikagakuBrandOverview } from "@/components/SankyoRikagakuBrandOverview";
 import { SectionHeader } from "@/components/SectionHeader";
+import { TohnichiProductPromotionCarousel } from "@/components/TohnichiProductPromotionCarousel";
 import { UseCaseSection } from "@/components/UseCaseSection";
 import { seedCatalog } from "@/data/catalog-seed";
 import { canViewBrandDraft, isBrandPubliclyAvailable } from "@/lib/brand-visibility";
@@ -21,12 +21,33 @@ type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
+const TOHNICHI_PAGE_PATH = "/brands/tohnichi";
+const TOHNICHI_OFFICIAL_URL = "https://en.global-tohnichi.com/";
+const TOHNICHI_DISTRIBUTOR_URL = "https://en.global-tohnichi.com/support/distributors.html";
+const TOHNICHI_SEO_TITLE = "Tohnichi Indonesia - Torque Wrench & Torque Tools";
+const TOHNICHI_SEO_DESCRIPTION = {
+  id: "PT Citra Sukses Ekapratama adalah agen penjualan dan servis Tohnichi di Indonesia untuk torque wrench, torque screwdriver, tester, kalibrasi, dan sistem tightening.",
+  en: "PT Citra Sukses Ekapratama is a Tohnichi sales and service agent in Indonesia for torque wrenches, torque screwdrivers, testers, calibration, and tightening systems."
+};
+const TOHNICHI_SEO_KEYWORDS = [
+  "Tohnichi",
+  "Tohnichi Indonesia",
+  "distributor Tohnichi Indonesia",
+  "torque wrench Tohnichi",
+  "kunci torsi Tohnichi",
+  "torque screwdriver Tohnichi",
+  "torque tester Tohnichi",
+  "kalibrasi Tohnichi",
+  "PT Citra Sukses Ekapratama"
+];
+
 export function generateStaticParams() {
   return seedCatalog.map((brand) => ({ slug: brand.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
+  const lang = staticLanguage();
   const brand = await getCatalogBrandBySlug(slug);
 
   if (!brand) {
@@ -44,11 +65,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
+  const isTohnichi = brand.slug === "tohnichi";
   const isSankyoRikagaku = brand.slug === "fuji-star";
-  const title = isSankyoRikagaku
-    ? "Sankyo Rikagaku (FUJISTAR) Indonesia - Katalog Abrasive"
-    : brand.name;
-  const keywords = isSankyoRikagaku
+  const title = isTohnichi
+    ? TOHNICHI_SEO_TITLE
+    : isSankyoRikagaku
+      ? "Sankyo Rikagaku (FUJISTAR) Indonesia - Katalog Abrasive"
+      : brand.name;
+  const description = isTohnichi ? TOHNICHI_SEO_DESCRIPTION[lang] : brand.summary.id;
+  const keywords = isTohnichi
+    ? TOHNICHI_SEO_KEYWORDS
+    : isSankyoRikagaku
     ? [
         "Sankyo Rikagaku Indonesia",
         "FUJISTAR Indonesia",
@@ -63,21 +90,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title,
-    description: brand.summary.id,
+    description,
     keywords,
     alternates: {
       canonical: `/brands/${brand.slug}`
     },
     openGraph: {
-      title: `${brand.name} Indonesia | CSE`,
-      description: brand.summary.id,
+      title: isTohnichi ? `${TOHNICHI_SEO_TITLE} | CSE` : `${brand.name} Indonesia | CSE`,
+      description,
       url: `/brands/${brand.slug}`,
+      locale: lang === "en" ? "en_US" : "id_ID",
       images: brand.heroImage ? [{ url: brand.heroImage, alt: `${brand.name} products in Indonesia` }] : undefined
     },
     twitter: {
       card: "summary_large_image",
-      title: `${brand.name} Indonesia | CSE`,
-      description: brand.summary.id,
+      title: isTohnichi ? `${TOHNICHI_SEO_TITLE} | CSE` : `${brand.name} Indonesia | CSE`,
+      description,
       images: brand.heroImage ? [brand.heroImage] : undefined
     }
   };
@@ -101,6 +129,76 @@ export default async function BrandDetailPage({ params }: PageProps) {
   const isNac = brand.slug === "nac";
   const isSankyoRikagaku = brand.slug === "fuji-star";
   const hasProductExplorer = isTohnichi || isNac || isSankyoRikagaku;
+  const tohnichiJsonLd = isTohnichi
+    ? [
+        {
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: TOHNICHI_SEO_TITLE,
+          headline:
+            lang === "en"
+              ? "Tohnichi Indonesia: Torque Wrenches & Torque Tools"
+              : "Tohnichi Indonesia: Torque Wrench & Torque Tools",
+          description: TOHNICHI_SEO_DESCRIPTION[lang],
+          url: `https://cse.co.id${TOHNICHI_PAGE_PATH}`,
+          inLanguage: lang === "en" ? "en-ID" : "id-ID",
+          citation: TOHNICHI_DISTRIBUTOR_URL,
+          about: {
+            "@type": "Brand",
+            name: "Tohnichi",
+            url: TOHNICHI_OFFICIAL_URL,
+            logo: "https://cse.co.id/assets/brands/logos/tohnichi--nobg.png"
+          },
+          provider: {
+            "@type": "Organization",
+            name: "PT Citra Sukses Ekapratama",
+            url: "https://cse.co.id",
+            email: "cse@citra-sukses.com",
+            areaServed: {
+              "@type": "Country",
+              name: "Indonesia"
+            }
+          },
+          mainEntity: {
+            "@type": "ItemList",
+            name: lang === "en" ? "Tohnichi product families in Indonesia" : "Keluarga produk Tohnichi Indonesia",
+            numberOfItems: brand.productGroups.flatMap((group) => group.products).length,
+            itemListElement: brand.productGroups
+              .flatMap((group) => group.products)
+              .map((product, index) => ({
+                "@type": "ListItem",
+                position: index + 1,
+                name: product.name,
+                url: `https://cse.co.id/brands/${brand.slug}/products/${product.slug}`
+              }))
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "CSE",
+              item: "https://cse.co.id"
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: lang === "en" ? "Brands" : "Brand",
+              item: "https://cse.co.id/brands"
+            },
+            {
+              "@type": "ListItem",
+              position: 3,
+              name: "Tohnichi Indonesia",
+              item: `https://cse.co.id${TOHNICHI_PAGE_PATH}`
+            }
+          ]
+        }
+      ]
+    : null;
   const sankyoRikagakuJsonLd = isSankyoRikagaku
     ? [
         {
@@ -131,6 +229,12 @@ export default async function BrandDetailPage({ params }: PageProps) {
 
   return (
     <>
+      {tohnichiJsonLd ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(tohnichiJsonLd) }}
+        />
+      ) : null}
       {sankyoRikagakuJsonLd ? (
         <script
           type="application/ld+json"
@@ -145,9 +249,21 @@ export default async function BrandDetailPage({ params }: PageProps) {
         ]}
       />
       <Hero
-        eyebrow={`${brand.name} / ${brand.country}`}
-        title={text(brand.category, lang)}
-        description={text(brand.description, lang)}
+        eyebrow={
+          isTohnichi
+            ? lang === "en"
+              ? "Tohnichi sales & service agent / Indonesia"
+              : "Agen penjualan & servis Tohnichi / Indonesia"
+            : `${brand.name} / ${brand.country}`
+        }
+        title={
+          isTohnichi
+            ? lang === "en"
+              ? "Tohnichi Indonesia: Torque Wrenches & Torque Tools"
+              : "Tohnichi Indonesia: Torque Wrench & Torque Tools"
+            : text(brand.category, lang)
+        }
+        description={isTohnichi ? TOHNICHI_SEO_DESCRIPTION[lang] : text(brand.description, lang)}
         primaryHref={withLang(`/contact?brand=${brand.slug}`, lang)}
         primaryLabel={lang === "en" ? "Request this brand" : "Minta brand ini"}
         secondaryHref={withLang("/brands", lang)}
@@ -179,9 +295,32 @@ export default async function BrandDetailPage({ params }: PageProps) {
                 </h2>
                 <p className="mt-4 text-base leading-7 text-graphite-500">
                   {lang === "en"
-                    ? "Tohnichi torque tools support tightening, inspection, calibration, and error proofing across production lines that need repeatable quality."
-                    : "Torque tools Tohnichi mendukung pengencangan, inspeksi, kalibrasi, dan error proofing untuk lini produksi yang membutuhkan kualitas berulang."}
+                    ? "CSE is listed in Tohnichi's official network for sales, technical support, repair, and calibration service in Indonesia."
+                    : "CSE tercantum dalam jaringan resmi Tohnichi untuk penjualan, dukungan teknis, perbaikan, dan layanan kalibrasi di Indonesia."}
                 </p>
+                <a
+                  href={TOHNICHI_DISTRIBUTOR_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="focus-ring mt-4 inline-flex text-sm font-bold text-industrial-700 underline decoration-industrial-300 underline-offset-4 transition hover:text-industrial-900"
+                >
+                  {lang === "en" ? "Verify on Tohnichi's official network" : "Verifikasi di jaringan resmi Tohnichi"}
+                </a>
+                <div className="mt-7 border-t border-graphite-200 pt-6">
+                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
+                    {lang === "en" ? "Torque wrench" : "Kunci torsi"}
+                  </p>
+                  <h3 className="mt-3 text-xl font-bold leading-snug text-graphite-900 md:text-2xl">
+                    {lang === "en"
+                      ? "Tighten bolts with precision and repeatability."
+                      : "Kencangkan baut dengan mudah, presisi, dan konsisten."}
+                  </h3>
+                  <p className="mt-3 text-sm leading-6 text-graphite-500">
+                    {lang === "en"
+                      ? "CSE helps match torque tools to production, inspection, small torque, calibration, and poka-yoke requirements."
+                      : "CSE membantu mencocokkan torque tools untuk produksi, inspeksi, torsi kecil, kalibrasi, dan kebutuhan poka-yoke."}
+                  </p>
+                </div>
               </div>
               <div className="overflow-hidden border border-graphite-200 bg-graphite-900 shadow-panel">
                 <video
@@ -206,65 +345,92 @@ export default async function BrandDetailPage({ params }: PageProps) {
           </section>
 
           <section className="bg-graphite-900 text-white">
-            <div className="container-page">
-              <div className="grid gap-8 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-                <div>
-                  <p className="mb-3 border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-white/70">
+            <div className="container-page py-14 lg:py-16">
+              <div className="grid gap-8 lg:grid-cols-[minmax(18rem,0.62fr)_minmax(0,1.38fr)] lg:items-start">
+                <section
+                  className="border border-white/15 bg-white/[0.025] p-6 sm:p-7"
+                  aria-labelledby="tohnichi-safety-title"
+                >
+                  <p className="border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-white/70">
                     Safety first
                   </p>
-                  <h2 className="text-balance text-2xl font-bold tracking-normal md:text-5xl">
+                  <h2
+                    id="tohnichi-safety-title"
+                    className="mt-4 text-balance text-2xl font-bold leading-tight tracking-normal sm:text-3xl"
+                  >
                     {lang === "en"
                       ? "Avoid under-tightening and over-tightening."
                       : "Utamakan safety. Hindari baut yang kurang kencang atau terlalu kencang."}
                   </h2>
-                </div>
-                <div className="grid gap-px overflow-hidden border border-white/15 bg-white/15 md:grid-cols-3">
-                  {[
-                    lang === "en" ? "Assembly assurance" : "Assurance perakitan",
-                    lang === "en" ? "Torque inspection" : "Inspeksi torsi",
-                    lang === "en" ? "Miss-tightening prevention" : "Pencegahan miss-tightening"
-                  ].map((item) => (
-                    <div key={item} className="bg-graphite-900/80 p-5">
-                      <AlertTriangle className="h-5 w-5 text-signal-500" aria-hidden="true" />
-                      <p className="mt-4 text-sm font-semibold leading-6 text-white/85">{item}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+                  <div className="mt-7 border-t border-white/10 pt-5">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/50">
+                      {lang === "en"
+                        ? "Stages to tightening assurance"
+                        : "Tahapan menuju tightening assurance"}
+                    </p>
+                    <ol className="mt-5">
+                      {[
+                        {
+                          number: "01",
+                          title: lang === "en" ? "Define the standard" : "Tentukan standar",
+                          body:
+                            lang === "en"
+                              ? "Set the torque value, tolerance, and work method."
+                              : "Tetapkan nilai torsi, toleransi, dan metode kerja."
+                        },
+                        {
+                          number: "02",
+                          title: lang === "en" ? "Control tightening" : "Kendalikan tightening",
+                          body:
+                            lang === "en"
+                              ? "Use the correct torque tool and prevent missed work."
+                              : "Gunakan torque tool yang tepat dan cegah proses terlewat."
+                        },
+                        {
+                          number: "03",
+                          title: lang === "en" ? "Verify the result" : "Verifikasi hasil",
+                          body:
+                            lang === "en"
+                              ? "Inspect, record, and trace each tightening result."
+                              : "Periksa, rekam, dan telusuri setiap hasil tightening."
+                        }
+                      ].map((stage) => (
+                        <li
+                          key={stage.number}
+                          className="relative grid grid-cols-[2.5rem_1fr] gap-3 pb-6"
+                        >
+                          <span
+                            className="absolute bottom-0 left-[1.22rem] top-10 w-px bg-white/15"
+                            aria-hidden="true"
+                          />
+                          <span className="relative z-10 flex h-10 w-10 items-center justify-center border border-signal-500/45 bg-graphite-900 font-mono text-xs font-black text-signal-500">
+                            {stage.number}
+                          </span>
+                          <div className="pt-0.5">
+                            <p className="text-sm font-bold leading-5 text-white">{stage.title}</p>
+                            <p className="mt-1 text-xs leading-5 text-white/55">{stage.body}</p>
+                          </div>
+                        </li>
+                      ))}
+                      <li className="grid grid-cols-[2.5rem_1fr] gap-3">
+                        <span className="relative z-10 flex h-10 w-10 items-center justify-center bg-[#f4c91d] text-graphite-900">
+                          <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
+                        </span>
+                        <div className="border border-[#f4c91d]/40 bg-[#f4c91d]/10 px-4 py-3">
+                          <p className="text-[9px] font-black uppercase tracking-[0.16em] text-[#f4c91d]">
+                            {lang === "en" ? "Controlled outcome" : "Hasil terkendali"}
+                          </p>
+                          <p className="mt-1 text-sm font-bold leading-5 text-white">
+                            Tightening Assurance System
+                          </p>
+                        </div>
+                      </li>
+                    </ol>
+                  </div>
+                </section>
 
-              <div className="grid gap-8 border-t border-white/15 py-16 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-                <div>
-                  <p className="mb-3 border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-white/70">
-                    {lang === "en" ? "Torque wrench" : "Kunci torsi"}
-                  </p>
-                  <h2 className="text-balance text-2xl font-bold text-white md:text-4xl">
-                    {lang === "en" ? "Tighten bolts with precision and repeatability." : "Kencangkan baut dengan mudah, presisi, dan konsisten."}
-                  </h2>
-                  <p className="mt-4 text-base leading-7 text-white/60">
-                    {lang === "en"
-                      ? "CSE helps match torque tools to production, inspection, small torque, calibration, and poka-yoke requirements."
-                      : "CSE membantu mencocokkan torque tools untuk produksi, inspeksi, torsi kecil, kalibrasi, dan kebutuhan poka-yoke."}
-                  </p>
-                </div>
-                <div className="grid gap-px overflow-hidden border border-white/15 bg-white/15 md:grid-cols-3">
-                  {[
-                    { name: "QL+", image: "/assets/brands/products/tohnichi/QL5N+.png" },
-                    { name: "CL+", image: "/assets/brands/products/tohnichi/CL2NX6D+.png" },
-                    { name: "Interchangeable Head", image: "/assets/brands/products/tohnichi/SB-FH2.jpg" }
-                  ].map((item) => (
-                    <div key={item.name} className="bg-white p-4">
-                      <AssetSlot
-                        src={item.image}
-                        alt={item.name}
-                        label={item.name}
-                        className="h-40 border-0 bg-graphite-50"
-                        imageClassName="p-4"
-                        fit="contain"
-                        sizes="(max-width: 768px) 100vw, 18vw"
-                      />
-                      <p className="mt-4 text-sm font-bold text-graphite-900">{item.name}</p>
-                    </div>
-                  ))}
+                <div className="min-w-0">
+                  <TohnichiProductPromotionCarousel lang={lang} />
                 </div>
               </div>
             </div>

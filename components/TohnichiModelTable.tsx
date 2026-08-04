@@ -36,7 +36,6 @@ export function TohnichiModelTable({
               <CheckCircle2 className="h-4 w-4 text-signal-600" aria-hidden="true" />
               {lang === "en" ? "Accuracy" : "Akurasi"} {detail.accuracy}
             </span>
-            <p className="text-sm leading-6 text-graphite-500 lg:text-right">{text(detail.catalogueReference, lang)}</p>
             <a
               href={detail.officialUrl}
               target="_blank"

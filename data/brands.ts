@@ -61,9 +61,18 @@ export const brands: Brand[] = [
       en: "CSE supports Tohnichi needs for factories that require accurate tightening, consistent quality control, and assembly process traceability."
     },
     strengths: [
-      { id: "Produk torque untuk produksi dan inspection", en: "Torque products for production and inspection" },
-      { id: "Dukungan pemilihan model sesuai aplikasi", en: "Model selection support by application" },
-      { id: "Cocok untuk lini otomotif dan industrial assembly", en: "Suitable for automotive and industrial assembly lines" }
+      {
+        id: "Spesialis torque control Jepang sejak 1949",
+        en: "Japanese torque-control specialist since 1949"
+      },
+      {
+        id: "Lini lengkap untuk tightening, inspection, dan calibration",
+        en: "Complete range for tightening, inspection, and calibration"
+      },
+      {
+        id: "Tightening Assurance System untuk poka-yoke dan traceability",
+        en: "Tightening Assurance System for poka-yoke and traceability"
+      }
     ],
     searchTerms: [
       "tonichi",

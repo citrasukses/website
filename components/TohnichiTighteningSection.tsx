@@ -627,7 +627,7 @@ const controlLayers = [
 
 export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionProps) {
   const [activeProblemIndex, setActiveProblemIndex] = useState(0);
-  const [rotationPaused, setRotationPaused] = useState(false);
+  const [rotationPaused, setRotationPaused] = useState(true);
   const [isInteracting, setIsInteracting] = useState(false);
   const activeChallenge = manufacturingProblems[activeProblemIndex];
   const isAutoRotationPaused = rotationPaused || isInteracting;
@@ -697,7 +697,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
             </div>
 
             <p className="mt-8 border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-industrial-700">
-              {lang === "en" ? "Expertise 01 · Tightening control" : "Expertise 01 · Tightening control"}
+              {lang === "en" ? "Tightening Assurance System" : "Tightening Assurance System"}
             </p>
             <h2
               id="tohnichi-expertise-title"
@@ -966,14 +966,28 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
             </p>
           </div>
           <div className="flex flex-col justify-center bg-industrial-700 p-7 text-white sm:p-9">
-            <p className="text-sm font-bold">
-              {lang === "en" ? "CSE helps define the right setup" : "CSE membantu menentukan setup yang tepat"}
-            </p>
-            <p className="mt-2 text-sm leading-6 text-white/60">
-              {lang === "en"
-                ? "Application, torque range, access, line control, data, and verification."
-                : "Aplikasi, range torque, akses, line control, data, dan kebutuhan verifikasi."}
-            </p>
+            <div className="flex flex-col gap-6 xl:flex-row xl:items-center xl:justify-between">
+              <div>
+                <p className="text-sm font-bold">
+                  {lang === "en" ? "CSE helps define the right setup" : "CSE membantu menentukan setup yang tepat"}
+                </p>
+                <p className="mt-2 text-sm leading-6 text-white/60">
+                  {lang === "en"
+                    ? "Application, torque range, access, line control, data, and verification."
+                    : "Aplikasi, range torque, akses, line control, data, dan kebutuhan verifikasi."}
+                </p>
+              </div>
+              <CTAButton
+                href={withLang("/contact?brand=tohnichi", lang)}
+                variant="ghost"
+                className="w-full shrink-0 border-white bg-white text-industrial-700 hover:border-white hover:text-signal-600 sm:w-auto"
+              >
+                <span className="inline-flex items-center gap-2">
+                  {lang === "en" ? "Review your setup" : "Konsultasikan setup Anda"}
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </span>
+              </CTAButton>
+            </div>
           </div>
         </div>
       </div>

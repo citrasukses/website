@@ -136,7 +136,7 @@ const torqueTools: TorqueToolSlide[] = [
 
 export function TohnichiTorqueCarousel({ lang }: { lang: Language }) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [rotationPaused, setRotationPaused] = useState(false);
+  const [rotationPaused, setRotationPaused] = useState(true);
   const [isInteracting, setIsInteracting] = useState(false);
   const activeTool = torqueTools[activeIndex];
   const isAutoRotationPaused = rotationPaused || isInteracting;
