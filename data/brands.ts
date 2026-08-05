@@ -53,8 +53,8 @@ export const brands: Brand[] = [
     heroImage: "/assets/brands/products/tohnichi/tohnichi_torque-wrench.jpg",
     featured: true,
     summary: {
-      id: "Solusi torque control Jepang untuk assembly, inspection, calibration, dan error proofing.",
-      en: "Japanese torque control solutions for assembly, inspection, calibration, and error proofing."
+      id: "PT Citra Sukses Ekapratama (CSE) adalah agen penjualan dan servis Tohnichi di Indonesia untuk torque wrench, torque screwdriver, tester, kalibrasi, dan sistem tightening.",
+      en: "PT Citra Sukses Ekapratama (CSE) is a Tohnichi sales and service agent in Indonesia for torque wrenches, torque screwdrivers, testers, calibration, and tightening systems."
     },
     description: {
       id: "CSE mendukung kebutuhan Tohnichi untuk pabrik yang membutuhkan tightening akurat, quality control yang konsisten, dan traceability proses assembly.",
@@ -76,6 +76,12 @@ export const brands: Brand[] = [
     ],
     searchTerms: [
       "tonichi",
+      "Tohnichi Indonesia",
+      "Tohnichi CSE",
+      "CSE Tohnichi",
+      "distributor Tohnichi Indonesia",
+      "agen Tohnichi Indonesia",
+      "kunci torsi Tohnichi",
       "torque tools",
       "torque wrench",
       "torque screwdriver",

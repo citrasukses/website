@@ -19,6 +19,10 @@ export function TohnichiModelTable({
   detail: TohnichiProductFamilyDetail;
   lang: Language;
 }) {
+  const displayedModels = detail.models.filter(
+    (model) => model.siModel || model.metricModel
+  );
+
   return (
     <section className="bg-graphite-50 py-14">
       <div className="container-page">
@@ -96,7 +100,7 @@ export function TohnichiModelTable({
               </tr>
             </thead>
             <tbody className="divide-y divide-graphite-200">
-              {detail.models.map((model, index) => (
+              {displayedModels.map((model, index) => (
                 <tr key={model.key} className={index % 2 === 1 ? "bg-graphite-50/70" : "bg-white"}>
                   <Value strong>{model.siModel}</Value>
                   <Value>{model.siRange}</Value>
