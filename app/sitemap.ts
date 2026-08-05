@@ -4,6 +4,7 @@ import { isBrandPubliclyAvailable } from "@/lib/brand-visibility";
 
 const baseUrl = "https://cse.co.id";
 const tohnichiPath = "/brands/tohnichi";
+const tohnichiSeoLastModified = "2026-08-04";
 
 export const dynamic = "force-static";
 
@@ -67,11 +68,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       return [
         {
           ...primaryRoute,
+          lastModified: tohnichiSeoLastModified,
           alternates: { languages: tohnichiLanguageAlternates }
         },
         {
           ...primaryRoute,
           url: absoluteUrl(`/en${brandPath}`),
+          lastModified: tohnichiSeoLastModified,
           alternates: { languages: tohnichiLanguageAlternates }
         }
       ];
