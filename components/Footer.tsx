@@ -39,6 +39,12 @@ export function Footer() {
                 {text(item.label, lang)}
               </Link>
             ))}
+            <Link
+              href={withLang("/brands/tohnichi", lang)}
+              className="text-sm font-semibold text-white transition hover:text-signal-300"
+            >
+              Tohnichi Indonesia
+            </Link>
           </div>
         </div>
 

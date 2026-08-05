@@ -24,6 +24,7 @@ type PageProps = {
 const TOHNICHI_PAGE_PATH = "/brands/tohnichi";
 const TOHNICHI_OFFICIAL_URL = "https://en.global-tohnichi.com/";
 const TOHNICHI_DISTRIBUTOR_URL = "https://en.global-tohnichi.com/support/distributors.html";
+const TOHNICHI_SUPPORT_URL = "https://en.global-tohnichi.com/support/";
 const TOHNICHI_SEO_TITLE = "Tohnichi Indonesia - Torque Wrench & Torque Tools";
 const TOHNICHI_SEO_DESCRIPTION = {
   id: "PT Citra Sukses Ekapratama adalah agen penjualan dan servis Tohnichi di Indonesia untuk torque wrench, torque screwdriver, tester, kalibrasi, dan sistem tightening.",
@@ -156,7 +157,7 @@ export default async function BrandDetailPage({ params }: PageProps) {
           description: TOHNICHI_SEO_DESCRIPTION[lang],
           url: `https://cse.co.id${localizedTohnichiPagePath}`,
           inLanguage: lang === "en" ? "en-ID" : "id-ID",
-          citation: TOHNICHI_DISTRIBUTOR_URL,
+          citation: [TOHNICHI_DISTRIBUTOR_URL, TOHNICHI_SUPPORT_URL],
           about: {
             "@type": "Brand",
             name: "Tohnichi",
@@ -165,13 +166,26 @@ export default async function BrandDetailPage({ params }: PageProps) {
           },
           provider: {
             "@type": "Organization",
+            "@id": "https://cse.co.id/#organization",
             name: "PT Citra Sukses Ekapratama",
             url: "https://cse.co.id",
             email: "cse@citra-sukses.com",
             areaServed: {
               "@type": "Country",
               name: "Indonesia"
-            }
+            },
+            subjectOf: [
+              {
+                "@type": "WebPage",
+                name: "Tohnichi's Network of Sales and Service Agents",
+                url: TOHNICHI_DISTRIBUTOR_URL
+              },
+              {
+                "@type": "WebPage",
+                name: "Tohnichi Overseas Calibration and Repair Licensees",
+                url: TOHNICHI_SUPPORT_URL
+              }
+            ]
           },
           mainEntity: {
             "@type": "ItemList",
@@ -312,17 +326,29 @@ export default async function BrandDetailPage({ params }: PageProps) {
                 </h2>
                 <p className="mt-4 text-base leading-7 text-graphite-500">
                   {lang === "en"
-                    ? "CSE is listed in Tohnichi's official network for sales, technical support, repair, and calibration service in Indonesia."
-                    : "CSE tercantum dalam jaringan resmi Tohnichi untuk penjualan, dukungan teknis, perbaikan, dan layanan kalibrasi di Indonesia."}
+                    ? "CSE is listed by Tohnichi as a sales and service agent and as an overseas calibration and repair licensee in Indonesia."
+                    : "CSE tercantum oleh Tohnichi sebagai agen penjualan dan servis serta licensee kalibrasi dan perbaikan di Indonesia."}
                 </p>
-                <a
-                  href={TOHNICHI_DISTRIBUTOR_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="focus-ring mt-4 inline-flex text-sm font-bold text-industrial-700 underline decoration-industrial-300 underline-offset-4 transition hover:text-industrial-900"
-                >
-                  {lang === "en" ? "Verify on Tohnichi's official network" : "Verifikasi di jaringan resmi Tohnichi"}
-                </a>
+                <div className="mt-4 flex flex-wrap gap-x-5 gap-y-3">
+                  <a
+                    href={TOHNICHI_DISTRIBUTOR_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="focus-ring inline-flex text-sm font-bold text-industrial-700 underline decoration-industrial-300 underline-offset-4 transition hover:text-industrial-900"
+                  >
+                    {lang === "en" ? "Verify sales & service agent" : "Verifikasi agen penjualan & servis"}
+                  </a>
+                  <a
+                    href={TOHNICHI_SUPPORT_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="focus-ring inline-flex text-sm font-bold text-industrial-700 underline decoration-industrial-300 underline-offset-4 transition hover:text-industrial-900"
+                  >
+                    {lang === "en"
+                      ? "Verify calibration & repair licensee"
+                      : "Verifikasi licensee kalibrasi & perbaikan"}
+                  </a>
+                </div>
                 <div className="mt-7 border-t border-graphite-200 pt-6">
                   <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
                     {lang === "en" ? "Torque wrench" : "Kunci torsi"}

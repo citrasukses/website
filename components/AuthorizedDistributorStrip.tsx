@@ -104,14 +104,19 @@ export function AuthorizedDistributorStrip({ lang, className = "" }: AuthorizedD
             lang={lang}
             className="border-b border-graphite-200 after:absolute after:inset-y-5 after:right-0 after:w-0.5 after:bg-signal-500/70 after:content-[''] lg:border-b-0"
           >
-            <div className="relative h-14 w-full max-w-[150px] overflow-hidden">
-              <Image
-                src={distributors[0].logo}
-                alt="Tohnichi"
-                fill
-                sizes="150px"
-                className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
-              />
+            <div className="flex w-full flex-col items-center gap-2">
+              <div className="relative h-14 w-full max-w-[150px] overflow-hidden">
+                <Image
+                  src={distributors[0].logo}
+                  alt="Tohnichi"
+                  fill
+                  sizes="150px"
+                  className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+              <span className="text-[11px] font-bold uppercase tracking-[0.12em] text-graphite-700">
+                Tohnichi Indonesia
+              </span>
             </div>
           </DistributorTile>
 

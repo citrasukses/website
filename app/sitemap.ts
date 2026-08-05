@@ -4,7 +4,7 @@ import { isBrandPubliclyAvailable } from "@/lib/brand-visibility";
 
 const baseUrl = "https://cse.co.id";
 const tohnichiPath = "/brands/tohnichi";
-const tohnichiSeoLastModified = "2026-08-04";
+const tohnichiSeoLastModified = "2026-08-05";
 
 export const dynamic = "force-static";
 
