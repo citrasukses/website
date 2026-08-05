@@ -62,7 +62,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     product.summary.id;
   const seoTitle =
     brand.slug === "tohnichi"
-      ? `${product.name} Tohnichi Indonesia - Model & Spesifikasi`
+      ? `${product.name} Tohnichi - Model & Spesifikasi`
       : brand.slug === "nac"
         ? `${product.name} NAC Indonesia - Model & Katalog`
         : brand.slug === "fuji-star"

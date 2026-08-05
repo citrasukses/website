@@ -114,9 +114,6 @@ export function AuthorizedDistributorStrip({ lang, className = "" }: AuthorizedD
                   className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
-              <span className="text-[11px] font-bold uppercase tracking-[0.12em] text-graphite-700">
-                Tohnichi Indonesia
-              </span>
             </div>
           </DistributorTile>
 
