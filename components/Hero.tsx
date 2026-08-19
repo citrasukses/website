@@ -1,10 +1,11 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 import { CTAButton } from "@/components/CTAButton";
 
 type HeroProps = {
   eyebrow: string;
-  title: string;
+  title: ReactNode;
   description: string;
   primaryHref: string;
   primaryLabel: string;

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { CheckCircle2, RadioTower } from "lucide-react";
 import { Breadcrumb } from "@/components/Breadcrumb";
@@ -25,7 +26,7 @@ const TOHNICHI_PAGE_PATH = "/brands/tohnichi";
 const TOHNICHI_OFFICIAL_URL = "https://en.global-tohnichi.com/";
 const TOHNICHI_DISTRIBUTOR_URL = "https://en.global-tohnichi.com/support/distributors.html";
 const TOHNICHI_SUPPORT_URL = "https://en.global-tohnichi.com/support/";
-const TOHNICHI_SEO_TITLE = "Tohnichi - Torque Wrench & Torque Tools";
+const TOHNICHI_SEO_TITLE = "Tohnichi Torque Wrench & Torque Tools";
 const TOHNICHI_SEO_DESCRIPTION = {
   id: "PT Citra Sukses Ekapratama adalah agen penjualan dan servis Tohnichi di Indonesia untuk torque wrench, torque screwdriver, tester, kalibrasi, dan sistem tightening.",
   en: "PT Citra Sukses Ekapratama is a Tohnichi sales and service agent in Indonesia for torque wrenches, torque screwdrivers, testers, calibration, and tightening systems."
@@ -152,8 +153,8 @@ export default async function BrandDetailPage({ params }: PageProps) {
           name: TOHNICHI_SEO_TITLE,
           headline:
             lang === "en"
-              ? "Tohnichi - Torque Wrenches & Torque Tools"
-              : "Tohnichi - Torque Wrench & Torque Tools",
+              ? "Tohnichi Torque Wrenches & Torque Tools"
+              : "Tohnichi Torque Wrench & Torque Tools",
           description: TOHNICHI_SEO_DESCRIPTION[lang],
           url: `https://cse.co.id${localizedTohnichiPagePath}`,
           inLanguage: lang === "en" ? "en-ID" : "id-ID",
@@ -289,9 +290,23 @@ export default async function BrandDetailPage({ params }: PageProps) {
         }
         title={
           isTohnichi
-            ? lang === "en"
-              ? "Tohnichi - Torque Wrenches & Torque Tools"
-              : "Tohnichi - Torque Wrench & Torque Tools"
+            ? (
+                <span className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-4">
+                  <span className="inline-flex shrink-0 rounded-xl border border-white/80 bg-white px-3 py-2 shadow-sm">
+                    <Image
+                      src="/assets/brands/logos/tohnichi--nobg.png"
+                      alt="Tohnichi"
+                      width={400}
+                      height={186}
+                      priority
+                      className="h-auto w-[220px] sm:w-[250px] md:w-[280px]"
+                    />
+                  </span>
+                  <span className="text-[1em] sm:text-[0.82em] md:text-[0.78em]">
+                    {lang === "en" ? "Torque Wrenches & Torque Tools" : "Torque Wrench & Torque Tools"}
+                  </span>
+                </span>
+              )
             : text(brand.category, lang)
         }
         description={isTohnichi ? TOHNICHI_SEO_DESCRIPTION[lang] : text(brand.description, lang)}
