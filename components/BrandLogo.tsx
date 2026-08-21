@@ -12,6 +12,14 @@ type BrandLogoProps = {
 export function BrandLogo({ name, slug, src = "", className = "", sizes = "160px" }: BrandLogoProps) {
   const logo = src || getBrandLogoPath(slug);
   const isNac = slug === "nac";
+  const logoClassName =
+    slug === "eisen"
+      ? "object-contain brightness-0"
+      : slug === "elm"
+        ? "object-cover object-left"
+        : slug === "unitta"
+          ? "object-cover object-right"
+          : "object-contain";
 
   return (
     <div className={`relative flex items-center justify-center overflow-hidden bg-white ${className}`}>
@@ -29,7 +37,7 @@ export function BrandLogo({ name, slug, src = "", className = "", sizes = "160px
             alt={`${name} logo`}
             fill
             sizes={sizes}
-            className="object-contain"
+            className={logoClassName}
           />
         ) : (
           <span
