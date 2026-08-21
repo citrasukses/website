@@ -12,6 +12,7 @@ The following brand marks were retrieved from each manufacturer's official websi
 | EAGLE STARS / Futamura | https://www.futamurakk.co.jp/en/ |
 | EISEN | https://www.eisen.gr.jp/en/ |
 | ELM | https://www.ectinc.co.jp/en/ |
+| FUJI-DENSHI | https://www.fujidenshi.co.jp/en/ |
 | GOMUNOINAKI | https://en.inaki.co.jp/ |
 | HAGITEC | https://hagitec.com/ |
 | HIROTAKA | https://www.hirotaka.co.jp/eng/ |

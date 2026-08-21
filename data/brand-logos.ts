@@ -16,6 +16,7 @@ const logoByBrandSlug: Record<string, string> = {
   eisen: "/assets/brands/logos/eisen.png",
   elm: "/assets/brands/logos/elm.png",
   "fuji-electric": "/assets/brands/logos/fuji-electric.png",
+  "fuji-denshi": "/assets/brands/logos/fuji-denshi.svg",
   "fuji-star": "/assets/brands/logos/fuji-star.png",
   idec: "/assets/brands/logos/idec.webp",
   ikeda: "/assets/brands/logos/ikeda.jpg",

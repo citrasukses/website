@@ -460,6 +460,117 @@ export const brands: Brand[] = [
     ]
   },
   {
+    slug: "fuji-denshi",
+    name: "FUJI-DENSHI",
+    countryCode: "JP",
+    country: "Japan",
+    category: {
+      id: "Sistem induction hardening, high-frequency heating, dan layanan heat-treatment",
+      en: "Induction-hardening systems, high-frequency heating, and heat-treatment services"
+    },
+    logo: "/assets/brands/logos/fuji-denshi.svg",
+    heroImage: "/assets/brands/products/fuji-denshi/induction-hardening-equipment.jpg",
+    officialWebsite: "https://www.fujidenshi.co.jp/en/",
+    popularProducts: [
+      { id: "Custom induction-hardening equipment", en: "Custom induction-hardening equipment" },
+      { id: "FOCUS transistor converters", en: "FOCUS transistor converters" },
+      { id: "FIT compact converters", en: "FIT compact converters" },
+      { id: "FD-ioT equipment monitoring", en: "FD-ioT equipment monitoring" }
+    ],
+    researchStatus: "verified",
+    featured: true,
+    summary: {
+      id: "FUJI-DENSHI adalah spesialis Jepang untuk desain dan produksi sistem induction hardening custom, converter high-frequency, contract hardening, serta pengembangan proses heat-treatment.",
+      en: "FUJI-DENSHI is a Japanese specialist in custom induction-hardening systems, high-frequency converters, contract hardening, and heat-treatment process development."
+    },
+    description: {
+      id: "Sebagai authorized distributor FUJI-DENSHI, CSE mendukung kebutuhan equipment baru, review aplikasi dan spesifikasi, converter, coil, monitoring FD-ioT, serta koordinasi layanan engineering untuk proses induction heating dan hardening di Indonesia.",
+      en: "As an authorized FUJI-DENSHI distributor, CSE supports new equipment requirements, application and specification reviews, converters, coils, FD-ioT monitoring, and engineering-service coordination for induction-heating and hardening processes in Indonesia."
+    },
+    strengths: [
+      {
+        id: "Equipment induction hardening custom dari manual loading hingga fully automated",
+        en: "Custom induction-hardening equipment from manual loading to fully automated systems"
+      },
+      {
+        id: "FOCUS dan FIT transistor converter untuk berbagai output dan frequency band",
+        en: "FOCUS and FIT transistor converters across a wide range of outputs and frequencies"
+      },
+      {
+        id: "Dukungan contract hardening, prototyping, co-development, dan heating simulation",
+        en: "Contract hardening, prototyping, co-development, and heating-simulation support"
+      },
+      {
+        id: "FD-ioT untuk monitoring, diagnostics, predictive maintenance, dan traceability",
+        en: "FD-ioT for monitoring, diagnostics, predictive maintenance, and traceability"
+      }
+    ],
+    searchTerms: [
+      "fujidenshi",
+      "fuji denshi",
+      "fuji electronics industry",
+      "fujidensi",
+      "induction hardening",
+      "induction heating",
+      "heat treatment",
+      "FOCUS converter",
+      "FIT converter",
+      "FD-ioT",
+      "contract hardening"
+    ],
+    productGroups: [
+      {
+        slug: "induction-heating-solutions",
+        title: { id: "Induction Heating Solutions", en: "Induction Heating Solutions" },
+        description: {
+          id: "Equipment, power conversion, dan digital support untuk proses induction heating dan hardening.",
+          en: "Equipment, power conversion, and digital support for induction-heating and hardening processes."
+        },
+        products: [
+          {
+            name: "Custom Induction-Hardening Equipment",
+            image: "/assets/brands/products/fuji-denshi/induction-hardening-equipment.jpg",
+            officialUrl: "https://www.fujidenshi.co.jp/en/device/configuration/",
+            summary: {
+              id: "Sistem heat-treatment yang dirancang sesuai workpiece, quality standard, pre/post-process, dan target cycle time.",
+              en: "Heat-treatment systems designed around the workpiece, quality standard, pre/post-processes, and target cycle time."
+            },
+            tags: [
+              { id: "Custom equipment", en: "Custom equipment" },
+              { id: "Induction hardening", en: "Induction hardening" }
+            ]
+          },
+          {
+            name: "FOCUS & FIT Transistor Converters",
+            image: "/assets/brands/products/fuji-denshi/induction-hardening-equipment.jpg",
+            officialUrl: "https://www.fujidenshi.co.jp/en/device/oscillator/",
+            summary: {
+              id: "Converter high-frequency untuk hardening, heating, brazing, shrink-fitting, dan annealing.",
+              en: "High-frequency converters for hardening, heating, brazing, shrink-fitting, and annealing."
+            },
+            tags: [
+              { id: "High frequency", en: "High frequency" },
+              { id: "Power conversion", en: "Power conversion" }
+            ]
+          },
+          {
+            name: "FD-ioT",
+            image: "/assets/brands/products/fuji-denshi/induction-hardening-equipment.jpg",
+            officialUrl: "https://www.fujidenshi.co.jp/en/service/fd-iot/",
+            summary: {
+              id: "Monitoring equipment, diagnostics report, remote repair support, predictive maintenance, dan production traceability.",
+              en: "Equipment monitoring, diagnostic reporting, remote repair support, predictive maintenance, and production traceability."
+            },
+            tags: [
+              { id: "Monitoring", en: "Monitoring" },
+              { id: "Predictive maintenance", en: "Predictive maintenance" }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     slug: "smbc",
     name: "SMBC",
     countryCode: "TH",

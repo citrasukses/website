@@ -31,6 +31,13 @@ const distributors = [
     logo: "/assets/brands/logos/nippon-unit-brush.gif",
     width: 270,
     height: 73
+  },
+  {
+    name: "FUJI-DENSHI",
+    slug: "fuji-denshi",
+    logo: "/assets/brands/logos/fuji-denshi.svg",
+    width: 794,
+    height: 93
   }
 ] as const;
 
@@ -97,7 +104,7 @@ export function AuthorizedDistributorStrip({ lang, className = "" }: AuthorizedD
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 border-t border-white/20 bg-white lg:grid-cols-4 lg:border-l lg:border-t-0">
+        <div className="grid grid-cols-2 border-t border-white/20 bg-white lg:grid-cols-5 lg:border-l lg:border-t-0">
           <DistributorTile
             slug="tohnichi"
             name="Tohnichi"
@@ -138,18 +145,33 @@ export function AuthorizedDistributorStrip({ lang, className = "" }: AuthorizedD
               name={distributor.name}
               lang={lang}
               className={
-                distributor.slug === "fuji-star"
+                distributor.slug !== "fuji-denshi"
                   ? "after:absolute after:inset-y-5 after:right-0 after:w-0.5 after:bg-signal-500/70 after:content-['']"
                   : ""
               }
             >
-              <Image
-                src={distributor.logo}
-                alt={distributor.name}
-                width={distributor.width}
-                height={distributor.height}
-                className="max-h-11 w-full max-w-[150px] object-contain transition-transform duration-300 group-hover:scale-105"
-              />
+              {distributor.slug === "fuji-denshi" ? (
+                <div className="flex flex-col items-center gap-2 text-graphite-900 transition-transform duration-300 group-hover:scale-105">
+                  <div className="relative h-10 w-10 overflow-hidden">
+                    <Image
+                      src={distributor.logo}
+                      alt=""
+                      fill
+                      sizes="40px"
+                      className="object-cover object-left"
+                    />
+                  </div>
+                  <span className="text-[11px] font-black tracking-[0.08em]">FUJI-DENSHI</span>
+                </div>
+              ) : (
+                <Image
+                  src={distributor.logo}
+                  alt={distributor.name}
+                  width={distributor.width}
+                  height={distributor.height}
+                  className="max-h-11 w-full max-w-[150px] object-contain transition-transform duration-300 group-hover:scale-105"
+                />
+              )}
             </DistributorTile>
           ))}
         </div>
