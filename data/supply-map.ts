@@ -1,4 +1,5 @@
 import { brands } from "@/data/brands";
+import { shouldPublishBrand } from "@/lib/brand-publication";
 import type { LocalizedText } from "@/lib/i18n";
 
 export type SupplyMapBrand = {
@@ -41,8 +42,7 @@ const countryDefinitions: SupplyMapCountryDefinition[] = [
     label: { x: 166, y: 194 },
     marker: { x: 238, y: 186 },
     mapPath:
-      "M265.8 191.7L251.1 191.9L246.8 195.8L248.4 201.5L242.5 199.3L236.8 199.4L237.8 195.7L232 195.7L231.4 200.9L225.7 211.9L226.2 215.3L230.5 215.5L234.3 223.9L245.5 229.5L243.3 231.5L238.9 232L238.4 229.6L233 227.6L231.9 228.4L221.4 219.4L220.3 222.1L219.1 219.5L221.7 212.1L228.6 202.9L225.3 193.8L219.4 187.7L221.6 186.8L224.1 182.7L214 172L216.8 171.2L219.8 166.1L224.4 165.9L232.1 162.7L234.9 164.2L235.3 167L239.8 167.2L238.3 176.4L245.3 173.6L251.1 174.3L252.5 172.7L257.5 173L262.5 176.8L262.9 181.5L268.2 185.6L267.9 189.5L265.8 191.7Z",
-    extraBrands: [{ name: "SMBC" }]
+      "M265.8 191.7L251.1 191.9L246.8 195.8L248.4 201.5L242.5 199.3L236.8 199.4L237.8 195.7L232 195.7L231.4 200.9L225.7 211.9L226.2 215.3L230.5 215.5L234.3 223.9L245.5 229.5L243.3 231.5L238.9 232L238.4 229.6L233 227.6L231.9 228.4L221.4 219.4L220.3 222.1L219.1 219.5L221.7 212.1L228.6 202.9L225.3 193.8L219.4 187.7L221.6 186.8L224.1 182.7L214 172L216.8 171.2L219.8 166.1L224.4 165.9L232.1 162.7L234.9 164.2L235.3 167L239.8 167.2L238.3 176.4L245.3 173.6L251.1 174.3L252.5 172.7L257.5 173L262.5 176.8L262.9 181.5L268.2 185.6L267.9 189.5L265.8 191.7Z"
   },
   {
     code: "VN",
@@ -57,7 +57,7 @@ const countryDefinitions: SupplyMapCountryDefinition[] = [
 
 function catalogBrandsForCountry(countryCode: string): SupplyMapBrand[] {
   return brands
-    .filter((brand) => brand.countryCode === countryCode)
+    .filter((brand) => brand.countryCode === countryCode && shouldPublishBrand(brand.slug))
     .map((brand) => ({
       name: brand.name,
       slug: brand.slug

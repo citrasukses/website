@@ -27,7 +27,7 @@ type PageProps = {
 };
 
 export function generateStaticParams() {
-  return seedCatalog.flatMap((brand) =>
+  return seedCatalog.filter((brand) => brand.published).flatMap((brand) =>
     brand.productGroups.flatMap((group) => group.products.map((product) => ({ slug: brand.slug, productSlug: product.slug })))
   );
 }
