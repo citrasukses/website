@@ -155,7 +155,7 @@ export const nacProductDetails: Record<string, NacProductFamilyDetail> = {
   },
   "adapters-extension-bars-universal-joints": {
     overview: {
-      id: "Keluarga adapter, extension bar, dan universal joint NAC mengubah ukuran square drive, menambah jangkauan aksial, atau memberi akses bersudut. Konfigurasi yang tepat menjaga rangkaian tool sesingkat dan sekaku mungkin sambil tetap mencapai fastener.",
+      id: "Kategori adapter, extension bar, dan universal joint NAC mengubah ukuran square drive, menambah jangkauan aksial, atau memberi akses bersudut. Konfigurasi yang tepat menjaga rangkaian tool sesingkat dan sekaku mungkin sambil tetap mencapai fastener.",
       en: "NAC adapters, extension bars, and universal joints convert square-drive sizes, add axial reach, or provide angular access. The correct configuration keeps the tool stack as short and rigid as practical while still reaching the fastener."
     },
     features: [
@@ -355,7 +355,7 @@ export const nacProductDetails: Record<string, NacProductFamilyDetail> = {
   },
   "bit-through-sockets": {
     overview: {
-      id: "Bit Through Sockets NAC memungkinkan operator berpindah dari screw-fastening ke bolt atau nut fastening tanpa melepas bit dari driver. Keluarga ini tersedia sebagai single, double, magnetic double, press-in magnet, tube magnet, dan one-touch slide untuk mempercepat changeover di assembly.",
+      id: "Bit Through Sockets NAC memungkinkan operator berpindah dari screw-fastening ke bolt atau nut fastening tanpa melepas bit dari driver. Kategori ini tersedia sebagai single, double, magnetic double, press-in magnet, tube magnet, dan one-touch slide untuk mempercepat changeover di assembly.",
       en: "NAC Bit Through Sockets let an operator move from screw fastening to bolt or nut fastening without removing the bit from the driver. The family includes single, double, magnetic double, press-in magnet, tube magnet, and one-touch slide versions for faster assembly changeover."
     },
     features: [
@@ -587,7 +587,7 @@ export const nacProductDetails: Record<string, NacProductFamilyDetail> = {
   },
   "b-30": {
     overview: {
-      id: "B-30 adalah sistem driver socket dan bit NAC dengan shank H6.35 mm serta posisi drive 23 mm. Keluarga ini mencakup socket single/double hex, magnetic MP/MS/MT, universal, adapter, extension, Phillips, slotted, turn-down, double-ended, countersunk, hexagon, B-35 angle tools, dan B-38 insert-bit holder.",
+      id: "B-30 adalah sistem driver socket dan bit NAC dengan shank H6.35 mm serta posisi drive 23 mm. Kategori ini mencakup socket single/double hex, magnetic MP/MS/MT, universal, adapter, extension, Phillips, slotted, turn-down, double-ended, countersunk, hexagon, B-35 angle tools, dan B-38 insert-bit holder.",
       en: "B-30 is NAC's driver-socket and bit system with an H6.35 mm shank and 23 mm drive position. The family covers single/double-hex sockets, MP/MS/MT magnetic forms, universal sockets, adapters, extensions, Phillips, slotted, turn-down, double-ended, countersunk, hexagon, B-35 angle tools, and the B-38 insert-bit holder."
     },
     features: [

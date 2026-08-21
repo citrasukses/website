@@ -25,6 +25,7 @@ export function BrandCard({ brand, lang }: { brand: BrandCardBrand; lang: Langua
   const cardVisual = brandCardVisuals[brand.slug];
   const isPublic = isBrandPubliclyAvailable(brand.slug);
   const canOpen = canViewBrandDraft(brand.slug);
+  const displayName = brand.slug === "tohnichi" ? "Tohnichi" : brand.name;
 
   const content = (
     <>
@@ -55,7 +56,7 @@ export function BrandCard({ brand, lang }: { brand: BrandCardBrand; lang: Langua
         <div className="flex items-start justify-between gap-4">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">{brand.country}</p>
-            <h3 className="mt-2 text-2xl font-bold text-graphite-900">{brand.name}</h3>
+            <h3 className="mt-2 text-2xl font-bold text-graphite-900">{displayName}</h3>
           </div>
           <span
             className={`flex h-9 w-9 shrink-0 items-center justify-center border ${

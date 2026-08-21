@@ -6,7 +6,7 @@ import sharp from "sharp";
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const exportDirectory = path.join(projectRoot, "out");
 const distributionDirectory = path.join(projectRoot, "dist");
-const draftBrandProductDirectories = ["fuji-star", "nac", "nippon-unit-brush"];
+const draftBrandProductDirectories = ["fuji-star", "nippon-unit-brush"];
 const publishedProductDirectory = path.join(
   distributionDirectory,
   "client",

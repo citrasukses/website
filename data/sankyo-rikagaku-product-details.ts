@@ -362,7 +362,7 @@ export const sankyoRikagakuProductDetails: Record<string, SankyoRikagakuFamilyDe
   },
   "other-products": {
     overview: {
-      id: "Supporting products Sankyo Rikagaku melengkapi proses sanding dan polishing dengan sander, polisher, pad, hand file, buff, compound, coating material, masking products, serta wiping cloth. Keluarga ini membantu menyusun proses dari surface preparation hingga final finish dengan komponen yang saling sesuai.",
+      id: "Supporting products Sankyo Rikagaku melengkapi proses sanding dan polishing dengan sander, polisher, pad, hand file, buff, compound, coating material, masking products, serta wiping cloth. Kategori ini membantu menyusun proses dari surface preparation hingga final finish dengan komponen yang saling sesuai.",
       en: "Sankyo Rikagaku supporting products complete sanding and polishing processes with sanders, polishers, pads, hand files, buffs, compounds, coating materials, masking products, and wiping cloths. This family helps build a compatible process from surface preparation through final finishing."
     },
     features: [

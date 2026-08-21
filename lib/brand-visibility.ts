@@ -1,4 +1,4 @@
-const publicBrandSlugs = new Set(["tohnichi"]);
+const publicBrandSlugs = new Set(["tohnichi", "nac"]);
 
 export function isBrandPubliclyAvailable(slug: string) {
   return publicBrandSlugs.has(slug);

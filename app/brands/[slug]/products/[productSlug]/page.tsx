@@ -6,6 +6,7 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { BrandPageProgress } from "@/components/BrandPageProgress";
 import { CTAButton } from "@/components/CTAButton";
 import { NacFamilyDetails } from "@/components/NacFamilyDetails";
+import { NacSocketSelectionGuide } from "@/components/NacSocketSelectionGuide";
 import { ProductCard } from "@/components/ProductCard";
 import { ProductGallery } from "@/components/ProductGallery";
 import { SankyoRikagakuFamilyDetails } from "@/components/SankyoRikagakuFamilyDetails";
@@ -62,7 +63,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     product.summary.id;
   const seoTitle =
     brand.slug === "tohnichi"
-      ? `${product.name} Tohnichi Indonesia - Model & Spesifikasi`
+      ? `${product.name} Tohnichi - Model & Spesifikasi`
       : brand.slug === "nac"
         ? `${product.name} NAC Indonesia - Model & Katalog`
         : brand.slug === "fuji-star"
@@ -314,6 +315,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
           </div>
         </div>
       </section>
+      {brand.slug === "nac" && product.slug === "square-drive-sockets" ? (
+        <NacSocketSelectionGuide lang={lang} />
+      ) : null}
       {tohnichiDetail?.models.length ? (
         <TohnichiModelTable productName={product.name} detail={tohnichiDetail} lang={lang} />
       ) : tohnichiDetail ? (

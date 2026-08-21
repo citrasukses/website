@@ -56,7 +56,7 @@ export function IndustryCaseStudyExplorer({ industries, lang }: IndustryCaseStud
 
   return (
     <>
-      <div className="mt-10 grid gap-5 md:grid-cols-2">
+      {/* <div className="mt-10 grid gap-5 md:grid-cols-2">
         {industries.map((industry) => (
           <IndustryCard
             key={industry.slug}
@@ -65,7 +65,7 @@ export function IndustryCaseStudyExplorer({ industries, lang }: IndustryCaseStud
             onSelect={() => openCaseStudy(industry.slug)}
           />
         ))}
-      </div>
+      </div> */}
 
       <dialog
         ref={dialogRef}

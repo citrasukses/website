@@ -689,8 +689,8 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
                   </p>
                   <p className="mt-0.5 text-base font-bold leading-tight sm:whitespace-nowrap sm:text-lg">
                     {lang === "en"
-                      ? "Authorized Distributor of Tohnichi"
-                      : "Distributor Resmi Tohnichi"}
+                      ? "Tohnichi Sales & Service Agent in Indonesia"
+                      : "Agen Penjualan & Servis Tohnichi di Indonesia"}
                   </p>
                 </div>
               </div>
@@ -709,8 +709,8 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-7 text-graphite-600 md:text-lg md:leading-8">
               {lang === "en"
-                ? "Tohnichi helps manufacturing teams prevent product damage, expose missed work, prove every tightening result, and detect tool abnormalities before defects leave the line."
-                : "Tohnichi membantu tim manufaktur mencegah kerusakan produk, menemukan pekerjaan yang terlewat, membuktikan setiap hasil tightening, dan mendeteksi abnormalitas alat sebelum defect keluar dari lini."}
+                ? "Through CSE, Tohnichi helps manufacturing teams prevent product damage, expose missed work, prove every tightening result, and detect tool abnormalities before defects leave the line."
+                : "Melalui CSE, Tohnichi membantu tim manufaktur mencegah kerusakan produk, menemukan pekerjaan yang terlewat, membuktikan setiap hasil tightening, dan mendeteksi abnormalitas alat sebelum defect keluar dari lini."}
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -724,7 +724,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
                 href={withLang("/brands/tohnichi", lang)}
                 variant="ghost"
               >
-                {lang === "en" ? "Explore Tohnichi products" : "Lihat produk Tohnichi"}
+                {lang === "en" ? "Explore Tohnichi" : "Lihat Tohnichi"}
               </CTAButton>
             </div>
           </div>

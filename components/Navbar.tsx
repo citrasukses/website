@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Languages, Menu, X } from "lucide-react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { company, navigationItems } from "@/data/navigation";
 import { staticLanguage, text, withLang } from "@/lib/i18n";
@@ -11,20 +11,7 @@ import { staticLanguage, text, withLang } from "@/lib/i18n";
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const lang = staticLanguage();
-  const languageParams = new URLSearchParams(searchParams.toString());
-
-  if (lang === "en") {
-    languageParams.delete("lang");
-  } else {
-    languageParams.set("lang", "en");
-  }
-
-  const languageQuery = languageParams.toString();
-  const languageHref = `${pathname}${languageQuery ? `?${languageQuery}` : ""}`;
-  const languageLabel = lang === "en" ? "ID" : "EN";
-  const languageAriaLabel = lang === "en" ? "Ganti ke Bahasa Indonesia" : "Switch to English";
 
   return (
     <header className="sticky top-0 z-50 border-b border-graphite-200 bg-white/90 backdrop-blur-xl">
@@ -71,14 +58,6 @@ export function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <a
-            href={languageHref}
-            aria-label={languageAriaLabel}
-            className="focus-ring inline-flex h-10 items-center justify-center gap-2 border border-graphite-300 bg-white px-3 text-sm font-bold text-graphite-700 transition hover:border-industrial-500 hover:text-industrial-700"
-          >
-            <Languages className="h-4 w-4" aria-hidden="true" />
-            {languageLabel}
-          </a>
           <Link
             href={withLang("/contact", lang)}
             className="focus-ring inline-flex h-10 items-center justify-center bg-signal-500 px-4 text-sm font-semibold text-white shadow-sm transition hover:bg-signal-600"
@@ -112,14 +91,6 @@ export function Navbar() {
               </Link>
             ))}
             <div className="mt-4 flex gap-3">
-              <a
-                href={languageHref}
-                aria-label={languageAriaLabel}
-                className="focus-ring inline-flex h-10 items-center gap-2 border border-graphite-300 bg-white px-4 text-sm font-bold text-graphite-700"
-              >
-                <Languages className="h-4 w-4" aria-hidden="true" />
-                {languageLabel}
-              </a>
               <Link
                 href={withLang("/contact", lang)}
                 className="focus-ring inline-flex h-10 items-center bg-signal-500 px-4 text-sm font-semibold text-white"

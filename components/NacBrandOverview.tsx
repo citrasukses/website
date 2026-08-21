@@ -29,7 +29,7 @@ const selectionFlow = [
 
 const catalogueFacts = [
   {
-    label: { id: "Keluarga pada website", en: "Website catalogue families" },
+    label: { id: "Kategori pada website", en: "Website catalogue families" },
     value: "28",
     detail: { id: "12 fastener-tool dan 16 quick-coupling families", en: "12 fastener-tool and 16 quick-coupling families" }
   },

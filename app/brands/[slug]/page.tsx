@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { CheckCircle2, RadioTower } from "lucide-react";
 import { Breadcrumb } from "@/components/Breadcrumb";
@@ -24,7 +25,8 @@ type PageProps = {
 const TOHNICHI_PAGE_PATH = "/brands/tohnichi";
 const TOHNICHI_OFFICIAL_URL = "https://en.global-tohnichi.com/";
 const TOHNICHI_DISTRIBUTOR_URL = "https://en.global-tohnichi.com/support/distributors.html";
-const TOHNICHI_SEO_TITLE = "Tohnichi Indonesia - Torque Wrench & Torque Tools";
+const TOHNICHI_SUPPORT_URL = "https://en.global-tohnichi.com/support/";
+const TOHNICHI_SEO_TITLE = "Tohnichi Torque Wrench & Torque Tools";
 const TOHNICHI_SEO_DESCRIPTION = {
   id: "PT Citra Sukses Ekapratama adalah agen penjualan dan servis Tohnichi di Indonesia untuk torque wrench, torque screwdriver, tester, kalibrasi, dan sistem tightening.",
   en: "PT Citra Sukses Ekapratama is a Tohnichi sales and service agent in Indonesia for torque wrenches, torque screwdrivers, testers, calibration, and tightening systems."
@@ -40,6 +42,10 @@ const TOHNICHI_SEO_KEYWORDS = [
   "kalibrasi Tohnichi",
   "PT Citra Sukses Ekapratama"
 ];
+
+function staticExportPath(path: string, lang: "id" | "en") {
+  return lang === "en" ? `/en${path}` : path;
+}
 
 export function generateStaticParams() {
   return seedCatalog.map((brand) => ({ slug: brand.slug }));
@@ -67,6 +73,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const isTohnichi = brand.slug === "tohnichi";
   const isSankyoRikagaku = brand.slug === "fuji-star";
+  const brandPath = `/brands/${brand.slug}`;
+  const canonicalPath = isTohnichi && lang === "en" ? `/en${brandPath}` : brandPath;
   const title = isTohnichi
     ? TOHNICHI_SEO_TITLE
     : isSankyoRikagaku
@@ -93,12 +101,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description,
     keywords,
     alternates: {
-      canonical: `/brands/${brand.slug}`
+      canonical: canonicalPath,
+      languages: isTohnichi
+        ? {
+            "id-ID": TOHNICHI_PAGE_PATH,
+            en: `/en${TOHNICHI_PAGE_PATH}`,
+            "x-default": TOHNICHI_PAGE_PATH
+          }
+        : undefined
     },
     openGraph: {
       title: isTohnichi ? `${TOHNICHI_SEO_TITLE} | CSE` : `${brand.name} Indonesia | CSE`,
       description,
-      url: `/brands/${brand.slug}`,
+      url: canonicalPath,
       locale: lang === "en" ? "en_US" : "id_ID",
       images: brand.heroImage ? [{ url: brand.heroImage, alt: `${brand.name} products in Indonesia` }] : undefined
     },
@@ -129,6 +144,7 @@ export default async function BrandDetailPage({ params }: PageProps) {
   const isNac = brand.slug === "nac";
   const isSankyoRikagaku = brand.slug === "fuji-star";
   const hasProductExplorer = isTohnichi || isNac || isSankyoRikagaku;
+  const localizedTohnichiPagePath = staticExportPath(TOHNICHI_PAGE_PATH, lang);
   const tohnichiJsonLd = isTohnichi
     ? [
         {
@@ -137,12 +153,12 @@ export default async function BrandDetailPage({ params }: PageProps) {
           name: TOHNICHI_SEO_TITLE,
           headline:
             lang === "en"
-              ? "Tohnichi Indonesia: Torque Wrenches & Torque Tools"
-              : "Tohnichi Indonesia: Torque Wrench & Torque Tools",
+              ? "Tohnichi Torque Wrenches & Torque Tools"
+              : "Tohnichi Torque Wrench & Torque Tools",
           description: TOHNICHI_SEO_DESCRIPTION[lang],
-          url: `https://cse.co.id${TOHNICHI_PAGE_PATH}`,
+          url: `https://cse.co.id${localizedTohnichiPagePath}`,
           inLanguage: lang === "en" ? "en-ID" : "id-ID",
-          citation: TOHNICHI_DISTRIBUTOR_URL,
+          citation: [TOHNICHI_DISTRIBUTOR_URL, TOHNICHI_SUPPORT_URL],
           about: {
             "@type": "Brand",
             name: "Tohnichi",
@@ -151,17 +167,30 @@ export default async function BrandDetailPage({ params }: PageProps) {
           },
           provider: {
             "@type": "Organization",
+            "@id": "https://cse.co.id/#organization",
             name: "PT Citra Sukses Ekapratama",
             url: "https://cse.co.id",
             email: "cse@citra-sukses.com",
             areaServed: {
               "@type": "Country",
               name: "Indonesia"
-            }
+            },
+            subjectOf: [
+              {
+                "@type": "WebPage",
+                name: "Tohnichi's Network of Sales and Service Agents",
+                url: TOHNICHI_DISTRIBUTOR_URL
+              },
+              {
+                "@type": "WebPage",
+                name: "Tohnichi Overseas Calibration and Repair Licensees",
+                url: TOHNICHI_SUPPORT_URL
+              }
+            ]
           },
           mainEntity: {
             "@type": "ItemList",
-            name: lang === "en" ? "Tohnichi product families in Indonesia" : "Keluarga produk Tohnichi Indonesia",
+            name: lang === "en" ? "Tohnichi product families in Indonesia" : "Kategori produk Tohnichi",
             numberOfItems: brand.productGroups.flatMap((group) => group.products).length,
             itemListElement: brand.productGroups
               .flatMap((group) => group.products)
@@ -169,7 +198,10 @@ export default async function BrandDetailPage({ params }: PageProps) {
                 "@type": "ListItem",
                 position: index + 1,
                 name: product.name,
-                url: `https://cse.co.id/brands/${brand.slug}/products/${product.slug}`
+                url: `https://cse.co.id${staticExportPath(
+                  `/brands/${brand.slug}/products/${product.slug}`,
+                  lang
+                )}`
               }))
           }
         },
@@ -187,13 +219,13 @@ export default async function BrandDetailPage({ params }: PageProps) {
               "@type": "ListItem",
               position: 2,
               name: lang === "en" ? "Brands" : "Brand",
-              item: "https://cse.co.id/brands"
+              item: `https://cse.co.id${staticExportPath("/brands", lang)}`
             },
             {
               "@type": "ListItem",
               position: 3,
-              name: "Tohnichi Indonesia",
-              item: `https://cse.co.id${TOHNICHI_PAGE_PATH}`
+              name: "Tohnichi",
+              item: `https://cse.co.id${localizedTohnichiPagePath}`
             }
           ]
         }
@@ -258,9 +290,23 @@ export default async function BrandDetailPage({ params }: PageProps) {
         }
         title={
           isTohnichi
-            ? lang === "en"
-              ? "Tohnichi Indonesia: Torque Wrenches & Torque Tools"
-              : "Tohnichi Indonesia: Torque Wrench & Torque Tools"
+            ? (
+                <span className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-4">
+                  <span className="inline-flex shrink-0 rounded-xl border border-white/80 bg-white px-3 py-2 shadow-sm">
+                    <Image
+                      src="/assets/brands/logos/tohnichi--nobg.png"
+                      alt="Tohnichi"
+                      width={400}
+                      height={186}
+                      priority
+                      className="h-auto w-[220px] sm:w-[250px] md:w-[280px]"
+                    />
+                  </span>
+                  <span className="text-[1em] sm:text-[0.82em] md:text-[0.78em]">
+                    {lang === "en" ? "Torque Wrenches & Torque Tools" : "Torque Wrench & Torque Tools"}
+                  </span>
+                </span>
+              )
             : text(brand.category, lang)
         }
         description={isTohnichi ? TOHNICHI_SEO_DESCRIPTION[lang] : text(brand.description, lang)}
@@ -295,17 +341,29 @@ export default async function BrandDetailPage({ params }: PageProps) {
                 </h2>
                 <p className="mt-4 text-base leading-7 text-graphite-500">
                   {lang === "en"
-                    ? "CSE is listed in Tohnichi's official network for sales, technical support, repair, and calibration service in Indonesia."
-                    : "CSE tercantum dalam jaringan resmi Tohnichi untuk penjualan, dukungan teknis, perbaikan, dan layanan kalibrasi di Indonesia."}
+                    ? "CSE is listed by Tohnichi as a sales and service agent and as an overseas calibration and repair licensee in Indonesia."
+                    : "CSE tercantum oleh Tohnichi sebagai agen penjualan dan servis serta licensee kalibrasi dan perbaikan di Indonesia."}
                 </p>
-                <a
-                  href={TOHNICHI_DISTRIBUTOR_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="focus-ring mt-4 inline-flex text-sm font-bold text-industrial-700 underline decoration-industrial-300 underline-offset-4 transition hover:text-industrial-900"
-                >
-                  {lang === "en" ? "Verify on Tohnichi's official network" : "Verifikasi di jaringan resmi Tohnichi"}
-                </a>
+                <div className="mt-4 flex flex-wrap gap-x-5 gap-y-3">
+                  <a
+                    href={TOHNICHI_DISTRIBUTOR_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="focus-ring inline-flex text-sm font-bold text-industrial-700 underline decoration-industrial-300 underline-offset-4 transition hover:text-industrial-900"
+                  >
+                    {lang === "en" ? "Verify sales & service agent" : "Verifikasi agen penjualan & servis"}
+                  </a>
+                  <a
+                    href={TOHNICHI_SUPPORT_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="focus-ring inline-flex text-sm font-bold text-industrial-700 underline decoration-industrial-300 underline-offset-4 transition hover:text-industrial-900"
+                  >
+                    {lang === "en"
+                      ? "Verify calibration & repair licensee"
+                      : "Verifikasi licensee kalibrasi & perbaikan"}
+                  </a>
+                </div>
                 <div className="mt-7 border-t border-graphite-200 pt-6">
                   <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
                     {lang === "en" ? "Torque wrench" : "Kunci torsi"}
