@@ -9,17 +9,17 @@ type BrandLogoProps = {
   sizes?: string;
 };
 
+const logoClassNames: Partial<Record<string, string>> = {
+  eisen: "object-contain brightness-0",
+  elm: "object-cover object-left",
+  "fuji-denshi": "object-cover object-left",
+  unitta: "object-cover object-right"
+};
+
 export function BrandLogo({ name, slug, src = "", className = "", sizes = "160px" }: BrandLogoProps) {
   const logo = src || getBrandLogoPath(slug);
   const isNac = slug === "nac";
-  const logoClassName =
-    slug === "eisen"
-      ? "object-contain brightness-0"
-      : slug === "elm"
-        ? "object-cover object-left"
-        : slug === "unitta"
-          ? "object-cover object-right"
-          : "object-contain";
+  const logoClassName = logoClassNames[slug] ?? "object-contain";
 
   return (
     <div className={`relative flex items-center justify-center overflow-hidden bg-white ${className}`}>

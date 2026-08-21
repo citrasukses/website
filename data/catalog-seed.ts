@@ -38,7 +38,13 @@ function toCatalogGroup(group: ProductGroup): CatalogProductGroup {
 const representedAliases = new Map<string, string>([
   [lookupKey("UNIT"), "nippon-unit-brush"],
   [lookupKey("FUJI STAR"), "fuji-star"],
-  [lookupKey("FUJISTAR"), "fuji-star"]
+  [lookupKey("FUJISTAR"), "fuji-star"],
+  [lookupKey("FUJIDENSI"), "fuji-denshi"],
+  [lookupKey("FUJIDENSHI"), "fuji-denshi"]
+]);
+
+const generalAliases = new Map<string, string>([
+  [lookupKey("CHUBU"), "chubu-giken"]
 ]);
 
 const representedByKey = new Map(representedBrands.map((brand) => [lookupKey(brand.name), brand]));
@@ -52,28 +58,29 @@ const tradingByKey = new Map(legacyTradingBrands.map((brand) => [lookupKey(brand
 export function buildSeedCatalog(): CatalogBrand[] {
   const rankedSlugs = new Set<string>();
 
-  const ranked = popularBrands2026.map<CatalogBrand>((sourceName, index) => {
+  const ranked = popularBrands2026.flatMap<CatalogBrand>((sourceName, index) => {
     const key = lookupKey(sourceName);
     const represented = representedByKey.get(key);
 
     if (represented) {
       rankedSlugs.add(represented.slug);
-      return {
+      return [{
         ...represented,
         brandType: "represented",
         published: shouldPublishBrand(represented.slug),
         popularityRank: index + 1,
         productGroups: represented.productGroups.map(toCatalogGroup)
-      };
+      }];
     }
 
     const legacy = tradingByKey.get(key);
     const name = legacy?.name ?? sourceName;
-    const slug = slugify(name);
+    const slug = generalAliases.get(key) ?? slugify(name);
     const profile = generalBrandProfiles[slug] ?? generalBrandProfiles[slugify(sourceName)];
+    if (rankedSlugs.has(slug)) return [];
     rankedSlugs.add(slug);
 
-    return {
+    return [{
       slug,
       name,
       brandType: "general-trading",
@@ -110,7 +117,7 @@ export function buildSeedCatalog(): CatalogBrand[] {
       researchNote: profile?.researchNote,
       searchTerms: Array.from(new Set([name, sourceName, ...(legacy?.searchTerms ?? []), ...(profile?.searchTerms ?? [])])),
       productGroups: []
-    };
+    }];
   });
 
   const additionalRepresented = representedBrands

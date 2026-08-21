@@ -1,5 +1,4 @@
 const confirmationOnlyBrandSlugs = new Set([
-  "fujidensi",
   "smbc",
   "japan-control",
   "giken",
@@ -7,7 +6,6 @@ const confirmationOnlyBrandSlugs = new Set([
   "nittu-densi",
   "sanyu",
   "pop-sanko",
-  "chubu",
   "tolihan",
   "kataoka"
 ]);
