@@ -4,15 +4,25 @@ import { CTAButton } from "@/components/CTAButton";
 import { IndustryCaseStudyExplorer } from "@/components/IndustryCaseStudyExplorer";
 import { SectionHeader } from "@/components/SectionHeader";
 import { industries } from "@/data/industries";
-import { staticLanguage, withLang } from "@/lib/i18n";
+import { languageAlternates, localizedPath, staticLanguage, withLang } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  title: "Industries",
-  description: "Industries served by CSE, including automotive, heavy equipment, and general industry.",
-  alternates: {
-    canonical: "/industries"
-  }
-};
+export function generateMetadata(): Metadata {
+  const lang = staticLanguage();
+  const title = lang === "en" ? "Industries" : "Industri";
+  const description =
+    lang === "en"
+      ? "Industries served by CSE, including automotive, heavy equipment, and general manufacturing."
+      : "Industri yang dilayani CSE, termasuk otomotif, alat berat, dan manufaktur umum.";
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: localizedPath("/industries", lang),
+      languages: languageAlternates("/industries")
+    }
+  };
+}
 
 export default function IndustriesPage() {
   const lang = staticLanguage();

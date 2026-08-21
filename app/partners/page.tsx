@@ -6,15 +6,25 @@ import { PartnerInquiryForm } from "@/components/InquiryForms";
 import { SectionHeader } from "@/components/SectionHeader";
 import { brands } from "@/data/brands";
 import { company } from "@/data/navigation";
-import { staticLanguage, text, withLang } from "@/lib/i18n";
+import { languageAlternates, localizedPath, staticLanguage, text, withLang } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  title: "For Partners",
-  description: "For overseas industrial brands interested in Indonesian distribution with CSE.",
-  alternates: {
-    canonical: "/partners"
-  }
-};
+export function generateMetadata(): Metadata {
+  const lang = staticLanguage();
+  const title = lang === "en" ? "For Overseas Partners" : "Untuk Partner Luar Negeri";
+  const description =
+    lang === "en"
+      ? "For overseas industrial brands interested in Indonesian distribution with CSE."
+      : "Untuk brand industrial luar negeri yang mencari partner distribusi di Indonesia bersama CSE.";
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: localizedPath("/partners", lang),
+      languages: languageAlternates("/partners")
+    }
+  };
+}
 
 export default function PartnersPage() {
   const lang = staticLanguage();

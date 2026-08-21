@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { CatalogProduct } from "@/data/catalog-types";
-import { text, type Language } from "@/lib/i18n";
+import { text, type Language, withLang } from "@/lib/i18n";
 import { AssetSlot } from "@/components/AssetSlot";
 
 export function ProductCard({
@@ -15,7 +15,7 @@ export function ProductCard({
   lang: Language;
   eyebrow?: string;
 }) {
-  const href = `/brands/${brandSlug}/products/${product.slug}${lang === "en" ? "?lang=en" : ""}`;
+  const href = withLang(`/brands/${brandSlug}/products/${product.slug}`, lang);
   const isSankyoRikagaku = brandSlug === "fuji-star";
   return (
     <article className="group overflow-hidden border border-graphite-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-industrial-600 hover:shadow-panel">

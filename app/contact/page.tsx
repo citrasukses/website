@@ -5,15 +5,25 @@ import { RFQForm } from "@/components/InquiryForms";
 import { SectionHeader } from "@/components/SectionHeader";
 import { company } from "@/data/navigation";
 import { getCatalogBrands } from "@/lib/catalog";
-import { staticLanguage, withLang } from "@/lib/i18n";
+import { languageAlternates, localizedPath, staticLanguage, withLang } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  title: "Contact / RFQ",
-  description: "Send an RFQ, product consultation request, or email inquiry to CSE.",
-  alternates: {
-    canonical: "/contact"
-  }
-};
+export function generateMetadata(): Metadata {
+  const lang = staticLanguage();
+  const title = lang === "en" ? "Contact / RFQ" : "Kontak / RFQ";
+  const description =
+    lang === "en"
+      ? "Send an RFQ, product consultation request, or email inquiry to CSE."
+      : "Kirim RFQ, permintaan konsultasi produk, atau inquiry melalui email kepada CSE.";
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: localizedPath("/contact", lang),
+      languages: languageAlternates("/contact")
+    }
+  };
+}
 
 export default async function ContactPage() {
   const lang = staticLanguage();

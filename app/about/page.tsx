@@ -6,15 +6,25 @@ import { Hero } from "@/components/Hero";
 import { SectionHeader } from "@/components/SectionHeader";
 import { StatsSection } from "@/components/StatsSection";
 import { company } from "@/data/navigation";
-import { staticLanguage, text, withLang } from "@/lib/i18n";
+import { languageAlternates, localizedPath, staticLanguage, text, withLang } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  title: "About",
-  description: "About PT Citra Sukses Ekapratama and CSE's industrial supply focus in Indonesia.",
-  alternates: {
-    canonical: "/about"
-  }
-};
+export function generateMetadata(): Metadata {
+  const lang = staticLanguage();
+  const title = lang === "en" ? "About CSE" : "Tentang CSE";
+  const description =
+    lang === "en"
+      ? "About PT Citra Sukses Ekapratama and CSE's industrial supply focus in Indonesia."
+      : "Tentang PT Citra Sukses Ekapratama dan fokus CSE dalam pengadaan produk industri di Indonesia.";
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: localizedPath("/about", lang),
+      languages: languageAlternates("/about")
+    }
+  };
+}
 
 export default function AboutPage() {
   const lang = staticLanguage();

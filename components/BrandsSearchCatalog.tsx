@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { AlertTriangle, ArrowUpRight, Construction, PackageSearch, Search, X } from "lucide-react";
 import { useDeferredValue, useMemo, useState } from "react";
@@ -58,17 +59,37 @@ function TradingBrandCard({ brand, lang, requiresConfirmation = false }: { brand
   const href = withLang(`/brands/${brand.slug}`, lang);
   const isPublic = isBrandPubliclyAvailable(brand.slug);
   const canOpen = canViewBrandDraft(brand.slug);
+  const referenceImage = brand.referenceImages?.[0];
 
   const content = (
     <>
-      <div className="relative">
-        <BrandLogo
-          name={brand.name}
-          slug={brand.slug}
-          src={brand.logo}
-          className="h-24 w-full border-b border-dashed border-graphite-200 bg-graphite-50"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-        />
+      <div className="relative h-44 overflow-hidden border-b border-dashed border-graphite-200 bg-gradient-to-br from-white to-graphite-50">
+        {referenceImage ? (
+          <Image
+            src={referenceImage.src}
+            alt={referenceImage.alt}
+            fill
+            className="object-contain p-4 transition duration-500 group-hover:scale-[1.03]"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          />
+        ) : (
+          <BrandLogo
+            name={brand.name}
+            slug={brand.slug}
+            src={brand.logo}
+            className="h-full w-full bg-graphite-50"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          />
+        )}
+        {referenceImage ? (
+          <BrandLogo
+            name={brand.name}
+            slug={brand.slug}
+            src={brand.logo}
+            className="absolute bottom-3 left-3 h-12 w-28 border border-graphite-200 bg-white shadow-sm"
+            sizes="112px"
+          />
+        ) : null}
         {requiresConfirmation || !isPublic ? (
           <span className="absolute right-3 top-3 inline-flex items-center gap-1.5 border border-amber-300 bg-amber-50 px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.12em] text-amber-800 shadow-sm">
             {requiresConfirmation ? <AlertTriangle className="h-3 w-3" aria-hidden="true" /> : <Construction className="h-3 w-3" aria-hidden="true" />}
@@ -268,8 +289,8 @@ export function BrandsSearchCatalog({ representedBrands, tradingBrands, tradingB
             </h2>
             <p className="mt-3 text-sm leading-6 text-graphite-500">
               {lang === "en"
-                ? "These are sourcing and trading items, separate from brands where CSE is an authorized representative. Available brand logos are shown directly on each card."
-                : "Ini adalah item sourcing dan trading, terpisah dari brand di mana CSE menjadi authorized representative. Logo brand yang tersedia ditampilkan langsung pada setiap kartu."}
+                ? "These are sourcing and trading items, separate from brands where CSE is an authorized representative. Reference product imagery and available brand logos are shown to make each product range easier to visualize."
+                : "Ini adalah item sourcing dan trading, terpisah dari brand di mana CSE menjadi authorized representative. Gambar referensi produk dan logo brand yang tersedia ditampilkan agar lini produknya lebih mudah divisualisasikan."}
             </p>
           </div>
           <div className="grid grid-cols-2 gap-3 text-sm font-semibold text-graphite-700 sm:grid-cols-4 md:grid-cols-2">
@@ -308,6 +329,11 @@ export function BrandsSearchCatalog({ representedBrands, tradingBrands, tradingB
               : "Tidak ada kartu general trading yang cocok. Kirim RFQ jika brand belum dipublikasikan."}
           </div>
         )}
+        <p className="mt-5 border border-dashed border-graphite-300 bg-graphite-50 px-4 py-3 text-xs leading-5 text-graphite-500">
+          {lang === "en"
+            ? "Reference imagery only. Images and trademarks remain the property of their respective owners; CSE does not claim ownership. Open a brand page to view the original image source."
+            : "Gambar hanya untuk referensi. Hak cipta gambar dan merek dagang tetap milik pemilik masing-masing; CSE tidak mengklaim kepemilikan. Buka halaman brand untuk melihat sumber gambar asli."}
+        </p>
       </section>
 
       {confirmationBrands.length > 0 ? (

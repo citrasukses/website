@@ -9,15 +9,25 @@ import { toSearchableBrandCard } from "@/data/brand-search";
 import { industries } from "@/data/industries";
 // import { supplyCountries } from "@/data/supply-map";
 import { getCatalogBrands } from "@/lib/catalog";
-import { staticLanguage, withLang } from "@/lib/i18n";
+import { languageAlternates, localizedPath, staticLanguage, withLang } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  title: "Brands",
-  description: "Industrial brands represented and supplied by CSE for Indonesian buyers.",
-  alternates: {
-    canonical: "/brands"
-  }
-};
+export function generateMetadata(): Metadata {
+  const lang = staticLanguage();
+  const title = lang === "en" ? "Industrial Brands" : "Brand Industrial";
+  const description =
+    lang === "en"
+      ? "Industrial brands represented and supplied by CSE for Indonesian buyers."
+      : "Brand industrial yang diwakili dan dipasok CSE untuk buyer Indonesia.";
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: localizedPath("/brands", lang),
+      languages: languageAlternates("/brands")
+    }
+  };
+}
 
 export default async function BrandsPage() {
   const lang = staticLanguage();

@@ -3,6 +3,7 @@ import { popularBrands2026 } from "@/data/popular-brands";
 import { tradingBrands as legacyTradingBrands } from "@/data/trading-brands";
 import { getBrandLogoPath } from "@/data/brand-logos";
 import { generalBrandProfiles } from "@/data/general-brand-profiles";
+import { generalBrandReferenceImages } from "@/data/general-brand-reference-images";
 import type { CatalogBrand, CatalogProduct, CatalogProductGroup } from "@/data/catalog-types";
 import { shouldPublishBrand } from "@/lib/brand-publication";
 
@@ -76,7 +77,8 @@ export function buildSeedCatalog(): CatalogBrand[] {
     const legacy = tradingByKey.get(key);
     const name = legacy?.name ?? sourceName;
     const slug = generalAliases.get(key) ?? slugify(name);
-    const profile = generalBrandProfiles[slug] ?? generalBrandProfiles[slugify(sourceName)];
+    const profile = generalBrandProfiles[slug] ?? generalBrandProfiles[key] ?? generalBrandProfiles[slugify(sourceName)];
+    const referenceImages = generalBrandReferenceImages[slug] ?? generalBrandReferenceImages[key] ?? [];
     if (rankedSlugs.has(slug)) return [];
     rankedSlugs.add(slug);
 
@@ -93,7 +95,8 @@ export function buildSeedCatalog(): CatalogBrand[] {
         en: "Industrial products and general trading supply"
       },
       logo: getBrandLogoPath(slug),
-      heroImage: "",
+      heroImage: referenceImages[0]?.src ?? "",
+      referenceImages,
       summary: profile?.summary ?? {
         id: `${name} termasuk dalam daftar brand general trading populer CSE untuk kebutuhan procurement industrial.`,
         en: `${name} is part of CSE's popular general trading portfolio for industrial procurement.`

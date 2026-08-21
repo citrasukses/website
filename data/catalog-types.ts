@@ -1,4 +1,5 @@
 import type { Brand, Product, ProductGroup } from "@/data/brands";
+import type { BrandReferenceImage } from "@/data/general-brand-reference-images";
 import type { LocalizedText } from "@/lib/i18n";
 
 export type BrandType = "represented" | "general-trading";
@@ -22,6 +23,6 @@ export type CatalogBrand = Omit<Brand, "productGroups"> & {
   brandType: BrandType;
   published: boolean;
   popularityRank?: number;
+  referenceImages?: BrandReferenceImage[];
   productGroups: CatalogProductGroup[];
 };
-

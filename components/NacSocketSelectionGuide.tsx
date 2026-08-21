@@ -258,16 +258,9 @@ export function NacSocketSelectionGuide({ lang }: { lang: Language }) {
               {localized(lang, "Alur pemilihan socket", "Socket selection flow")}
             </p>
             <h2 className="mt-3 text-balance text-3xl font-bold text-graphite-900 md:text-4xl">
-              {localized(lang, "Tentukan keluarga sebelum mencari part number.", "Choose the family before finding a part number.")}
+              {localized(lang, "Tentukan kategori sebelum mencari part number.", "Choose the family before finding a part number.")}
             </h2>
           </div>
-          <p className="max-w-2xl text-sm leading-6 text-graphite-500 lg:justify-self-end lg:text-right">
-            {localized(
-              lang,
-              "Gunakan empat parameter utama katalog NAC. Hasilnya mengarahkan Anda ke kelompok tabel yang tepat, lalu dimensi final dipilih dari model yang tersedia.",
-              "Use the four primary NAC catalog parameters. The result points to the correct table group, where final dimensions can be matched to an available model."
-            )}
-          </p>
         </div>
 
         <div className="mt-8 grid gap-4 border border-graphite-200 bg-graphite-50 p-5 sm:grid-cols-2 lg:grid-cols-4 lg:p-6">
