@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { CheckCircle2, RadioTower } from "lucide-react";
+import { AlertTriangle, CheckCircle2, ExternalLink, PackageCheck, RadioTower } from "lucide-react";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { BrandPageProgress } from "@/components/BrandPageProgress";
 import { BrandProductExplorer } from "@/components/BrandProductExplorer";
+import { BrandLogo } from "@/components/BrandLogo";
 import { CTAButton } from "@/components/CTAButton";
-import { FeatureGrid } from "@/components/FeatureGrid";
 import { Hero } from "@/components/Hero";
 import { NacBrandOverview } from "@/components/NacBrandOverview";
 import { SankyoRikagakuBrandOverview } from "@/components/SankyoRikagakuBrandOverview";
@@ -48,7 +48,7 @@ function staticExportPath(path: string, lang: "id" | "en") {
 }
 
 export function generateStaticParams() {
-  return seedCatalog.map((brand) => ({ slug: brand.slug }));
+  return seedCatalog.filter((brand) => brand.published).map((brand) => ({ slug: brand.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -286,7 +286,7 @@ export default async function BrandDetailPage({ params }: PageProps) {
             ? lang === "en"
               ? "Tohnichi sales & service agent / Indonesia"
               : "Agen penjualan & servis Tohnichi / Indonesia"
-            : `${brand.name} / ${brand.country}`
+            : `${brand.name}${brand.country ? ` / ${brand.country}` : ""}`
         }
         title={
           isTohnichi
@@ -327,6 +327,25 @@ export default async function BrandDetailPage({ params }: PageProps) {
         }
         highlights={brand.strengths.slice(0, 3).map((item) => text(item, lang))}
       />
+
+      {(isNac || isSankyoRikagaku) && brand.officialWebsite ? (
+        <div className="border-b border-graphite-200 bg-white">
+          <div className="container-page flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-sm font-semibold text-graphite-600">
+              {lang === "en" ? `Manufacturer information and full catalogue: ${brand.name}` : `Informasi manufacturer dan katalog lengkap: ${brand.name}`}
+            </p>
+            <a
+              href={brand.officialWebsite}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="focus-ring inline-flex items-center gap-2 text-sm font-bold text-industrial-700 underline decoration-industrial-300 underline-offset-4 hover:text-industrial-900"
+            >
+              {lang === "en" ? "Visit official website" : "Kunjungi website resmi"}
+              <ExternalLink className="h-4 w-4" aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+      ) : null}
 
       {isTohnichi ? (
         <>
@@ -500,13 +519,78 @@ export default async function BrandDetailPage({ params }: PageProps) {
         <SankyoRikagakuBrandOverview lang={lang} />
       ) : (
         <section className="bg-white py-16">
-          <div className="container-page grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
-            <SectionHeader
-              eyebrow={lang === "en" ? "Brand support" : "Dukungan brand"}
-              title={lang === "en" ? "What CSE can help with." : "Hal yang bisa dibantu CSE."}
-              description={text(brand.summary, lang)}
-            />
-            <FeatureGrid items={brand.strengths.map((item) => text(item, lang))} />
+          <div className="container-page grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+            <div className="border border-graphite-200 bg-graphite-50 p-6">
+              <BrandLogo
+                name={brand.name}
+                slug={brand.slug}
+                src={brand.logo}
+                className="h-32 w-full border border-graphite-200 bg-white"
+                sizes="240px"
+              />
+              <p className="mt-5 text-xs font-bold uppercase tracking-[0.18em] text-graphite-500">
+                {lang === "en" ? "Brand origin" : "Asal brand"}
+              </p>
+              <p className="mt-2 font-bold text-graphite-900">
+                {brand.country || (lang === "en" ? "Origin not confirmed" : "Asal belum dikonfirmasi")}
+              </p>
+              {brand.officialWebsite ? (
+                <a
+                  href={brand.officialWebsite}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="focus-ring mt-6 inline-flex w-full items-center justify-center gap-2 bg-industrial-700 px-4 py-3 text-sm font-bold text-white transition hover:bg-industrial-800"
+                >
+                  {lang === "en" ? "Visit official website" : "Kunjungi website resmi"}
+                  <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                </a>
+              ) : null}
+            </div>
+            <div>
+              <SectionHeader
+                eyebrow={lang === "en" ? "Brand introduction" : "Pengenalan brand"}
+                title={
+                  brand.researchStatus === "unresolved"
+                    ? lang === "en"
+                      ? `${brand.name} identification status.`
+                      : `Status identifikasi ${brand.name}.`
+                    : lang === "en"
+                      ? `What ${brand.name} sells and where it is used.`
+                      : `Produk ${brand.name} dan kegunaannya.`
+                }
+                description={text(brand.summary, lang)}
+              />
+              <p className="mt-6 max-w-3xl text-base leading-7 text-graphite-600">
+                {text(brand.description, lang)}
+              </p>
+              {brand.researchStatus === "unresolved" ? (
+                <div className="mt-8 flex gap-3 border border-signal-300 bg-signal-50 p-5 text-sm leading-6 text-graphite-700">
+                  <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-signal-600" aria-hidden="true" />
+                  <div>
+                    <p className="font-bold text-graphite-900">
+                      {lang === "en" ? "Exact brand identity not confirmed" : "Identitas brand belum dikonfirmasi"}
+                    </p>
+                    <p className="mt-1">{brand.researchNote ? text(brand.researchNote, lang) : text(brand.description, lang)}</p>
+                  </div>
+                </div>
+              ) : brand.popularProducts && brand.popularProducts.length > 0 ? (
+                <div className="mt-8">
+                  <div className="flex items-center gap-2">
+                    <PackageCheck className="h-5 w-5 text-signal-600" aria-hidden="true" />
+                    <h2 className="text-lg font-bold text-graphite-900">
+                      {lang === "en" ? "Popular product lines" : "Lini produk populer"}
+                    </h2>
+                  </div>
+                  <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                    {brand.popularProducts.map((product) => (
+                      <div key={text(product, lang)} className="border border-graphite-200 bg-graphite-50 px-4 py-3 text-sm font-semibold text-graphite-700">
+                        {text(product, lang)}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+            </div>
           </div>
         </section>
       )}

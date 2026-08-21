@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight, Construction, PackageSearch, Search, X } from "lucide-react";
+import { AlertTriangle, ArrowUpRight, Construction, PackageSearch, Search, X } from "lucide-react";
 import { useDeferredValue, useMemo, useState } from "react";
 import { BrandCard } from "@/components/BrandCard";
 import { BrandLogo } from "@/components/BrandLogo";
@@ -14,6 +14,7 @@ type BrandsSearchCatalogProps = {
   representedBrands: SearchableBrandCard[];
   tradingBrands: CatalogBrand[];
   tradingBrandCount: number;
+  confirmationBrands: CatalogBrand[];
   lang: Language;
 };
 
@@ -53,7 +54,7 @@ function matchesSearch(searchIndex: string, normalizedQuery: string) {
   return tokens.length > 0 && tokens.every((token) => searchIndex.includes(token));
 }
 
-function TradingBrandCard({ brand, lang }: { brand: CatalogBrand; lang: Language }) {
+function TradingBrandCard({ brand, lang, requiresConfirmation = false }: { brand: CatalogBrand; lang: Language; requiresConfirmation?: boolean }) {
   const href = withLang(`/brands/${brand.slug}`, lang);
   const isPublic = isBrandPubliclyAvailable(brand.slug);
   const canOpen = canViewBrandDraft(brand.slug);
@@ -68,10 +69,10 @@ function TradingBrandCard({ brand, lang }: { brand: CatalogBrand; lang: Language
           className="h-24 w-full border-b border-dashed border-graphite-200 bg-graphite-50"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
         />
-        {!isPublic ? (
-          <span className="absolute right-3 top-3 inline-flex items-center gap-1.5 border border-signal-200 bg-white px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.12em] text-signal-600 shadow-sm">
-            <Construction className="h-3 w-3" aria-hidden="true" />
-            On progress
+        {requiresConfirmation || !isPublic ? (
+          <span className="absolute right-3 top-3 inline-flex items-center gap-1.5 border border-amber-300 bg-amber-50 px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.12em] text-amber-800 shadow-sm">
+            {requiresConfirmation ? <AlertTriangle className="h-3 w-3" aria-hidden="true" /> : <Construction className="h-3 w-3" aria-hidden="true" />}
+            {requiresConfirmation ? (lang === "en" ? "Needs confirmation" : "Perlu konfirmasi") : "On progress"}
           </span>
         ) : null}
       </div>
@@ -80,7 +81,11 @@ function TradingBrandCard({ brand, lang }: { brand: CatalogBrand; lang: Language
           <div className="flex items-start justify-between gap-4">
             <div>
               <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-graphite-500">
-                {lang === "en" ? "General trading" : "General trading"}
+                {requiresConfirmation
+                  ? lang === "en"
+                    ? "Internal review"
+                    : "Review internal"
+                  : "General trading"}
               </p>
               <h3 className="mt-2 text-xl font-bold text-graphite-900">{brand.name}</h3>
             </div>
@@ -102,8 +107,16 @@ function TradingBrandCard({ brand, lang }: { brand: CatalogBrand; lang: Language
         </div>
         <div className="mt-5 flex items-center justify-between gap-3 border-t border-dashed border-graphite-200 pt-4 text-xs font-semibold text-graphite-500">
           <span>{brand.country || (lang === "en" ? "Multiple origins" : "Berbagai negara")}</span>
-          <span className={!isPublic ? "font-bold uppercase tracking-[0.1em] text-signal-600" : ""}>
-            {!isPublic ? "On progress" : lang === "en" ? "RFQ supply" : "Supply RFQ"}
+          <span className={requiresConfirmation || !isPublic ? "font-bold uppercase tracking-[0.1em] text-amber-800" : ""}>
+            {requiresConfirmation
+              ? lang === "en"
+                ? "Verify first"
+                : "Verifikasi dulu"
+              : !isPublic
+                ? "On progress"
+                : lang === "en"
+                  ? "RFQ supply"
+                  : "Supply RFQ"}
           </span>
         </div>
       </div>
@@ -131,7 +144,7 @@ function TradingBrandCard({ brand, lang }: { brand: CatalogBrand; lang: Language
   );
 }
 
-export function BrandsSearchCatalog({ representedBrands, tradingBrands, tradingBrandCount, lang }: BrandsSearchCatalogProps) {
+export function BrandsSearchCatalog({ representedBrands, tradingBrands, tradingBrandCount, confirmationBrands, lang }: BrandsSearchCatalogProps) {
   const [query, setQuery] = useState("");
   const deferredQuery = useDeferredValue(query);
   const normalizedQuery = normalize(deferredQuery);
@@ -144,6 +157,14 @@ export function BrandsSearchCatalog({ representedBrands, tradingBrands, tradingB
     [tradingBrands]
   );
 
+  const indexedConfirmationBrands = useMemo<IndexedTradingBrand[]>(
+    () =>
+      confirmationBrands
+        .map((brand) => ({ brand, searchIndex: tradingBrandSearchIndex(brand) }))
+        .sort((a, b) => (a.brand.popularityRank ?? Number.MAX_SAFE_INTEGER) - (b.brand.popularityRank ?? Number.MAX_SAFE_INTEGER) || a.brand.name.localeCompare(b.brand.name)),
+    [confirmationBrands]
+  );
+
   const representedMatches = useMemo(
     () => representedBrands.filter((item) => matchesSearch(item.searchIndex, normalizedQuery)).map((item) => item.brand),
     [representedBrands, normalizedQuery]
@@ -154,7 +175,12 @@ export function BrandsSearchCatalog({ representedBrands, tradingBrands, tradingB
     [indexedTradingBrands, normalizedQuery]
   );
 
-  const matchCount = representedMatches.length + tradingMatches.length;
+  const confirmationMatches = useMemo(
+    () => indexedConfirmationBrands.filter((item) => matchesSearch(item.searchIndex, normalizedQuery)).map((item) => item.brand),
+    [indexedConfirmationBrands, normalizedQuery]
+  );
+
+  const matchCount = representedMatches.length + tradingMatches.length + confirmationMatches.length;
   const hasQuery = normalizedQuery.length > 0;
 
   return (
@@ -283,6 +309,41 @@ export function BrandsSearchCatalog({ representedBrands, tradingBrands, tradingB
           </div>
         )}
       </section>
+
+      {confirmationBrands.length > 0 ? (
+        <section className="mt-16 border-t border-dashed border-amber-300 pt-10" data-development-only="brand-confirmation-list">
+          <div className="border border-amber-300 bg-amber-50 p-5 md:p-6">
+            <div className="flex items-start gap-3">
+              <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-amber-700" aria-hidden="true" />
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-800">
+                  {lang === "en" ? "Development review only" : "Khusus review development"}
+                </p>
+                <h2 className="mt-2 text-2xl font-bold text-graphite-900">
+                  {lang === "en" ? "Brands that still need confirmation" : "Brand yang masih perlu dikonfirmasi"}
+                </h2>
+                <p className="mt-3 max-w-3xl text-sm leading-6 text-graphite-600">
+                  {lang === "en"
+                    ? "These names remain visible locally for research and catalogue matching. They are excluded from production builds, generated brand routes, and the deployment sitemap."
+                    : "Nama-nama ini tetap terlihat secara lokal untuk riset dan pencocokan katalog. Semuanya dikeluarkan dari production build, route brand yang dihasilkan, dan sitemap deployment."}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {confirmationMatches.length > 0 ? (
+            <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {confirmationMatches.map((brand) => (
+                <TradingBrandCard key={brand.slug} brand={brand} lang={lang} requiresConfirmation />
+              ))}
+            </div>
+          ) : (
+            <div className="mt-5 border border-graphite-200 bg-white p-6 text-sm font-semibold text-graphite-500">
+              {lang === "en" ? "No confirmation-only brands match this search." : "Tidak ada brand yang perlu dikonfirmasi yang cocok dengan pencarian ini."}
+            </div>
+          )}
+        </section>
+      ) : null}
     </div>
   );
 }

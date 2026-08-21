@@ -31,6 +31,10 @@ export type Brand = {
   description: LocalizedText;
   strengths: LocalizedText[];
   productGroups: ProductGroup[];
+  officialWebsite?: string;
+  popularProducts?: LocalizedText[];
+  researchStatus?: "verified" | "unresolved";
+  researchNote?: LocalizedText;
   featured?: boolean;
   searchTerms?: string[];
 };
@@ -51,6 +55,14 @@ export const brands: Brand[] = [
     },
     logo: "/assets/brands/logos/tohnichi--nobg.png",
     heroImage: "/assets/brands/products/tohnichi/tohnichi_torque-wrench.jpg",
+    officialWebsite: "https://en.global-tohnichi.com/",
+    popularProducts: [
+      { id: "QL adjustable torque wrench", en: "QL adjustable torque wrench" },
+      { id: "QSP preset torque wrench", en: "QSP preset torque wrench" },
+      { id: "CEM3 digital torque wrench", en: "CEM3 digital torque wrench" },
+      { id: "Torque tester dan calibration equipment", en: "Torque testers and calibration equipment" }
+    ],
+    researchStatus: "verified",
     featured: true,
     summary: {
       id: "PT Citra Sukses Ekapratama (CSE) adalah agen penjualan dan servis Tohnichi di Indonesia untuk torque wrench, torque screwdriver, tester, kalibrasi, dan sistem tightening.",
@@ -103,6 +115,14 @@ export const brands: Brand[] = [
     },
     logo: "/assets/brands/products/nac/NAC Cover Img.jpg",
     heroImage: "/assets/brands/products/nac/NAC Cover Img.jpg",
+    officialWebsite: "https://nac-corp.co.jp/en/",
+    popularProducts: [
+      { id: "Custom impact sockets", en: "Custom impact sockets" },
+      { id: "Driver sockets dan bits", en: "Driver sockets and bits" },
+      { id: "CAL quick couplings", en: "CAL quick couplings" },
+      { id: "CSPE non-drip couplings", en: "CSPE non-drip couplings" }
+    ],
+    researchStatus: "verified",
     summary: {
       id: "Spesialis Jepang untuk socket berkualitas—terutama custom-made socket dalam volume rendah—industrial bits, dan quick couplings.",
       en: "A Japanese specialist in quality sockets—especially low-volume custom-made sockets—industrial bits, and quick couplings."
@@ -162,6 +182,14 @@ export const brands: Brand[] = [
     },
     logo: "/assets/brands/logos/fuji-star.png",
     heroImage: "/assets/brands/products/fuji-star/car_body_abrasive.webp",
+    officialWebsite: "https://en.fujistar.com/",
+    popularProducts: [
+      { id: "Abrasive sheets", en: "Abrasive sheets" },
+      { id: "Abrasive discs", en: "Abrasive discs" },
+      { id: "Abrasive belts", en: "Abrasive belts" },
+      { id: "Kenmalon non-woven abrasives", en: "Kenmalon non-woven abrasives" }
+    ],
+    researchStatus: "verified",
     featured: true,
     summary: {
       id: "Produsen Jepang di balik FUJISTAR, dengan abrasive paper, cloth, film, belt, non-woven, polishing tools, dan finishing supplies sejak 1930.",
@@ -313,6 +341,14 @@ export const brands: Brand[] = [
     },
     logo: "/assets/brands/logos/nippon-unit-brush.gif",
     heroImage: "/assets/brands/logos/nippon-unit-brush--vector.svg",
+    officialWebsite: "https://www.unitbrush.co.jp/english/",
+    popularProducts: [
+      { id: "Strip brushes", en: "Strip brushes" },
+      { id: "Wheel dan cup brushes", en: "Wheel and cup brushes" },
+      { id: "Twisted brushes", en: "Twisted brushes" },
+      { id: "Custom-shaped industrial brushes", en: "Custom-shaped industrial brushes" }
+    ],
+    researchStatus: "verified",
     featured: true,
     summary: {
       id: "Brand Jepang dengan sejarah panjang dalam industrial brush, dikenal untuk channel brush, abrasive nylon brush, dan solusi brush untuk kebutuhan manufaktur.",
@@ -434,6 +470,17 @@ export const brands: Brand[] = [
     },
     logo: "/assets/brands/logos/smbc.png",
     heroImage: "/assets/brands/logos/smbc.png",
+    popularProducts: [
+      { id: "End brushes", en: "End brushes" },
+      { id: "Roller polishing brushes", en: "Roller polishing brushes" },
+      { id: "Disc brushes", en: "Disc brushes" },
+      { id: "Custom abrasive brushes", en: "Custom abrasive brushes" }
+    ],
+    researchStatus: "unresolved",
+    researchNote: {
+      id: "Produk SMBC industrial brush asal Thailand dapat ditemukan, tetapi website resmi manufacturer tidak ditemukan melalui pencarian sederhana.",
+      en: "Thailand-origin SMBC industrial brush products can be found, but a manufacturer-owned official website was not found through a simple search."
+    },
     featured: true,
     summary: {
       id: "Brand Thailand untuk brush industri dan solusi abrasif yang cost-effective dengan lead time lebih cepat.",
@@ -527,6 +574,14 @@ export const brands: Brand[] = [
     },
     logo: "/assets/brands/logos/viet-nhat.svg",
     heroImage: "/assets/brands/logos/viet-nhat.svg",
+    officialWebsite: "https://vn-specialtools.com/",
+    popularProducts: [
+      { id: "Custom drills", en: "Custom drills" },
+      { id: "Reamers dan end mills", en: "Reamers and end mills" },
+      { id: "PCD cutting tools", en: "PCD cutting tools" },
+      { id: "Pin gauges", en: "Pin gauges" }
+    ],
+    researchStatus: "verified",
     featured: true,
     summary: {
       id: "Produsen cutting tools Vietnam dengan kualitas terpercaya, digunakan oleh manufaktur Jepang di Vietnam dan mendukung kebutuhan ekspor ke Jepang.",

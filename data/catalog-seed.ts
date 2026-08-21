@@ -2,7 +2,9 @@ import { brands as representedBrands, type Product, type ProductGroup } from "@/
 import { popularBrands2026 } from "@/data/popular-brands";
 import { tradingBrands as legacyTradingBrands } from "@/data/trading-brands";
 import { getBrandLogoPath } from "@/data/brand-logos";
+import { generalBrandProfiles } from "@/data/general-brand-profiles";
 import type { CatalogBrand, CatalogProduct, CatalogProductGroup } from "@/data/catalog-types";
+import { shouldPublishBrand } from "@/lib/brand-publication";
 
 export function slugify(value: string) {
   return value
@@ -59,7 +61,7 @@ export function buildSeedCatalog(): CatalogBrand[] {
       return {
         ...represented,
         brandType: "represented",
-        published: true,
+        published: shouldPublishBrand(represented.slug),
         popularityRank: index + 1,
         productGroups: represented.productGroups.map(toCatalogGroup)
       };
@@ -68,36 +70,45 @@ export function buildSeedCatalog(): CatalogBrand[] {
     const legacy = tradingByKey.get(key);
     const name = legacy?.name ?? sourceName;
     const slug = slugify(name);
+    const profile = generalBrandProfiles[slug] ?? generalBrandProfiles[slugify(sourceName)];
     rankedSlugs.add(slug);
 
     return {
       slug,
       name,
       brandType: "general-trading",
-      published: true,
+      published: shouldPublishBrand(slug),
       popularityRank: index + 1,
       countryCode: "",
-      country: legacy?.country ?? "",
-      category: legacy?.category ?? {
+      country: profile?.country ?? legacy?.country ?? "",
+      category: profile?.category ?? legacy?.category ?? {
         id: "Produk industrial dan supply general trading",
         en: "Industrial products and general trading supply"
       },
       logo: getBrandLogoPath(slug),
       heroImage: "",
-      summary: {
+      summary: profile?.summary ?? {
         id: `${name} termasuk dalam daftar brand general trading populer CSE untuk kebutuhan procurement industrial.`,
         en: `${name} is part of CSE's popular general trading portfolio for industrial procurement.`
       },
-      description: {
+      description: profile?.description ?? {
         id: `Kirim model, spesifikasi, kuantitas, dan aplikasi produk ${name} agar tim CSE dapat meninjau opsi supply yang sesuai.`,
         en: `Send the ${name} model, specification, quantity, and application so CSE can review suitable supply options.`
       },
-      strengths: [
+      strengths: profile ? [
+        profile.category,
+        profile.popularProducts[0] ?? profile.summary,
+        profile.popularProducts[1] ?? profile.description
+      ] : [
         { id: "Dukungan sourcing berdasarkan model dan spesifikasi", en: "Sourcing support by model and specification" },
         { id: "Review kebutuhan dan alternatif produk", en: "Requirement and product alternative review" },
         { id: "Proses RFQ untuk kebutuhan industrial", en: "RFQ process for industrial requirements" }
       ],
-      searchTerms: Array.from(new Set([name, sourceName, ...(legacy?.searchTerms ?? [])])),
+      officialWebsite: profile?.officialWebsite,
+      popularProducts: profile?.popularProducts ?? [],
+      researchStatus: profile?.researchStatus ?? "unresolved",
+      researchNote: profile?.researchNote,
+      searchTerms: Array.from(new Set([name, sourceName, ...(legacy?.searchTerms ?? []), ...(profile?.searchTerms ?? [])])),
       productGroups: []
     };
   });
@@ -107,7 +118,7 @@ export function buildSeedCatalog(): CatalogBrand[] {
     .map<CatalogBrand>((brand) => ({
       ...brand,
       brandType: "represented",
-      published: true,
+      published: shouldPublishBrand(brand.slug),
       productGroups: brand.productGroups.map(toCatalogGroup)
     }));
 

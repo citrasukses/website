@@ -4,10 +4,10 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTAButton } from "@/components/CTAButton";
 import { IndustryCaseStudyExplorer } from "@/components/IndustryCaseStudyExplorer";
 import { SectionHeader } from "@/components/SectionHeader";
-import { SupplyMap } from "@/components/SupplyMap";
+// import { SupplyMap } from "@/components/SupplyMap";
 import { toSearchableBrandCard } from "@/data/brand-search";
 import { industries } from "@/data/industries";
-import { supplyCountries } from "@/data/supply-map";
+// import { supplyCountries } from "@/data/supply-map";
 import { getCatalogBrands } from "@/lib/catalog";
 import { staticLanguage, withLang } from "@/lib/i18n";
 
@@ -22,14 +22,16 @@ export const metadata: Metadata = {
 export default async function BrandsPage() {
   const lang = staticLanguage();
   const catalog = await getCatalogBrands();
-  const representedBrands = catalog
+  const confirmationBrands = catalog.filter((brand) => brand.researchStatus === "unresolved");
+  const confirmedCatalog = catalog.filter((brand) => brand.researchStatus !== "unresolved");
+  const representedBrands = confirmedCatalog
     .filter((brand) => brand.brandType === "represented")
     .sort((a, b) => {
       const priority = (slug: string) => (slug === "tohnichi" ? 0 : slug === "nac" ? 1 : 2);
       return priority(a.slug) - priority(b.slug);
     })
     .map(toSearchableBrandCard);
-  const tradingBrands = catalog.filter((brand) => brand.brandType === "general-trading");
+  const tradingBrands = confirmedCatalog.filter((brand) => brand.brandType === "general-trading");
 
   return (
     <>
@@ -49,6 +51,7 @@ export default async function BrandsPage() {
             representedBrands={representedBrands}
             tradingBrands={tradingBrands}
             tradingBrandCount={tradingBrands.length}
+            confirmationBrands={confirmationBrands}
             lang={lang}
           />
         </div>
@@ -74,6 +77,7 @@ export default async function BrandsPage() {
           />
         </div>
       </section>
+      {/* Supply map temporarily hidden.
       <section className="bg-graphite-50 py-16">
         <div className="container-page">
           <SectionHeader
@@ -81,13 +85,14 @@ export default async function BrandsPage() {
             title={lang === "en" ? "Brand origins by country." : "Asal brand berdasarkan negara."}
             description={
               lang === "en"
-                ? "Current brand origins are grouped from the brand catalog, with not-yet-published brands included as inquiry items."
-                : "Asal brand saat ini dikelompokkan dari katalog brand, dengan brand yang belum dipublikasikan ditampilkan sebagai item inquiry."
+                ? "Current brand origins are grouped from the confirmed brand catalog."
+                : "Asal brand saat ini dikelompokkan dari katalog brand yang telah dikonfirmasi."
             }
           />
           <SupplyMap countries={supplyCountries} lang={lang} />
         </div>
       </section>
+      */}
       <section className="bg-white py-16">
         <div className="container-page grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
