@@ -20,7 +20,7 @@ import { sankyoRikagakuProductDetails } from "@/data/sankyo-rikagaku-product-det
 import { tohnichiProductDetails } from "@/data/tohnichi-product-details";
 import { canViewBrandDraft, isBrandPubliclyAvailable } from "@/lib/brand-visibility";
 import { getCatalogBrandBySlug } from "@/lib/catalog";
-import { staticLanguage, text, withLang } from "@/lib/i18n";
+import { languageAlternates, localizedPath, staticLanguage, text, withLang } from "@/lib/i18n";
 
 type PageProps = {
   params: Promise<{ slug: string; productSlug: string }>;
@@ -33,6 +33,7 @@ export function generateStaticParams() {
 }
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug, productSlug } = await params;
+  const lang = staticLanguage();
   const brand = await getCatalogBrandBySlug(slug);
   const product = brand?.productGroups.flatMap((group) => group.products).find((candidate) => candidate.slug === productSlug);
   if (!product || !brand) {
@@ -50,24 +51,34 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  const canonical = `/brands/${brand.slug}/products/${product.slug}`;
+  const productPath = `/brands/${brand.slug}/products/${product.slug}`;
+  const canonical = localizedPath(productPath, lang);
   const tohnichiDetail = brand.slug === "tohnichi" ? tohnichiProductDetails[product.slug] : undefined;
   const nacDetail =
     brand.slug === "nac" ? nacProductDetails[product.slug] ?? nacCouplingProductDetails[product.slug] : undefined;
   const sankyoRikagakuDetail =
     brand.slug === "fuji-star" ? sankyoRikagakuProductDetails[product.slug] : undefined;
   const description =
-    tohnichiDetail?.seoDescription.id ??
-    sankyoRikagakuDetail?.seoDescription.id ??
-    nacDetail?.overview.id ??
-    product.summary.id;
+    text(
+      tohnichiDetail?.seoDescription ??
+        sankyoRikagakuDetail?.seoDescription ??
+        nacDetail?.overview ??
+        product.summary,
+      lang
+    );
   const seoTitle =
     brand.slug === "tohnichi"
-      ? `${product.name} Tohnichi - Model & Spesifikasi`
+      ? lang === "en"
+        ? `${product.name} Tohnichi - Models & Specifications`
+        : `${product.name} Tohnichi - Model & Spesifikasi`
       : brand.slug === "nac"
-        ? `${product.name} NAC Indonesia - Model & Katalog`
+        ? lang === "en"
+          ? `${product.name} NAC Indonesia - Models & Catalogue`
+          : `${product.name} NAC Indonesia - Model & Katalog`
         : brand.slug === "fuji-star"
-          ? `${product.name} Sankyo Rikagaku Indonesia - Katalog FUJISTAR`
+          ? lang === "en"
+            ? `${product.name} Sankyo Rikagaku Indonesia - FUJISTAR Catalogue`
+            : `${product.name} Sankyo Rikagaku Indonesia - Katalog FUJISTAR`
         : `${product.name} | ${brand.name}`;
   const nacKeywords =
     brand.slug === "nac"
@@ -86,7 +97,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description,
     keywords: tohnichiDetail?.seoKeywords ?? sankyoRikagakuDetail?.seoKeywords ?? nacKeywords,
     alternates: {
-      canonical
+      canonical,
+      languages: languageAlternates(productPath)
     },
     openGraph: {
       title: `${product.name} ${brand.name} Indonesia | CSE`,
@@ -131,7 +143,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const relatedProducts = group.products.filter((candidate) => candidate.slug !== product.slug).slice(0, 3);
   const otherGroups = brand.productGroups.filter((candidate) => candidate.slug !== group.slug);
   const brandGroupHref = (groupSlug: string) =>
-    `/brands/${brand.slug}${lang === "en" ? "?lang=en" : ""}#${groupSlug}`;
+    withLang(`/brands/${brand.slug}#${groupSlug}`, lang);
   const selectionGuidance =
     brand.slug === "nac"
       ? isNacCoupling
@@ -234,7 +246,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
     name: `${brand.name} ${product.name}`,
     description: text(tohnichiDetail?.seoDescription ?? familyDetail?.overview ?? product.summary, lang),
     image: images.map((image) => `https://cse.co.id${image}`),
-    url: `https://cse.co.id/brands/${brand.slug}/products/${product.slug}`,
+    url: `https://cse.co.id${localizedPath(`/brands/${brand.slug}/products/${product.slug}`, lang)}`,
     brand: {
       "@type": "Brand",
       name: brand.name
@@ -244,7 +256,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
       "@type": "Product",
       name: `${brand.name} FUJISTAR ${model.name}`,
       image: `https://cse.co.id${model.image}`,
-      url: `https://cse.co.id/brands/${brand.slug}/products/${product.slug}#${model.slug}`,
+      url: `https://cse.co.id${localizedPath(`/brands/${brand.slug}/products/${product.slug}#${model.slug}`, lang)}`,
       brand: {
         "@type": "Brand",
         name: "FUJISTAR"

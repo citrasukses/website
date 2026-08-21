@@ -1,6 +1,3 @@
-"use client";
-
-import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import type { CatalogProductGroup } from "@/data/catalog-types";
 import { ProductCard } from "@/components/ProductCard";
@@ -17,7 +14,6 @@ const TORQUE_SCREWDRIVER_PREVIEW_SLUGS = [
 ];
 
 export function UseCaseSection({ group, brandSlug, lang }: { group: CatalogProductGroup; brandSlug: string; lang: Language }) {
-  const [isExpanded, setIsExpanded] = useState(false);
   const isTohnichi = brandSlug === "tohnichi";
   const orderedProducts =
     isTohnichi && group.slug === "torque-screwdrivers"
@@ -30,8 +26,8 @@ export function UseCaseSection({ group, brandSlug, lang }: { group: CatalogProdu
         ]
       : group.products;
   const canExpand = isTohnichi && orderedProducts.length > TOHNICHI_PREVIEW_LIMIT;
-  const visibleProducts =
-    canExpand && !isExpanded ? orderedProducts.slice(0, TOHNICHI_PREVIEW_LIMIT) : orderedProducts;
+  const visibleProducts = canExpand ? orderedProducts.slice(0, TOHNICHI_PREVIEW_LIMIT) : orderedProducts;
+  const remainingProducts = canExpand ? orderedProducts.slice(TOHNICHI_PREVIEW_LIMIT) : [];
   const productListId = `${group.slug}-product-list`;
 
   return (
@@ -49,25 +45,22 @@ export function UseCaseSection({ group, brandSlug, lang }: { group: CatalogProdu
             ))}
           </div>
           {canExpand ? (
-            <button
-              type="button"
-              onClick={() => setIsExpanded((current) => !current)}
-              aria-expanded={isExpanded}
-              aria-controls={productListId}
-              className="focus-ring mt-5 flex min-h-12 w-full items-center justify-center gap-2 border border-industrial-700 bg-white px-5 text-sm font-bold text-industrial-700 transition hover:bg-industrial-700 hover:text-white"
-            >
-              {isExpanded
-                ? lang === "en"
-                  ? "Show only 6 featured families"
-                  : "Tampilkan hanya 6 keluarga pilihan"
-                : lang === "en"
+            <details className="group mt-5 border border-industrial-700 bg-white">
+              <summary className="focus-ring flex min-h-12 cursor-pointer list-none items-center justify-center gap-2 px-5 text-sm font-bold text-industrial-700 transition hover:bg-industrial-700 hover:text-white">
+                {lang === "en"
                   ? `View all ${orderedProducts.length} product families`
                   : `Lihat semua ${orderedProducts.length} keluarga produk`}
-              <ChevronDown
-                className={`h-4 w-4 transition-transform ${isExpanded ? "rotate-180" : ""}`}
-                aria-hidden="true"
-              />
-            </button>
+                <ChevronDown
+                  className="h-4 w-4 transition-transform group-open:rotate-180"
+                  aria-hidden="true"
+                />
+              </summary>
+              <div className="grid gap-4 border-t border-industrial-200 p-4 sm:grid-cols-2">
+                {remainingProducts.map((product) => (
+                  <ProductCard key={product.slug} product={product} brandSlug={brandSlug} lang={lang} />
+                ))}
+              </div>
+            </details>
           ) : null}
         </div>
       </div>

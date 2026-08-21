@@ -5,7 +5,7 @@
   "scripts": {
     "generate:image-backgrounds": "node scripts/generate-image-backgrounds.mjs",
     "predev": "npm run generate:image-backgrounds",
-    "dev": "next dev",
+    "dev": "node scripts/dev-bilingual-site.mjs",
     "prebuild": "npm run generate:image-backgrounds",
     "build:next": "node scripts/build-bilingual-site.mjs",
     "build": "npm run build:next && node scripts/prepare-sites-build.mjs",

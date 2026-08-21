@@ -5,6 +5,8 @@
 
 # Next.js build output
 /.next/
+/.next-dev-id/
+/.next-dev-en/
 /out/
 
 # Production builds

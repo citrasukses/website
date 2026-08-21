@@ -6,6 +6,7 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { BrandPageProgress } from "@/components/BrandPageProgress";
 import { BrandProductExplorer } from "@/components/BrandProductExplorer";
 import { BrandLogo } from "@/components/BrandLogo";
+import { BrandReferenceGallery } from "@/components/BrandReferenceGallery";
 import { CTAButton } from "@/components/CTAButton";
 import { Hero } from "@/components/Hero";
 import { NacBrandOverview } from "@/components/NacBrandOverview";
@@ -16,7 +17,7 @@ import { UseCaseSection } from "@/components/UseCaseSection";
 import { seedCatalog } from "@/data/catalog-seed";
 import { canViewBrandDraft, isBrandPubliclyAvailable } from "@/lib/brand-visibility";
 import { getCatalogBrandBySlug } from "@/lib/catalog";
-import { staticLanguage, text, withLang } from "@/lib/i18n";
+import { languageAlternates, localizedPath, staticLanguage, text, withLang } from "@/lib/i18n";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -42,10 +43,6 @@ const TOHNICHI_SEO_KEYWORDS = [
   "kalibrasi Tohnichi",
   "PT Citra Sukses Ekapratama"
 ];
-
-function staticExportPath(path: string, lang: "id" | "en") {
-  return lang === "en" ? `/en${path}` : path;
-}
 
 export function generateStaticParams() {
   return seedCatalog.filter((brand) => brand.published).map((brand) => ({ slug: brand.slug }));
@@ -74,13 +71,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const isTohnichi = brand.slug === "tohnichi";
   const isSankyoRikagaku = brand.slug === "fuji-star";
   const brandPath = `/brands/${brand.slug}`;
-  const canonicalPath = isTohnichi && lang === "en" ? `/en${brandPath}` : brandPath;
+  const canonicalPath = localizedPath(brandPath, lang);
   const title = isTohnichi
     ? TOHNICHI_SEO_TITLE
     : isSankyoRikagaku
-      ? "Sankyo Rikagaku (FUJISTAR) Indonesia - Katalog Abrasive"
+      ? lang === "en"
+        ? "Sankyo Rikagaku (FUJISTAR) Indonesia - Abrasive Catalogue"
+        : "Sankyo Rikagaku (FUJISTAR) Indonesia - Katalog Abrasive"
       : brand.name;
-  const description = isTohnichi ? TOHNICHI_SEO_DESCRIPTION[lang] : brand.summary.id;
+  const description = isTohnichi ? TOHNICHI_SEO_DESCRIPTION[lang] : text(brand.summary, lang);
   const keywords = isTohnichi
     ? TOHNICHI_SEO_KEYWORDS
     : isSankyoRikagaku
@@ -102,13 +101,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     keywords,
     alternates: {
       canonical: canonicalPath,
-      languages: isTohnichi
-        ? {
-            "id-ID": TOHNICHI_PAGE_PATH,
-            en: `/en${TOHNICHI_PAGE_PATH}`,
-            "x-default": TOHNICHI_PAGE_PATH
-          }
-        : undefined
+      languages: languageAlternates(brandPath)
     },
     openGraph: {
       title: isTohnichi ? `${TOHNICHI_SEO_TITLE} | CSE` : `${brand.name} Indonesia | CSE`,
@@ -144,7 +137,7 @@ export default async function BrandDetailPage({ params }: PageProps) {
   const isNac = brand.slug === "nac";
   const isSankyoRikagaku = brand.slug === "fuji-star";
   const hasProductExplorer = isTohnichi || isNac || isSankyoRikagaku;
-  const localizedTohnichiPagePath = staticExportPath(TOHNICHI_PAGE_PATH, lang);
+  const localizedTohnichiPagePath = localizedPath(TOHNICHI_PAGE_PATH, lang);
   const tohnichiJsonLd = isTohnichi
     ? [
         {
@@ -198,7 +191,7 @@ export default async function BrandDetailPage({ params }: PageProps) {
                 "@type": "ListItem",
                 position: index + 1,
                 name: product.name,
-                url: `https://cse.co.id${staticExportPath(
+                url: `https://cse.co.id${localizedPath(
                   `/brands/${brand.slug}/products/${product.slug}`,
                   lang
                 )}`
@@ -219,7 +212,7 @@ export default async function BrandDetailPage({ params }: PageProps) {
               "@type": "ListItem",
               position: 2,
               name: lang === "en" ? "Brands" : "Brand",
-              item: `https://cse.co.id${staticExportPath("/brands", lang)}`
+              item: `https://cse.co.id${localizedPath("/brands", lang)}`
             },
             {
               "@type": "ListItem",
@@ -253,7 +246,7 @@ export default async function BrandDetailPage({ params }: PageProps) {
               "@type": "ListItem",
               position: index + 1,
               name: product.name,
-              url: `https://cse.co.id/brands/${brand.slug}/products/${product.slug}`
+              url: `https://cse.co.id${localizedPath(`/brands/${brand.slug}/products/${product.slug}`, lang)}`
             }))
         }
       ]
@@ -521,11 +514,14 @@ export default async function BrandDetailPage({ params }: PageProps) {
         <section className="bg-white py-16">
           <div className="container-page grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
             <div className="border border-graphite-200 bg-graphite-50 p-6">
+              {brand.referenceImages && brand.referenceImages.length > 0 ? (
+                <BrandReferenceGallery images={brand.referenceImages} brandName={brand.name} lang={lang} />
+              ) : null}
               <BrandLogo
                 name={brand.name}
                 slug={brand.slug}
                 src={brand.logo}
-                className="h-32 w-full border border-graphite-200 bg-white"
+                className={`${brand.referenceImages?.length ? "mt-4" : ""} h-32 w-full border border-graphite-200 bg-white`}
                 sizes="240px"
               />
               <p className="mt-5 text-xs font-bold uppercase tracking-[0.18em] text-graphite-500">

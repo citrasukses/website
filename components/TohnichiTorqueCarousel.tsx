@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { useEffect, useState, type KeyboardEvent } from "react";
 import type { Language, LocalizedText } from "@/lib/i18n";
-import { text } from "@/lib/i18n";
+import { text, withLang } from "@/lib/i18n";
 
 type TorqueToolSlide = {
   src: string;
@@ -205,7 +205,7 @@ export function TohnichiTorqueCarousel({ lang }: { lang: Language }) {
             {text(activeTool.description, lang)}
           </p>
           <Link
-            href={`${activeTool.href}${lang === "en" ? "?lang=en" : ""}`}
+            href={withLang(activeTool.href, lang)}
             className="mt-2 inline-flex text-xs font-bold text-industrial-700 underline decoration-industrial-300 underline-offset-4 hover:text-signal-600"
           >
             {lang === "en"

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { Languages, Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { company, navigationItems } from "@/data/navigation";
@@ -12,6 +12,11 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const lang = staticLanguage();
+  const nextLanguage = lang === "id" ? "en" : "id";
+  const languagePath =
+    pathname === "/en" ? "/" : pathname.startsWith("/en/") ? pathname.slice(3) : pathname;
+  const languageHref = withLang(languagePath, nextLanguage);
+  const languageLabel = nextLanguage === "en" ? "English" : "Bahasa Indonesia";
 
   return (
     <header className="sticky top-0 z-50 border-b border-graphite-200 bg-white/90 backdrop-blur-xl">
@@ -42,7 +47,7 @@ export function Navbar() {
 
         <nav className="hidden items-center gap-6 lg:flex" aria-label="Main navigation">
           {navigationItems.map((item) => {
-            const active = pathname === item.href;
+            const active = languagePath === item.href;
             return (
               <Link
                 key={item.href}
@@ -64,6 +69,15 @@ export function Navbar() {
           >
             RFQ
           </Link>
+          <a
+            href={languageHref}
+            className="focus-ring inline-flex h-10 items-center gap-2 border border-graphite-300 bg-white px-3 text-sm font-semibold text-graphite-700 transition hover:border-industrial-600 hover:text-industrial-700"
+            aria-label={`Switch language to ${languageLabel}`}
+            title={`Switch to ${languageLabel}`}
+          >
+            <Languages className="h-4 w-4" aria-hidden="true" />
+            {nextLanguage.toUpperCase()}
+          </a>
         </div>
 
         <button
@@ -97,6 +111,14 @@ export function Navbar() {
               >
                 RFQ
               </Link>
+              <a
+                href={languageHref}
+                className="focus-ring inline-flex h-10 items-center gap-2 border border-graphite-300 bg-white px-3 text-sm font-semibold text-graphite-700"
+                aria-label={`Switch language to ${languageLabel}`}
+              >
+                <Languages className="h-4 w-4" aria-hidden="true" />
+                {nextLanguage.toUpperCase()}
+              </a>
             </div>
           </nav>
         </div>

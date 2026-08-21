@@ -15,7 +15,7 @@ import { homeBackgroundImage, homeBackgroundItems } from "@/data/home-background
 import { company } from "@/data/navigation";
 import { industries } from "@/data/industries";
 import { getCatalogBrands } from "@/lib/catalog";
-import { staticLanguage, text, withLang } from "@/lib/i18n";
+import { languageAlternates, localizedPath, staticLanguage, text, withLang } from "@/lib/i18n";
 
 const homepageMetadata = {
   id: {
@@ -40,12 +40,13 @@ export function generateMetadata(): Metadata {
     },
     description,
     alternates: {
-      canonical: "/"
+      canonical: localizedPath("/", lang),
+      languages: languageAlternates("/")
     },
     openGraph: {
       title,
       description,
-      url: "https://cse.co.id",
+      url: localizedPath("/", lang),
       siteName: "PT Citra Sukses Ekapratama",
       images: [
         {
