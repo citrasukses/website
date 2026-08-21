@@ -14,7 +14,7 @@ const catalogueFacts = [
   },
   {
     icon: Layers3,
-    label: { id: "Keluarga produk utama", en: "Primary product families" },
+    label: { id: "Kategori produk utama", en: "Primary product families" },
     value: "6",
     detail: {
       id: "Sheet, disc, belt, roll, non-woven, dan supporting products.",

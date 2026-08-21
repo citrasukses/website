@@ -54,7 +54,7 @@ export function NacFamilyDetails({
   const safetyPoints = isCoupling ? couplingSafetyPoints : fastenerSafetyPoints;
 
   return (
-    <section className="bg-graphite-50 py-14">
+    <section id="catalogue-model-options" className="scroll-mt-24 bg-graphite-50 py-14">
       <div className="container-page">
         <div className="grid gap-6 lg:grid-cols-[0.78fr_1.22fr] lg:items-end">
           <div>

@@ -190,7 +190,7 @@ export default async function BrandDetailPage({ params }: PageProps) {
           },
           mainEntity: {
             "@type": "ItemList",
-            name: lang === "en" ? "Tohnichi product families in Indonesia" : "Keluarga produk Tohnichi",
+            name: lang === "en" ? "Tohnichi product families in Indonesia" : "Kategori produk Tohnichi",
             numberOfItems: brand.productGroups.flatMap((group) => group.products).length,
             itemListElement: brand.productGroups
               .flatMap((group) => group.products)

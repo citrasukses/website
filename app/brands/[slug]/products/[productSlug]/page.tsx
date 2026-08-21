@@ -6,6 +6,7 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { BrandPageProgress } from "@/components/BrandPageProgress";
 import { CTAButton } from "@/components/CTAButton";
 import { NacFamilyDetails } from "@/components/NacFamilyDetails";
+import { NacSocketSelectionGuide } from "@/components/NacSocketSelectionGuide";
 import { ProductCard } from "@/components/ProductCard";
 import { ProductGallery } from "@/components/ProductGallery";
 import { SankyoRikagakuFamilyDetails } from "@/components/SankyoRikagakuFamilyDetails";
@@ -314,6 +315,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
           </div>
         </div>
       </section>
+      {brand.slug === "nac" && product.slug === "square-drive-sockets" ? (
+        <NacSocketSelectionGuide lang={lang} />
+      ) : null}
       {tohnichiDetail?.models.length ? (
         <TohnichiModelTable productName={product.name} detail={tohnichiDetail} lang={lang} />
       ) : tohnichiDetail ? (

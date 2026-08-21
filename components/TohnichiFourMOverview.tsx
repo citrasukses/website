@@ -134,30 +134,19 @@ function FourMVisualization({
 
   return (
     <svg {...sharedProps}>
-      <path d="M35 61h170v29H35z" />
-      <path d="M35 96h170v29H35z" />
-      <path d="M35 90h170M35 96h170" opacity="0.18" />
-      <path d="M35 76h66M139 76h66M35 111h68M141 111h64" opacity="0.22" />
+      <rect x="40" y="65" width="160" height="24" rx="1" />
+      <rect x="40" y="95" width="160" height="24" rx="1" />
+      <path d="M40 77h160M40 107h160" opacity="0.2" />
 
-      <path d="M103 24h34l10 12-10 12h-34L93 36z" />
-      <path d="M108 48v77h24V48" />
-      <path d="M99 55h42" opacity="0.45" />
-      <path d="M101 125h38l9 11-9 11h-38l-9-11z" />
+      <path d="M105 30h30l9 10-9 10h-30l-9-10z" />
+      <path d="M112 50v69h16V50" />
+      <path d="M105 119h30l8 10-8 10h-30l-8-10z" />
 
-      <path d="M101 61v29M139 61v29" opacity="0.35" />
-      <path d="M103 96v29M141 96v29" opacity="0.35" />
-      <path d="M98 84h9M98 102h9" className="text-signal-500" />
-      <path d="M98 84l4-4M98 84l4 4M98 102l4-4M98 102l4 4" className="text-signal-500" />
-
-      <path d="M166 61l-8 10 10 7-7 9 12 9-7 9" className="text-signal-500" />
-      <path d="M111 105l17 8M111 113l17 8M112 121l14 6" opacity="0.45" />
-      <path d="M120 8v144" strokeDasharray="3 7" opacity="0.16" />
+      <path d="M169 65l-7 8 9 7-7 9" className="text-signal-500" />
       <path
-        d="M201 38c0 9-6 15-14 15-7 0-12-5-12-12 0-8 12-21 12-21s14 11 14 18z"
+        d="M195 38c0 7-5 12-11 12s-10-4-10-10c0-7 10-17 10-17s11 9 11 15z"
         className="text-signal-500"
       />
-      <path d="M181 42c1 3 4 5 7 5" className="text-signal-500" />
-      <path d="M135 105c3 2 4 5 4 8" className="text-signal-500" />
     </svg>
   );
 }
