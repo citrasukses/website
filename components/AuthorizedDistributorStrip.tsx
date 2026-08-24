@@ -128,10 +128,10 @@ export function AuthorizedDistributorStrip({ lang, className = "" }: AuthorizedD
             slug="nac"
             name="NAC"
             lang={lang}
-            className="border-b border-graphite-200 text-graphite-900 lg:border-b-0 lg:after:absolute lg:after:inset-y-5 lg:after:right-0 lg:after:w-0.5 lg:after:bg-signal-500/70 lg:after:content-['']"
+            className="border-b border-graphite-200 text-graphite-900 [container-type:inline-size] lg:border-b-0 lg:after:absolute lg:after:inset-y-5 lg:after:right-0 lg:after:w-0.5 lg:after:bg-signal-500/70 lg:after:content-['']"
           >
             <span
-              className="font-nac-logo block w-full max-w-full whitespace-nowrap text-center text-[20px] leading-none transition-transform duration-300 group-hover:scale-105 sm:text-[25px] lg:text-[26px]"
+              className="nac-strip-logo font-nac-logo block whitespace-nowrap text-center leading-none transition-transform duration-300 group-hover:scale-105"
               aria-hidden="true"
             >
               {"\ue90b"}
@@ -151,17 +151,14 @@ export function AuthorizedDistributorStrip({ lang, className = "" }: AuthorizedD
               }
             >
               {distributor.slug === "fuji-denshi" ? (
-                <div className="flex flex-col items-center gap-2 text-graphite-900 transition-transform duration-300 group-hover:scale-105">
-                  <div className="relative h-10 w-10 overflow-hidden">
-                    <Image
-                      src={distributor.logo}
-                      alt=""
-                      fill
-                      sizes="40px"
-                      className="object-cover object-left"
-                    />
-                  </div>
-                  <span className="text-[11px] font-black tracking-[0.08em]">FUJI-DENSHI</span>
+                <div className="relative h-16 w-16 overflow-hidden transition-transform duration-300 group-hover:scale-105">
+                  <Image
+                    src={distributor.logo}
+                    alt={distributor.name}
+                    fill
+                    sizes="64px"
+                    className="object-cover object-left"
+                  />
                 </div>
               ) : (
                 <Image

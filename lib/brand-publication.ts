@@ -1,3 +1,5 @@
+const productionBrandSlugs = new Set(["tohnichi", "nac"]);
+
 const confirmationOnlyBrandSlugs = new Set([
   "smbc",
   "japan-control",
@@ -15,5 +17,5 @@ export function isConfirmationOnlyBrand(slug: string) {
 }
 
 export function shouldPublishBrand(slug: string) {
-  return process.env.NODE_ENV !== "production" || !isConfirmationOnlyBrand(slug);
+  return process.env.NODE_ENV !== "production" || productionBrandSlugs.has(slug);
 }
