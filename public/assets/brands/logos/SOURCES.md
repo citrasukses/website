@@ -30,6 +30,7 @@ The following brand marks were retrieved from each manufacturer's official websi
 | OHKITA | https://www.ohkitaweb.co.jp/english/ |
 | OKABE | https://www.okabetool.co.jp/en/ |
 | SHINWA | https://www.shinwasokutei.co.jp/english/ |
+| SINTO | https://www.sinto.com/ |
 | TONE | https://www.tonetool.co.jp/en/ |
 | UNITTA | https://www.unitta.co.jp/ |
 | YAMAMOTO | https://www.yamamoto-kogaku.co.jp/en/ |

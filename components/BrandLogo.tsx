@@ -10,20 +10,19 @@ type BrandLogoProps = {
 };
 
 const logoClassNames: Partial<Record<string, string>> = {
-  eisen: "object-contain brightness-0",
-  elm: "object-cover object-left",
-  "fuji-denshi": "object-cover object-left",
-  unitta: "object-cover object-right"
+  "chubu-giken": "object-contain p-1 brightness-0",
+  eisen: "object-contain p-1 brightness-0",
+  sinto: "object-contain p-1"
 };
 
 export function BrandLogo({ name, slug, src = "", className = "", sizes = "160px" }: BrandLogoProps) {
   const logo = src || getBrandLogoPath(slug);
   const isNac = slug === "nac";
-  const logoClassName = logoClassNames[slug] ?? "object-contain";
+  const logoClassName = logoClassNames[slug] ?? "object-contain p-2";
 
   return (
     <div className={`relative flex items-center justify-center overflow-hidden bg-white ${className}`}>
-      <div className="relative flex h-16 w-40 items-center justify-center">
+      <div className="relative flex h-full w-full items-center justify-center">
         {isNac ? (
           <span
             className="font-nac-logo block whitespace-nowrap text-center text-[30px] leading-none text-graphite-900"

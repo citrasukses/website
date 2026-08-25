@@ -44,13 +44,15 @@ export function BrandCard({ brand, lang }: { brand: BrandCardBrand; lang: Langua
             On progress
           </span>
         ) : null}
-        <BrandLogo
-          name={brand.name}
-          slug={brand.slug}
-          src={brand.logo}
-          className="absolute bottom-4 left-4 h-20 w-48 border border-graphite-200 shadow-sm"
-          sizes="160px"
-        />
+        <div className="pointer-events-none absolute bottom-4 left-4 h-20 w-48">
+          <BrandLogo
+            name={brand.name}
+            slug={brand.slug}
+            src={brand.logo}
+            className="h-full w-full border border-graphite-200 shadow-sm"
+            sizes="192px"
+          />
+        </div>
       </div>
       <div className="flex flex-1 flex-col p-6">
         <div className="flex items-start justify-between gap-4">
