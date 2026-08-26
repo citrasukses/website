@@ -56,7 +56,7 @@ const logoByBrandSlug: Record<string, string> = {
   pentel: "/assets/brands/logos/pentel.png",
   pioneer: "/assets/brands/logos/pioneer.png",
   sekisui: "/assets/brands/logos/sekisui.png",
-  sinto: "/assets/brands/logos/sinto--slogan.png",
+  sinto: "/assets/brands/logos/sinto.svg",
   shinwa: "/assets/brands/logos/shinwa.png",
   smbc: "/assets/brands/logos/smbc.png",
   "tdk-lambda": "/assets/brands/logos/tdk-lambda--mark.png",

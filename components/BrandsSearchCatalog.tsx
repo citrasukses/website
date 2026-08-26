@@ -82,13 +82,15 @@ function TradingBrandCard({ brand, lang, requiresConfirmation = false }: { brand
           />
         )}
         {referenceImage ? (
-          <BrandLogo
-            name={brand.name}
-            slug={brand.slug}
-            src={brand.logo}
-            className="absolute bottom-3 left-3 h-12 w-28 border border-graphite-200 bg-white shadow-sm"
-            sizes="112px"
-          />
+          <div className="pointer-events-none absolute bottom-3 left-3 h-14 w-40">
+            <BrandLogo
+              name={brand.name}
+              slug={brand.slug}
+              src={brand.logo}
+              className="h-full w-full border border-graphite-200 shadow-sm"
+              sizes="160px"
+            />
+          </div>
         ) : null}
         {requiresConfirmation || !isPublic ? (
           <span className="absolute right-3 top-3 inline-flex items-center gap-1.5 border border-amber-300 bg-amber-50 px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.12em] text-amber-800 shadow-sm">
