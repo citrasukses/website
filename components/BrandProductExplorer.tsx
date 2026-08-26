@@ -102,8 +102,8 @@ export function BrandProductExplorer({ groups, lang, brandSlug, brandName }: Bra
           title={
             isTohnichi
               ? lang === "en"
-                ? "Explore Tohnichi models by process."
-                : "Jelajahi model Tohnichi berdasarkan proses."
+                ? "Explore TOHNICHI models by process."
+                : "Jelajahi model TOHNICHI berdasarkan proses."
               : isNac
                 ? lang === "en"
                   ? "Explore NAC fastening tools and quick couplings."

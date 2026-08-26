@@ -3478,8 +3478,8 @@
         "name": "TDMS App",
         "image": "/assets/brands/products/tohnichi/catalog/optional-equipment/tdms-app.png",
         "summary": {
-          "id": "TDMS App adalah aplikasi pengelolaan data yang menerima, menyimpan, dan mengolah hasil dari perangkat Tohnichi berkemampuan Bluetooth.",
-          "en": "TDMS App is a data-management application that receives, stores, and processes results from Bluetooth-enabled Tohnichi devices."
+          "id": "TDMS App adalah aplikasi pengelolaan data yang menerima, menyimpan, dan mengolah hasil dari perangkat TOHNICHI berkemampuan Bluetooth.",
+          "en": "TDMS App is a data-management application that receives, stores, and processes results from Bluetooth-enabled TOHNICHI devices."
         },
         "tags": [
           {
@@ -3509,8 +3509,8 @@
         "name": "TPC/TPC2",
         "image": "/assets/brands/products/tohnichi/catalog/optional-equipment/tpc-tpc2.jpg",
         "summary": {
-          "id": "TPC/TPC2 adalah protocol converter untuk menghubungkan produk Tohnichi ke sistem lini dengan format komunikasi yang berbeda.",
-          "en": "TPC/TPC2 is a protocol converter that connects Tohnichi products to line systems using different communication formats."
+          "id": "TPC/TPC2 adalah protocol converter untuk menghubungkan produk TOHNICHI ke sistem lini dengan format komunikasi yang berbeda.",
+          "en": "TPC/TPC2 is a protocol converter that connects TOHNICHI products to line systems using different communication formats."
         },
         "tags": [
           {
@@ -3944,7 +3944,7 @@
       },
       {
         "name": "Management system for manual tools",
-        "image": "/assets/brands/products/tohnichi/Tohnichi TCC2-G.jpg",
+        "image": "/assets/brands/products/tohnichi/TOHNICHI TCC2-G.jpg",
         "summary": {
           "id": "Management system for manual tools adalah solusi sistem untuk mengendalikan proses dan data pengencangan. Model ini mendukung inspeksi dan kalibrasi.",
           "en": "Management system for manual tools is a system solution for tightening-process and data control. This model supports inspection and calibration."

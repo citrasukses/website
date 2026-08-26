@@ -576,7 +576,7 @@ export function TohnichiSpecificationTables({
               rel="noreferrer"
               className="focus-ring inline-flex w-fit items-center gap-2 text-sm font-bold text-industrial-700 hover:text-industrial-900"
             >
-              {lang === "en" ? "Official Tohnichi product data" : "Data produk resmi Tohnichi"}
+              {lang === "en" ? "Official TOHNICHI product data" : "Data produk resmi TOHNICHI"}
               <ExternalLink className="h-4 w-4" aria-hidden="true" />
             </a>
           </div>

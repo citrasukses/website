@@ -181,7 +181,7 @@ export function TohnichiTorqueCarousel({ lang }: { lang: Language }) {
       className="tohnichi-instrument-surface relative overflow-hidden px-5 py-7 outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-industrial-700 sm:px-8 sm:py-8"
       role="region"
       aria-roledescription="carousel"
-      aria-label={lang === "en" ? "Tohnichi torque tool range" : "Rangkaian torque tool Tohnichi"}
+      aria-label={lang === "en" ? "TOHNICHI torque tool range" : "Rangkaian torque tool TOHNICHI"}
       tabIndex={0}
       onKeyDown={handleKeyDown}
       onMouseEnter={() => setIsInteracting(true)}
@@ -245,7 +245,7 @@ export function TohnichiTorqueCarousel({ lang }: { lang: Language }) {
         <Image
           key={activeTool.src}
           src={activeTool.src}
-          alt={`${activeTool.name} Tohnichi`}
+          alt={`${activeTool.name} TOHNICHI`}
           fill
           sizes="(min-width: 1024px) 620px, 90vw"
           className={`object-contain ${

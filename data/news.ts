@@ -20,8 +20,8 @@ export const newsItems: NewsItem[] = [
   // {
   //   slug: "tohnichi-torque-wrench-focus",
   //   title: {
-  //     id: "Product focus: Tohnichi torque wrench untuk lini assembly",
-  //     en: "Product focus: Tohnichi torque wrenches for assembly lines"
+  //     id: "Product focus: TOHNICHI torque wrench untuk lini assembly",
+  //     en: "Product focus: TOHNICHI torque wrenches for assembly lines"
   //   },
   //   summary: {
   //     id: "Update singkat untuk kebutuhan tightening, inspection, dan torque control di produksi.",
@@ -30,7 +30,7 @@ export const newsItems: NewsItem[] = [
   //   category: { id: "Product news", en: "Product news" },
   //   publishedAt: "2026-06-12",
   //   image: "/assets/brands/products/tohnichi/QL100N4.jpg",
-  //   brandName: "Tohnichi",
+  //   brandName: "TOHNICHI",
   //   brandSlug: "tohnichi",
   //   productName: "QL / CL Series",
   //   tags: [

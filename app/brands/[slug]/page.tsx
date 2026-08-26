@@ -27,20 +27,20 @@ const TOHNICHI_PAGE_PATH = "/brands/tohnichi";
 const TOHNICHI_OFFICIAL_URL = "https://en.global-tohnichi.com/";
 const TOHNICHI_DISTRIBUTOR_URL = "https://en.global-tohnichi.com/support/distributors.html";
 const TOHNICHI_SUPPORT_URL = "https://en.global-tohnichi.com/support/";
-const TOHNICHI_SEO_TITLE = "Tohnichi Torque Wrench & Torque Tools";
+const TOHNICHI_SEO_TITLE = "TOHNICHI Torque Wrench & Torque Tools";
 const TOHNICHI_SEO_DESCRIPTION = {
-  id: "PT Citra Sukses Ekapratama adalah agen penjualan dan servis Tohnichi di Indonesia untuk torque wrench, torque screwdriver, tester, kalibrasi, dan sistem tightening.",
-  en: "PT Citra Sukses Ekapratama is a Tohnichi sales and service agent in Indonesia for torque wrenches, torque screwdrivers, testers, calibration, and tightening systems."
+  id: "PT Citra Sukses Ekapratama adalah agen penjualan dan servis TOHNICHI di Indonesia untuk torque wrench, torque screwdriver, tester, kalibrasi, dan sistem tightening.",
+  en: "PT Citra Sukses Ekapratama is a TOHNICHI sales and service agent in Indonesia for torque wrenches, torque screwdrivers, testers, calibration, and tightening systems."
 };
 const TOHNICHI_SEO_KEYWORDS = [
-  "Tohnichi",
-  "Tohnichi Indonesia",
-  "distributor Tohnichi Indonesia",
-  "torque wrench Tohnichi",
-  "kunci torsi Tohnichi",
-  "torque screwdriver Tohnichi",
-  "torque tester Tohnichi",
-  "kalibrasi Tohnichi",
+  "TOHNICHI",
+  "TOHNICHI Indonesia",
+  "distributor TOHNICHI Indonesia",
+  "torque wrench TOHNICHI",
+  "kunci torsi TOHNICHI",
+  "torque screwdriver TOHNICHI",
+  "torque tester TOHNICHI",
+  "kalibrasi TOHNICHI",
   "PT Citra Sukses Ekapratama"
 ];
 
@@ -146,15 +146,15 @@ export default async function BrandDetailPage({ params }: PageProps) {
           name: TOHNICHI_SEO_TITLE,
           headline:
             lang === "en"
-              ? "Tohnichi Torque Wrenches & Torque Tools"
-              : "Tohnichi Torque Wrench & Torque Tools",
+              ? "TOHNICHI Torque Wrenches & Torque Tools"
+              : "TOHNICHI Torque Wrench & Torque Tools",
           description: TOHNICHI_SEO_DESCRIPTION[lang],
           url: `https://cse.co.id${localizedTohnichiPagePath}`,
           inLanguage: lang === "en" ? "en-ID" : "id-ID",
           citation: [TOHNICHI_DISTRIBUTOR_URL, TOHNICHI_SUPPORT_URL],
           about: {
             "@type": "Brand",
-            name: "Tohnichi",
+            name: "TOHNICHI",
             url: TOHNICHI_OFFICIAL_URL,
             logo: "https://cse.co.id/assets/brands/logos/tohnichi--nobg.png"
           },
@@ -171,19 +171,19 @@ export default async function BrandDetailPage({ params }: PageProps) {
             subjectOf: [
               {
                 "@type": "WebPage",
-                name: "Tohnichi's Network of Sales and Service Agents",
+                name: "TOHNICHI's Network of Sales and Service Agents",
                 url: TOHNICHI_DISTRIBUTOR_URL
               },
               {
                 "@type": "WebPage",
-                name: "Tohnichi Overseas Calibration and Repair Licensees",
+                name: "TOHNICHI Overseas Calibration and Repair Licensees",
                 url: TOHNICHI_SUPPORT_URL
               }
             ]
           },
           mainEntity: {
             "@type": "ItemList",
-            name: lang === "en" ? "Tohnichi product families in Indonesia" : "Kategori produk Tohnichi",
+            name: lang === "en" ? "TOHNICHI product families in Indonesia" : "Kategori produk TOHNICHI",
             numberOfItems: brand.productGroups.flatMap((group) => group.products).length,
             itemListElement: brand.productGroups
               .flatMap((group) => group.products)
@@ -217,7 +217,7 @@ export default async function BrandDetailPage({ params }: PageProps) {
             {
               "@type": "ListItem",
               position: 3,
-              name: "Tohnichi",
+              name: "TOHNICHI",
               item: `https://cse.co.id${localizedTohnichiPagePath}`
             }
           ]
@@ -277,8 +277,8 @@ export default async function BrandDetailPage({ params }: PageProps) {
         eyebrow={
           isTohnichi
             ? lang === "en"
-              ? "Tohnichi sales & service agent / Indonesia"
-              : "Agen penjualan & servis Tohnichi / Indonesia"
+              ? "TOHNICHI sales & service agent / Indonesia"
+              : "Agen penjualan & servis TOHNICHI / Indonesia"
             : `${brand.name}${brand.country ? ` / ${brand.country}` : ""}`
         }
         title={
@@ -288,7 +288,7 @@ export default async function BrandDetailPage({ params }: PageProps) {
                   <span className="inline-flex shrink-0 rounded-xl border border-white/80 bg-white px-3 py-2 shadow-sm">
                     <Image
                       src="/assets/brands/logos/tohnichi--nobg.png"
-                      alt="Tohnichi"
+                      alt="TOHNICHI"
                       width={400}
                       height={186}
                       priority
@@ -346,15 +346,15 @@ export default async function BrandDetailPage({ params }: PageProps) {
             <div className="container-page grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
               <div>
                 <p className="mb-3 border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-signal-600">
-                  Tohnichi Mfg. Co., Ltd.
+                  TOHNICHI Mfg. Co., Ltd.
                 </p>
                 <h2 className="text-balance text-2xl font-bold tracking-normal text-graphite-900 md:text-4xl">
                   {lang === "en" ? "Precision technology from Japan since 1949." : "Teknologi presisi dari Jepang sejak tahun 1949."}
                 </h2>
                 <p className="mt-4 text-base leading-7 text-graphite-500">
                   {lang === "en"
-                    ? "CSE is listed by Tohnichi as a sales and service agent and as an overseas calibration and repair licensee in Indonesia."
-                    : "CSE tercantum oleh Tohnichi sebagai agen penjualan dan servis serta licensee kalibrasi dan perbaikan di Indonesia."}
+                    ? "CSE is listed by TOHNICHI as a sales and service agent and as an overseas calibration and repair licensee in Indonesia."
+                    : "CSE tercantum oleh TOHNICHI sebagai agen penjualan dan servis serta licensee kalibrasi dan perbaikan di Indonesia."}
                 </p>
                 <div className="mt-4 flex flex-wrap gap-x-5 gap-y-3">
                   <a
@@ -408,7 +408,7 @@ export default async function BrandDetailPage({ params }: PageProps) {
                   rel="noopener noreferrer"
                   className="focus-ring block border-t border-white/15 bg-graphite-900 px-5 py-4 text-sm font-bold leading-6 text-white underline decoration-white/30 underline-offset-4 transition hover:bg-industrial-800 hover:decoration-white"
                 >
-                  &quot;Tohnichi QL+ CL+ Torque Wrench&quot; Watch in Tohnichi&apos;s Official Youtube
+                  &quot;TOHNICHI QL+ CL+ Torque Wrench&quot; Watch in TOHNICHI&apos;s Official Youtube
                 </a>
               </div>
             </div>

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Build normalized Tohnichi product-family specification data.
+"""Build normalized TOHNICHI product-family specification data.
 
 The script combines the supplied 2025.10 reference guide with locally downloaded
-official Tohnichi product pages. The PDF is used to identify catalogue page
+official TOHNICHI product pages. The PDF is used to identify catalogue page
 references; the official HTML tables provide a machine-readable representation
 of the same model/specification data and cover product families whose options
 are maintained as online accessory lists.

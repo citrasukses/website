@@ -91,7 +91,7 @@ const automotiveSteps: IndustryCaseStudyStep[] = [
   },
   {
     brandSlug: "tohnichi",
-    brandName: "Tohnichi",
+    brandName: "TOHNICHI",
     phase: { id: "Torque assurance", en: "Torque assurance" },
     application: {
       id: "Mengencangkan dan memeriksa sambungan kritis dengan target torque yang jelas.",
@@ -178,7 +178,7 @@ const heavyEquipmentSteps: IndustryCaseStudyStep[] = [
   },
   {
     brandSlug: "tohnichi",
-    brandName: "Tohnichi",
+    brandName: "TOHNICHI",
     phase: { id: "Critical joint check", en: "Critical joint check" },
     application: {
       id: "Final tightening dan inspeksi baut kritis setelah assembly atau overhaul.",
@@ -265,7 +265,7 @@ const generalIndustrySteps: IndustryCaseStudyStep[] = [
   },
   {
     brandSlug: "tohnichi",
-    brandName: "Tohnichi",
+    brandName: "TOHNICHI",
     phase: { id: "Process verification", en: "Process verification" },
     application: {
       id: "Mengontrol tightening dan memeriksa torque pada assembly kritis.",

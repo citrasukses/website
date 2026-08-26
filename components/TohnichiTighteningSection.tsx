@@ -133,7 +133,7 @@ const challenges: TighteningChallenge[] = [
       en: "Problem tools are identified earlier."
     },
     product: {
-      src: "/assets/brands/products/tohnichi/Tohnichi TCC2-G.jpg",
+      src: "/assets/brands/products/tohnichi/TOHNICHI TCC2-G.jpg",
       name: "Torque Verification System"
     }
   },
@@ -687,7 +687,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
               <div className="flex items-center gap-4 px-5 py-3.5 sm:px-6 sm:py-4">
                 <Image
                   src="/assets/brands/logos/tohnichi--nobg.png"
-                  alt="Tohnichi"
+                  alt="TOHNICHI"
                   width={181}
                   height={84}
                   className="h-12 w-auto object-contain sm:h-14"
@@ -706,8 +706,8 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
                   </p>
                   <p className="mt-0.5 text-base font-bold leading-tight sm:whitespace-nowrap sm:text-lg">
                     {lang === "en"
-                      ? "Tohnichi Sales & Service Agent in Indonesia"
-                      : "Agen Penjualan & Servis Tohnichi di Indonesia"}
+                      ? "TOHNICHI Sales & Service Agent in Indonesia"
+                      : "Agen Penjualan & Servis TOHNICHI di Indonesia"}
                   </p>
                 </div>
               </div>
@@ -726,8 +726,8 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-7 text-graphite-600 md:text-lg md:leading-8">
               {lang === "en"
-                ? "Through CSE, Tohnichi helps manufacturing teams prevent product damage, expose missed work, prove every tightening result, and detect tool abnormalities before defects leave the line."
-                : "Melalui CSE, Tohnichi membantu tim manufaktur mencegah kerusakan produk, menemukan pekerjaan yang terlewat, membuktikan setiap hasil tightening, dan mendeteksi abnormalitas alat sebelum defect keluar dari lini."}
+                ? "Through CSE, TOHNICHI helps manufacturing teams prevent product damage, expose missed work, prove every tightening result, and detect tool abnormalities before defects leave the line."
+                : "Melalui CSE, TOHNICHI membantu tim manufaktur mencegah kerusakan produk, menemukan pekerjaan yang terlewat, membuktikan setiap hasil tightening, dan mendeteksi abnormalitas alat sebelum defect keluar dari lini."}
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -741,7 +741,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
                 href={withLang("/brands/tohnichi", lang)}
                 variant="ghost"
               >
-                {lang === "en" ? "Explore Tohnichi" : "Lihat Tohnichi"}
+                {lang === "en" ? "Explore TOHNICHI" : "Lihat TOHNICHI"}
               </CTAButton>
             </div>
           </div>
@@ -779,7 +779,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
           className="mt-14 overflow-hidden border border-graphite-200 bg-white shadow-panel lg:mt-18"
           role="region"
           aria-roledescription="carousel"
-          aria-label={lang === "en" ? "Manufacturing problems and Tohnichi solutions" : "Masalah manufaktur dan solusi Tohnichi"}
+          aria-label={lang === "en" ? "Manufacturing problems and TOHNICHI solutions" : "Masalah manufaktur dan solusi TOHNICHI"}
         >
           <div className="border-b border-graphite-200 px-5 py-6 sm:px-7">
             <div>
@@ -868,7 +868,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
 
               <article className="flex h-full flex-col bg-[#fffaf0] p-5 sm:p-7">
                 <div className="inline-flex bg-[#e2b91d] px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-graphite-900">
-                  {lang === "en" ? "Tohnichi solution" : "Solusi Tohnichi"}
+                  {lang === "en" ? "TOHNICHI solution" : "Solusi TOHNICHI"}
                 </div>
                 <h5 className="mt-4 text-xl font-bold leading-snug text-graphite-900 sm:text-2xl">
                   {text(activeChallenge.solutionTitle, lang)}

@@ -7,7 +7,7 @@ This report records the live-site baseline before the local crawlability and lan
 
 ## Executive finding
 
-CSE already has some relevance for branded Tohnichi searches, but Google is not showing the site consistently. The main causes visible in Search Console are:
+CSE already has some relevance for branded TOHNICHI searches, but Google is not showing the site consistently. The main causes visible in Search Console are:
 
 1. Google discovered 102 submitted/current pages but had not crawled or indexed them.
 2. The catalogue migration left ranking product URLs returning 404 instead of redirecting to their replacements.
@@ -76,9 +76,9 @@ Search Console page report last updated 17 August 2026.
 | Page with redirect | 5 |
 | Crawled — currently not indexed | 2 |
 
-The 102 discovered-but-not-indexed URLs were first detected on 5 August and had no crawl date. Examples were `/about` and many Tohnichi product pages such as `/brands/tohnichi/products/5tm`, `/a`, `/a3-a4`, `/ap2`, and `/atge-atge-g`.
+The 102 discovered-but-not-indexed URLs were first detected on 5 August and had no crawl date. Examples were `/about` and many TOHNICHI product pages such as `/brands/tohnichi/products/5tm`, `/a`, `/a3-a4`, `/ap2`, and `/atge-atge-g`.
 
-The 18 known 404s included former Tohnichi URLs such as `cem3-g`, `dote-g`, `rntd-series`, `cspfdd-ad`, `ces-g`, `fdd-series`, `stc2-g`, and `db-cdb-series`, plus former NAC and FUJI STAR product URLs.
+The 18 known 404s included former TOHNICHI URLs such as `cem3-g`, `dote-g`, `rntd-series`, `cspfdd-ad`, `ces-g`, `fdd-series`, `stc2-g`, and `db-cdb-series`, plus former NAC and FUJI STAR product URLs.
 
 ## Sitemap and search features
 
@@ -90,7 +90,7 @@ The 18 known 404s included former Tohnichi URLs such as `cem3-g`, `dote-g`, `rnt
 
 ## Priority 2 fixes completed locally
 
-1. Every published product URL is now present in the initial HTML of its brand page. The collapsed Tohnichi catalogue uses native `<details>` so links remain crawlable without client-side interaction.
+1. Every published product URL is now present in the initial HTML of its brand page. The collapsed TOHNICHI catalogue uses native `<details>` so links remain crawlable without client-side interaction.
 2. English pages now use dedicated `/en/...` URLs throughout navigation, metadata, canonicals, and internal links.
 3. Old `?lang=en` page URLs now 301 redirect to their `/en/...` equivalent while preserving other query parameters.
 4. The sitemap now emits reciprocal Indonesian, English, and `x-default` alternates for every published route.
@@ -111,7 +111,7 @@ The 18 known 404s included former Tohnichi URLs such as `cem3-g`, `dote-g`, `rnt
 After deployment, use this report as the baseline. Do not judge the change from manual searches alone. Compare Search Console after Google recrawls the site, focusing on:
 
 - indexed versus discovered-but-not-indexed product pages;
-- non-branded Tohnichi impressions and clicks;
+- non-branded TOHNICHI impressions and clicks;
 - the `/brands/tohnichi` landing page;
 - whether legacy 404 URLs move into the redirect category;
 - organic RFQ, contact, email, and WhatsApp actions.

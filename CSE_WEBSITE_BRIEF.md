@@ -115,7 +115,7 @@ Build these pages first:
 - Homepage
 - About page
 - Brands listing page
-- Tohnichi brand page
+- TOHNICHI brand page
 - Industries page
 - For Partners page
 - Contact / RFQ page
@@ -175,7 +175,7 @@ Current unfinished Webflow homepage:
 https://cse-db6a98.webflow.io/
 ```
 
-Current unfinished Webflow Tohnichi page:
+Current unfinished Webflow TOHNICHI page:
 
 ```text
 https://cse-db6a98.webflow.io/tohnichi
@@ -189,8 +189,8 @@ Observed useful content from Webflow:
 - Indonesian-first homepage messaging
 - Customer names/logos such as Toyota, Denso, Suzuki, Mitsubishi, Astra Honda, and others
 - Industries: Automotive, Heavy Equipment, Oil & Gas, General Industry
-- Brand examples: Tohnichi, NAC, Fuji Star
-- Tohnichi page already separates product lines by use case: tightening, inspection, assembly, digital tightening, calibration, and error proofing
+- Brand examples: TOHNICHI, NAC, Fuji Star
+- TOHNICHI page already separates product lines by use case: tightening, inspection, assembly, digital tightening, calibration, and error proofing
 
 ## Content Management Approach
 
@@ -353,6 +353,6 @@ Do not mix buyer RFQs and partner inquiries into one vague form if the page cont
 
 - Exact email provider: Resend, SMTP, or another service.
 - WhatsApp number for future CTA.
-- Final brand list for v1 beyond Tohnichi, NAC, and Fuji Star.
+- Final brand list for v1 beyond TOHNICHI, NAC, and Fuji Star.
 - Final available image/logo assets.
 - Whether bilingual content should be complete at launch or Indonesian-first with English added progressively.

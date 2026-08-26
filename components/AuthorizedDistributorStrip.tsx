@@ -12,7 +12,7 @@ type AuthorizedDistributorStripProps = {
 
 const distributors = [
   {
-    name: "Tohnichi",
+    name: "TOHNICHI",
     slug: "tohnichi",
     logo: "/assets/brands/logos/tohnichi--alternate.png",
     width: 166,
@@ -107,7 +107,7 @@ export function AuthorizedDistributorStrip({ lang, className = "" }: AuthorizedD
         <div className="grid grid-cols-2 border-t border-white/20 bg-white lg:grid-cols-5 lg:border-l lg:border-t-0">
           <DistributorTile
             slug="tohnichi"
-            name="Tohnichi"
+            name="TOHNICHI"
             lang={lang}
             className="border-b border-graphite-200 after:absolute after:inset-y-5 after:right-0 after:w-0.5 after:bg-signal-500/70 after:content-[''] lg:border-b-0"
           >
@@ -115,7 +115,7 @@ export function AuthorizedDistributorStrip({ lang, className = "" }: AuthorizedD
               <div className="relative h-14 w-full max-w-[150px] overflow-hidden">
                 <Image
                   src={distributors[0].logo}
-                  alt="Tohnichi"
+                  alt="TOHNICHI"
                   fill
                   sizes="150px"
                   className="object-cover object-center transition-transform duration-300 group-hover:scale-105"

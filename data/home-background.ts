@@ -42,7 +42,7 @@ export const homeBackgroundImage: HomeBackgroundImage | null = {
 export const homeBackgroundItems: HomeBackgroundItem[] = [
   {
     id: "tohnichi-digital-torque-wrench",
-    label: "Tohnichi digital torque wrench",
+    label: "TOHNICHI digital torque wrench",
     src: "/assets/company/background-items/tohnichi-digital-torque-wrench.png",
     slotClassName:
       "col-start-3 col-span-4 row-start-2 row-span-2 opacity-[0.10] md:col-start-6 md:col-span-7 md:row-start-1 md:row-span-2 lg:col-start-6 lg:col-span-7",
@@ -50,7 +50,7 @@ export const homeBackgroundItems: HomeBackgroundItem[] = [
   },
   {
     id: "tohnichi-click-torque-wrench",
-    label: "Tohnichi click torque wrench",
+    label: "TOHNICHI click torque wrench",
     src: "/assets/company/background-items/tohnichi-click-torque-wrench.jpg",
     slotClassName:
       "hidden opacity-[0.08] md:col-start-2 md:col-span-5 md:row-start-4 md:row-span-1 md:block lg:col-start-3 lg:col-span-4",
@@ -74,7 +74,7 @@ export const homeBackgroundItems: HomeBackgroundItem[] = [
   },
   {
     id: "tohnichi-dial-torque-gauge",
-    label: "Tohnichi dial torque gauge",
+    label: "TOHNICHI dial torque gauge",
     src: "/assets/company/background-items/tohnichi-dial-torque-gauge.jpg",
     slotClassName:
       "hidden opacity-[0.08] md:col-start-9 md:col-span-2 md:row-start-5 md:row-span-2 md:block lg:col-start-9",
