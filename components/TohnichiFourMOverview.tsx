@@ -154,44 +154,42 @@ function FourMVisualization({
 export function TohnichiFourMOverview({ lang }: { lang: Language }) {
   return (
     <section
-      className="mt-14 lg:mt-18"
+      className="border-b border-graphite-200 bg-graphite-50 px-5 py-5 sm:px-7 sm:py-6"
       aria-labelledby="tohnichi-four-m-title"
     >
-      <div className="border-b border-graphite-900/15 pb-4">
-        <h3
-          id="tohnichi-four-m-title"
-          className="mt-2 text-xl font-bold leading-tight text-graphite-900 sm:text-2xl"
-        >
-          {lang === "en" ? "Sources of tightening defects" : "Penyebab defect tightening"}
-        </h3>
-      </div>
+      <h4
+        id="tohnichi-four-m-title"
+        className="text-base font-bold leading-tight text-graphite-900 sm:text-lg"
+      >
+        {lang === "en" ? "Where can the defect begin?" : "Dari mana defect dapat bermula?"}
+      </h4>
 
-      <ol className="grid grid-cols-2 gap-x-5 gap-y-8 pt-6 sm:gap-x-8 lg:grid-cols-4">
+      <ol className="mt-4 grid gap-px overflow-hidden border border-graphite-200 bg-graphite-200 sm:grid-cols-2 lg:grid-cols-4">
         {fourMFactors.map((factor) => {
           return (
-            <li key={factor.id} className="min-w-0">
-              <div className="flex aspect-[4/3] items-center justify-center bg-[#f3f1ec] px-1 text-industrial-700 sm:px-3">
+            <li key={factor.id} className="grid min-w-0 grid-cols-[4.5rem_1fr] bg-white p-3.5">
+              <div className="flex h-16 items-center justify-center bg-[#f3f1ec] text-industrial-700">
                 <FourMVisualization
                   factor={factor.id}
                   label={`${factor.name}: ${text(factor.caption, lang)}`}
                 />
               </div>
 
-              <div className="mt-3 border-t border-graphite-900/15 pt-3">
-                <h4 className="text-base font-bold uppercase tracking-[0.08em] text-graphite-900 sm:text-lg">
+              <div className="min-w-0 pl-3">
+                <h5 className="text-xs font-bold uppercase tracking-[0.1em] text-graphite-900">
                   {factor.name}
-                </h4>
-                <p className="mt-1 text-xs leading-5 text-graphite-500 sm:text-sm">
+                </h5>
+                <p className="mt-0.5 text-[10px] font-semibold leading-4 text-graphite-500">
                   {text(factor.caption, lang)}
                 </p>
 
-                <ul className="mt-3 space-y-1.5 border-t border-graphite-900/10 pt-3">
+                <ul className="mt-2 space-y-1">
                   {factor.details.map((detail) => (
                     <li
                       key={detail.en}
-                      className="grid grid-cols-[auto_1fr] gap-2 text-[11px] leading-4 text-graphite-700 sm:text-xs sm:leading-5"
+                      className="grid grid-cols-[auto_1fr] gap-1.5 text-[9px] leading-3.5 text-graphite-600"
                     >
-                      <span className="mt-[0.45em] h-1.5 w-1.5 bg-signal-500" aria-hidden="true" />
+                      <span className="mt-[0.45em] h-1 w-1 bg-signal-500" aria-hidden="true" />
                       <span>{text(detail, lang)}</span>
                     </li>
                   ))}

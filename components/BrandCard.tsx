@@ -25,7 +25,7 @@ export function BrandCard({ brand, lang }: { brand: BrandCardBrand; lang: Langua
   const cardVisual = brandCardVisuals[brand.slug];
   const isPublic = isBrandPubliclyAvailable(brand.slug);
   const canOpen = canViewBrandDraft(brand.slug);
-  const displayName = brand.slug === "tohnichi" ? "Tohnichi" : brand.name;
+  const displayName = brand.slug === "tohnichi" ? "TOHNICHI" : brand.name;
 
   const content = (
     <>

@@ -208,6 +208,10 @@ textarea {
   font-family: "NAC Logo";
 }
 
+.nac-strip-logo {
+  font-size: min(26px, 17cqw);
+}
+
 @keyframes expertise-slide-enter {
   from {
     opacity: 0;

@@ -136,7 +136,7 @@ const torqueTools: TorqueToolSlide[] = [
 
 export function TohnichiTorqueCarousel({ lang }: { lang: Language }) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [rotationPaused, setRotationPaused] = useState(true);
+  const [rotationPaused, setRotationPaused] = useState(false);
   const [isInteracting, setIsInteracting] = useState(false);
   const activeTool = torqueTools[activeIndex];
   const isAutoRotationPaused = rotationPaused || isInteracting;
@@ -151,7 +151,7 @@ export function TohnichiTorqueCarousel({ lang }: { lang: Language }) {
 
     const timer = window.setTimeout(() => {
       setActiveIndex((current) => (current + 1) % torqueTools.length);
-    }, 5500);
+    }, 5000);
 
     return () => window.clearTimeout(timer);
   }, [activeIndex, isAutoRotationPaused]);
@@ -181,7 +181,7 @@ export function TohnichiTorqueCarousel({ lang }: { lang: Language }) {
       className="tohnichi-instrument-surface relative overflow-hidden px-5 py-7 outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-industrial-700 sm:px-8 sm:py-8"
       role="region"
       aria-roledescription="carousel"
-      aria-label={lang === "en" ? "Tohnichi torque tool range" : "Rangkaian torque tool Tohnichi"}
+      aria-label={lang === "en" ? "TOHNICHI torque tool range" : "Rangkaian torque tool TOHNICHI"}
       tabIndex={0}
       onKeyDown={handleKeyDown}
       onMouseEnter={() => setIsInteracting(true)}
@@ -245,7 +245,7 @@ export function TohnichiTorqueCarousel({ lang }: { lang: Language }) {
         <Image
           key={activeTool.src}
           src={activeTool.src}
-          alt={`${activeTool.name} Tohnichi`}
+          alt={`${activeTool.name} TOHNICHI`}
           fill
           sizes="(min-width: 1024px) 620px, 90vw"
           className={`object-contain ${

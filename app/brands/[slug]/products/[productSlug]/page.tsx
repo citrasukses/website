@@ -69,8 +69,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const seoTitle =
     brand.slug === "tohnichi"
       ? lang === "en"
-        ? `${product.name} Tohnichi - Models & Specifications`
-        : `${product.name} Tohnichi - Model & Spesifikasi`
+        ? `${product.name} TOHNICHI - Models & Specifications`
+        : `${product.name} TOHNICHI - Model & Spesifikasi`
       : brand.slug === "nac"
         ? lang === "en"
           ? `${product.name} NAC Indonesia - Models & Catalogue`

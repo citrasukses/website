@@ -59,7 +59,7 @@ export function CustomerLogoCarousel({ customers }: CustomerLogoCarouselProps) {
         left: isAtEnd ? 0 : Math.min(carousel.scrollLeft + carousel.clientWidth, maxScrollLeft),
         behavior: "smooth"
       });
-    }, 3000);
+    }, 5000);
 
     return () => window.clearInterval(timer);
   }, [customers.length, isPaused]);

@@ -180,7 +180,7 @@ export function TohnichiProductPromotionCarousel({ lang }: { lang: Language }) {
       {hasMultipleSlides ? (
         <div
           className="mt-3 grid gap-2 sm:grid-cols-2"
-          aria-label={lang === "en" ? "Promoted Tohnichi products" : "Produk promosi Tohnichi"}
+          aria-label={lang === "en" ? "Promoted TOHNICHI products" : "Produk promosi TOHNICHI"}
         >
           {tohnichiPromotionSlides.map((slide, index) => {
             const active = index === activeIndex;

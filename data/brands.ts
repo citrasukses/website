@@ -46,7 +46,7 @@ export const sea_brands: Brand[] = [
 export const brands: Brand[] = [
   {
     slug: "tohnichi",
-    name: "Tohnichi",
+    name: "TOHNICHI",
     countryCode: "JP",
     country: "Japan",
     category: {
@@ -65,12 +65,12 @@ export const brands: Brand[] = [
     researchStatus: "verified",
     featured: true,
     summary: {
-      id: "PT Citra Sukses Ekapratama (CSE) adalah agen penjualan dan servis Tohnichi di Indonesia untuk torque wrench, torque screwdriver, tester, kalibrasi, dan sistem tightening.",
-      en: "PT Citra Sukses Ekapratama (CSE) is a Tohnichi sales and service agent in Indonesia for torque wrenches, torque screwdrivers, testers, calibration, and tightening systems."
+      id: "PT Citra Sukses Ekapratama (CSE) adalah agen penjualan dan servis TOHNICHI di Indonesia untuk torque wrench, torque screwdriver, tester, kalibrasi, dan sistem tightening.",
+      en: "PT Citra Sukses Ekapratama (CSE) is a TOHNICHI sales and service agent in Indonesia for torque wrenches, torque screwdrivers, testers, calibration, and tightening systems."
     },
     description: {
-      id: "CSE mendukung kebutuhan Tohnichi untuk pabrik yang membutuhkan tightening akurat, quality control yang konsisten, dan traceability proses assembly.",
-      en: "CSE supports Tohnichi needs for factories that require accurate tightening, consistent quality control, and assembly process traceability."
+      id: "CSE mendukung kebutuhan TOHNICHI untuk pabrik yang membutuhkan tightening akurat, quality control yang konsisten, dan traceability proses assembly.",
+      en: "CSE supports TOHNICHI needs for factories that require accurate tightening, consistent quality control, and assembly process traceability."
     },
     strengths: [
       {
@@ -88,12 +88,12 @@ export const brands: Brand[] = [
     ],
     searchTerms: [
       "tonichi",
-      "Tohnichi Indonesia",
-      "Tohnichi CSE",
-      "CSE Tohnichi",
-      "distributor Tohnichi Indonesia",
-      "agen Tohnichi Indonesia",
-      "kunci torsi Tohnichi",
+      "TOHNICHI Indonesia",
+      "TOHNICHI CSE",
+      "CSE TOHNICHI",
+      "distributor TOHNICHI Indonesia",
+      "agen TOHNICHI Indonesia",
+      "kunci torsi TOHNICHI",
       "torque tools",
       "torque wrench",
       "torque screwdriver",

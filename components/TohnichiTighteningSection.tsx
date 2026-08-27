@@ -133,7 +133,7 @@ const challenges: TighteningChallenge[] = [
       en: "Problem tools are identified earlier."
     },
     product: {
-      src: "/assets/brands/products/tohnichi/Tohnichi TCC2-G.jpg",
+      src: "/assets/brands/products/tohnichi/TOHNICHI TCC2-G.jpg",
       name: "Torque Verification System"
     }
   },
@@ -627,10 +627,22 @@ const controlLayers = [
 
 export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionProps) {
   const [activeProblemIndex, setActiveProblemIndex] = useState(0);
-  const [rotationPaused, setRotationPaused] = useState(true);
-  const [isInteracting, setIsInteracting] = useState(false);
+  const [autoRotationResumeAt, setAutoRotationResumeAt] = useState<number | null>(null);
   const activeChallenge = manufacturingProblems[activeProblemIndex];
-  const isAutoRotationPaused = rotationPaused || isInteracting;
+  const isAutoRotationPaused = autoRotationResumeAt !== null;
+
+  useEffect(() => {
+    if (autoRotationResumeAt === null) {
+      return;
+    }
+
+    const timer = window.setTimeout(
+      () => setAutoRotationResumeAt(null),
+      Math.max(0, autoRotationResumeAt - Date.now())
+    );
+
+    return () => window.clearTimeout(timer);
+  }, [autoRotationResumeAt]);
 
   useEffect(() => {
     if (
@@ -642,7 +654,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
 
     const timer = window.setTimeout(() => {
       setActiveProblemIndex((current) => (current + 1) % manufacturingProblems.length);
-    }, 7000);
+    }, 5000);
 
     return () => window.clearTimeout(timer);
   }, [activeProblemIndex, isAutoRotationPaused]);
@@ -655,6 +667,11 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
 
   const showNextProblem = () => {
     setActiveProblemIndex((current) => (current + 1) % manufacturingProblems.length);
+  };
+
+  const selectProblem = (index: number) => {
+    setActiveProblemIndex(index);
+    setAutoRotationResumeAt(Date.now() + 60_000);
   };
 
   return (
@@ -670,7 +687,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
               <div className="flex items-center gap-4 px-5 py-3.5 sm:px-6 sm:py-4">
                 <Image
                   src="/assets/brands/logos/tohnichi--nobg.png"
-                  alt="Tohnichi"
+                  alt="TOHNICHI"
                   width={181}
                   height={84}
                   className="h-12 w-auto object-contain sm:h-14"
@@ -689,8 +706,8 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
                   </p>
                   <p className="mt-0.5 text-base font-bold leading-tight sm:whitespace-nowrap sm:text-lg">
                     {lang === "en"
-                      ? "Tohnichi Sales & Service Agent in Indonesia"
-                      : "Agen Penjualan & Servis Tohnichi di Indonesia"}
+                      ? "TOHNICHI Sales & Service Agent in Indonesia"
+                      : "Agen Penjualan & Servis TOHNICHI di Indonesia"}
                   </p>
                 </div>
               </div>
@@ -709,8 +726,8 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-7 text-graphite-600 md:text-lg md:leading-8">
               {lang === "en"
-                ? "Through CSE, Tohnichi helps manufacturing teams prevent product damage, expose missed work, prove every tightening result, and detect tool abnormalities before defects leave the line."
-                : "Melalui CSE, Tohnichi membantu tim manufaktur mencegah kerusakan produk, menemukan pekerjaan yang terlewat, membuktikan setiap hasil tightening, dan mendeteksi abnormalitas alat sebelum defect keluar dari lini."}
+                ? "Through CSE, TOHNICHI helps manufacturing teams prevent product damage, expose missed work, prove every tightening result, and detect tool abnormalities before defects leave the line."
+                : "Melalui CSE, TOHNICHI membantu tim manufaktur mencegah kerusakan produk, menemukan pekerjaan yang terlewat, membuktikan setiap hasil tightening, dan mendeteksi abnormalitas alat sebelum defect keluar dari lini."}
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -724,7 +741,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
                 href={withLang("/brands/tohnichi", lang)}
                 variant="ghost"
               >
-                {lang === "en" ? "Explore Tohnichi" : "Lihat Tohnichi"}
+                {lang === "en" ? "Explore TOHNICHI" : "Lihat TOHNICHI"}
               </CTAButton>
             </div>
           </div>
@@ -758,66 +775,24 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
           </div>
         </div>
 
-        <TohnichiFourMOverview lang={lang} />
-
         <div
-          className="mt-8 overflow-hidden border border-graphite-200 bg-white shadow-panel lg:mt-10"
+          className="mt-14 overflow-hidden border border-graphite-200 bg-white shadow-panel lg:mt-18"
           role="region"
           aria-roledescription="carousel"
-          aria-label={lang === "en" ? "Manufacturing problems and Tohnichi solutions" : "Masalah manufaktur dan solusi Tohnichi"}
-          onMouseEnter={() => setIsInteracting(true)}
-          onMouseLeave={() => setIsInteracting(false)}
-          onFocusCapture={() => setIsInteracting(true)}
-          onBlurCapture={(event) => {
-            if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
-              setIsInteracting(false);
-            }
-          }}
+          aria-label={lang === "en" ? "Manufacturing problems and TOHNICHI solutions" : "Masalah manufaktur dan solusi TOHNICHI"}
         >
-          <div className="flex flex-col gap-5 border-b border-graphite-200 px-5 py-6 sm:flex-row sm:items-end sm:justify-between sm:px-7">
+          <div className="border-b border-graphite-200 px-5 py-6 sm:px-7">
             <div>
               <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-signal-600">
-                Tohnichi application guide
+                Application guide
               </p>
               <h3 className="mt-2 text-2xl font-bold leading-tight text-graphite-900 sm:text-3xl">
                 Tantangan Quality pada Industri Manufaktur
               </h3>
-              <p className="mt-2 max-w-2xl text-sm leading-6 text-graphite-500">
-                {lang === "en"
-                  ? "Select a failure mode to see where it begins and how the right Tohnichi setup controls it."
-                  : "Pilih failure mode untuk melihat sumber masalah dan bagaimana setup Tohnichi yang tepat mengendalikannya."}
-              </p>
             </div>
-
-            <button
-              type="button"
-              onClick={() => setRotationPaused((current) => !current)}
-              className="flex min-h-10 shrink-0 items-center gap-2 self-start border border-graphite-200 bg-graphite-50 px-3 text-[10px] font-bold uppercase tracking-[0.14em] text-graphite-700 transition-colors hover:border-industrial-700 hover:text-industrial-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-industrial-700 sm:self-auto"
-              aria-pressed={rotationPaused}
-              aria-label={
-                rotationPaused
-                  ? lang === "en"
-                    ? "Resume automatic problem rotation"
-                    : "Lanjutkan pergantian masalah otomatis"
-                  : lang === "en"
-                    ? "Pause automatic problem rotation"
-                    : "Jeda pergantian masalah otomatis"
-              }
-            >
-              {rotationPaused ? (
-                <Play className="h-3.5 w-3.5" aria-hidden="true" />
-              ) : (
-                <Pause className="h-3.5 w-3.5" aria-hidden="true" />
-              )}
-              {rotationPaused
-                ? lang === "en"
-                  ? "Resume"
-                  : "Lanjutkan"
-                : lang === "en"
-                  ? "Auto rotation"
-                  : "Rotasi otomatis"}
-            </button>
           </div>
+
+          <TohnichiFourMOverview lang={lang} />
 
           <div className="overflow-x-auto border-b border-graphite-200">
             <div
@@ -832,7 +807,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
                     id={`manufacturing-problem-${challenge.id}`}
                     key={challenge.id}
                     type="button"
-                    onClick={() => setActiveProblemIndex(index)}
+                    onClick={() => selectProblem(index)}
                     className={`group relative flex min-h-24 items-center gap-3 border-r border-graphite-200 px-5 text-left transition-colors last:border-r-0 focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-industrial-700 ${
                       active
                         ? "bg-industrial-700 text-white"
@@ -893,7 +868,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
 
               <article className="flex h-full flex-col bg-[#fffaf0] p-5 sm:p-7">
                 <div className="inline-flex bg-[#e2b91d] px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-graphite-900">
-                  {lang === "en" ? "Tohnichi solution" : "Solusi Tohnichi"}
+                  {lang === "en" ? "TOHNICHI solution" : "Solusi TOHNICHI"}
                 </div>
                 <h5 className="mt-4 text-xl font-bold leading-snug text-graphite-900 sm:text-2xl">
                   {text(activeChallenge.solutionTitle, lang)}

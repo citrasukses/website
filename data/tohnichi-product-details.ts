@@ -81,13 +81,13 @@ function catalogueReference(
   const exactPage = source.cataloguePages[0];
   if (exactPage) {
     return {
-      id: `Data model dirangkum dari Tohnichi Reference Guide 2025.10 halaman ${exactPage} dan dicocokkan dengan data produk resmi Tohnichi.`,
-      en: `Model data is summarized from the Tohnichi Reference Guide 2025.10 page ${exactPage} and cross-checked with official Tohnichi product data.`
+      id: `Data model dirangkum dari TOHNICHI Reference Guide 2025.10 halaman ${exactPage} dan dicocokkan dengan data produk resmi TOHNICHI.`,
+      en: `Model data is summarized from the TOHNICHI Reference Guide 2025.10 page ${exactPage} and cross-checked with official TOHNICHI product data.`
     };
   }
   return {
-    id: `${productName} tercakup dalam bagian katalog halaman ${source.catalogueSectionPages}; opsi dan spesifikasi dicocokkan dengan data produk resmi Tohnichi.`,
-    en: `${productName} is covered in the catalogue section on pages ${source.catalogueSectionPages}; options and specifications are cross-checked with official Tohnichi product data.`
+    id: `${productName} tercakup dalam bagian katalog halaman ${source.catalogueSectionPages}; opsi dan spesifikasi dicocokkan dengan data produk resmi TOHNICHI.`,
+    en: `${productName} is covered in the catalogue section on pages ${source.catalogueSectionPages}; options and specifications are cross-checked with official TOHNICHI product data.`
   };
 }
 
@@ -106,8 +106,8 @@ function genericFeatures({
   const tagEn = tags.slice(0, 3).map((tag) => tag.en).join(", ");
   return [
     {
-      id: `${productName} merupakan bagian dari lini ${groupTitle.id} Tohnichi${tagId ? ` untuk kebutuhan ${tagId.toLowerCase()}` : ""}.`,
-      en: `${productName} is part of the Tohnichi ${groupTitle.en} lineup${tagEn ? ` for ${tagEn.toLowerCase()} requirements` : ""}.`
+      id: `${productName} merupakan bagian dari lini ${groupTitle.id} TOHNICHI${tagId ? ` untuk kebutuhan ${tagId.toLowerCase()}` : ""}.`,
+      en: `${productName} is part of the TOHNICHI ${groupTitle.en} lineup${tagEn ? ` for ${tagEn.toLowerCase()} requirements` : ""}.`
     },
     hasTables
       ? {
@@ -133,18 +133,18 @@ function seoDescription({
   const firstSentenceId = summary.id.split(/(?<=[.!?])\s/)[0];
   const firstSentenceEn = summary.en.split(/(?<=[.!?])\s/)[0];
   const candidates = {
-    id: `${firstSentenceId} Lihat model dan spesifikasi Tohnichi ${productName} untuk industri Indonesia.`,
-    en: `${firstSentenceEn} Compare Tohnichi ${productName} models and specifications for industrial use in Indonesia.`
+    id: `${firstSentenceId} Lihat model dan spesifikasi TOHNICHI ${productName} untuk industri Indonesia.`,
+    en: `${firstSentenceEn} Compare TOHNICHI ${productName} models and specifications for industrial use in Indonesia.`
   };
   return {
     id:
       candidates.id.length <= 180
         ? candidates.id
-        : `Tohnichi ${productName} ${groupTitle.id}: model, spesifikasi, range, dimensi, opsi, dan aplikasi industri Indonesia.`,
+        : `TOHNICHI ${productName} ${groupTitle.id}: model, spesifikasi, range, dimensi, opsi, dan aplikasi industri Indonesia.`,
     en:
       candidates.en.length <= 180
         ? candidates.en
-        : `Tohnichi ${productName} ${groupTitle.en}: models, specifications, ranges, dimensions, options, and industrial applications in Indonesia.`
+        : `TOHNICHI ${productName} ${groupTitle.en}: models, specifications, ranges, dimensions, options, and industrial applications in Indonesia.`
   };
 }
 
@@ -160,13 +160,13 @@ for (const group of tohnichiProductGroups) {
     const hasTables = source.specificationTables.length > 0;
     const keywords = Array.from(
       new Set([
-        `Tohnichi ${product.name} Indonesia`,
+        `TOHNICHI ${product.name} Indonesia`,
         `${product.name} ${group.title.id}`,
         `${product.name} ${group.title.en}`,
         `spesifikasi ${product.name}`,
         `model ${product.name}`,
-        `supplier Tohnichi Indonesia`,
-        `distributor Tohnichi Indonesia`,
+        `supplier TOHNICHI Indonesia`,
+        `distributor TOHNICHI Indonesia`,
         ...product.tags.flatMap((tag) => [tag.id, tag.en])
       ])
     );
@@ -217,8 +217,8 @@ generatedDetails.rtd = {
     en: "RTD is an adjustable rotary-slip torque screwdriver family for controlled tightening, from mass production to maintenance work. When the set torque is reached, the ratcheting mechanism rotates freely so additional torque is not transferred to the fastener, helping reduce over-torque."
   },
   seoDescription: {
-    id: "Tohnichi RTD adalah obeng torsi adjustable rotary-slip. Bandingkan model RTD, rentang torsi, panjang, berat, dan spesifikasi untuk industri Indonesia.",
-    en: "Tohnichi RTD is an adjustable rotary-slip torque screwdriver. Compare RTD models, torque ranges, lengths, weights, and specifications for Indonesia."
+    id: "TOHNICHI RTD adalah obeng torsi adjustable rotary-slip. Bandingkan model RTD, rentang torsi, panjang, berat, dan spesifikasi untuk industri Indonesia.",
+    en: "TOHNICHI RTD is an adjustable rotary-slip torque screwdriver. Compare RTD models, torque ranges, lengths, weights, and specifications for Indonesia."
   },
   features: [
     {
@@ -236,8 +236,8 @@ generatedDetails.rtd = {
   ],
   accuracy: "±3%",
   catalogueReference: {
-    id: "Data model mengikuti Tohnichi Reference Guide 2025.10, halaman 5.",
-    en: "Model data follows the Tohnichi Reference Guide 2025.10, page 5."
+    id: "Data model mengikuti TOHNICHI Reference Guide 2025.10, halaman 5.",
+    en: "Model data follows the TOHNICHI Reference Guide 2025.10, page 5."
   },
   models: [
     {
@@ -386,8 +386,8 @@ generatedDetails.ltd = {
     en: "LTD is an adjustable click-type torque screwdriver family for tightening small fasteners in production, assembly, and maintenance. When the preset torque is reached, its toggle-clutch mechanism produces an audible and tactile click to signal completion."
   },
   seoDescription: {
-    id: "Tohnichi LTD adalah obeng torsi adjustable tipe klik. Bandingkan model LTD, rentang torsi, panjang, berat, dan spesifikasi untuk industri Indonesia.",
-    en: "Tohnichi LTD is an adjustable click-type torque screwdriver. Compare LTD models, torque ranges, lengths, weights, and specifications for Indonesia."
+    id: "TOHNICHI LTD adalah obeng torsi adjustable tipe klik. Bandingkan model LTD, rentang torsi, panjang, berat, dan spesifikasi untuk industri Indonesia.",
+    en: "TOHNICHI LTD is an adjustable click-type torque screwdriver. Compare LTD models, torque ranges, lengths, weights, and specifications for Indonesia."
   },
   features: [
     {
@@ -405,8 +405,8 @@ generatedDetails.ltd = {
   ],
   accuracy: "±3%",
   catalogueReference: {
-    id: "Data model mengikuti Tohnichi Reference Guide 2025.10, halaman 5.",
-    en: "Model data follows the Tohnichi Reference Guide 2025.10, page 5."
+    id: "Data model mengikuti TOHNICHI Reference Guide 2025.10, halaman 5.",
+    en: "Model data follows the TOHNICHI Reference Guide 2025.10, page 5."
   },
   models: [
     {

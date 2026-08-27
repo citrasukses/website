@@ -53,7 +53,7 @@ export function generateMetadata(): Metadata {
           url: "/assets/company/og-authorized-distributor.png",
           width: 1200,
           height: 630,
-          alt: "CSE authorized distributor for Tohnichi, NAC, Fujistar, and Nippon Unit"
+          alt: "CSE authorized distributor for TOHNICHI, NAC, Fujistar, and Nippon Unit"
         }
       ],
       locale: lang === "en" ? "en_US" : "id_ID",
