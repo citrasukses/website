@@ -339,21 +339,21 @@ export function BrandsSearchCatalog({ representedBrands, tradingBrands, tradingB
       </section>
 
       {confirmationBrands.length > 0 ? (
-        <section className="mt-16 border-t border-dashed border-amber-300 pt-10" data-development-only="brand-confirmation-list">
+        <section className="mt-16 border-t border-dashed border-amber-300 pt-10" data-brand-status="confirmation-required">
           <div className="border border-amber-300 bg-amber-50 p-5 md:p-6">
             <div className="flex items-start gap-3">
               <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-amber-700" aria-hidden="true" />
               <div>
                 <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-800">
-                  {lang === "en" ? "Development review only" : "Khusus review development"}
+                  {lang === "en" ? "Confirmation required" : "Perlu konfirmasi"}
                 </p>
                 <h2 className="mt-2 text-2xl font-bold text-graphite-900">
                   {lang === "en" ? "Brands that still need confirmation" : "Brand yang masih perlu dikonfirmasi"}
                 </h2>
                 <p className="mt-3 max-w-3xl text-sm leading-6 text-graphite-600">
                   {lang === "en"
-                    ? "These names remain visible locally for research and catalogue matching. They are excluded from production builds, generated brand routes, and the deployment sitemap."
-                    : "Nama-nama ini tetap terlihat secara lokal untuk riset dan pencocokan katalog. Semuanya dikeluarkan dari production build, route brand yang dihasilkan, dan sitemap deployment."}
+                    ? "These brands remain visible in the directory for catalogue reference. Their detail pages stay unavailable until their information is confirmed."
+                    : "Brand ini tetap ditampilkan di direktori sebagai referensi katalog. Halaman detailnya belum dapat diakses sampai informasinya dikonfirmasi."}
                 </p>
               </div>
             </div>

@@ -29,30 +29,44 @@ export function BrandCard({ brand, lang }: { brand: BrandCardBrand; lang: Langua
 
   const content = (
     <>
-      <div className="relative">
-        <AssetSlot
-          src={cardVisual?.image ?? brand.heroImage}
-          alt={`${brand.name} products`}
-          label={brand.name}
-          className="h-44 border-0 border-b border-graphite-200 bg-graphite-50"
-          imageClassName={`${cardVisual?.imageClassName ?? "object-center"} group-hover:scale-105`}
-          sizes="(max-width: 768px) 100vw, 33vw"
-        />
+      <div className="relative h-44 border-b border-graphite-200 bg-graphite-50">
+        {isPublic ? (
+          <AssetSlot
+            src={cardVisual?.image ?? brand.heroImage}
+            alt={`${brand.name} products`}
+            label={brand.name}
+            className="h-full border-0 bg-graphite-50"
+            imageClassName={`${cardVisual?.imageClassName ?? "object-center"} group-hover:scale-105`}
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+        ) : (
+          <div className="flex h-full items-center justify-center bg-gradient-to-br from-white to-graphite-50 p-8">
+            <BrandLogo
+              name={brand.name}
+              slug={brand.slug}
+              src={brand.logo}
+              className="h-24 w-full max-w-[260px] border border-graphite-200 shadow-sm"
+              sizes="260px"
+            />
+          </div>
+        )}
         {!isPublic ? (
           <span className="absolute right-4 top-4 inline-flex items-center gap-2 border border-signal-200 bg-white px-3 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-signal-600 shadow-sm">
             <Construction className="h-3.5 w-3.5" aria-hidden="true" />
             On progress
           </span>
         ) : null}
-        <div className="pointer-events-none absolute bottom-4 left-4 h-20 w-48">
-          <BrandLogo
-            name={brand.name}
-            slug={brand.slug}
-            src={brand.logo}
-            className="h-full w-full border border-graphite-200 shadow-sm"
-            sizes="192px"
-          />
-        </div>
+        {isPublic ? (
+          <div className="pointer-events-none absolute bottom-4 left-4 h-20 w-48">
+            <BrandLogo
+              name={brand.name}
+              slug={brand.slug}
+              src={brand.logo}
+              className="h-full w-full border border-graphite-200 shadow-sm"
+              sizes="192px"
+            />
+          </div>
+        ) : null}
       </div>
       <div className="flex flex-1 flex-col p-6">
         <div className="flex items-start justify-between gap-4">
