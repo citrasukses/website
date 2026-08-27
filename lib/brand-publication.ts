@@ -1,3 +1,13 @@
+const productionRepresentedBrandSlugs = new Set(["tohnichi", "nac"]);
+
+const draftRepresentedBrandSlugs = new Set([
+  "fuji-star",
+  "nippon-unit-brush",
+  "fuji-denshi",
+  "smbc",
+  "viet-nhat"
+]);
+
 const confirmationOnlyBrandSlugs = new Set([
   "smbc",
   "japan-control",
@@ -15,5 +25,13 @@ export function isConfirmationOnlyBrand(slug: string) {
 }
 
 export function shouldPublishBrand(slug: string) {
-  return process.env.NODE_ENV !== "production" || !isConfirmationOnlyBrand(slug);
+  if (process.env.NODE_ENV !== "production") {
+    return true;
+  }
+
+  if (productionRepresentedBrandSlugs.has(slug)) {
+    return true;
+  }
+
+  return !draftRepresentedBrandSlugs.has(slug) && !isConfirmationOnlyBrand(slug);
 }

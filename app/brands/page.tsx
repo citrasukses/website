@@ -31,7 +31,7 @@ export function generateMetadata(): Metadata {
 
 export default async function BrandsPage() {
   const lang = staticLanguage();
-  const catalog = await getCatalogBrands();
+  const catalog = await getCatalogBrands({ includeUnpublished: true });
   const confirmationBrands = catalog.filter((brand) => brand.researchStatus === "unresolved");
   const confirmedCatalog = catalog.filter((brand) => brand.researchStatus !== "unresolved");
   const representedBrands = confirmedCatalog
