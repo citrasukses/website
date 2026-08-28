@@ -112,5 +112,10 @@ await cp(
   path.join(projectRoot, ".openai", "hosting.json"),
   path.join(distributionDirectory, ".openai", "hosting.json")
 );
+await cp(
+  path.join(projectRoot, "drizzle"),
+  path.join(distributionDirectory, ".openai", "drizzle"),
+  { recursive: true }
+);
 
 console.log("Prepared the static Next.js export for Sites.");
