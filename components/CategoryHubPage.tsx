@@ -73,7 +73,7 @@ export function CategoryHubPage({ category, lang }: { category: CategoryHub; lan
         primaryHref={withLang(`/contact?topic=${category.slug}`, lang)}
         primaryLabel={lang === "en" ? "Discuss your application" : "Diskusikan aplikasi"}
         secondaryHref={withLang("/brands/tohnichi", lang)}
-        secondaryLabel={lang === "en" ? "View TOHNICHI catalogue" : "Lihat katalog TOHNICHI"}
+        secondaryLabel={lang === "en" ? "View TOHNICHI page" : "Lihat halaman TOHNICHI"}
         image={category.image}
         imageLabel={text(category.imageAlt, lang)}
         imageClassName="object-contain object-right opacity-45"
@@ -127,7 +127,7 @@ export function CategoryHubPage({ category, lang }: { category: CategoryHub; lan
         <div className="container-page">
           <SectionHeader
             eyebrow={lang === "en" ? "Selection checklist" : "Checklist pemilihan"}
-            title={lang === "en" ? "Six details to confirm before choosing a model." : "Enam detail yang perlu dikonfirmasi sebelum memilih model."}
+            title={lang === "en" ? "Details to confirm before choosing a model." : "Hal-hal yang perlu dikonfirmasi sebelum memilih model."}
             description={lang === "en" ? "These inputs help CSE narrow the catalogue to a practical shortlist." : "Informasi ini membantu CSE mempersempit katalog menjadi shortlist yang praktis."}
           />
           <div className="mt-9 grid gap-px overflow-hidden border border-graphite-200 bg-graphite-200 md:grid-cols-2 lg:grid-cols-3">

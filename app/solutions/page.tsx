@@ -42,10 +42,10 @@ export default function SolutionsPage() {
       <Breadcrumb homeHref={withLang("/", lang)} items={[{ label: lang === "en" ? "Solutions" : "Solusi" }]} />
       <Hero
         eyebrow={lang === "en" ? "Industrial solutions" : "Solusi industrial"}
-        title={lang === "en" ? "Start with the process problem, then select the product." : "Mulai dari masalah proses, lalu pilih produknya."}
+        title={lang === "en" ? "Select the right solution for your application" : "Pilih solusi yang tepat untuk kebutuhan Anda"}
         description={lang === "en"
-          ? "CSE connects technical requirements, product families, verification, and procurement into a practical application path."
-          : "CSE menghubungkan requirement teknis, keluarga produk, verification, dan procurement menjadi jalur aplikasi yang praktis."}
+          ? "CSE helps select the right industrial tools for your application."
+          : "CSE membantu pemilihan tools industri atau jasa yang tepat sesuai dengan kebutuhan."}
         primaryHref={withLang("/contact?topic=solution", lang)}
         primaryLabel={lang === "en" ? "Discuss an application" : "Diskusikan aplikasi"}
         secondaryHref={withLang("/guides", lang)}
@@ -58,8 +58,8 @@ export default function SolutionsPage() {
         <div className="container-page">
           <SectionHeader
             eyebrow={lang === "en" ? "Solution pathways" : "Jalur solusi"}
-            title={lang === "en" ? "Four pages for recurring manufacturing and procurement problems." : "Empat halaman untuk masalah manufaktur dan procurement yang sering terjadi."}
-            description={lang === "en" ? "Each page explains the problem, required inputs, working method, expected output, and related product categories." : "Setiap halaman menjelaskan masalah, input, metode kerja, output, dan kategori produk terkait."}
+            title={lang === "en" ? "Challenges in manufacturing and procurement." : "Tantangan manufaktur dan pengadaan yang sering terjadi."}
+            description={lang === "en" ? "How to choose the right tools, maintain consistency, and manage procurement." : "Bagaimana memilih alat yang tepat, menjaga konsistensi alat, sampai dengan pengadaannya."}
           />
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {solutionPages.map((solution) => (

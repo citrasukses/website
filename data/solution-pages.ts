@@ -85,7 +85,7 @@ export const solutionPages: SolutionPage[] = [
   },
   {
     slug: "poka-yoke-tightening",
-    title: { id: "Poka-Yoke Tightening System untuk Assembly", en: "Poka-Yoke Tightening Systems for Assembly" },
+    title: { id: "Poka-Yoke Tightening System untuk Produksi", en: "Poka-Yoke Tightening Systems for Production" },
     seoTitle: { id: "Poka-Yoke Tightening System Indonesia", en: "Poka-Yoke Tightening Systems Indonesia" },
     description: {
       id: "Cegah missed tightening, wrong count, dan salah urutan dengan torque tool, sensor, wireless, marking, counter, dan interlock yang sesuai.",
@@ -207,7 +207,7 @@ export const solutionPages: SolutionPage[] = [
   },
   {
     slug: "industrial-sourcing",
-    title: { id: "Industrial Sourcing Support untuk Procurement Indonesia", en: "Industrial Sourcing Support for Indonesian Procurement" },
+    title: { id: "Pengadaan Barang Industri yang Praktis dan Tepat Sasaran", en: "Practical and Targeted Industrial Procurement" },
     seoTitle: { id: "Industrial Sourcing untuk Procurement Indonesia", en: "Industrial Sourcing & Procurement Support Indonesia" },
     description: {
       id: "CSE membantu mengubah model, drawing, sample, atau spesifikasi yang belum lengkap menjadi RFQ industrial yang dapat diverifikasi ke principal Jepang dan Asia.",

@@ -54,7 +54,7 @@ export default function GuidesPage() {
         <div className="container-page">
           <SectionHeader
             eyebrow={lang === "en" ? "Guide library" : "Library panduan"}
-            title={lang === "en" ? "Eight guides for recurring torque-tool decisions." : "Delapan guide untuk keputusan torque tools yang sering terjadi."}
+            title={lang === "en" ? "Guides for choosing the right torque-tool." : "Panduan seputar pemilihan alat torsi yang tepat."}
             description={lang === "en" ? "Each guide answers the question directly, explains the tradeoffs, and ends with an RFQ checklist." : "Setiap guide menjawab pertanyaan secara langsung, menjelaskan tradeoff, dan ditutup dengan checklist RFQ."}
           />
           <div className="mt-10 grid gap-6 md:grid-cols-2">

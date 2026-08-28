@@ -61,6 +61,16 @@ function languageCookie(language) {
   return `cse_preview_lang=${language}; Path=/; SameSite=Lax`;
 }
 
+function upstreamPath(request, language) {
+  const url = new URL(request.url ?? "/", `http://${request.headers.host ?? "localhost"}`);
+
+  if (language === "en" && (url.pathname === "/en" || url.pathname.startsWith("/en/"))) {
+    url.pathname = url.pathname === "/en" ? "/" : url.pathname.slice(3);
+  }
+
+  return `${url.pathname}${url.search}`;
+}
+
 function proxyHttp(request, response) {
   const language = requestedLanguage(request);
   const headers = { ...request.headers, host: `127.0.0.1:${languagePorts[language]}` };
@@ -69,7 +79,7 @@ function proxyHttp(request, response) {
       hostname: "127.0.0.1",
       port: languagePorts[language],
       method: request.method,
-      path: request.url,
+      path: upstreamPath(request, language),
       headers
     },
     (proxyResponse) => {
@@ -103,7 +113,9 @@ function proxyWebSocket(request, socket, head) {
       .map(([name, value]) => `${name}: ${Array.isArray(value) ? value.join(", ") : value}`)
       .join("\r\n");
 
-    upstream.write(`${request.method} ${request.url} HTTP/${request.httpVersion}\r\n${headers}\r\n\r\n`);
+    upstream.write(
+      `${request.method} ${upstreamPath(request, language)} HTTP/${request.httpVersion}\r\n${headers}\r\n\r\n`
+    );
     if (head.length > 0) {
       upstream.write(head);
     }

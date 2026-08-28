@@ -65,7 +65,7 @@ export const brands: Brand[] = [
     researchStatus: "verified",
     featured: true,
     summary: {
-      id: "PT Citra Sukses Ekapratama (CSE) adalah agen penjualan dan servis TOHNICHI di Indonesia untuk torque wrench, torque screwdriver, tester, kalibrasi, dan sistem tightening.",
+      id: "PT Citra Sukses Ekapratama (CSE) adalah agen resmi penjualan dan servis TOHNICHI di Indonesia untuk torque wrench, torque screwdriver, tester, kalibrasi, dan sistem tightening.",
       en: "PT Citra Sukses Ekapratama (CSE) is a TOHNICHI sales and service agent in Indonesia for torque wrenches, torque screwdrivers, testers, calibration, and tightening systems."
     },
     description: {

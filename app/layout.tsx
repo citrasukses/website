@@ -40,7 +40,7 @@ export function generateMetadata(): Metadata {
           url: "/assets/company/og-authorized-distributor.png",
           width: 1200,
           height: 630,
-        alt: "CSE authorized distributor for TOHNICHI, NAC, Sankyo Rikagaku, and Nippon Unit"
+        alt: "CSE authorized distributor for TOHNICHI, NAC, Sankyo Rikagaku, Nippon Unit and Fujidenshi products"
         }
       ],
       locale: lang === "en" ? "en_US" : "id_ID",

@@ -2212,7 +2212,7 @@
   {
     "slug": "power-torque-tools",
     "title": {
-      "id": "Alat Torsi Bertenaga",
+      "id": "Alat Power Torque",
       "en": "Power Torque Tools"
     },
     "description": {
@@ -2452,7 +2452,7 @@
   {
     "slug": "multiple-units",
     "title": {
-      "id": "Unit Pengencangan Multi-spindle",
+      "id": "Pengencangan Multi-spindle",
       "en": "Multiple Units"
     },
     "description": {
@@ -3478,7 +3478,7 @@
         "name": "TDMS App",
         "image": "/assets/brands/products/tohnichi/catalog/optional-equipment/tdms-app.png",
         "summary": {
-          "id": "TDMS App adalah aplikasi pengelolaan data yang menerima, menyimpan, dan mengolah hasil dari perangkat TOHNICHI berkemampuan Bluetooth.",
+          "id": "TDMS App adalah aplikasi pengelolaan data yang menerima, menyimpan, dan mengolah hasil dari perangkat TOHNICHI yang menggunakan Bluetooth.",
           "en": "TDMS App is a data-management application that receives, stores, and processes results from Bluetooth-enabled TOHNICHI devices."
         },
         "tags": [
@@ -3710,7 +3710,7 @@
       "en": "Accessories"
     },
     "description": {
-      "id": "Aksesori menyesuaikan torque tool dengan bentuk fastener dan kondisi kerja melalui pilihan head, bit, socket, kabel, baterai, serta alat bantu penyetelan. Pastikan ukuran koneksi, kapasitas torsi, dan kompatibilitas seri sebelum memilih.",
+      "id": "Berbagai macam aksesori untuk berbagai kebutuhan. Sesuaikan tool dengan head, bit, socket, kabel, baterai, serta alat bantu penyetelan. Pastikan ukuran koneksi, kapasitas torsi, dan kompatibilitas seri sebelum memilih.",
       "en": "Accessories adapt torque tools to fastener profiles and working conditions through heads, bits, sockets, cables, batteries, and setting aids. Confirm connection size, torque capacity, and series compatibility before selecting."
     },
     "products": [

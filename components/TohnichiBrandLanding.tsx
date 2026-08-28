@@ -41,9 +41,13 @@ const catalogueProducts = tohnichiGroups.flatMap((group) =>
 );
 const featuredProductSlugs = [
   "ql-qle2",
+  "fd-fdd",
   "qsp-qsp-mh",
   "cem3-cem3-g",
   "rtd",
+  "stc2-g-stc2-g-bt",
+  "st3-g-st3-g-bt",
+  "ac3",
   "dote4-dote4-g",
   "tcc2-tcc2-g"
 ] as const;

@@ -54,7 +54,7 @@ export const categoryHubs: CategoryHub[] = [
     ],
     introTitle: { id: "Pilih berdasarkan proses, bukan hanya angka torsi.", en: "Select around the process, not only the torque value." },
     intro: {
-      id: "Torque wrench yang tepat harus mencakup target torque di bagian kerja skala yang sesuai, cocok dengan akses fastener, dan mendukung cara operator bekerja. Untuk produksi berulang, kontrol setelan dan error-proofing biasanya lebih penting daripada fleksibilitas. Untuk maintenance, range dan kemudahan perubahan setelan sering menjadi prioritas.",
+      id: "Torque wrench yang tepat harus mencakup target torque di bagian kerja skala yang sesuai, cocok dengan akses fastener, dan mendukung cara operator bekerja. Untuk produksi berulang, kontrol setelan dan error-proofing lebih penting daripada fleksibilitas. Untuk maintenance, range dan kemudahan perubahan setelan sering menjadi prioritas.",
       en: "The right torque wrench should place the target torque in a suitable part of its working range, fit the fastener access, and support the operator's workflow. Repetitive production usually prioritizes setting control and error proofing, while maintenance work often values range and easy adjustment."
     },
     useCases: [
@@ -172,15 +172,15 @@ export const categoryHubs: CategoryHub[] = [
       { id: "Adjustable dan preset", en: "Adjustable and preset options" },
       { id: "Inspection & poka-yoke", en: "Inspection and poka-yoke" }
     ],
-    introTitle: { id: "Kontrol sekrup kecil tanpa mengandalkan feeling operator.", en: "Control small fasteners without relying on operator feel." },
+    introTitle: { id: "Kontrol pengencangan tanpa mengandalkan insting operator.", en: "Control small fasteners without relying on operator feel." },
     intro: {
       id: "Torque screwdriver digunakan ketika torque target lebih kecil dan fastener digerakkan melalui bit. Mekanisme rotary-slip sangat berguna pada tightening karena tool akan slip setelah target tercapai, membantu mencegah penambahan torque. Untuk inspection atau data, pilih tipe indicating atau digital.",
       en: "A torque screwdriver is used where the torque target is lower and the fastener is driven through a bit. Rotary-slip mechanisms are valuable for tightening because the tool slips after reaching the target, helping prevent additional torque. Choose indicating or digital types for inspection or data."
     },
     useCases: [
-      { title: { id: "Electronics dan instrumen", en: "Electronics and instruments" }, description: { id: "Sekrup kecil pada PCB, terminal, enclosure, dan komponen presisi.", en: "Small screws on PCBs, terminals, enclosures, and precision components." } },
-      { title: { id: "Mass production", en: "Mass production" }, description: { id: "Preset torque dan rotary-slip untuk pekerjaan yang sama berulang kali.", en: "Preset torque and rotary slip for the same repeated operation." } },
-      { title: { id: "Quality inspection", en: "Quality inspection" }, description: { id: "Pembacaan torque saat menguji screw, cap, atau komponen kecil.", en: "Torque readings while checking screws, caps, or small components." } }
+      { title: { id: "Elektronik dan instrumen", en: "Electronics and instruments" }, description: { id: "Sekrup kecil pada PCB, terminal, enclosure, dan komponen presisi.", en: "Small screws on PCBs, terminals, enclosures, and precision components." } },
+      { title: { id: "Produksi masal", en: "Mass production" }, description: { id: "Preset torque dan rotary-slip untuk pekerjaan yang sama berulang kali.", en: "Preset torque and rotary slip for the same repeated operation." } },
+      { title: { id: "Inspeksi kualitas", en: "Quality inspection" }, description: { id: "Pembacaan torque saat menguji screw, cap, atau komponen kecil.", en: "Torque readings while checking screws, caps, or small components." } }
     ],
     criteria: [
       { title: { id: "Range dalam cN·m atau N·m", en: "Range in cN·m or N·m" }, description: { id: "Pastikan satuan dan target sesuai; kesalahan konversi berisiko besar pada sekrup kecil.", en: "Confirm the unit and target; conversion mistakes are significant on small fasteners." } },
@@ -199,7 +199,7 @@ export const categoryHubs: CategoryHub[] = [
     ],
     comparison: {
       title: { id: "Adjustable, preset, dan indicating", en: "Adjustable, preset, and indicating" },
-      description: { id: "Tiga keputusan ini biasanya paling cepat mempersempit pilihan torque screwdriver.", en: "These three decisions usually narrow a torque-screwdriver shortlist fastest." },
+      description: { id: "Tiga keputusan ini TOHNICHI paling cepat mempersempit pilihan torque screwdriver.", en: "These three decisions usually narrow a torque-screwdriver shortlist fastest." },
       headers: [{ id: "Tipe", en: "Type" }, { id: "Target", en: "Target" }, { id: "Cocok untuk", en: "Best for" }, { id: "Output", en: "Output" }],
       rows: [
         [{ id: "Adjustable rotary-slip", en: "Adjustable rotary slip" }, { id: "Sering berubah", en: "Changes often" }, { id: "Maintenance, mixed production", en: "Maintenance, mixed production" }, { id: "Slip setelah target", en: "Slips after target" }],
@@ -236,7 +236,7 @@ export const categoryHubs: CategoryHub[] = [
     ],
     introTitle: { id: "Bedakan calibration tester dan line checker sejak awal.", en: "Separate calibration testers from line checkers at the start." },
     intro: {
-      id: "Tester digunakan untuk mengevaluasi dan menyetel torque tools secara terkontrol, biasanya dengan pembebanan yang stabil dan pencatatan hasil. Checker mendukung pemeriksaan cepat sebelum atau selama produksi. Pilihan akhir bergantung pada jenis tool, range, arah torque, metode loading, standar kerja, dan format data.",
+      id: "Tester digunakan untuk mengevaluasi dan menyetel torque tools secara terkontrol, TOHNICHI dengan pembebanan yang stabil dan pencatatan hasil. Checker mendukung pemeriksaan cepat sebelum atau selama produksi. Pilihan akhir bergantung pada jenis tool, range, arah torque, metode loading, standar kerja, dan format data.",
       en: "A tester evaluates and adjusts torque tools under controlled loading, usually with stable operation and recorded results. A checker supports quick verification before or during production. The choice depends on tool type, range, torque direction, loading method, work standard, and data format."
     },
     useCases: [

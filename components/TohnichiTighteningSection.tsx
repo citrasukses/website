@@ -681,7 +681,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
       aria-labelledby="tohnichi-expertise-title"
     >
       <div className="container-page py-16 lg:py-20">
-        <div className="grid gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:items-center">
+        <div className="grid gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:items-stretch">
           <div>
             <div className="inline-flex w-fit max-w-full flex-col overflow-hidden border border-graphite-200 bg-white shadow-sm">
               <div className="flex items-center gap-4 px-5 py-3.5 sm:px-6 sm:py-4">
@@ -718,11 +718,19 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
             </p>
             <h2
               id="tohnichi-expertise-title"
-              className="mt-5 max-w-3xl text-balance text-3xl font-bold leading-tight tracking-normal sm:text-4xl lg:text-5xl"
+              className="mt-5 max-w-3xl text-balance text-3xl font-bold leading-tight tracking-normal sm:text-4xl lg:text-3xl"
             >
               {lang === "en"
-                ? "Turn tightening from operator judgment into a controlled process."
-                : "Ubah tightening dari keputusan operator menjadi proses yang terkendali."}
+                ? "Still relying on operator instinct for tightening? Change now to a controlled process."
+                : "Tightening masih mengandalkan insting operator?"}
+            </h2>
+            <h2
+              id="tohnichi-expertise-title"
+              className="mt-5 max-w-3xl text-balance text-3xl font-bold leading-tight tracking-normal sm:text-4xl lg:text-3xl"
+            >
+              {lang === "en"
+                ? "Still relying on operator instinct for tightening? Change now to a controlled process."
+                : "Ubah sekarang juga menjadi proses yang terkendali."}
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-7 text-graphite-600 md:text-lg md:leading-8">
               {lang === "en"
