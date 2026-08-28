@@ -37,20 +37,6 @@ const distributors = [
     logo: "/assets/brands/logos/fuji-denshi.svg",
     width: 794,
     height: 93
-  },
-  {
-    name: "SMBC",
-    slug: "smbc",
-    logo: "/assets/brands/logos/smbc.png",
-    width: 500,
-    height: 500
-  },
-  {
-    name: "Viet Nhat Special Tools",
-    slug: "viet-nhat",
-    logo: "/assets/brands/logos/viet-nhat.svg",
-    width: 415,
-    height: 113
   }
 ] as const;
 
@@ -117,7 +103,7 @@ export function AuthorizedDistributorStrip({ lang, className = "" }: AuthorizedD
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 border-t border-white/20 bg-white lg:grid-cols-7 lg:border-l lg:border-t-0">
+        <div className="grid grid-cols-2 border-t border-white/20 bg-white lg:grid-cols-5 lg:border-l lg:border-t-0">
           <DistributorTile
             slug="tohnichi"
             name="TOHNICHI"
@@ -151,14 +137,14 @@ export function AuthorizedDistributorStrip({ lang, className = "" }: AuthorizedD
             </span>
           </DistributorTile>
 
-          {distributors.slice(1).map((distributor) => (
+          {distributors.slice(1).map((distributor, index, remainingDistributors) => (
             <DistributorTile
               key={distributor.slug}
               slug={distributor.slug}
               name={distributor.name}
               lang={lang}
               className={
-                distributor.slug !== "viet-nhat"
+                index < remainingDistributors.length - 1
                   ? "after:absolute after:inset-y-5 after:right-0 after:w-0.5 after:bg-signal-500/70 after:content-['']"
                   : ""
               }
