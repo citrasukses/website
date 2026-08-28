@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, BadgeCheck, CheckCircle2 } from "lucide-react";
 import { AssetSlot } from "@/components/AssetSlot";
+import { BrandLogo } from "@/components/BrandLogo";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTAButton } from "@/components/CTAButton";
 import { FAQAccordion } from "@/components/FAQAccordion";
@@ -83,11 +84,20 @@ export function CategoryHubPage({ category, lang }: { category: CategoryHub; lan
       <section className="border-b border-graphite-200 bg-white py-8">
         <div className="container-page flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div className="flex items-start gap-3">
-            <BadgeCheck className="mt-0.5 h-6 w-6 shrink-0 text-industrial-700" aria-hidden="true" />
+            <BrandLogo
+              name="TOHNICHI"
+              slug="tohnichi"
+              src="/assets/brands/logos/tohnichi--nobg.png"
+              className="h-12 w-28 shrink-0"
+              sizes="112px"
+            />
             <div>
-              <p className="font-bold text-graphite-900">
-                {lang === "en" ? "Authorized TOHNICHI sales & service support in Indonesia" : "Dukungan penjualan & servis TOHNICHI resmi di Indonesia"}
-              </p>
+              <div className="flex items-center gap-2">
+                <BadgeCheck className="h-5 w-5 shrink-0 text-industrial-700" aria-hidden="true" />
+                <p className="font-bold text-graphite-900">
+                  {lang === "en" ? "Authorized TOHNICHI sales & service support in Indonesia" : "Dukungan penjualan & servis TOHNICHI resmi di Indonesia"}
+                </p>
+              </div>
               <p className="mt-1 max-w-3xl text-sm leading-6 text-graphite-500">
                 {lang === "en"
                   ? "CSE helps procurement, production, and quality teams confirm the application, product family, and verification approach before quotation."
@@ -148,11 +158,20 @@ export function CategoryHubPage({ category, lang }: { category: CategoryHub; lan
 
       <section className="bg-white py-16">
         <div className="container-page">
-          <SectionHeader
-            eyebrow={lang === "en" ? "Relevant product families" : "Keluarga produk terkait"}
-            title={lang === "en" ? "Start with the process, then confirm the exact model." : "Mulai dari proses, lalu konfirmasikan model yang tepat."}
-            description={lang === "en" ? "Each link opens the detailed TOHNICHI family page with models and specifications." : "Setiap link membuka halaman keluarga TOHNICHI dengan model dan spesifikasi."}
-          />
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <SectionHeader
+              eyebrow={lang === "en" ? "Relevant product families" : "Keluarga produk terkait"}
+              title={lang === "en" ? "Start with the process, then confirm the exact model." : "Mulai dari proses, lalu konfirmasikan model yang tepat."}
+              description={lang === "en" ? "Each link opens the detailed TOHNICHI family page with models and specifications." : "Setiap link membuka halaman keluarga TOHNICHI dengan model dan spesifikasi."}
+            />
+            <Link
+              href={withLang("/brands/tohnichi/products", lang)}
+              className="focus-ring inline-flex shrink-0 items-center justify-center gap-2 self-start bg-industrial-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-industrial-800 md:self-auto"
+            >
+              {lang === "en" ? "View full TOHNICHI catalogue" : "Lihat katalog lengkap TOHNICHI"}
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
           <div className="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {category.products.map((product) => (
               <article key={product.href} className="group overflow-hidden border border-graphite-200 bg-white shadow-sm transition hover:border-industrial-600 hover:shadow-panel">
