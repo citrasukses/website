@@ -88,8 +88,11 @@ const organizationJsonLd = {
 
 export default async function HomePage() {
   const lang = staticLanguage();
-  const catalogBrands = await getCatalogBrands();
-  const brands = catalogBrands
+  const [catalogBrands, fullCatalog] = await Promise.all([
+    getCatalogBrands(),
+    getCatalogBrands({ includeUnpublished: true })
+  ]);
+  const brands = fullCatalog
     .filter((brand) => brand.brandType === "represented")
     .sort((a, b) => {
       const priority = (slug: string) => (slug === "tohnichi" ? 0 : slug === "nac" ? 1 : 2);
@@ -333,7 +336,12 @@ export default async function HomePage() {
             </div>
             <div className="mt-6 grid gap-5 md:grid-cols-3">
               {japanBrands.map((brand) => (
-                <BrandCard key={brand.slug} brand={brand} lang={lang} />
+                <BrandCard
+                  key={brand.slug}
+                  brand={brand}
+                  lang={lang}
+                  accessible={brand.slug === "tohnichi" || brand.slug === "nac"}
+                />
               ))}
             </div>
           </div>
@@ -356,7 +364,7 @@ export default async function HomePage() {
             </div>
             <div className="mt-6 grid gap-5 md:grid-cols-3">
               {southeastAsiaBrands.map((brand) => (
-                <BrandCard key={brand.slug} brand={brand} lang={lang} />
+                <BrandCard key={brand.slug} brand={brand} lang={lang} accessible={false} />
               ))}
             </div>
           </div>

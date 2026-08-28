@@ -21,10 +21,18 @@ const brandCardVisuals: Partial<
   }
 };
 
-export function BrandCard({ brand, lang }: { brand: BrandCardBrand; lang: Language }) {
+export function BrandCard({
+  brand,
+  lang,
+  accessible
+}: {
+  brand: BrandCardBrand;
+  lang: Language;
+  accessible?: boolean;
+}) {
   const cardVisual = brandCardVisuals[brand.slug];
-  const isPublic = isBrandPubliclyAvailable(brand.slug);
-  const canOpen = canViewBrandDraft(brand.slug);
+  const isPublic = accessible ?? isBrandPubliclyAvailable(brand.slug);
+  const canOpen = accessible ?? canViewBrandDraft(brand.slug);
   const displayName = brand.slug === "tohnichi" ? "TOHNICHI" : brand.name;
 
   const content = (

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowDown, Check, Magnet, MoveDown, Ruler, Search, Wrench } from "lucide-react";
+import { ArrowDown, Magnet, MoveDown, Ruler, Search, Wrench } from "lucide-react";
 import { useMemo, useState } from "react";
 import type { Language } from "@/lib/i18n";
 
@@ -46,14 +46,6 @@ const retentionOptions: Array<{ value: RetentionKey; id: string; en: string }> =
   { value: "none", id: "Tanpa magnetic retention", en: "No magnetic retention" },
   { value: "bolt", id: "Menahan bolt saja", en: "Hold a bolt only" },
   { value: "bolt-nut", id: "Menahan bolt atau nut + stud clearance", en: "Hold bolt or nut + stud clearance" }
-];
-
-const familyOptions: Array<{ key: FamilyKey; id: string; en: string; detailId: string; detailEn: string }> = [
-  { key: "mini", id: "Mini", en: "Mini", detailId: "Outside clearance sempit", detailEn: "Tight outside clearance" },
-  { key: "standard", id: "Standard", en: "Standard", detailId: "Reach normal", detailEn: "Normal reach" },
-  { key: "deep", id: "Deep / extension", en: "Deep / extension", detailId: "Recess atau reach panjang", detailEn: "Recess or long reach" },
-  { key: "magnetic", id: "MP / MS / MT", en: "MP / MS / MT", detailId: "Menahan fastener", detailEn: "Fastener retention" },
-  { key: "special", id: "Universal / khusus", en: "Universal / special", detailId: "Sudut atau working end khusus", detailEn: "Angle or special working end" }
 ];
 
 function localized(lang: Language, id: string, en: string) {
@@ -343,44 +335,13 @@ export function NacSocketSelectionGuide({ lang }: { lang: Language }) {
           <ArrowDown className="mx-auto mt-4 h-6 w-6 text-industrial-700" aria-hidden="true" />
         </div>
 
-        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-          {familyOptions.map((family) => {
-            const isActive = family.key === selection.familyKey;
-            return (
-              <div
-                key={family.key}
-                className={`border-t-4 px-3 py-4 text-center transition ${
-                  isActive
-                    ? "border-signal-500 bg-[#fff8f6] text-graphite-900"
-                    : "border-graphite-200 bg-graphite-50 text-graphite-500"
-                }`}
-              >
-                <div className="flex items-center justify-center gap-2">
-                  {isActive ? <Check className="h-4 w-4 text-signal-600" aria-hidden="true" /> : null}
-                  <p className="text-sm font-bold">{optionLabel(family, lang)}</p>
-                </div>
-                <p className="mt-1 text-xs leading-5">{localized(lang, family.detailId, family.detailEn)}</p>
-              </div>
-            );
-          })}
-        </div>
-
-        <div className="mt-5 grid gap-5 bg-industrial-800 p-5 text-white md:grid-cols-[1fr_auto] md:items-center md:p-6">
+        <div className="mt-5 bg-industrial-800 p-5 text-white md:p-6">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.14em] text-industrial-100">
               {localized(lang, "Rekomendasi keluarga katalog", "Recommended catalog family")}
             </p>
             <h3 className="mt-2 text-xl font-bold">{selection.title}</h3>
             <p className="mt-2 max-w-3xl text-sm leading-6 text-industrial-50">{selection.note}</p>
-          </div>
-          <div className="flex flex-wrap items-center gap-3 md:justify-end">
-            <span className="border border-white/25 px-3 py-2 text-sm font-bold">{selection.pages}</span>
-            <a
-              href="#catalogue-model-options"
-              className="focus-ring inline-flex min-h-11 items-center justify-center bg-white px-4 py-2 text-sm font-bold text-industrial-800 hover:bg-industrial-50"
-            >
-              {localized(lang, "Lihat tabel katalog", "View catalog tables")}
-            </a>
           </div>
         </div>
 
@@ -394,7 +355,7 @@ export function NacSocketSelectionGuide({ lang }: { lang: Language }) {
                 </h3>
               </div>
             </div>
-            <div className="bg-white p-4">
+            <div className="overflow-hidden bg-white p-4">
               <Image
                 src="/assets/brands/products/nac/catalog-socket-dimensions.png"
                 alt={localized(
@@ -405,7 +366,7 @@ export function NacSocketSelectionGuide({ lang }: { lang: Language }) {
                 width={1138}
                 height={720}
                 sizes="(max-width: 1024px) 100vw, 44vw"
-                className="h-auto w-full"
+                className="h-auto w-[110%] max-w-none"
               />
             </div>
             <figcaption className="grid grid-cols-2 gap-x-4 gap-y-2 border-t border-graphite-200 px-5 py-4 text-xs leading-5 text-graphite-600">
@@ -454,31 +415,6 @@ export function NacSocketSelectionGuide({ lang }: { lang: Language }) {
               </div>
             </figcaption>
           </figure>
-        </div>
-
-        <div className="mt-10">
-          <h3 className="text-lg font-bold text-graphite-900">
-            {localized(lang, "Kelompokkan tabel website mengikuti katalog", "Group the website tables like the catalog")}
-          </h3>
-          <div className="mt-4 grid gap-1 sm:grid-cols-[1fr_4fr_4fr_4fr_3fr]">
-            {[
-              ["P2", "1/4\""],
-              ["P3-P6", "3/8\""],
-              ["P7-P10", "1/2\""],
-              ["P11-P14", localized(lang, "Khusus", "Specialty")],
-              ["P15-P17", "3/4\"-2 1/2\""]
-            ].map(([pages, label], index) => (
-              <div
-                key={pages}
-                className={`border-t-4 px-3 py-4 text-center ${
-                  index % 2 === 0 ? "border-industrial-700 bg-industrial-50" : "border-signal-500 bg-[#fff8f6]"
-                }`}
-              >
-                <p className="text-sm font-bold text-graphite-900">{pages}</p>
-                <p className="mt-1 text-xs text-graphite-600">{label}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

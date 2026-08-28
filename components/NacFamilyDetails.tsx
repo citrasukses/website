@@ -44,11 +44,13 @@ const couplingSafetyPoints = [
 export function NacFamilyDetails({
   productName,
   detail,
-  lang
+  lang,
+  hideCatalogueSummary = false
 }: {
   productName: string;
   detail: NacProductFamilyDetail | NacCouplingProductFamilyDetail;
   lang: Language;
+  hideCatalogueSummary?: boolean;
 }) {
   const isCoupling = "kind" in detail && detail.kind === "coupling";
   const safetyPoints = isCoupling ? couplingSafetyPoints : fastenerSafetyPoints;
@@ -56,7 +58,7 @@ export function NacFamilyDetails({
   return (
     <section id="catalogue-model-options" className="scroll-mt-24 bg-graphite-50 py-14">
       <div className="container-page">
-        <div className="grid gap-6 lg:grid-cols-[0.78fr_1.22fr] lg:items-end">
+        <div className={`grid gap-6 ${hideCatalogueSummary ? "" : "lg:grid-cols-[0.78fr_1.22fr] lg:items-end"}`}>
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
               {lang === "en" ? "Catalogue family selection" : "Pemilihan keluarga katalog"}
@@ -67,21 +69,23 @@ export function NacFamilyDetails({
                 : `Model dan pilihan ${productName}`}
             </h2>
           </div>
-          <div className="flex flex-col gap-3 lg:items-end">
-            <span className="inline-flex w-fit items-center gap-2 border border-industrial-200 bg-white px-3 py-2 text-sm font-bold text-industrial-800">
-              <BookOpen className="h-4 w-4 text-signal-600" aria-hidden="true" />
-              {detail.catalogueReference}
-            </span>
-            <p className="max-w-2xl text-sm leading-6 text-graphite-500 lg:text-right">
-              {isCoupling
-                ? lang === "en"
-                  ? "The table summarizes connection configurations and real catalogue model families. Final selection depends on fluid, pressure, temperature, flow, size, body, seal, and disconnection behavior."
-                  : "Tabel merangkum konfigurasi koneksi dan keluarga model katalog. Pemilihan akhir bergantung pada fluida, pressure, temperatur, flow, size, body, seal, dan perilaku saat disconnected."
-                : lang === "en"
-                  ? "The table summarizes catalogue families and model prefixes. Final part numbers depend on the exact drive, fastener, length, retention, and access requirements."
-                  : "Tabel merangkum keluarga katalog dan prefix model. Part number akhir bergantung pada drive, fastener, panjang, retention, dan kebutuhan akses yang tepat."}
-            </p>
-          </div>
+          {hideCatalogueSummary ? null : (
+            <div className="flex flex-col gap-3 lg:items-end">
+              <span className="inline-flex w-fit items-center gap-2 border border-industrial-200 bg-white px-3 py-2 text-sm font-bold text-industrial-800">
+                <BookOpen className="h-4 w-4 text-signal-600" aria-hidden="true" />
+                {detail.catalogueReference}
+              </span>
+              <p className="max-w-2xl text-sm leading-6 text-graphite-500 lg:text-right">
+                {isCoupling
+                  ? lang === "en"
+                    ? "The table summarizes connection configurations and real catalogue model families. Final selection depends on fluid, pressure, temperature, flow, size, body, seal, and disconnection behavior."
+                    : "Tabel merangkum konfigurasi koneksi dan keluarga model katalog. Pemilihan akhir bergantung pada fluida, pressure, temperatur, flow, size, body, seal, dan perilaku saat disconnected."
+                  : lang === "en"
+                    ? "The table summarizes catalogue families and model prefixes. Final part numbers depend on the exact drive, fastener, length, retention, and access requirements."
+                    : "Tabel merangkum keluarga katalog dan prefix model. Part number akhir bergantung pada drive, fastener, panjang, retention, dan kebutuhan akses yang tepat."}
+              </p>
+            </div>
+          )}
         </div>
 
         <p className="mt-5 text-xs font-semibold text-graphite-500 md:hidden">

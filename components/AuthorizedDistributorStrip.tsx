@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, BadgeCheck } from "lucide-react";
 import type { ReactNode } from "react";
-import { canViewBrandDraft } from "@/lib/brand-visibility";
 import { withLang, type Language } from "@/lib/i18n";
 
 type AuthorizedDistributorStripProps = {
@@ -38,6 +37,20 @@ const distributors = [
     logo: "/assets/brands/logos/fuji-denshi.svg",
     width: 794,
     height: 93
+  },
+  {
+    name: "SMBC",
+    slug: "smbc",
+    logo: "/assets/brands/logos/smbc.png",
+    width: 500,
+    height: 500
+  },
+  {
+    name: "Viet Nhat Special Tools",
+    slug: "viet-nhat",
+    logo: "/assets/brands/logos/viet-nhat.svg",
+    width: 415,
+    height: 113
   }
 ] as const;
 
@@ -50,7 +63,7 @@ type DistributorTileProps = {
 };
 
 function DistributorTile({ slug, name, lang, className = "", children }: DistributorTileProps) {
-  const canOpen = canViewBrandDraft(slug);
+  const canOpen = slug === "tohnichi" || slug === "nac";
   const tileClassName = `relative flex min-h-24 items-center justify-center overflow-hidden bg-white p-5 lg:min-h-32 ${className} ${
     canOpen ? "focus-ring group transition-colors hover:bg-graphite-50" : ""
   }`;
@@ -104,7 +117,7 @@ export function AuthorizedDistributorStrip({ lang, className = "" }: AuthorizedD
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 border-t border-white/20 bg-white lg:grid-cols-5 lg:border-l lg:border-t-0">
+        <div className="grid grid-cols-2 border-t border-white/20 bg-white lg:grid-cols-7 lg:border-l lg:border-t-0">
           <DistributorTile
             slug="tohnichi"
             name="TOHNICHI"
@@ -145,7 +158,7 @@ export function AuthorizedDistributorStrip({ lang, className = "" }: AuthorizedD
               name={distributor.name}
               lang={lang}
               className={
-                distributor.slug !== "fuji-denshi"
+                distributor.slug !== "viet-nhat"
                   ? "after:absolute after:inset-y-5 after:right-0 after:w-0.5 after:bg-signal-500/70 after:content-['']"
                   : ""
               }
