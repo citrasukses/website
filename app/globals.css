@@ -134,6 +134,42 @@ textarea {
     );
 }
 
+.tohnichi-catalog-backdrop {
+  background-color: #151a22;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(15, 19, 27, 0.98) 0%,
+      rgba(15, 19, 27, 0.94) 42%,
+      rgba(15, 19, 27, 0.72) 70%,
+      rgba(15, 19, 27, 0.5) 100%
+    ),
+    url("/assets/brands/products/tohnichi/tohnichi_torque-wrench.jpg");
+  background-position: center, right 24% center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%, cover;
+}
+
+.tohnichi-finder-backdrop {
+  background-color: #222934;
+  background-image: linear-gradient(90deg, #222934 0%, #222934 58%, #3a4654 100%);
+}
+
+.tohnichi-finder-product-image {
+  filter: brightness(1.55) contrast(0.92) saturate(0.88) drop-shadow(0 3px 5px rgba(0, 0, 0, 0.4));
+  opacity: 0.9;
+}
+
+@media (max-width: 767px) {
+  .tohnichi-catalog-backdrop {
+    background-image:
+      linear-gradient(rgba(15, 19, 27, 0.9), rgba(15, 19, 27, 0.94)),
+      url("/assets/brands/products/tohnichi/tohnichi_torque-wrench.jpg");
+    background-position: center, 58% center;
+  }
+
+}
+
 .blueprint-soft {
   background-image:
     linear-gradient(rgba(31, 79, 124, 0.08) 1px, transparent 1px),

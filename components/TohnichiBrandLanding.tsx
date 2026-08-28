@@ -156,17 +156,17 @@ export function TohnichiBrandLanding({ lang }: { lang: Language }) {
           <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div className="max-w-3xl">
               <p className="border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-signal-600">
-                {lang === "en" ? "Core TOHNICHI catalogue" : "Katalog inti TOHNICHI"}
+                {lang === "en" ? "Popular TOHNICHI models" : "KATALOG"}
               </p>
               <h2 className="mt-4 text-3xl font-bold text-graphite-900 md:text-4xl">
                 {lang === "en"
-                  ? "25 fully detailed families for the first selection phase."
-                  : "25 family dengan detail lengkap untuk tahap awal pemilihan."}
+                  ? "Popular TOHNICHI models for assembly, inspection, and calibration."
+                  : "Beberapa model populer dari TOHNICHI untuk assembly, inspeksi, dan kalibrasi."}
               </h2>
               <p className="mt-4 max-w-3xl text-sm leading-6 text-graphite-500">
                 {lang === "en"
-                  ? "Each priority page includes official-source model and specification data for tightening, inspection, calibration, or small-torque measurement."
-                  : "Setiap halaman prioritas memuat data model dan spesifikasi dari sumber resmi untuk tightening, inspection, kalibrasi, atau pengukuran torsi kecil."}
+                  ? "Each page contains model data and specifications for tightening, inspection, or calibration."
+                  : "Setiap halaman memuat data model dan spesifikasi untuk tightening, inspeksi, atau kalibrasi"}
               </p>
             </div>
             <Link
@@ -219,20 +219,6 @@ export function TohnichiBrandLanding({ lang }: { lang: Language }) {
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-            <div className="border border-graphite-200 bg-graphite-50 p-6">
-              <div className="flex items-center gap-3">
-                <Factory className="h-6 w-6 text-signal-600" aria-hidden="true" />
-                <h3 className="text-lg font-bold text-graphite-900">{lang === "en" ? "Industrial applications" : "Aplikasi industri"}</h3>
-              </div>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {applicationLinks.map((item) => (
-                  <Link key={item.href} href={withLang(item.href, lang)} className="border border-graphite-300 bg-white px-3 py-2 text-sm font-bold text-graphite-700 hover:border-industrial-500 hover:text-industrial-800">
-                    {local(item.label, lang)}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
             <div className="border border-graphite-200 bg-graphite-50 p-6">
               <div className="flex items-center gap-3">
                 <BookOpen className="h-6 w-6 text-signal-600" aria-hidden="true" />

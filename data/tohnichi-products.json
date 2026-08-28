@@ -295,8 +295,8 @@
         "name": "STC2-G / STC2-G-BT",
         "image": "/assets/brands/products/tohnichi/catalog/torque-screwdrivers/stc2-g-stc2-g-bt.jpg",
         "summary": {
-          "id": "STC2-G/STC2-G-BT adalah obeng torsi digital untuk pengencangan presisi dan inspeksi, dengan indikator visual dan suara untuk status judgment.",
-          "en": "STC2-G/STC2-G-BT is a digital torque screwdriver for precision tightening and inspection, with visual and audible judgment feedback."
+          "id": "STC2-G/STC2-G-BT adalah obeng torsi digital untuk pengencangan presisi dan inspeksi; varian Bluetooth dapat mengirim data ke sistem manajemen pengencangan.",
+          "en": "STC2-G/STC2-G-BT is a digital torque screwdriver for precision tightening and inspection; the Bluetooth model can transmit data to a tightening-management system."
         },
         "tags": [
           {
@@ -318,6 +318,14 @@
           {
             "id": "Perawatan",
             "en": "Maintenance"
+          },
+          {
+            "id": "Nirkabel",
+            "en": "Wireless"
+          },
+          {
+            "id": "Manajemen Data",
+            "en": "Data management"
           }
         ],
         "officialUrl": "https://en.global-tohnichi.com/products/detail/300"
@@ -1937,6 +1945,14 @@
           {
             "id": "Manajemen Data",
             "en": "Data management"
+          },
+          {
+            "id": "Pencegahan Kesalahan",
+            "en": "Error proofing"
+          },
+          {
+            "id": "Pengukuran Sudut",
+            "en": "Angle"
           }
         ],
         "officialUrl": "https://en.global-tohnichi.com/products/detail/309"
@@ -2007,8 +2023,8 @@
         "name": "FDD-AD",
         "image": "/assets/brands/products/tohnichi/catalog/interchangeable-head-torque-wrenches/fdd-ad.jpg",
         "summary": {
-          "id": "FDD-AD adalah model berkepala interchangeable yang dapat dipasangkan dengan beberapa bentuk head. Model ini mendukung pengencangan, pengelolaan data, dan pencegahan kesalahan.",
-          "en": "FDD-AD is an interchangeable-head model that accepts several head styles. This model supports tightening, data management, and error proofing."
+          "id": "FDD-AD adalah kunci torsi tipe klik berkepala interchangeable yang mengukur serta mengirim data torsi dan sudut secara nirkabel untuk judgment dan pencegahan kesalahan pengencangan.",
+          "en": "FDD-AD is an interchangeable-head click torque wrench that wirelessly measures and transfers torque and angle data for tightening judgment and error proofing."
         },
         "tags": [
           {
@@ -2020,12 +2036,20 @@
             "en": "Tightening"
           },
           {
+            "id": "Nirkabel",
+            "en": "Wireless"
+          },
+          {
             "id": "Manajemen Data",
             "en": "Data management"
           },
           {
             "id": "Pencegahan Kesalahan",
             "en": "Error proofing"
+          },
+          {
+            "id": "Pengukuran Sudut",
+            "en": "Angle"
           }
         ],
         "officialUrl": "https://en.global-tohnichi.com/products/detail/289"
@@ -2750,8 +2774,8 @@
         "name": "ST3-G/ST3-G-BT",
         "image": "/assets/brands/products/tohnichi/catalog/tester-checker/st3-g-st3-g-bt.jpg",
         "summary": {
-          "id": "ST3-G/ST3-G-BT adalah checker untuk pemeriksaan rutin kunci torsi. Model ini mendukung inspeksi, pengencangan, dan perawatan.",
-          "en": "ST3-G/ST3-G-BT is a checker for routine torque wrench verification. This model supports inspection, tightening, and maintenance."
+          "id": "ST3-G/ST3-G-BT adalah checker torsi dan sudut; varian Bluetooth dapat mengirim data pengukuran secara nirkabel ke komputer.",
+          "en": "ST3-G/ST3-G-BT is a torque-and-angle checker; the Bluetooth model can wirelessly transmit measurement data to a computer."
         },
         "tags": [
           {
@@ -2773,6 +2797,18 @@
           {
             "id": "Perawatan",
             "en": "Maintenance"
+          },
+          {
+            "id": "Nirkabel",
+            "en": "Wireless"
+          },
+          {
+            "id": "Manajemen Data",
+            "en": "Data management"
+          },
+          {
+            "id": "Pengukuran Sudut",
+            "en": "Angle"
           }
         ],
         "officialUrl": "https://en.global-tohnichi.com/products/detail/310"

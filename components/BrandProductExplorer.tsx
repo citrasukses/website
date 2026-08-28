@@ -5,6 +5,7 @@ import { PackageSearch, RotateCcw, Search, X } from "lucide-react";
 import type { CatalogProductGroup } from "@/data/catalog-types";
 import { ProductCard } from "@/components/ProductCard";
 import { SectionHeader } from "@/components/SectionHeader";
+import { TohnichiToolSelector } from "@/components/TohnichiToolSelector";
 import { UseCaseSection } from "@/components/UseCaseSection";
 import { text, type Language, type LocalizedText } from "@/lib/i18n";
 
@@ -95,16 +96,32 @@ export function BrandProductExplorer({ groups, lang, brandSlug, brandName }: Bra
   }
 
   return (
-    <section id={`${brandSlug}-products`} className="bg-white py-16">
+    <section id={`${brandSlug}-products`} className={`${isTohnichi ? "bg-graphite-50" : "bg-white"} py-12 md:py-16`}>
       <div className="container-page">
-        <SectionHeader
-          eyebrow={lang === "en" ? `${brandName} product lineups` : `Lini produk ${brandName}`}
-          title={
-            isTohnichi
-              ? lang === "en"
-                ? "Explore TOHNICHI models by process."
-                : "Jelajahi model TOHNICHI berdasarkan proses."
-              : isNac
+        {isTohnichi ? (
+          <>
+            <TohnichiToolSelector groups={groups} lang={lang} brandSlug={brandSlug} />
+            <div id="tohnichi-catalog-search" className="scroll-mt-24 pt-16">
+              <SectionHeader
+                eyebrow={lang === "en" ? "Full TOHNICHI catalogue" : "Katalog lengkap TOHNICHI"}
+                title={
+                  lang === "en"
+                    ? "Know a model name—or want to browse everything?"
+                    : "Sudah tahu nama model—atau ingin melihat semuanya?"
+                }
+                description={
+                  lang === "en"
+                    ? "Search all 159 series directly, filter by application or official product family, or browse the complete family map below."
+                    : "Cari langsung seluruh 159 seri, saring berdasarkan aplikasi atau keluarga produk resmi, atau jelajahi peta keluarga lengkap di bawah."
+                }
+              />
+            </div>
+          </>
+        ) : (
+          <SectionHeader
+            eyebrow={lang === "en" ? `${brandName} product lineups` : `Lini produk ${brandName}`}
+            title={
+              isNac
                 ? lang === "en"
                   ? "Explore NAC fastening tools and quick couplings."
                   : "Jelajahi fastening tools dan quick coupling NAC."
@@ -115,13 +132,9 @@ export function BrandProductExplorer({ groups, lang, brandSlug, brandName }: Bra
               : lang === "en"
                 ? `Explore ${brandName} products by category.`
                 : `Jelajahi produk ${brandName} berdasarkan kategori.`
-          }
-          description={
-            isTohnichi
-              ? lang === "en"
-                ? "Browse every lineup below, or search by model, task, purpose, and product category to find related products."
-                : "Jelajahi seluruh lini di bawah, atau cari berdasarkan model, tugas, tujuan, dan kategori produk untuk menemukan produk terkait."
-              : isNac
+            }
+            description={
+              isNac
                 ? lang === "en"
                   ? "Search all 28 catalogue families by model, socket or bit interface, fluid, pressure range, valve type, connection, and application."
                   : "Cari seluruh 28 keluarga katalog berdasarkan model, interface socket atau bit, fluida, pressure range, valve type, koneksi, dan aplikasi."
@@ -130,12 +143,13 @@ export function BrandProductExplorer({ groups, lang, brandSlug, brandName }: Bra
                   ? "Open any family to see its current Sankyo Rikagaku models and options, or filter by sanding method, workpiece, application, and product form."
                   : "Buka setiap keluarga untuk melihat model dan pilihan Sankyo Rikagaku, atau filter berdasarkan metode sanding, workpiece, aplikasi, dan bentuk produk."
               : lang === "en"
-                ? "Browse the catalogue families below, or search by series, drive size, fastener type, application, and product category."
-                : "Jelajahi keluarga produk di bawah, atau cari berdasarkan seri, ukuran drive, jenis fastener, aplikasi, dan kategori produk."
-          }
-        />
+                  ? "Browse the catalogue families below, or search by series, drive size, fastener type, application, and product category."
+                  : "Jelajahi keluarga produk di bawah, atau cari berdasarkan seri, ukuran drive, jenis fastener, aplikasi, dan kategori produk."
+            }
+          />
+        )}
 
-        <div className="mt-8 border border-graphite-200 bg-graphite-50 p-4 md:p-5">
+        <div className={`mt-8 border border-graphite-200 p-4 md:p-5 ${isTohnichi ? "bg-white" : "bg-graphite-50"}`}>
           <div className="grid gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(220px,0.85fr)_minmax(220px,0.75fr)]">
             <div>
               <label htmlFor={`${brandSlug}-search`} className="text-xs font-bold uppercase tracking-[0.15em] text-graphite-600">
