@@ -6,9 +6,21 @@ import { company } from "@/data/navigation";
 import type { Language } from "@/lib/i18n";
 
 type FormStatus = {
-  ok: boolean;
+  state: "idle" | "sending" | "success" | "error";
   message: string;
+  fallbackHref?: string;
+  fallbackLabel?: string;
 };
+
+type InquiryType = "rfq" | "partner";
+
+type InquiryResponse = {
+  ok?: boolean;
+  reference?: string;
+  message?: string;
+};
+
+const initialStatus: FormStatus = { state: "idle", message: "" };
 
 function value(formData: FormData, name: string) {
   return String(formData.get(name) ?? "").trim();
@@ -23,11 +35,27 @@ function mailtoHref(subject: string, fields: Record<string, string>) {
   return `mailto:${company.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
-function SubmitButton({ label }: { label: string }) {
+async function sendInquiry(type: InquiryType, lang: Language, fields: Record<string, string>, contactUrl: string) {
+  const response = await fetch("/api/inquiries", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ type, lang, fields, contactUrl })
+  });
+  const result = (await response.json().catch(() => ({}))) as InquiryResponse;
+
+  if (!response.ok || !result.ok || !result.reference) {
+    throw new Error(result.message || `Inquiry request failed (${response.status}).`);
+  }
+
+  return result.reference;
+}
+
+function SubmitButton({ label, pending }: { label: string; pending: boolean }) {
   return (
     <button
       type="submit"
-      className="focus-ring inline-flex min-h-11 items-center justify-center gap-2 bg-signal-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-signal-600"
+      disabled={pending}
+      className="focus-ring inline-flex min-h-11 items-center justify-center gap-2 bg-signal-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-signal-600 disabled:cursor-wait disabled:opacity-65"
     >
       <Send className="h-4 w-4" aria-hidden="true" />
       {label}
@@ -39,9 +67,32 @@ function StatusMessage({ status }: { status: FormStatus }) {
   if (!status.message) return null;
 
   return (
-    <p className={`text-sm font-semibold ${status.ok ? "text-industrial-700" : "text-signal-600"}`}>
+    <p
+      role={status.state === "error" ? "alert" : "status"}
+      aria-live="polite"
+      className={`text-sm font-semibold ${status.state === "success" ? "text-industrial-700" : status.state === "error" ? "text-signal-600" : "text-graphite-600"}`}
+    >
       {status.message}
+      {status.fallbackHref ? (
+        <>
+          {" "}
+          <a className="underline underline-offset-2" href={status.fallbackHref}>
+            {status.fallbackLabel}
+          </a>
+        </>
+      ) : null}
     </p>
+  );
+}
+
+function SpamTrap() {
+  return (
+    <div className="absolute left-[-10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+      <label>
+        Leave this field empty
+        <input name="contactUrl" type="text" tabIndex={-1} autoComplete="off" />
+      </label>
+    </div>
   );
 }
 
@@ -97,7 +148,7 @@ export function RFQForm({
   selectedBrand?: string;
   selectedProduct?: string;
 }) {
-  const [status, setStatus] = useState<FormStatus>({ ok: false, message: "" });
+  const [status, setStatus] = useState<FormStatus>(initialStatus);
   const [brandValue, setBrandValue] = useState(selectedBrand);
   const [productValue, setProductValue] = useState(selectedProduct);
 
@@ -114,38 +165,76 @@ export function RFQForm({
     }
   }, [brands]);
 
-  function submit(event: FormEvent<HTMLFormElement>) {
+  async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     const fields = {
-      Name: value(formData, "name"),
-      Company: value(formData, "company"),
-      Email: value(formData, "email"),
-      "Phone / WhatsApp": value(formData, "phone"),
-      "Brand interested": value(formData, "brand"),
-      "Product / model": value(formData, "product"),
-      Quantity: value(formData, "quantity"),
-      "Application / use case": value(formData, "application"),
-      Message: value(formData, "message")
+      name: value(formData, "name"),
+      company: value(formData, "company"),
+      email: value(formData, "email"),
+      phone: value(formData, "phone"),
+      brand: value(formData, "brand"),
+      product: value(formData, "product"),
+      quantity: value(formData, "quantity"),
+      application: value(formData, "application"),
+      message: value(formData, "message")
     };
 
-    if (!fields.Name || !fields.Company || !fields.Email || !fields.Message) {
+    if (!fields.name || !fields.company || !fields.email || !fields.message) {
       setStatus({
-        ok: false,
+        state: "error",
         message: lang === "en" ? "Please complete the required fields." : "Mohon lengkapi field yang wajib diisi."
       });
       return;
     }
 
+    const emailFields = {
+      Name: fields.name,
+      Company: fields.company,
+      Email: fields.email,
+      "Phone / WhatsApp": fields.phone,
+      "Brand interested": fields.brand,
+      "Product / model": fields.product,
+      Quantity: fields.quantity,
+      "Application / use case": fields.application,
+      Message: fields.message
+    };
+    const fallbackHref = mailtoHref(`CSE RFQ: ${fields.company} - ${fields.brand || "General inquiry"}`, emailFields);
+
     setStatus({
-      ok: true,
-      message: lang === "en" ? "Opening your email client..." : "Membuka aplikasi email Anda..."
+      state: "sending",
+      message: lang === "en" ? "Sending your inquiry..." : "Mengirim inquiry Anda..."
     });
-    window.location.href = mailtoHref(`CSE RFQ: ${fields.Company} - ${fields["Brand interested"] || "General inquiry"}`, fields);
+
+    try {
+      const reference = await sendInquiry("rfq", lang, fields, value(formData, "contactUrl"));
+      form.reset();
+      setBrandValue("");
+      setProductValue("");
+      setStatus({
+        state: "success",
+        message:
+          lang === "en"
+            ? `Inquiry received. Your reference is ${reference}.`
+            : `Inquiry telah diterima. Nomor referensi Anda ${reference}.`
+      });
+    } catch {
+      setStatus({
+        state: "error",
+        message:
+          lang === "en"
+            ? "We could not send the form right now."
+            : "Form belum dapat dikirim saat ini.",
+        fallbackHref,
+        fallbackLabel: lang === "en" ? "Email CSE instead." : "Kirim melalui email."
+      });
+    }
   }
 
   return (
-    <form onSubmit={submit} className="grid gap-5 border border-graphite-200 bg-white p-6 shadow-panel">
+    <form onSubmit={submit} className="relative grid gap-5 border border-graphite-200 bg-white p-6 shadow-panel">
+      <SpamTrap />
       <div className="grid gap-5 md:grid-cols-2">
         <Field label={lang === "en" ? "Name" : "Nama"} name="name" required />
         <Field label={lang === "en" ? "Company" : "Perusahaan"} name="company" required />
@@ -179,7 +268,14 @@ export function RFQForm({
       </div>
       <TextArea label={lang === "en" ? "Message" : "Pesan"} name="message" required />
       <div className="flex flex-wrap items-center gap-4">
-        <SubmitButton label={lang === "en" ? "Send RFQ by email" : "Kirim RFQ via email"} />
+        <SubmitButton
+          pending={status.state === "sending"}
+          label={
+            status.state === "sending"
+              ? lang === "en" ? "Sending..." : "Mengirim..."
+              : lang === "en" ? "Send RFQ" : "Kirim RFQ"
+          }
+        />
         <StatusMessage status={status} />
       </div>
     </form>
@@ -187,40 +283,76 @@ export function RFQForm({
 }
 
 export function PartnerInquiryForm({ lang }: { lang: Language }) {
-  const [status, setStatus] = useState<FormStatus>({ ok: false, message: "" });
+  const [status, setStatus] = useState<FormStatus>(initialStatus);
 
-  function submit(event: FormEvent<HTMLFormElement>) {
+  async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     const fields = {
-      Name: value(formData, "name"),
-      Company: value(formData, "company"),
-      Email: value(formData, "email"),
-      Country: value(formData, "country"),
-      Website: value(formData, "website"),
-      "Product category": value(formData, "category"),
-      "Current export markets": value(formData, "markets"),
-      "Support needed in Indonesia": value(formData, "support"),
-      Message: value(formData, "message")
+      name: value(formData, "name"),
+      company: value(formData, "company"),
+      email: value(formData, "email"),
+      country: value(formData, "country"),
+      website: value(formData, "website"),
+      category: value(formData, "category"),
+      markets: value(formData, "markets"),
+      support: value(formData, "support"),
+      message: value(formData, "message")
     };
 
-    if (!fields.Name || !fields.Company || !fields.Email || !fields.Country || !fields.Message) {
+    if (!fields.name || !fields.company || !fields.email || !fields.country || !fields.message) {
       setStatus({
-        ok: false,
+        state: "error",
         message: lang === "en" ? "Please complete the required fields." : "Mohon lengkapi field yang wajib diisi."
       });
       return;
     }
 
+    const emailFields = {
+      Name: fields.name,
+      Company: fields.company,
+      Email: fields.email,
+      Country: fields.country,
+      Website: fields.website,
+      "Product category": fields.category,
+      "Current export markets": fields.markets,
+      "Support needed in Indonesia": fields.support,
+      Message: fields.message
+    };
+    const fallbackHref = mailtoHref(`CSE Partner Inquiry: ${fields.company} (${fields.country})`, emailFields);
+
     setStatus({
-      ok: true,
-      message: lang === "en" ? "Opening your email client..." : "Membuka aplikasi email Anda..."
+      state: "sending",
+      message: lang === "en" ? "Sending your inquiry..." : "Mengirim inquiry Anda..."
     });
-    window.location.href = mailtoHref(`CSE Partner Inquiry: ${fields.Company} (${fields.Country})`, fields);
+
+    try {
+      const reference = await sendInquiry("partner", lang, fields, value(formData, "contactUrl"));
+      form.reset();
+      setStatus({
+        state: "success",
+        message:
+          lang === "en"
+            ? `Inquiry received. Your reference is ${reference}.`
+            : `Inquiry telah diterima. Nomor referensi Anda ${reference}.`
+      });
+    } catch {
+      setStatus({
+        state: "error",
+        message:
+          lang === "en"
+            ? "We could not send the form right now."
+            : "Form belum dapat dikirim saat ini.",
+        fallbackHref,
+        fallbackLabel: lang === "en" ? "Email CSE instead." : "Kirim melalui email."
+      });
+    }
   }
 
   return (
-    <form onSubmit={submit} className="grid gap-5 border border-graphite-200 bg-white p-6 shadow-panel">
+    <form onSubmit={submit} className="relative grid gap-5 border border-graphite-200 bg-white p-6 shadow-panel">
+      <SpamTrap />
       <div className="grid gap-5 md:grid-cols-2">
         <Field label={lang === "en" ? "Name" : "Nama"} name="name" required />
         <Field label={lang === "en" ? "Company" : "Perusahaan"} name="company" required />
@@ -234,7 +366,12 @@ export function PartnerInquiryForm({ lang }: { lang: Language }) {
       <TextArea label={lang === "en" ? "Message" : "Pesan"} name="message" required />
       <div className="flex flex-wrap items-center gap-4">
         <SubmitButton
-          label={lang === "en" ? "Send partner inquiry by email" : "Kirim inquiry partner via email"}
+          pending={status.state === "sending"}
+          label={
+            status.state === "sending"
+              ? lang === "en" ? "Sending..." : "Mengirim..."
+              : lang === "en" ? "Send partner inquiry" : "Kirim inquiry partner"
+          }
         />
         <StatusMessage status={status} />
       </div>
