@@ -1,10 +1,15 @@
 import type { MetadataRoute } from "next";
+import { buyerGuides } from "@/data/buyer-guides";
+import { categoryHubs } from "@/data/category-hubs";
 import { seedCatalog } from "@/data/catalog-seed";
+import { industryPages } from "@/data/industry-pages";
+import { solutionPages } from "@/data/solution-pages";
 import { isBrandPubliclyAvailable } from "@/lib/brand-visibility";
 import { languageAlternates, localizedPath } from "@/lib/i18n";
 
 const baseUrl = "https://cse.co.id";
 const tohnichiSeoLastModified = "2026-08-05";
+const contentArchitectureLastModified = "2026-08-28";
 
 export const dynamic = "force-static";
 
@@ -49,6 +54,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8
     }),
+    ...localizedRoutes("/products", {
+      changeFrequency: "monthly",
+      priority: 0.9,
+      lastModified: contentArchitectureLastModified
+    }),
+    ...localizedRoutes("/solutions", {
+      changeFrequency: "monthly",
+      priority: 0.85,
+      lastModified: contentArchitectureLastModified
+    }),
+    ...localizedRoutes("/guides", {
+      changeFrequency: "monthly",
+      priority: 0.8,
+      lastModified: contentArchitectureLastModified
+    }),
     ...localizedRoutes("/partners", {
       changeFrequency: "monthly",
       priority: 0.7
@@ -58,6 +78,38 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8
     })
   ];
+
+  const categoryRoutes: MetadataRoute.Sitemap = categoryHubs.flatMap((category) =>
+    localizedRoutes(`/${category.slug}`, {
+      changeFrequency: "monthly",
+      priority: 0.9,
+      lastModified: contentArchitectureLastModified
+    })
+  );
+
+  const industryRoutes: MetadataRoute.Sitemap = industryPages.flatMap((page) =>
+    localizedRoutes(`/industries/${page.industrySlug}`, {
+      changeFrequency: "monthly",
+      priority: 0.8,
+      lastModified: contentArchitectureLastModified
+    })
+  );
+
+  const solutionRoutes: MetadataRoute.Sitemap = solutionPages.flatMap((solution) =>
+    localizedRoutes(`/solutions/${solution.slug}`, {
+      changeFrequency: "monthly",
+      priority: 0.85,
+      lastModified: contentArchitectureLastModified
+    })
+  );
+
+  const guideRoutes: MetadataRoute.Sitemap = buyerGuides.flatMap((guide) =>
+    localizedRoutes(`/guides/${guide.slug}`, {
+      changeFrequency: "monthly",
+      priority: 0.75,
+      lastModified: contentArchitectureLastModified
+    })
+  );
 
   const brandRoutes: MetadataRoute.Sitemap = seedCatalog
     .filter((brand) => brand.published && isBrandPubliclyAvailable(brand.slug))
@@ -83,5 +135,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       )
     );
 
-  return [...staticRoutes, ...brandRoutes, ...productRoutes];
+  return [
+    ...staticRoutes,
+    ...categoryRoutes,
+    ...industryRoutes,
+    ...solutionRoutes,
+    ...guideRoutes,
+    ...brandRoutes,
+    ...productRoutes
+  ];
 }

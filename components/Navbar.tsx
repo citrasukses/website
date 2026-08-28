@@ -45,9 +45,10 @@ export function Navbar() {
   </div>
 </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex" aria-label="Main navigation">
+        <nav className="hidden items-center gap-4 lg:flex" aria-label="Main navigation">
           {navigationItems.map((item) => {
-            const active = languagePath === item.href;
+            const active =
+              languagePath === item.href || languagePath.startsWith(`${item.href}/`);
             return (
               <Link
                 key={item.href}

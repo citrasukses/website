@@ -9,6 +9,7 @@ export const navigationItems: NavItem[] = [
   { href: "/about", label: { id: "Tentang", en: "About" } },
   { href: "/brands", label: { id: "Brand", en: "Brands" } },
   { href: "/industries", label: { id: "Industri", en: "Industries" } },
+  { href: "/solutions", label: { id: "Solusi", en: "Solutions" } },
   { href: "/partners", label: { id: "Untuk Partner", en: "For Partners" } },
   { href: "/contact", label: { id: "Kontak", en: "Contact" } }
 ];
