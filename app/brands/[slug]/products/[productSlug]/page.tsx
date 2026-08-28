@@ -335,7 +335,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
       ) : tohnichiDetail ? (
         <TohnichiSpecificationTables productName={product.name} detail={tohnichiDetail} lang={lang} />
       ) : nacDetail ? (
-        <NacFamilyDetails productName={product.name} detail={nacDetail} lang={lang} />
+        <NacFamilyDetails
+          productName={product.name}
+          detail={nacDetail}
+          lang={lang}
+          hideCatalogueSummary={brand.slug === "nac" && product.slug === "square-drive-sockets"}
+        />
       ) : sankyoRikagakuDetail ? (
         <SankyoRikagakuFamilyDetails productName={product.name} detail={sankyoRikagakuDetail} lang={lang} />
       ) : (
