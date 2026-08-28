@@ -52,7 +52,7 @@ export function NacBrandOverview({ lang }: { lang: Language }) {
         <div className="container-page grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
           <div>
             <p className="border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-signal-600">
-              Fastener Tools 8 · Quick Couplings 9
+              NAC · NAGAHORI INDUSTRY CO., LTD. · JAPAN
             </p>
             <h2 className="mt-5 text-balance text-3xl font-bold leading-tight text-graphite-900 md:text-5xl">
               {lang === "en"
@@ -61,8 +61,8 @@ export function NacBrandOverview({ lang }: { lang: Language }) {
             </h2>
             <p className="mt-5 max-w-xl text-base leading-7 text-graphite-500">
               {lang === "en"
-                ? "NAC combines quality sockets and industrial bits with a complete quick-coupling range. CSE can help translate a fastener, drawing, mating sample, fluid, pressure, and connection requirement into the correct standard or custom-made solution—even when the quantity is small."
-                : "NAC menggabungkan socket berkualitas dan industrial bits dengan rangkaian quick coupling yang lengkap. CSE membantu menerjemahkan fastener, drawing, mating sample, fluida, pressure, dan kebutuhan koneksi menjadi solusi standard atau custom-made yang tepat—bahkan untuk jumlah kecil."}
+                ? "NAC is the fastening-tool and quick-coupling brand of Nagahori Industry Co., Ltd. CSE can help translate a fastener, drawing, mating sample, fluid, pressure, and connection requirement into the correct standard or custom-made solution—even when the quantity is small."
+                : "NAC adalah brand fastening tool dan quick coupling dari Nagahori Industry Co., Ltd. CSE membantu menerjemahkan fastener, drawing, mating sample, fluida, pressure, dan kebutuhan koneksi menjadi solusi standard atau custom-made yang tepat—bahkan untuk jumlah kecil."}
             </p>
 
             <div className="mt-8 grid gap-px overflow-hidden border border-graphite-200 bg-graphite-200 sm:grid-cols-2">

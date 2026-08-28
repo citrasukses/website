@@ -4,11 +4,12 @@ import { categoryHubs } from "@/data/category-hubs";
 import { seedCatalog } from "@/data/catalog-seed";
 import { industryPages } from "@/data/industry-pages";
 import { solutionPages } from "@/data/solution-pages";
+import { isTohnichiPriorityProduct } from "@/data/tohnichi-seo";
 import { isBrandPubliclyAvailable } from "@/lib/brand-visibility";
 import { languageAlternates, localizedPath } from "@/lib/i18n";
 
 const baseUrl = "https://cse.co.id";
-const tohnichiSeoLastModified = "2026-08-05";
+const tohnichiSeoLastModified = "2026-08-28";
 const contentArchitectureLastModified = "2026-08-28";
 
 export const dynamic = "force-static";
@@ -126,10 +127,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .filter((brand) => brand.published && isBrandPubliclyAvailable(brand.slug))
     .flatMap((brand) =>
       brand.productGroups.flatMap((group) =>
-        group.products.flatMap((product) =>
+        group.products
+          .filter((product) => brand.slug !== "tohnichi" || isTohnichiPriorityProduct(product.slug))
+          .flatMap((product) =>
           localizedRoutes(`/brands/${brand.slug}/products/${product.slug}`, {
             changeFrequency: "monthly",
-            priority: 0.7
+            priority: brand.slug === "tohnichi" ? 0.8 : 0.7,
+            lastModified: brand.slug === "tohnichi" ? contentArchitectureLastModified : undefined
           })
         )
       )

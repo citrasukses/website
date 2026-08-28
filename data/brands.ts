@@ -124,12 +124,12 @@ export const brands: Brand[] = [
     ],
     researchStatus: "verified",
     summary: {
-      id: "Spesialis Jepang untuk socket berkualitas—terutama custom-made socket dalam volume rendah—industrial bits, dan quick couplings.",
-      en: "A Japanese specialist in quality sockets—especially low-volume custom-made sockets—industrial bits, and quick couplings."
+      id: "NAC adalah brand Nagahori Industry Co., Ltd., spesialis Jepang untuk quality socket—terutama custom-made socket volume rendah—industrial bits, dan quick couplings.",
+      en: "NAC is the brand of Nagahori Industry Co., Ltd., a Japanese specialist in quality sockets—especially low-volume custom-made sockets—industrial bits, and quick couplings."
     },
     description: {
-      id: "NAC dikenal sebagai spesialis socket berkualitas, terutama custom-made socket. Mereka mampu membuat beragam tipe socket bahkan untuk kebutuhan dalam jumlah kecil, sekaligus menyediakan quick coupling industri untuk berbagai fluida, pressure range, dan metode koneksi.",
-      en: "NAC is known for quality sockets, especially custom-made sockets. They can produce many socket types even in small quantities, alongside industrial quick couplings for different fluids, pressure ranges, and connection methods."
+      id: "Nagahori Industry memasarkan fastening tools dan quick coupling dengan brand NAC. CSE membantu kebutuhan di Indonesia, termasuk custom-made socket dalam jumlah kecil dan quick coupling untuk berbagai fluida, pressure range, serta metode koneksi.",
+      en: "Nagahori Industry markets fastening tools and quick couplings under the NAC brand. CSE supports Indonesian requirements, including low-volume custom-made sockets and quick couplings for different fluids, pressure ranges, and connection methods."
     },
     strengths: [
       { id: "Custom-made socket, termasuk kebutuhan volume rendah", en: "Custom-made sockets, including low-volume requirements" },
@@ -137,6 +137,11 @@ export const brands: Brand[] = [
       { id: "Quick couplings low, medium, high pressure, vacuum, dan non-drip", en: "Low-, medium-, and high-pressure, vacuum, and non-drip quick couplings" }
     ],
     searchTerms: [
+      "NAC Indonesia",
+      "Nagahori",
+      "Nagahori Indonesia",
+      "Nagahori Industry",
+      "Nagahori Industry Indonesia",
       "socket",
       "sockets",
       "industrial socket",
@@ -205,7 +210,10 @@ export const brands: Brand[] = [
       { id: "Untuk automotive, steel, woodworking, electronics, dan general industry", en: "For automotive, steel, woodworking, electronics, and general industry" }
     ],
     searchTerms: [
+      "SANKYO",
+      "SANKYO Indonesia",
       "sankyo rikagaku",
+      "Sankyo Rikagaku Indonesia",
       "sankyo chemical",
       "fujistar",
       "fuji star",

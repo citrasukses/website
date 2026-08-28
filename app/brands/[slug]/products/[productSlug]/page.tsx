@@ -18,6 +18,7 @@ import { nacCouplingProductDetails } from "@/data/nac-coupling-product-details";
 import { nacProductDetails } from "@/data/nac-product-details";
 import { sankyoRikagakuProductDetails } from "@/data/sankyo-rikagaku-product-details";
 import { tohnichiProductDetails } from "@/data/tohnichi-product-details";
+import { isTohnichiPriorityProduct } from "@/data/tohnichi-seo";
 import { canViewBrandDraft, isBrandPubliclyAvailable } from "@/lib/brand-visibility";
 import { getCatalogBrandBySlug } from "@/lib/catalog";
 import { languageAlternates, localizedPath, staticLanguage, text, withLang } from "@/lib/i18n";
@@ -73,8 +74,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         : `${product.name} TOHNICHI - Model & Spesifikasi`
       : brand.slug === "nac"
         ? lang === "en"
-          ? `${product.name} NAC Indonesia - Models & Catalogue`
-          : `${product.name} NAC Indonesia - Model & Katalog`
+          ? `${product.name} NAC / Nagahori Indonesia - Models & Catalogue`
+          : `${product.name} NAC / Nagahori Indonesia - Model & Katalog`
         : brand.slug === "fuji-star"
           ? lang === "en"
             ? `${product.name} Sankyo Rikagaku Indonesia - FUJISTAR Catalogue`
@@ -85,17 +86,30 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       ? Array.from(
           new Set([
             `${product.name} NAC`,
+            `${product.name} Nagahori`,
             `${product.name} Indonesia`,
             "NAC fastener tools",
+            "Nagahori Industry Indonesia",
             ...product.tags.flatMap((tag) => [tag.id, tag.en])
           ])
         )
       : undefined;
+  const shouldIndex = brand.slug !== "tohnichi" || isTohnichiPriorityProduct(product.slug);
 
   return {
     title: seoTitle,
     description,
     keywords: tohnichiDetail?.seoKeywords ?? sankyoRikagakuDetail?.seoKeywords ?? nacKeywords,
+    robots: shouldIndex
+      ? undefined
+      : {
+          index: false,
+          follow: true,
+          googleBot: {
+            index: false,
+            follow: true
+          }
+        },
     alternates: {
       canonical,
       languages: languageAlternates(productPath)
@@ -143,7 +157,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const relatedProducts = group.products.filter((candidate) => candidate.slug !== product.slug).slice(0, 3);
   const otherGroups = brand.productGroups.filter((candidate) => candidate.slug !== group.slug);
   const brandGroupHref = (groupSlug: string) =>
-    withLang(`/brands/${brand.slug}#${groupSlug}`, lang);
+    withLang(
+      brand.slug === "tohnichi"
+        ? `/brands/tohnichi/products#${groupSlug}`
+        : `/brands/${brand.slug}#${groupSlug}`,
+      lang
+    );
   const selectionGuidance =
     brand.slug === "nac"
       ? isNacCoupling
@@ -322,7 +341,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
             ) : null}
             <div className="mt-8 flex flex-wrap gap-3">
               <CTAButton href={rfqPath}><span className="inline-flex items-center gap-2"><RadioTower className="h-4 w-4" />{lang === "en" ? "Request quotation" : "Minta penawaran"}</span></CTAButton>
-              <CTAButton href={withLang(`/brands/${brand.slug}`, lang)} variant="ghost">{lang === "en" ? `All ${brand.name} products` : `Semua produk ${brand.name}`}</CTAButton>
+              <CTAButton
+                href={withLang(brand.slug === "tohnichi" ? "/brands/tohnichi/products" : `/brands/${brand.slug}`, lang)}
+                variant="ghost"
+              >
+                {lang === "en" ? `All ${brand.name} products` : `Semua produk ${brand.name}`}
+              </CTAButton>
             </div>
           </div>
         </div>

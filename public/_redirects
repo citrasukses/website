@@ -1,5 +1,21 @@
 # Legacy product URLs. The Worker applies the same rules before serving assets;
 # these static rules remain as a safe fallback for asset-only deployments.
+/brands/sankyo /brands/fuji-star 301
+/brands/sankyo/ /brands/fuji-star 301
+/brands/sankyo-rikagaku /brands/fuji-star 301
+/brands/sankyo-rikagaku/ /brands/fuji-star 301
+/en/brands/sankyo /en/brands/fuji-star 301
+/en/brands/sankyo/ /en/brands/fuji-star 301
+/en/brands/sankyo-rikagaku /en/brands/fuji-star 301
+/en/brands/sankyo-rikagaku/ /en/brands/fuji-star 301
+/brands/nagahori /brands/nac 301
+/brands/nagahori/ /brands/nac 301
+/brands/nagahori-industry /brands/nac 301
+/brands/nagahori-industry/ /brands/nac 301
+/en/brands/nagahori /en/brands/nac 301
+/en/brands/nagahori/ /en/brands/nac 301
+/en/brands/nagahori-industry /en/brands/nac 301
+/en/brands/nagahori-industry/ /en/brands/nac 301
 /brands/tohnichi/products/db-cdb-series /brands/tohnichi/products/db-dbe-dbr 301
 /brands/tohnichi/products/db-cdb-series/ /brands/tohnichi/products/db-dbe-dbr 301
 /en/brands/tohnichi/products/db-cdb-series /en/brands/tohnichi/products/db-dbe-dbr 301

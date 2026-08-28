@@ -59,8 +59,8 @@ export function BuyerGuidePage({ guide, lang }: { guide: BuyerGuide; lang: Langu
         description={text(guide.description, lang)}
         primaryHref="#checklist"
         primaryLabel={lang === "en" ? "Jump to checklist" : "Lihat checklist"}
-        secondaryHref={withLang("/contact?topic=technical-guide", lang)}
-        secondaryLabel={lang === "en" ? "Ask CSE" : "Tanya CSE"}
+        secondaryHref={withLang("/brands/tohnichi", lang)}
+        secondaryLabel="TOHNICHI Indonesia"
         image={guide.image}
         imageLabel={text(guide.imageAlt, lang)}
         imageClassName="object-contain object-right opacity-40"

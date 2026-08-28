@@ -1,4 +1,8 @@
 const permanentRedirects = new Map([
+  ["/brands/sankyo", "/brands/fuji-star"],
+  ["/brands/sankyo-rikagaku", "/brands/fuji-star"],
+  ["/brands/nagahori", "/brands/nac"],
+  ["/brands/nagahori-industry", "/brands/nac"],
   ["/brands/tohnichi/products/db-cdb-series", "/brands/tohnichi/products/db-dbe-dbr"],
   ["/brands/tohnichi/products/cem3-g", "/brands/tohnichi/products/cem3-cem3-g"],
   ["/brands/tohnichi/products/ces-g", "/brands/tohnichi/products/ces-ces-g"],
