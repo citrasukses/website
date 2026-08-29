@@ -7,6 +7,37 @@ export type GuideSection = {
   bullets?: LocalizedText[];
 };
 
+export type GuideTagGroup = "brands" | "topics" | "applications";
+
+export const GUIDE_TAXONOMY: Record<GuideTagGroup, Record<string, LocalizedText>> = {
+  brands: {
+    tohnichi: { id: "TOHNICHI", en: "TOHNICHI" }
+  },
+  topics: {
+    "tool-selection": { id: "Pemilihan alat", en: "Tool selection" },
+    "calibration-verification": { id: "Kalibrasi & verifikasi", en: "Calibration & verification" },
+    "data-traceability": { id: "Data & traceability", en: "Data & traceability" },
+    "process-control": { id: "Kontrol proses", en: "Process control" },
+    "poka-yoke": { id: "Poka-yoke", en: "Poka-yoke" },
+    "torque-measurement": { id: "Pengukuran torsi", en: "Torque measurement" }
+  },
+  applications: {
+    assembly: { id: "Perakitan", en: "Assembly" },
+    maintenance: { id: "Maintenance", en: "Maintenance" },
+    "quality-inspection": { id: "Quality & inspeksi", en: "Quality & inspection" },
+    "mass-production": { id: "Produksi massal", en: "Mass production" },
+    "calibration-lab": { id: "Laboratorium kalibrasi", en: "Calibration lab" }
+  }
+};
+
+export const GUIDE_BRAND_LOGOS: Record<string, string> = {
+  tohnichi: "/assets/brands/logos/tohnichi--nobg.png"
+};
+
+export function getGuideTagLabel(group: GuideTagGroup, slug: string): LocalizedText {
+  return GUIDE_TAXONOMY[group][slug] ?? { id: slug, en: slug };
+}
+
 export type BuyerGuide = {
   slug:
     | "cara-memilih-torque-wrench"
@@ -20,6 +51,9 @@ export type BuyerGuide = {
   title: LocalizedText;
   seoTitle: LocalizedText;
   description: LocalizedText;
+  brands: string[];
+  topics: string[];
+  applications: string[];
   eyebrow: LocalizedText;
   image: string;
   imageAlt: LocalizedText;
@@ -37,6 +71,9 @@ export type BuyerGuide = {
 export const buyerGuides: BuyerGuide[] = [
   {
     slug: "cara-memilih-torque-wrench",
+    brands: ["tohnichi"],
+    topics: ["tool-selection"],
+    applications: ["assembly", "maintenance"],
     title: { id: "Cara Memilih Torque Wrench Berdasarkan Range dan Aplikasi", en: "How to Choose a Torque Wrench by Range and Application" },
     seoTitle: { id: "Cara Memilih Torque Wrench yang Tepat", en: "How to Choose the Right Torque Wrench" },
     description: { id: "Checklist memilih torque wrench berdasarkan target, range, head, mekanisme, access, proses, data, dan verification.", en: "A torque-wrench selection checklist covering target, range, head, mechanism, access, process, data, and verification." },
@@ -68,6 +105,9 @@ export const buyerGuides: BuyerGuide[] = [
   },
   {
     slug: "torque-wrench-vs-torque-screwdriver",
+    brands: ["tohnichi"],
+    topics: ["tool-selection"],
+    applications: ["assembly", "maintenance"],
     title: { id: "Torque Wrench vs Torque Screwdriver: Mana yang Tepat?", en: "Torque Wrench vs Torque Screwdriver: Which Is Right?" },
     seoTitle: { id: "Torque Wrench vs Torque Screwdriver: Perbedaan", en: "Torque Wrench vs Torque Screwdriver" },
     description: { id: "Perbedaan torque wrench dan torque screwdriver berdasarkan fastener, drive, range, mekanisme, ergonomi, serta aplikasi.", en: "Compare torque wrenches and torque screwdrivers by fastener, drive, range, mechanism, ergonomics, and application." },
@@ -87,6 +127,9 @@ export const buyerGuides: BuyerGuide[] = [
   },
   {
     slug: "mengapa-torque-wrench-perlu-dikalibrasi",
+    brands: ["tohnichi"],
+    topics: ["calibration-verification"],
+    applications: ["quality-inspection", "maintenance"],
     title: { id: "Mengapa Torque Wrench Perlu Dikalibrasi?", en: "Why Does a Torque Wrench Need Calibration?" },
     seoTitle: { id: "Mengapa Torque Wrench Perlu Kalibrasi?", en: "Why Torque Wrenches Need Calibration" },
     description: { id: "Pahami drift, verification, calibration interval, traceability, dan tindakan ketika torque wrench keluar toleransi.", en: "Understand drift, verification, calibration intervals, traceability, and what to do when a torque wrench is out of tolerance." },
@@ -106,6 +149,9 @@ export const buyerGuides: BuyerGuide[] = [
   },
   {
     slug: "click-vs-digital-torque-wrench",
+    brands: ["tohnichi"],
+    topics: ["tool-selection", "data-traceability"],
+    applications: ["assembly", "quality-inspection"],
     title: { id: "Click Torque Wrench vs Digital Torque Wrench", en: "Click Torque Wrench vs Digital Torque Wrench" },
     seoTitle: { id: "Click vs Digital Torque Wrench: Perbandingan", en: "Click vs Digital Torque Wrench" },
     description: { id: "Bandingkan click dan digital torque wrench dari sisi feedback, data, training, maintenance, cost, serta risiko proses.", en: "Compare click and digital torque wrenches by feedback, data, training, maintenance, cost, and process risk." },
@@ -125,6 +171,9 @@ export const buyerGuides: BuyerGuide[] = [
   },
   {
     slug: "apa-itu-torque-angle",
+    brands: ["tohnichi"],
+    topics: ["process-control"],
+    applications: ["assembly", "quality-inspection"],
     title: { id: "Apa Itu Torque + Angle?", en: "What Is Torque Plus Angle?" },
     seoTitle: { id: "Apa Itu Torque + Angle Tightening?", en: "What Is Torque Plus Angle Tightening?" },
     description: { id: "Penjelasan torque-angle tightening, mengapa sudut dipakai setelah snug torque, data yang dibutuhkan, dan risiko implementasinya.", en: "An explanation of torque-angle tightening, why angle follows snug torque, required data, and implementation risks." },
@@ -144,6 +193,9 @@ export const buyerGuides: BuyerGuide[] = [
   },
   {
     slug: "mencegah-missed-tightening",
+    brands: ["tohnichi"],
+    topics: ["poka-yoke", "process-control"],
+    applications: ["assembly", "mass-production"],
     title: { id: "Cara Mencegah Missed Tightening di Assembly Line", en: "How to Prevent Missed Tightening on an Assembly Line" },
     seoTitle: { id: "Cara Mencegah Missed Tightening", en: "How to Prevent Missed Tightening" },
     description: { id: "Level poka-yoke untuk mencegah fastener terlewat: visual standard, preset tool, completion signal, count, sequence, marking, dan interlock.", en: "Poka-yoke levels for preventing missed fasteners: visual standards, preset tools, completion signals, counts, sequence, marking, and interlocks." },
@@ -163,6 +215,9 @@ export const buyerGuides: BuyerGuide[] = [
   },
   {
     slug: "cara-memilih-torque-tester",
+    brands: ["tohnichi"],
+    topics: ["torque-measurement", "calibration-verification"],
+    applications: ["quality-inspection", "calibration-lab"],
     title: { id: "Cara Memilih Torque Tester atau Checker", en: "How to Choose a Torque Tester or Checker" },
     seoTitle: { id: "Cara Memilih Torque Tester", en: "How to Choose a Torque Tester" },
     description: { id: "Pilih torque tester berdasarkan tool, range, direction, loading, fixture, judgment, data, standard, dan lokasi penggunaan.", en: "Choose a torque tester by tool, range, direction, loading, fixtures, judgment, data, standards, and use location." },
@@ -182,6 +237,9 @@ export const buyerGuides: BuyerGuide[] = [
   },
   {
     slug: "preset-vs-adjustable-torque-wrench",
+    brands: ["tohnichi"],
+    topics: ["tool-selection", "process-control"],
+    applications: ["mass-production", "maintenance"],
     title: { id: "Preset vs Adjustable Torque Wrench untuk Produksi", en: "Preset vs Adjustable Torque Wrenches for Production" },
     seoTitle: { id: "Preset vs Adjustable Torque Wrench untuk Produksi", en: "Preset vs Adjustable Torque Wrench" },
     description: { id: "Pilih preset atau adjustable torque wrench berdasarkan product variant, setting control, changeover, training, line check, dan traceability.", en: "Choose preset or adjustable torque wrenches by product variants, setting control, changeovers, training, line checks, and traceability." },

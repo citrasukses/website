@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BookOpenCheck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { AssetSlot } from "@/components/AssetSlot";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { Hero } from "@/components/Hero";
 import { SectionHeader } from "@/components/SectionHeader";
-import { buyerGuides } from "@/data/buyer-guides";
+import { buyerGuides, getGuideTagLabel, GUIDE_BRAND_LOGOS } from "@/data/buyer-guides";
 import { staticLanguage, text, withLang } from "@/lib/i18n";
 import { buildCollectionJsonLd, buildPageMetadata } from "@/lib/seo";
 
@@ -69,7 +70,33 @@ export default function GuidesPage() {
                   imageClassName="p-4 group-hover:scale-[1.03]"
                 />
                 <div className="p-6">
-                  <BookOpenCheck className="h-5 w-5 text-signal-600" aria-hidden="true" />
+                  <div className="flex flex-col items-start gap-2.5">
+                    {guide.brands.map((brand) => {
+                      const brandName = text(getGuideTagLabel("brands", brand), lang);
+                      const logo = GUIDE_BRAND_LOGOS[brand];
+
+                      return logo ? (
+                        <div key={brand} className="relative h-12 w-32 sm:h-14 sm:w-36">
+                          <Image src={logo} alt={`${brandName} logo`} fill sizes="144px" className="object-contain object-left" />
+                        </div>
+                      ) : (
+                        <span key={brand} className="text-xs font-bold uppercase tracking-[0.16em] text-signal-600">
+                          {brandName}
+                        </span>
+                      );
+                    })}
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs leading-5">
+                      <span className="font-bold text-industrial-700">
+                        <span className="sr-only">{lang === "en" ? "Topics: " : "Topik: "}</span>
+                        {guide.topics.map((topic) => text(getGuideTagLabel("topics", topic), lang)).join(" · ")}
+                      </span>
+                      <span className="h-1 w-1 rounded-full bg-signal-500" aria-hidden="true" />
+                      <span className="font-medium text-graphite-500">
+                        <span className="sr-only">{lang === "en" ? "Applications: " : "Aplikasi: "}</span>
+                        {guide.applications.map((application) => text(getGuideTagLabel("applications", application), lang)).join(" · ")}
+                      </span>
+                    </div>
+                  </div>
                   <h2 className="mt-4 text-2xl font-bold text-graphite-900">{text(guide.title, lang)}</h2>
                   <p className="mt-3 text-sm leading-6 text-graphite-500">{text(guide.description, lang)}</p>
                   <Link href={withLang(`/guides/${guide.slug}`, lang)} className="focus-ring mt-5 inline-flex items-center gap-2 text-sm font-bold text-industrial-700 hover:text-signal-600">
