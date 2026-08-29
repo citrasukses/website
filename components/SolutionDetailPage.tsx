@@ -22,7 +22,7 @@ function SolutionActions({ solution, lang, dark = false }: ExperienceProps & { d
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </span>
       </CTAButton>
-      <CTAButton href={withLang("/guides", lang)} variant="ghost" className={dark ? "border-white/30 bg-transparent text-white hover:border-white hover:text-white" : ""}>
+      <CTAButton href={withLang("/guides", lang)} variant="ghost" className={dark ? "!border-white/30 !bg-transparent !text-white hover:!border-white hover:!bg-white/10 hover:!text-white" : ""}>
         {lang === "en" ? "Read buyer guides" : "Baca buyer guides"}
       </CTAButton>
     </div>
@@ -30,9 +30,19 @@ function SolutionActions({ solution, lang, dark = false }: ExperienceProps & { d
 }
 
 function TorqueControlExperience({ solution, lang }: ExperienceProps) {
-  const loopLabels = lang === "en"
-    ? ["Joint requirement", "Correct tool", "Controlled action", "Recorded evidence"]
-    : ["Requirement joint", "Tool yang tepat", "Aksi terkendali", "Bukti tercatat"];
+  const pdcaStages = lang === "en"
+    ? [
+        { phase: "PLAN", detail: "Define the joint, target, risk, and evidence required." },
+        { phase: "DO", detail: "Apply the correct tool and controlled tightening method." },
+        { phase: "CHECK", detail: "Verify the result, process signal, and tool condition." },
+        { phase: "ACT", detail: "Correct abnormalities and standardize what works." }
+      ]
+    : [
+        { phase: "PLAN", detail: "Definisikan joint, target, risiko, dan bukti yang dibutuhkan." },
+        { phase: "DO", detail: "Gunakan tool dan metode tightening yang terkendali." },
+        { phase: "CHECK", detail: "Verifikasi hasil, signal proses, dan kondisi tool." },
+        { phase: "ACT", detail: "Koreksi abnormalitas dan standardisasi hasil perbaikan." }
+      ];
 
   return (
     <>
@@ -48,20 +58,26 @@ function TorqueControlExperience({ solution, lang }: ExperienceProps) {
           <div className="relative min-h-[430px] border border-graphite-200 bg-graphite-50 p-6 shadow-panel md:p-8">
             <div className="absolute inset-0 dot-matrix opacity-60" />
             <div className="relative flex items-center justify-between border-b border-graphite-200 pb-4 text-xs font-bold uppercase tracking-[0.18em] text-graphite-500">
-              <span>{lang === "en" ? "Control loop" : "Siklus kontrol"}</span>
-              <span className="flex items-center gap-2 text-industrial-700"><Activity className="h-4 w-4" /> Live process</span>
+              <span className="flex items-center gap-2">
+                {lang === "en" ? "Control loop" : "Siklus kontrol"}
+                <span className="bg-industrial-700 px-2 py-1 text-[10px] text-white">PDCA</span>
+              </span>
+              <span className="flex items-center gap-2 text-industrial-700"><Activity className="h-4 w-4" /> CONTINUOUS PROCESS</span>
             </div>
             <div className="relative mt-7 grid grid-cols-2 gap-3">
-              {loopLabels.map((label, index) => (
-                <div key={label} className={`${index === 3 ? "bg-industrial-700 text-white" : "bg-white text-graphite-900"} border border-graphite-200 p-4`}>
-                  <span className={`text-xs font-bold ${index === 3 ? "text-white/60" : "text-signal-600"}`}>0{index + 1}</span>
-                  <p className="mt-7 text-sm font-bold leading-5">{label}</p>
+              {pdcaStages.map((stage, index) => (
+                <div key={stage.phase} className={`${index === 3 ? "bg-industrial-700 text-white" : "bg-white text-graphite-900"} flex min-h-36 flex-col border border-graphite-200 p-4`}>
+                  <div className="flex items-center justify-between gap-3">
+                    <span className={`text-xs font-bold ${index === 3 ? "text-white/60" : "text-signal-600"}`}>0{index + 1}</span>
+                    <span className={`font-mono text-[10px] font-bold tracking-[0.18em] ${index === 3 ? "text-white/60" : "text-industrial-700"}`}>{stage.phase}</span>
+                  </div>
+                  <p className={`mt-auto pt-5 text-sm font-semibold leading-5 ${index === 3 ? "text-white" : "text-graphite-700"}`}>{stage.detail}</p>
                 </div>
               ))}
             </div>
             <div className="relative mt-3 flex items-center gap-3 border border-industrial-700 bg-white p-4 text-sm font-semibold text-industrial-800">
               <RotateCcw className="h-5 w-5 shrink-0" aria-hidden="true" />
-              {lang === "en" ? "Verification closes the loop before drift becomes a defect." : "Verification menutup siklus sebelum drift berubah menjadi defect."}
+              {lang === "en" ? "CHECK finds the gap; ACT turns the lesson into the next PLAN." : "CHECK menemukan gap; ACT mengubah pembelajaran menjadi PLAN berikutnya."}
             </div>
             <Image src={solution.image} alt={text(solution.imageAlt, lang)} width={420} height={170} className="relative mx-auto mt-5 h-28 w-auto object-contain mix-blend-multiply" />
           </div>
