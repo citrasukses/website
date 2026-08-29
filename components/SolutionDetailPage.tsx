@@ -66,12 +66,12 @@ function TorqueControlExperience({ solution, lang }: ExperienceProps) {
             </div>
             <div className="relative mt-7 grid grid-cols-2 gap-3">
               {pdcaStages.map((stage, index) => (
-                <div key={stage.phase} className={`${index === 3 ? "bg-industrial-700 text-white" : "bg-white text-graphite-900"} flex min-h-36 flex-col border border-graphite-200 p-4`}>
+                <div key={stage.phase} className="flex min-h-36 flex-col border border-graphite-200 bg-white p-4 text-graphite-900">
                   <div className="flex items-center justify-between gap-3">
-                    <span className={`text-xs font-bold ${index === 3 ? "text-white/60" : "text-signal-600"}`}>0{index + 1}</span>
-                    <span className={`font-mono text-[10px] font-bold tracking-[0.18em] ${index === 3 ? "text-white/60" : "text-industrial-700"}`}>{stage.phase}</span>
+                    <span className="text-xs font-bold text-signal-600">0{index + 1}</span>
+                    <span className="font-mono text-[10px] font-bold tracking-[0.18em] text-industrial-700">{stage.phase}</span>
                   </div>
-                  <p className={`mt-auto pt-5 text-sm font-semibold leading-5 ${index === 3 ? "text-white" : "text-graphite-700"}`}>{stage.detail}</p>
+                  <p className="mt-auto pt-5 text-sm font-semibold leading-5 text-graphite-700">{stage.detail}</p>
                 </div>
               ))}
             </div>
