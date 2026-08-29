@@ -43,6 +43,12 @@ function TorqueControlExperience({ solution, lang }: ExperienceProps) {
         { phase: "CHECK", detail: "Verifikasi hasil, signal proses, dan kondisi tool." },
         { phase: "ACT", detail: "Koreksi abnormalitas dan standardisasi hasil perbaikan." }
       ];
+  const pdcaPlacements = [
+    "col-start-1 row-start-1",
+    "col-start-3 row-start-1",
+    "col-start-3 row-start-3",
+    "col-start-1 row-start-3"
+  ];
 
   return (
     <>
@@ -64,16 +70,27 @@ function TorqueControlExperience({ solution, lang }: ExperienceProps) {
               </span>
               <span className="flex items-center gap-2 text-industrial-700"><Activity className="h-4 w-4" /> CONTINUOUS PROCESS</span>
             </div>
-            <div className="relative mt-7 grid grid-cols-2 gap-3">
+            <div
+              className="relative mt-7 grid grid-cols-[minmax(0,1fr)_2.25rem_minmax(0,1fr)] grid-rows-[auto_2.25rem_auto]"
+              role="list"
+              aria-label={lang === "en" ? "PDCA continuous improvement loop" : "Siklus perbaikan berkelanjutan PDCA"}
+            >
               {pdcaStages.map((stage, index) => (
-                <div key={stage.phase} className="flex min-h-36 flex-col border border-graphite-200 bg-white p-4 text-graphite-900">
+                <article key={stage.phase} role="listitem" className={`${pdcaPlacements[index]} flex min-h-36 flex-col border border-graphite-200 bg-white p-4 text-graphite-900`}>
                   <div className="flex items-center justify-between gap-3">
                     <span className="text-xs font-bold text-signal-600">0{index + 1}</span>
                     <span className="font-mono text-[10px] font-bold tracking-[0.18em] text-industrial-700">{stage.phase}</span>
                   </div>
                   <p className="mt-auto pt-5 text-sm font-semibold leading-5 text-graphite-700">{stage.detail}</p>
-                </div>
+                </article>
               ))}
+              <div className="col-start-2 row-start-1 flex items-center justify-center text-signal-600" aria-hidden="true"><ArrowRight className="h-5 w-5" /></div>
+              <div className="col-start-3 row-start-2 flex items-center justify-center text-signal-600" aria-hidden="true"><ArrowDown className="h-5 w-5" /></div>
+              <div className="col-start-2 row-start-3 flex items-center justify-center text-signal-600" aria-hidden="true"><ArrowRight className="h-5 w-5 rotate-180" /></div>
+              <div className="col-start-1 row-start-2 flex items-center justify-center text-signal-600" aria-hidden="true"><ArrowDown className="h-5 w-5 rotate-180" /></div>
+              <div className="col-start-2 row-start-2 flex items-center justify-center" aria-hidden="true">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-industrial-700 text-white"><RotateCcw className="h-4 w-4" /></span>
+              </div>
             </div>
             <div className="relative mt-3 flex items-center gap-3 border border-industrial-700 bg-white p-4 text-sm font-semibold text-industrial-800">
               <RotateCcw className="h-5 w-5 shrink-0" aria-hidden="true" />
