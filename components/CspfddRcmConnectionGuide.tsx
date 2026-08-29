@@ -19,16 +19,16 @@ import { text, type Language, type LocalizedText, withLang } from "@/lib/i18n";
 const copy = {
   eyebrow: { id: "Panduan setup lapangan", en: "Field setup guide" },
   title: {
-    id: "Menghubungkan CSPFDD ke R-CM + M-FD",
-    en: "Connect CSPFDD to R-CM + M-FD"
+    id: "Menghubungkan FDD ke R-CM + M-FD",
+    en: "Connect FDD to R-CM + M-FD"
   },
   intro: {
-    id: "Gunakan halaman ini untuk setup satu atau dua CSPFDD per receiver, mengatur beberapa receiver di area yang sama, dan menetapkan batas HIGH/LOW tanpa membuat receiver saling menerima signal yang salah.",
-    en: "Use this page to set up one or two CSPFDD wrenches per receiver, configure several receivers in the same area, and set HIGH/LOW limits without receivers picking up the wrong tools."
+    id: "Gunakan halaman ini untuk setup satu atau dua FDD per receiver, mengatur beberapa receiver di area yang sama, dan menetapkan batas HIGH/LOW tanpa membuat receiver saling menerima signal yang salah.",
+    en: "Use this page to set up one or two FDD wrenches per receiver, configure several receivers in the same area, and set HIGH/LOW limits without receivers picking up the wrong tools."
   },
   scope: {
-    id: "Khusus CSPFDD dengan receiver R-CM yang memakai radio module M-FD. Jangan gunakan module M-FH untuk setup ini.",
-    en: "For CSPFDD with an R-CM receiver fitted with the M-FD radio module. Do not use an M-FH module for this setup."
+    id: "Khusus FDD dengan receiver R-CM yang memakai radio module M-FD. Jangan gunakan module M-FH untuk setup ini.",
+    en: "For FDD with an R-CM receiver fitted with the M-FD radio module. Do not use an M-FH module for this setup."
   },
   start: { id: "Mulai setup", en: "Start setup" },
   fix: { id: "Buka troubleshooting", en: "Open troubleshooting" }
@@ -37,8 +37,8 @@ const copy = {
 const faqItems = [
   {
     question: {
-      id: "Berapa CSPFDD yang dapat dikelola oleh satu R-CM?",
-      en: "How many CSPFDD wrenches can one R-CM manage?"
+      id: "Berapa FDD yang dapat dikelola oleh satu R-CM?",
+      en: "How many FDD wrenches can one R-CM manage?"
     },
     answer: {
       id: "Maksimum dua dengan judgment yang terpisah, karena R-CM + M-FD hanya menyediakan ID1/ID2 dan dua set batas HIGH/LOW. Manual juga menyebut mode JGC 0 dapat menerima signal dari beberapa wrench pada Group CH yang sama, tetapi tidak memberi jumlah maksimum dan tetap melarang transmisi bersamaan. Untuk setup yang terkendali, batasi dua wrench per receiver.",
@@ -47,8 +47,8 @@ const faqItems = [
   },
   {
     question: {
-      id: "Apakah dua CSPFDD boleh dipakai bersamaan?",
-      en: "Can two CSPFDD wrenches transmit at the same time?"
+      id: "Apakah dua FDD boleh dipakai bersamaan?",
+      en: "Can two FDD wrenches transmit at the same time?"
     },
     answer: {
       id: "Tidak. Gunakan satu wrench pada satu waktu. Transmisi yang tumpang tindih tidak didukung.",
@@ -67,12 +67,12 @@ const faqItems = [
   },
   {
     question: {
-      id: "Mengapa CSPFDD tidak mengirim data walaupun Group dan ID sudah benar?",
-      en: "Why does the CSPFDD not transmit even when Group and ID are correct?"
+      id: "Mengapa FDD tidak mengirim data walaupun Group dan ID sudah benar?",
+      en: "Why does the FDD not transmit even when Group and ID are correct?"
     },
     answer: {
-      id: "Jika double-tightening judgment aktif dan sudut tidak mencapai nilai judgment, CSPFDD tidak mengirim signal normal. Untuk test koneksi, matikan fungsi ini dengan membuat trigger torque atau judgment angle menjadi 0, atau tekan TEST untuk mengirim nilai yang tampil.",
-      en: "If double-tightening judgment is active and the angle does not reach its judgment value, CSPFDD does not send the normal signal. For a connection test, disable this function by setting either trigger torque or judgment angle to 0, or press TEST to transmit the displayed value."
+      id: "Jika double-tightening judgment aktif dan sudut tidak mencapai nilai judgment, FDD tidak mengirim signal normal. Untuk test koneksi, matikan fungsi ini dengan membuat trigger torque atau judgment angle menjadi 0, atau tekan TEST untuk mengirim nilai yang tampil.",
+      en: "If double-tightening judgment is active and the angle does not reach its judgment value, FDD does not send the normal signal. For a connection test, disable this function by setting either trigger torque or judgment angle to 0, or press TEST to transmit the displayed value."
     }
   }
 ] satisfies Array<{ question: LocalizedText; answer: LocalizedText }>;
@@ -118,7 +118,7 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
       totalTime: "PT30M",
       step: [
         text({ id: "Rencanakan Group CH dan ID", en: "Plan Group CH and IDs" }, lang),
-        text({ id: "Set Group, ID, dan JGC pada CSPFDD", en: "Set Group, ID, and JGC on the CSPFDD" }, lang),
+        text({ id: "Set Group, ID, dan JGC pada FDD", en: "Set Group, ID, and JGC on the FDD" }, lang),
         text({ id: "Set MODEL dan Group pada R-CM", en: "Set MODEL and Group on the R-CM" }, lang),
         text({ id: "Masukkan ID1/ID2 serta HIGH/LOW", en: "Enter ID1/ID2 and HIGH/LOW limits" }, lang),
         text({ id: "Test setiap wrench satu per satu", en: "Test each wrench one at a time" }, lang)
@@ -169,18 +169,18 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
               </div>
             </div>
 
-            <div className="grid grid-cols-[1fr_auto_0.72fr] items-center gap-3" aria-label={lang === "en" ? "CSPFDD wireless connection to R-CM with M-FD" : "Koneksi wireless CSPFDD ke R-CM dengan M-FD"}>
+            <div className="grid grid-cols-[1fr_auto_0.72fr] items-center gap-3" aria-label={lang === "en" ? "FDD wireless connection to R-CM with M-FD" : "Koneksi wireless FDD ke R-CM dengan M-FD"}>
               <div>
                 <AssetSlot
                   src="/assets/brands/products/tohnichi/tohnichi_cspfdd100n3.jpg"
-                  alt="TOHNICHI CSPFDD torque wrench"
+                  alt="TOHNICHI FDD torque wrench"
                   className="aspect-[4/5] border-white/15"
                   imageClassName="p-4"
                   fit="contain"
                   priority
                   sizes="(max-width: 1024px) 44vw, 24vw"
                 />
-                <p className="mt-3 text-center text-xs font-black uppercase tracking-[0.12em] text-white/70">CSPFDD</p>
+                <p className="mt-3 text-center text-xs font-black uppercase tracking-[0.12em] text-white/70">FDD</p>
               </div>
               <div className="flex flex-col items-center gap-2 text-center">
                 <Radio className="h-7 w-7 text-signal-500" aria-hidden="true" />
@@ -205,7 +205,7 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
         <section className="border-b border-graphite-200 bg-white">
           <div className="container-page grid divide-y divide-graphite-200 sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
             {[
-              { value: "2", label: lang === "en" ? "managed CSPFDD max. per R-CM" : "maks. CSPFDD terkelola per R-CM" },
+              { value: "2", label: lang === "en" ? "managed FDD max. per R-CM" : "maks. FDD terkelola per R-CM" },
               { value: "1", label: lang === "en" ? "transmission at a time" : "transmisi pada satu waktu" },
               { value: "000-255", label: lang === "en" ? "available Group CH" : "pilihan Group CH" },
               { value: "10-20 m", label: lang === "en" ? "typical range, environment dependent" : "jarak tipikal, tergantung lingkungan" }
@@ -302,7 +302,7 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
               <article className="grid gap-7 border border-graphite-200 p-6 md:p-8 lg:grid-cols-[0.72fr_1.28fr]">
                 <div>
                   <div className="flex items-center gap-4"><StepNumber>2</StepNumber><Wrench className="h-7 w-7 text-industrial-700" aria-hidden="true" /></div>
-                  <h3 className="mt-5 text-2xl font-black text-graphite-900">{lang === "en" ? "Set each CSPFDD" : "Set setiap CSPFDD"}</h3>
+                  <h3 className="mt-5 text-2xl font-black text-graphite-900">{lang === "en" ? "Set each FDD" : "Set setiap FDD"}</h3>
                   <p className="mt-3 text-sm leading-6 text-graphite-500">{lang === "en" ? "Repeat for each wrench, using the Group and ID written in your plan." : "Ulangi untuk setiap wrench dengan Group dan ID yang sudah dicatat."}</p>
                   <div className="mt-5"><ManualRef>{lang === "en" ? "Manual: 9-1 BASIC" : "Manual: 9-1 BASIC"}</ManualRef></div>
                 </div>
@@ -313,7 +313,7 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
                       lang === "en" ? "Press TEST to choose KEY, then press TEST again to choose BASE." : "Tekan TEST untuk memilih KEY, lalu tekan TEST lagi untuk memilih BASE.",
                       lang === "en" ? "At GR, use POWER to count up. Hold POWER and press TEST to count down. Press TEST to save the planned Group CH." : "Pada GR, gunakan POWER untuk naik. Tahan POWER dan tekan TEST untuk turun. Tekan TEST untuk menyimpan Group CH.",
                       lang === "en" ? "At ID, enter the planned unique 3-digit wrench ID and press TEST to save." : "Pada ID, masukkan ID wrench 3 digit yang unik dan tekan TEST untuk menyimpan.",
-                      lang === "en" ? "At JGC, choose 0 when this R-CM serves two CSPFDD wrenches. The R-CM must use the same JGC." : "Pada JGC, pilih 0 jika R-CM melayani dua CSPFDD. R-CM harus memakai JGC yang sama.",
+                      lang === "en" ? "At JGC, choose 0 when this R-CM serves two FDD wrenches. The R-CM must use the same JGC." : "Pada JGC, pilih 0 jika R-CM melayani dua FDD. R-CM harus memakai JGC yang sama.",
                       lang === "en" ? "Set APT as required, finish the menu, then press SET to return to normal operation." : "Set APT sesuai kebutuhan, selesaikan menu, lalu tekan SET untuk kembali ke normal operation."
                     ].map((item, index) => (
                       <li key={item} className="border border-graphite-200 bg-graphite-50 p-4"><span className="mr-2 font-black text-signal-600">{index + 1}.</span>{item}</li>
@@ -341,7 +341,7 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
                       lang === "en" ? "Turn on R-CM and hold SET for 2 seconds." : "Nyalakan R-CM dan tahan SET selama 2 detik.",
                       lang === "en" ? "Press SELECT until MODEL appears, then press SET." : "Tekan SELECT sampai MODEL tampil, lalu tekan SET.",
                       lang === "en" ? "Keep MODEL = R-FHD, then advance with SET." : "Biarkan MODEL = R-FHD, lalu lanjutkan dengan SET.",
-                      lang === "en" ? "Set GROUP to exactly the same Group CH as its assigned CSPFDD wrench(es)." : "Set GROUP sama persis dengan Group CH pada CSPFDD yang ditugaskan.",
+                      lang === "en" ? "Set GROUP to exactly the same Group CH as its assigned FDD wrench(es)." : "Set GROUP sama persis dengan Group CH pada FDD yang ditugaskan.",
                       lang === "en" ? "Set JGC to the same value as the wrench(es). Use JGC 0 for two wrenches on this receiver." : "Set JGC sama dengan wrench. Gunakan JGC 0 untuk dua wrench pada receiver ini.",
                       lang === "en" ? "Use SELECT to change a displayed value and SET to save/advance." : "Gunakan SELECT untuk mengubah nilai dan SET untuk menyimpan/melanjutkan."
                     ].map((item, index) => (
@@ -371,10 +371,10 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
                     <SettingRow label="ID1" value={lang === "en" ? "Enter wrench 1's exact 3-digit ID." : "Masukkan ID 3 digit wrench 1 secara persis."} />
                     <SettingRow label="HI-T1" value={lang === "en" ? "Enter wrench 1 HIGH torque limit." : "Masukkan batas HIGH torque wrench 1."} note={lang === "en" ? "Must be higher than LO-T1." : "Harus lebih besar daripada LO-T1."} />
                     <SettingRow label="LO-T1" value={lang === "en" ? "Enter wrench 1 LOW torque limit." : "Masukkan batas LOW torque wrench 1."} note={lang === "en" ? "Must be lower than HI-T1." : "Harus lebih kecil daripada HI-T1."} />
-                    <SettingRow label="HI-A1 / LO-A1" value="000.0" note={lang === "en" ? "Leave angle limits at zero for regular CSPFDD; these fields are only for the FDD-AD torque-and-angle output model." : "Biarkan angle limit nol untuk CSPFDD biasa; field ini hanya untuk model FDD-AD torque-and-angle output."} />
+                    <SettingRow label="HI-A1 / LO-A1" value="000.0" note={lang === "en" ? "Leave angle limits at zero for regular FDD; these fields are only for the FDD-AD torque-and-angle output model." : "Biarkan angle limit nol untuk FDD biasa; field ini hanya untuk model FDD-AD torque-and-angle output."} />
                     <SettingRow label="ID2" value={lang === "en" ? "Enter wrench 2's exact 3-digit ID, or leave unused if only one wrench is assigned." : "Masukkan ID 3 digit wrench 2 secara persis, atau biarkan tidak digunakan bila hanya ada satu wrench."} />
                     <SettingRow label="HI-T2 / LO-T2" value={lang === "en" ? "Enter wrench 2 HIGH and LOW limits." : "Masukkan batas HIGH dan LOW wrench 2."} />
-                    <SettingRow label="HI-A2 / LO-A2" value="000.0" note={lang === "en" ? "Leave at zero for regular CSPFDD." : "Biarkan nol untuk CSPFDD biasa."} />
+                    <SettingRow label="HI-A2 / LO-A2" value="000.0" note={lang === "en" ? "Leave at zero for regular FDD." : "Biarkan nol untuk FDD biasa."} />
                     <SettingRow label="DFLT" value="no" note={lang === "en" ? "Do not initialize the receiver after entering your settings." : "Jangan initialize receiver setelah memasukkan setting."} />
                   </dl>
                   <p className="mt-4 text-xs leading-5 text-graphite-500">{lang === "en" ? "On R-CM, SELECT changes the value; SET moves to the next digit and saves/advances from the rightmost digit." : "Pada R-CM, SELECT mengubah nilai; SET berpindah digit dan menyimpan/melanjutkan dari digit paling kanan."}</p>
@@ -413,7 +413,7 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
               </div>
               <div className="mt-5 flex gap-3 border-t border-white/15 pt-5 text-sm leading-6 text-white/70">
                 <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-signal-500" aria-hidden="true" />
-                <p>{lang === "en" ? "Do not invent limits from the CSPFDD accuracy rating. Tool accuracy and process acceptance tolerance are different controls." : "Jangan membuat limit dari rating akurasi CSPFDD. Akurasi tool dan process acceptance tolerance adalah kontrol yang berbeda."}</p>
+                <p>{lang === "en" ? "Do not invent limits from the FDD accuracy rating. Tool accuracy and process acceptance tolerance are different controls." : "Jangan membuat limit dari rating akurasi FDD. Akurasi tool dan process acceptance tolerance adalah kontrol yang berbeda."}</p>
               </div>
             </div>
           </div>
@@ -429,9 +429,9 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
               </div>
               <ol className="grid gap-4 text-sm leading-6 text-graphite-700">
                 {[
-                  lang === "en" ? "Exit setting mode on the CSPFDD and R-CM. Confirm the intended R-CM is powered and in RUN/normal mode." : "Keluar dari setting mode pada CSPFDD dan R-CM. Pastikan R-CM yang dituju menyala dan berada di RUN/normal mode.",
-                  lang === "en" ? "Test wrench 1 only. Make one tightening inside its approved LOW/HIGH range, then fully release the load so CSPFDD transmits." : "Test hanya wrench 1. Lakukan satu tightening di dalam range LOW/HIGH, lalu lepaskan beban sepenuhnya agar CSPFDD mengirim data.",
-                  lang === "en" ? "Confirm the R-CM receives the correct ID/profile and the CSPFDD blue LED lights for OK. Red means the received result was NG." : "Pastikan R-CM menerima ID/profile yang benar dan LED biru CSPFDD menyala untuk OK. Merah berarti hasil yang diterima adalah NG.",
+                  lang === "en" ? "Exit setting mode on the FDD and R-CM. Confirm the intended R-CM is powered and in RUN/normal mode." : "Keluar dari setting mode pada FDD dan R-CM. Pastikan R-CM yang dituju menyala dan berada di RUN/normal mode.",
+                  lang === "en" ? "Test wrench 1 only. Make one tightening inside its approved LOW/HIGH range, then fully release the load so FDD transmits." : "Test hanya wrench 1. Lakukan satu tightening di dalam range LOW/HIGH, lalu lepaskan beban sepenuhnya agar FDD mengirim data.",
+                  lang === "en" ? "Confirm the R-CM receives the correct ID/profile and the FDD blue LED lights for OK. Red means the received result was NG." : "Pastikan R-CM menerima ID/profile yang benar dan LED biru FDD menyala untuk OK. Merah berarti hasil yang diterima adalah NG.",
                   lang === "en" ? "Repeat with a value below LOW and above HIGH if your commissioning procedure permits, confirming NG judgment." : "Jika prosedur commissioning mengizinkan, ulangi dengan nilai di bawah LOW dan di atas HIGH untuk mengonfirmasi judgment NG.",
                   lang === "en" ? "Power down or set aside wrench 1. Repeat the test for wrench 2. Never transmit from both at the same time." : "Matikan atau sisihkan wrench 1. Ulangi test untuk wrench 2. Jangan pernah mengirim dari keduanya secara bersamaan.",
                   lang === "en" ? "Record receiver, Group CH, wrench ID, LOW, HIGH, unit, date, and test result on the station setup sheet." : "Catat receiver, Group CH, wrench ID, LOW, HIGH, unit, tanggal, dan hasil test pada station setup sheet."
@@ -460,7 +460,7 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
               {[
                 { title: "M-FD", body: lang === "en" ? "Confirm the module is M-FD, fully seated, and both antennas are attached." : "Pastikan module adalah M-FD, terpasang penuh, dan kedua antenna terpasang." },
                 { title: "POWER", body: lang === "en" ? "Confirm R-CM receives DC 18-36 V and is in normal mode." : "Pastikan R-CM menerima DC 18-36 V dan berada di normal mode." },
-                { title: "GROUP", body: lang === "en" ? "CSPFDD Group CH must exactly match its assigned R-CM." : "Group CH CSPFDD harus sama persis dengan R-CM yang dituju." },
+                { title: "GROUP", body: lang === "en" ? "FDD Group CH must exactly match its assigned R-CM." : "Group CH FDD harus sama persis dengan R-CM yang dituju." },
                 { title: "JGC", body: lang === "en" ? "JGC must match on both sides. For two wrenches, use 0." : "JGC harus sama pada kedua sisi. Untuk dua wrench, gunakan 0." },
                 { title: "ID1 / ID2", body: lang === "en" ? "Each wrench ID must be unique and exactly match its R-CM BASE profile." : "Setiap ID wrench harus unik dan sama persis dengan profile BASE R-CM." },
                 { title: "ONE AT A TIME", body: lang === "en" ? "Stop any second wrench from transmitting during the test." : "Pastikan tidak ada wrench kedua yang mengirim saat test." },
@@ -511,7 +511,7 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
           <div className="container-page flex flex-col gap-6 border-l-4 border-industrial-700 bg-graphite-50 p-7 md:flex-row md:items-center md:justify-between">
             <div>
               <p className="text-sm font-black text-graphite-900">{lang === "en" ? "Source used for this guide" : "Sumber panduan"}</p>
-              <p className="mt-2 max-w-3xl text-sm leading-6 text-graphite-500">{lang === "en" ? "TOHNICHI Data Transfer Torque Wrench CSPFD/CSPFDD Operating Instruction: Specifications, M-FD installation, BASIC settings, R-CM MODEL/BASE settings, and R-CM software settings (manual sections 3, 6-3, 9-1, 10, and 12)." : "TOHNICHI Data Transfer Torque Wrench CSPFD/CSPFDD Operating Instruction: Specifications, pemasangan M-FD, BASIC settings, R-CM MODEL/BASE settings, dan R-CM software settings (bagian 3, 6-3, 9-1, 10, dan 12)."}</p>
+              <p className="mt-2 max-w-3xl text-sm leading-6 text-graphite-500">{lang === "en" ? "TOHNICHI Data Transfer Torque Wrench CSPFD/FDD Operating Instruction: Specifications, M-FD installation, BASIC settings, R-CM MODEL/BASE settings, and R-CM software settings (manual sections 3, 6-3, 9-1, 10, and 12)." : "TOHNICHI Data Transfer Torque Wrench CSPFD/FDD Operating Instruction: Specifications, pemasangan M-FD, BASIC settings, R-CM MODEL/BASE settings, dan R-CM software settings (bagian 3, 6-3, 9-1, 10, dan 12)."}</p>
             </div>
             <CTAButton href={withLang("/contact?topic=cspfdd-rcm-setup", lang)}>{lang === "en" ? "Ask CSE to review a setup" : "Minta CSE review setup"}</CTAButton>
           </div>
