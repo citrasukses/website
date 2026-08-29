@@ -147,16 +147,16 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
       />
 
       <main>
-        <section className="overflow-hidden border-y border-graphite-200 bg-graphite-950 text-white">
+        <section className="overflow-hidden border-y border-graphite-200 bg-graphite-900 text-white">
           <div className="container-page grid gap-10 py-12 lg:grid-cols-[1.12fr_0.88fr] lg:items-center lg:py-16">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.2em] text-signal-400">{text(copy.eyebrow, lang)}</p>
+              <p className="text-xs font-black uppercase tracking-[0.2em] text-signal-500">{text(copy.eyebrow, lang)}</p>
               <h1 className="mt-4 max-w-4xl text-4xl font-black leading-[1.05] tracking-tight md:text-6xl">
                 {text(copy.title, lang)}
               </h1>
               <p className="mt-6 max-w-3xl text-base leading-8 text-white/75 md:text-lg">{text(copy.intro, lang)}</p>
               <div className="mt-6 flex gap-3 border-l-4 border-signal-500 bg-white/5 p-4 text-sm font-semibold leading-6 text-white/90">
-                <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-signal-400" aria-hidden="true" />
+                <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-signal-500" aria-hidden="true" />
                 <p>{text(copy.scope, lang)}</p>
               </div>
               <div className="mt-8 flex flex-wrap gap-3">
@@ -183,7 +183,7 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
                 <p className="mt-3 text-center text-xs font-black uppercase tracking-[0.12em] text-white/70">CSPFDD</p>
               </div>
               <div className="flex flex-col items-center gap-2 text-center">
-                <Radio className="h-7 w-7 text-signal-400" aria-hidden="true" />
+                <Radio className="h-7 w-7 text-signal-500" aria-hidden="true" />
                 <span className="text-[10px] font-black uppercase tracking-[0.14em] text-white/60">2.4 GHz</span>
               </div>
               <div>
@@ -223,8 +223,8 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
             <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr]">
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.18em] text-signal-600">{lang === "en" ? "The rule that prevents cross-talk" : "Aturan agar signal tidak tertukar"}</p>
-                <h2 className="mt-3 text-3xl font-black text-graphite-950">{lang === "en" ? "Same receiver, same group. Adjacent receiver, different group." : "Receiver yang sama, Group sama. Receiver berdekatan, Group berbeda."}</h2>
-                <p className="mt-4 text-base leading-7 text-graphite-600">
+                <h2 className="mt-3 text-3xl font-black text-graphite-900">{lang === "en" ? "Same receiver, same group. Adjacent receiver, different group." : "Receiver yang sama, Group sama. Receiver berdekatan, Group berbeda."}</h2>
+                <p className="mt-4 text-base leading-7 text-graphite-500">
                   {lang === "en"
                     ? "Each wrench must use the Group CH of its assigned R-CM. Give every adjacent R-CM its own Group CH, then use unique 3-digit IDs for the two wrench profiles inside that group."
                     : "Setiap wrench harus memakai Group CH milik R-CM yang dituju. Berikan Group CH tersendiri pada setiap R-CM yang berdekatan, lalu gunakan ID 3 digit yang berbeda untuk dua profile wrench di dalam group tersebut."}
@@ -234,7 +234,7 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
 
               <div className="overflow-x-auto border border-graphite-200 bg-white">
                 <table className="min-w-[680px] w-full border-collapse text-left text-sm">
-                  <thead className="bg-graphite-950 text-white">
+                  <thead className="bg-graphite-900 text-white">
                     <tr>
                       {[lang === "en" ? "Receiver" : "Receiver", "Group CH", "ID1", "ID2", lang === "en" ? "Use" : "Penggunaan"].map((header) => (
                         <th key={header} scope="col" className="border-r border-white/15 px-4 py-3 font-bold last:border-r-0">{header}</th>
@@ -243,18 +243,18 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
                   </thead>
                   <tbody>
                     <tr className="border-t border-graphite-200">
-                      <th scope="row" className="px-4 py-4 font-black text-graphite-950">R-CM A</th>
+                      <th scope="row" className="px-4 py-4 font-black text-graphite-900">R-CM A</th>
                       <td className="px-4 py-4 font-mono font-black text-industrial-700">010</td>
                       <td className="px-4 py-4 font-mono">101</td>
                       <td className="px-4 py-4 font-mono">102</td>
-                      <td className="px-4 py-4 text-graphite-600">{lang === "en" ? "Station A tools" : "Tool station A"}</td>
+                      <td className="px-4 py-4 text-graphite-500">{lang === "en" ? "Station A tools" : "Tool station A"}</td>
                     </tr>
                     <tr className="border-t border-graphite-200 bg-graphite-50">
-                      <th scope="row" className="px-4 py-4 font-black text-graphite-950">R-CM B</th>
+                      <th scope="row" className="px-4 py-4 font-black text-graphite-900">R-CM B</th>
                       <td className="px-4 py-4 font-mono font-black text-industrial-700">020</td>
                       <td className="px-4 py-4 font-mono">201</td>
                       <td className="px-4 py-4 font-mono">202</td>
-                      <td className="px-4 py-4 text-graphite-600">{lang === "en" ? "Station B tools" : "Tool station B"}</td>
+                      <td className="px-4 py-4 text-graphite-500">{lang === "en" ? "Station B tools" : "Tool station B"}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -270,8 +270,8 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
           <div className="container-page">
             <div className="max-w-3xl">
               <p className="text-xs font-black uppercase tracking-[0.18em] text-signal-600">{lang === "en" ? "Five-step setup" : "Setup lima langkah"}</p>
-              <h2 className="mt-3 text-4xl font-black text-graphite-950">{lang === "en" ? "Configure the system in this order." : "Konfigurasikan sistem dengan urutan ini."}</h2>
-              <p className="mt-4 text-base leading-7 text-graphite-600">
+              <h2 className="mt-3 text-4xl font-black text-graphite-900">{lang === "en" ? "Configure the system in this order." : "Konfigurasikan sistem dengan urutan ini."}</h2>
+              <p className="mt-4 text-base leading-7 text-graphite-500">
                 {lang === "en" ? "Set only one wrench or receiver at a time. Finish and return it to normal mode before putting the next device into setting mode." : "Set hanya satu wrench atau receiver pada satu waktu. Selesaikan dan kembalikan ke normal mode sebelum memasukkan device berikutnya ke setting mode."}
               </p>
             </div>
@@ -280,8 +280,8 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
               <article className="grid gap-7 border border-graphite-200 p-6 md:p-8 lg:grid-cols-[0.72fr_1.28fr]">
                 <div>
                   <div className="flex items-center gap-4"><StepNumber>1</StepNumber><ShieldCheck className="h-7 w-7 text-industrial-700" aria-hidden="true" /></div>
-                  <h3 className="mt-5 text-2xl font-black text-graphite-950">{lang === "en" ? "Prepare and install M-FD" : "Siapkan dan pasang M-FD"}</h3>
-                  <p className="mt-3 text-sm leading-6 text-graphite-600">{lang === "en" ? "Skip the module installation only if M-FD is already correctly fitted." : "Lewati pemasangan module hanya jika M-FD sudah terpasang dengan benar."}</p>
+                  <h3 className="mt-5 text-2xl font-black text-graphite-900">{lang === "en" ? "Prepare and install M-FD" : "Siapkan dan pasang M-FD"}</h3>
+                  <p className="mt-3 text-sm leading-6 text-graphite-500">{lang === "en" ? "Skip the module installation only if M-FD is already correctly fitted." : "Lewati pemasangan module hanya jika M-FD sudah terpasang dengan benar."}</p>
                   <div className="mt-5"><ManualRef>{lang === "en" ? "Manual: 6-3" : "Manual: 6-3"}</ManualRef></div>
                 </div>
                 <ol className="grid gap-3 text-sm leading-6 text-graphite-700">
@@ -297,13 +297,13 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
                 </ol>
               </article>
 
-              <div className="flex justify-center text-graphite-300"><ArrowDown className="h-7 w-7" aria-hidden="true" /></div>
+              <div className="flex justify-center text-graphite-200"><ArrowDown className="h-7 w-7" aria-hidden="true" /></div>
 
               <article className="grid gap-7 border border-graphite-200 p-6 md:p-8 lg:grid-cols-[0.72fr_1.28fr]">
                 <div>
                   <div className="flex items-center gap-4"><StepNumber>2</StepNumber><Wrench className="h-7 w-7 text-industrial-700" aria-hidden="true" /></div>
-                  <h3 className="mt-5 text-2xl font-black text-graphite-950">{lang === "en" ? "Set each CSPFDD" : "Set setiap CSPFDD"}</h3>
-                  <p className="mt-3 text-sm leading-6 text-graphite-600">{lang === "en" ? "Repeat for each wrench, using the Group and ID written in your plan." : "Ulangi untuk setiap wrench dengan Group dan ID yang sudah dicatat."}</p>
+                  <h3 className="mt-5 text-2xl font-black text-graphite-900">{lang === "en" ? "Set each CSPFDD" : "Set setiap CSPFDD"}</h3>
+                  <p className="mt-3 text-sm leading-6 text-graphite-500">{lang === "en" ? "Repeat for each wrench, using the Group and ID written in your plan." : "Ulangi untuk setiap wrench dengan Group dan ID yang sudah dicatat."}</p>
                   <div className="mt-5"><ManualRef>{lang === "en" ? "Manual: 9-1 BASIC" : "Manual: 9-1 BASIC"}</ManualRef></div>
                 </div>
                 <div>
@@ -319,20 +319,20 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
                       <li key={item} className="border border-graphite-200 bg-graphite-50 p-4"><span className="mr-2 font-black text-signal-600">{index + 1}.</span>{item}</li>
                     ))}
                   </ol>
-                  <div className="mt-5 border-l-4 border-industrial-600 bg-industrial-50 p-4 text-sm leading-6 text-graphite-700">
-                    <strong className="text-graphite-950">{lang === "en" ? "One-to-one option:" : "Opsi satu-ke-satu:"}</strong>{" "}
+                  <div className="mt-5 border-l-4 border-industrial-600 bg-graphite-50 p-4 text-sm leading-6 text-graphite-700">
+                    <strong className="text-graphite-900">{lang === "en" ? "One-to-one option:" : "Opsi satu-ke-satu:"}</strong>{" "}
                     {lang === "en" ? "JGC 1 activates 3-digit ID identification for a single wrench. Set JGC 1 and the same ID on both sides. For a mixed system, the simpler standard is unique Group CH per R-CM and JGC 0 for every one- or two-wrench receiver." : "JGC 1 mengaktifkan identification ID 3 digit untuk satu wrench. Set JGC 1 dan ID yang sama di kedua sisi. Untuk sistem campuran, standard yang lebih sederhana adalah Group CH unik per R-CM dan JGC 0 untuk setiap receiver dengan satu atau dua wrench."}
                   </div>
                 </div>
               </article>
 
-              <div className="flex justify-center text-graphite-300"><ArrowDown className="h-7 w-7" aria-hidden="true" /></div>
+              <div className="flex justify-center text-graphite-200"><ArrowDown className="h-7 w-7" aria-hidden="true" /></div>
 
               <article className="grid gap-7 border border-graphite-200 p-6 md:p-8 lg:grid-cols-[0.72fr_1.28fr]">
                 <div>
                   <div className="flex items-center gap-4"><StepNumber>3</StepNumber><Radio className="h-7 w-7 text-industrial-700" aria-hidden="true" /></div>
-                  <h3 className="mt-5 text-2xl font-black text-graphite-950">{lang === "en" ? "Match the R-CM radio settings" : "Samakan radio setting R-CM"}</h3>
-                  <p className="mt-3 text-sm leading-6 text-graphite-600">{lang === "en" ? "This tells the receiver which radio group to listen to." : "Langkah ini menentukan radio group yang diterima receiver."}</p>
+                  <h3 className="mt-5 text-2xl font-black text-graphite-900">{lang === "en" ? "Match the R-CM radio settings" : "Samakan radio setting R-CM"}</h3>
+                  <p className="mt-3 text-sm leading-6 text-graphite-500">{lang === "en" ? "This tells the receiver which radio group to listen to." : "Langkah ini menentukan radio group yang diterima receiver."}</p>
                   <div className="mt-5"><ManualRef>{lang === "en" ? "Manual: 10-2 MODEL" : "Manual: 10-2 MODEL"}</ManualRef></div>
                 </div>
                 <div>
@@ -348,20 +348,20 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
                       <li key={item} className="flex gap-3 border border-graphite-200 p-4"><span className="font-black text-signal-600">{index + 1}.</span><span>{item}</span></li>
                     ))}
                   </ol>
-                  <div className="mt-5 flex gap-3 bg-signal-50 p-4 text-sm font-semibold leading-6 text-graphite-800">
+                  <div className="mt-5 flex gap-3 bg-red-50 p-4 text-sm font-semibold leading-6 text-graphite-800">
                     <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-signal-600" aria-hidden="true" />
                     <p>{lang === "en" ? "If another R-CM is physically adjacent, do not reuse this Group CH on that receiver." : "Jika ada R-CM lain yang berdekatan secara fisik, jangan gunakan kembali Group CH ini pada receiver tersebut."}</p>
                   </div>
                 </div>
               </article>
 
-              <div className="flex justify-center text-graphite-300"><ArrowDown className="h-7 w-7" aria-hidden="true" /></div>
+              <div className="flex justify-center text-graphite-200"><ArrowDown className="h-7 w-7" aria-hidden="true" /></div>
 
               <article className="grid gap-7 border border-graphite-200 p-6 md:p-8 lg:grid-cols-[0.72fr_1.28fr]">
                 <div>
                   <div className="flex items-center gap-4"><StepNumber>4</StepNumber><Gauge className="h-7 w-7 text-industrial-700" aria-hidden="true" /></div>
-                  <h3 className="mt-5 text-2xl font-black text-graphite-950">{lang === "en" ? "Assign IDs and HIGH/LOW limits" : "Tetapkan ID dan batas HIGH/LOW"}</h3>
-                  <p className="mt-3 text-sm leading-6 text-graphite-600">{lang === "en" ? "The R-CM judges each received torque against the profile mapped to that wrench ID." : "R-CM membandingkan torque yang diterima dengan profile milik ID wrench tersebut."}</p>
+                  <h3 className="mt-5 text-2xl font-black text-graphite-900">{lang === "en" ? "Assign IDs and HIGH/LOW limits" : "Tetapkan ID dan batas HIGH/LOW"}</h3>
+                  <p className="mt-3 text-sm leading-6 text-graphite-500">{lang === "en" ? "The R-CM judges each received torque against the profile mapped to that wrench ID." : "R-CM membandingkan torque yang diterima dengan profile milik ID wrench tersebut."}</p>
                   <div className="mt-5"><ManualRef>{lang === "en" ? "Manual: 10-3 BASE" : "Manual: 10-3 BASE"}</ManualRef></div>
                 </div>
                 <div>
@@ -387,20 +387,20 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
         <section className="bg-industrial-800 py-16 text-white">
           <div className="container-page grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-signal-300">{lang === "en" ? "How to set HIGH and LOW" : "Cara set HIGH dan LOW"}</p>
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-signal-500">{lang === "en" ? "How to set HIGH and LOW" : "Cara set HIGH dan LOW"}</p>
               <h2 className="mt-3 text-4xl font-black">{lang === "en" ? "Use the approved process limits - not the wrench accuracy." : "Gunakan process limit yang disetujui - bukan akurasi wrench."}</h2>
               <p className="mt-5 text-base leading-8 text-white/75">{lang === "en" ? "HIGH is the largest acceptable tightening result. LOW is the smallest acceptable result. Obtain both from the engineering drawing, customer specification, or approved control plan." : "HIGH adalah hasil tightening terbesar yang diterima. LOW adalah hasil terkecil yang diterima. Ambil keduanya dari engineering drawing, customer specification, atau control plan yang disetujui."}</p>
             </div>
             <div className="border border-white/15 bg-white/5 p-6 md:p-8">
-              <p className="text-xs font-black uppercase tracking-[0.16em] text-signal-300">{lang === "en" ? "Worked example" : "Contoh"}</p>
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-signal-500">{lang === "en" ? "Worked example" : "Contoh"}</p>
               <p className="mt-3 text-lg font-bold">{lang === "en" ? "Approved target: 50.0 N·m with tolerance -2.5 / +2.5 N·m" : "Target disetujui: 50.0 N·m dengan tolerance -2.5 / +2.5 N·m"}</p>
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                <div className="border-l-4 border-signal-400 bg-black/15 p-5">
+                <div className="border-l-4 border-signal-500 bg-black/15 p-5">
                   <p className="font-mono text-xs font-black uppercase tracking-[0.14em] text-white/60">LO-T1</p>
                   <p className="mt-2 text-4xl font-black">47.5</p>
                   <p className="mt-2 text-xs text-white/60">50.0 - 2.5</p>
                 </div>
-                <div className="border-l-4 border-signal-400 bg-black/15 p-5">
+                <div className="border-l-4 border-signal-500 bg-black/15 p-5">
                   <p className="font-mono text-xs font-black uppercase tracking-[0.14em] text-white/60">HI-T1</p>
                   <p className="mt-2 text-4xl font-black">52.5</p>
                   <p className="mt-2 text-xs text-white/60">50.0 + 2.5</p>
@@ -412,7 +412,7 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
                 <div className="flex items-center gap-3 border border-red-300/30 bg-red-950/20 p-4"><XCircle className="h-5 w-5 text-red-300" aria-hidden="true" /><span className="text-sm"><strong>53.0</strong> - NG HIGH</span></div>
               </div>
               <div className="mt-5 flex gap-3 border-t border-white/15 pt-5 text-sm leading-6 text-white/70">
-                <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-signal-300" aria-hidden="true" />
+                <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-signal-500" aria-hidden="true" />
                 <p>{lang === "en" ? "Do not invent limits from the CSPFDD accuracy rating. Tool accuracy and process acceptance tolerance are different controls." : "Jangan membuat limit dari rating akurasi CSPFDD. Akurasi tool dan process acceptance tolerance adalah kontrol yang berbeda."}</p>
               </div>
             </div>
@@ -424,8 +424,8 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
             <article className="grid gap-7 border border-graphite-200 p-6 md:p-8 lg:grid-cols-[0.72fr_1.28fr]">
               <div>
                 <div className="flex items-center gap-4"><StepNumber>5</StepNumber><CheckCircle2 className="h-7 w-7 text-industrial-700" aria-hidden="true" /></div>
-                <h2 className="mt-5 text-3xl font-black text-graphite-950">{lang === "en" ? "Commission one wrench at a time" : "Commission satu wrench pada satu waktu"}</h2>
-                <p className="mt-3 text-sm leading-6 text-graphite-600">{lang === "en" ? "Do not release the station until every tool passes this check." : "Jangan release station sebelum setiap tool lulus pengecekan ini."}</p>
+                <h2 className="mt-5 text-3xl font-black text-graphite-900">{lang === "en" ? "Commission one wrench at a time" : "Commission satu wrench pada satu waktu"}</h2>
+                <p className="mt-3 text-sm leading-6 text-graphite-500">{lang === "en" ? "Do not release the station until every tool passes this check." : "Jangan release station sebelum setiap tool lulus pengecekan ini."}</p>
               </div>
               <ol className="grid gap-4 text-sm leading-6 text-graphite-700">
                 {[
@@ -436,7 +436,7 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
                   lang === "en" ? "Power down or set aside wrench 1. Repeat the test for wrench 2. Never transmit from both at the same time." : "Matikan atau sisihkan wrench 1. Ulangi test untuk wrench 2. Jangan pernah mengirim dari keduanya secara bersamaan.",
                   lang === "en" ? "Record receiver, Group CH, wrench ID, LOW, HIGH, unit, date, and test result on the station setup sheet." : "Catat receiver, Group CH, wrench ID, LOW, HIGH, unit, tanggal, dan hasil test pada station setup sheet."
                 ].map((item, index) => (
-                  <li key={item} className="grid grid-cols-[2.25rem_1fr] items-start gap-3"><span className="flex h-9 w-9 items-center justify-center bg-graphite-950 text-xs font-black text-white">{index + 1}</span><span className="border-b border-graphite-200 pb-4 pt-1.5">{item}</span></li>
+                  <li key={item} className="grid grid-cols-[2.25rem_1fr] items-start gap-3"><span className="flex h-9 w-9 items-center justify-center bg-graphite-900 text-xs font-black text-white">{index + 1}</span><span className="border-b border-graphite-200 pb-4 pt-1.5">{item}</span></li>
                 ))}
               </ol>
             </article>
@@ -453,8 +453,8 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
           <div className="container-page grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
             <div>
               <p className="text-xs font-black uppercase tracking-[0.18em] text-signal-600">{lang === "en" ? "Troubleshooting" : "Troubleshooting"}</p>
-              <h2 className="mt-3 text-4xl font-black text-graphite-950">{lang === "en" ? "If the wrench shows E01, check in this order." : "Jika wrench menampilkan E01, cek dengan urutan ini."}</h2>
-              <p className="mt-4 text-base leading-7 text-graphite-600">{lang === "en" ? "Change one thing at a time and resend after each correction." : "Ubah satu hal pada satu waktu dan kirim ulang setelah setiap koreksi."}</p>
+              <h2 className="mt-3 text-4xl font-black text-graphite-900">{lang === "en" ? "If the wrench shows E01, check in this order." : "Jika wrench menampilkan E01, cek dengan urutan ini."}</h2>
+              <p className="mt-4 text-base leading-7 text-graphite-500">{lang === "en" ? "Change one thing at a time and resend after each correction." : "Ubah satu hal pada satu waktu dan kirim ulang setelah setiap koreksi."}</p>
             </div>
             <ol className="grid gap-3 sm:grid-cols-2">
               {[
@@ -478,13 +478,13 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
             <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
               <div>
                 <Settings2 className="h-8 w-8 text-industrial-700" aria-hidden="true" />
-                <h2 className="mt-5 text-3xl font-black text-graphite-950">{lang === "en" ? "Important receiver options" : "Opsi receiver yang penting"}</h2>
+                <h2 className="mt-5 text-3xl font-black text-graphite-900">{lang === "en" ? "Important receiver options" : "Opsi receiver yang penting"}</h2>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
-                <div className="border border-graphite-200 p-5"><h3 className="font-black text-graphite-950">{lang === "en" ? "No external equipment" : "Tanpa external equipment"}</h3><p className="mt-2 text-sm leading-6 text-graphite-600">{lang === "en" ? "Set FLOW to OFF in Communication settings." : "Set FLOW ke OFF pada Communication settings."}</p></div>
-                <div className="border border-graphite-200 p-5"><h3 className="font-black text-graphite-950">{lang === "en" ? "External equipment judges OK/NG" : "External equipment menentukan OK/NG"}</h3><p className="mt-2 text-sm leading-6 text-graphite-600">{lang === "en" ? "Set both R-CM torque HIGH and LOW values to 000.0." : "Set kedua nilai HIGH dan LOW torque R-CM ke 000.0."}</p></div>
-                <div className="border border-graphite-200 p-5"><h3 className="font-black text-graphite-950">AUTO RESET TIMER</h3><p className="mt-2 text-sm leading-6 text-graphite-600">{lang === "en" ? "If ART is 0.0 seconds, the R-CM does not output an OK signal. Use a non-zero value when the OK relay output is required." : "Jika ART 0.0 detik, R-CM tidak mengeluarkan signal OK. Gunakan nilai selain nol bila OK relay output dibutuhkan."}</p></div>
-                <div className="border border-graphite-200 p-5"><h3 className="font-black text-graphite-950">SB-FH2 + PC</h3><p className="mt-2 text-sm leading-6 text-graphite-600">{lang === "en" ? "For larger commissioning jobs, Pokayoke Tool Setting Software can GET and SEND Channel and Judgment settings through SB-FH2. Put only one receiver in setting mode at a time." : "Untuk commissioning yang lebih besar, Pokayoke Tool Setting Software dapat GET dan SEND Channel serta Judgment settings melalui SB-FH2. Masukkan hanya satu receiver ke setting mode pada satu waktu."}</p></div>
+                <div className="border border-graphite-200 p-5"><h3 className="font-black text-graphite-900">{lang === "en" ? "No external equipment" : "Tanpa external equipment"}</h3><p className="mt-2 text-sm leading-6 text-graphite-500">{lang === "en" ? "Set FLOW to OFF in Communication settings." : "Set FLOW ke OFF pada Communication settings."}</p></div>
+                <div className="border border-graphite-200 p-5"><h3 className="font-black text-graphite-900">{lang === "en" ? "External equipment judges OK/NG" : "External equipment menentukan OK/NG"}</h3><p className="mt-2 text-sm leading-6 text-graphite-500">{lang === "en" ? "Set both R-CM torque HIGH and LOW values to 000.0." : "Set kedua nilai HIGH dan LOW torque R-CM ke 000.0."}</p></div>
+                <div className="border border-graphite-200 p-5"><h3 className="font-black text-graphite-900">AUTO RESET TIMER</h3><p className="mt-2 text-sm leading-6 text-graphite-500">{lang === "en" ? "If ART is 0.0 seconds, the R-CM does not output an OK signal. Use a non-zero value when the OK relay output is required." : "Jika ART 0.0 detik, R-CM tidak mengeluarkan signal OK. Gunakan nilai selain nol bila OK relay output dibutuhkan."}</p></div>
+                <div className="border border-graphite-200 p-5"><h3 className="font-black text-graphite-900">SB-FH2 + PC</h3><p className="mt-2 text-sm leading-6 text-graphite-500">{lang === "en" ? "For larger commissioning jobs, Pokayoke Tool Setting Software can GET and SEND Channel and Judgment settings through SB-FH2. Put only one receiver in setting mode at a time." : "Untuk commissioning yang lebih besar, Pokayoke Tool Setting Software dapat GET dan SEND Channel serta Judgment settings melalui SB-FH2. Masukkan hanya satu receiver ke setting mode pada satu waktu."}</p></div>
               </div>
             </div>
           </div>
@@ -492,15 +492,15 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
 
         <section className="bg-graphite-50 py-16">
           <div className="container-page grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
-            <div><p className="text-xs font-black uppercase tracking-[0.2em] text-signal-600">FAQ</p><h2 className="mt-3 text-3xl font-black text-graphite-950">{lang === "en" ? "Questions that cause most setup errors" : "Pertanyaan yang paling sering menyebabkan setup error"}</h2></div>
+            <div><p className="text-xs font-black uppercase tracking-[0.2em] text-signal-600">FAQ</p><h2 className="mt-3 text-3xl font-black text-graphite-900">{lang === "en" ? "Questions that cause most setup errors" : "Pertanyaan yang paling sering menyebabkan setup error"}</h2></div>
             <div className="divide-y divide-graphite-200 border-y border-graphite-200">
               {faqItems.map((item) => (
                 <details key={item.question.en} className="group py-5">
-                  <summary className="focus-ring flex cursor-pointer list-none items-center justify-between gap-4 font-black text-graphite-950">
+                  <summary className="focus-ring flex cursor-pointer list-none items-center justify-between gap-4 font-black text-graphite-900">
                     {text(item.question, lang)}
                     <span className="text-xl text-signal-600 transition group-open:rotate-45" aria-hidden="true">+</span>
                   </summary>
-                  <p className="mt-4 max-w-3xl text-sm leading-7 text-graphite-600">{text(item.answer, lang)}</p>
+                  <p className="mt-4 max-w-3xl text-sm leading-7 text-graphite-500">{text(item.answer, lang)}</p>
                 </details>
               ))}
             </div>
@@ -510,8 +510,8 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
         <section className="bg-white py-14">
           <div className="container-page flex flex-col gap-6 border-l-4 border-industrial-700 bg-graphite-50 p-7 md:flex-row md:items-center md:justify-between">
             <div>
-              <p className="text-sm font-black text-graphite-950">{lang === "en" ? "Source used for this guide" : "Sumber panduan"}</p>
-              <p className="mt-2 max-w-3xl text-sm leading-6 text-graphite-600">{lang === "en" ? "TOHNICHI Data Transfer Torque Wrench CSPFD/CSPFDD Operating Instruction: Specifications, M-FD installation, BASIC settings, R-CM MODEL/BASE settings, and R-CM software settings (manual sections 3, 6-3, 9-1, 10, and 12)." : "TOHNICHI Data Transfer Torque Wrench CSPFD/CSPFDD Operating Instruction: Specifications, pemasangan M-FD, BASIC settings, R-CM MODEL/BASE settings, dan R-CM software settings (bagian 3, 6-3, 9-1, 10, dan 12)."}</p>
+              <p className="text-sm font-black text-graphite-900">{lang === "en" ? "Source used for this guide" : "Sumber panduan"}</p>
+              <p className="mt-2 max-w-3xl text-sm leading-6 text-graphite-500">{lang === "en" ? "TOHNICHI Data Transfer Torque Wrench CSPFD/CSPFDD Operating Instruction: Specifications, M-FD installation, BASIC settings, R-CM MODEL/BASE settings, and R-CM software settings (manual sections 3, 6-3, 9-1, 10, and 12)." : "TOHNICHI Data Transfer Torque Wrench CSPFD/CSPFDD Operating Instruction: Specifications, pemasangan M-FD, BASIC settings, R-CM MODEL/BASE settings, dan R-CM software settings (bagian 3, 6-3, 9-1, 10, dan 12)."}</p>
             </div>
             <CTAButton href={withLang("/contact?topic=cspfdd-rcm-setup", lang)}>{lang === "en" ? "Ask CSE to review a setup" : "Minta CSE review setup"}</CTAButton>
           </div>
