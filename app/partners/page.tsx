@@ -6,7 +6,8 @@ import { PartnerInquiryForm } from "@/components/InquiryForms";
 import { SectionHeader } from "@/components/SectionHeader";
 import { brands } from "@/data/brands";
 import { company } from "@/data/navigation";
-import { languageAlternates, localizedPath, staticLanguage, text, withLang } from "@/lib/i18n";
+import { staticLanguage, text, withLang } from "@/lib/i18n";
+import { buildPageMetadata } from "@/lib/seo";
 
 export function generateMetadata(): Metadata {
   const lang = staticLanguage();
@@ -16,14 +17,12 @@ export function generateMetadata(): Metadata {
       ? "For overseas industrial brands interested in Indonesian distribution with CSE."
       : "Untuk brand industrial luar negeri yang mencari partner distribusi di Indonesia bersama CSE.";
 
-  return {
+  return buildPageMetadata({
+    path: "/partners",
     title,
     description,
-    alternates: {
-      canonical: localizedPath("/partners", lang),
-      languages: languageAlternates("/partners")
-    }
-  };
+    lang
+  });
 }
 
 export default function PartnersPage() {

@@ -18,10 +18,12 @@ import { nacCouplingProductDetails } from "@/data/nac-coupling-product-details";
 import { nacProductDetails } from "@/data/nac-product-details";
 import { sankyoRikagakuProductDetails } from "@/data/sankyo-rikagaku-product-details";
 import { tohnichiProductDetails } from "@/data/tohnichi-product-details";
-import { isTohnichiPriorityProduct } from "@/data/tohnichi-seo";
 import { canViewBrandDraft, isBrandPubliclyAvailable } from "@/lib/brand-visibility";
 import { getCatalogBrandBySlug } from "@/lib/catalog";
-import { languageAlternates, localizedPath, staticLanguage, text, withLang } from "@/lib/i18n";
+import { localizedPath, staticLanguage, text, withLang } from "@/lib/i18n";
+import { buildBreadcrumbJsonLd, buildPageMetadata, organizationReference } from "@/lib/seo";
+import { absoluteLocalizedUrl, absoluteUrl } from "@/lib/seo-config";
+import { getProductIndexability } from "@/lib/seo-indexability";
 
 type PageProps = {
   params: Promise<{ slug: string; productSlug: string }>;
@@ -53,7 +55,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const productPath = `/brands/${brand.slug}/products/${product.slug}`;
-  const canonical = localizedPath(productPath, lang);
   const tohnichiDetail = brand.slug === "tohnichi" ? tohnichiProductDetails[product.slug] : undefined;
   const nacDetail =
     brand.slug === "nac" ? nacProductDetails[product.slug] ?? nacCouplingProductDetails[product.slug] : undefined;
@@ -81,53 +82,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             ? `${product.name} Sankyo Rikagaku Indonesia - FUJISTAR Catalogue`
             : `${product.name} Sankyo Rikagaku Indonesia - Katalog FUJISTAR`
         : `${product.name} | ${brand.name}`;
-  const nacKeywords =
-    brand.slug === "nac"
-      ? Array.from(
-          new Set([
-            `${product.name} NAC`,
-            `${product.name} Nagahori`,
-            `${product.name} Indonesia`,
-            "NAC fastener tools",
-            "Nagahori Industry Indonesia",
-            ...product.tags.flatMap((tag) => [tag.id, tag.en])
-          ])
-        )
-      : undefined;
-  const shouldIndex = brand.slug !== "tohnichi" || isTohnichiPriorityProduct(product.slug);
+  const indexability = getProductIndexability({
+    brandSlug: brand.slug,
+    productSlug: product.slug,
+    published: brand.published,
+    publiclyAvailable: isBrandPubliclyAvailable(brand.slug)
+  });
 
-  return {
+  return buildPageMetadata({
+    path: productPath,
     title: seoTitle,
     description,
-    keywords: tohnichiDetail?.seoKeywords ?? sankyoRikagakuDetail?.seoKeywords ?? nacKeywords,
-    robots: shouldIndex
-      ? undefined
-      : {
-          index: false,
-          follow: true,
-          googleBot: {
-            index: false,
-            follow: true
-          }
-        },
-    alternates: {
-      canonical,
-      languages: languageAlternates(productPath)
-    },
-    openGraph: {
-      title: `${product.name} ${brand.name} Indonesia | CSE`,
-      description,
-      url: canonical,
-      type: "website",
-      images: product.image ? [{ url: product.image, alt: `${brand.name} ${product.name}` }] : undefined
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${product.name} ${brand.name} Indonesia | CSE`,
-      description,
-      images: product.image ? [product.image] : undefined
-    }
-  };
+    lang,
+    image: product.image,
+    imageAlt: `${brand.name} ${product.name}`,
+    indexability
+  });
 }
 
 export default async function ProductDetailPage({ params }: PageProps) {
@@ -259,46 +229,32 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 : "CSE membantu mengonfirmasi model, spesifikasi, dan ketersediaan untuk aplikasi tersebut."
           }
         ];
-  const productJsonLd = {
-    "@context": "https://schema.org",
-    "@type": sankyoRikagakuDetail ? "ProductGroup" : "Product",
-    name: `${brand.name} ${product.name}`,
-    description: text(tohnichiDetail?.seoDescription ?? familyDetail?.overview ?? product.summary, lang),
-    image: images.map((image) => `https://cse.co.id${image}`),
-    url: `https://cse.co.id${localizedPath(`/brands/${brand.slug}/products/${product.slug}`, lang)}`,
-    brand: {
-      "@type": "Brand",
-      name: brand.name
+  const productPath = `/brands/${brand.slug}/products/${product.slug}`;
+  const productDescription = text(tohnichiDetail?.seoDescription ?? familyDetail?.overview ?? product.summary, lang);
+  const productJsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: `${brand.name} ${product.name}`,
+      description: productDescription,
+      image: images.map(absoluteUrl),
+      url: absoluteLocalizedUrl(productPath, lang),
+      inLanguage: lang === "en" ? "en-US" : "id-ID",
+      about: [
+        { "@type": "Brand", name: brand.name },
+        { "@type": "Thing", name: product.name, description: productDescription }
+      ],
+      provider: organizationReference()
     },
-    category: text(group.title, lang),
-    hasVariant: sankyoRikagakuDetail?.models.map((model) => ({
-      "@type": "Product",
-      name: `${brand.name} FUJISTAR ${model.name}`,
-      image: `https://cse.co.id${model.image}`,
-      url: `https://cse.co.id${localizedPath(`/brands/${brand.slug}/products/${product.slug}#${model.slug}`, lang)}`,
-      brand: {
-        "@type": "Brand",
-        name: "FUJISTAR"
-      }
-    })),
-    additionalProperty: tohnichiDetail?.accuracy
-      ? [
-          {
-            "@type": "PropertyValue",
-            name: lang === "en" ? "Accuracy" : "Akurasi",
-            value: tohnichiDetail.accuracy
-          }
-        ]
-      : nacDetail
-        ? [
-            {
-              "@type": "PropertyValue",
-              name: lang === "en" ? "Catalogue reference" : "Referensi katalog",
-              value: nacDetail.catalogueReference
-            }
-          ]
-      : undefined
-  };
+    buildBreadcrumbJsonLd({
+      lang,
+      items: [
+        { name: lang === "en" ? "Brands" : "Brand", path: "/brands" },
+        { name: brand.name, path: `/brands/${brand.slug}` },
+        { name: product.name, path: productPath }
+      ]
+    })
+  ];
 
   return (
     <>

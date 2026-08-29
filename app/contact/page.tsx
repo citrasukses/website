@@ -5,7 +5,8 @@ import { RFQForm } from "@/components/InquiryForms";
 import { SectionHeader } from "@/components/SectionHeader";
 import { company } from "@/data/navigation";
 import { getCatalogBrands } from "@/lib/catalog";
-import { languageAlternates, localizedPath, staticLanguage, withLang } from "@/lib/i18n";
+import { staticLanguage, withLang } from "@/lib/i18n";
+import { buildPageMetadata } from "@/lib/seo";
 
 export function generateMetadata(): Metadata {
   const lang = staticLanguage();
@@ -15,14 +16,12 @@ export function generateMetadata(): Metadata {
       ? "Send an RFQ, product consultation request, or email inquiry to CSE."
       : "Kirim RFQ, permintaan konsultasi produk, atau inquiry melalui email kepada CSE.";
 
-  return {
+  return buildPageMetadata({
+    path: "/contact",
     title,
     description,
-    alternates: {
-      canonical: localizedPath("/contact", lang),
-      languages: languageAlternates("/contact")
-    }
-  };
+    lang
+  });
 }
 
 export default async function ContactPage() {
@@ -38,6 +37,7 @@ export default async function ContactPage() {
             <SectionHeader
               eyebrow="RFQ"
               title={lang === "en" ? "Send a product inquiry or consultation request." : "Kirim inquiry produk atau permintaan konsultasi."}
+              headingLevel="h1"
               description={
                 lang === "en"
                   ? "Share the brand, product model, quantity, and application details so CSE can respond with the right context."

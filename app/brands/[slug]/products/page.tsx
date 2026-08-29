@@ -8,6 +8,7 @@ import { seedCatalog } from "@/data/catalog-seed";
 import { getCatalogBrandBySlug } from "@/lib/catalog";
 import { buildCollectionJsonLd, buildPageMetadata } from "@/lib/seo";
 import { staticLanguage, withLang } from "@/lib/i18n";
+import { getBrandCatalogueIndexability } from "@/lib/seo-indexability";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -41,20 +42,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description,
     lang,
     image: brand.heroImage,
-    imageAlt: "Katalog produk TOHNICHI Indonesia"
+    imageAlt: "Katalog produk TOHNICHI Indonesia",
+    indexability: getBrandCatalogueIndexability()
   });
-
-  return {
-    ...metadata,
-    robots: {
-      index: false,
-      follow: true,
-      googleBot: {
-        index: false,
-        follow: true
-      }
-    }
-  };
+  return metadata;
 }
 
 export default async function BrandCataloguePage({ params }: PageProps) {

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Suspense, type ReactNode } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { localizedPath, staticLanguage } from "@/lib/i18n";
+import { staticLanguage } from "@/lib/i18n";
+import { absoluteLocalizedUrl, absoluteUrl, siteConfig } from "@/lib/seo-config";
 import "./globals.css";
 
 export function generateMetadata(): Metadata {
@@ -29,15 +30,15 @@ export function generateMetadata(): Metadata {
       template: "%s | CSE"
     },
     description,
-    metadataBase: new URL("https://cse.co.id"),
+    metadataBase: new URL(siteConfig.url),
     openGraph: {
       title: "CSE | PT Citra Sukses Ekapratama",
       description,
-      url: localizedPath("/", lang),
-      siteName: "PT Citra Sukses Ekapratama",
+      url: absoluteLocalizedUrl("/", lang),
+      siteName: siteConfig.legalName,
       images: [
         {
-          url: "/assets/company/og-authorized-distributor.png",
+          url: absoluteUrl("/assets/company/og-authorized-distributor.png"),
           width: 1200,
           height: 630,
         alt: "CSE authorized distributor for TOHNICHI, NAC, Sankyo Rikagaku, Nippon Unit and Fujidenshi products"
@@ -50,7 +51,7 @@ export function generateMetadata(): Metadata {
       card: "summary_large_image",
       title: "CSE | PT Citra Sukses Ekapratama",
       description,
-      images: ["/assets/company/og-authorized-distributor.png"]
+      images: [absoluteUrl("/assets/company/og-authorized-distributor.png")]
     }
   };
 }

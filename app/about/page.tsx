@@ -6,7 +6,8 @@ import { Hero } from "@/components/Hero";
 import { SectionHeader } from "@/components/SectionHeader";
 import { StatsSection } from "@/components/StatsSection";
 import { company } from "@/data/navigation";
-import { languageAlternates, localizedPath, staticLanguage, text, withLang } from "@/lib/i18n";
+import { staticLanguage, text, withLang } from "@/lib/i18n";
+import { buildPageMetadata } from "@/lib/seo";
 
 export function generateMetadata(): Metadata {
   const lang = staticLanguage();
@@ -16,14 +17,12 @@ export function generateMetadata(): Metadata {
       ? "About PT Citra Sukses Ekapratama and CSE's industrial supply focus in Indonesia."
       : "Tentang PT Citra Sukses Ekapratama dan fokus CSE dalam pengadaan produk industri di Indonesia.";
 
-  return {
+  return buildPageMetadata({
+    path: "/about",
     title,
     description,
-    alternates: {
-      canonical: localizedPath("/about", lang),
-      languages: languageAlternates("/about")
-    }
-  };
+    lang
+  });
 }
 
 export default function AboutPage() {

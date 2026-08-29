@@ -17,7 +17,9 @@ import { UseCaseSection } from "@/components/UseCaseSection";
 import { seedCatalog } from "@/data/catalog-seed";
 import { canViewBrandDraft, isBrandPubliclyAvailable } from "@/lib/brand-visibility";
 import { getCatalogBrandBySlug } from "@/lib/catalog";
-import { languageAlternates, localizedPath, staticLanguage, text, withLang } from "@/lib/i18n";
+import { localizedPath, staticLanguage, text, withLang } from "@/lib/i18n";
+import { buildPageMetadata } from "@/lib/seo";
+import { getBrandIndexability } from "@/lib/seo-indexability";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -35,18 +37,6 @@ const TOHNICHI_SEO_DESCRIPTION = {
   id: "PT Citra Sukses Ekapratama adalah distributor resmi, agen penjualan dan servis, serta licensee kalibrasi dan perbaikan TOHNICHI di Indonesia.",
   en: "PT Citra Sukses Ekapratama is an official TOHNICHI distributor, sales and service agent, and calibration and repair licensee in Indonesia."
 };
-const TOHNICHI_SEO_KEYWORDS = [
-  "TOHNICHI",
-  "TOHNICHI Indonesia",
-  "distributor TOHNICHI Indonesia",
-  "torque wrench TOHNICHI",
-  "kunci torsi TOHNICHI",
-  "torque screwdriver TOHNICHI",
-  "torque tester TOHNICHI",
-  "kalibrasi TOHNICHI",
-  "PT Citra Sukses Ekapratama"
-];
-
 export function generateStaticParams() {
   return seedCatalog.filter((brand) => brand.published).map((brand) => ({ slug: brand.slug }));
 }
@@ -75,7 +65,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const isNac = brand.slug === "nac";
   const isSankyoRikagaku = brand.slug === "fuji-star";
   const brandPath = `/brands/${brand.slug}`;
-  const canonicalPath = localizedPath(brandPath, lang);
   const title = isTohnichi
     ? TOHNICHI_SEO_TITLE[lang]
     : isNac
@@ -94,55 +83,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         ? "NAC is the industrial socket, bit, and quick-coupling brand of Nagahori Industry Co., Ltd. CSE supports model and custom-product selection in Indonesia."
         : "NAC adalah brand industrial socket, bit, dan quick coupling dari Nagahori Industry Co., Ltd. CSE mendukung pemilihan model dan produk custom di Indonesia."
       : text(brand.summary, lang);
-  const keywords = isTohnichi
-    ? TOHNICHI_SEO_KEYWORDS
-    : isNac
-      ? [
-          "NAC Indonesia",
-          "Nagahori Indonesia",
-          "Nagahori Industry Indonesia",
-          "NAC socket Indonesia",
-          "NAC custom socket",
-          "NAC quick coupling",
-          "industrial socket Indonesia"
-        ]
-      : isSankyoRikagaku
-      ? [
-        "SANKYO Indonesia",
-        "Sankyo Rikagaku Indonesia",
-        "Sankyo Chemical Indonesia",
-        "FUJISTAR Indonesia",
-        "Fuji Star abrasive",
-        "abrasive paper Indonesia",
-        "abrasive disc",
-        "abrasive belt",
-        "non-woven abrasive",
-        "polishing tools"
-      ]
-    : undefined;
-
-  return {
+  return buildPageMetadata({
+    path: brandPath,
     title,
     description,
-    keywords,
-    alternates: {
-      canonical: canonicalPath,
-      languages: languageAlternates(brandPath)
-    },
-    openGraph: {
-      title: `${title} | CSE`,
-      description,
-      url: canonicalPath,
-      locale: lang === "en" ? "en_US" : "id_ID",
-      images: brand.heroImage ? [{ url: brand.heroImage, alt: `${brand.name} products in Indonesia` }] : undefined
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${title} | CSE`,
-      description,
-      images: brand.heroImage ? [brand.heroImage] : undefined
-    }
-  };
+    lang,
+    image: brand.heroImage,
+    imageAlt: `${brand.name} products in Indonesia`,
+    indexability: getBrandIndexability({
+      published: brand.published,
+      publiclyAvailable: isBrandPubliclyAvailable(brand.slug)
+    })
+  });
 }
 
 export default async function BrandDetailPage({ params }: PageProps) {
