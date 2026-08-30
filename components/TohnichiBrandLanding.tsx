@@ -221,7 +221,7 @@ export function TohnichiBrandLanding({ lang }: { lang: Language }) {
                   {lang === "en" ? "TOHNICHI guide library" : "Perpustakaan panduan TOHNICHI"}
                 </p>
               </div>
-              <h2 className="mt-4 text-balance text-3xl font-bold text-white md:text-4xl">
+              <h2 className="mt-4 text-balance text-3xl font-bold text-black md:text-4xl">
                 {lang === "en"
                   ? "Practical answers for selecting, using, and verifying TOHNICHI tools."
                   : "Jawaban praktis untuk memilih, menggunakan, dan memverifikasi tool TOHNICHI."}
