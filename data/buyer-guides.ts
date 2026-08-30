@@ -46,6 +46,7 @@ export type BuyerGuide = {
     | "click-vs-digital-torque-wrench"
     | "apa-itu-torque-angle"
     | "mencegah-missed-tightening"
+    | "cspfdd-r-cm-connection"
     | "cara-memilih-torque-tester"
     | "preset-vs-adjustable-torque-wrench";
   title: LocalizedText;
@@ -69,6 +70,41 @@ export type BuyerGuide = {
 };
 
 export const buyerGuides: BuyerGuide[] = [
+  {
+    slug: "cspfdd-r-cm-connection",
+    brands: ["tohnichi"],
+    topics: ["data-traceability", "process-control", "poka-yoke"],
+    applications: ["assembly", "mass-production"],
+    title: { id: "Panduan Menghubungkan FDD ke R-CM + M-FD", en: "FDD to R-CM + M-FD Connection Guide" },
+    seoTitle: { id: "Cara Menghubungkan FDD ke R-CM + M-FD", en: "How to Connect FDD to R-CM + M-FD" },
+    description: { id: "Panduan langkah demi langkah untuk Group CH, ID1/ID2, beberapa R-CM, HIGH/LOW torque limit, test koneksi, dan troubleshooting FDD.", en: "A step-by-step guide to Group CH, ID1/ID2, multiple R-CM receivers, HIGH/LOW torque limits, connection testing, and FDD troubleshooting." },
+    eyebrow: { id: "FDD setup guide", en: "FDD setup guide" },
+    image: "/assets/brands/products/tohnichi/tohnichi_cspfdd100n3.jpg",
+    imageAlt: { id: "TOHNICHI FDD wireless data transfer torque wrench", en: "TOHNICHI FDD wireless data transfer torque wrench" },
+    answer: { id: "Samakan Group CH antara FDD dan R-CM + M-FD, gunakan Group berbeda untuk setiap receiver yang berdekatan, petakan maksimal dua ID wrench ke ID1/ID2, lalu masukkan batas torque HIGH/LOW masing-masing.", en: "Match Group CH between FDD and R-CM + M-FD, use a different group for every adjacent receiver, map no more than two wrench IDs to ID1/ID2, then enter each profile's HIGH/LOW torque limits." },
+    sections: [
+      { title: { id: "Batasi dua wrench per receiver", en: "Limit each receiver to two wrenches" }, body: { id: "R-CM + M-FD menyediakan dua set judgment torque melalui ID1 dan ID2. Gunakan satu wrench pada satu waktu.", en: "R-CM + M-FD provides two torque-judgment sets through ID1 and ID2. Use one wrench at a time." } },
+      { title: { id: "Rencanakan Group dan ID", en: "Plan groups and IDs" }, body: { id: "Wrench dan receiver yang berpasangan harus memakai Group CH yang sama. Receiver berdekatan harus memakai Group CH berbeda.", en: "Paired wrenches and receivers must use the same Group CH. Adjacent receivers must use different Group CH values." } },
+      { title: { id: "Set dan test batas torque", en: "Set and test torque limits" }, body: { id: "Petakan ID wrench ke ID1/ID2, masukkan HIGH di atas LOW, lalu test setiap wrench secara terpisah.", en: "Map wrench IDs to ID1/ID2, enter HIGH above LOW, then test each wrench separately." } }
+    ],
+    checklist: [
+      { id: "R-CM memakai module M-FD dan dua antenna", en: "R-CM has the M-FD module and two antennas" },
+      { id: "Group CH setiap receiver dan wrench sudah dicatat", en: "Every receiver and wrench Group CH is recorded" },
+      { id: "ID 3 digit unik untuk setiap wrench", en: "A unique 3-digit ID for every wrench" },
+      { id: "UNIT, LOW, dan HIGH berasal dari process specification", en: "UNIT, LOW, and HIGH come from the process specification" },
+      { id: "Setiap wrench ditest satu per satu", en: "Every wrench is tested one at a time" },
+      { id: "Hasil commissioning dicatat", en: "Commissioning results are recorded" }
+    ],
+    faqs: [
+      { question: { id: "Berapa FDD yang dapat dikelola oleh satu R-CM?", en: "How many FDD wrenches can one R-CM manage?" }, answer: { id: "Dua dengan judgment terpisah melalui ID1 dan ID2. Gunakan satu wrench pada satu waktu.", en: "Two with independent judgment through ID1 and ID2. Use one wrench at a time." } },
+      { question: { id: "Apa perbedaan Group CH dan ID?", en: "What is the difference between Group CH and ID?" }, answer: { id: "Group CH memilih radio network; ID membedakan wrench dan profile judgment di dalam network tersebut.", en: "Group CH selects the radio network; ID distinguishes wrenches and judgment profiles inside that network." } }
+    ],
+    related: [
+      { href: "/brands/tohnichi", title: { id: "TOHNICHI Indonesia", en: "TOHNICHI Indonesia" }, description: { id: "Lihat produk dan support TOHNICHI dari CSE.", en: "Explore TOHNICHI products and support from CSE." } },
+      { href: "/solutions/poka-yoke-tightening", title: { id: "Poka-yoke tightening", en: "Poka-yoke tightening" }, description: { id: "Hubungkan tool, receiver, logic, dan interlock.", en: "Connect tools, receivers, logic, and interlocks." } },
+      { href: "/contact", title: { id: "Technical support", en: "Technical support" }, description: { id: "Minta review Group, ID, dan limit setting.", en: "Request a review of Group, ID, and limit settings." } }
+    ]
+  },
   {
     slug: "cara-memilih-torque-wrench",
     brands: ["tohnichi"],

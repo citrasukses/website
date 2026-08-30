@@ -9,7 +9,9 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTAButton } from "@/components/CTAButton";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import type { SolutionPage } from "@/data/solution-pages";
-import { localizedPath, text, type Language, withLang } from "@/lib/i18n";
+import { text, type Language, withLang } from "@/lib/i18n";
+import { buildBreadcrumbJsonLd, organizationReference } from "@/lib/seo";
+import { absoluteLocalizedUrl } from "@/lib/seo-config";
 
 type ExperienceProps = { solution: SolutionPage; lang: Language };
 
@@ -257,9 +259,9 @@ function SolutionFooter({ solution, lang }: ExperienceProps) {
 export function SolutionDetailPage({ solution, lang }: ExperienceProps) {
   const path = `/solutions/${solution.slug}`;
   const jsonLd = [
-    { "@context": "https://schema.org", "@type": "Service", name: text(solution.title, lang), description: text(solution.description, lang), url: `https://cse.co.id${localizedPath(path, lang)}`, areaServed: { "@type": "Country", name: "Indonesia" }, provider: { "@type": "Organization", "@id": "https://cse.co.id/#organization", name: "PT Citra Sukses Ekapratama", url: "https://cse.co.id" }, serviceType: text(solution.eyebrow, lang) },
+    { "@context": "https://schema.org", "@type": "Service", name: text(solution.title, lang), description: text(solution.description, lang), url: absoluteLocalizedUrl(path, lang), areaServed: { "@type": "Country", name: "Indonesia" }, provider: organizationReference(), serviceType: text(solution.eyebrow, lang) },
     { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: solution.faqs.map((item) => ({ "@type": "Question", name: text(item.question, lang), acceptedAnswer: { "@type": "Answer", text: text(item.answer, lang) } })) },
-    { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "CSE", item: "https://cse.co.id" }, { "@type": "ListItem", position: 2, name: lang === "en" ? "Solutions" : "Solusi", item: `https://cse.co.id${localizedPath("/solutions", lang)}` }, { "@type": "ListItem", position: 3, name: text(solution.title, lang), item: `https://cse.co.id${localizedPath(path, lang)}` }] }
+    buildBreadcrumbJsonLd({ lang, items: [{ name: lang === "en" ? "Solutions" : "Solusi", path: "/solutions" }, { name: text(solution.title, lang), path }] })
   ];
   const experience = {
     "torque-control": <TorqueControlExperience solution={solution} lang={lang} />,

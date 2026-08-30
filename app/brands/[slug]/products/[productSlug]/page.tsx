@@ -20,7 +20,7 @@ import { sankyoRikagakuProductDetails } from "@/data/sankyo-rikagaku-product-det
 import { tohnichiProductDetails } from "@/data/tohnichi-product-details";
 import { canViewBrandDraft, isBrandPubliclyAvailable } from "@/lib/brand-visibility";
 import { getCatalogBrandBySlug } from "@/lib/catalog";
-import { localizedPath, staticLanguage, text, withLang } from "@/lib/i18n";
+import { staticLanguage, text, withLang } from "@/lib/i18n";
 import { buildBreadcrumbJsonLd, buildPageMetadata, organizationReference } from "@/lib/seo";
 import { absoluteLocalizedUrl, absoluteUrl } from "@/lib/seo-config";
 import { getProductIndexability } from "@/lib/seo-indexability";

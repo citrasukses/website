@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BuyerGuidePage } from "@/components/BuyerGuidePage";
+import { CspfddRcmConnectionGuide } from "@/components/CspfddRcmConnectionGuide";
 import { buyerGuides, getBuyerGuide } from "@/data/buyer-guides";
 import { staticLanguage, text } from "@/lib/i18n";
 import { buildPageMetadata } from "@/lib/seo";
@@ -32,5 +33,8 @@ export default async function BuyerGuideRoute({ params }: PageProps) {
   const { slug } = await params;
   const guide = getBuyerGuide(slug);
   if (!guide) notFound();
+  if (guide.slug === "cspfdd-r-cm-connection") {
+    return <CspfddRcmConnectionGuide lang={staticLanguage()} />;
+  }
   return <BuyerGuidePage guide={guide} lang={staticLanguage()} />;
 }

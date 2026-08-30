@@ -8,7 +8,9 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { Hero } from "@/components/Hero";
 import { SectionHeader } from "@/components/SectionHeader";
 import type { CategoryHub } from "@/data/category-hubs";
-import { localizedPath, text, type Language, withLang } from "@/lib/i18n";
+import { text, type Language, withLang } from "@/lib/i18n";
+import { buildBreadcrumbJsonLd, organizationReference } from "@/lib/seo";
+import { absoluteLocalizedUrl } from "@/lib/seo-config";
 
 export function CategoryHubPage({ category, lang }: { category: CategoryHub; lang: Language }) {
   const categoryPath = `/${category.slug}`;
@@ -18,21 +20,16 @@ export function CategoryHubPage({ category, lang }: { category: CategoryHub; lan
       "@type": "CollectionPage",
       name: text(category.title, lang),
       description: text(category.description, lang),
-      url: `https://cse.co.id${localizedPath(categoryPath, lang)}`,
-      inLanguage: lang === "en" ? "en-ID" : "id-ID",
-      provider: {
-        "@type": "Organization",
-        "@id": "https://cse.co.id/#organization",
-        name: "PT Citra Sukses Ekapratama",
-        url: "https://cse.co.id"
-      },
+      url: absoluteLocalizedUrl(categoryPath, lang),
+      inLanguage: lang === "en" ? "en-US" : "id-ID",
+      provider: organizationReference(),
       mainEntity: {
         "@type": "ItemList",
         itemListElement: category.products.map((product, index) => ({
           "@type": "ListItem",
           position: index + 1,
           name: text(product.title, lang),
-          url: `https://cse.co.id${localizedPath(product.href, lang)}`
+          url: absoluteLocalizedUrl(product.href, lang)
         }))
       }
     },
@@ -48,19 +45,7 @@ export function CategoryHubPage({ category, lang }: { category: CategoryHub; lan
         }
       }))
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "CSE", item: "https://cse.co.id" },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: text(category.title, lang),
-          item: `https://cse.co.id${localizedPath(categoryPath, lang)}`
-        }
-      ]
-    }
+    buildBreadcrumbJsonLd({ lang, items: [{ name: text(category.title, lang), path: categoryPath }] })
   ];
 
   return (

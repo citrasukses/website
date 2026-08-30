@@ -3294,8 +3294,8 @@
         "name": "R-CM",
         "image": "/assets/brands/products/tohnichi/catalog/optional-equipment/r-cm.png",
         "summary": {
-          "id": "R-CM adalah receiver nirkabel modular untuk menerima sinyal dari torque tool Pokayoke dan meneruskannya ke sistem lini.",
-          "en": "R-CM is a modular wireless receiver that collects signals from Pokayoke torque tools and passes them to the line system."
+          "id": "R-CM adalah receiver nirkabel modular yang menggunakan module M-FH, M-FD, atau BL yang dapat ditukar untuk menerima sinyal torque tool Pokayoke dan meneruskannya ke sistem lini.",
+          "en": "R-CM is a modular wireless receiver that uses an exchangeable M-FH, M-FD, or BL module to collect signals from Pokayoke torque tools and pass them to the line system."
         },
         "tags": [
           {
@@ -3320,6 +3320,68 @@
           }
         ],
         "officialUrl": "https://en.global-tohnichi.com/products/detail/283"
+      },
+      {
+        "name": "M-FD",
+        "image": "/assets/brands/products/tohnichi/catalog/optional-equipment/m-fd.jpg",
+        "summary": {
+          "id": "M-FD adalah module radio 2,4 GHz yang dapat ditukar untuk receiver R-CM, khusus untuk menerima data pengencangan dari torque wrench FD/FDD dan FDD-AD.",
+          "en": "M-FD is an exchangeable 2.4 GHz radio module for the R-CM receiver, designed to receive tightening data from FD/FDD and FDD-AD torque wrenches."
+        },
+        "tags": [
+          {
+            "id": "Module untuk R-CM",
+            "en": "R-CM Module"
+          },
+          {
+            "id": "Peralatan Verifikasi Torsi",
+            "en": "Torque Verification Equipment"
+          },
+          {
+            "id": "Peralatan Opsional",
+            "en": "Optional Equipment"
+          },
+          {
+            "id": "Nirkabel",
+            "en": "Wireless"
+          },
+          {
+            "id": "Transfer Data",
+            "en": "Data Transfer"
+          }
+        ],
+        "officialUrl": "https://www.tohnichi.com/products/optional-equipment/torque-error-proofing-equipment/r-cm-wireless-module-exchangeable-receiver/m-fd/"
+      },
+      {
+        "name": "M-FH",
+        "image": "/assets/brands/products/tohnichi/catalog/optional-equipment/m-fh.jpg",
+        "summary": {
+          "id": "M-FH adalah module radio 2,4 GHz yang dapat ditukar untuk receiver R-CM, khusus untuk menerima sinyal dari torque tool Pokayoke keluarga FHM/FH.",
+          "en": "M-FH is an exchangeable 2.4 GHz radio module for the R-CM receiver, designed to receive signals from FHM/FH-family Pokayoke torque tools."
+        },
+        "tags": [
+          {
+            "id": "Module untuk R-CM",
+            "en": "R-CM Module"
+          },
+          {
+            "id": "Peralatan Verifikasi Torsi",
+            "en": "Torque Verification Equipment"
+          },
+          {
+            "id": "Peralatan Opsional",
+            "en": "Optional Equipment"
+          },
+          {
+            "id": "Nirkabel",
+            "en": "Wireless"
+          },
+          {
+            "id": "Pokayoke",
+            "en": "Pokayoke"
+          }
+        ],
+        "officialUrl": "https://www.tohnichi.com/products/optional-equipment/torque-error-proofing-equipment/r-cm-wireless-module-exchangeable-receiver/m-fh/"
       },
       {
         "name": "IO-CM",

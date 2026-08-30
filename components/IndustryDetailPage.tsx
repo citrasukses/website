@@ -9,7 +9,9 @@ import type { Industry } from "@/data/industries";
 import type { IndustryCaseStudy } from "@/data/industry-case-studies";
 import type { IndustryPageContent } from "@/data/industry-pages";
 import { isBrandPubliclyAvailable } from "@/lib/brand-visibility";
-import { localizedPath, text, type Language, withLang } from "@/lib/i18n";
+import { text, type Language, withLang } from "@/lib/i18n";
+import { buildBreadcrumbJsonLd, organizationReference } from "@/lib/seo";
+import { absoluteLocalizedUrl } from "@/lib/seo-config";
 
 export function IndustryDetailPage({
   industry,
@@ -29,15 +31,10 @@ export function IndustryDetailPage({
       "@type": "CollectionPage",
       name: text(content.seoTitle, lang),
       description: text(content.seoDescription, lang),
-      url: `https://cse.co.id${localizedPath(path, lang)}`,
-      inLanguage: lang === "en" ? "en-ID" : "id-ID",
+      url: absoluteLocalizedUrl(path, lang),
+      inLanguage: lang === "en" ? "en-US" : "id-ID",
       about: { "@type": "Thing", name: text(industry.title, lang) },
-      provider: {
-        "@type": "Organization",
-        "@id": "https://cse.co.id/#organization",
-        name: "PT Citra Sukses Ekapratama",
-        url: "https://cse.co.id"
-      },
+      provider: organizationReference(),
       hasPart: caseStudy.steps.map((step) => ({
         "@type": "CreativeWork",
         name: text(step.phase, lang),
@@ -45,15 +42,13 @@ export function IndustryDetailPage({
         about: { "@type": "Brand", name: step.brandName }
       }))
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "CSE", item: "https://cse.co.id" },
-        { "@type": "ListItem", position: 2, name: lang === "en" ? "Industries" : "Industri", item: `https://cse.co.id${localizedPath("/industries", lang)}` },
-        { "@type": "ListItem", position: 3, name: text(industry.title, lang), item: `https://cse.co.id${localizedPath(path, lang)}` }
+    buildBreadcrumbJsonLd({
+      lang,
+      items: [
+        { name: lang === "en" ? "Industries" : "Industri", path: "/industries" },
+        { name: text(industry.title, lang), path }
       ]
-    }
+    })
   ];
 
   return (

@@ -17,8 +17,9 @@ import { UseCaseSection } from "@/components/UseCaseSection";
 import { seedCatalog } from "@/data/catalog-seed";
 import { canViewBrandDraft, isBrandPubliclyAvailable } from "@/lib/brand-visibility";
 import { getCatalogBrandBySlug } from "@/lib/catalog";
-import { localizedPath, staticLanguage, text, withLang } from "@/lib/i18n";
-import { buildPageMetadata } from "@/lib/seo";
+import { staticLanguage, text, withLang } from "@/lib/i18n";
+import { buildBreadcrumbJsonLd, buildPageMetadata, organizationReference } from "@/lib/seo";
+import { absoluteLocalizedUrl, absoluteUrl } from "@/lib/seo-config";
 import { getBrandIndexability } from "@/lib/seo-indexability";
 
 type PageProps = {
@@ -115,7 +116,6 @@ export default async function BrandDetailPage({ params }: PageProps) {
   const isNac = brand.slug === "nac";
   const isSankyoRikagaku = brand.slug === "fuji-star";
   const hasProductExplorer = isNac || isSankyoRikagaku;
-  const localizedTohnichiPagePath = localizedPath(TOHNICHI_PAGE_PATH, lang);
   const tohnichiJsonLd = isTohnichi
     ? [
         {
@@ -127,20 +127,17 @@ export default async function BrandDetailPage({ params }: PageProps) {
               ? "Official TOHNICHI Distributor Indonesia"
               : "Distributor Resmi TOHNICHI Indonesia",
           description: TOHNICHI_SEO_DESCRIPTION[lang],
-          url: `https://cse.co.id${localizedTohnichiPagePath}`,
-          inLanguage: lang === "en" ? "en-ID" : "id-ID",
+          url: absoluteLocalizedUrl(TOHNICHI_PAGE_PATH, lang),
+          inLanguage: lang === "en" ? "en-US" : "id-ID",
           citation: [TOHNICHI_DISTRIBUTOR_URL, TOHNICHI_SUPPORT_URL],
           about: {
             "@type": "Brand",
             name: "TOHNICHI",
             url: TOHNICHI_OFFICIAL_URL,
-            logo: "https://cse.co.id/assets/brands/logos/tohnichi--nobg.png"
+            logo: absoluteUrl("/assets/brands/logos/tohnichi--nobg.png")
           },
           provider: {
-            "@type": "Organization",
-            "@id": "https://cse.co.id/#organization",
-            name: "PT Citra Sukses Ekapratama",
-            url: "https://cse.co.id",
+            ...organizationReference(),
             email: "cse@citra-sukses.com",
             areaServed: {
               "@type": "Country",
@@ -175,34 +172,17 @@ export default async function BrandDetailPage({ params }: PageProps) {
                 "@type": "ListItem",
                 position: index + 1,
                 name: item.name,
-                url: `https://cse.co.id${localizedPath(item.path, lang)}`
+                url: absoluteLocalizedUrl(item.path, lang)
               }))
           }
         },
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            {
-              "@type": "ListItem",
-              position: 1,
-              name: "CSE",
-              item: "https://cse.co.id"
-            },
-            {
-              "@type": "ListItem",
-              position: 2,
-              name: lang === "en" ? "Brands" : "Brand",
-              item: `https://cse.co.id${localizedPath("/brands", lang)}`
-            },
-            {
-              "@type": "ListItem",
-              position: 3,
-              name: "TOHNICHI",
-              item: `https://cse.co.id${localizedTohnichiPagePath}`
-            }
+        buildBreadcrumbJsonLd({
+          lang,
+          items: [
+            { name: lang === "en" ? "Brands" : "Brand", path: "/brands" },
+            { name: "TOHNICHI", path: TOHNICHI_PAGE_PATH }
           ]
-        }
+        })
       ]
     : null;
   const sankyoRikagakuJsonLd = isSankyoRikagaku
@@ -214,15 +194,10 @@ export default async function BrandDetailPage({ params }: PageProps) {
           alternateName: ["SANKYO", "Sankyo Chemical", "FUJISTAR", "Fuji Star"],
           foundingDate: "1930",
           url: "https://en.fujistar.com/",
-          logo: "https://cse.co.id/assets/brands/logos/fuji-star.png",
+          logo: absoluteUrl("/assets/brands/logos/fuji-star.png"),
           description: brand.summary.id,
           areaServed: { "@type": "Country", name: "Indonesia" },
-          provider: {
-            "@type": "Organization",
-            "@id": "https://cse.co.id/#organization",
-            name: "PT Citra Sukses Ekapratama",
-            url: "https://cse.co.id"
-          }
+          provider: organizationReference()
         },
         {
           "@context": "https://schema.org",
@@ -234,7 +209,7 @@ export default async function BrandDetailPage({ params }: PageProps) {
               "@type": "ListItem",
               position: index + 1,
               name: product.name,
-              url: `https://cse.co.id${localizedPath(`/brands/${brand.slug}/products/${product.slug}`, lang)}`
+              url: absoluteLocalizedUrl(`/brands/${brand.slug}/products/${product.slug}`, lang)
             }))
         }
       ]
@@ -252,32 +227,15 @@ export default async function BrandDetailPage({ params }: PageProps) {
               ? "NAC is the industrial socket, bit, and quick-coupling brand of Nagahori Industry Co., Ltd., available through CSE in Indonesia."
               : "NAC adalah brand industrial socket, bit, dan quick coupling dari Nagahori Industry Co., Ltd. yang tersedia melalui CSE di Indonesia.",
           areaServed: { "@type": "Country", name: "Indonesia" },
-          provider: {
-            "@type": "Organization",
-            "@id": "https://cse.co.id/#organization",
-            name: "PT Citra Sukses Ekapratama",
-            url: "https://cse.co.id"
-          }
+          provider: organizationReference()
         },
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            { "@type": "ListItem", position: 1, name: "CSE", item: "https://cse.co.id" },
-            {
-              "@type": "ListItem",
-              position: 2,
-              name: lang === "en" ? "Brands" : "Brand",
-              item: `https://cse.co.id${localizedPath("/brands", lang)}`
-            },
-            {
-              "@type": "ListItem",
-              position: 3,
-              name: "NAC / Nagahori Industry",
-              item: `https://cse.co.id${localizedPath("/brands/nac", lang)}`
-            }
+        buildBreadcrumbJsonLd({
+          lang,
+          items: [
+            { name: lang === "en" ? "Brands" : "Brand", path: "/brands" },
+            { name: "NAC / Nagahori Industry", path: "/brands/nac" }
           ]
-        }
+        })
       ]
     : null;
 

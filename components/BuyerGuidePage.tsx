@@ -5,7 +5,9 @@ import { CTAButton } from "@/components/CTAButton";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { Hero } from "@/components/Hero";
 import type { BuyerGuide } from "@/data/buyer-guides";
-import { localizedPath, text, type Language, withLang } from "@/lib/i18n";
+import { text, type Language, withLang } from "@/lib/i18n";
+import { buildBreadcrumbJsonLd, organizationReference } from "@/lib/seo";
+import { absoluteLocalizedUrl, absoluteUrl } from "@/lib/seo-config";
 
 export function BuyerGuidePage({ guide, lang }: { guide: BuyerGuide; lang: Language }) {
   const path = `/guides/${guide.slug}`;
@@ -15,13 +17,11 @@ export function BuyerGuidePage({ guide, lang }: { guide: BuyerGuide; lang: Langu
       "@type": "Article",
       headline: text(guide.title, lang),
       description: text(guide.description, lang),
-      image: `https://cse.co.id${guide.image}`,
-      datePublished: "2026-08-28",
-      dateModified: "2026-08-28",
-      inLanguage: lang === "en" ? "en-ID" : "id-ID",
-      mainEntityOfPage: `https://cse.co.id${localizedPath(path, lang)}`,
-      author: { "@type": "Organization", "@id": "https://cse.co.id/#organization", name: "PT Citra Sukses Ekapratama" },
-      publisher: { "@type": "Organization", "@id": "https://cse.co.id/#organization", name: "PT Citra Sukses Ekapratama" }
+      image: absoluteUrl(guide.image),
+      inLanguage: lang === "en" ? "en-US" : "id-ID",
+      mainEntityOfPage: absoluteLocalizedUrl(path, lang),
+      author: organizationReference(),
+      publisher: organizationReference()
     },
     {
       "@context": "https://schema.org",
@@ -32,15 +32,13 @@ export function BuyerGuidePage({ guide, lang }: { guide: BuyerGuide; lang: Langu
         acceptedAnswer: { "@type": "Answer", text: text(item.answer, lang) }
       }))
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "CSE", item: "https://cse.co.id" },
-        { "@type": "ListItem", position: 2, name: lang === "en" ? "Guides" : "Panduan", item: `https://cse.co.id${localizedPath("/guides", lang)}` },
-        { "@type": "ListItem", position: 3, name: text(guide.title, lang), item: `https://cse.co.id${localizedPath(path, lang)}` }
+    buildBreadcrumbJsonLd({
+      lang,
+      items: [
+        { name: lang === "en" ? "Guides" : "Panduan", path: "/guides" },
+        { name: text(guide.title, lang), path }
       ]
-    }
+    })
   ];
 
   return (

@@ -261,8 +261,9 @@ Run from the repository root:
 
 ```bash
 npm run lint
-npx tsc --noEmit
+npm run typecheck
 npm run build
+npm run seo:audit
 ```
 
 After the build, inspect at least:
@@ -274,7 +275,9 @@ out/index.html
 out/en/index.html
 ```
 
-Until an automated `npm run seo:audit` command is added, verify representative generated pages from every affected family.
+Use `npm run verify:seo` to run lint, typecheck, the bilingual production build, and the SEO audit as one workflow. The audit exits non-zero when it finds crawlability or indexability errors; warnings remain visible without failing the command.
+
+The automated audit checks generated HTML, `sitemap.xml`, `robots.txt`, canonicals, robots directives, hreflang reciprocity, internal links, redirect targets, titles, descriptions, H1 counts, JSON-LD syntax, image alt attributes, and indexable orphan pages. It also warns about thin pages and duplicate metadata within the same locale.
 
 Minimum representative set:
 

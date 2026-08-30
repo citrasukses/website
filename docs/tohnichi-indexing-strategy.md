@@ -4,7 +4,7 @@ Implementation date: 28 August 2026
 
 ## Decision
 
-The local catalogue contains 159 TOHNICHI product-family pages. All 159 have an official product source, 128 have populated model/specification tables, and 31 are application, accessory, system, or incomplete pages without a populated model table.
+The local catalogue contains 161 TOHNICHI product-family pages. All 161 have an official product source, 130 have populated model/specification tables, and 31 are application, accessory, system, or incomplete pages without a populated model table.
 
 The first indexing phase is intentionally limited to 25 current, fully specified families. The remaining 134 pages stay accessible and `follow`, but are `noindex` and excluded from the sitemap. This preserves catalogue usefulness without asking Google to evaluate every family at once.
 
@@ -52,7 +52,7 @@ The selected pages all have one or more populated specification tables in `data/
 
 - `/brands/tohnichi` is the canonical TOHNICHI entity and commercial landing page.
 - The brand page focuses on CSE's authorization, three buyer-facing categories, six representative series, services, applications, guides, and RFQ paths. Its primary structured-data list points to the category hubs and separate catalogue.
-- `/brands/tohnichi/products` holds the complete searchable 159-family catalogue. It is `noindex,follow` so it remains useful and crawlable without competing with the brand landing page.
+- `/brands/tohnichi/products` holds the complete searchable 161-family catalogue. It is `noindex,follow` so it remains useful and crawlable without competing with the brand landing page.
 - Every product family links back through the breadcrumb, “All TOHNICHI products” action, and catalogue-lineup navigation.
 - Every torque category links to the brand page from its hero and support block.
 - Every buyer guide links to the brand page from its hero.

@@ -210,6 +210,131 @@ for (const group of tohnichiProductGroups) {
   }
 }
 
+function buildRcmWirelessModuleDetail({
+  model,
+  image,
+  officialUrl,
+  overview,
+  features,
+  compatibilityNote
+}: {
+  model: "M-FD" | "M-FH";
+  image: string;
+  officialUrl: string;
+  overview: LocalizedText;
+  features: LocalizedText[];
+  compatibilityNote: LocalizedText;
+}): TohnichiProductFamilyDetail {
+  const rcmDetail = generatedDetails["r-cm"];
+  const sourceTable = rcmDetail?.specificationTables.find((table) =>
+    table.rows.some((row) => row.model === model)
+  );
+  const moduleRow = sourceTable?.rows.find((row) => row.model === model);
+
+  if (!rcmDetail || !sourceTable || !moduleRow) {
+    throw new Error(`Missing R-CM specification data for ${model}`);
+  }
+
+  return {
+    overview,
+    seoDescription: {
+      id: `TOHNICHI ${model} adalah module radio 2,4 GHz yang dapat ditukar untuk receiver R-CM. Lihat kompatibilitas, spesifikasi, dan aplikasi ${model} di Indonesia.`,
+      en: `TOHNICHI ${model} is an exchangeable 2.4 GHz radio module for the R-CM receiver. See ${model} compatibility, specifications, and applications in Indonesia.`
+    },
+    seoKeywords: [
+      `TOHNICHI ${model} Indonesia`,
+      `${model} R-CM`,
+      `${model} wireless module`,
+      `module radio ${model}`,
+      "TOHNICHI R-CM Indonesia",
+      "supplier TOHNICHI Indonesia",
+      "distributor TOHNICHI Indonesia"
+    ],
+    features,
+    images: [image],
+    accuracy: "",
+    catalogueReference: {
+      id: `Spesifikasi ${model} mengikuti halaman resmi TOHNICHI R-CM dan halaman produk ${model}.`,
+      en: `${model} specifications follow the official TOHNICHI R-CM page and the dedicated ${model} product page.`
+    },
+    officialUrl,
+    models: [],
+    specificationTables: [
+      {
+        ...sourceTable,
+        title: `${model} wireless module specifications`,
+        rows: [moduleRow]
+      }
+    ],
+    notes: [
+      compatibilityNote,
+      {
+        id: `${model} adalah module untuk R-CM, bukan receiver mandiri. Konfirmasikan kombinasi tool, receiver, standard radio, dan kode model akhir sebelum memesan.`,
+        en: `${model} is a module for R-CM, not a standalone receiver. Confirm the tool, receiver, radio-standard, and final model combination before ordering.`
+      }
+    ],
+    standardAccessories: []
+  };
+}
+
+generatedDetails["m-fd"] = buildRcmWirelessModuleDetail({
+  model: "M-FD",
+  image: "/assets/brands/products/tohnichi/catalog/optional-equipment/m-fd.jpg",
+  officialUrl:
+    "https://www.tohnichi.com/products/optional-equipment/torque-error-proofing-equipment/r-cm-wireless-module-exchangeable-receiver/m-fd/",
+  overview: {
+    id: "M-FD adalah module radio FHSS 2,4 GHz yang dapat ditukar untuk receiver R-CM. Module ini menerima dan meneruskan data nilai torsi dari torque wrench FD/FDD dan data torsi serta sudut dari FDD-AD untuk judgment dan traceability proses pengencangan.",
+    en: "M-FD is an exchangeable 2.4 GHz FHSS radio module for the R-CM receiver. It receives and passes torque-value data from FD/FDD torque wrenches and torque-and-angle data from FDD-AD for tightening judgment and traceability."
+  },
+  features: [
+    {
+      id: "Dirancang untuk komunikasi R-CM dengan torque wrench FD/FDD dan FDD-AD.",
+      en: "Designed for R-CM communication with FD/FDD and FDD-AD torque wrenches."
+    },
+    {
+      id: "Menggunakan komunikasi spread spectrum frequency hopping pada band 2,402–2,479 GHz.",
+      en: "Uses frequency-hopping spread-spectrum communication in the 2.402–2.479 GHz band."
+    },
+    {
+      id: "Diversity antenna membantu meningkatkan performa komunikasi pada sistem pengencangan nirkabel.",
+      en: "A diversity-antenna arrangement helps improve communication performance in wireless tightening systems."
+    }
+  ],
+  compatibilityNote: {
+    id: "Gunakan M-FD untuk FD/FDD dan FDD-AD. Jangan menggantinya dengan M-FH, karena M-FH ditujukan untuk keluarga tool FHM/FH.",
+    en: "Use M-FD for FD/FDD and FDD-AD. Do not substitute M-FH, which is intended for the FHM/FH tool family."
+  }
+});
+
+generatedDetails["m-fh"] = buildRcmWirelessModuleDetail({
+  model: "M-FH",
+  image: "/assets/brands/products/tohnichi/catalog/optional-equipment/m-fh.jpg",
+  officialUrl:
+    "https://www.tohnichi.com/products/optional-equipment/torque-error-proofing-equipment/r-cm-wireless-module-exchangeable-receiver/m-fh/",
+  overview: {
+    id: "M-FH adalah module radio FHSS 2,4 GHz yang dapat ditukar untuk receiver R-CM. Module ini menerima sinyal dari torque tool Pokayoke keluarga FHM/FH untuk membantu mencegah pengencangan terlewat dan mendukung identifikasi tool.",
+    en: "M-FH is an exchangeable 2.4 GHz FHSS radio module for the R-CM receiver. It receives signals from FHM/FH-family Pokayoke torque tools to help prevent missed tightening and support tool identification."
+  },
+  features: [
+    {
+      id: "Dirancang untuk komunikasi R-CM dengan torque wrench dan torque screwdriver Pokayoke keluarga FHM/FH.",
+      en: "Designed for R-CM communication with FHM/FH-family Pokayoke torque wrenches and torque screwdrivers."
+    },
+    {
+      id: "Mendukung mode komunikasi baru dan lama untuk membantu upgrade dari sistem receiver R-FH256.",
+      en: "Supports new and legacy communication modes to help upgrade systems that use the R-FH256 receiver."
+    },
+    {
+      id: "Diversity antenna membantu meningkatkan performa komunikasi pada sistem Pokayoke nirkabel.",
+      en: "A diversity-antenna arrangement helps improve communication performance in wireless Pokayoke systems."
+    }
+  ],
+  compatibilityNote: {
+    id: "Gunakan M-FH untuk keluarga FHM/FH. Untuk torque wrench FD/FDD atau FDD-AD yang mengirim data nilai torsi, gunakan M-FD.",
+    en: "Use M-FH for the FHM/FH family. For FD/FDD or FDD-AD torque wrenches that transmit torque-value data, use M-FD."
+  }
+});
+
 generatedDetails.rtd = {
   ...generatedDetails.rtd,
   overview: {

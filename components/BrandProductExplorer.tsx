@@ -111,8 +111,8 @@ export function BrandProductExplorer({ groups, lang, brandSlug, brandName }: Bra
                 }
                 description={
                   lang === "en"
-                    ? "Search all 159 series directly, filter by application or official product family, or browse the complete family map below."
-                    : "Cari langsung seluruh 159 seri, saring berdasarkan aplikasi atau keluarga produk resmi, atau jelajahi peta keluarga lengkap di bawah."
+                    ? "Search all 161 series directly, filter by application or official product family, or browse the complete family map below."
+                    : "Cari langsung seluruh 161 seri, saring berdasarkan aplikasi atau keluarga produk resmi, atau jelajahi peta keluarga lengkap di bawah."
                 }
               />
             </div>
