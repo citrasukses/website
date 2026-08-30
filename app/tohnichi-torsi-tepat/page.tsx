@@ -60,7 +60,7 @@ export default function TohnichiTorsiTepatPage() {
 
       <div className="container-page grid min-h-[calc(100svh-4.5rem)] items-center gap-10 py-12 lg:grid-cols-[0.92fr_1.08fr] lg:py-16">
         <div className="relative z-10 max-w-2xl">
-          <div className="inline-flex items-center gap-3 border border-graphite-300 bg-white/80 px-3 py-2 backdrop-blur-sm">
+          <div className="inline-flex items-center gap-3 border border-graphite-200 bg-white/80 px-3 py-2 backdrop-blur-sm">
             <span className="h-2 w-2 bg-signal-500" />
             <span className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-graphite-700">
               TOHNICHI Torque Control · QL + RTD
@@ -75,7 +75,7 @@ export default function TohnichiTorsiTepatPage() {
             )}
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg font-medium leading-8 text-graphite-600 md:text-xl">
+          <p className="mt-6 max-w-xl text-lg font-medium leading-8 text-graphite-700 md:text-xl">
             {lang === "en"
               ? "Still tightening by feel? Use TOHNICHI to make every tightening cycle more consistent."
               : "Masih mengandalkan feeling? Gunakan TOHNICHI agar setiap proses pengencangan lebih konsisten."}
@@ -91,7 +91,7 @@ export default function TohnichiTorsiTepatPage() {
             </Link>
             <a
               href="#pilih-tool"
-              className="focus-ring inline-flex min-h-[3.25rem] items-center justify-center gap-3 border border-graphite-400 bg-white/70 px-6 py-4 text-sm font-bold text-graphite-800 transition hover:border-industrial-600 hover:bg-white"
+              className="focus-ring inline-flex min-h-[3.25rem] items-center justify-center gap-3 border border-graphite-500 bg-white/70 px-6 py-4 text-sm font-bold text-graphite-800 transition hover:border-industrial-600 hover:bg-white"
             >
               {lang === "en" ? "Find the right tool" : "Pilih tool yang tepat"}
               <ArrowDown className="h-4 w-4" aria-hidden="true" />
@@ -115,10 +115,10 @@ export default function TohnichiTorsiTepatPage() {
         </div>
 
         <div className="relative min-h-[34rem] lg:min-h-[42rem]">
-          <div className="absolute inset-x-0 top-5 h-[56%] border border-graphite-300 bg-white shadow-panel lg:-left-5 lg:right-6">
+          <div className="absolute inset-x-0 top-5 h-[56%] border border-graphite-200 bg-white shadow-panel lg:-left-5 lg:right-6">
             <div className="flex items-center justify-between border-b border-graphite-200 px-4 py-3">
               <span className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-graphite-500">01 · Bolt tightening</span>
-              <span className="inline-flex items-center gap-2 bg-industrial-50 px-2 py-1 text-xs font-bold text-industrial-800">
+              <span className="inline-flex items-center gap-2 bg-[#eef4f8] px-2 py-1 text-xs font-bold text-industrial-800">
                 <Check className="h-3.5 w-3.5" aria-hidden="true" /> CLICK
               </span>
             </div>
@@ -142,17 +142,17 @@ export default function TohnichiTorsiTepatPage() {
             </div>
           </div>
 
-          <div className="absolute bottom-5 left-[8%] right-0 h-[47%] border border-graphite-800 bg-graphite-950 shadow-[0_24px_55px_rgba(21,26,34,0.28)] lg:left-[12%] lg:-right-5">
+          <div className="absolute bottom-5 left-[8%] right-0 h-[47%] border border-graphite-800 bg-graphite-900 shadow-[0_24px_55px_rgba(21,26,34,0.28)] lg:left-[12%] lg:-right-5">
             <div className="flex items-center justify-between border-b border-white/15 px-4 py-3 text-white">
-              <span className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-graphite-300">02 · Screw tightening</span>
+              <span className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-graphite-200">02 · Screw tightening</span>
               <span className="inline-flex items-center gap-2 bg-white/10 px-2 py-1 text-xs font-bold">
-                <RotateCw className="h-3.5 w-3.5 text-signal-400" aria-hidden="true" /> ROTARY SLIP
+                <RotateCw className="h-3.5 w-3.5 text-signal-500" aria-hidden="true" /> ROTARY SLIP
               </span>
             </div>
             <div className="relative h-[calc(100%-2.75rem)] overflow-hidden">
               <div className="absolute left-4 top-4 z-10 text-white">
                 <p className="text-3xl font-black tracking-[-0.04em]">RTD</p>
-                <p className="text-xs font-bold uppercase tracking-[0.16em] text-graphite-300">Torque screwdriver</p>
+                <p className="text-xs font-bold uppercase tracking-[0.16em] text-graphite-200">Torque screwdriver</p>
               </div>
               <div className="absolute inset-x-8 bottom-4 top-14 bg-white" />
               <Image
@@ -163,7 +163,7 @@ export default function TohnichiTorsiTepatPage() {
                 sizes="(max-width: 1024px) 92vw, 48vw"
                 className="object-contain p-10 pt-20"
               />
-              <div className="absolute bottom-4 left-4 border border-white/20 bg-graphite-950 px-3 py-2 text-xs font-bold text-white">
+              <div className="absolute bottom-4 left-4 border border-white/20 bg-graphite-900 px-3 py-2 text-xs font-bold text-white">
                 {lang === "en" ? "HELPS LIMIT OVER-TORQUE" : "MEMBANTU MEMBATASI OVER-TORQUE"}
               </div>
             </div>
@@ -192,22 +192,24 @@ export default function TohnichiTorsiTepatPage() {
                 </p>
                 <p className="mt-2 text-2xl font-black text-graphite-900">{lang === "en" ? "Results vary" : "Hasil bervariasi"}</p>
               </div>
-              <span className="flex h-12 w-12 items-center justify-center border border-graphite-300 bg-white text-graphite-500">
+              <span className="flex h-12 w-12 items-center justify-center border border-graphite-200 bg-white text-graphite-500">
                 <Wrench className="h-6 w-6" aria-hidden="true" />
               </span>
             </div>
-            <div className="relative mt-9 h-56 border-b border-l border-graphite-300" aria-label={lang === "en" ? "Illustration of inconsistent tightening results" : "Ilustrasi hasil pengencangan yang tidak konsisten"}>
-              <div className="absolute inset-x-0 top-[34%] border-t border-dashed border-signal-500" />
-              <span className="absolute right-0 top-[calc(34%-1.8rem)] bg-graphite-50 px-2 text-[0.65rem] font-bold uppercase tracking-wider text-signal-600">Target</span>
-              <div className="absolute inset-0 flex items-end justify-around gap-3 px-4">
-                {[46, 82, 61, 94, 55, 76].map((height, index) => (
-                  <div key={index} className="relative flex h-full flex-1 items-end">
-                    <div className="w-full bg-graphite-300" style={{ height: `${height}%` }}>
-                      <span className={`mx-auto mt-2 block h-2 w-2 ${height > 70 ? "bg-signal-500" : "bg-graphite-500"}`} />
-                    </div>
-                  </div>
-                ))}
-              </div>
+            <div className="relative mt-9 h-56 border-b border-l border-graphite-200" aria-label={lang === "en" ? "Illustration of inconsistent tightening results" : "Ilustrasi hasil pengencangan yang tidak konsisten"}>
+              <div className="absolute inset-x-0 top-1/2 border-t border-dashed border-signal-500" />
+              <span className="absolute right-0 top-[calc(50%-1.8rem)] bg-graphite-50 px-2 text-[0.65rem] font-bold uppercase tracking-wider text-signal-600">Target</span>
+              {[12, 28, 44, 60, 76, 92].map((left) => (
+                <span key={`guide-${left}`} className="absolute bottom-0 top-0 w-px bg-graphite-200/55" style={{ left: `${left}%` }} aria-hidden="true" />
+              ))}
+              {[24, 68, 37, 78, 30, 64].map((top, index) => (
+                <span
+                  key={index}
+                  className="absolute h-3 w-3 -translate-x-1/2 -translate-y-1/2 bg-signal-500 shadow-[0_0_0_5px_rgba(191,47,47,0.12)]"
+                  style={{ left: `${[12, 28, 44, 60, 76, 92][index]}%`, top: `${top}%` }}
+                  aria-hidden="true"
+                />
+              ))}
             </div>
             <div className="mt-4 flex justify-between text-[0.65rem] font-bold uppercase tracking-[0.16em] text-graphite-500">
               <span>{lang === "en" ? "Cycle 01" : "Siklus 01"}</span>
@@ -226,17 +228,19 @@ export default function TohnichiTorsiTepatPage() {
               </span>
             </div>
             <div className="relative mt-9 h-56 border-b border-l border-white/25" aria-label={lang === "en" ? "Illustration of consistent tightening results" : "Ilustrasi hasil pengencangan yang konsisten"}>
-              <div className="absolute inset-x-0 top-[34%] border-t border-dashed border-white/65" />
-              <span className="absolute right-0 top-[calc(34%-1.8rem)] bg-industrial-700 px-2 text-[0.65rem] font-bold uppercase tracking-wider text-white">Target</span>
-              <div className="absolute inset-0 flex items-end justify-around gap-3 px-4">
-                {[66, 67, 65, 66, 67, 66].map((height, index) => (
-                  <div key={index} className="relative flex h-full flex-1 items-end">
-                    <div className="w-full bg-white/85" style={{ height: `${height}%` }}>
-                      <span className="mx-auto mt-2 block h-2 w-2 bg-signal-500" />
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <div className="absolute inset-x-0 top-1/2 border-t border-dashed border-white/75" />
+              <span className="absolute right-0 top-[calc(50%-1.8rem)] bg-industrial-700 px-2 text-[0.65rem] font-bold uppercase tracking-wider text-white">Target</span>
+              {[12, 28, 44, 60, 76, 92].map((left) => (
+                <span key={`guide-${left}`} className="absolute bottom-0 top-0 w-px bg-white/10" style={{ left: `${left}%` }} aria-hidden="true" />
+              ))}
+              {[47, 52, 49, 51, 48, 53].map((top, index) => (
+                <span
+                  key={index}
+                  className="absolute h-3 w-3 -translate-x-1/2 -translate-y-1/2 bg-signal-500 shadow-[0_0_0_5px_rgba(255,255,255,0.14)]"
+                  style={{ left: `${[12, 28, 44, 60, 76, 92][index]}%`, top: `${top}%` }}
+                  aria-hidden="true"
+                />
+              ))}
             </div>
             <div className="mt-4 flex justify-between text-[0.65rem] font-bold uppercase tracking-[0.16em] text-white/65">
               <span>{lang === "en" ? "Cycle 01" : "Siklus 01"}</span>
@@ -253,7 +257,7 @@ export default function TohnichiTorsiTepatPage() {
       </div>
     </section>
 
-    <section id="pilih-tool" className="scroll-mt-24 bg-graphite-950 py-20 text-white md:py-28">
+    <section id="pilih-tool" className="scroll-mt-24 bg-graphite-900 py-20 text-white md:py-28">
       <div className="container-page">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
@@ -264,7 +268,7 @@ export default function TohnichiTorsiTepatPage() {
               {lang === "en" ? "What are you tightening?" : "Apa yang Anda kencangkan?"}
             </h2>
           </div>
-          <p className="max-w-md text-sm leading-6 text-graphite-300">
+          <p className="max-w-md text-sm leading-6 text-graphite-200">
             {lang === "en"
               ? "Start with the fastener and application. CSE can help confirm the torque range and model."
               : "Mulai dari fastener dan aplikasinya. CSE membantu memastikan torque range dan model yang sesuai."}
@@ -321,7 +325,7 @@ export default function TohnichiTorsiTepatPage() {
                 </div>
                 <div className="mt-8 space-y-3 text-sm font-bold">
                   <span className="flex items-center gap-3"><Settings2 className="h-5 w-5 text-white" aria-hidden="true" /> {lang === "en" ? "Set target torque" : "Atur target torsi"}</span>
-                  <span className="flex items-center gap-3"><RotateCw className="h-5 w-5 text-signal-400" aria-hidden="true" /> {lang === "en" ? "Slip at the target" : "Slip saat target tercapai"}</span>
+                  <span className="flex items-center gap-3"><RotateCw className="h-5 w-5 text-signal-500" aria-hidden="true" /> {lang === "en" ? "Slip at the target" : "Slip saat target tercapai"}</span>
                 </div>
               </div>
               <div className="relative min-h-80 bg-white">
@@ -339,7 +343,7 @@ export default function TohnichiTorsiTepatPage() {
               <div className="grid grid-cols-3 divide-x divide-white/15">
                 {[lang === "en" ? "Set" : "Atur", lang === "en" ? "Tighten" : "Kencangkan", "Slip"].map((step, index) => (
                   <div key={step} className="p-4 text-center">
-                    <span className="block text-[0.65rem] font-bold text-signal-400">0{index + 1}</span>
+                    <span className="block text-[0.65rem] font-bold text-signal-500">0{index + 1}</span>
                     <span className="mt-1 block text-xs font-bold uppercase tracking-wider">{step}</span>
                   </div>
                 ))}
@@ -423,7 +427,7 @@ export default function TohnichiTorsiTepatPage() {
                 <Link href={contactHref} className="focus-ring inline-flex min-h-[3.25rem] items-center justify-center gap-3 bg-signal-500 px-6 py-4 text-sm font-bold text-white transition hover:bg-signal-600">
                   {lang === "en" ? "Discuss QL or RTD" : "Konsultasikan QL atau RTD"}<ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
-                <a href="mailto:cse@citra-sukses.com?subject=Konsultasi%20TOHNICHI%20QL%20%2F%20RTD" className="focus-ring inline-flex min-h-[3.25rem] items-center justify-center border border-graphite-300 px-6 py-4 text-sm font-bold text-graphite-800 transition hover:border-industrial-600">
+                <a href="mailto:cse@citra-sukses.com?subject=Konsultasi%20TOHNICHI%20QL%20%2F%20RTD" className="focus-ring inline-flex min-h-[3.25rem] items-center justify-center border border-graphite-200 px-6 py-4 text-sm font-bold text-graphite-800 transition hover:border-industrial-600">
                   cse@citra-sukses.com
                 </a>
               </div>
