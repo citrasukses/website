@@ -169,34 +169,75 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
               </div>
             </div>
 
-            <div className="grid grid-cols-[1fr_auto_0.72fr] items-center gap-3" aria-label={lang === "en" ? "FDD wireless connection to R-CM with M-FD" : "Koneksi wireless FDD ke R-CM dengan M-FD"}>
-              <div>
-                <AssetSlot
-                  src="/assets/brands/products/tohnichi/tohnichi_cspfdd100n3.jpg"
-                  alt="TOHNICHI FDD torque wrench"
-                  className="aspect-[4/5] border-white/15"
-                  imageClassName="p-4"
-                  fit="contain"
-                  priority
-                  sizes="(max-width: 1024px) 44vw, 24vw"
-                />
-                <p className="mt-3 text-center text-xs font-black uppercase tracking-[0.12em] text-white/70">FDD</p>
+            <div
+              className="border border-white/15 bg-black/10 p-4 md:p-5"
+              aria-label={lang === "en" ? "FDD wireless connection to R-CM with M-FD" : "Koneksi wireless FDD ke R-CM dengan M-FD"}
+            >
+              <div className="flex items-center justify-between gap-4 border-b border-white/10 pb-4">
+                <p className="text-[10px] font-black uppercase tracking-[0.18em] text-white/55">
+                  {lang === "en" ? "System connection" : "Koneksi sistem"}
+                </p>
+                <p className="text-[10px] font-black uppercase tracking-[0.14em] text-signal-500">
+                  M-FD wireless
+                </p>
               </div>
-              <div className="flex flex-col items-center gap-2 text-center">
-                <Radio className="h-7 w-7 text-signal-500" aria-hidden="true" />
-                <span className="text-[10px] font-black uppercase tracking-[0.14em] text-white/60">2.4 GHz</span>
+
+              <div className="mt-4 grid gap-4 sm:grid-cols-[minmax(0,1fr)_72px_minmax(0,1fr)] sm:items-center">
+                <div className="border border-white/15 bg-white/[0.03]">
+                  <div className="flex items-center justify-between gap-3 px-3 py-2.5">
+                    <span className="text-[9px] font-black uppercase tracking-[0.16em] text-white/45">
+                      {lang === "en" ? "01 / Tool" : "01 / Tool"}
+                    </span>
+                    <span className="whitespace-nowrap text-[10px] font-black uppercase tracking-[0.1em] text-white">FDD</span>
+                  </div>
+                  <AssetSlot
+                    src="/assets/brands/products/tohnichi/tohnichi_cspfdd100n3.jpg"
+                    alt="TOHNICHI FDD torque wrench"
+                    className="aspect-[16/9] border-0 border-t border-graphite-200"
+                    imageClassName="p-5"
+                    fit="contain"
+                    priority
+                    sizes="(max-width: 640px) 82vw, (max-width: 1024px) 38vw, 18vw"
+                  />
+                </div>
+
+                <div className="grid gap-2 text-center">
+                  <div className="flex items-center">
+                    <span className="h-px flex-1 bg-white/20" aria-hidden="true" />
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-signal-500 bg-graphite-900">
+                      <Radio className="h-4 w-4 text-signal-500" aria-hidden="true" />
+                    </span>
+                    <span className="h-px flex-1 bg-white/20" aria-hidden="true" />
+                  </div>
+                  <span className="text-[9px] font-black uppercase tracking-[0.14em] text-white/50">2.4 GHz</span>
+                </div>
+
+                <div className="border border-white/15 bg-white/[0.03]">
+                  <div className="flex items-center justify-between gap-3 px-3 py-2.5">
+                    <span className="text-[9px] font-black uppercase tracking-[0.16em] text-white/45">
+                      {lang === "en" ? "02 / Receiver" : "02 / Receiver"}
+                    </span>
+                    <span className="whitespace-nowrap text-[10px] font-black uppercase tracking-[0.08em] text-white">R-CM + M-FD</span>
+                  </div>
+                  <AssetSlot
+                    src="/assets/brands/products/tohnichi/catalog/optional-equipment/r-cm.png"
+                    alt="TOHNICHI R-CM receiver"
+                    className="aspect-[16/9] border-0 border-t border-graphite-200"
+                    imageClassName="p-5"
+                    fit="contain"
+                    priority
+                    sizes="(max-width: 640px) 82vw, (max-width: 1024px) 38vw, 18vw"
+                  />
+                </div>
               </div>
-              <div>
-                <AssetSlot
-                  src="/assets/brands/products/tohnichi/catalog/optional-equipment/r-cm.png"
-                  alt="TOHNICHI R-CM receiver"
-                  className="aspect-[4/5] border-white/15"
-                  imageClassName="p-4"
-                  fit="contain"
-                  priority
-                  sizes="(max-width: 1024px) 32vw, 18vw"
-                />
-                <p className="mt-3 text-center text-xs font-black uppercase tracking-[0.12em] text-white/70">R-CM + M-FD</p>
+
+              <div className="mt-4 flex items-start gap-3 border-t border-white/10 pt-4">
+                <span className="mt-1.5 h-2 w-2 shrink-0 bg-signal-500" aria-hidden="true" />
+                <p className="text-xs font-semibold leading-5 text-white/65">
+                  {lang === "en"
+                    ? "Pair by matching the FDD Group CH with the R-CM GROUP setting."
+                    : "Pasangkan dengan menyamakan Group CH FDD dan setting GROUP pada R-CM."}
+                </p>
               </div>
             </div>
           </div>
