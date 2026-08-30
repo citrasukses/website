@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Factory, Gauge, ShieldCheck, Wrench } from "lucide-react";
+import { ArrowRight, BookOpen, Gauge, ShieldCheck, Wrench } from "lucide-react";
+import { buyerGuides } from "@/data/buyer-guides";
 import { seedCatalog } from "@/data/catalog-seed";
 import type { Language } from "@/lib/i18n";
 import { withLang } from "@/lib/i18n";
@@ -86,17 +87,7 @@ const solutionLinks = [
   }
 ] as const;
 
-const applicationLinks = [
-  { href: "/industries/automotive", label: { id: "Otomotif", en: "Automotive" } },
-  { href: "/industries/heavy-equipment", label: { id: "Alat berat", en: "Heavy equipment" } },
-  { href: "/industries/general-industry", label: { id: "General manufacturing", en: "General manufacturing" } }
-] as const;
-
-const guideLinks = [
-  { href: "/guides/cara-memilih-torque-wrench", label: { id: "Cara memilih torque wrench", en: "How to choose a torque wrench" } },
-  { href: "/guides/mencegah-missed-tightening", label: { id: "Cara mencegah missed tightening", en: "How to prevent missed tightening" } },
-  { href: "/guides/mengapa-torque-wrench-perlu-dikalibrasi", label: { id: "Mengapa torque wrench perlu dikalibrasi?", en: "Why do torque wrenches need calibration?" } }
-] as const;
+const tohnichiGuides = buyerGuides.filter((guide) => guide.brands.includes("tohnichi"));
 
 function local<T extends { id: string; en: string }>(value: T, lang: Language) {
   return value[lang];
@@ -195,7 +186,7 @@ export function TohnichiBrandLanding({ lang }: { lang: Language }) {
       </section>
 
       <section className="bg-white py-16">
-        <div className="container-page grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="container-page">
           <div>
             <p className="border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-signal-600">
               {lang === "en" ? "Sales, service & calibration" : "Sales, service & calibration"}
@@ -203,7 +194,7 @@ export function TohnichiBrandLanding({ lang }: { lang: Language }) {
             <h2 className="mt-4 text-3xl font-bold text-graphite-900 md:text-4xl">
               {lang === "en" ? "Support beyond the torque-tool model." : "Dukungan lebih dari sekadar model torque tool."}
             </h2>
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            <div className="mt-8 grid gap-4 md:grid-cols-3">
               {solutionLinks.map((item) => {
                 const Icon = item.icon;
                 return (
@@ -217,24 +208,68 @@ export function TohnichiBrandLanding({ lang }: { lang: Language }) {
               })}
             </div>
           </div>
+        </div>
+      </section>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-            <div className="border border-graphite-200 bg-graphite-50 p-6">
-              <div className="flex items-center gap-3">
-                <BookOpen className="h-6 w-6 text-signal-600" aria-hidden="true" />
-                <h3 className="text-lg font-bold text-graphite-900">{lang === "en" ? "Technical guides" : "Panduan teknis"}</h3>
+      <section className="border-y border-graphite-800 bg-graphite-950 py-16">
+        <div className="container-page">
+          <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+            <div className="max-w-3xl">
+              <div className="flex items-center gap-3 text-signal-400">
+                <BookOpen className="h-5 w-5" aria-hidden="true" />
+                <p className="text-xs font-bold uppercase tracking-[0.2em]">
+                  {lang === "en" ? "TOHNICHI guide library" : "Perpustakaan panduan TOHNICHI"}
+                </p>
               </div>
-              <ul className="mt-4 divide-y divide-graphite-200">
-                {guideLinks.map((item) => (
-                  <li key={item.href}>
-                    <Link href={withLang(item.href, lang)} className="group flex items-center justify-between gap-3 py-3 text-sm font-bold text-graphite-700 hover:text-industrial-800">
-                      {local(item.label, lang)}
-                      <ArrowRight className="h-4 w-4 shrink-0 transition group-hover:translate-x-1" aria-hidden="true" />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <h2 className="mt-4 text-balance text-3xl font-bold text-white md:text-4xl">
+                {lang === "en"
+                  ? "Practical answers for selecting, using, and verifying TOHNICHI tools."
+                  : "Jawaban praktis untuk memilih, menggunakan, dan memverifikasi tool TOHNICHI."}
+              </h2>
+              <p className="mt-4 text-sm leading-6 text-graphite-300">
+                {lang === "en"
+                  ? "Every card below is specifically tagged for TOHNICHI, from tool selection and calibration to poka-yoke and data setup."
+                  : "Setiap panduan di bawah ini khusus ditandai untuk TOHNICHI, mulai dari pemilihan tool dan kalibrasi hingga poka-yoke dan setup data."}
+              </p>
             </div>
+            <span className="self-start border border-white/15 bg-white/5 px-4 py-2 text-sm font-bold text-white md:self-auto">
+              {tohnichiGuides.length} {lang === "en" ? "TOHNICHI guides" : "panduan TOHNICHI"}
+            </span>
+          </div>
+
+          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {tohnichiGuides.map((guide) => (
+              <Link
+                key={guide.slug}
+                href={withLang(`/guides/${guide.slug}`, lang)}
+                className="group flex overflow-hidden border border-white/15 bg-white text-graphite-900 transition hover:-translate-y-1 hover:border-signal-400 hover:shadow-panel"
+              >
+                <div className="relative hidden w-36 shrink-0 bg-graphite-50 sm:block">
+                  <Image
+                    src={guide.image}
+                    alt={local(guide.imageAlt, lang)}
+                    fill
+                    sizes="144px"
+                    className="object-contain p-4 transition duration-500 group-hover:scale-[1.04]"
+                  />
+                </div>
+                <div className="flex min-w-0 flex-1 flex-col p-5">
+                  <p className="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-signal-600">
+                    {local(guide.eyebrow, lang)}
+                  </p>
+                  <h3 className="mt-3 text-lg font-bold leading-6 text-graphite-900 group-hover:text-industrial-800">
+                    {local(guide.title, lang)}
+                  </h3>
+                  <p className="mt-3 line-clamp-3 text-sm leading-6 text-graphite-500">
+                    {local(guide.description, lang)}
+                  </p>
+                  <span className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-bold text-industrial-700">
+                    {lang === "en" ? "Read guide" : "Baca panduan"}
+                    <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" aria-hidden="true" />
+                  </span>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
