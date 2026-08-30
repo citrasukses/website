@@ -99,8 +99,8 @@ export default function TohnichiTorsiTepatPage() {
           </div>
         </div>
 
-        <div className="relative min-h-[34rem] lg:min-h-[42rem]">
-          <div className="absolute inset-x-0 top-5 h-[56%] border border-graphite-200 bg-white shadow-panel lg:-left-5 lg:right-6">
+        <div className="grid gap-4 py-5 lg:-mx-5 lg:py-8">
+          <div className="h-[19rem] overflow-hidden border border-graphite-200 bg-white shadow-panel lg:mr-6">
             <div className="flex items-center justify-between border-b border-graphite-200 px-4 py-3">
               <span className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-graphite-500">01 · Bolt tightening</span>
               <span className="inline-flex items-center gap-2 bg-[#eef4f8] px-2 py-1 text-xs font-bold text-industrial-800">
@@ -127,7 +127,7 @@ export default function TohnichiTorsiTepatPage() {
             </div>
           </div>
 
-          <div className="absolute bottom-5 left-[8%] right-0 h-[47%] border border-graphite-800 bg-graphite-900 shadow-[0_24px_55px_rgba(21,26,34,0.28)] lg:left-[12%] lg:-right-5">
+          <div className="h-[21rem] overflow-hidden border border-graphite-800 bg-graphite-900 shadow-[0_24px_55px_rgba(21,26,34,0.28)] lg:ml-6">
             <div className="flex items-center justify-between border-b border-white/15 px-4 py-3 text-white">
               <span className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-graphite-200">02 · Screw tightening</span>
               <span className="inline-flex items-center gap-2 bg-white/10 px-2 py-1 text-xs font-bold">
@@ -139,14 +139,14 @@ export default function TohnichiTorsiTepatPage() {
                 <p className="text-3xl font-black tracking-[-0.04em]">RTD</p>
                 <p className="text-xs font-bold uppercase tracking-[0.16em] text-graphite-200">Torque screwdriver</p>
               </div>
-              <div className="absolute inset-x-8 bottom-4 top-14 bg-white" />
+              <div className="absolute inset-x-8 bottom-4 top-20 bg-white" />
               <Image
                 src="/assets/brands/products/tohnichi/catalog/torque-screwdrivers/rtd.png"
                 alt="TOHNICHI RTD rotary-slip torque screwdriver"
                 fill
                 priority
                 sizes="(max-width: 1024px) 92vw, 48vw"
-                className="object-contain p-10 pt-20"
+                className="object-contain p-10 pt-24"
               />
               <div className="absolute bottom-4 left-4 border border-white/20 bg-graphite-900 px-3 py-2 text-xs font-bold text-white">
                 {lang === "en" ? "HELPS LIMIT OVER-TORQUE" : "MEMBANTU MEMBATASI OVER-TORQUE"}
