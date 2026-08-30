@@ -13,9 +13,9 @@ const distributors = [
   {
     name: "TOHNICHI",
     slug: "tohnichi",
-    logo: "/assets/brands/logos/tohnichi--alternate.png",
-    width: 166,
-    height: 104
+    logo: "/assets/brands/logos/tohnichi--nobg.png",
+    width: 400,
+    height: 186
   },
   {
     name: "Sankyo Rikagaku",
@@ -111,13 +111,13 @@ export function AuthorizedDistributorStrip({ lang, className = "" }: AuthorizedD
             className="border-b border-graphite-200 after:absolute after:inset-y-5 after:right-0 after:w-0.5 after:bg-signal-500/70 after:content-[''] lg:border-b-0"
           >
             <div className="flex w-full flex-col items-center gap-2">
-              <div className="relative h-14 w-full max-w-[150px] overflow-hidden">
+              <div className="relative h-14 w-full max-w-[150px]">
                 <Image
                   src={distributors[0].logo}
                   alt="TOHNICHI"
                   fill
                   sizes="150px"
-                  className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
+                  className="object-contain p-1 transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
             </div>

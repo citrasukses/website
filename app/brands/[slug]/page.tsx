@@ -35,8 +35,8 @@ const TOHNICHI_SEO_TITLE = {
   en: "Official TOHNICHI Distributor Indonesia | Sales, Service & Calibration"
 };
 const TOHNICHI_SEO_DESCRIPTION = {
-  id: "PT Citra Sukses Ekapratama adalah distributor resmi, agen penjualan dan servis, serta licensee kalibrasi dan perbaikan TOHNICHI di Indonesia.",
-  en: "PT Citra Sukses Ekapratama is an official TOHNICHI distributor, sales and service agent, and calibration and repair licensee in Indonesia."
+  id: "PT Citra Sukses Ekapratama adalah distributor resmi, agen penjualan dan servis TOHNICHI di Indonesia.",
+  en: "PT Citra Sukses Ekapratama is an official TOHNICHI distributor, sales and service agent in Indonesia."
 };
 export function generateStaticParams() {
   return seedCatalog.filter((brand) => brand.published).map((brand) => ({ slug: brand.slug }));
