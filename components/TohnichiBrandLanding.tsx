@@ -244,13 +244,13 @@ export function TohnichiBrandLanding({ lang }: { lang: Language }) {
                 href={withLang(`/guides/${guide.slug}`, lang)}
                 className="group flex overflow-hidden border border-white/15 bg-white text-graphite-900 transition hover:-translate-y-1 hover:border-signal-400 hover:shadow-panel"
               >
-                <div className="relative hidden w-36 shrink-0 bg-graphite-50 sm:block">
+                <div className="relative hidden w-36 shrink-0 bg-white sm:block">
                   <Image
                     src={guide.image}
                     alt={local(guide.imageAlt, lang)}
                     fill
                     sizes="144px"
-                    className="object-contain p-4 transition duration-500 group-hover:scale-[1.04]"
+                    className="bg-white object-contain p-4 transition duration-500 group-hover:scale-[1.04]"
                   />
                 </div>
                 <div className="flex min-w-0 flex-1 flex-col p-5">
