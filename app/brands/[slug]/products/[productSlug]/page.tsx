@@ -17,6 +17,8 @@ import { seedCatalog } from "@/data/catalog-seed";
 import { nacCouplingProductDetails } from "@/data/nac-coupling-product-details";
 import { nacProductDetails } from "@/data/nac-product-details";
 import { sankyoRikagakuProductDetails } from "@/data/sankyo-rikagaku-product-details";
+import { tohnichiProductFamilyTitle } from "@/data/seo-intents";
+import { getTohnichiPriorityGuidance } from "@/data/tohnichi-priority-guidance";
 import { tohnichiProductDetails } from "@/data/tohnichi-product-details";
 import { canViewBrandDraft, isBrandPubliclyAvailable } from "@/lib/brand-visibility";
 import { getCatalogBrandBySlug } from "@/lib/catalog";
@@ -70,9 +72,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     );
   const seoTitle =
     brand.slug === "tohnichi"
-      ? lang === "en"
-        ? `${product.name} TOHNICHI - Models & Specifications`
-        : `${product.name} TOHNICHI - Model & Spesifikasi`
+      ? tohnichiProductFamilyTitle(product.name, lang)
       : brand.slug === "nac"
         ? lang === "en"
           ? `${product.name} NAC / Nagahori Indonesia - Models & Catalogue`
@@ -118,6 +118,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
     brand.slug === "nac" ? nacProductDetails[product.slug] ?? nacCouplingProductDetails[product.slug] : undefined;
   const sankyoRikagakuDetail =
     brand.slug === "fuji-star" ? sankyoRikagakuProductDetails[product.slug] : undefined;
+  const tohnichiPriorityGuidance =
+    brand.slug === "tohnichi" ? getTohnichiPriorityGuidance(product.slug) : undefined;
   const isNacCoupling = Boolean(nacDetail && "kind" in nacDetail && nacDetail.kind === "coupling");
   const familyDetail = tohnichiDetail ?? nacDetail ?? sankyoRikagakuDetail;
   const images = Array.from(
@@ -344,31 +346,101 @@ export default async function ProductDetailPage({ params }: PageProps) {
           </div>
         </section>
       )}
-      <section className="bg-white py-14">
-        <div className="container-page grid gap-8 lg:grid-cols-[0.72fr_1.28fr]">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
-              {lang === "en" ? "Product selection guidance" : "Panduan pemilihan produk"}
-            </p>
-            <h2 className="mt-3 text-3xl font-bold text-graphite-900">
-              {lang === "en"
-                ? `Where ${product.name} fits`
-                : `Kesesuaian ${product.name} untuk aplikasi Anda`}
-            </h2>
-            <p className="mt-4 text-sm leading-6 text-graphite-500">
-              {text(group.description, lang)}
-            </p>
-          </div>
-          <div className="grid gap-px overflow-hidden border border-graphite-200 bg-graphite-200 sm:grid-cols-3">
-            {selectionGuidance.map((item) => (
-              <div key={item.title} className="bg-white p-5">
-                <h3 className="text-base font-bold text-graphite-900">{item.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-graphite-500">{item.body}</p>
+      {tohnichiPriorityGuidance ? (
+        <section className="bg-white py-14">
+          <div className="container-page">
+            <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
+                  {lang === "en" ? "Technical selection guide" : "Panduan pemilihan teknis"}
+                </p>
+                <h2 className="mt-3 text-3xl font-bold text-graphite-900">
+                  {lang === "en"
+                    ? `When to choose ${product.name}`
+                    : `Kapan memilih ${product.name}`}
+                </h2>
+                <p className="mt-4 text-base leading-7 text-graphite-600">
+                  {text(tohnichiPriorityGuidance.bestFor, lang)}
+                </p>
+                <div className="mt-6 border-l-2 border-signal-500 bg-graphite-50 px-5 py-4">
+                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-graphite-500">
+                    {lang === "en" ? "Decision boundary" : "Batas keputusan"}
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-graphite-700">
+                    {text(tohnichiPriorityGuidance.decision, lang)}
+                  </p>
+                </div>
               </div>
-            ))}
+
+              <div className="grid gap-5 xl:grid-cols-2">
+                <article className="border border-graphite-200 bg-white p-6 shadow-sm">
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-industrial-700">
+                    {lang === "en" ? "Choose by" : "Pilih berdasarkan"}
+                  </p>
+                  <ol className="mt-5 space-y-4">
+                    {tohnichiPriorityGuidance.chooseBy.map((item, index) => (
+                      <li key={item.en} className="grid grid-cols-[2rem_1fr] gap-3 text-sm leading-6 text-graphite-600">
+                        <span className="flex h-8 w-8 items-center justify-center bg-industrial-700 text-xs font-bold text-white">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <span>{text(item, lang)}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </article>
+
+                <article className="border border-graphite-200 bg-graphite-50 p-6 shadow-sm">
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-signal-600">
+                    {lang === "en" ? "Include in your RFQ" : "Sertakan dalam RFQ"}
+                  </p>
+                  <ul className="mt-5 space-y-3">
+                    {tohnichiPriorityGuidance.rfqChecklist.map((item) => (
+                      <li key={item.en} className="flex gap-3 text-sm leading-6 text-graphite-700">
+                        <span className="mt-2 h-2 w-2 shrink-0 bg-signal-500" aria-hidden="true" />
+                        <span>{text(item, lang)}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <CTAButton href={rfqPath} className="mt-6 w-full">
+                    {lang === "en" ? `Request ${product.name} selection` : `Minta pemilihan ${product.name}`}
+                  </CTAButton>
+                </article>
+              </div>
+            </div>
+            <p className="mt-6 text-xs leading-5 text-graphite-500">
+              {lang === "en"
+                ? "Selection guidance is based on the official TOHNICHI applications, features, and model tables cited on this page. Confirm the final model and current compatibility with CSE."
+                : "Panduan pemilihan disusun dari aplikasi, fitur, dan tabel model resmi TOHNICHI yang dicantumkan pada halaman ini. Konfirmasikan model akhir dan kompatibilitas terkini dengan CSE."}
+            </p>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : (
+        <section className="bg-white py-14">
+          <div className="container-page grid gap-8 lg:grid-cols-[0.72fr_1.28fr]">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
+                {lang === "en" ? "Product selection guidance" : "Panduan pemilihan produk"}
+              </p>
+              <h2 className="mt-3 text-3xl font-bold text-graphite-900">
+                {lang === "en"
+                  ? `Where ${product.name} fits`
+                  : `Kesesuaian ${product.name} untuk aplikasi Anda`}
+              </h2>
+              <p className="mt-4 text-sm leading-6 text-graphite-500">
+                {text(group.description, lang)}
+              </p>
+            </div>
+            <div className="grid gap-px overflow-hidden border border-graphite-200 bg-graphite-200 sm:grid-cols-3">
+              {selectionGuidance.map((item) => (
+                <div key={item.title} className="bg-white p-5">
+                  <h3 className="text-base font-bold text-graphite-900">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-graphite-500">{item.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
       {relatedProducts.length ? (
         <section className="bg-graphite-50 py-14">
           <div className="container-page">

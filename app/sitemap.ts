@@ -4,6 +4,7 @@ import { categoryHubs } from "@/data/category-hubs";
 import { seedCatalog } from "@/data/catalog-seed";
 import { industryPages } from "@/data/industry-pages";
 import { solutionPages } from "@/data/solution-pages";
+import { assertUniqueSeoIntentOwnership, SEO_INTENT_OWNERS } from "@/data/seo-intents";
 import { isBrandPubliclyAvailable } from "@/lib/brand-visibility";
 import { languageAlternates, localizedPath } from "@/lib/i18n";
 import { absoluteUrl } from "@/lib/seo-config";
@@ -27,6 +28,8 @@ function localizedRoutes(path: string): MetadataRoute.Sitemap {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  assertUniqueSeoIntentOwnership();
+
   const staticRoutes = [
     "/",
     "/about",
@@ -36,7 +39,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/solutions",
     "/guides",
     "/partners",
-    "/contact"
+    "/contact",
+    SEO_INTENT_OWNERS.controlledTightening.route
   ].flatMap(localizedRoutes);
 
   const categoryRoutes: MetadataRoute.Sitemap = categoryHubs.flatMap((category) =>

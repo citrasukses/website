@@ -5,6 +5,7 @@ import { ArrowDown, Search } from "lucide-react";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { BrandProductExplorer } from "@/components/BrandProductExplorer";
 import { seedCatalog } from "@/data/catalog-seed";
+import { SEO_INTENT_OWNERS } from "@/data/seo-intents";
 import { getCatalogBrandBySlug } from "@/lib/catalog";
 import { buildCollectionJsonLd, buildPageMetadata } from "@/lib/seo";
 import { staticLanguage, withLang } from "@/lib/i18n";
@@ -30,14 +31,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const brand = await getCatalogBrandBySlug(slug);
   if (!brand || !catalogueBrandSlugs.includes(slug)) return {};
 
-  const title = lang === "en" ? "Complete TOHNICHI Product Catalogue Indonesia" : "Katalog Produk TOHNICHI Indonesia Lengkap";
-  const description =
-    lang === "en"
-      ? "Search the complete TOHNICHI catalogue available through CSE by product family, model, task, and application."
-      : "Cari katalog lengkap TOHNICHI melalui CSE berdasarkan keluarga produk, model, tugas, dan aplikasi.";
+  const intent = SEO_INTENT_OWNERS.tohnichiCatalogue;
+  const title = intent.title[lang];
+  const description = intent.description[lang];
 
   const metadata = buildPageMetadata({
-    path: `/brands/${slug}/products`,
+    path: intent.route,
     title,
     description,
     lang,

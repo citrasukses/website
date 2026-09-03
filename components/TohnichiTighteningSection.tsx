@@ -722,15 +722,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
             >
               {lang === "en"
                 ? "Still relying on operator instinct for tightening? Change now to a controlled process."
-                : "Tightening masih mengandalkan insting operator?"}
-            </h2>
-            <h2
-              id="tohnichi-expertise-title"
-              className="mt-5 max-w-3xl text-balance text-3xl font-bold leading-tight tracking-normal sm:text-4xl lg:text-3xl"
-            >
-              {lang === "en"
-                ? "Still relying on operator instinct for tightening? Change now to a controlled process."
-                : "Ubah sekarang juga menjadi proses yang terkendali."}
+                : "Tightening masih mengandalkan insting operator? Ubah sekarang juga menjadi proses yang terkendali."}
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-7 text-graphite-600 md:text-lg md:leading-8">
               {lang === "en"
@@ -750,6 +742,12 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
                 variant="ghost"
               >
                 {lang === "en" ? "Explore TOHNICHI" : "Lihat TOHNICHI"}
+              </CTAButton>
+              <CTAButton
+                href={withLang("/tohnichi-torsi-tepat", lang)}
+                variant="ghost"
+              >
+                {lang === "en" ? "Why torque control matters" : "Mengapa kontrol torsi penting"}
               </CTAButton>
             </div>
           </div>

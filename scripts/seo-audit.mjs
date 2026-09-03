@@ -252,7 +252,7 @@ for (const [pagePath, page] of pages) {
       addIssue(errors, "broken-internal-link", pagePath, `Internal link target ${targetPath} is missing.`);
       return;
     }
-    incomingLinks.get(targetPath)?.add(pagePath);
+    if (targetPath !== pagePath) incomingLinks.get(targetPath)?.add(pagePath);
   });
 
   const normalizedPageUrl = normalizeUrl(pageUrl);
@@ -284,6 +284,73 @@ for (const [pagePath, incoming] of incomingLinks) {
   const page = pages.get(pagePath);
   if (!page || page.is404 || page.noindex || pagePath === "/") continue;
   if (incoming.size === 0) addIssue(errors, "orphan-page", pagePath, "Indexable page has no incoming internal link.");
+}
+
+const controlledTighteningPaths = ["/tohnichi-torsi-tepat", "/en/tohnichi-torsi-tepat"];
+for (const targetPath of controlledTighteningPaths) {
+  const targetPage = pages.get(targetPath);
+  if (!targetPage || targetPage.is404) continue;
+
+  const isEnglish = targetPath.startsWith("/en/");
+  const discoverySources = isEnglish
+    ? ["/en", "/en/brands/tohnichi", "/en/torque-wrench"]
+    : ["/", "/brands/tohnichi", "/torque-wrench"];
+
+  for (const sourcePath of discoverySources) {
+    const sourcePage = pages.get(sourcePath);
+    if (!sourcePage?.links.includes(targetPath)) {
+      addIssue(
+        errors,
+        "intent-landing-link",
+        sourcePath,
+        `Expected a crawlable link to ${targetPath}.`
+      );
+    }
+  }
+}
+
+const tohnichiSeoSource = await readFile(
+  path.join(projectRoot, "data/tohnichi-seo.ts"),
+  "utf8"
+);
+const priorityListMatch = tohnichiSeoSource.match(
+  /TOHNICHI_PRIORITY_PRODUCT_SLUGS\s*=\s*\[([\s\S]*?)\]\s*as const/
+);
+const priorityProductSlugs = priorityListMatch
+  ? [...priorityListMatch[1].matchAll(/"([^"]+)"/g)].map((match) => match[1])
+  : [];
+
+if (priorityProductSlugs.length === 0) {
+  addIssue(errors, "priority-product-list", "/data/tohnichi-seo.ts", "No priority TOHNICHI product slugs were found.");
+}
+
+for (const slug of priorityProductSlugs) {
+  for (const localePrefix of ["", "/en"]) {
+    const pagePath = `${localePrefix}/brands/tohnichi/products/${slug}`;
+    const page = pages.get(pagePath);
+    if (!page || page.is404) {
+      addIssue(errors, "priority-product-output", pagePath, "Priority TOHNICHI product page is missing.");
+      continue;
+    }
+    if (page.noindex) {
+      addIssue(errors, "priority-product-noindex", pagePath, "Priority TOHNICHI product page is noindex.");
+    }
+
+    const visibleText = page.$("body").text().replace(/\s+/g, " ");
+    const requiredPhrases = localePrefix
+      ? ["Technical selection guide", "Decision boundary", "Include in your RFQ"]
+      : ["Panduan pemilihan teknis", "Batas keputusan", "Sertakan dalam RFQ"];
+    for (const phrase of requiredPhrases) {
+      if (!visibleText.includes(phrase)) {
+        addIssue(
+          errors,
+          "priority-selection-guidance",
+          pagePath,
+          `Missing buyer-facing guidance marker: ${phrase}.`
+        );
+      }
+    }
+  }
 }
 
 function duplicateGroups(field) {

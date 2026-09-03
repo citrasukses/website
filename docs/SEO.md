@@ -28,6 +28,8 @@ This website uses the Next.js App Router, a bilingual static export, and Cloudfl
 | Brand publication rules | `lib/brand-publication.ts` |
 | Brand visibility rules | `lib/brand-visibility.ts` |
 | Selective TOHNICHI product indexing | `data/tohnichi-seo.ts` |
+| TOHNICHI search-intent ownership | `data/seo-intents.ts` |
+| Priority-family buyer guidance | `data/tohnichi-priority-guidance.ts` |
 | Legacy redirects and language redirects | `worker/static-export.js` |
 | Bilingual production build | `scripts/build-bilingual-site.mjs` |
 
@@ -62,6 +64,20 @@ Before indexing a product page, confirm that it has enough verified, unique valu
 - a useful RFQ path.
 
 If the page is mainly a name, image, and generic request form, keep it `noindex,follow` until it is improved.
+
+## Search-intent ownership
+
+TOHNICHI pages use one canonical owner for each major query cluster. The executable source is `data/seo-intents.ts`; update that file before changing the titles or primary focus of these pages.
+
+| Search intent | Canonical owner | Indexability |
+|---|---|---|
+| Official TOHNICHI distributor, sales, service, and calibration in Indonesia | `/brands/tohnichi` | Indexable |
+| Industrial torque-wrench category and selection | `/torque-wrench` | Indexable |
+| How to achieve consistent bolt and screw tightening | `/tohnichi-torsi-tepat` | Indexable |
+| Complete TOHNICHI catalogue browsing and search | `/brands/tohnichi/products` | `noindex,follow` |
+| A specific TOHNICHI family, model range, and specifications | `/brands/tohnichi/products/[productSlug]` | Selective indexing |
+
+Do not retarget the brand page, category hub, educational landing page, catalogue, and model-family pages to the same primary query. Supporting links may overlap, but the page title, H1, introduction, and main conversion context must preserve the ownership above.
 
 ## Workflow for every website update
 

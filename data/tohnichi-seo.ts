@@ -37,6 +37,8 @@ export const TOHNICHI_PRIORITY_PRODUCT_SLUGS = [
   "tme3-g"
 ] as const;
 
+export type TohnichiPriorityProductSlug = (typeof TOHNICHI_PRIORITY_PRODUCT_SLUGS)[number];
+
 const priorityProductSlugs = new Set<string>(TOHNICHI_PRIORITY_PRODUCT_SLUGS);
 
 export function isTohnichiPriorityProduct(slug: string) {

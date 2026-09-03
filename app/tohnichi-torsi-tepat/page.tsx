@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Breadcrumb } from "@/components/Breadcrumb";
+import { SEO_INTENT_OWNERS } from "@/data/seo-intents";
 import {
   ArrowDown,
   ArrowRight,
@@ -15,30 +17,65 @@ import {
   Wrench
 } from "lucide-react";
 import { staticLanguage, withLang } from "@/lib/i18n";
-import { buildPageMetadata } from "@/lib/seo";
+import { buildBreadcrumbJsonLd, buildPageMetadata, organizationReference } from "@/lib/seo";
+import { absoluteLocalizedUrl } from "@/lib/seo-config";
+import { INDEXABLE } from "@/lib/seo-indexability";
 
 export function generateMetadata(): Metadata {
   const lang = staticLanguage();
+  const intent = SEO_INTENT_OWNERS.controlledTightening;
 
   return buildPageMetadata({
-    path: "/tohnichi-torsi-tepat",
-    title: lang === "en" ? "Consistent Tightening with TOHNICHI QL & RTD" : "Pengencangan Konsisten dengan TOHNICHI QL & RTD",
-    description:
-      lang === "en"
-        ? "Move beyond tightening by feel. Discover TOHNICHI QL torque wrenches and RTD torque screwdrivers for consistent production work."
-        : "Jangan hanya mengandalkan feeling saat mengencangkan baut dan sekrup. Kenali TOHNICHI QL dan RTD untuk hasil produksi yang konsisten.",
+    path: intent.route,
+    title: intent.title[lang],
+    description: intent.description[lang],
     lang,
     image: "/assets/brands/products/tohnichi/QL100N4.jpg",
-    imageAlt: "TOHNICHI QL adjustable torque wrench"
+    imageAlt: "TOHNICHI QL adjustable torque wrench",
+    indexability: INDEXABLE
   });
 }
 
 export default function TohnichiTorsiTepatPage() {
   const lang = staticLanguage();
   const contactHref = withLang("/contact?brand=tohnichi&product=QL%20%2F%20RTD", lang);
+  const pagePath = SEO_INTENT_OWNERS.controlledTightening.route;
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: lang === "en" ? "Consistent Tightening with TOHNICHI QL & RTD" : "Pengencangan Konsisten dengan TOHNICHI QL & RTD",
+      description:
+        lang === "en"
+          ? "A practical introduction to controlled bolt and screw tightening with TOHNICHI QL torque wrenches and RTD torque screwdrivers."
+          : "Pengantar praktis untuk pengencangan baut dan sekrup yang terkontrol dengan torque wrench TOHNICHI QL dan torque screwdriver RTD.",
+      url: absoluteLocalizedUrl(pagePath, lang),
+      inLanguage: lang === "en" ? "en-US" : "id-ID",
+      about: [
+        { "@type": "Brand", name: "TOHNICHI" },
+        { "@type": "Thing", name: "Controlled tightening" }
+      ],
+      provider: organizationReference()
+    },
+    buildBreadcrumbJsonLd({
+      lang,
+      items: [
+        { name: lang === "en" ? "TOHNICHI" : "TOHNICHI", path: "/brands/tohnichi" },
+        { name: lang === "en" ? "Consistent tightening" : "Pengencangan konsisten", path: pagePath }
+      ]
+    })
+  ];
 
   return (
     <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+    <Breadcrumb
+      homeHref={withLang("/", lang)}
+      items={[
+        { href: withLang("/brands/tohnichi", lang), label: "TOHNICHI" },
+        { label: lang === "en" ? "Consistent tightening" : "Pengencangan konsisten" }
+      ]}
+    />
     <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-[#f3f1ec]">
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(24,61,97,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(24,61,97,0.055)_1px,transparent_1px)] bg-[size:40px_40px]" />
       <div className="absolute inset-y-0 right-0 -z-10 hidden w-[42%] bg-industrial-700 lg:block" />
@@ -96,62 +133,6 @@ export default function TohnichiTorsiTepatPage() {
                 {label}
               </span>
             ))}
-          </div>
-        </div>
-
-        <div className="grid gap-4 py-5 lg:-mx-5 lg:py-8">
-          <div className="h-[19rem] overflow-hidden border border-graphite-200 bg-white shadow-panel lg:mr-6">
-            <div className="flex items-center justify-between border-b border-graphite-200 px-4 py-3">
-              <span className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-graphite-500">01 · Bolt tightening</span>
-              <span className="inline-flex items-center gap-2 bg-[#eef4f8] px-2 py-1 text-xs font-bold text-industrial-800">
-                <Check className="h-3.5 w-3.5" aria-hidden="true" /> CLICK
-              </span>
-            </div>
-            <div className="relative h-[calc(100%-2.75rem)] overflow-hidden">
-              <div className="absolute left-4 top-4 z-10">
-                <p className="text-3xl font-black tracking-[-0.04em] text-graphite-900">QL</p>
-                <p className="text-xs font-bold uppercase tracking-[0.16em] text-graphite-500">Torque wrench</p>
-              </div>
-              <Image
-                src="/assets/brands/products/tohnichi/QL5N+.png"
-                alt="TOHNICHI QL adjustable torque wrench"
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 54vw"
-                className="rotate-[-7deg] object-contain p-8 pt-20"
-              />
-              <div className="absolute bottom-4 right-4 flex items-center gap-2 border border-signal-500 bg-white px-3 py-2 text-xs font-bold text-signal-600">
-                <span className="h-2 w-2 rounded-full bg-signal-500" />
-                SET TORQUE REACHED
-              </div>
-            </div>
-          </div>
-
-          <div className="h-[21rem] overflow-hidden border border-graphite-800 bg-graphite-900 shadow-[0_24px_55px_rgba(21,26,34,0.28)] lg:ml-6">
-            <div className="flex items-center justify-between border-b border-white/15 px-4 py-3 text-white">
-              <span className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-graphite-200">02 · Screw tightening</span>
-              <span className="inline-flex items-center gap-2 bg-white/10 px-2 py-1 text-xs font-bold">
-                <RotateCw className="h-3.5 w-3.5 text-signal-500" aria-hidden="true" /> ROTARY SLIP
-              </span>
-            </div>
-            <div className="relative h-[calc(100%-2.75rem)] overflow-hidden">
-              <div className="absolute left-4 top-4 z-10 text-white">
-                <p className="text-3xl font-black tracking-[-0.04em]">RTD</p>
-                <p className="text-xs font-bold uppercase tracking-[0.16em] text-graphite-200">Torque screwdriver</p>
-              </div>
-              <div className="absolute inset-x-8 bottom-4 top-20 bg-white" />
-              <Image
-                src="/assets/brands/products/tohnichi/catalog/torque-screwdrivers/rtd.png"
-                alt="TOHNICHI RTD rotary-slip torque screwdriver"
-                fill
-                priority
-                sizes="(max-width: 1024px) 92vw, 48vw"
-                className="object-contain p-10 pt-24"
-              />
-              <div className="absolute bottom-4 left-4 border border-white/20 bg-graphite-900 px-3 py-2 text-xs font-bold text-white">
-                {lang === "en" ? "HELPS LIMIT OVER-TORQUE" : "MEMBANTU MEMBATASI OVER-TORQUE"}
-              </div>
-            </div>
           </div>
         </div>
       </div>

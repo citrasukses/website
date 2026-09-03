@@ -58,6 +58,18 @@ The selected pages all have one or more populated specification tables in `data/
 - Every buyer guide links to the brand page from its hero.
 - The complete catalogue remains crawlable from the brand page; the 134 non-priority family pages remain `noindex,follow`.
 
+## Priority-page content contract
+
+Every family in `data/tohnichi-seo.ts` must also have a bilingual entry in `data/tohnichi-priority-guidance.ts`. Each entry adds:
+
+- a specific statement of where the family fits;
+- a decision boundary against the nearest alternative;
+- three application and model-selection checks;
+- four concrete inputs to include in the RFQ; and
+- a visible note tying the guidance to the official TOHNICHI applications, features, and model tables cited on the page.
+
+The `Record<TohnichiPriorityProductSlug, ...>` type makes missing entries fail TypeScript. The generated-site SEO audit also checks all 25 Indonesian and English priority pages for the technical-selection, decision-boundary, and RFQ sections.
+
 ## Search Console measurement
 
 The pre-deployment baseline covers 29 June–19 August 2026:

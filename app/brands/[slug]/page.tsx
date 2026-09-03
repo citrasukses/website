@@ -15,6 +15,7 @@ import { TohnichiBrandLanding } from "@/components/TohnichiBrandLanding";
 import { TohnichiProductPromotionCarousel } from "@/components/TohnichiProductPromotionCarousel";
 import { UseCaseSection } from "@/components/UseCaseSection";
 import { seedCatalog } from "@/data/catalog-seed";
+import { SEO_INTENT_OWNERS } from "@/data/seo-intents";
 import { canViewBrandDraft, isBrandPubliclyAvailable } from "@/lib/brand-visibility";
 import { getCatalogBrandBySlug } from "@/lib/catalog";
 import { staticLanguage, text, withLang } from "@/lib/i18n";
@@ -30,14 +31,7 @@ const TOHNICHI_PAGE_PATH = "/brands/tohnichi";
 const TOHNICHI_OFFICIAL_URL = "https://en.global-tohnichi.com/";
 const TOHNICHI_DISTRIBUTOR_URL = "https://en.global-tohnichi.com/support/distributors.html";
 const TOHNICHI_SUPPORT_URL = "https://en.global-tohnichi.com/support/";
-const TOHNICHI_SEO_TITLE = {
-  id: "Distributor Resmi TOHNICHI Indonesia | Sales, Service & Calibration",
-  en: "Official TOHNICHI Distributor Indonesia | Sales, Service & Calibration"
-};
-const TOHNICHI_SEO_DESCRIPTION = {
-  id: "PT Citra Sukses Ekapratama adalah distributor resmi, agen penjualan dan servis TOHNICHI di Indonesia.",
-  en: "PT Citra Sukses Ekapratama is an official TOHNICHI distributor, sales and service agent in Indonesia."
-};
+const TOHNICHI_SEO_INTENT = SEO_INTENT_OWNERS.tohnichiDistributor;
 export function generateStaticParams() {
   return seedCatalog.filter((brand) => brand.published).map((brand) => ({ slug: brand.slug }));
 }
@@ -67,7 +61,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const isSankyoRikagaku = brand.slug === "fuji-star";
   const brandPath = `/brands/${brand.slug}`;
   const title = isTohnichi
-    ? TOHNICHI_SEO_TITLE[lang]
+    ? TOHNICHI_SEO_INTENT.title[lang]
     : isNac
       ? lang === "en"
         ? "NAC / Nagahori Industry Indonesia | Sockets & Quick Couplings"
@@ -78,7 +72,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         : "SANKYO Rikagaku (FUJISTAR) Indonesia | Abrasive"
       : brand.name;
   const description = isTohnichi
-    ? TOHNICHI_SEO_DESCRIPTION[lang]
+    ? TOHNICHI_SEO_INTENT.description[lang]
     : isNac
       ? lang === "en"
         ? "NAC is the industrial socket, bit, and quick-coupling brand of Nagahori Industry Co., Ltd. CSE supports model and custom-product selection in Indonesia."
@@ -121,12 +115,12 @@ export default async function BrandDetailPage({ params }: PageProps) {
         {
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          name: TOHNICHI_SEO_TITLE[lang],
+          name: TOHNICHI_SEO_INTENT.title[lang],
           headline:
             lang === "en"
               ? "Official TOHNICHI Distributor Indonesia"
               : "Distributor Resmi TOHNICHI Indonesia",
-          description: TOHNICHI_SEO_DESCRIPTION[lang],
+          description: TOHNICHI_SEO_INTENT.description[lang],
           url: absoluteLocalizedUrl(TOHNICHI_PAGE_PATH, lang),
           inLanguage: lang === "en" ? "en-US" : "id-ID",
           citation: [TOHNICHI_DISTRIBUTOR_URL, TOHNICHI_SUPPORT_URL],
@@ -288,7 +282,7 @@ export default async function BrandDetailPage({ params }: PageProps) {
         }
         description={
           isTohnichi
-            ? TOHNICHI_SEO_DESCRIPTION[lang]
+            ? TOHNICHI_SEO_INTENT.description[lang]
             : isNac
               ? lang === "en"
                 ? "NAC is the industrial socket, bit, and quick-coupling brand of Nagahori Industry Co., Ltd. CSE supports model and custom-product selection in Indonesia."
@@ -375,6 +369,11 @@ export default async function BrandDetailPage({ params }: PageProps) {
                       ? "Verify calibration & repair licensee"
                       : "Verifikasi licensee kalibrasi & perbaikan"}
                   </a>
+                </div>
+                <div className="mt-6">
+                  <CTAButton href={withLang("/tohnichi-torsi-tepat", lang)} variant="ghost">
+                    {lang === "en" ? "Why correct torque matters" : "Mengapa torsi yang tepat penting"}
+                  </CTAButton>
                 </div>
                 <div className="mt-7 border-t border-graphite-200 pt-6">
                   <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
