@@ -35,7 +35,6 @@ export function generateMetadata(): Metadata {
     indexability: INDEXABLE
   });
 }
-
 export default function TohnichiTorsiTepatPage() {
   const lang = staticLanguage();
   const contactHref = withLang("/contact?brand=tohnichi&product=QL%20%2F%20RTD", lang);
