@@ -32,6 +32,9 @@ This website uses the Next.js App Router, a bilingual static export, and Cloudfl
 | Priority-family buyer guidance | `data/tohnichi-priority-guidance.ts` |
 | Legacy redirects and language redirects | `worker/static-export.js` |
 | Bilingual production build | `scripts/build-bilingual-site.mjs` |
+| Performance regression budgets | `scripts/performance-budget.mjs` |
+| Inquiry source attribution | `lib/inquiry-attribution.ts` and `worker/static-export.js` |
+| Authority and outreach preparation | `docs/seo-authority-plan.md` |
 
 When changing any of these files, verify both Indonesian and English output.
 
@@ -78,6 +81,16 @@ TOHNICHI pages use one canonical owner for each major query cluster. The executa
 | A specific TOHNICHI family, model range, and specifications | `/brands/tohnichi/products/[productSlug]` | Selective indexing |
 
 Do not retarget the brand page, category hub, educational landing page, catalogue, and model-family pages to the same primary query. Supporting links may overlap, but the page title, H1, introduction, and main conversion context must preserve the ownership above.
+
+## Organic attribution and lead events
+
+The first page in a browser session captures a privacy-conscious attribution record in session storage. RFQ and partner forms submit that record with the inquiry, and the worker stores it as `_attribution` inside the existing `payload_json`. Existing form fields remain at the top level for backward compatibility.
+
+Stored attribution is limited to the landing pathname, a referrer URL with query and hash removed, a coarse channel, and the five allowlisted UTM fields. Never add arbitrary landing-page query strings or user-entered form fields to analytics events.
+
+Successful RFQ/partner submissions, email fallbacks, and visible CSE email links push non-PII events to `window.dataLayer` and dispatch `cse:lead` browser events. A measurement platform can consume these events later without changing the forms. No analytics account or measurement ID is configured in this repository, so the events are instrumented but are not sent to a third party by this code.
+
+There is no confirmed public WhatsApp destination in the current website data. Do not invent one. When CSE provides an approved number or `wa.me` URL, instrument its click with the same non-PII event fields before publishing it.
 
 ## Workflow for every website update
 

@@ -18,7 +18,7 @@ export function generateMetadata(): Metadata {
       ? "Application-led support for torque control, poka-yoke tightening, calibration and verification, and industrial sourcing in Indonesia."
       : "Dukungan berbasis aplikasi untuk torque control, poka-yoke tightening, calibration dan verification, serta industrial sourcing di Indonesia.",
     lang,
-    image: "/assets/company/hero-background-curated-v2.png",
+    image: "/assets/company/hero-background-curated-v2.webp",
     imageAlt: "CSE industrial application support"
   });
 }
@@ -50,7 +50,7 @@ export default function SolutionsPage() {
         primaryLabel={lang === "en" ? "Discuss an application" : "Diskusikan aplikasi"}
         secondaryHref={withLang("/guides", lang)}
         secondaryLabel={lang === "en" ? "Read buyer guides" : "Baca buyer guides"}
-        image="/assets/company/hero-background-curated-v2.png"
+        image="/assets/company/hero-background-curated-v2.webp"
         imageLabel="CSE industrial solutions"
         highlights={lang === "en" ? ["Application review", "Product selection", "Verification planning"] : ["Review aplikasi", "Pemilihan produk", "Rencana verification"]}
       />

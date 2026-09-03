@@ -30,7 +30,7 @@ export const industries: Industry[] = [
       id: "Produk untuk perawatan, perakitan, dan kebutuhan teknis pabrik alat berat dan komponen pendukung.",
       en: "Products for maintenance, assembly, and technical needs across heavy equipment and supporting component plants."
     },
-    image: "/assets/industries/heavy_equipment.png",
+    image: "/assets/industries/heavy-equipment.webp",
     applications: [
       { id: "High torque assembly", en: "High torque assembly" },
       { id: "Workshop maintenance", en: "Workshop maintenance" },

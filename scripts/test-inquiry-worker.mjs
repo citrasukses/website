@@ -57,6 +57,16 @@ const validRfq = {
     quantity: "2",
     application: "Assembly line",
     message: "Please quote this model."
+  },
+  attribution: {
+    landingPath: "/en/brands/tohnichi/products/ql-qle2",
+    referrer: "https://www.google.com/search?q=torque#result",
+    channel: "organic",
+    utmSource: "google",
+    utmMedium: "organic",
+    utmCampaign: "",
+    utmContent: "",
+    utmTerm: "torque wrench indonesia"
   }
 };
 
@@ -67,12 +77,34 @@ assert.equal(successBody.ok, true);
 assert.match(successBody.reference, /^CSE-\d{8}-[A-F0-9]{8}$/);
 assert.equal(database.inserts.length, 1);
 assert.equal(database.inserts[0][3], "Ayu");
+const storedPayload = JSON.parse(database.inserts[0][8]);
+assert.equal(storedPayload.product, "QL100N4");
+assert.equal(storedPayload._attribution.channel, "organic");
+assert.equal(storedPayload._attribution.landingPath, "/en/brands/tohnichi/products/ql-qle2");
+assert.equal(storedPayload._attribution.referrer, "https://www.google.com/search");
 
 const invalidResponse = await worker.fetch(
   inquiryRequest({ ...validRfq, fields: { ...validRfq.fields, email: "invalid" } }),
   { DB: database, ASSETS: assets }
 );
 assert.equal(invalidResponse.status, 400);
+assert.equal(database.inserts.length, 1);
+
+const invalidAttributionResponse = await worker.fetch(
+  inquiryRequest({ ...validRfq, attribution: { ...validRfq.attribution, channel: "forged" } }),
+  { DB: database, ASSETS: assets }
+);
+assert.equal(invalidAttributionResponse.status, 400);
+assert.equal(database.inserts.length, 1);
+
+const queryBearingLandingResponse = await worker.fetch(
+  inquiryRequest({
+    ...validRfq,
+    attribution: { ...validRfq.attribution, landingPath: "/contact?email=private@example.com" }
+  }),
+  { DB: database, ASSETS: assets }
+);
+assert.equal(queryBearingLandingResponse.status, 400);
 assert.equal(database.inserts.length, 1);
 
 const crossOriginResponse = await worker.fetch(inquiryRequest(validRfq, "https://attacker.example"), {

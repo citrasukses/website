@@ -55,7 +55,7 @@ export default function PartnersPage() {
         primaryLabel={lang === "en" ? "Start partnership inquiry" : "Mulai inquiry partnership"}
         secondaryHref={withLang("/brands", lang)}
         secondaryLabel={lang === "en" ? "Brands represented" : "Brand yang diwakili"}
-        image="/assets/industries/heavy_equipment.png"
+        image="/assets/industries/heavy-equipment.webp"
         imageLabel="Industrial distribution partner"
         highlights={[
           lang === "en" ? "Indonesia market access" : "Akses pasar Indonesia",

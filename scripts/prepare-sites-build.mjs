@@ -36,7 +36,8 @@ async function listFiles(directory) {
 async function optimizePublishedProductAssets() {
   const unusedVideoFiles = [
     "Torque Wrench QL CL video english version_1080.mov",
-    "Torque Wrench QL CL video english version.mp4"
+    "Torque Wrench QL CL video english version.mp4",
+    "Torque Wrench QL CL video english version_1080.mp4"
   ];
 
   await Promise.all(
@@ -102,6 +103,14 @@ await rm(path.join(distributionDirectory, "client", "en", "assets"), {
   recursive: true,
   force: true
 });
+await Promise.all(
+  [
+    ["assets", "company", "hero-background-curated-v2.png"],
+    ["assets", "company", "hero-background.png"],
+    ["assets", "company", "hero", "industrial-workbench-v1.png"],
+    ["assets", "industries", "heavy_equipment.png"]
+  ].map((segments) => rm(path.join(distributionDirectory, "client", ...segments), { force: true }))
+);
 await optimizePublishedProductAssets();
 await cp(
   path.join(projectRoot, "worker", "static-export.js"),

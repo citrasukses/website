@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Mail } from "lucide-react";
+import { TrackedEmailLink } from "@/components/TrackedEmailLink";
 import { company, navigationItems } from "@/data/navigation";
 import { staticLanguage, text, withLang } from "@/lib/i18n";
 
@@ -61,10 +62,15 @@ export function Footer() {
 
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-graphite-200">Contact</p>
-          <a href={`mailto:${company.email}`} className="mt-4 inline-flex items-center gap-2 text-sm text-white">
+          <TrackedEmailLink
+            href={`mailto:${company.email}`}
+            lang={lang}
+            context="footer"
+            className="mt-4 inline-flex items-center gap-2 text-sm text-white"
+          >
             <Mail className="h-4 w-4" aria-hidden="true" />
             {company.email}
-          </a>
+          </TrackedEmailLink>
           <p className="mt-4 text-sm leading-6 text-graphite-200">
             {lang === "en"
               ? "Send product requests, model questions, or partnership inquiries by email."

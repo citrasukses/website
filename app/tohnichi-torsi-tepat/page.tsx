@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { TrackedEmailLink } from "@/components/TrackedEmailLink";
 import { SEO_INTENT_OWNERS } from "@/data/seo-intents";
 import {
   ArrowDown,
@@ -476,9 +477,14 @@ export default function TohnichiTorsiTepatPage() {
                 <Link href={contactHref} className="focus-ring inline-flex min-h-[3.25rem] items-center justify-center gap-3 bg-signal-500 px-6 py-4 text-sm font-bold text-white transition hover:bg-signal-600">
                   {lang === "en" ? "Discuss QL or RTD" : "Konsultasikan QL atau RTD"}<ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
-                <a href="mailto:cse@citra-sukses.com?subject=Konsultasi%20TOHNICHI%20QL%20%2F%20RTD" className="focus-ring inline-flex min-h-[3.25rem] items-center justify-center border border-graphite-200 px-6 py-4 text-sm font-bold text-graphite-800 transition hover:border-industrial-600">
+                <TrackedEmailLink
+                  href="mailto:cse@citra-sukses.com?subject=Konsultasi%20TOHNICHI%20QL%20%2F%20RTD"
+                  lang={lang}
+                  context="tohnichi-tightening-guide"
+                  className="focus-ring inline-flex min-h-[3.25rem] items-center justify-center border border-graphite-200 px-6 py-4 text-sm font-bold text-graphite-800 transition hover:border-industrial-600"
+                >
                   cse@citra-sukses.com
-                </a>
+                </TrackedEmailLink>
               </div>
             </div>
           </div>

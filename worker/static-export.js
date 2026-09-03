@@ -62,6 +62,17 @@ const requiredFields = {
   partner: ["name", "company", "email", "country", "message"]
 };
 
+const attributionLimits = {
+  landingPath: 500,
+  referrer: 500,
+  utmSource: 160,
+  utmMedium: 160,
+  utmCampaign: 160,
+  utmContent: 160,
+  utmTerm: 160
+};
+const attributionChannels = new Set(["direct", "organic", "referral", "email", "social", "paid", "campaign"]);
+
 function jsonResponse(body, status = 200) {
   return Response.json(body, {
     status,
@@ -83,6 +94,43 @@ function normalizeFields(input) {
     if (fields[name].length > maxLength) return null;
   }
   return fields;
+}
+
+function normalizeAttribution(input) {
+  if (input === undefined || input === null) return null;
+  if (typeof input !== "object" || Array.isArray(input)) return null;
+
+  const attribution = {};
+  for (const [name, maxLength] of Object.entries(attributionLimits)) {
+    const rawValue = input[name];
+    if (rawValue !== undefined && typeof rawValue !== "string") return null;
+    attribution[name] = String(rawValue ?? "").trim();
+    if (attribution[name].length > maxLength) return null;
+  }
+
+  if (
+    attribution.landingPath &&
+    (!attribution.landingPath.startsWith("/") ||
+      attribution.landingPath.startsWith("//") ||
+      attribution.landingPath.includes("?") ||
+      attribution.landingPath.includes("#"))
+  ) return null;
+
+  if (attribution.referrer) {
+    try {
+      const referrerUrl = new URL(attribution.referrer);
+      if (referrerUrl.protocol !== "https:" && referrerUrl.protocol !== "http:") return null;
+      referrerUrl.search = "";
+      referrerUrl.hash = "";
+      attribution.referrer = referrerUrl.toString().replace(/\/$/, referrerUrl.pathname === "/" ? "/" : "");
+    } catch {
+      return null;
+    }
+  }
+
+  if (typeof input.channel !== "string" || !attributionChannels.has(input.channel)) return null;
+  attribution.channel = input.channel;
+  return attribution;
 }
 
 function inquirySubject(type, fields) {
@@ -123,7 +171,8 @@ async function saveInquiry(request, env) {
   const type = payload?.type;
   const language = payload?.lang === "en" ? "en" : "id";
   const fields = normalizeFields(payload?.fields);
-  if ((type !== "rfq" && type !== "partner") || !fields) {
+  const attribution = normalizeAttribution(payload?.attribution);
+  if ((type !== "rfq" && type !== "partner") || !fields || (payload?.attribution != null && !attribution)) {
     return jsonResponse({ ok: false, message: "Invalid inquiry data." }, 400);
   }
 
@@ -168,7 +217,7 @@ async function saveInquiry(request, env) {
         fields.email,
         fields.phone || null,
         subject,
-        JSON.stringify(fields),
+        JSON.stringify({ ...fields, _attribution: attribution }),
         createdAt
       )
       .run();

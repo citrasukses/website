@@ -214,7 +214,7 @@ export const solutionPages: SolutionPage[] = [
       en: "CSE helps turn models, drawings, samples, or incomplete specifications into industrial RFQs that can be verified with Japanese and Asian principals."
     },
     eyebrow: { id: "Layanan industrial sourcing", en: "Industrial-sourcing service" },
-    image: "/assets/company/hero-background-curated-v2.png",
+    image: "/assets/company/hero-background-curated-v2.webp",
     imageAlt: { id: "Industrial sourcing dan procurement support CSE", en: "CSE industrial sourcing and procurement support" },
     highlights: [
       { id: "Model & specification review", en: "Model and specification review" },

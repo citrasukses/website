@@ -394,13 +394,17 @@ export default async function BrandDetailPage({ params }: PageProps) {
               <div className="overflow-hidden border border-graphite-200 bg-graphite-900 shadow-panel">
                 <video
                   className="aspect-video w-full object-cover"
-                  src="/assets/brands/products/tohnichi/Torque Wrench QL CL video english version_1080.mp4"
-                  autoPlay
-                  muted
-                  loop
+                  src="/assets/brands/products/tohnichi/tohnichi-ql-cl-720p.mp4"
+                  poster="/assets/brands/products/tohnichi/tohnichi-ql-cl-video-poster.jpg"
+                  preload="none"
                   playsInline
                   controls
-                />
+                  aria-label={lang === "en" ? "TOHNICHI QL and CL torque wrench product video" : "Video produk torque wrench TOHNICHI QL dan CL"}
+                >
+                  {lang === "en"
+                    ? "Your browser does not support embedded video."
+                    : "Browser Anda tidak mendukung video tersemat."}
+                </video>
                 <a
                   href="https://www.youtube.com/watch?v=vtZKwdSp5Ow"
                   target="_blank"
