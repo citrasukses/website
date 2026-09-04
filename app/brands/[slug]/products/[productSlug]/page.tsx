@@ -17,10 +17,15 @@ import { seedCatalog } from "@/data/catalog-seed";
 import { nacCouplingProductDetails } from "@/data/nac-coupling-product-details";
 import { nacProductDetails } from "@/data/nac-product-details";
 import { sankyoRikagakuProductDetails } from "@/data/sankyo-rikagaku-product-details";
+import { tohnichiProductFamilyTitle } from "@/data/seo-intents";
+import { getTohnichiPriorityGuidance } from "@/data/tohnichi-priority-guidance";
 import { tohnichiProductDetails } from "@/data/tohnichi-product-details";
 import { canViewBrandDraft, isBrandPubliclyAvailable } from "@/lib/brand-visibility";
 import { getCatalogBrandBySlug } from "@/lib/catalog";
-import { languageAlternates, localizedPath, staticLanguage, text, withLang } from "@/lib/i18n";
+import { staticLanguage, text, withLang } from "@/lib/i18n";
+import { buildBreadcrumbJsonLd, buildPageMetadata, organizationReference } from "@/lib/seo";
+import { absoluteLocalizedUrl, absoluteUrl } from "@/lib/seo-config";
+import { getProductIndexability } from "@/lib/seo-indexability";
 
 type PageProps = {
   params: Promise<{ slug: string; productSlug: string }>;
@@ -52,7 +57,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const productPath = `/brands/${brand.slug}/products/${product.slug}`;
-  const canonical = localizedPath(productPath, lang);
   const tohnichiDetail = brand.slug === "tohnichi" ? tohnichiProductDetails[product.slug] : undefined;
   const nacDetail =
     brand.slug === "nac" ? nacProductDetails[product.slug] ?? nacCouplingProductDetails[product.slug] : undefined;
@@ -68,52 +72,32 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     );
   const seoTitle =
     brand.slug === "tohnichi"
-      ? lang === "en"
-        ? `${product.name} TOHNICHI - Models & Specifications`
-        : `${product.name} TOHNICHI - Model & Spesifikasi`
+      ? tohnichiProductFamilyTitle(product.name, lang)
       : brand.slug === "nac"
         ? lang === "en"
-          ? `${product.name} NAC Indonesia - Models & Catalogue`
-          : `${product.name} NAC Indonesia - Model & Katalog`
+          ? `${product.name} NAC / Nagahori Indonesia - Models & Catalogue`
+          : `${product.name} NAC / Nagahori Indonesia - Model & Katalog`
         : brand.slug === "fuji-star"
           ? lang === "en"
             ? `${product.name} Sankyo Rikagaku Indonesia - FUJISTAR Catalogue`
             : `${product.name} Sankyo Rikagaku Indonesia - Katalog FUJISTAR`
         : `${product.name} | ${brand.name}`;
-  const nacKeywords =
-    brand.slug === "nac"
-      ? Array.from(
-          new Set([
-            `${product.name} NAC`,
-            `${product.name} Indonesia`,
-            "NAC fastener tools",
-            ...product.tags.flatMap((tag) => [tag.id, tag.en])
-          ])
-        )
-      : undefined;
+  const indexability = getProductIndexability({
+    brandSlug: brand.slug,
+    productSlug: product.slug,
+    published: brand.published,
+    publiclyAvailable: isBrandPubliclyAvailable(brand.slug)
+  });
 
-  return {
+  return buildPageMetadata({
+    path: productPath,
     title: seoTitle,
     description,
-    keywords: tohnichiDetail?.seoKeywords ?? sankyoRikagakuDetail?.seoKeywords ?? nacKeywords,
-    alternates: {
-      canonical,
-      languages: languageAlternates(productPath)
-    },
-    openGraph: {
-      title: `${product.name} ${brand.name} Indonesia | CSE`,
-      description,
-      url: canonical,
-      type: "website",
-      images: product.image ? [{ url: product.image, alt: `${brand.name} ${product.name}` }] : undefined
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${product.name} ${brand.name} Indonesia | CSE`,
-      description,
-      images: product.image ? [product.image] : undefined
-    }
-  };
+    lang,
+    image: product.image,
+    imageAlt: `${brand.name} ${product.name}`,
+    indexability
+  });
 }
 
 export default async function ProductDetailPage({ params }: PageProps) {
@@ -134,6 +118,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
     brand.slug === "nac" ? nacProductDetails[product.slug] ?? nacCouplingProductDetails[product.slug] : undefined;
   const sankyoRikagakuDetail =
     brand.slug === "fuji-star" ? sankyoRikagakuProductDetails[product.slug] : undefined;
+  const tohnichiPriorityGuidance =
+    brand.slug === "tohnichi" ? getTohnichiPriorityGuidance(product.slug) : undefined;
   const isNacCoupling = Boolean(nacDetail && "kind" in nacDetail && nacDetail.kind === "coupling");
   const familyDetail = tohnichiDetail ?? nacDetail ?? sankyoRikagakuDetail;
   const images = Array.from(
@@ -143,7 +129,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const relatedProducts = group.products.filter((candidate) => candidate.slug !== product.slug).slice(0, 3);
   const otherGroups = brand.productGroups.filter((candidate) => candidate.slug !== group.slug);
   const brandGroupHref = (groupSlug: string) =>
-    withLang(`/brands/${brand.slug}#${groupSlug}`, lang);
+    withLang(
+      brand.slug === "tohnichi"
+        ? `/brands/tohnichi/products#${groupSlug}`
+        : `/brands/${brand.slug}#${groupSlug}`,
+      lang
+    );
   const selectionGuidance =
     brand.slug === "nac"
       ? isNacCoupling
@@ -240,46 +231,32 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 : "CSE membantu mengonfirmasi model, spesifikasi, dan ketersediaan untuk aplikasi tersebut."
           }
         ];
-  const productJsonLd = {
-    "@context": "https://schema.org",
-    "@type": sankyoRikagakuDetail ? "ProductGroup" : "Product",
-    name: `${brand.name} ${product.name}`,
-    description: text(tohnichiDetail?.seoDescription ?? familyDetail?.overview ?? product.summary, lang),
-    image: images.map((image) => `https://cse.co.id${image}`),
-    url: `https://cse.co.id${localizedPath(`/brands/${brand.slug}/products/${product.slug}`, lang)}`,
-    brand: {
-      "@type": "Brand",
-      name: brand.name
+  const productPath = `/brands/${brand.slug}/products/${product.slug}`;
+  const productDescription = text(tohnichiDetail?.seoDescription ?? familyDetail?.overview ?? product.summary, lang);
+  const productJsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: `${brand.name} ${product.name}`,
+      description: productDescription,
+      image: images.map(absoluteUrl),
+      url: absoluteLocalizedUrl(productPath, lang),
+      inLanguage: lang === "en" ? "en-US" : "id-ID",
+      about: [
+        { "@type": "Brand", name: brand.name },
+        { "@type": "Thing", name: product.name, description: productDescription }
+      ],
+      provider: organizationReference()
     },
-    category: text(group.title, lang),
-    hasVariant: sankyoRikagakuDetail?.models.map((model) => ({
-      "@type": "Product",
-      name: `${brand.name} FUJISTAR ${model.name}`,
-      image: `https://cse.co.id${model.image}`,
-      url: `https://cse.co.id${localizedPath(`/brands/${brand.slug}/products/${product.slug}#${model.slug}`, lang)}`,
-      brand: {
-        "@type": "Brand",
-        name: "FUJISTAR"
-      }
-    })),
-    additionalProperty: tohnichiDetail?.accuracy
-      ? [
-          {
-            "@type": "PropertyValue",
-            name: lang === "en" ? "Accuracy" : "Akurasi",
-            value: tohnichiDetail.accuracy
-          }
-        ]
-      : nacDetail
-        ? [
-            {
-              "@type": "PropertyValue",
-              name: lang === "en" ? "Catalogue reference" : "Referensi katalog",
-              value: nacDetail.catalogueReference
-            }
-          ]
-      : undefined
-  };
+    buildBreadcrumbJsonLd({
+      lang,
+      items: [
+        { name: lang === "en" ? "Brands" : "Brand", path: "/brands" },
+        { name: brand.name, path: `/brands/${brand.slug}` },
+        { name: product.name, path: productPath }
+      ]
+    })
+  ];
 
   return (
     <>
@@ -322,7 +299,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
             ) : null}
             <div className="mt-8 flex flex-wrap gap-3">
               <CTAButton href={rfqPath}><span className="inline-flex items-center gap-2"><RadioTower className="h-4 w-4" />{lang === "en" ? "Request quotation" : "Minta penawaran"}</span></CTAButton>
-              <CTAButton href={withLang(`/brands/${brand.slug}`, lang)} variant="ghost">{lang === "en" ? `All ${brand.name} products` : `Semua produk ${brand.name}`}</CTAButton>
+              <CTAButton
+                href={withLang(brand.slug === "tohnichi" ? "/brands/tohnichi/products" : `/brands/${brand.slug}`, lang)}
+                variant="ghost"
+              >
+                {lang === "en" ? `All ${brand.name} products` : `Semua produk ${brand.name}`}
+              </CTAButton>
             </div>
           </div>
         </div>
@@ -364,31 +346,101 @@ export default async function ProductDetailPage({ params }: PageProps) {
           </div>
         </section>
       )}
-      <section className="bg-white py-14">
-        <div className="container-page grid gap-8 lg:grid-cols-[0.72fr_1.28fr]">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
-              {lang === "en" ? "Product selection guidance" : "Panduan pemilihan produk"}
-            </p>
-            <h2 className="mt-3 text-3xl font-bold text-graphite-900">
-              {lang === "en"
-                ? `Where ${product.name} fits`
-                : `Kesesuaian ${product.name} untuk aplikasi Anda`}
-            </h2>
-            <p className="mt-4 text-sm leading-6 text-graphite-500">
-              {text(group.description, lang)}
-            </p>
-          </div>
-          <div className="grid gap-px overflow-hidden border border-graphite-200 bg-graphite-200 sm:grid-cols-3">
-            {selectionGuidance.map((item) => (
-              <div key={item.title} className="bg-white p-5">
-                <h3 className="text-base font-bold text-graphite-900">{item.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-graphite-500">{item.body}</p>
+      {tohnichiPriorityGuidance ? (
+        <section className="bg-white py-14">
+          <div className="container-page">
+            <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
+                  {lang === "en" ? "Technical selection guide" : "Panduan pemilihan teknis"}
+                </p>
+                <h2 className="mt-3 text-3xl font-bold text-graphite-900">
+                  {lang === "en"
+                    ? `When to choose ${product.name}`
+                    : `Kapan memilih ${product.name}`}
+                </h2>
+                <p className="mt-4 text-base leading-7 text-graphite-600">
+                  {text(tohnichiPriorityGuidance.bestFor, lang)}
+                </p>
+                <div className="mt-6 border-l-2 border-signal-500 bg-graphite-50 px-5 py-4">
+                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-graphite-500">
+                    {lang === "en" ? "Decision boundary" : "Batas keputusan"}
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-graphite-700">
+                    {text(tohnichiPriorityGuidance.decision, lang)}
+                  </p>
+                </div>
               </div>
-            ))}
+
+              <div className="grid gap-5 xl:grid-cols-2">
+                <article className="border border-graphite-200 bg-white p-6 shadow-sm">
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-industrial-700">
+                    {lang === "en" ? "Choose by" : "Pilih berdasarkan"}
+                  </p>
+                  <ol className="mt-5 space-y-4">
+                    {tohnichiPriorityGuidance.chooseBy.map((item, index) => (
+                      <li key={item.en} className="grid grid-cols-[2rem_1fr] gap-3 text-sm leading-6 text-graphite-600">
+                        <span className="flex h-8 w-8 items-center justify-center bg-industrial-700 text-xs font-bold text-white">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <span>{text(item, lang)}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </article>
+
+                <article className="border border-graphite-200 bg-graphite-50 p-6 shadow-sm">
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-signal-600">
+                    {lang === "en" ? "Include in your RFQ" : "Sertakan dalam RFQ"}
+                  </p>
+                  <ul className="mt-5 space-y-3">
+                    {tohnichiPriorityGuidance.rfqChecklist.map((item) => (
+                      <li key={item.en} className="flex gap-3 text-sm leading-6 text-graphite-700">
+                        <span className="mt-2 h-2 w-2 shrink-0 bg-signal-500" aria-hidden="true" />
+                        <span>{text(item, lang)}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <CTAButton href={rfqPath} className="mt-6 w-full">
+                    {lang === "en" ? `Request ${product.name} selection` : `Minta pemilihan ${product.name}`}
+                  </CTAButton>
+                </article>
+              </div>
+            </div>
+            <p className="mt-6 text-xs leading-5 text-graphite-500">
+              {lang === "en"
+                ? "Selection guidance is based on the official TOHNICHI applications, features, and model tables cited on this page. Confirm the final model and current compatibility with CSE."
+                : "Panduan pemilihan disusun dari aplikasi, fitur, dan tabel model resmi TOHNICHI yang dicantumkan pada halaman ini. Konfirmasikan model akhir dan kompatibilitas terkini dengan CSE."}
+            </p>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : (
+        <section className="bg-white py-14">
+          <div className="container-page grid gap-8 lg:grid-cols-[0.72fr_1.28fr]">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
+                {lang === "en" ? "Product selection guidance" : "Panduan pemilihan produk"}
+              </p>
+              <h2 className="mt-3 text-3xl font-bold text-graphite-900">
+                {lang === "en"
+                  ? `Where ${product.name} fits`
+                  : `Kesesuaian ${product.name} untuk aplikasi Anda`}
+              </h2>
+              <p className="mt-4 text-sm leading-6 text-graphite-500">
+                {text(group.description, lang)}
+              </p>
+            </div>
+            <div className="grid gap-px overflow-hidden border border-graphite-200 bg-graphite-200 sm:grid-cols-3">
+              {selectionGuidance.map((item) => (
+                <div key={item.title} className="bg-white p-5">
+                  <h3 className="text-base font-bold text-graphite-900">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-graphite-500">{item.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
       {relatedProducts.length ? (
         <section className="bg-graphite-50 py-14">
           <div className="container-page">

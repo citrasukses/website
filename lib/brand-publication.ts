@@ -1,7 +1,6 @@
-const productionRepresentedBrandSlugs = new Set(["tohnichi", "nac"]);
+const productionRepresentedBrandSlugs = new Set(["tohnichi", "nac", "fuji-star"]);
 
 const draftRepresentedBrandSlugs = new Set([
-  "fuji-star",
   "nippon-unit-brush",
   "fuji-denshi",
   "smbc",

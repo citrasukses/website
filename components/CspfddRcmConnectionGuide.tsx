@@ -186,7 +186,7 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
                 <div className="border border-white/15 bg-white/[0.03]">
                   <div className="flex items-center justify-between gap-3 px-3 py-2.5">
                     <span className="text-[9px] font-black uppercase tracking-[0.16em] text-white/45">
-                      {lang === "en" ? "01 / Tool" : "01 / Tool"}
+                      {lang === "en" ? "Tool" : "Tool"}
                     </span>
                     <span className="whitespace-nowrap text-[10px] font-black uppercase tracking-[0.1em] text-white">FDD</span>
                   </div>
@@ -215,7 +215,7 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
                 <div className="border border-white/15 bg-white/[0.03]">
                   <div className="flex items-center justify-between gap-3 px-3 py-2.5">
                     <span className="text-[9px] font-black uppercase tracking-[0.16em] text-white/45">
-                      {lang === "en" ? "02 / Receiver" : "02 / Receiver"}
+                      {lang === "en" ? "Receiver" : "Receiver"}
                     </span>
                     <span className="whitespace-nowrap text-[10px] font-black uppercase tracking-[0.08em] text-white">R-CM + M-FD</span>
                   </div>
@@ -236,7 +236,7 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
                 <p className="text-xs font-semibold leading-5 text-white/65">
                   {lang === "en"
                     ? "Pair by matching the FDD Group CH with the R-CM GROUP setting."
-                    : "Pasangkan dengan menyamakan Group CH FDD dan setting GROUP pada R-CM."}
+                    : "Pasangkan dengan menyamakan Group CH FDD dengan Group CH R-CM."}
                 </p>
               </div>
             </div>
@@ -246,10 +246,10 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
         <section className="border-b border-graphite-200 bg-white">
           <div className="container-page grid divide-y divide-graphite-200 sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
             {[
-              { value: "2", label: lang === "en" ? "managed FDD max. per R-CM" : "maks. FDD terkelola per R-CM" },
+              { value: "2", label: lang === "en" ? "managed FDD max. per R-CM" : "maks. FDD per R-CM" },
               { value: "1", label: lang === "en" ? "transmission at a time" : "transmisi pada satu waktu" },
-              { value: "000-255", label: lang === "en" ? "available Group CH" : "pilihan Group CH" },
-              { value: "10-20 m", label: lang === "en" ? "typical range, environment dependent" : "jarak tipikal, tergantung lingkungan" }
+              { value: "000-255", label: lang === "en" ? "available Group CH" : "pilihan Group CH (Channel)" },
+              { value: "10-20 m", label: lang === "en" ? "typical range, environment dependent" : "jarak transmipsi (tergantung lingkungan)" }
             ].map((item) => (
               <div key={item.value} className="px-5 py-6 text-center">
                 <p className="text-2xl font-black text-industrial-700">{item.value}</p>
@@ -361,8 +361,8 @@ export function CspfddRcmConnectionGuide({ lang }: { lang: Language }) {
                     ))}
                   </ol>
                   <div className="mt-5 border-l-4 border-industrial-600 bg-graphite-50 p-4 text-sm leading-6 text-graphite-700">
-                    <strong className="text-graphite-900">{lang === "en" ? "One-to-one option:" : "Opsi satu-ke-satu:"}</strong>{" "}
-                    {lang === "en" ? "JGC 1 activates 3-digit ID identification for a single wrench. Set JGC 1 and the same ID on both sides. For a mixed system, the simpler standard is unique Group CH per R-CM and JGC 0 for every one- or two-wrench receiver." : "JGC 1 mengaktifkan identification ID 3 digit untuk satu wrench. Set JGC 1 dan ID yang sama di kedua sisi. Untuk sistem campuran, standard yang lebih sederhana adalah Group CH unik per R-CM dan JGC 0 untuk setiap receiver dengan satu atau dua wrench."}
+                    <strong className="text-graphite-900">{lang === "en" ? "More than 1 Receiver R-CM:" : "Lebih dari 1 Receiver R-CM:"}</strong>{" "}
+                    {lang === "en" ? "Set unique Group CH and set JGC 0 for each R-CM." : "Buat Group CH unik dan set JGC 0 untuk masing-masing R-CM."}
                   </div>
                 </div>
               </article>

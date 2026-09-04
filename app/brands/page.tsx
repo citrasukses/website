@@ -9,7 +9,8 @@ import { toSearchableBrandCard } from "@/data/brand-search";
 import { industries } from "@/data/industries";
 // import { supplyCountries } from "@/data/supply-map";
 import { getCatalogBrands } from "@/lib/catalog";
-import { languageAlternates, localizedPath, staticLanguage, withLang } from "@/lib/i18n";
+import { staticLanguage, withLang } from "@/lib/i18n";
+import { buildPageMetadata } from "@/lib/seo";
 
 export function generateMetadata(): Metadata {
   const lang = staticLanguage();
@@ -19,14 +20,12 @@ export function generateMetadata(): Metadata {
       ? "Industrial brands represented and supplied by CSE for Indonesian buyers."
       : "Brand industrial yang diwakili dan dipasok CSE untuk buyer Indonesia.";
 
-  return {
+  return buildPageMetadata({
+    path: "/brands",
     title,
     description,
-    alternates: {
-      canonical: localizedPath("/brands", lang),
-      languages: languageAlternates("/brands")
-    }
-  };
+    lang
+  });
 }
 
 export default async function BrandsPage() {
@@ -51,6 +50,7 @@ export default async function BrandsPage() {
           <SectionHeader
             eyebrow={lang === "en" ? "Brand portfolio" : "Portofolio brand"}
             title={lang === "en" ? "Industrial brands for factory, assembly, and maintenance needs." : "Brand industrial untuk kebutuhan pabrik, assembly, dan maintenance."}
+            headingLevel="h1"
             description={
               lang === "en"
                 ? "Explore authorized representative brands and general trading supply options by brand, product type, application, and industrial use case."

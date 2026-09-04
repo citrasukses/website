@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, BadgeCheck } from "lucide-react";
 import type { ReactNode } from "react";
-import { canViewBrandDraft } from "@/lib/brand-visibility";
 import { withLang, type Language } from "@/lib/i18n";
 
 type AuthorizedDistributorStripProps = {
@@ -14,9 +13,9 @@ const distributors = [
   {
     name: "TOHNICHI",
     slug: "tohnichi",
-    logo: "/assets/brands/logos/tohnichi--alternate.png",
-    width: 166,
-    height: 104
+    logo: "/assets/brands/logos/tohnichi--nobg.png",
+    width: 400,
+    height: 186
   },
   {
     name: "Sankyo Rikagaku",
@@ -50,7 +49,7 @@ type DistributorTileProps = {
 };
 
 function DistributorTile({ slug, name, lang, className = "", children }: DistributorTileProps) {
-  const canOpen = canViewBrandDraft(slug);
+  const canOpen = slug === "tohnichi" || slug === "nac";
   const tileClassName = `relative flex min-h-24 items-center justify-center overflow-hidden bg-white p-5 lg:min-h-32 ${className} ${
     canOpen ? "focus-ring group transition-colors hover:bg-graphite-50" : ""
   }`;
@@ -112,13 +111,13 @@ export function AuthorizedDistributorStrip({ lang, className = "" }: AuthorizedD
             className="border-b border-graphite-200 after:absolute after:inset-y-5 after:right-0 after:w-0.5 after:bg-signal-500/70 after:content-[''] lg:border-b-0"
           >
             <div className="flex w-full flex-col items-center gap-2">
-              <div className="relative h-14 w-full max-w-[150px] overflow-hidden">
+              <div className="relative h-14 w-full max-w-[150px]">
                 <Image
                   src={distributors[0].logo}
                   alt="TOHNICHI"
                   fill
                   sizes="150px"
-                  className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
+                  className="object-contain p-1 transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
             </div>
@@ -138,14 +137,14 @@ export function AuthorizedDistributorStrip({ lang, className = "" }: AuthorizedD
             </span>
           </DistributorTile>
 
-          {distributors.slice(1).map((distributor) => (
+          {distributors.slice(1).map((distributor, index, remainingDistributors) => (
             <DistributorTile
               key={distributor.slug}
               slug={distributor.slug}
               name={distributor.name}
               lang={lang}
               className={
-                distributor.slug !== "fuji-denshi"
+                index < remainingDistributors.length - 1
                   ? "after:absolute after:inset-y-5 after:right-0 after:w-0.5 after:bg-signal-500/70 after:content-['']"
                   : ""
               }

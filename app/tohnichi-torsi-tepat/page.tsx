@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Breadcrumb } from "@/components/Breadcrumb";
+import { TrackedEmailLink } from "@/components/TrackedEmailLink";
+import { SEO_INTENT_OWNERS } from "@/data/seo-intents";
 import {
   ArrowDown,
   ArrowRight,
@@ -14,52 +17,71 @@ import {
   ShieldCheck,
   Wrench
 } from "lucide-react";
-import { languageAlternates, localizedPath, staticLanguage, withLang } from "@/lib/i18n";
+import { staticLanguage, withLang } from "@/lib/i18n";
+import { buildBreadcrumbJsonLd, buildPageMetadata, organizationReference } from "@/lib/seo";
+import { absoluteLocalizedUrl } from "@/lib/seo-config";
+import { INDEXABLE } from "@/lib/seo-indexability";
 
 export function generateMetadata(): Metadata {
   const lang = staticLanguage();
-  const title = lang === "en" ? "Consistent Tightening with TOHNICHI QL & RTD" : "Pengencangan Konsisten dengan TOHNICHI QL & RTD";
-  const description =
-    lang === "en"
-      ? "Move beyond tightening by feel. Discover TOHNICHI QL torque wrenches and RTD torque screwdrivers for consistent production work."
-      : "Jangan hanya mengandalkan feeling saat mengencangkan baut dan sekrup. Kenali TOHNICHI QL dan RTD untuk hasil produksi yang konsisten.";
+  const intent = SEO_INTENT_OWNERS.controlledTightening;
 
-  return {
-    title,
-    description,
-    alternates: {
-      canonical: localizedPath("/tohnichi-torsi-tepat", lang),
-      languages: languageAlternates("/tohnichi-torsi-tepat")
-    },
-    openGraph: {
-      title: `${title} | CSE`,
-      description,
-      url: localizedPath("/tohnichi-torsi-tepat", lang),
-      locale: lang === "en" ? "en_US" : "id_ID",
-      type: "website",
-      images: [{ url: "/assets/brands/products/tohnichi/QL100N4.jpg", alt: "TOHNICHI QL adjustable torque wrench" }]
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${title} | CSE`,
-      description,
-      images: ["/assets/brands/products/tohnichi/QL100N4.jpg"]
-    }
-  };
+  return buildPageMetadata({
+    path: intent.route,
+    title: intent.title[lang],
+    description: intent.description[lang],
+    lang,
+    image: "/assets/brands/products/tohnichi/QL100N4.jpg",
+    imageAlt: "TOHNICHI QL adjustable torque wrench",
+    indexability: INDEXABLE
+  });
 }
-
 export default function TohnichiTorsiTepatPage() {
   const lang = staticLanguage();
   const contactHref = withLang("/contact?brand=tohnichi&product=QL%20%2F%20RTD", lang);
+  const pagePath = SEO_INTENT_OWNERS.controlledTightening.route;
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: lang === "en" ? "Consistent Tightening with TOHNICHI QL & RTD" : "Pengencangan Konsisten dengan TOHNICHI QL & RTD",
+      description:
+        lang === "en"
+          ? "A practical introduction to controlled bolt and screw tightening with TOHNICHI QL torque wrenches and RTD torque screwdrivers."
+          : "Pengantar praktis untuk pengencangan baut dan sekrup yang terkontrol dengan torque wrench TOHNICHI QL dan torque screwdriver RTD.",
+      url: absoluteLocalizedUrl(pagePath, lang),
+      inLanguage: lang === "en" ? "en-US" : "id-ID",
+      about: [
+        { "@type": "Brand", name: "TOHNICHI" },
+        { "@type": "Thing", name: "Controlled tightening" }
+      ],
+      provider: organizationReference()
+    },
+    buildBreadcrumbJsonLd({
+      lang,
+      items: [
+        { name: lang === "en" ? "TOHNICHI" : "TOHNICHI", path: "/brands/tohnichi" },
+        { name: lang === "en" ? "Consistent tightening" : "Pengencangan konsisten", path: pagePath }
+      ]
+    })
+  ];
 
   return (
     <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+    <Breadcrumb
+      homeHref={withLang("/", lang)}
+      items={[
+        { href: withLang("/brands/tohnichi", lang), label: "TOHNICHI" },
+        { label: lang === "en" ? "Consistent tightening" : "Pengencangan konsisten" }
+      ]}
+    />
     <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-[#f3f1ec]">
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(24,61,97,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(24,61,97,0.055)_1px,transparent_1px)] bg-[size:40px_40px]" />
-      <div className="absolute inset-y-0 right-0 -z-10 hidden w-[42%] bg-industrial-700 lg:block" />
+      <div className="absolute inset-y-0 right-0 -z-10 hidden w-[49%] bg-industrial-700 lg:block" />
 
-      <div className="container-page grid min-h-[calc(100svh-4.5rem)] items-center gap-10 py-12 lg:grid-cols-[0.92fr_1.08fr] lg:py-16">
-        <div className="relative z-10 max-w-2xl">
+      <div className="container-page grid min-h-[calc(100svh-4.5rem)] items-center gap-14 py-14 md:py-16 lg:grid-cols-2 lg:gap-16 lg:py-16 xl:gap-24">
+        <div className="relative z-10 max-w-[35rem]">
           <div className="inline-flex items-center gap-3 border border-graphite-200 bg-white/80 px-3 py-2 backdrop-blur-sm">
             <span className="h-2 w-2 bg-signal-500" />
             <span className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-graphite-700">
@@ -67,7 +89,7 @@ export default function TohnichiTorsiTepatPage() {
             </span>
           </div>
 
-          <h1 className="mt-7 text-balance text-[clamp(3rem,7vw,5.6rem)] font-black leading-[0.92] tracking-[-0.055em] text-graphite-900">
+          <h1 className="mt-8 text-balance text-[clamp(3rem,6vw,5.25rem)] font-black leading-[0.94] tracking-[-0.055em] text-graphite-900">
             {lang === "en" ? (
               <>Tight is not always <span className="text-signal-500">right.</span></>
             ) : (
@@ -114,58 +136,86 @@ export default function TohnichiTorsiTepatPage() {
           </div>
         </div>
 
-        <div className="grid gap-4 py-5 lg:-mx-5 lg:py-8">
-          <div className="h-[19rem] overflow-hidden border border-graphite-200 bg-white shadow-panel lg:mr-6">
-            <div className="flex items-center justify-between border-b border-graphite-200 px-4 py-3">
-              <span className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-graphite-500">01 · Bolt tightening</span>
-              <span className="inline-flex items-center gap-2 bg-[#eef4f8] px-2 py-1 text-xs font-bold text-industrial-800">
-                <Check className="h-3.5 w-3.5" aria-hidden="true" /> CLICK
-              </span>
+        <div className="relative -mx-4 overflow-hidden bg-industrial-700 px-4 py-12 text-white sm:-mx-6 sm:px-6 sm:py-14 lg:mx-0 lg:min-h-[43rem] lg:overflow-visible lg:bg-transparent lg:p-0">
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.07)_1px,transparent_1px)] bg-[size:40px_40px] lg:-inset-y-[20vh] lg:-right-[50vw]" aria-hidden="true" />
+          <div className="relative flex h-full flex-col justify-center lg:min-h-[43rem]">
+            <div className="flex items-center justify-between gap-6 border-b border-white/20 pb-5">
+              <p className="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-white/70">
+                {lang === "en" ? "Controlled tightening system" : "Sistem pengencangan terkontrol"}
+              </p>
+              <span className="shrink-0 bg-signal-500 px-3 py-1.5 text-[0.65rem] font-black tracking-[0.16em]">QL / RTD</span>
             </div>
-            <div className="relative h-[calc(100%-2.75rem)] overflow-hidden">
-              <div className="absolute left-4 top-4 z-10">
-                <p className="text-3xl font-black tracking-[-0.04em] text-graphite-900">QL</p>
-                <p className="text-xs font-bold uppercase tracking-[0.16em] text-graphite-500">Torque wrench</p>
-              </div>
-              <Image
-                src="/assets/brands/products/tohnichi/QL5N+.png"
-                alt="TOHNICHI QL adjustable torque wrench"
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 54vw"
-                className="rotate-[-7deg] object-contain p-8 pt-20"
-              />
-              <div className="absolute bottom-4 right-4 flex items-center gap-2 border border-signal-500 bg-white px-3 py-2 text-xs font-bold text-signal-600">
-                <span className="h-2 w-2 rounded-full bg-signal-500" />
-                SET TORQUE REACHED
-              </div>
-            </div>
-          </div>
 
-          <div className="h-[21rem] overflow-hidden border border-graphite-800 bg-graphite-900 shadow-[0_24px_55px_rgba(21,26,34,0.28)] lg:ml-6">
-            <div className="flex items-center justify-between border-b border-white/15 px-4 py-3 text-white">
-              <span className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-graphite-200">02 · Screw tightening</span>
-              <span className="inline-flex items-center gap-2 bg-white/10 px-2 py-1 text-xs font-bold">
-                <RotateCw className="h-3.5 w-3.5 text-signal-500" aria-hidden="true" /> ROTARY SLIP
-              </span>
+            <div className="mt-8 flex items-end justify-between gap-8">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-signal-500">TOHNICHI</p>
+                <p className="mt-2 max-w-sm text-3xl font-black leading-[1.02] tracking-[-0.045em] sm:text-4xl">
+                  {lang === "en" ? "One target. Two clear signals." : "Satu target. Dua sinyal jelas."}
+                </p>
+              </div>
+              <CircleGauge className="hidden h-12 w-12 shrink-0 text-white/35 sm:block" strokeWidth={1.25} aria-hidden="true" />
             </div>
-            <div className="relative h-[calc(100%-2.75rem)] overflow-hidden">
-              <div className="absolute left-4 top-4 z-10 text-white">
-                <p className="text-3xl font-black tracking-[-0.04em]">RTD</p>
-                <p className="text-xs font-bold uppercase tracking-[0.16em] text-graphite-200">Torque screwdriver</p>
-              </div>
-              <div className="absolute inset-x-8 bottom-4 top-20 bg-white" />
-              <Image
-                src="/assets/brands/products/tohnichi/catalog/torque-screwdrivers/rtd.png"
-                alt="TOHNICHI RTD rotary-slip torque screwdriver"
-                fill
-                priority
-                sizes="(max-width: 1024px) 92vw, 48vw"
-                className="object-contain p-10 pt-24"
-              />
-              <div className="absolute bottom-4 left-4 border border-white/20 bg-graphite-900 px-3 py-2 text-xs font-bold text-white">
-                {lang === "en" ? "HELPS LIMIT OVER-TORQUE" : "MEMBANTU MEMBATASI OVER-TORQUE"}
-              </div>
+
+            <div className="relative mt-9 space-y-4">
+              <Link href={withLang("/brands/tohnichi/products/ql-qle2", lang)} className="focus-ring group grid min-h-48 grid-cols-[5rem_1fr] overflow-hidden bg-white text-graphite-900 shadow-[0_22px_50px_rgba(10,24,38,0.26)] sm:grid-cols-[7rem_1fr]">
+                <div className="flex flex-col justify-between bg-signal-500 p-4 text-white sm:p-5">
+                  <span className="text-[0.65rem] font-black uppercase tracking-[0.18em]">01 · Bolt</span>
+                  <div>
+                    <span className="block text-4xl font-black tracking-[-0.06em]">QL</span>
+                    <span className="mt-1 block text-[0.6rem] font-bold uppercase tracking-[0.14em] text-white/75">Click type</span>
+                  </div>
+                </div>
+                <div className="relative min-h-48 overflow-hidden">
+                  <span className="absolute right-4 top-4 z-10 inline-flex items-center gap-2 text-[0.65rem] font-black uppercase tracking-[0.14em] text-industrial-700">
+                    {lang === "en" ? "Stops at click" : "Berhenti saat klik"}
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                  </span>
+                  <Image
+                    src="/assets/brands/products/tohnichi/QL100N4.jpg"
+                    alt="TOHNICHI QL adjustable torque wrench"
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 38vw"
+                    className="object-contain px-5 pb-3 pt-12 transition-transform duration-500 group-hover:scale-[1.03] sm:px-7"
+                  />
+                </div>
+              </Link>
+
+              <Link href={withLang("/brands/tohnichi/products/rtd", lang)} className="focus-ring group grid min-h-36 grid-cols-[5rem_1fr] overflow-hidden border border-white/25 bg-industrial-800 text-white sm:grid-cols-[7rem_1fr]">
+                <div className="flex flex-col justify-between border-r border-white/20 p-4 sm:p-5">
+                  <span className="text-[0.65rem] font-black uppercase tracking-[0.18em] text-signal-500">02 · Screw</span>
+                  <div>
+                    <span className="block text-4xl font-black tracking-[-0.06em]">RTD</span>
+                    <span className="mt-1 block text-[0.6rem] font-bold uppercase tracking-[0.14em] text-white/55">Rotary slip</span>
+                  </div>
+                </div>
+                <div className="relative min-h-36 bg-white">
+                  <span className="absolute right-4 top-3 z-10 inline-flex items-center gap-2 text-[0.65rem] font-black uppercase tracking-[0.14em] text-signal-600">
+                    {lang === "en" ? "Slips at target" : "Slip saat target"}
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                  </span>
+                  <Image
+                    src="/assets/brands/products/tohnichi/RTD120CN.jpg"
+                    alt="TOHNICHI RTD rotary-slip torque screwdriver"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 38vw"
+                    className="object-contain px-5 pb-2 pt-9 transition-transform duration-500 group-hover:scale-[1.03] sm:px-7"
+                  />
+                </div>
+              </Link>
+            </div>
+
+            <div className="mt-6 grid grid-cols-3 border border-white/20 bg-white/[0.04]">
+              {[
+                lang === "en" ? "Set torque" : "Atur torsi",
+                lang === "en" ? "Tighten" : "Kencangkan",
+                lang === "en" ? "Feel signal" : "Rasakan sinyal"
+              ].map((step, index) => (
+                <div key={step} className="flex items-center gap-2 border-r border-white/20 px-3 py-3 last:border-r-0 sm:px-4">
+                  <span className="text-[0.62rem] font-black text-signal-500">0{index + 1}</span>
+                  <span className="text-[0.62rem] font-bold uppercase tracking-[0.09em] text-white/75 sm:text-[0.68rem]">{step}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -427,9 +477,14 @@ export default function TohnichiTorsiTepatPage() {
                 <Link href={contactHref} className="focus-ring inline-flex min-h-[3.25rem] items-center justify-center gap-3 bg-signal-500 px-6 py-4 text-sm font-bold text-white transition hover:bg-signal-600">
                   {lang === "en" ? "Discuss QL or RTD" : "Konsultasikan QL atau RTD"}<ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
-                <a href="mailto:cse@citra-sukses.com?subject=Konsultasi%20TOHNICHI%20QL%20%2F%20RTD" className="focus-ring inline-flex min-h-[3.25rem] items-center justify-center border border-graphite-200 px-6 py-4 text-sm font-bold text-graphite-800 transition hover:border-industrial-600">
+                <TrackedEmailLink
+                  href="mailto:cse@citra-sukses.com?subject=Konsultasi%20TOHNICHI%20QL%20%2F%20RTD"
+                  lang={lang}
+                  context="tohnichi-tightening-guide"
+                  className="focus-ring inline-flex min-h-[3.25rem] items-center justify-center border border-graphite-200 px-6 py-4 text-sm font-bold text-graphite-800 transition hover:border-industrial-600"
+                >
                   cse@citra-sukses.com
-                </a>
+                </TrackedEmailLink>
               </div>
             </div>
           </div>

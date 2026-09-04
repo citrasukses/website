@@ -15,7 +15,14 @@ import { homeBackgroundImage, homeBackgroundItems } from "@/data/home-background
 import { company } from "@/data/navigation";
 import { industries } from "@/data/industries";
 import { getCatalogBrands } from "@/lib/catalog";
-import { languageAlternates, localizedPath, staticLanguage, text, withLang } from "@/lib/i18n";
+import { staticLanguage, text, withLang } from "@/lib/i18n";
+import {
+  absoluteLanguageAlternates,
+  absoluteLocalizedUrl,
+  absoluteUrl,
+  ORGANIZATION_ID,
+  siteConfig
+} from "@/lib/seo-config";
 
 const homepageMetadata = {
   id: {
@@ -33,6 +40,7 @@ const homepageMetadata = {
 export function generateMetadata(): Metadata {
   const lang = staticLanguage();
   const { title, description } = homepageMetadata[lang];
+  const canonical = absoluteLocalizedUrl("/", lang);
 
   return {
     title: {
@@ -40,17 +48,17 @@ export function generateMetadata(): Metadata {
     },
     description,
     alternates: {
-      canonical: localizedPath("/", lang),
-      languages: languageAlternates("/")
+      canonical,
+      languages: absoluteLanguageAlternates("/")
     },
     openGraph: {
       title,
       description,
-      url: localizedPath("/", lang),
-      siteName: "PT Citra Sukses Ekapratama",
+      url: canonical,
+      siteName: siteConfig.legalName,
       images: [
         {
-          url: "/assets/company/og-authorized-distributor.png",
+          url: absoluteUrl("/assets/company/og-authorized-distributor.png"),
           width: 1200,
           height: 630,
           alt: "CSE authorized distributor for TOHNICHI, NAC, Fujistar, and Nippon Unit"
@@ -63,7 +71,7 @@ export function generateMetadata(): Metadata {
       card: "summary_large_image",
       title,
       description,
-      images: ["/assets/company/og-authorized-distributor.png"]
+      images: [absoluteUrl("/assets/company/og-authorized-distributor.png")]
     }
   };
 }
@@ -71,14 +79,14 @@ export function generateMetadata(): Metadata {
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": "https://cse.co.id/#organization",
+  "@id": ORGANIZATION_ID,
   name: company.publicName,
   alternateName: [company.shortName, company.longName],
-  url: "https://cse.co.id/",
+  url: absoluteUrl("/"),
   logo: {
     "@type": "ImageObject",
-    url: "https://cse.co.id/assets/company/cse_logo.png",
-    contentUrl: "https://cse.co.id/assets/company/cse_logo.png",
+    url: absoluteUrl("/assets/company/cse_logo.png"),
+    contentUrl: absoluteUrl("/assets/company/cse_logo.png"),
     width: 396,
     height: 160
   },
@@ -88,8 +96,11 @@ const organizationJsonLd = {
 
 export default async function HomePage() {
   const lang = staticLanguage();
-  const catalogBrands = await getCatalogBrands();
-  const brands = catalogBrands
+  const [catalogBrands, fullCatalog] = await Promise.all([
+    getCatalogBrands(),
+    getCatalogBrands({ includeUnpublished: true })
+  ]);
+  const brands = fullCatalog
     .filter((brand) => brand.brandType === "represented")
     .sort((a, b) => {
       const priority = (slug: string) => (slug === "tohnichi" ? 0 : slug === "nac" ? 1 : 2);
@@ -333,7 +344,12 @@ export default async function HomePage() {
             </div>
             <div className="mt-6 grid gap-5 md:grid-cols-3">
               {japanBrands.map((brand) => (
-                <BrandCard key={brand.slug} brand={brand} lang={lang} />
+                <BrandCard
+                  key={brand.slug}
+                  brand={brand}
+                  lang={lang}
+                  accessible={brand.slug === "tohnichi" || brand.slug === "nac"}
+                />
               ))}
             </div>
           </div>
@@ -356,7 +372,7 @@ export default async function HomePage() {
             </div>
             <div className="mt-6 grid gap-5 md:grid-cols-3">
               {southeastAsiaBrands.map((brand) => (
-                <BrandCard key={brand.slug} brand={brand} lang={lang} />
+                <BrandCard key={brand.slug} brand={brand} lang={lang} accessible={false} />
               ))}
             </div>
           </div>

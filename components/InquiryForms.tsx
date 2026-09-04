@@ -4,6 +4,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import { Send } from "lucide-react";
 import { company } from "@/data/navigation";
 import type { Language } from "@/lib/i18n";
+import { getInquiryAttribution, trackLeadEvent } from "@/lib/inquiry-attribution";
 
 type FormStatus = {
   state: "idle" | "sending" | "success" | "error";
@@ -36,10 +37,11 @@ function mailtoHref(subject: string, fields: Record<string, string>) {
 }
 
 async function sendInquiry(type: InquiryType, lang: Language, fields: Record<string, string>, contactUrl: string) {
+  const attribution = getInquiryAttribution();
   const response = await fetch("/api/inquiries", {
     method: "POST",
     headers: { "content-type": "application/json" },
-    body: JSON.stringify({ type, lang, fields, contactUrl })
+    body: JSON.stringify({ type, lang, fields, contactUrl, attribution })
   });
   const result = (await response.json().catch(() => ({}))) as InquiryResponse;
 
@@ -63,7 +65,7 @@ function SubmitButton({ label, pending }: { label: string; pending: boolean }) {
   );
 }
 
-function StatusMessage({ status }: { status: FormStatus }) {
+function StatusMessage({ status, inquiryType, lang }: { status: FormStatus; inquiryType: InquiryType; lang: Language }) {
   if (!status.message) return null;
 
   return (
@@ -76,7 +78,11 @@ function StatusMessage({ status }: { status: FormStatus }) {
       {status.fallbackHref ? (
         <>
           {" "}
-          <a className="underline underline-offset-2" href={status.fallbackHref}>
+          <a
+            className="underline underline-offset-2"
+            href={status.fallbackHref}
+            onClick={() => trackLeadEvent("inquiry_email_fallback", { inquiryType, language: lang })}
+          >
             {status.fallbackLabel}
           </a>
         </>
@@ -212,6 +218,7 @@ export function RFQForm({
       form.reset();
       setBrandValue("");
       setProductValue("");
+      trackLeadEvent("inquiry_submit_success", { inquiryType: "rfq", language: lang });
       setStatus({
         state: "success",
         message:
@@ -276,7 +283,7 @@ export function RFQForm({
               : lang === "en" ? "Send RFQ" : "Kirim RFQ"
           }
         />
-        <StatusMessage status={status} />
+        <StatusMessage status={status} inquiryType="rfq" lang={lang} />
       </div>
     </form>
   );
@@ -330,6 +337,7 @@ export function PartnerInquiryForm({ lang }: { lang: Language }) {
     try {
       const reference = await sendInquiry("partner", lang, fields, value(formData, "contactUrl"));
       form.reset();
+      trackLeadEvent("inquiry_submit_success", { inquiryType: "partner", language: lang });
       setStatus({
         state: "success",
         message:
@@ -373,7 +381,7 @@ export function PartnerInquiryForm({ lang }: { lang: Language }) {
               : lang === "en" ? "Send partner inquiry" : "Kirim inquiry partner"
           }
         />
-        <StatusMessage status={status} />
+        <StatusMessage status={status} inquiryType="partner" lang={lang} />
       </div>
     </form>
   );

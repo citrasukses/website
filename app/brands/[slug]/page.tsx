@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { AlertTriangle, CheckCircle2, ExternalLink, PackageCheck, RadioTower } from "lucide-react";
 import { Breadcrumb } from "@/components/Breadcrumb";
@@ -12,12 +11,17 @@ import { Hero } from "@/components/Hero";
 import { NacBrandOverview } from "@/components/NacBrandOverview";
 import { SankyoRikagakuBrandOverview } from "@/components/SankyoRikagakuBrandOverview";
 import { SectionHeader } from "@/components/SectionHeader";
+import { TohnichiBrandLanding } from "@/components/TohnichiBrandLanding";
 import { TohnichiProductPromotionCarousel } from "@/components/TohnichiProductPromotionCarousel";
 import { UseCaseSection } from "@/components/UseCaseSection";
 import { seedCatalog } from "@/data/catalog-seed";
+import { SEO_INTENT_OWNERS } from "@/data/seo-intents";
 import { canViewBrandDraft, isBrandPubliclyAvailable } from "@/lib/brand-visibility";
 import { getCatalogBrandBySlug } from "@/lib/catalog";
-import { languageAlternates, localizedPath, staticLanguage, text, withLang } from "@/lib/i18n";
+import { staticLanguage, text, withLang } from "@/lib/i18n";
+import { buildBreadcrumbJsonLd, buildPageMetadata, organizationReference } from "@/lib/seo";
+import { absoluteLocalizedUrl, absoluteUrl } from "@/lib/seo-config";
+import { getBrandIndexability } from "@/lib/seo-indexability";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -27,23 +31,7 @@ const TOHNICHI_PAGE_PATH = "/brands/tohnichi";
 const TOHNICHI_OFFICIAL_URL = "https://en.global-tohnichi.com/";
 const TOHNICHI_DISTRIBUTOR_URL = "https://en.global-tohnichi.com/support/distributors.html";
 const TOHNICHI_SUPPORT_URL = "https://en.global-tohnichi.com/support/";
-const TOHNICHI_SEO_TITLE = "TOHNICHI Torque Wrench & Torque Tools";
-const TOHNICHI_SEO_DESCRIPTION = {
-  id: "PT Citra Sukses Ekapratama adalah agen penjualan dan servis TOHNICHI di Indonesia untuk torque wrench, torque screwdriver, tester, kalibrasi, dan sistem tightening.",
-  en: "PT Citra Sukses Ekapratama is a TOHNICHI sales and service agent in Indonesia for torque wrenches, torque screwdrivers, testers, calibration, and tightening systems."
-};
-const TOHNICHI_SEO_KEYWORDS = [
-  "TOHNICHI",
-  "TOHNICHI Indonesia",
-  "distributor TOHNICHI Indonesia",
-  "torque wrench TOHNICHI",
-  "kunci torsi TOHNICHI",
-  "torque screwdriver TOHNICHI",
-  "torque tester TOHNICHI",
-  "kalibrasi TOHNICHI",
-  "PT Citra Sukses Ekapratama"
-];
-
+const TOHNICHI_SEO_INTENT = SEO_INTENT_OWNERS.tohnichiDistributor;
 export function generateStaticParams() {
   return seedCatalog.filter((brand) => brand.published).map((brand) => ({ slug: brand.slug }));
 }
@@ -69,54 +57,39 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const isTohnichi = brand.slug === "tohnichi";
+  const isNac = brand.slug === "nac";
   const isSankyoRikagaku = brand.slug === "fuji-star";
   const brandPath = `/brands/${brand.slug}`;
-  const canonicalPath = localizedPath(brandPath, lang);
   const title = isTohnichi
-    ? TOHNICHI_SEO_TITLE
+    ? TOHNICHI_SEO_INTENT.title[lang]
+    : isNac
+      ? lang === "en"
+        ? "NAC / Nagahori Industry Indonesia | Sockets & Quick Couplings"
+        : "NAC / Nagahori Industry Indonesia | Socket & Quick Coupling"
     : isSankyoRikagaku
       ? lang === "en"
-        ? "Sankyo Rikagaku (FUJISTAR) Indonesia - Abrasive Catalogue"
-        : "Sankyo Rikagaku (FUJISTAR) Indonesia - Katalog Abrasive"
+        ? "SANKYO Rikagaku (FUJISTAR) Indonesia | Abrasives"
+        : "SANKYO Rikagaku (FUJISTAR) Indonesia | Abrasive"
       : brand.name;
-  const description = isTohnichi ? TOHNICHI_SEO_DESCRIPTION[lang] : text(brand.summary, lang);
-  const keywords = isTohnichi
-    ? TOHNICHI_SEO_KEYWORDS
-    : isSankyoRikagaku
-    ? [
-        "Sankyo Rikagaku Indonesia",
-        "FUJISTAR Indonesia",
-        "Fuji Star abrasive",
-        "abrasive paper Indonesia",
-        "abrasive disc",
-        "abrasive belt",
-        "non-woven abrasive",
-        "polishing tools"
-      ]
-    : undefined;
-
-  return {
+  const description = isTohnichi
+    ? TOHNICHI_SEO_INTENT.description[lang]
+    : isNac
+      ? lang === "en"
+        ? "NAC is the industrial socket, bit, and quick-coupling brand of Nagahori Industry Co., Ltd. CSE supports model and custom-product selection in Indonesia."
+        : "NAC adalah brand industrial socket, bit, dan quick coupling dari Nagahori Industry Co., Ltd. CSE mendukung pemilihan model dan produk custom di Indonesia."
+      : text(brand.summary, lang);
+  return buildPageMetadata({
+    path: brandPath,
     title,
     description,
-    keywords,
-    alternates: {
-      canonical: canonicalPath,
-      languages: languageAlternates(brandPath)
-    },
-    openGraph: {
-      title: isTohnichi ? `${TOHNICHI_SEO_TITLE} | CSE` : `${brand.name} Indonesia | CSE`,
-      description,
-      url: canonicalPath,
-      locale: lang === "en" ? "en_US" : "id_ID",
-      images: brand.heroImage ? [{ url: brand.heroImage, alt: `${brand.name} products in Indonesia` }] : undefined
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: isTohnichi ? `${TOHNICHI_SEO_TITLE} | CSE` : `${brand.name} Indonesia | CSE`,
-      description,
-      images: brand.heroImage ? [brand.heroImage] : undefined
-    }
-  };
+    lang,
+    image: brand.heroImage,
+    imageAlt: `${brand.name} products in Indonesia`,
+    indexability: getBrandIndexability({
+      published: brand.published,
+      publiclyAvailable: isBrandPubliclyAvailable(brand.slug)
+    })
+  });
 }
 
 export default async function BrandDetailPage({ params }: PageProps) {
@@ -136,33 +109,29 @@ export default async function BrandDetailPage({ params }: PageProps) {
   const isTohnichi = brand.slug === "tohnichi";
   const isNac = brand.slug === "nac";
   const isSankyoRikagaku = brand.slug === "fuji-star";
-  const hasProductExplorer = isTohnichi || isNac || isSankyoRikagaku;
-  const localizedTohnichiPagePath = localizedPath(TOHNICHI_PAGE_PATH, lang);
+  const hasProductExplorer = isNac || isSankyoRikagaku;
   const tohnichiJsonLd = isTohnichi
     ? [
         {
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          name: TOHNICHI_SEO_TITLE,
+          name: TOHNICHI_SEO_INTENT.title[lang],
           headline:
             lang === "en"
-              ? "TOHNICHI Torque Wrenches & Torque Tools"
-              : "TOHNICHI Torque Wrench & Torque Tools",
-          description: TOHNICHI_SEO_DESCRIPTION[lang],
-          url: `https://cse.co.id${localizedTohnichiPagePath}`,
-          inLanguage: lang === "en" ? "en-ID" : "id-ID",
+              ? "Official TOHNICHI Distributor Indonesia"
+              : "Distributor Resmi TOHNICHI Indonesia",
+          description: TOHNICHI_SEO_INTENT.description[lang],
+          url: absoluteLocalizedUrl(TOHNICHI_PAGE_PATH, lang),
+          inLanguage: lang === "en" ? "en-US" : "id-ID",
           citation: [TOHNICHI_DISTRIBUTOR_URL, TOHNICHI_SUPPORT_URL],
           about: {
             "@type": "Brand",
             name: "TOHNICHI",
             url: TOHNICHI_OFFICIAL_URL,
-            logo: "https://cse.co.id/assets/brands/logos/tohnichi--nobg.png"
+            logo: absoluteUrl("/assets/brands/logos/tohnichi--nobg.png")
           },
           provider: {
-            "@type": "Organization",
-            "@id": "https://cse.co.id/#organization",
-            name: "PT Citra Sukses Ekapratama",
-            url: "https://cse.co.id",
+            ...organizationReference(),
             email: "cse@citra-sukses.com",
             areaServed: {
               "@type": "Country",
@@ -183,45 +152,31 @@ export default async function BrandDetailPage({ params }: PageProps) {
           },
           mainEntity: {
             "@type": "ItemList",
-            name: lang === "en" ? "TOHNICHI product families in Indonesia" : "Kategori produk TOHNICHI",
-            numberOfItems: brand.productGroups.flatMap((group) => group.products).length,
-            itemListElement: brand.productGroups
-              .flatMap((group) => group.products)
-              .map((product, index) => ({
+            name: lang === "en" ? "TOHNICHI product categories in Indonesia" : "Kategori produk TOHNICHI di Indonesia",
+            numberOfItems: 4,
+            itemListElement: [
+              { name: "TOHNICHI Torque Wrench", path: "/torque-wrench" },
+              { name: "TOHNICHI Torque Screwdriver", path: "/torque-screwdriver" },
+              { name: "TOHNICHI Torque Tester", path: "/torque-tester" },
+              {
+                name: lang === "en" ? "Complete TOHNICHI Catalogue" : "Katalog Lengkap TOHNICHI",
+                path: "/brands/tohnichi/products"
+              }
+            ].map((item, index) => ({
                 "@type": "ListItem",
                 position: index + 1,
-                name: product.name,
-                url: `https://cse.co.id${localizedPath(
-                  `/brands/${brand.slug}/products/${product.slug}`,
-                  lang
-                )}`
+                name: item.name,
+                url: absoluteLocalizedUrl(item.path, lang)
               }))
           }
         },
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            {
-              "@type": "ListItem",
-              position: 1,
-              name: "CSE",
-              item: "https://cse.co.id"
-            },
-            {
-              "@type": "ListItem",
-              position: 2,
-              name: lang === "en" ? "Brands" : "Brand",
-              item: `https://cse.co.id${localizedPath("/brands", lang)}`
-            },
-            {
-              "@type": "ListItem",
-              position: 3,
-              name: "TOHNICHI",
-              item: `https://cse.co.id${localizedTohnichiPagePath}`
-            }
+        buildBreadcrumbJsonLd({
+          lang,
+          items: [
+            { name: lang === "en" ? "Brands" : "Brand", path: "/brands" },
+            { name: "TOHNICHI", path: TOHNICHI_PAGE_PATH }
           ]
-        }
+        })
       ]
     : null;
   const sankyoRikagakuJsonLd = isSankyoRikagaku
@@ -230,11 +185,13 @@ export default async function BrandDetailPage({ params }: PageProps) {
           "@context": "https://schema.org",
           "@type": "Organization",
           name: "Sankyo Rikagaku Co., Ltd.",
-          alternateName: ["FUJISTAR", "Fuji Star"],
+          alternateName: ["SANKYO", "Sankyo Chemical", "FUJISTAR", "Fuji Star"],
           foundingDate: "1930",
           url: "https://en.fujistar.com/",
-          logo: "https://cse.co.id/assets/brands/logos/fuji-star.png",
-          description: brand.summary.id
+          logo: absoluteUrl("/assets/brands/logos/fuji-star.png"),
+          description: brand.summary.id,
+          areaServed: { "@type": "Country", name: "Indonesia" },
+          provider: organizationReference()
         },
         {
           "@context": "https://schema.org",
@@ -246,9 +203,33 @@ export default async function BrandDetailPage({ params }: PageProps) {
               "@type": "ListItem",
               position: index + 1,
               name: product.name,
-              url: `https://cse.co.id${localizedPath(`/brands/${brand.slug}/products/${product.slug}`, lang)}`
+              url: absoluteLocalizedUrl(`/brands/${brand.slug}/products/${product.slug}`, lang)
             }))
         }
+      ]
+    : null;
+  const nacJsonLd = isNac
+    ? [
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "NAGAHORI INDUSTRY CO., LTD.",
+          alternateName: ["NAC", "Nagahori", "Nagahori Industry"],
+          url: "https://nac-corp.co.jp/en/",
+          description:
+            lang === "en"
+              ? "NAC is the industrial socket, bit, and quick-coupling brand of Nagahori Industry Co., Ltd., available through CSE in Indonesia."
+              : "NAC adalah brand industrial socket, bit, dan quick coupling dari Nagahori Industry Co., Ltd. yang tersedia melalui CSE di Indonesia.",
+          areaServed: { "@type": "Country", name: "Indonesia" },
+          provider: organizationReference()
+        },
+        buildBreadcrumbJsonLd({
+          lang,
+          items: [
+            { name: lang === "en" ? "Brands" : "Brand", path: "/brands" },
+            { name: "NAC / Nagahori Industry", path: "/brands/nac" }
+          ]
+        })
       ]
     : null;
 
@@ -266,6 +247,9 @@ export default async function BrandDetailPage({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(sankyoRikagakuJsonLd) }}
         />
       ) : null}
+      {nacJsonLd ? (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(nacJsonLd) }} />
+      ) : null}
       <Breadcrumb
         homeHref={withLang("/", lang)}
         items={[
@@ -277,36 +261,46 @@ export default async function BrandDetailPage({ params }: PageProps) {
         eyebrow={
           isTohnichi
             ? lang === "en"
-              ? "TOHNICHI sales & service agent / Indonesia"
-              : "Agen penjualan & servis TOHNICHI / Indonesia"
+              ? "Official TOHNICHI distributor / Indonesia"
+              : "Distributor resmi TOHNICHI / Indonesia"
+            : isNac
+              ? "NAC · NAGAHORI INDUSTRY CO., LTD. / Japan"
+            : isSankyoRikagaku
+              ? "SANKYO RIKAGAKU · FUJISTAR / Japan"
             : `${brand.name}${brand.country ? ` / ${brand.country}` : ""}`
         }
         title={
           isTohnichi
-            ? (
-                <span className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-4">
-                  <span className="inline-flex shrink-0 rounded-xl border border-white/80 bg-white px-3 py-2 shadow-sm">
-                    <Image
-                      src="/assets/brands/logos/tohnichi--nobg.png"
-                      alt="TOHNICHI"
-                      width={400}
-                      height={186}
-                      priority
-                      className="h-auto w-[220px] sm:w-[250px] md:w-[280px]"
-                    />
-                  </span>
-                  <span className="text-[1em] sm:text-[0.82em] md:text-[0.78em]">
-                    {lang === "en" ? "Torque Wrenches & Torque Tools" : "Torque Wrench & Torque Tools"}
-                  </span>
-                </span>
-              )
+            ? lang === "en"
+              ? "Official TOHNICHI Distributor Indonesia"
+              : "Distributor Resmi TOHNICHI Indonesia"
+            : isNac
+              ? "NAC / Nagahori Industry Indonesia"
+            : isSankyoRikagaku
+              ? "SANKYO Rikagaku (FUJISTAR) Indonesia"
             : text(brand.category, lang)
         }
-        description={isTohnichi ? TOHNICHI_SEO_DESCRIPTION[lang] : text(brand.description, lang)}
+        description={
+          isTohnichi
+            ? TOHNICHI_SEO_INTENT.description[lang]
+            : isNac
+              ? lang === "en"
+                ? "NAC is the industrial socket, bit, and quick-coupling brand of Nagahori Industry Co., Ltd. CSE supports model and custom-product selection in Indonesia."
+                : "NAC adalah brand industrial socket, bit, dan quick coupling dari Nagahori Industry Co., Ltd. CSE mendukung pemilihan model dan produk custom di Indonesia."
+              : text(brand.description, lang)
+        }
         primaryHref={withLang(`/contact?brand=${brand.slug}`, lang)}
         primaryLabel={lang === "en" ? "Request this brand" : "Minta brand ini"}
-        secondaryHref={withLang("/brands", lang)}
-        secondaryLabel={lang === "en" ? "All brands" : "Semua brand"}
+        secondaryHref={withLang(isTohnichi ? "/brands/tohnichi/products" : "/brands", lang)}
+        secondaryLabel={
+          isTohnichi
+            ? lang === "en"
+              ? "Complete catalogue"
+              : "Katalog lengkap"
+            : lang === "en"
+              ? "All brands"
+              : "Semua brand"
+        }
         image={brand.heroImage}
         imageLabel={`${brand.name} products`}
         imageClassName={
@@ -376,6 +370,11 @@ export default async function BrandDetailPage({ params }: PageProps) {
                       : "Verifikasi licensee kalibrasi & perbaikan"}
                   </a>
                 </div>
+                <div className="mt-6">
+                  <CTAButton href={withLang("/tohnichi-torsi-tepat", lang)} variant="ghost">
+                    {lang === "en" ? "Why correct torque matters" : "Mengapa torsi yang tepat penting"}
+                  </CTAButton>
+                </div>
                 <div className="mt-7 border-t border-graphite-200 pt-6">
                   <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
                     {lang === "en" ? "Torque wrench" : "Kunci torsi"}
@@ -395,13 +394,17 @@ export default async function BrandDetailPage({ params }: PageProps) {
               <div className="overflow-hidden border border-graphite-200 bg-graphite-900 shadow-panel">
                 <video
                   className="aspect-video w-full object-cover"
-                  src="/assets/brands/products/tohnichi/Torque Wrench QL CL video english version_1080.mp4"
-                  autoPlay
-                  muted
-                  loop
+                  src="/assets/brands/products/tohnichi/tohnichi-ql-cl-720p.mp4"
+                  poster="/assets/brands/products/tohnichi/tohnichi-ql-cl-video-poster.jpg"
+                  preload="none"
                   playsInline
                   controls
-                />
+                  aria-label={lang === "en" ? "TOHNICHI QL and CL torque wrench product video" : "Video produk torque wrench TOHNICHI QL dan CL"}
+                >
+                  {lang === "en"
+                    ? "Your browser does not support embedded video."
+                    : "Browser Anda tidak mendukung video tersemat."}
+                </video>
                 <a
                   href="https://www.youtube.com/watch?v=vtZKwdSp5Ow"
                   target="_blank"
@@ -505,6 +508,7 @@ export default async function BrandDetailPage({ params }: PageProps) {
               </div>
             </div>
           </section>
+          <TohnichiBrandLanding lang={lang} />
         </>
       ) : isNac ? (
         <NacBrandOverview lang={lang} />
@@ -591,7 +595,7 @@ export default async function BrandDetailPage({ params }: PageProps) {
         </section>
       )}
 
-      {hasProductExplorer ? (
+      {isTohnichi ? null : hasProductExplorer ? (
         <BrandProductExplorer
           groups={brand.productGroups}
           lang={lang}

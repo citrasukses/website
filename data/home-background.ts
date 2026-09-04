@@ -23,7 +23,7 @@ export type HomeBackgroundImage = {
 // }
 
 export const homeBackgroundImage: HomeBackgroundImage | null = {
-  src: "/assets/company/hero-background-curated-v2.png",
+  src: "/assets/company/hero-background-curated-v2.webp",
   imageClassName:
     "bg-[position:72%_center] opacity-[0.22] sm:opacity-[0.32] md:inset-0 md:h-auto md:bg-center md:opacity-[0.48] lg:opacity-[0.7]",
   overlayClassName:
