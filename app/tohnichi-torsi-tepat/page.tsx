@@ -80,8 +80,8 @@ export default function TohnichiTorsiTepatPage() {
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(24,61,97,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(24,61,97,0.055)_1px,transparent_1px)] bg-[size:40px_40px]" />
       <div className="absolute inset-y-0 right-0 -z-10 hidden w-[49%] bg-industrial-700 lg:block" />
 
-      <div className="container-page grid min-h-[calc(100svh-4.5rem)] items-center gap-12 py-12 lg:grid-cols-[0.93fr_1.07fr] lg:py-14">
-        <div className="relative z-10 max-w-2xl lg:pr-3">
+      <div className="container-page grid min-h-[calc(100svh-4.5rem)] items-center gap-14 py-14 md:py-16 lg:grid-cols-2 lg:gap-16 lg:py-16 xl:gap-24">
+        <div className="relative z-10 max-w-[35rem]">
           <div className="inline-flex items-center gap-3 border border-graphite-200 bg-white/80 px-3 py-2 backdrop-blur-sm">
             <span className="h-2 w-2 bg-signal-500" />
             <span className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-graphite-700">
@@ -89,7 +89,7 @@ export default function TohnichiTorsiTepatPage() {
             </span>
           </div>
 
-          <h1 className="mt-7 text-balance text-[clamp(3rem,7vw,5.6rem)] font-black leading-[0.92] tracking-[-0.055em] text-graphite-900">
+          <h1 className="mt-8 text-balance text-[clamp(3rem,6vw,5.25rem)] font-black leading-[0.94] tracking-[-0.055em] text-graphite-900">
             {lang === "en" ? (
               <>Tight is not always <span className="text-signal-500">right.</span></>
             ) : (
@@ -136,17 +136,17 @@ export default function TohnichiTorsiTepatPage() {
           </div>
         </div>
 
-        <div className="relative -mx-4 overflow-hidden bg-industrial-700 px-4 py-10 text-white sm:-mx-6 sm:px-6 lg:mx-0 lg:min-h-[41rem] lg:overflow-visible lg:bg-transparent lg:p-0">
+        <div className="relative -mx-4 overflow-hidden bg-industrial-700 px-4 py-12 text-white sm:-mx-6 sm:px-6 sm:py-14 lg:mx-0 lg:min-h-[43rem] lg:overflow-visible lg:bg-transparent lg:p-0">
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.07)_1px,transparent_1px)] bg-[size:40px_40px] lg:-inset-y-[20vh] lg:-right-[50vw]" aria-hidden="true" />
-          <div className="relative flex h-full flex-col justify-center lg:min-h-[41rem] lg:pl-8">
-            <div className="flex items-center justify-between gap-6 border-b border-white/20 pb-4">
+          <div className="relative flex h-full flex-col justify-center lg:min-h-[43rem]">
+            <div className="flex items-center justify-between gap-6 border-b border-white/20 pb-5">
               <p className="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-white/70">
                 {lang === "en" ? "Controlled tightening system" : "Sistem pengencangan terkontrol"}
               </p>
               <span className="shrink-0 bg-signal-500 px-3 py-1.5 text-[0.65rem] font-black tracking-[0.16em]">QL / RTD</span>
             </div>
 
-            <div className="mt-6 flex items-end justify-between gap-6">
+            <div className="mt-8 flex items-end justify-between gap-8">
               <div>
                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-signal-500">TOHNICHI</p>
                 <p className="mt-2 max-w-sm text-3xl font-black leading-[1.02] tracking-[-0.045em] sm:text-4xl">
@@ -156,7 +156,7 @@ export default function TohnichiTorsiTepatPage() {
               <CircleGauge className="hidden h-12 w-12 shrink-0 text-white/35 sm:block" strokeWidth={1.25} aria-hidden="true" />
             </div>
 
-            <div className="relative mt-7 space-y-3">
+            <div className="relative mt-9 space-y-4">
               <Link href={withLang("/brands/tohnichi/products/ql-qle2", lang)} className="focus-ring group grid min-h-48 grid-cols-[5rem_1fr] overflow-hidden bg-white text-graphite-900 shadow-[0_22px_50px_rgba(10,24,38,0.26)] sm:grid-cols-[7rem_1fr]">
                 <div className="flex flex-col justify-between bg-signal-500 p-4 text-white sm:p-5">
                   <span className="text-[0.65rem] font-black uppercase tracking-[0.18em]">01 · Bolt</span>
@@ -205,7 +205,7 @@ export default function TohnichiTorsiTepatPage() {
               </Link>
             </div>
 
-            <div className="mt-5 grid grid-cols-3 border border-white/20 bg-white/[0.04]">
+            <div className="mt-6 grid grid-cols-3 border border-white/20 bg-white/[0.04]">
               {[
                 lang === "en" ? "Set torque" : "Atur torsi",
                 lang === "en" ? "Tighten" : "Kencangkan",
