@@ -4,6 +4,8 @@ Use this guide whenever the website is updated. Its purpose is to keep public pa
 
 This website uses the Next.js App Router, a bilingual static export, and Cloudflare. Indonesian pages use the root URL structure and English equivalents use `/en`.
 
+After every production deployment, run `docs/POST-DEPLOYMENT-SEO-CHECKLIST.md` and retain its deployment record.
+
 ## Non-negotiable rules
 
 - Do not redesign a page only for SEO.
@@ -35,6 +37,7 @@ This website uses the Next.js App Router, a bilingual static export, and Cloudfl
 | Performance regression budgets | `scripts/performance-budget.mjs` |
 | Inquiry source attribution | `lib/inquiry-attribution.ts` and `worker/static-export.js` |
 | Authority and outreach preparation | `docs/seo-authority-plan.md` |
+| After-deployment SEO runbook | `docs/POST-DEPLOYMENT-SEO-CHECKLIST.md` |
 
 When changing any of these files, verify both Indonesian and English output.
 

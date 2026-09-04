@@ -69,6 +69,18 @@ export type BuyerGuide = {
   related: ContentLink[];
 };
 
+export type GuideEditorial = {
+  format: LocalizedText;
+  audience: LocalizedText;
+  readingMinutes: number;
+  cta: {
+    title: LocalizedText;
+    description: LocalizedText;
+    label: LocalizedText;
+    href: string;
+  };
+};
+
 export const buyerGuides: BuyerGuide[] = [
   {
     slug: "cspfdd-r-cm-connection",
@@ -294,6 +306,112 @@ export const buyerGuides: BuyerGuide[] = [
     related: [{ href: "/brands/tohnichi/products/qsp-qsp-mh", title: { id: "QSP preset wrench", en: "QSP preset wrench" }, description: { id: "Lihat family preset click.", en: "View the preset-click family." } }, { href: "/brands/tohnichi/products/ql-qle2", title: { id: "QL adjustable wrench", en: "QL adjustable wrench" }, description: { id: "Lihat family adjustable click.", en: "View the adjustable-click family." } }, { href: "/solutions/torque-control", title: { id: "Torque-control strategy", en: "Torque-control strategy" }, description: { id: "Susun tool mix dan verification plan.", en: "Plan the tool mix and verification strategy." } }]
   }
 ];
+
+export const GUIDE_EDITORIAL: Record<BuyerGuide["slug"], GuideEditorial> = {
+  "cspfdd-r-cm-connection": {
+    format: { id: "Panduan setup lapangan", en: "Field setup guide" },
+    audience: { id: "Engineering & integrator", en: "Engineering & integrators" },
+    readingMinutes: 12,
+    cta: {
+      title: { id: "Perlu review Group, ID, dan limit setting?", en: "Need a review of your Group, ID, and limit settings?" },
+      description: { id: "Kirim konfigurasi receiver dan jumlah FDD yang akan digunakan.", en: "Send the receiver configuration and number of FDD wrenches in the system." },
+      label: { id: "Minta review setup", en: "Request a setup review" },
+      href: "/contact?topic=fdd-setup"
+    }
+  },
+  "cara-memilih-torque-wrench": {
+    format: { id: "Panduan pemilihan", en: "Selection guide" },
+    audience: { id: "Procurement, maintenance & produksi", en: "Procurement, maintenance & production" },
+    readingMinutes: 7,
+    cta: {
+      title: { id: "Kirim target torque dan foto area baut.", en: "Send the torque target and a photo of the fastener area." },
+      description: { id: "Dua data itu biasanya cukup untuk memulai shortlist range, head, dan jenis wrench yang masuk akal.", en: "Those two details are usually enough to begin a practical shortlist of ranges, heads, and wrench types." },
+      label: { id: "Minta rekomendasi model", en: "Request a model recommendation" },
+      href: "/contact?topic=torque-wrench-selection"
+    }
+  },
+  "torque-wrench-vs-torque-screwdriver": {
+    format: { id: "Panduan perbandingan", en: "Comparison guide" },
+    audience: { id: "Procurement & engineering", en: "Procurement & engineering" },
+    readingMinutes: 5,
+    cta: {
+      title: { id: "Belum yakin membutuhkan wrench atau screwdriver?", en: "Not sure whether the job needs a wrench or screwdriver?" },
+      description: { id: "Kirim foto fastener, target torque, dan kondisi aksesnya agar kami dapat memeriksa interface yang tepat.", en: "Send the fastener photo, torque target, and access condition so we can check the right interface." },
+      label: { id: "Konfirmasi jenis tool", en: "Confirm the tool type" },
+      href: "/contact?topic=tool-type"
+    }
+  },
+  "mengapa-torque-wrench-perlu-dikalibrasi": {
+    format: { id: "Catatan teknis", en: "Technical note" },
+    audience: { id: "Quality, metrology & maintenance", en: "Quality, metrology & maintenance" },
+    readingMinutes: 6,
+    cta: {
+      title: { id: "Sedang menyusun program check dan calibration?", en: "Building a checking and calibration program?" },
+      description: { id: "Beritahu kami jenis tool, jumlah unit, interval saat ini, dan record yang dibutuhkan.", en: "Tell us the tool types, quantities, current interval, and records you need." },
+      label: { id: "Diskusikan metode verification", en: "Discuss a verification method" },
+      href: "/contact?topic=calibration-verification"
+    }
+  },
+  "click-vs-digital-torque-wrench": {
+    format: { id: "Panduan perbandingan", en: "Comparison guide" },
+    audience: { id: "Produksi, quality & procurement", en: "Production, quality & procurement" },
+    readingMinutes: 6,
+    cta: {
+      title: { id: "Bandingkan kebutuhan line, bukan hanya fitur tool.", en: "Compare line requirements, not only tool features." },
+      description: { id: "Kirim target, jumlah fastener, kebutuhan judgment, dan data yang harus disimpan.", en: "Send the target, fastener count, judgment needs, and data that must be retained." },
+      label: { id: "Minta perbandingan model", en: "Request a model comparison" },
+      href: "/contact?topic=click-vs-digital"
+    }
+  },
+  "apa-itu-torque-angle": {
+    format: { id: "Penjelasan teknis", en: "Technical explainer" },
+    audience: { id: "Process & quality engineering", en: "Process & quality engineering" },
+    readingMinutes: 6,
+    cta: {
+      title: { id: "Punya specification torque + angle untuk divalidasi?", en: "Have a torque-and-angle specification to validate?" },
+      description: { id: "Kirim target torque, target angle, drawing joint, dan batas akhir yang diwajibkan.", en: "Send the torque target, angle target, joint drawing, and required final limits." },
+      label: { id: "Review aplikasinya", en: "Review the application" },
+      href: "/contact?topic=torque-angle"
+    }
+  },
+  "mencegah-missed-tightening": {
+    format: { id: "Panduan kontrol proses", en: "Process-control guide" },
+    audience: { id: "Production & process engineering", en: "Production & process engineering" },
+    readingMinutes: 7,
+    cta: {
+      title: { id: "Review satu station yang paling berisiko.", en: "Review the station with the highest tightening risk." },
+      description: { id: "Kirim jumlah fastener, urutan kerja, signal tool, serta kondisi rework dan bypass.", en: "Send the fastener count, work sequence, tool signal, and rework and bypass conditions." },
+      label: { id: "Minta review station", en: "Request a station review" },
+      href: "/contact?topic=poka-yoke-review"
+    }
+  },
+  "cara-memilih-torque-tester": {
+    format: { id: "Panduan pemilihan", en: "Selection guide" },
+    audience: { id: "Quality, calibration & maintenance", en: "Quality, calibration & maintenance" },
+    readingMinutes: 7,
+    cta: {
+      title: { id: "Mulai dari daftar tool yang akan diuji.", en: "Start with the tools that need to be tested." },
+      description: { id: "Kirim model, range, drive, arah, jumlah unit, dan kebutuhan report untuk setiap tool.", en: "Send the model, range, drive, direction, quantity, and reporting need for each tool." },
+      label: { id: "Minta shortlist tester", en: "Request a tester shortlist" },
+      href: "/contact?topic=torque-tester-selection"
+    }
+  },
+  "preset-vs-adjustable-torque-wrench": {
+    format: { id: "Panduan perbandingan", en: "Comparison guide" },
+    audience: { id: "Production engineering & maintenance", en: "Production engineering & maintenance" },
+    readingMinutes: 6,
+    cta: {
+      title: { id: "Cocokkan jenis wrench dengan variasi produksi.", en: "Match the wrench type to production variation." },
+      description: { id: "Kirim jumlah target per station, frekuensi changeover, dan siapa yang boleh mengubah setting.", en: "Send the number of targets per station, changeover frequency, and who may change settings." },
+      label: { id: "Review kebutuhan line", en: "Review line requirements" },
+      href: "/contact?topic=preset-vs-adjustable"
+    }
+  }
+};
+
+export function getGuideEditorial(slug: BuyerGuide["slug"]) {
+  return GUIDE_EDITORIAL[slug];
+}
 
 export function getBuyerGuide(slug: string) {
   return buyerGuides.find((guide) => guide.slug === slug);
