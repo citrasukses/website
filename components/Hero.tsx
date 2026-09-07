@@ -11,6 +11,8 @@ type HeroProps = {
   primaryLabel: string;
   secondaryHref?: string;
   secondaryLabel?: string;
+  tertiaryHref?: string;
+  tertiaryLabel?: string;
   image?: string;
   imageLabel?: string;
   imageClassName?: string;
@@ -25,6 +27,8 @@ export function Hero({
   primaryLabel,
   secondaryHref,
   secondaryLabel,
+  tertiaryHref,
+  tertiaryLabel,
   image,
   imageLabel,
   imageClassName = "",
@@ -64,6 +68,9 @@ export function Hero({
             </CTAButton>
             {secondaryHref && secondaryLabel ? (
               <CTAButton href={secondaryHref} variant="ghost">{secondaryLabel}</CTAButton>
+            ) : null}
+            {tertiaryHref && tertiaryLabel ? (
+              <CTAButton href={tertiaryHref} variant="ghost">{tertiaryLabel}</CTAButton>
             ) : null}
           </div>
         </div>

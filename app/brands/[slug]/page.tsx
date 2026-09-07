@@ -301,6 +301,14 @@ export default async function BrandDetailPage({ params }: PageProps) {
               ? "All brands"
               : "Semua brand"
         }
+        tertiaryHref={isTohnichi ? withLang("/guides", lang) : undefined}
+        tertiaryLabel={
+          isTohnichi
+            ? lang === "en"
+              ? "Technical guides"
+              : "Panduan teknis"
+            : undefined
+        }
         image={brand.heroImage}
         imageLabel={`${brand.name} products`}
         imageClassName={
