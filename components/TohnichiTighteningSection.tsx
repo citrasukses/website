@@ -741,7 +741,9 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
                 href={withLang("/brands/tohnichi", lang)}
                 variant="ghost"
               >
-                {lang === "en" ? "Explore TOHNICHI" : "Lihat TOHNICHI"}
+                {lang === "en"
+                  ? "TOHNICHI Indonesia — Distributor, Sales & Service"
+                  : "TOHNICHI Indonesia — Distributor, Penjualan & Servis"}
               </CTAButton>
               <CTAButton
                 href={withLang("/tohnichi-torsi-tepat", lang)}

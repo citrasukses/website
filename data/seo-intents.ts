@@ -21,8 +21,8 @@ export const SEO_INTENT_OWNERS = {
     primaryIntent: "official TOHNICHI distributor, sales, service, and calibration in Indonesia",
     indexability: "index",
     title: {
-      id: "Distributor Resmi TOHNICHI Indonesia | Sales, Service & Calibration",
-      en: "Official TOHNICHI Distributor Indonesia | Sales, Service & Calibration"
+      id: "TOHNICHI Indonesia | Distributor Resmi & Service",
+      en: "TOHNICHI Indonesia | Official Distributor, Sales & Service"
     },
     description: {
       id: "PT Citra Sukses Ekapratama adalah distributor resmi, agen penjualan dan servis TOHNICHI di Indonesia.",

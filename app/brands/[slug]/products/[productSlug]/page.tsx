@@ -305,6 +305,11 @@ export default async function ProductDetailPage({ params }: PageProps) {
               >
                 {lang === "en" ? `All ${brand.name} products` : `Semua produk ${brand.name}`}
               </CTAButton>
+              {tohnichiPriorityGuidance ? (
+                <CTAButton href={withLang("/brands/tohnichi", lang)} variant="ghost">
+                  TOHNICHI Indonesia
+                </CTAButton>
+              ) : null}
             </div>
           </div>
         </div>

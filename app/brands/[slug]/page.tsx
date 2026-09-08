@@ -12,6 +12,7 @@ import { NacBrandOverview } from "@/components/NacBrandOverview";
 import { SankyoRikagakuBrandOverview } from "@/components/SankyoRikagakuBrandOverview";
 import { SectionHeader } from "@/components/SectionHeader";
 import { TohnichiBrandLanding } from "@/components/TohnichiBrandLanding";
+import { TohnichiProductVideo } from "@/components/TohnichiProductVideo";
 import { TohnichiProductPromotionCarousel } from "@/components/TohnichiProductPromotionCarousel";
 import { UseCaseSection } from "@/components/UseCaseSection";
 import { seedCatalog } from "@/data/catalog-seed";
@@ -400,19 +401,7 @@ export default async function BrandDetailPage({ params }: PageProps) {
                 </div>
               </div>
               <div className="overflow-hidden border border-graphite-200 bg-graphite-900 shadow-panel">
-                <video
-                  className="aspect-video w-full object-cover"
-                  src="/assets/brands/products/tohnichi/tohnichi-ql-cl-720p.mp4"
-                  poster="/assets/brands/products/tohnichi/tohnichi-ql-cl-video-poster.jpg"
-                  preload="none"
-                  playsInline
-                  controls
-                  aria-label={lang === "en" ? "TOHNICHI QL and CL torque wrench product video" : "Video produk torque wrench TOHNICHI QL dan CL"}
-                >
-                  {lang === "en"
-                    ? "Your browser does not support embedded video."
-                    : "Browser Anda tidak mendukung video tersemat."}
-                </video>
+                <TohnichiProductVideo lang={lang} />
                 <a
                   href="https://www.youtube.com/watch?v=vtZKwdSp5Ow"
                   target="_blank"

@@ -309,6 +309,27 @@ for (const targetPath of controlledTighteningPaths) {
   }
 }
 
+const tohnichiHomepageLinks = [
+  { homePath: "/", brandPath: "/brands/tohnichi" },
+  { homePath: "/en", brandPath: "/en/brands/tohnichi" }
+];
+for (const { homePath, brandPath } of tohnichiHomepageLinks) {
+  const homePage = pages.get(homePath);
+  const hasDescriptiveBrandLink = homePage
+    ? homePage.$(`a[href="${brandPath}"]`).toArray().some((anchor) =>
+        homePage.$(anchor).text().replace(/\s+/g, " ").includes("TOHNICHI Indonesia")
+      )
+    : false;
+  if (!hasDescriptiveBrandLink) {
+    addIssue(
+      errors,
+      "tohnichi-homepage-anchor",
+      homePath,
+      `Expected a descriptive TOHNICHI Indonesia link to ${brandPath}.`
+    );
+  }
+}
+
 const tohnichiSeoSource = await readFile(
   path.join(projectRoot, "data/tohnichi-seo.ts"),
   "utf8"
@@ -334,6 +355,19 @@ for (const slug of priorityProductSlugs) {
     }
     if (page.noindex) {
       addIssue(errors, "priority-product-noindex", pagePath, "Priority TOHNICHI product page is noindex.");
+    }
+
+    const brandPath = `${localePrefix}/brands/tohnichi`;
+    const hasBrandAuthorityLink = page.$(`a[href="${brandPath}"]`).toArray().some((anchor) =>
+      page.$(anchor).text().replace(/\s+/g, " ").trim() === "TOHNICHI Indonesia"
+    );
+    if (!hasBrandAuthorityLink) {
+      addIssue(
+        errors,
+        "priority-product-brand-anchor",
+        pagePath,
+        `Expected a TOHNICHI Indonesia link to ${brandPath}.`
+      );
     }
 
     const visibleText = page.$("body").text().replace(/\s+/g, " ");
