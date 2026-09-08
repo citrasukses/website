@@ -28,12 +28,12 @@ const homepageMetadata = {
   id: {
     title: "Distributor Resmi & Solusi Pengadaan Industri | CSE",
     description:
-      "Distributor resmi TOHNICHI, NAC, FUJISTAR, dan NIPPON UNIT serta pengadaan brand general. Supplier peralatan dan kebutuhan industri untuk manufaktur di Indonesia."
+      "Distributor resmi TOHNICHI, NAC, FUJISTAR, dan NIPPON UNIT serta supplier peralatan dan kebutuhan industri untuk manufaktur di Indonesia."
   },
   en: {
     title: "Industrial Goods Supplier Indonesia | CSE",
     description:
-      "PT Citra Sukses Ekapratama, Indonesia's industrial sourcing partner. CSE helps procurement and engineering teams find industrial products from Japan and Asia, check technical fit, provide alternatives, and speed up the RFQ process."
+      "CSE helps procurement and engineering teams source industrial products from Japan and Asia, verify technical fit, compare alternatives, and streamline RFQs."
   }
 } as const;
 
@@ -90,12 +90,15 @@ const organizationJsonLd = {
     width: 396,
     height: 160
   },
-  email: `mailto:${company.email}`,
-  description: company.positioning.en
+  email: `mailto:${company.email}`
 };
 
 export default async function HomePage() {
   const lang = staticLanguage();
+  const localizedOrganizationJsonLd = {
+    ...organizationJsonLd,
+    description: text(company.positioning, lang)
+  };
   const fullCatalog = await getCatalogBrands({ includeUnpublished: true });
   const brands = fullCatalog
     .filter((brand) => brand.brandType === "represented")
@@ -185,7 +188,7 @@ export default async function HomePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c")
+          __html: JSON.stringify(localizedOrganizationJsonLd).replace(/</g, "\\u003c")
         }}
       />
       <section className="technical-grid relative isolate overflow-hidden bg-white">

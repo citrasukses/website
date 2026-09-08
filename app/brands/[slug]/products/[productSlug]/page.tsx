@@ -74,13 +74,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     brand.slug === "tohnichi"
       ? tohnichiProductFamilyTitle(product.name, lang)
       : brand.slug === "nac"
-        ? lang === "en"
-          ? `${product.name} NAC / Nagahori Indonesia - Models & Catalogue`
-          : `${product.name} NAC / Nagahori Indonesia - Model & Katalog`
+        ? `${product.name} | NAC`
         : brand.slug === "fuji-star"
-          ? lang === "en"
-            ? `${product.name} Sankyo Rikagaku Indonesia - FUJISTAR Catalogue`
-            : `${product.name} Sankyo Rikagaku Indonesia - Katalog FUJISTAR`
+          ? `${product.name} | FUJISTAR`
         : `${product.name} | ${brand.name}`;
   const indexability = getProductIndexability({
     brandSlug: brand.slug,

@@ -16,7 +16,7 @@ export type IndustryPageContent = {
 export const industryPages: IndustryPageContent[] = [
   {
     industrySlug: "automotive",
-    seoTitle: { id: "Industrial Tools untuk Industri Otomotif Indonesia", en: "Industrial Tools for Automotive Manufacturing Indonesia" },
+    seoTitle: { id: "Industrial Tools untuk Industri Otomotif Indonesia", en: "Industrial Tools for Automotive Manufacturing" },
     seoDescription: {
       id: "Solusi machining, deburring, surface preparation, fastening, torque control, dan quality inspection untuk manufaktur otomotif Indonesia.",
       en: "Machining, deburring, surface preparation, fastening, torque control, and quality-inspection solutions for automotive manufacturing in Indonesia."
