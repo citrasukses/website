@@ -1,6 +1,6 @@
 {
   "name": "cse-website",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "generate:image-backgrounds": "node scripts/generate-image-backgrounds.mjs",
