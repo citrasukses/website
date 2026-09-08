@@ -65,8 +65,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     ? TOHNICHI_SEO_INTENT.title[lang]
     : isNac
       ? lang === "en"
-        ? "NAC / Nagahori Industry Indonesia | Sockets & Quick Couplings"
-        : "NAC / Nagahori Industry Indonesia | Socket & Quick Coupling"
+        ? "NAC Indonesia | Sockets & Quick Couplings"
+        : "NAC Indonesia | Socket & Quick Coupling"
     : isSankyoRikagaku
       ? lang === "en"
         ? "SANKYO Rikagaku (FUJISTAR) Indonesia | Abrasives"

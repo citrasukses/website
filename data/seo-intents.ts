@@ -22,7 +22,7 @@ export const SEO_INTENT_OWNERS = {
     indexability: "index",
     title: {
       id: "TOHNICHI Indonesia | Distributor Resmi & Service",
-      en: "TOHNICHI Indonesia | Official Distributor, Sales & Service"
+      en: "TOHNICHI Indonesia | Official Distributor & Service"
     },
     description: {
       id: "PT Citra Sukses Ekapratama adalah distributor resmi, agen penjualan dan servis TOHNICHI di Indonesia.",
@@ -48,7 +48,7 @@ export const SEO_INTENT_OWNERS = {
     indexability: "index",
     title: {
       id: "Cara Mengencangkan Baut dengan Torsi Tepat | TOHNICHI",
-      en: "How to Achieve Consistent Bolt & Screw Tightening | TOHNICHI"
+      en: "Bolt & Screw Tightening Guide | TOHNICHI"
     },
     description: {
       id: "Pelajari cara mengurangi variasi pengencangan baut dan sekrup dengan target torsi yang jelas, torque wrench TOHNICHI QL, dan torque screwdriver RTD.",

@@ -74,6 +74,17 @@ function collectSchemaTypes(value, types = new Set()) {
   return types;
 }
 
+function collectSchemaNodes(value, schemaType, nodes = []) {
+  if (Array.isArray(value)) {
+    for (const item of value) collectSchemaNodes(item, schemaType, nodes);
+  } else if (value && typeof value === "object") {
+    const types = Array.isArray(value["@type"]) ? value["@type"] : [value["@type"]];
+    if (types.includes(schemaType)) nodes.push(value);
+    Object.values(value).forEach((item) => collectSchemaNodes(item, schemaType, nodes));
+  }
+  return nodes;
+}
+
 function localeForPath(pagePath) {
   return pagePath === "/en" || pagePath.startsWith("/en/") ? "en" : "id";
 }
@@ -115,10 +126,13 @@ for (const relativeFile of htmlFiles) {
   });
 
   const schemaTypes = new Set();
+  const jsonLdDocuments = [];
   $('script[type="application/ld+json"]').each((_, element) => {
     const json = $(element).html() ?? "";
     try {
-      collectSchemaTypes(JSON.parse(json), schemaTypes);
+      const document = JSON.parse(json);
+      jsonLdDocuments.push(document);
+      collectSchemaTypes(document, schemaTypes);
     } catch (error) {
       addIssue(errors, "invalid-json-ld", pagePath, error.message);
     }
@@ -133,8 +147,23 @@ for (const relativeFile of htmlFiles) {
     canonical,
     alternates,
     schemaTypes,
+    jsonLdDocuments,
     title: $("title").first().text().trim(),
     description: $('meta[name="description"]').attr("content")?.trim() ?? "",
+    openGraph: {
+      title: $('meta[property="og:title"]').attr("content")?.trim() ?? "",
+      description: $('meta[property="og:description"]').attr("content")?.trim() ?? "",
+      url: $('meta[property="og:url"]').attr("content")?.trim() ?? "",
+      siteName: $('meta[property="og:site_name"]').attr("content")?.trim() ?? "",
+      image: $('meta[property="og:image"]').attr("content")?.trim() ?? "",
+      imageAlt: $('meta[property="og:image:alt"]').attr("content")?.trim() ?? ""
+    },
+    twitter: {
+      card: $('meta[name="twitter:card"]').attr("content")?.trim() ?? "",
+      title: $('meta[name="twitter:title"]').attr("content")?.trim() ?? "",
+      description: $('meta[name="twitter:description"]').attr("content")?.trim() ?? "",
+      image: $('meta[name="twitter:image"]').attr("content")?.trim() ?? ""
+    },
     links: [],
     words: visibleWordCount(load(html))
   });
@@ -182,6 +211,12 @@ for (const [pagePath, page] of pages) {
 
   if (!page.title) addIssue(errors, "missing-title", pagePath, "Page has no title.");
   if (!page.description) addIssue(errors, "missing-description", pagePath, "Page has no meta description.");
+  if (!page.noindex && page.title.length > 65) {
+    addIssue(warnings, "long-title", pagePath, `Title is ${page.title.length} characters; keep the main search phrase concise.`);
+  }
+  if (!page.noindex && page.description.length > 160) {
+    addIssue(warnings, "long-description", pagePath, `Meta description is ${page.description.length} characters.`);
+  }
   if (page.$('meta[name="keywords"]').length > 0) {
     addIssue(errors, "meta-keywords", pagePath, "Deprecated meta keywords are present.");
   }
@@ -191,8 +226,47 @@ for (const [pagePath, page] of pages) {
     addIssue(errors, "canonical-mismatch", pagePath, `Canonical is ${page.canonical || "missing"}.`);
   }
 
+  if (!page.noindex) {
+    const requiredSocialFields = [
+      ["og:title", page.openGraph.title],
+      ["og:description", page.openGraph.description],
+      ["og:url", page.openGraph.url],
+      ["og:site_name", page.openGraph.siteName],
+      ["og:image", page.openGraph.image],
+      ["og:image:alt", page.openGraph.imageAlt],
+      ["twitter:card", page.twitter.card],
+      ["twitter:title", page.twitter.title],
+      ["twitter:description", page.twitter.description],
+      ["twitter:image", page.twitter.image]
+    ];
+    for (const [field, value] of requiredSocialFields) {
+      if (!value) addIssue(errors, "missing-social-metadata", pagePath, `Missing ${field}.`);
+    }
+    if (page.openGraph.url && normalizeUrl(page.openGraph.url) !== normalizeUrl(pageUrl)) {
+      addIssue(errors, "open-graph-url", pagePath, `Open Graph URL is ${page.openGraph.url}.`);
+    }
+    for (const [field, value] of [["og:image", page.openGraph.image], ["twitter:image", page.twitter.image]]) {
+      if (value && !value.startsWith(`${productionOrigin}/`)) {
+        addIssue(errors, "social-image-host", pagePath, `${field} must use the production hostname.`);
+      }
+    }
+  }
+
   const h1Count = page.$("h1").length;
   if (h1Count !== 1) addIssue(errors, "h1-count", pagePath, `Expected one H1, found ${h1Count}.`);
+
+  const expectedBreadcrumbHome = `${productionOrigin}${localeForPath(pagePath) === "en" ? "/en" : "/"}`;
+  for (const breadcrumb of collectSchemaNodes(page.jsonLdDocuments, "BreadcrumbList")) {
+    const firstItem = Array.isArray(breadcrumb.itemListElement) ? breadcrumb.itemListElement[0] : undefined;
+    if (!firstItem || firstItem.position !== 1 || normalizeUrl(firstItem.item) !== normalizeUrl(expectedBreadcrumbHome)) {
+      addIssue(
+        errors,
+        "breadcrumb-home",
+        pagePath,
+        `BreadcrumbList must start at the localized homepage ${expectedBreadcrumbHome}.`
+      );
+    }
+  }
 
   page.$("img").each((_, image) => {
     if (page.$(image).attr("alt") === undefined) {
