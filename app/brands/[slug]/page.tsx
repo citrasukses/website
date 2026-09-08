@@ -634,8 +634,8 @@ export default async function BrandDetailPage({ params }: PageProps) {
               ) : (
                 <div className="border border-dashed border-graphite-300 bg-white p-8 text-sm leading-6 text-graphite-500">
                   {lang === "en"
-                    ? "Product categories and models for this brand are being prepared. Send an RFQ with the required model or specification."
-                    : "Kategori dan model produk untuk brand ini sedang disiapkan. Kirim RFQ dengan model atau spesifikasi yang dibutuhkan."}
+                    ? "Product categories and models for this brand are being prepared. Contact CSE with the required model or specification."
+                    : "Kategori dan model produk untuk brand ini sedang disiapkan. Hubungi CSE dengan model atau spesifikasi yang dibutuhkan."}
                 </div>
               )}
             </div>

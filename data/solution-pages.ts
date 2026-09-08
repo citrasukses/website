@@ -263,7 +263,7 @@ export const solutionPages: SolutionPage[] = [
     related: [
       { href: "/brands", title: { id: "Direktori brand", en: "Brand directory" }, description: { id: "Cari represented dan general-trading brands.", en: "Search represented and general-trading brands." } },
       { href: "/industries/general-industry", title: { id: "General manufacturing", en: "General manufacturing" }, description: { id: "Lihat alur kebutuhan produksi dan maintenance.", en: "See the production and maintenance workflow." } },
-      { href: "/contact", title: { id: "Kirim RFQ", en: "Send an RFQ" }, description: { id: "Lampirkan model, foto, drawing, dan target delivery.", en: "Attach models, photos, drawings, and target delivery." } }
+      { href: "/contact", title: { id: "Hubungi via WhatsApp", en: "Contact via WhatsApp" }, description: { id: "Bagikan model, foto, drawing, dan target delivery.", en: "Share models, photos, drawings, and target delivery." } }
     ]
   }
 ];

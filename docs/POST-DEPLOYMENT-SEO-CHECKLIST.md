@@ -69,7 +69,7 @@ Inspect the homepage, every SEO-sensitive changed page, and at least one represe
 - [ ] Confirm no name, email, phone number, company, or message is placed in analytics events.
 - [ ] Click a visible CSE email link and confirm the `contact_email_click` event is available to the configured analytics collector.
 - [ ] If the form fallback is intentionally tested, confirm `inquiry_email_fallback` is emitted.
-- [ ] If an approved WhatsApp link exists in a future release, confirm its click event without exposing the visitor's message or personal data.
+- [ ] Confirm the floating WhatsApp button opens the required Contact-page fields, and the completed inquiry opens the approved destination without displaying the number or exposing the visitor's message or personal data to analytics.
 - [ ] Mark the production test inquiry as test/spam or remove it through the approved operational process.
 
 Attribution test URL:
@@ -78,7 +78,7 @@ Attribution test URL:
 https://cse.co.id/?utm_source=deployment-test&utm_medium=referral&utm_campaign=post-deploy
 ```
 
-Open that URL in a fresh private session, navigate normally to `/contact`, submit the test RFQ, and verify that first-touch attribution remains attached to the inquiry.
+Open that URL in a fresh private session, navigate normally to `/contact`, prepare a WhatsApp inquiry, and verify that first-touch attribution is represented only in the non-PII click event.
 
 ### Critical user experience
 

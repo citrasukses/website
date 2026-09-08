@@ -6,9 +6,9 @@ const moduleImage = "/assets/brands/products/tohnichi/catalog/optional-equipment
 
 export const fddRcmGuideFlow = {
   slug: "cspfdd-r-cm-connection",
-  version: "1.0.0",
+  version: "1.0.1",
   status: "pilot",
-  lastReviewed: "2026-09-05",
+  lastReviewed: "2026-09-08",
   source: {
     id: "TOHNICHI Wireless Data Transfer Torque Wrench CSPFD/CSPFDD Operating Instruction, bagian 3-7, 9-1, dan 10",
     en: "TOHNICHI Wireless Data Transfer Torque Wrench CSPFD/CSPFDD Operating Instruction, sections 3-7, 9-1, and 10"
@@ -62,7 +62,7 @@ export const fddRcmGuideFlow = {
     {
       id: "add-second-fdd",
       title: { id: "Tambahkan FDD kedua", en: "Add a second FDD" },
-      description: { id: "Mulai dari setting Group, ID, dan JGC FDD.", en: "Start at the FDD Group, ID, and JGC settings." },
+      description: { id: "Mulai dari setting Group dan pastikan semua device memakai JGC 0.", en: "Start at the Group setting and make sure every device uses JGC 0." },
       startStepId: "turn-on-fdd"
     },
     {
@@ -75,7 +75,7 @@ export const fddRcmGuideFlow = {
   ],
   prerequisites: [
     { id: "R-CM, radio module M-FD, dan kedua antenna", en: "R-CM, M-FD radio module, and both antennas" },
-    { id: "Satu atau dua FDD dengan ID 3 digit yang unik", en: "One or two FDD wrenches with unique 3-digit IDs" },
+    { id: "Satu atau dua FDD dengan ID 3 digit yang sudah dicatat", en: "One or two FDD wrenches with recorded 3-digit IDs" },
     { id: "Power DC 18-36 V untuk R-CM", en: "DC 18-36 V power for R-CM" },
     { id: "Batas torque LOW dan HIGH dari process specification", en: "LOW and HIGH torque limits from the process specification" }
   ],
@@ -214,8 +214,8 @@ export const fddRcmGuideFlow = {
       id: "set-id-jgc",
       stageId: "fdd",
       title: { id: "Set ID dan JGC", en: "Set the ID and JGC" },
-      instruction: { id: "Masukkan ID 3 digit yang unik. Samakan JGC dengan R-CM. Gunakan JGC 1 agar R-CM dapat membedakan ID1 dan ID2; gunakan JGC 0 hanya bila penerimaan tanpa identifikasi ID memang disengaja.", en: "Enter a unique 3-digit ID and match JGC to the R-CM. Use JGC 1 so the R-CM can distinguish ID1 and ID2; use JGC 0 only when reception without ID identification is intentional." },
-      expected: { id: "ID unik tersimpan, JGC sudah ditetapkan, dan FDD kembali ke normal mode.", en: "The unique ID is saved, JGC is set, and the FDD returns to normal mode." },
+      instruction: { id: "Masukkan ID 3 digit dan samakan JGC dengan R-CM. Jika dua FDD terhubung ke satu R-CM, set JGC = 0 pada kedua FDD dan pada R-CM.", en: "Enter the 3-digit ID and match JGC to the R-CM. If two FDD wrenches connect to one R-CM, set JGC = 0 on both FDD wrenches and on the R-CM." },
+      expected: { id: "ID tersimpan, JGC sama pada semua device, dan FDD kembali ke normal mode.", en: "The ID is saved, JGC matches on every device, and the FDD returns to normal mode." },
       successLabel: { id: "ID dan JGC tersimpan", en: "ID and JGC are saved" },
       helpLabel: { id: "Setting tidak tersimpan", en: "The settings will not save" },
       manualRef: "9-1 BASIC",
@@ -227,7 +227,7 @@ export const fddRcmGuideFlow = {
       },
       quickChecks: [
         { id: "Catat ID sebelum memasukkannya ke receiver.", en: "Record the ID before entering it on the receiver." },
-        { id: "Pastikan tidak ada dua wrench dengan ID sama pada Group tersebut.", en: "Confirm no two wrenches share an ID in that Group." }
+        { id: "Untuk setup dua FDD ke satu R-CM, konfirmasi JGC menunjukkan 0 pada kedua FDD.", en: "For a two-FDD-to-one-R-CM setup, confirm JGC shows 0 on both FDD wrenches." }
       ],
       issueIds: ["id-mismatch", "unexpected-screen"]
     },
@@ -256,9 +256,9 @@ export const fddRcmGuideFlow = {
     {
       id: "match-radio",
       stageId: "receiver",
-      title: { id: "Samakan MODEL, GROUP, dan JGC", en: "Match MODEL, GROUP, and JGC" },
-      instruction: { id: "Biarkan MODEL = R-FHD. Set GROUP sama dengan GR pada FDD dan set JGC ke nilai yang sama.", en: "Keep MODEL = R-FHD. Set GROUP to the FDD GR value and set JGC to the same value." },
-      expected: { id: "FDD dan R-CM memiliki Group dan JGC yang sama.", en: "The FDD and R-CM now have matching Group and JGC values." },
+      title: { id: "Set MODEL, GROUP, JGC, dan ID", en: "Set MODEL, GROUP, JGC, and ID" },
+      instruction: { id: "Biarkan MODEL = R-FHD dan samakan GROUP dengan GR pada FDD. Untuk dua FDD pada satu R-CM, set JGC = 0 pada R-CM. Set ID pada [MODEL] ke nilai yang sama dengan ID1 yang akan dimasukkan pada [BASE].", en: "Keep MODEL = R-FHD and match GROUP to the FDD GR value. For two FDD wrenches on one R-CM, set the R-CM JGC = 0. Set the ID under [MODEL] to the same value that will be entered as ID1 under [BASE]." },
+      expected: { id: "Group dan JGC cocok, serta ID pada [MODEL] sama dengan ID1 pada [BASE].", en: "Group and JGC match, and the ID under [MODEL] equals ID1 under [BASE]." },
       successLabel: { id: "Radio setting cocok", en: "The radio settings match" },
       helpLabel: { id: "Nilai tidak cocok", en: "The values do not match" },
       manualRef: "10-2 MODEL",
@@ -266,34 +266,35 @@ export const fddRcmGuideFlow = {
         type: "image",
         src: receiverImage,
         alt: { id: "Display setting R-CM", en: "R-CM settings display" },
-        hotspot: { x: 49, y: 56, label: { id: "MODEL R-FHD + GROUP sama", en: "MODEL R-FHD + matching GROUP" }, align: "left" },
+        hotspot: { x: 49, y: 56, label: { id: "JGC 0 + catat ID MODEL", en: "JGC 0 + record MODEL ID" }, align: "left" },
         note: { id: "Jangan gunakan kembali Group yang sama pada R-CM yang berdekatan.", en: "Do not reuse the same Group on an adjacent R-CM." }
       },
       quickChecks: [
         { id: "Bandingkan angka Group digit demi digit.", en: "Compare the Group numbers digit by digit." },
-        { id: "Untuk profile ID1/ID2, gunakan JGC 1 pada FDD dan receiver. JGC 0 menonaktifkan identifikasi ID.", en: "For ID1/ID2 profiles, use JGC 1 on the FDD and receiver. JGC 0 disables ID identification." }
+        { id: "Jika memakai dua FDD, pastikan JGC = 0 pada R-CM dan kedua FDD.", en: "When using two FDD wrenches, confirm JGC = 0 on the R-CM and both FDD wrenches." },
+        { id: "Catat ID pada [MODEL]; nilai ini harus dimasukkan sebagai ID1 pada [BASE].", en: "Record the ID under [MODEL]; this value must be entered as ID1 under [BASE]." }
       ],
       issueIds: ["group-mismatch", "unexpected-screen"]
     },
     {
       id: "assign-ids",
       stageId: "limits",
-      title: { id: "Masukkan ID1 dan ID2", en: "Enter ID1 and ID2" },
-      instruction: { id: "Buka BASE. Masukkan ID FDD pertama sebagai ID1 dan ID FDD kedua sebagai ID2 bila digunakan.", en: "Open BASE. Enter the first FDD ID as ID1 and the second FDD ID as ID2 when used." },
-      expected: { id: "Setiap ID R-CM sama persis dengan ID wrench yang ditugaskan.", en: "Each R-CM ID exactly matches its assigned wrench ID." },
-      successLabel: { id: "ID1/ID2 cocok", en: "ID1/ID2 match" },
-      helpLabel: { id: "Receiver tidak menerima ID", en: "The receiver will not accept the ID" },
+      title: { id: "Samakan MODEL ID dan BASE ID1", en: "Match MODEL ID and BASE ID1" },
+      instruction: { id: "Buka [BASE], lalu masukkan nilai ID dari [MODEL] sebagai ID1. Untuk setup dua FDD dengan JGC 0, ID1 menjadi profile judgment yang dipakai receiver.", en: "Open [BASE], then enter the ID value from [MODEL] as ID1. For a two-FDD setup using JGC 0, ID1 is the judgment profile used by the receiver." },
+      expected: { id: "ID pada [MODEL] sama persis dengan ID1 pada [BASE].", en: "The ID under [MODEL] exactly matches ID1 under [BASE]." },
+      successLabel: { id: "MODEL ID dan ID1 cocok", en: "MODEL ID and ID1 match" },
+      helpLabel: { id: "ID dan ID1 tidak cocok", en: "ID and ID1 do not match" },
       manualRef: "10-3 BASE",
       media: {
         type: "image",
         src: receiverImage,
         alt: { id: "Display dan tombol receiver R-CM", en: "R-CM receiver display and controls" },
-        hotspot: { x: 50, y: 58, label: { id: "Masukkan ID 3 digit", en: "Enter the 3-digit ID" } },
+        hotspot: { x: 50, y: 58, label: { id: "BASE ID1 = MODEL ID", en: "BASE ID1 = MODEL ID" } },
         note: { id: "SELECT mengubah nilai; SET pindah digit dan menyimpan.", en: "SELECT changes the value; SET moves digits and saves." }
       },
       quickChecks: [
-        { id: "Cocokkan ketiga digit dengan catatan ID FDD.", en: "Match all three digits to the recorded FDD ID." },
-        { id: "Gunakan hanya ID1 bila hanya satu wrench ditugaskan.", en: "Use only ID1 when assigning one wrench." }
+        { id: "Cocokkan ketiga digit ID1 dengan ID yang dicatat dari [MODEL].", en: "Match all three ID1 digits to the ID recorded from [MODEL]." },
+        { id: "Untuk dua FDD, periksa kembali bahwa JGC = 0 pada semua device.", en: "For two FDD wrenches, recheck that JGC = 0 on every device." }
       ],
       issueIds: ["id-mismatch", "unexpected-screen"]
     },
@@ -301,7 +302,7 @@ export const fddRcmGuideFlow = {
       id: "set-limits",
       stageId: "limits",
       title: { id: "Masukkan LOW dan HIGH", en: "Enter LOW and HIGH limits" },
-      instruction: { id: "Pilih UNIT dari process specification. Masukkan LO-T dan HI-T untuk setiap ID; HIGH harus lebih besar daripada LOW.", en: "Choose the UNIT from the process specification. Enter LO-T and HI-T for each ID; HIGH must be greater than LOW." },
+      instruction: { id: "Pilih UNIT dari process specification. Masukkan LO-T1 dan HI-T1 untuk profile ID1; HIGH harus lebih besar daripada LOW. Gunakan ID2 hanya jika process Anda memang memakai profile kedua yang terpisah.", en: "Choose the UNIT from the process specification. Enter LO-T1 and HI-T1 for the ID1 profile; HIGH must be greater than LOW. Use ID2 only when your process intentionally uses a separate second profile." },
       expected: { id: "Unit dan acceptance limit pada R-CM sama dengan control plan yang disetujui.", en: "The unit and acceptance limits on the R-CM match the approved control plan." },
       successLabel: { id: "Limit sudah benar", en: "The limits are correct" },
       helpLabel: { id: "Tidak yakin dengan limit", en: "I am unsure about the limits" },
@@ -359,7 +360,7 @@ export const fddRcmGuideFlow = {
       },
       quickChecks: [
         { id: "Pastikan wrench 1 tidak mengirim saat wrench 2 ditest.", en: "Confirm wrench 1 is not transmitting while wrench 2 is tested." },
-        { id: "Cocokkan ID wrench 2 dengan ID2 serta LO-T2/HI-T2.", en: "Match wrench 2's ID to ID2 and LO-T2/HI-T2." }
+        { id: "Untuk setup JGC 0, pastikan hasil FDD kedua dinilai memakai profile ID1 yang telah disamakan dengan ID pada [MODEL].", en: "For the JGC 0 setup, confirm the second FDD result is judged using the ID1 profile matched to the ID under [MODEL]." }
       ],
       issueIds: ["e01", "id-mismatch", "judgment-ng"]
     }
@@ -384,8 +385,8 @@ export const fddRcmGuideFlow = {
       summary: { id: "Ubah satu hal pada satu waktu dan resend setelah setiap koreksi.", en: "Change one thing at a time and resend after each correction." },
       checks: [
         { title: { id: "M-FD dan power", en: "M-FD and power" }, body: { id: "Pastikan module adalah M-FD, kedua antenna terpasang, dan R-CM menyala di normal mode.", en: "Confirm the module is M-FD, both antennas are attached, and the R-CM is on in normal mode." } },
-        { title: { id: "GROUP dan JGC", en: "GROUP and JGC" }, body: { id: "Samakan Group CH dan JGC pada FDD dengan R-CM. Gunakan JGC 1 bila receiver harus memilih profile ID1 atau ID2; JGC 0 hanya untuk penerimaan tanpa identifikasi ID.", en: "Match the FDD Group CH and JGC to the R-CM. Use JGC 1 when the receiver must select the ID1 or ID2 profile; JGC 0 is only for reception without ID identification." } },
-        { title: { id: "ID1 / ID2", en: "ID1 / ID2" }, body: { id: "Cocokkan ID 3 digit FDD dengan profile ID1 atau ID2 pada BASE R-CM.", en: "Match the FDD's 3-digit ID to its ID1 or ID2 profile in R-CM BASE." } },
+        { title: { id: "GROUP dan JGC", en: "GROUP and JGC" }, body: { id: "Samakan Group CH pada FDD dengan R-CM. Jika dua FDD terhubung ke satu R-CM, set JGC = 0 pada R-CM dan kedua FDD.", en: "Match the FDD Group CH to the R-CM. If two FDD wrenches connect to one R-CM, set JGC = 0 on the R-CM and both FDD wrenches." } },
+        { title: { id: "MODEL ID / BASE ID1", en: "MODEL ID / BASE ID1" }, body: { id: "Pastikan ID pada [MODEL] R-CM sama persis dengan ID1 pada [BASE].", en: "Confirm the R-CM ID under [MODEL] exactly matches ID1 under [BASE]." } },
         { title: { id: "Area radio", en: "Radio area" }, body: { id: "Test pada jarak dekat dan jauhkan antenna dari metal, kabel paralel, welding machine, atau electromagnetic noise kuat.", en: "Test at close range and keep antennas away from metal, parallel wiring, welding machines, or strong electromagnetic noise." } },
         { title: { id: "Resend", en: "Resend" }, body: { id: "Pastikan tidak ada wrench kedua yang mengirim. Tekan POWER untuk resend nilai yang tampil.", en: "Confirm no second wrench is transmitting. Press POWER to resend the displayed value." } }
       ]
@@ -403,13 +404,13 @@ export const fddRcmGuideFlow = {
     },
     {
       id: "id-mismatch",
-      label: { id: "ID tidak dikenali", en: "ID is not recognized" },
-      title: { id: "ID FDD tidak cocok dengan ID1/ID2", en: "FDD ID does not match ID1/ID2" },
-      summary: { id: "Receiver memakai ID untuk memilih profile judgment yang benar.", en: "The receiver uses the ID to select the correct judgment profile." },
+      label: { id: "ID dan ID1 tidak cocok", en: "ID and ID1 do not match" },
+      title: { id: "MODEL ID tidak cocok dengan BASE ID1", en: "MODEL ID does not match BASE ID1" },
+      summary: { id: "Pada R-CM, ID di [MODEL] harus sama dengan ID1 di [BASE].", en: "On the R-CM, the ID under [MODEL] must equal ID1 under [BASE]." },
       checks: [
-        { title: { id: "Catat ID FDD", en: "Record the FDD ID" }, body: { id: "Buka BASIC dan catat ketiga digit ID wrench.", en: "Open BASIC and record all three digits of the wrench ID." } },
-        { title: { id: "Cocokkan profile", en: "Match the profile" }, body: { id: "Pada BASE R-CM, masukkan ID tersebut ke ID1 atau ID2.", en: "In R-CM BASE, enter that ID under ID1 or ID2." } },
-        { title: { id: "Pastikan unik", en: "Keep it unique" }, body: { id: "Jangan gunakan ID yang sama untuk dua wrench dalam Group yang sama.", en: "Do not use the same ID for two wrenches in the same Group." } }
+        { title: { id: "Catat MODEL ID", en: "Record MODEL ID" }, body: { id: "Buka [MODEL] pada R-CM dan catat ketiga digit ID.", en: "Open [MODEL] on the R-CM and record all three ID digits." } },
+        { title: { id: "Samakan BASE ID1", en: "Match BASE ID1" }, body: { id: "Buka [BASE] dan masukkan nilai tersebut ke ID1.", en: "Open [BASE] and enter that value as ID1." } },
+        { title: { id: "Periksa JGC", en: "Check JGC" }, body: { id: "Jika dua FDD memakai satu R-CM, pastikan JGC = 0 pada R-CM dan kedua FDD.", en: "If two FDD wrenches use one R-CM, confirm JGC = 0 on the R-CM and both FDD wrenches." } }
       ]
     },
     {

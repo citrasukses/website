@@ -57,10 +57,7 @@ const fieldLimits = {
   message: 5_000
 };
 
-const requiredFields = {
-  rfq: ["name", "company", "email", "message"],
-  partner: ["name", "company", "email", "country", "message"]
-};
+const requiredPartnerFields = ["name", "company", "email", "country", "message"];
 
 const attributionLimits = {
   landingPath: 500,
@@ -133,11 +130,8 @@ function normalizeAttribution(input) {
   return attribution;
 }
 
-function inquirySubject(type, fields) {
-  if (type === "partner") {
-    return `Partner inquiry: ${fields.company} (${fields.country})`;
-  }
-  return `RFQ: ${fields.company} - ${fields.brand || "General inquiry"}`;
+function inquirySubject(fields) {
+  return `Partner inquiry: ${fields.company} (${fields.country})`;
 }
 
 function inquiryReference() {
@@ -172,7 +166,7 @@ async function saveInquiry(request, env) {
   const language = payload?.lang === "en" ? "en" : "id";
   const fields = normalizeFields(payload?.fields);
   const attribution = normalizeAttribution(payload?.attribution);
-  if ((type !== "rfq" && type !== "partner") || !fields || (payload?.attribution != null && !attribution)) {
+  if (type !== "partner" || !fields || (payload?.attribution != null && !attribution)) {
     return jsonResponse({ ok: false, message: "Invalid inquiry data." }, 400);
   }
 
@@ -180,7 +174,7 @@ async function saveInquiry(request, env) {
     return jsonResponse({ ok: true, reference: inquiryReference() }, 201);
   }
 
-  if (requiredFields[type].some((field) => !fields[field])) {
+  if (requiredPartnerFields.some((field) => !fields[field])) {
     return jsonResponse({ ok: false, message: "Required fields are missing." }, 400);
   }
 
@@ -193,7 +187,7 @@ async function saveInquiry(request, env) {
   }
 
   const reference = inquiryReference();
-  const subject = inquirySubject(type, fields);
+  const subject = inquirySubject(fields);
   const createdAt = new Date().toISOString();
 
   try {

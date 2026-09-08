@@ -225,9 +225,6 @@ export function GuideFlowRunner({ guide, lang }: { guide: GuideFlowDefinition; l
                 {lang === "en" ? "What do you need to do?" : "Apa yang ingin Anda lakukan?"}
               </h2>
             </div>
-            <p className="max-w-lg text-sm leading-6 text-graphite-500">
-              {lang === "en" ? "Your choice opens the relevant step or Fix Path on this page." : "Pilihan Anda membuka step atau Fix Path yang relevan pada halaman ini."}
-            </p>
           </div>
           <div className="mt-7 grid gap-4 md:grid-cols-3">
             {guide.tasks.map((task, index) => {
@@ -417,7 +414,7 @@ export function GuideFlowRunner({ guide, lang }: { guide: GuideFlowDefinition; l
             <div>
               <p className="text-xs font-black uppercase tracking-[0.18em] text-signal-600">Fix Path</p>
               <h2 className="mt-3 text-3xl font-black text-graphite-900">
-                {selectedIssue ? text(selectedIssue.title, lang) : (lang === "en" ? "Troubleshooting opens here." : "Troubleshooting terbuka di sini.")}
+                {selectedIssue ? text(selectedIssue.title, lang) : (lang === "en" ? "Troubleshooting opens here." : "Troubleshooting akan ditampilkan di bagian ini.")}
               </h2>
               <p className="mt-4 text-sm leading-7 text-graphite-500">
                 {selectedIssue ? text(selectedIssue.summary, lang) : (lang === "en" ? "Choose “Not yet - help me” in a step, then select the symptom you can observe." : "Pilih tombol bantuan pada sebuah step, lalu pilih gejala yang dapat Anda lihat.")}

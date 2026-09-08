@@ -68,7 +68,7 @@ export function Navbar() {
             href={withLang("/contact", lang)}
             className="focus-ring inline-flex h-10 items-center justify-center bg-signal-500 px-4 text-sm font-semibold text-white shadow-sm transition hover:bg-signal-600"
           >
-            RFQ
+            WhatsApp
           </Link>
           <a
             href={languageHref}
@@ -110,7 +110,7 @@ export function Navbar() {
                 href={withLang("/contact", lang)}
                 className="focus-ring inline-flex h-10 items-center bg-signal-500 px-4 text-sm font-semibold text-white"
               >
-                RFQ
+                WhatsApp
               </Link>
               <a
                 href={languageHref}

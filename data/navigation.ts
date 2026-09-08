@@ -20,6 +20,9 @@ export const company = {
   longName: "Citra Sukses Ekapratama",
   tagline: "Your Industrial Sourcing Partner",
   email: "cse@citra-sukses.com",
+  whatsapp: {
+    href: "https://wa.me/6281818885121"
+  },
   positioning: {
     id: "Industrial sourcing partner untuk pabrik di Indonesia. CSE membantu procurement dan engineering mencari produk industri dari Jepang dan Asia, memeriksa kecocokan teknis, menyediakan alternatif, dan mempercepat proses RFQ.",
     en: "Indonesia's industrial sourcing partner. CSE helps procurement and engineering teams find industrial products from Japan and Asia, check technical fit, provide alternatives, and speed up the RFQ process."

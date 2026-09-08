@@ -340,7 +340,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                   <dd className="text-sm text-graphite-600">{text(specification.value, lang)}</dd>
                 </div>
               )) : (
-                <p className="p-6 text-sm leading-6 text-graphite-500">{lang === "en" ? "Specifications have not been published yet. Include the target model and required parameters in the RFQ." : "Spesifikasi belum dipublikasikan. Sertakan model target dan parameter yang dibutuhkan dalam RFQ."}</p>
+                <p className="p-6 text-sm leading-6 text-graphite-500">{lang === "en" ? "Specifications have not been published yet. Include the target model and required parameters in your WhatsApp inquiry." : "Spesifikasi belum dipublikasikan. Sertakan model target dan parameter yang dibutuhkan dalam inquiry WhatsApp."}</p>
               )}
             </div>
           </div>
@@ -391,7 +391,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
                 <article className="border border-graphite-200 bg-graphite-50 p-6 shadow-sm">
                   <p className="text-xs font-bold uppercase tracking-[0.16em] text-signal-600">
-                    {lang === "en" ? "Include in your RFQ" : "Sertakan dalam RFQ"}
+                    {lang === "en" ? "Include in your inquiry" : "Sertakan dalam inquiry"}
                   </p>
                   <ul className="mt-5 space-y-3">
                     {tohnichiPriorityGuidance.rfqChecklist.map((item) => (

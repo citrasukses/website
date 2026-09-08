@@ -88,7 +88,7 @@ export default function AboutPage() {
               {lang === "en" ? "Send a product request or consultation brief." : "Kirim kebutuhan produk atau konsultasi teknis."}
             </h2>
           </div>
-          <CTAButton href={withLang("/contact", lang)}>{lang === "en" ? "Open RFQ form" : "Buka form RFQ"}</CTAButton>
+          <CTAButton href={withLang("/contact", lang)}>{lang === "en" ? "Chat with CSE" : "Chat dengan CSE"}</CTAButton>
         </div>
       </section>
     </>

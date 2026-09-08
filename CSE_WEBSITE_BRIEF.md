@@ -22,7 +22,7 @@ Primary conversion goals:
 - RFQ submission
 - Product consultation request
 - Email inquiry
-- Future WhatsApp inquiry when the number is available
+- Direct WhatsApp inquiry through the approved, non-displayed destination
 - Overseas principal / distribution partnership inquiry
 
 ## Target Audiences
@@ -127,7 +127,7 @@ Include:
 - Reusable components
 - Structured brand/product/industry/customer data
 - Inquiry forms that send submissions to CSE email
-- Placeholder-ready structure for WhatsApp CTA
+- Site-wide floating WhatsApp CTA and structured WhatsApp inquiry composer
 
 Do not include in v1:
 
@@ -226,7 +226,7 @@ Use reusable components such as:
 - IndustryCard
 - CustomerLogoCloud
 - StatsSection
-- RFQForm
+- WhatsAppInquiryForm
 - PartnerInquiryForm
 - Breadcrumb
 - FAQAccordion
@@ -338,7 +338,7 @@ Partner inquiry fields:
 - What support is needed in Indonesia?
 - Message
 
-Do not mix buyer RFQs and partner inquiries into one vague form if the page context is specific.
+Do not mix buyer product inquiries and partner inquiries into one vague form if the page context is specific.
 
 ## Scalability Principles
 
@@ -352,7 +352,7 @@ Do not mix buyer RFQs and partner inquiries into one vague form if the page cont
 ## Open Decisions
 
 - Exact email provider: Resend, SMTP, or another service.
-- WhatsApp number for future CTA.
+- Approved WhatsApp destination is configured centrally and not displayed as website text.
 - Final brand list for v1 beyond TOHNICHI, NAC, and Fuji Star.
 - Final available image/logo assets.
 - Whether bilingual content should be complete at launch or Indonesian-first with English added progressively.

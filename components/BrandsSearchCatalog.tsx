@@ -327,8 +327,8 @@ export function BrandsSearchCatalog({ representedBrands, tradingBrands, tradingB
         ) : (
           <div className="mt-5 border border-graphite-200 bg-white p-6 text-sm font-semibold text-graphite-500">
             {lang === "en"
-              ? "No general trading cards match this search. Send an RFQ if the brand is not published yet."
-              : "Tidak ada kartu general trading yang cocok. Kirim RFQ jika brand belum dipublikasikan."}
+              ? "No general trading cards match this search. Ask CSE on WhatsApp if the brand is not published yet."
+              : "Tidak ada kartu general trading yang cocok. Tanyakan ke CSE via WhatsApp jika brand belum dipublikasikan."}
           </div>
         )}
         <p className="mt-5 border border-dashed border-graphite-300 bg-graphite-50 px-4 py-3 text-xs leading-5 text-graphite-500">

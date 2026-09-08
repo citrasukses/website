@@ -338,8 +338,8 @@ for (const slug of priorityProductSlugs) {
 
     const visibleText = page.$("body").text().replace(/\s+/g, " ");
     const requiredPhrases = localePrefix
-      ? ["Technical selection guide", "Decision boundary", "Include in your RFQ"]
-      : ["Panduan pemilihan teknis", "Batas keputusan", "Sertakan dalam RFQ"];
+      ? ["Technical selection guide", "Decision boundary", "Include in your inquiry"]
+      : ["Panduan pemilihan teknis", "Batas keputusan", "Sertakan dalam inquiry"];
     for (const phrase of requiredPhrases) {
       if (!visibleText.includes(phrase)) {
         addIssue(

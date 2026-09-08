@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Mail } from "lucide-react";
+import { Mail, MessageCircle } from "lucide-react";
 import { TrackedEmailLink } from "@/components/TrackedEmailLink";
 import { company, navigationItems } from "@/data/navigation";
 import { staticLanguage, text, withLang } from "@/lib/i18n";
@@ -62,19 +62,26 @@ export function Footer() {
 
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-graphite-200">Contact</p>
+          <Link
+            href={withLang("/contact#whatsapp-inquiry", lang)}
+            className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-white"
+          >
+            <MessageCircle className="h-4 w-4" aria-hidden="true" />
+            {lang === "en" ? "Contact CSE on WhatsApp" : "Hubungi CSE via WhatsApp"}
+          </Link>
           <TrackedEmailLink
             href={`mailto:${company.email}`}
             lang={lang}
             context="footer"
-            className="mt-4 inline-flex items-center gap-2 text-sm text-white"
+            className="mt-3 inline-flex items-center gap-2 text-sm text-white"
           >
             <Mail className="h-4 w-4" aria-hidden="true" />
             {company.email}
           </TrackedEmailLink>
           <p className="mt-4 text-sm leading-6 text-graphite-200">
             {lang === "en"
-              ? "Send product requests, model questions, or partnership inquiries by email."
-              : "Kirim kebutuhan produk, pertanyaan model, atau inquiry partnership melalui email."}
+              ? "WhatsApp us for product questions. Email remains available for documents and partnership inquiries."
+              : "Hubungi kami via WhatsApp untuk pertanyaan produk. Email tetap tersedia untuk dokumen dan inquiry partnership."}
           </p>
         </div>
       </div>

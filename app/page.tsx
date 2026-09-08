@@ -6,7 +6,7 @@ import { CTAButton } from "@/components/CTAButton";
 import { CustomerLogoCloud } from "@/components/CustomerLogoCloud";
 import { HomeBackgroundItems } from "@/components/HomeBackgroundItems";
 import { IndustryCaseStudyExplorer } from "@/components/IndustryCaseStudyExplorer";
-import { RFQForm } from "@/components/InquiryForms";
+import { WhatsAppInquiryForm } from "@/components/WhatsAppInquiryForm";
 import { NewsSection } from "@/components/NewsSection";
 import { SectionHeader } from "@/components/SectionHeader";
 import { TohnichiTighteningSection } from "@/components/TohnichiTighteningSection";
@@ -96,10 +96,7 @@ const organizationJsonLd = {
 
 export default async function HomePage() {
   const lang = staticLanguage();
-  const [catalogBrands, fullCatalog] = await Promise.all([
-    getCatalogBrands(),
-    getCatalogBrands({ includeUnpublished: true })
-  ]);
+  const fullCatalog = await getCatalogBrands({ includeUnpublished: true });
   const brands = fullCatalog
     .filter((brand) => brand.brandType === "represented")
     .sort((a, b) => {
@@ -390,7 +387,7 @@ export default async function HomePage() {
           </p>
           <CTAButton href={withLang("/contact", lang)} variant="secondary" className="shrink-0">
             <span className="inline-flex items-center gap-2">
-              {lang === "en" ? "Start RFQ" : "Mulai RFQ"}
+              {lang === "en" ? "Chat on WhatsApp" : "Chat via WhatsApp"}
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </span>
           </CTAButton>
@@ -454,7 +451,7 @@ export default async function HomePage() {
                 : "Kirim brand, model, kuantitas, dan detail aplikasi agar CSE dapat meninjau kebutuhan dengan konteks teknis yang tepat."}
             </p>
           </div>
-          <RFQForm lang={lang} brands={catalogBrands.map(({ slug, name }) => ({ slug, name }))} />
+          <WhatsAppInquiryForm lang={lang} />
         </div>
       </section>
     </>
