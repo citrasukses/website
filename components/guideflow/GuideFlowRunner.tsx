@@ -14,6 +14,7 @@ import {
   Clock3,
   FileText,
   Flag,
+  Gauge,
   LifeBuoy,
   ListChecks,
   Play,
@@ -110,6 +111,8 @@ export function GuideFlowRunner({ guide, lang }: { guide: GuideFlowDefinition; l
   const currentStage = guide.stages[currentStageIndex];
   const selectedIssue = selectedIssueId ? issueById.get(selectedIssueId) : undefined;
   const progress = isFinished ? 100 : ((currentIndex + 1) / guide.steps.length) * 100;
+  const HeroConnectorIcon = guide.presentation.hero.connectorIcon === "radio" ? Radio : Gauge;
+  const contactPath = `/contact?topic=${encodeURIComponent(guide.presentation.contactTopic)}`;
 
   if (!currentStep || !currentStage) return null;
 
@@ -178,10 +181,6 @@ export function GuideFlowRunner({ guide, lang }: { guide: GuideFlowDefinition; l
         <div className="container-page grid gap-8 py-9 lg:grid-cols-[1.12fr_0.88fr] lg:items-center">
           <div>
             <div className="flex flex-wrap items-center gap-2 text-[10px] font-black uppercase tracking-[0.16em]">
-              <span className="bg-signal-500 px-2.5 py-1.5 text-white">CSE GuideFlow</span>
-              <span className="border border-white/20 px-2.5 py-1.5 text-white/65">
-                {lang === "en" ? "Pilot" : "Pilot"} v{guide.version}
-              </span>
             </div>
             <h1 className="mt-5 max-w-4xl text-4xl font-black leading-[1.04] tracking-tight md:text-5xl">
               {text(guide.title, lang)}
@@ -196,19 +195,19 @@ export function GuideFlowRunner({ guide, lang }: { guide: GuideFlowDefinition; l
 
           <div className="border border-white/15 bg-white/[0.04] p-5">
             <p className="text-[10px] font-black uppercase tracking-[0.16em] text-signal-500">
-              {lang === "en" ? "Compatibility" : "Kompatibilitas"}
+              {text(guide.presentation.hero.label, lang)}
             </p>
             <p className="mt-3 text-sm font-semibold leading-6 text-white/85">{text(guide.scope, lang)}</p>
-            <div className="mt-5 grid grid-cols-[1fr_auto_1fr] items-center gap-3" aria-label={lang === "en" ? "FDD wireless link to R-CM with M-FD" : "Koneksi wireless FDD ke R-CM dengan M-FD"}>
+            <div className="mt-5 grid grid-cols-[1fr_auto_1fr] items-center gap-3" aria-label={text(guide.presentation.hero.ariaLabel, lang)}>
               <div className="relative aspect-[16/7] bg-white p-2">
-                <Image src={fddImageForHero} alt="TOHNICHI FDD" fill sizes="220px" className="object-contain p-2" priority />
+                <Image src={guide.presentation.hero.leftImage.src} alt={text(guide.presentation.hero.leftImage.alt, lang)} fill sizes="220px" className="object-contain p-2" priority />
               </div>
               <div className="grid justify-items-center gap-1 text-signal-500">
-                <Radio className="h-5 w-5" aria-hidden="true" />
-                <span className="text-[9px] font-black">2.4 GHz</span>
+                <HeroConnectorIcon className="h-5 w-5" aria-hidden="true" />
+                <span className="text-center text-[9px] font-black uppercase tracking-[0.08em]">{text(guide.presentation.hero.connectorLabel, lang)}</span>
               </div>
               <div className="relative aspect-[16/7] bg-white p-2">
-                <Image src={receiverImageForHero} alt="TOHNICHI R-CM" fill sizes="220px" className="object-contain p-2" priority />
+                <Image src={guide.presentation.hero.rightImage.src} alt={text(guide.presentation.hero.rightImage.alt, lang)} fill sizes="220px" className="object-contain p-2" priority />
               </div>
             </div>
           </div>
@@ -330,12 +329,12 @@ export function GuideFlowRunner({ guide, lang }: { guide: GuideFlowDefinition; l
                     <div className="grid min-h-[620px] place-items-center p-7 text-center">
                       <div className="max-w-xl">
                         <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-700"><CheckCircle2 className="h-8 w-8" aria-hidden="true" /></span>
-                        <p className="mt-6 text-xs font-black uppercase tracking-[0.18em] text-emerald-700">{lang === "en" ? "GuideFlow complete" : "GuideFlow selesai"}</p>
-                        <h2 className="mt-3 text-4xl font-black text-graphite-900">{lang === "en" ? "Connection commissioned." : "Koneksi selesai di-commission."}</h2>
-                        <p className="mt-4 text-base leading-7 text-graphite-500">{lang === "en" ? "Record the receiver, Group CH, wrench IDs, LOW/HIGH limits, unit, date, and test results before releasing the station." : "Catat receiver, Group CH, ID wrench, batas LOW/HIGH, unit, tanggal, dan hasil test sebelum release station."}</p>
+                        <p className="mt-6 text-xs font-black uppercase tracking-[0.18em] text-emerald-700">{text(guide.presentation.completion.eyebrow, lang)}</p>
+                        <h2 className="mt-3 text-4xl font-black text-graphite-900">{text(guide.presentation.completion.title, lang)}</h2>
+                        <p className="mt-4 text-base leading-7 text-graphite-500">{text(guide.presentation.completion.body, lang)}</p>
                         <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
                           <button type="button" onClick={restart} className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 bg-industrial-700 px-5 text-sm font-bold text-white hover:bg-industrial-800"><RotateCcw className="h-4 w-4" aria-hidden="true" />{lang === "en" ? "Restart guide" : "Ulangi guide"}</button>
-                          <Link href={withLang("/contact?topic=cspfdd-rcm-setup", lang)} className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 border border-graphite-300 bg-white px-5 text-sm font-bold text-graphite-800 hover:border-signal-500"><LifeBuoy className="h-4 w-4" aria-hidden="true" />{lang === "en" ? "Ask CSE to review" : "Minta CSE review"}</Link>
+                          <Link href={withLang(contactPath, lang)} className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 border border-graphite-300 bg-white px-5 text-sm font-bold text-graphite-800 hover:border-signal-500"><LifeBuoy className="h-4 w-4" aria-hidden="true" />{lang === "en" ? "Ask CSE to review" : "Minta CSE review"}</Link>
                         </div>
                       </div>
                     </div>
@@ -444,7 +443,7 @@ export function GuideFlowRunner({ guide, lang }: { guide: GuideFlowDefinition; l
                 </ol>
                 <div className="mt-6 grid gap-3 border-t border-graphite-200 pt-6 sm:grid-cols-2">
                   <button type="button" onClick={resumeStep} className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 bg-industrial-700 px-5 text-sm font-black text-white hover:bg-industrial-800"><CheckCircle2 className="h-5 w-5" aria-hidden="true" />{lang === "en" ? "Fixed - resume step" : "Sudah diperbaiki - kembali ke step"}</button>
-                  <Link href={withLang(`/contact?topic=cspfdd-rcm-setup&issue=${selectedIssue.id}&step=${currentStep.id}`, lang)} className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 border border-signal-500 bg-white px-5 text-sm font-black text-signal-600 hover:bg-red-50"><LifeBuoy className="h-5 w-5" aria-hidden="true" />{lang === "en" ? "Still unresolved - contact CSE" : "Belum selesai - hubungi CSE"}</Link>
+                  <Link href={withLang(`${contactPath}&issue=${selectedIssue.id}&step=${currentStep.id}`, lang)} className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 border border-signal-500 bg-white px-5 text-sm font-black text-signal-600 hover:bg-red-50"><LifeBuoy className="h-5 w-5" aria-hidden="true" />{lang === "en" ? "Still unresolved - contact CSE" : "Belum selesai - hubungi CSE"}</Link>
                 </div>
               </div>
             ) : (
@@ -465,12 +464,9 @@ export function GuideFlowRunner({ guide, lang }: { guide: GuideFlowDefinition; l
             <p className="text-xs font-black uppercase tracking-[0.18em] text-signal-500">{lang === "en" ? "Versioned technical content" : "Konten teknis berversi"}</p>
             <p className="mt-2 text-sm leading-6 text-white/65">{text(guide.source, lang)} · {lang === "en" ? "Last reviewed" : "Terakhir direview"} {guide.lastReviewed}</p>
           </div>
-          <Link href={withLang("/contact?topic=cspfdd-rcm-setup", lang)} className="focus-ring inline-flex min-h-12 shrink-0 items-center justify-center gap-2 bg-signal-500 px-5 text-sm font-black text-white hover:bg-signal-600"><LifeBuoy className="h-4 w-4" aria-hidden="true" />{lang === "en" ? "Ask CSE technical support" : "Hubungi technical support CSE"}</Link>
+          <Link href={withLang(contactPath, lang)} className="focus-ring inline-flex min-h-12 shrink-0 items-center justify-center gap-2 bg-signal-500 px-5 text-sm font-black text-white hover:bg-signal-600"><LifeBuoy className="h-4 w-4" aria-hidden="true" />{lang === "en" ? "Ask CSE technical support" : "Hubungi technical support CSE"}</Link>
         </div>
       </section>
     </main>
   );
 }
-
-const fddImageForHero = "/assets/brands/products/tohnichi/tohnichi_fdd.jpg";
-const receiverImageForHero = "/assets/brands/products/tohnichi/catalog/optional-equipment/r-cm.png";

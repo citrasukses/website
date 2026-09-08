@@ -26,6 +26,25 @@ export const fddRcmGuideFlow = {
     en: "For FDD with an R-CM receiver fitted with the M-FD radio module. Do not use M-FH for this setup."
   },
   estimatedTime: { id: "25-35 menit", en: "25-35 minutes" },
+  presentation: {
+    contactTopic: "cspfdd-rcm-setup",
+    hero: {
+      label: { id: "Kompatibilitas", en: "Compatibility" },
+      ariaLabel: { id: "Koneksi wireless FDD ke R-CM dengan M-FD", en: "FDD wireless link to R-CM with M-FD" },
+      leftImage: { src: fddImage, alt: { id: "TOHNICHI FDD", en: "TOHNICHI FDD" } },
+      rightImage: { src: receiverImage, alt: { id: "TOHNICHI R-CM", en: "TOHNICHI R-CM" } },
+      connectorLabel: { id: "2.4 GHz", en: "2.4 GHz" },
+      connectorIcon: "radio"
+    },
+    completion: {
+      eyebrow: { id: "GuideFlow selesai", en: "GuideFlow complete" },
+      title: { id: "Koneksi selesai di-commission.", en: "Connection commissioned." },
+      body: {
+        id: "Catat receiver, Group CH, ID wrench, batas LOW/HIGH, unit, tanggal, dan hasil test sebelum release station.",
+        en: "Record the receiver, Group CH, wrench IDs, LOW/HIGH limits, unit, date, and test results before releasing the station."
+      }
+    }
+  },
   stages: [
     { id: "prepare", title: { id: "Siapkan hardware", en: "Prepare hardware" } },
     { id: "fdd", title: { id: "Set FDD", en: "Configure FDD" } },

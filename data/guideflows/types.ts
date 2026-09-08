@@ -49,16 +49,34 @@ export type GuideFlowTask = {
   issueId?: string;
 };
 
+export type GuideFlowPresentation = {
+  contactTopic: string;
+  hero: {
+    label: LocalizedText;
+    ariaLabel: LocalizedText;
+    leftImage: { src: string; alt: LocalizedText };
+    rightImage: { src: string; alt: LocalizedText };
+    connectorLabel: LocalizedText;
+    connectorIcon: "radio" | "calibration";
+  };
+  completion: {
+    eyebrow: LocalizedText;
+    title: LocalizedText;
+    body: LocalizedText;
+  };
+};
+
 export type GuideFlowDefinition = {
   slug: string;
   version: string;
-  status: "pilot" | "published" | "archived";
+  status: "review" | "pilot" | "published" | "archived";
   lastReviewed: string;
   source: LocalizedText;
   title: LocalizedText;
   description: LocalizedText;
   scope: LocalizedText;
   estimatedTime: LocalizedText;
+  presentation: GuideFlowPresentation;
   stages: Array<{ id: string; title: LocalizedText }>;
   tasks: GuideFlowTask[];
   prerequisites: LocalizedText[];
