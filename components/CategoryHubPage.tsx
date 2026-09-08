@@ -14,12 +14,13 @@ import { absoluteLocalizedUrl } from "@/lib/seo-config";
 
 export function CategoryHubPage({ category, lang }: { category: CategoryHub; lang: Language }) {
   const categoryPath = `/${category.slug}`;
+  const heroDescription = text(category.heroDescription ?? category.description, lang);
   const jsonLd = [
     {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
       name: text(category.title, lang),
-      description: text(category.description, lang),
+      description: heroDescription,
       url: absoluteLocalizedUrl(categoryPath, lang),
       inLanguage: lang === "en" ? "en-US" : "id-ID",
       provider: organizationReference(),
@@ -55,7 +56,7 @@ export function CategoryHubPage({ category, lang }: { category: CategoryHub; lan
       <Hero
         eyebrow={text(category.eyebrow, lang)}
         title={text(category.title, lang)}
-        description={text(category.description, lang)}
+        description={heroDescription}
         primaryHref={withLang(`/contact?topic=${category.slug}`, lang)}
         primaryLabel={lang === "en" ? "Discuss your application" : "Diskusikan aplikasi"}
         secondaryHref={withLang("/brands/tohnichi", lang)}

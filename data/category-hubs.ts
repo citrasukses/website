@@ -16,6 +16,7 @@ export type CategoryHub = {
   title: LocalizedText;
   seoTitle: LocalizedText;
   description: LocalizedText;
+  heroDescription?: LocalizedText;
   eyebrow: LocalizedText;
   image: string;
   imageAlt: LocalizedText;
@@ -38,10 +39,14 @@ export type CategoryHub = {
 export const categoryHubs: CategoryHub[] = [
   {
     slug: "torque-wrench",
-    title: { id: "Torque Wrench Industrial Indonesia", en: "Industrial Torque Wrenches in Indonesia" },
-    seoTitle: { id: "Torque Wrench Industrial Indonesia | TOHNICHI", en: "Industrial Torque Wrenches Indonesia | TOHNICHI" },
+    title: { id: "Kunci Torsi TOHNICHI / Torque Wrench Industrial Indonesia", en: "Industrial Torque Wrenches in Indonesia" },
+    seoTitle: { id: "Kunci Torsi TOHNICHI Indonesia | Torque Wrench", en: "Industrial Torque Wrenches Indonesia | TOHNICHI" },
     description: {
       id: "Panduan memilih torque wrench TOHNICHI untuk assembly, maintenance, dan inspeksi di Indonesia—mulai dari tipe click, preset, dial, hingga digital.",
+      en: "Choose a TOHNICHI torque wrench for assembly, maintenance, or inspection in Indonesia, from click and preset tools to dial and digital models."
+    },
+    heroDescription: {
+      id: "Kunci torsi atau torque wrench TOHNICHI digunakan untuk memastikan baut dikencangkan pada nilai torsi yang tepat dan konsisten. CSE menyediakan berbagai kunci torsi TOHNICHI di Indonesia untuk kebutuhan assembly, maintenance, inspeksi, dan quality control, mulai dari tipe click, preset, dial hingga digital.",
       en: "Choose a TOHNICHI torque wrench for assembly, maintenance, or inspection in Indonesia, from click and preset tools to dial and digital models."
     },
     eyebrow: { id: "Kategori torque tools", en: "Torque tool category" },
@@ -52,9 +57,9 @@ export const categoryHubs: CategoryHub[] = [
       { id: "Pemilihan berdasarkan aplikasi", en: "Application-based selection" },
       { id: "Dukungan kalibrasi & repair", en: "Calibration & repair support" }
     ],
-    introTitle: { id: "Pilih berdasarkan proses, bukan hanya angka torsi.", en: "Select around the process, not only the torque value." },
+    introTitle: { id: "Kunci Torsi TOHNICHI untuk Kebutuhan Industri", en: "Select around the process, not only the torque value." },
     intro: {
-      id: "Torque wrench yang tepat harus mencakup target torque di bagian kerja skala yang sesuai, cocok dengan akses fastener, dan mendukung cara operator bekerja. Untuk produksi berulang, kontrol setelan dan error-proofing lebih penting daripada fleksibilitas. Untuk maintenance, range dan kemudahan perubahan setelan sering menjadi prioritas.",
+      id: "TOHNICHI menyediakan berbagai jenis kunci torsi sesuai proses kerja, mulai dari adjustable torque wrench untuk maintenance hingga preset torque wrench untuk produksi massal dan digital torque wrench untuk inspection serta data collection. Torque wrench yang tepat harus mencakup target torque di bagian kerja skala yang sesuai, cocok dengan akses fastener, dan mendukung cara operator bekerja. Untuk produksi berulang, kontrol setelan dan error-proofing lebih penting daripada fleksibilitas. Untuk maintenance, range dan kemudahan perubahan setelan sering menjadi prioritas.",
       en: "The right torque wrench should place the target torque in a suitable part of its working range, fit the fastener access, and support the operator's workflow. Repetitive production usually prioritizes setting control and error proofing, while maintenance work often values range and easy adjustment."
     },
     useCases: [

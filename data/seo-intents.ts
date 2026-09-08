@@ -34,11 +34,11 @@ export const SEO_INTENT_OWNERS = {
     primaryIntent: "industrial torque wrench selection in Indonesia",
     indexability: "index",
     title: {
-      id: "Torque Wrench Industrial Indonesia | TOHNICHI",
+      id: "Kunci Torsi TOHNICHI Indonesia | Torque Wrench",
       en: "Industrial Torque Wrenches Indonesia | TOHNICHI"
     },
     description: {
-      id: "Panduan memilih torque wrench TOHNICHI untuk assembly, maintenance, dan inspeksi di Indonesia—mulai dari tipe click, preset, dial, hingga digital.",
+      id: "Kunci torsi TOHNICHI untuk produksi, maintenance, dan inspeksi. CSE adalah agen penjualan dan servis resmi TOHNICHI di Indonesia. Temukan tipe click, preset, dial, digital, dan wireless.",
       en: "Choose a TOHNICHI torque wrench for assembly, maintenance, or inspection in Indonesia, from click and preset tools to dial and digital models."
     }
   },
