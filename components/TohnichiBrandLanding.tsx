@@ -1,6 +1,8 @@
+import type { ReactNode } from "react";
+import { TohnichiBuyerQuestions, TohnichiLocalServices, TohnichiTechnicalExpertise } from "@/components/TohnichiBrandSupport";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Gauge, ShieldCheck, Wrench } from "lucide-react";
+import { ArrowRight, BookOpen } from "lucide-react";
 import { buyerGuides } from "@/data/buyer-guides";
 import { seedCatalog } from "@/data/catalog-seed";
 import type { Language } from "@/lib/i18n";
@@ -9,7 +11,7 @@ import { withLang } from "@/lib/i18n";
 const categories = [
   {
     href: "/torque-wrench",
-    title: { id: "Torque Wrench", en: "Torque Wrenches" },
+    title: { id: "Kunci Torsi / Torque Wrench", en: "Torque Wrenches" },
     description: {
       id: "Click, preset, indicating, digital, dan wireless untuk assembly, maintenance, serta inspection.",
       en: "Click, preset, indicating, digital, and wireless tools for assembly, maintenance, and inspection."
@@ -18,7 +20,7 @@ const categories = [
   },
   {
     href: "/torque-screwdriver",
-    title: { id: "Torque Screwdriver", en: "Torque Screwdrivers" },
+    title: { id: "Obeng Torsi / Torque Screwdriver", en: "Torque Screwdrivers" },
     description: {
       id: "Adjustable, preset, rotary-slip, dan digital untuk screw tightening bertorsi kecil.",
       en: "Adjustable, preset, rotary-slip, and digital tools for low-torque screw tightening."
@@ -27,7 +29,7 @@ const categories = [
   },
   {
     href: "/torque-tester",
-    title: { id: "Torque Tester & Calibration", en: "Torque Testers & Calibration" },
+    title: { id: "Torque Tester & Kalibrasi", en: "Torque Testers & Calibration" },
     description: {
       id: "Tester, checker, calibrator, dan data management untuk menjaga kondisi torque tool.",
       en: "Testers, checkers, calibrators, and data management for maintaining torque-tool condition."
@@ -66,37 +68,16 @@ const keyModels = featuredProductSlugs.flatMap((productSlug) => {
     : [];
 });
 
-const solutionLinks = [
-  {
-    href: "/solutions/torque-control",
-    icon: Gauge,
-    title: { id: "Torque Control", en: "Torque Control" },
-    description: { id: "Tool, metode, verification, dan data sebagai satu sistem.", en: "Tools, methods, verification, and data as one system." }
-  },
-  {
-    href: "/solutions/poka-yoke-tightening",
-    icon: ShieldCheck,
-    title: { id: "Poka-Yoke Tightening", en: "Poka-Yoke Tightening" },
-    description: { id: "Cegah missed tightening, wrong sequence, dan proses terlewat.", en: "Prevent missed tightening, wrong sequences, and skipped work." }
-  },
-  {
-    href: "/solutions/torque-calibration-verification",
-    icon: Wrench,
-    title: { id: "Calibration & Verification", en: "Calibration & Verification" },
-    description: { id: "Bangun periodic check dan traceability kondisi tool.", en: "Build periodic checks and tool-condition traceability." }
-  }
-] as const;
-
 const tohnichiGuides = buyerGuides.filter((guide) => guide.brands.includes("tohnichi"));
 
 function local<T extends { id: string; en: string }>(value: T, lang: Language) {
   return value[lang];
 }
 
-export function TohnichiBrandLanding({ lang }: { lang: Language }) {
+export function TohnichiBrandLanding({ lang, children }: { lang: Language; children: ReactNode }) {
   return (
     <>
-      <section className="bg-white py-16">
+      <section id="tohnichi-products" className="scroll-mt-24 bg-white py-16">
         <div className="container-page">
           <div className="max-w-3xl">
             <p className="border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-signal-600">
@@ -147,12 +128,12 @@ export function TohnichiBrandLanding({ lang }: { lang: Language }) {
           <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div className="max-w-3xl">
               <p className="border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-signal-600">
-                {lang === "en" ? "Popular TOHNICHI models" : "KATALOG"}
+                {lang === "en" ? "Selected TOHNICHI models" : "KATALOG"}
               </p>
               <h2 className="mt-4 text-3xl font-bold text-graphite-900 md:text-4xl">
                 {lang === "en"
-                  ? "Popular TOHNICHI models for assembly, inspection, and calibration."
-                  : "Beberapa model populer dari TOHNICHI untuk assembly, inspeksi, dan kalibrasi."}
+                  ? "Selected TOHNICHI models for assembly, inspection, and calibration."
+                  : "Pilihan model TOHNICHI untuk assembly, inspeksi, dan kalibrasi."}
               </h2>
               <p className="mt-4 max-w-3xl text-sm leading-6 text-graphite-500">
                 {lang === "en"
@@ -185,48 +166,26 @@ export function TohnichiBrandLanding({ lang }: { lang: Language }) {
         </div>
       </section>
 
-      <section className="bg-white py-16">
-        <div className="container-page">
-          <div>
-            <p className="border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-signal-600">
-              {lang === "en" ? "Sales, service & calibration" : "Sales, service & calibration"}
-            </p>
-            <h2 className="mt-4 text-3xl font-bold text-graphite-900 md:text-4xl">
-              {lang === "en" ? "Support beyond the torque-tool model." : "Dukungan lebih dari sekadar model torque tool."}
-            </h2>
-            <div className="mt-8 grid gap-4 md:grid-cols-3">
-              {solutionLinks.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <Link key={item.href} href={withLang(item.href, lang)} className="group border border-graphite-200 p-5 hover:border-industrial-400 hover:bg-graphite-50">
-                    <Icon className="h-6 w-6 text-signal-600" aria-hidden="true" />
-                    <h3 className="mt-4 font-bold text-graphite-900">{local(item.title, lang)}</h3>
-                    <p className="mt-2 text-sm leading-6 text-graphite-500">{local(item.description, lang)}</p>
-                    <ArrowRight className="mt-4 h-4 w-4 text-industrial-700 transition group-hover:translate-x-1" aria-hidden="true" />
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
+      <TohnichiLocalServices lang={lang} />
+      <TohnichiTechnicalExpertise lang={lang} />
+      {children}
 
-      <section className="border-y border-graphite-800 bg-graphite-950 py-16">
+      <section id="tohnichi-guides" className="scroll-mt-24 border-y border-graphite-800 bg-graphite-900 py-16">
         <div className="container-page">
           <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div className="max-w-3xl">
-              <div className="flex items-center gap-3 text-signal-400">
+              <div className="flex items-center gap-3 text-white/70">
                 <BookOpen className="h-5 w-5" aria-hidden="true" />
                 <p className="text-xs font-bold uppercase tracking-[0.2em]">
                   {lang === "en" ? "TOHNICHI guide library" : "Perpustakaan panduan TOHNICHI"}
                 </p>
               </div>
-              <h2 className="mt-4 text-balance text-3xl font-bold text-black md:text-4xl">
+              <h2 className="mt-4 text-balance text-3xl font-bold text-white md:text-4xl">
                 {lang === "en"
                   ? "Practical answers for selecting, using, and verifying TOHNICHI tools."
                   : "Jawaban praktis untuk memilih, menggunakan, dan memverifikasi tool TOHNICHI."}
               </h2>
-              <p className="mt-4 text-sm leading-6 text-graphite-300">
+              <p className="mt-4 text-sm leading-6 text-white/75">
                 {lang === "en"
                   ? "Every card below is specifically tagged for TOHNICHI, from tool selection and calibration to poka-yoke and data setup."
                   : "Setiap panduan di bawah ini khusus ditandai untuk TOHNICHI, mulai dari pemilihan tool dan kalibrasi hingga poka-yoke dan setup data."}
@@ -273,6 +232,7 @@ export function TohnichiBrandLanding({ lang }: { lang: Language }) {
           </div>
         </div>
       </section>
+      <TohnichiBuyerQuestions lang={lang} />
     </>
   );
 }

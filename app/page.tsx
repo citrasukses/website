@@ -1,20 +1,27 @@
 import type { Metadata } from "next";
-import { ArrowRight, ClipboardCheck, Handshake, PackageCheck, Wrench } from "lucide-react";
+import Link from "next/link";
+import {
+  ArrowRight,
+  ClipboardCheck,
+  Handshake,
+  PackageCheck,
+  Search,
+  Wrench
+} from "lucide-react";
+import { AssetSlot } from "@/components/AssetSlot";
 import { AuthorizedDistributorStrip } from "@/components/AuthorizedDistributorStrip";
-import { BrandCard } from "@/components/BrandCard";
+import { BrandLogo } from "@/components/BrandLogo";
 import { CTAButton } from "@/components/CTAButton";
-import { CustomerLogoCloud } from "@/components/CustomerLogoCloud";
+import { FAQAccordion } from "@/components/FAQAccordion";
+import { FeaturedCustomerStrip } from "@/components/FeaturedCustomerStrip";
 import { HomeBackgroundItems } from "@/components/HomeBackgroundItems";
-import { IndustryCaseStudyExplorer } from "@/components/IndustryCaseStudyExplorer";
-import { WhatsAppInquiryForm } from "@/components/WhatsAppInquiryForm";
-import { NewsSection } from "@/components/NewsSection";
-import { SectionHeader } from "@/components/SectionHeader";
 import { TohnichiTighteningSection } from "@/components/TohnichiTighteningSection";
+import { WhatsAppInquiryForm } from "@/components/WhatsAppInquiryForm";
+import { SectionHeader } from "@/components/SectionHeader";
+import { categoryHubs } from "@/data/category-hubs";
 import { stats } from "@/data/customers";
 import { homeBackgroundImage, homeBackgroundItems } from "@/data/home-background";
 import { company } from "@/data/navigation";
-import { industries } from "@/data/industries";
-import { getCatalogBrands } from "@/lib/catalog";
 import { staticLanguage, text, withLang } from "@/lib/i18n";
 import {
   absoluteLanguageAlternates,
@@ -36,6 +43,21 @@ const homepageMetadata = {
       "CSE helps procurement and engineering teams source industrial products from Japan and Asia, verify technical fit, compare alternatives, and streamline RFQs."
   }
 } as const;
+
+type HomepageProductCard = {
+  key: string;
+  href: string;
+  eyebrow: string;
+  title: string;
+  image: string;
+  imageAlt: string;
+  brand?: {
+    name: string;
+    slug: string;
+    src?: string;
+  };
+  imageBackground?: string;
+};
 
 export function generateMetadata(): Metadata {
   const lang = staticLanguage();
@@ -93,20 +115,12 @@ const organizationJsonLd = {
   email: `mailto:${company.email}`
 };
 
-export default async function HomePage() {
+export default function HomePage() {
   const lang = staticLanguage();
   const localizedOrganizationJsonLd = {
     ...organizationJsonLd,
     description: text(company.positioning, lang)
   };
-  const fullCatalog = await getCatalogBrands({ includeUnpublished: true });
-  const brands = fullCatalog
-    .filter((brand) => brand.brandType === "represented")
-    .sort((a, b) => {
-      const priority = (slug: string) => (slug === "tohnichi" ? 0 : slug === "nac" ? 1 : 2);
-      return priority(a.slug) - priority(b.slug);
-    });
-
   const serviceItems = lang === "en"
     ? [
         {
@@ -179,9 +193,111 @@ export default async function HomePage() {
         }
       ];
 
-  const southeastAsiaCountryCodes = new Set(["BN", "KH", "ID", "LA", "MY", "MM", "PH", "SG", "TH", "TL", "VN"]);
-  const japanBrands = brands.filter((brand) => brand.countryCode === "JP");
-  const southeastAsiaBrands = brands.filter((brand) => southeastAsiaCountryCodes.has(brand.countryCode));
+  const categoryNames = {
+    "torque-wrench": lang === "en" ? "Torque wrenches" : "Kunci torsi TOHNICHI",
+    "torque-screwdriver": lang === "en" ? "Torque screwdrivers" : "Obeng torsi TOHNICHI",
+    "torque-tester": lang === "en" ? "Torque testers" : "Torque tester TOHNICHI"
+  } as const;
+
+  const homepageProductCards: HomepageProductCard[] = [
+    ...categoryHubs.map((category) => ({
+      key: category.slug,
+      href: `/${category.slug}`,
+      eyebrow: category.slug,
+      title: categoryNames[category.slug],
+      image: category.image,
+      imageAlt: text(category.imageAlt, lang),
+      brand: {
+        name: "TOHNICHI",
+        slug: "tohnichi",
+        src: "/assets/brands/logos/tohnichi--card-highres.png"
+      }
+    })),
+    {
+      key: "nac-sockets",
+      href: "/brands/nac/products/square-drive-sockets",
+      eyebrow: "nac-sockets",
+      title: lang === "en" ? "NAC sockets" : "Socket NAC",
+      image: "/assets/brands/products/nac/NAC socket.jpg",
+      imageAlt: lang === "en" ? "NAC industrial impact sockets" : "Impact socket industrial NAC",
+      brand: {
+        name: "NAC",
+        slug: "nac"
+      }
+    },
+    {
+      key: "sankyo-abrasives",
+      href: "/brands/fuji-star#abrasive-product-formats",
+      eyebrow: "sankyo-abrasives",
+      title: lang === "en" ? "SANKYO abrasives" : "Abrasive SANKYO",
+      image: "/assets/brands/products/fuji-star/Fujistar - Abrasive-white.png",
+      imageAlt: lang === "en" ? "SANKYO Rikagaku FUJISTAR abrasive discs" : "Abrasive disc SANKYO Rikagaku FUJISTAR",
+      brand: {
+        name: "Sankyo Rikagaku FUJISTAR",
+        slug: "fuji-star"
+      },
+      imageBackground: "#ffffff"
+    }
+  ];
+
+  const homepageFaqs = lang === "en"
+    ? [
+        {
+          question: "What information should I include in an RFQ?",
+          answer: "Share the brand, model, quantity, target specification, application, and required delivery date. A photo, drawing, or current part number can help CSE review the request faster."
+        },
+        {
+          question: "Can CSE help when the exact model is unknown?",
+          answer: "Yes. CSE can narrow the options from the application, torque range, fastener, working access, process, and quality requirements."
+        },
+        {
+          question: "Which brands does CSE officially represent?",
+          answer: "CSE is an authorized distributor for selected industrial brands including TOHNICHI, NAC, Sankyo Rikagaku / FUJISTAR, Nippon Unit, and FUJI-DENSHI. Other brands may be supplied through general trading and are identified separately."
+        },
+        {
+          question: "Can CSE suggest an alternative brand or model?",
+          answer: "Yes. Alternatives are reviewed against the technical requirement, availability, lead time, and budget rather than treated as direct substitutes by name alone."
+        },
+        {
+          question: "Does CSE support calibration and after-sales needs?",
+          answer: "Support depends on the product and brand. For TOHNICHI requirements, CSE can help review tool selection, verification, calibration, repair, and related process needs."
+        }
+      ]
+    : [
+        {
+          question: "Informasi apa yang perlu dicantumkan dalam RFQ?",
+          answer: "Kirim brand, model, kuantitas, target spesifikasi, aplikasi, dan kebutuhan waktu pengiriman. Foto, drawing, atau part number saat ini dapat membantu CSE meninjau request lebih cepat."
+        },
+        {
+          question: "Apakah CSE dapat membantu jika model pastinya belum diketahui?",
+          answer: "Ya. CSE dapat mempersempit opsi berdasarkan aplikasi, range torsi, fastener, ruang kerja, proses, dan kebutuhan quality."
+        },
+        {
+          question: "Brand apa saja yang diwakili secara resmi oleh CSE?",
+          answer: "CSE merupakan distributor resmi untuk brand industrial pilihan termasuk TOHNICHI, NAC, Sankyo Rikagaku / FUJISTAR, Nippon Unit, dan FUJI-DENSHI. Brand lain dapat disuplai melalui general trading dan ditandai secara terpisah."
+        },
+        {
+          question: "Apakah CSE dapat menyarankan alternatif brand atau model?",
+          answer: "Ya. Alternatif ditinjau berdasarkan kebutuhan teknis, ketersediaan, lead time, dan budget—bukan dianggap sebagai pengganti langsung hanya berdasarkan nama produk."
+        },
+        {
+          question: "Apakah CSE mendukung kalibrasi dan kebutuhan after-sales?",
+          answer: "Dukungan bergantung pada produk dan brand. Untuk kebutuhan TOHNICHI, CSE dapat membantu review pemilihan tool, verifikasi, kalibrasi, repair, dan kebutuhan proses terkait."
+        }
+      ];
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: homepageFaqs.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer
+      }
+    }))
+  };
 
   return (
     <>
@@ -191,245 +307,168 @@ export default async function HomePage() {
           __html: JSON.stringify(localizedOrganizationJsonLd).replace(/</g, "\\u003c")
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c")
+        }}
+      />
       <section className="technical-grid relative isolate overflow-hidden bg-white">
         <HomeBackgroundItems items={homeBackgroundItems} singleImage={homeBackgroundImage} />
 
-        <div className="container-page relative z-10 py-16 lg:py-12">
-          <div className="grid gap-x-10 gap-y-8 lg:grid-cols-[1.25fr_0.95fr] lg:items-center lg:gap-y-10">
-            <div className="order-1 max-w-5xl">
-              <h1 className="max-w-full font-bold leading-tight tracking-normal text-graphite-900">
-                <span className="block text-2xl sm:text-4xl md:text-5xl">Industrial Tools</span>
-                <span className="mt-1 block text-2xl sm:text-4xl md:text-5xl">
-                  Spare Parts &amp; Consumables
-                </span>
-                <span className="mt-3 block text-base font-semibold leading-snug text-graphite-600 sm:text-xl md:text-2xl">
-                  {lang === "en"
-                    ? "for manufacturers in Indonesia"
-                    : "untuk industri manufaktur di Indonesia"}
-                </span>
-              </h1>
-              <p className="mt-6 max-w-3xl text-base leading-7 text-graphite-600 md:text-lg md:leading-8">
-                {lang === "en"
-                  ? "CSE helps procurement and engineering teams find industrial products from Japan and Asia, check technical fit, provide alternatives, and speed up the RFQ process."
-                  : "CSE membantu procurement dan engineering mencari produk industri dari Jepang dan Asia, memeriksa kecocokan teknis, menyediakan alternatif, dan mempercepat proses RFQ."}
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <CTAButton href={withLang("/contact", lang)}>
-                  <span className="inline-flex items-center gap-2">
-                    {lang === "en" ? "Request quotation" : "Minta penawaran"}
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+        <div className="container-page relative z-10 py-14 lg:py-16">
+          <div className="max-w-4xl">
+            <h1 className="font-bold leading-tight tracking-normal text-graphite-900">
+              {lang === "en" ? (
+                <>
+                  <span className="block text-3xl sm:text-5xl">Industrial Tools, Spare Parts</span>
+                  <span className="mt-1 block text-3xl sm:text-5xl">&amp; Consumables</span>
+                  <span className="mt-3 block text-lg font-semibold text-graphite-600 sm:text-2xl">
+                    for manufacturers in Indonesia
                   </span>
-                </CTAButton>
-                <CTAButton href={withLang("/brands", lang)} variant="ghost">
-                  {lang === "en" ? "View brand portfolio" : "Lihat portofolio brand"}
-                </CTAButton>
-              </div>
-
-              <div className="mt-8 grid min-w-0 grid-cols-3 gap-px overflow-hidden border border-graphite-200 bg-graphite-200 shadow-sm">
-                {stats.map((stat) => (
-                  <div key={stat.value} className="min-w-0 bg-white/95 px-3 py-4 sm:px-4 sm:py-5">
-                    <p className="text-2xl font-bold leading-none text-graphite-900 sm:text-3xl">{stat.value}</p>
-                    <p className="mt-2 text-[9px] font-bold uppercase leading-4 tracking-[0.1em] text-graphite-500 sm:text-[10px] sm:tracking-[0.12em]">
-                      {text(stat.label, lang)}
-                    </p>
-                  </div>
-                ))}
-              </div>
+                </>
+              ) : (
+                <>
+                  <span className="block text-3xl sm:text-5xl">Supplier Tools, Spare Parts</span>
+                  <span className="mt-1 block text-3xl sm:text-5xl">&amp; Consumables Industri</span>
+                  <span className="mt-1 block text-3xl sm:text-5xl">di Indonesia</span>
+                </>
+              )}
+            </h1>
+            <p className="mt-6 max-w-3xl text-base leading-7 text-graphite-600 md:text-lg md:leading-8">
+              {lang === "en"
+                ? "CSE helps procurement and engineering teams source industrial products from Japan and Asia, verify technical fit, compare alternatives, and move RFQs forward."
+                : "CSE membantu tim procurement dan engineering mencari produk industri dari Jepang dan Asia, memastikan kecocokan spesifikasi, membandingkan alternatif, dan mempercepat proses RFQ."}
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <CTAButton href={withLang("/contact", lang)}>
+                <span className="inline-flex items-center gap-2">
+                  {lang === "en" ? "Send RFQ" : "Kirim RFQ"}
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </span>
+              </CTAButton>
+              <CTAButton href={withLang("/brands", lang)} variant="ghost">
+                {lang === "en" ? "Find a brand or product" : "Cari brand atau produk"}
+              </CTAButton>
             </div>
 
-            <AuthorizedDistributorStrip lang={lang} className="order-2 lg:order-4 lg:col-span-2" />
-
-            <div className="order-4 min-w-0 border border-graphite-200 bg-white shadow-panel lg:order-2">
-              <div className="border-b border-graphite-200 bg-graphite-900 p-6 text-white">
-                <div className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center border border-white/20">
-                    <ClipboardCheck className="h-5 w-5 text-white" aria-hidden="true" />
-                  </span>
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/70">
-                    {lang === "en" ? "CSE sourcing process" : "Proses sourcing CSE"}
+            <div className="mt-9 grid max-w-3xl grid-cols-3 gap-px overflow-hidden border border-graphite-200 bg-graphite-200 shadow-sm">
+              {stats.map((stat) => (
+                <div
+                  key={stat.value.en}
+                  className={`min-w-0 px-3 py-4 sm:px-5 sm:py-5 ${stat.emphasis === "authorized" ? "bg-industrial-800" : "bg-white/95"}`}
+                >
+                  <p className={`font-bold leading-tight ${stat.emphasis === "authorized" ? "text-sm text-white sm:text-lg" : "text-2xl text-graphite-900 sm:text-3xl"}`}>
+                    {text(stat.value, lang)}
+                  </p>
+                  <p className={`mt-2 text-[9px] font-bold uppercase leading-4 tracking-[0.1em] sm:text-[10px] ${stat.emphasis === "authorized" ? "text-white/70" : "text-graphite-500"}`}>
+                    {text(stat.label, lang)}
                   </p>
                 </div>
-                <h2 className="mt-5 text-2xl font-bold tracking-normal">
-                  {lang === "en"
-                    ? "From technical review to clearer RFQ follow-up."
-                    : "Dari review teknis sampai RFQ yang lebih jelas."}
-                </h2>
-              </div>
-              <div className="grid gap-px bg-graphite-200">
-                {processItems.map((item) => {
-                  const Icon = item.icon;
-                  return (
-                    <div key={item.title} className="flex gap-4 bg-white p-5">
-                      <span className="flex h-11 w-11 shrink-0 items-center justify-center border border-graphite-200 bg-graphite-50 text-industrial-700">
-                        <Icon className="h-5 w-5" aria-hidden="true" />
-                      </span>
-                      <div>
-                        <h3 className="text-base font-bold text-graphite-900">{item.title}</h3>
-                        <p className="mt-1 text-sm leading-6 text-graphite-600">{item.body}</p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-              <div className="border-t border-graphite-200 bg-graphite-50 px-6 py-4">
-                <p className="text-xs font-bold uppercase tracking-[0.16em] text-graphite-500">
-                  {lang === "en" ? "Procurement and engineering support" : "Dukungan procurement dan engineering"}
-                </p>
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <TohnichiTighteningSection lang={lang} />
+      <AuthorizedDistributorStrip lang={lang} />
 
-      <section className="bg-graphite-50 py-16">
+      <section className="bg-graphite-50 py-12 lg:py-14" aria-labelledby="product-finder-title">
         <div className="container-page">
-          <SectionHeader
-            eyebrow={lang === "en" ? "Customers" : "Pelanggan"}
-            title={lang === "en" ? "Trusted by industrial customers across Indonesia." : "Dipercaya pelanggan industrial di Indonesia."}
-            description={
-              lang === "en"
-                ? "CSE works with manufacturing and industrial teams that require reliable sourcing and clear technical communication."
-                : "CSE bekerja dengan tim manufaktur dan industrial yang membutuhkan sourcing andal dan komunikasi teknis yang jelas."
-            }
-          />
-          <div className="mt-8">
-            <CustomerLogoCloud />
-          </div>
-          <p className="mt-4 border-t border-graphite-200 pt-4 text-xs leading-5 text-graphite-500">
-            {lang === "en"
-              ? "Logos are displayed as customer/supply-history references. All trademarks belong to their respective owners."
-              : "Logo ditampilkan sebagai referensi pelanggan/riwayat suplai. Seluruh merek dagang adalah milik masing-masing pemiliknya."}
-          </p>
-        </div>
-      </section>
-
-      <section className="bg-signal-500 py-16 text-white">
-        <div className="container-page">
-          <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div className="grid gap-7 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
             <div>
-              <p className="mb-3 border-l-2 border-white pl-3 text-xs font-bold uppercase tracking-[0.2em] text-white/80">
-                {lang === "en" ? "Authorized brand portfolio" : "Portofolio brand resmi"}
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-signal-600">
+                {lang === "en" ? "Find the right product" : "Temukan produk yang tepat"}
               </p>
-              <h2 className="max-w-5xl text-balance text-3xl font-bold tracking-normal md:text-4xl">
-                {lang === "en"
-                  ? "Technical industrial brands from Japan and Southeast Asia."
-                  : "Brand industrial dari Jepang dan Asia Tenggara."}
+              <h2 id="product-finder-title" className="mt-3 text-balance text-3xl font-bold text-graphite-900 md:text-4xl">
+                {lang === "en" ? "Start with a brand, model, or application." : "Mulai dari brand, model, atau aplikasi."}
               </h2>
-            </div>
-            <CTAButton href={withLang("/brands", lang)} variant="ghost">
-              <span className="inline-flex items-center gap-2">
-                {lang === "en" ? "Explore brands" : "Eksplor merek lainnya"}
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </span>
-            </CTAButton>
-          </div>
-
-          <div className="mt-10">
-            <div className="flex flex-col gap-2 border-y border-white/20 py-5 sm:flex-row sm:items-end sm:justify-between">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/70">
-                  {lang === "en" ? "Brands from Japan" : "Brand dari Jepang"}
-                </p>
-                <h3 className="mt-2 text-2xl font-bold tracking-normal">
-                  {lang === "en" ? "Japanese manufacturing quality." : "Kualitas manufaktur Jepang."}
-                </h3>
-              </div>
-              <p className="max-w-md text-sm leading-6 text-white/75">
+              <p className="mt-4 max-w-xl text-sm leading-6 text-graphite-600">
                 {lang === "en"
-                  ? "Established brands for precision assembly, tooling, abrasives, and factory supply needs."
-                  : "Brand terpercaya untuk precision assembly, tooling, abrasive, dan kebutuhan supply pabrik."}
+                  ? "Search the supply catalog or jump directly to a torque-tool category."
+                  : "Cari di katalog supply atau langsung pilih kategori torque tool."}
               </p>
             </div>
-            <div className="mt-6 grid gap-5 md:grid-cols-3">
-              {japanBrands.map((brand) => (
-                <BrandCard
-                  key={brand.slug}
-                  brand={brand}
-                  lang={lang}
-                  accessible={brand.slug === "tohnichi" || brand.slug === "nac"}
-                />
-              ))}
-            </div>
+            <form action={withLang("/brands", lang)} className="border border-graphite-200 bg-white p-4 shadow-sm" role="search">
+              <label htmlFor="homepage-product-search" className="sr-only">
+                {lang === "en" ? "Search brand, product, or application" : "Cari brand, produk, atau aplikasi"}
+              </label>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <div className="relative flex-1">
+                  <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-graphite-400" aria-hidden="true" />
+                  <input
+                    id="homepage-product-search"
+                    name="q"
+                    type="search"
+                    placeholder={lang === "en" ? "e.g. torque wrench, NAC, socket…" : "contoh: torque wrench, NAC, socket…"}
+                    className="focus-ring h-12 w-full border border-graphite-300 bg-white pl-12 pr-4 text-sm font-semibold text-graphite-900 placeholder:text-graphite-400"
+                  />
+                </div>
+                <button type="submit" className="focus-ring inline-flex h-12 items-center justify-center gap-2 bg-industrial-700 px-6 text-sm font-bold text-white transition hover:bg-industrial-800">
+                  {lang === "en" ? "Search catalog" : "Cari katalog"}
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </button>
+              </div>
+            </form>
           </div>
 
-          <div className="mt-12">
-            <div className="flex flex-col gap-2 border-y border-white/20 py-5 sm:flex-row sm:items-end sm:justify-between">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/70">
-                  {lang === "en" ? "Brands from Southeast Asia" : "Brand dari Asia Tenggara"}
-                </p>
-                <h3 className="mt-2 text-2xl font-bold tracking-normal">
-                  {lang === "en" ? "Regional alternatives with practical lead times." : "Alternatif regional dengan lead time praktis."}
-                </h3>
-              </div>
-              <p className="max-w-md text-sm leading-6 text-white/75">
-                {lang === "en"
-                  ? "Cost-effective technical products from regional manufacturing partners in Thailand and Vietnam."
-                  : "Produk teknis cost-effective dari mitra manufaktur regional di Thailand dan Vietnam."}
-              </p>
-            </div>
-            <div className="mt-6 grid gap-5 md:grid-cols-3">
-              {southeastAsiaBrands.map((brand) => (
-                <BrandCard key={brand.slug} brand={brand} lang={lang} accessible={false} />
-              ))}
-            </div>
+          <div className="mt-8 grid grid-cols-[repeat(auto-fit,minmax(min(100%,14rem),1fr))] gap-px overflow-hidden border border-graphite-200 bg-graphite-200">
+            {homepageProductCards.map((card) => (
+              <Link key={card.key} href={withLang(card.href, lang)} className="focus-ring group grid bg-white transition hover:bg-industrial-50">
+                <div className="relative h-40">
+                  <AssetSlot
+                    src={card.image}
+                    alt={card.imageAlt}
+                    className="h-full w-full border-0 border-b border-graphite-200"
+                    imageClassName="p-3 group-hover:scale-[1.04]"
+                    backgroundColor={card.imageBackground}
+                    fit="contain"
+                    sizes="(max-width: 767px) 112px, 20vw"
+                  />
+                </div>
+                <div className="relative min-w-0 p-5 pr-14">
+                  <div className="min-w-0">
+                    {card.brand ? (
+                      <BrandLogo
+                        name={card.brand.name}
+                        slug={card.brand.slug}
+                        src={card.brand.src}
+                        frame={false}
+                        className="mb-5 h-16 w-full max-w-full"
+                        imageClassName={card.brand.slug === "nac" ? "text-[29px]" : "p-0"}
+                        sizes="224px"
+                      />
+                    ) : null}
+                    <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-signal-600">{card.eyebrow}</p>
+                    <h3 className="mt-2 text-lg font-bold text-graphite-900">{card.title}</h3>
+                  </div>
+                  <ArrowRight className="absolute right-5 top-1/2 h-5 w-5 -translate-y-1/2 text-industrial-700 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      <NewsSection lang={lang} />
-
-      <section className="dot-matrix bg-white py-8">
-        <div className="container-page flex flex-col gap-6 px-6 py-2 md:flex-row md:items-center md:justify-between">
-          <p className="max-w-4xl text-2xl font-semibold leading-9 text-graphite-900 md:text-xl md:leading-10">
-            {lang === "en"
-              ? (<>Struggling to find the right industrial spare part, tooling, or consumable?<br /> CSE helps from RFQ to sourcing.</>)
-              : (<>Sulit mencari spare part, tooling, atau consumable industri yang tepat?<br /> CSE bantu RFQ sampai sourcing.</>)}
-          </p>
-          <CTAButton href={withLang("/contact", lang)} variant="secondary" className="shrink-0">
-            <span className="inline-flex items-center gap-2">
-              {lang === "en" ? "Chat on WhatsApp" : "Chat via WhatsApp"}
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </span>
-          </CTAButton>
-        </div>
-      </section>
-
-      <section className="technical-grid bg-white py-16">
-        <div className="container-page">
+      <section className="bg-white py-12 lg:py-14">
+        <div className="container-page grid gap-8 lg:grid-cols-[0.62fr_1.38fr] lg:items-start">
           <SectionHeader
-            eyebrow={lang === "en" ? "Industries" : "Industri"}
-            title={lang === "en" ? "Built around factory and maintenance use cases." : "Dibangun untuk kebutuhan produksi dan maintenance."}
+            eyebrow={lang === "en" ? "Why CSE" : "Mengapa CSE"}
+            title={lang === "en" ? "Build reliable supply chains." : "Bersama kami membangun rantai pasok yang handal."}
             description={
               lang === "en"
-                ? "CSE serves industrial buyers that need credible products, practical model selection, and responsive supply support."
-                : "CSE melayani buyer industrial yang membutuhkan produk kredibel, pemilihan model yang praktis, dan dukungan supply yang responsif."
+                ? "Purchasing needs a reliable supply path. Engineering needs technical fit, process control, and verification. CSE works across both perspectives."
+                : "Purchasing membutuhkan jalur supply yang andal. Engineering membutuhkan kecocokan teknis, kontrol proses, dan verifikasi. CSE bekerja dari kedua perspektif tersebut."
             }
-          />
-          <IndustryCaseStudyExplorer
-            industries={industries.filter((industry) => industry.slug !== "oil-gas")}
-            lang={lang}
-          />
-        </div>
-      </section>
-
-      <section className="bg-white py-16">
-        <div className="container-page grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-          <SectionHeader
-            eyebrow={lang === "en" ? "Supply chain support" : "Dukungan rantai pasok"}
-            title={lang === "en" ? "Building a reliable industrial supply chain with practical support." : "Bersama kami membangun rantai pasok yang handal."}
-            description={text(company.positioning, lang)}
           />
           <div className="grid gap-px overflow-hidden border border-graphite-200 bg-graphite-200 md:grid-cols-3">
             {serviceItems.map((item) => {
               const Icon = item.icon;
               return (
-                <article key={item.title} className="bg-white p-6">
+                <article key={item.title} className="bg-white p-5 lg:p-6">
                   <Icon className="h-6 w-6 text-industrial-700" aria-hidden="true" />
-                  <h3 className="mt-5 text-xl font-bold text-graphite-900">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-graphite-500">{item.body}</p>
+                  <h3 className="mt-4 text-lg font-bold text-graphite-900">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-graphite-500">{item.body}</p>
                 </article>
               );
             })}
@@ -437,21 +476,79 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="bg-graphite-900 py-16 text-white">
+      <TohnichiTighteningSection lang={lang} />
+
+      <FeaturedCustomerStrip lang={lang} />
+
+      <section className="technical-grid border-y border-graphite-200 bg-graphite-50 py-12 lg:py-14" aria-labelledby="sourcing-process-title">
+        <div className="container-page">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-signal-600">
+                {lang === "en" ? "How sourcing works" : "Cara kerja sourcing"}
+              </p>
+              <h2 id="sourcing-process-title" className="mt-3 text-3xl font-bold text-graphite-900 md:text-4xl">
+                {lang === "en" ? "From request to a clearer shortlist." : "Dari request ke shortlist yang lebih jelas."}
+              </h2>
+            </div>
+            <p className="max-w-xl text-sm leading-6 text-graphite-600">
+              {lang === "en"
+                ? "CSE reviews the technical context before price and lead-time follow-up."
+                : "CSE meninjau konteks teknis sebelum follow-up harga dan lead time."}
+            </p>
+          </div>
+          <ol className="mt-8 grid gap-px overflow-hidden border border-graphite-200 bg-graphite-200 md:grid-cols-3">
+            {processItems.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <li key={item.title} className="bg-white p-5 lg:p-6">
+                  <div className="flex items-center justify-between">
+                    <span className="flex h-11 w-11 items-center justify-center border border-graphite-200 bg-graphite-50 text-industrial-700">
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </span>
+                    <span className="text-xs font-bold tracking-[0.18em] text-signal-500">{String(index + 1).padStart(2, "0")}</span>
+                  </div>
+                  <h3 className="mt-5 text-lg font-bold text-graphite-900">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-graphite-600">{item.body}</p>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      </section>
+
+      <section className="bg-white py-12 lg:py-14" aria-labelledby="homepage-faq-title">
+        <div className="container-page grid gap-8 lg:grid-cols-[0.62fr_1.38fr] lg:items-start">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-signal-600">FAQ</p>
+            <h2 id="homepage-faq-title" className="mt-3 text-3xl font-bold text-graphite-900 md:text-4xl">
+              {lang === "en" ? "Before you send an RFQ." : "Sebelum Anda mengirim RFQ."}
+            </h2>
+            <p className="mt-4 max-w-md text-sm leading-6 text-graphite-600">
+              {lang === "en"
+                ? "Quick answers about technical review, brand status, alternatives, and support."
+                : "Jawaban singkat tentang review teknis, status brand, alternatif, dan dukungan."}
+            </p>
+          </div>
+          <FAQAccordion items={homepageFaqs} />
+        </div>
+      </section>
+
+      <section className="bg-graphite-900 py-12 text-white lg:py-14">
         <div className="container-page grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <p className="mb-3 border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-white/70">
-              {lang === "en" ? "Consult with CSE" : "Konsultasi dengan CSE"}
+              {lang === "en" ? "Messy requests welcome" : "Inquiry belum rapi? Tidak masalah"}
             </p>
             <h2 className="text-balance text-3xl font-bold md:text-4xl">
               {lang === "en"
-                ? "Need a specific brand, model, or technical recommendation?"
-                : "Butuh brand, model, atau rekomendasi teknis tertentu?"}
+                ? "You do not need a perfect specification to start."
+                : "Tidak perlu spesifikasi lengkap untuk mulai bertanya."}
             </h2>
             <p className="mt-4 max-w-2xl text-sm leading-6 text-white/70">
               {lang === "en"
-                ? "Send the brand, model, quantity, and application details so CSE can review the request with the right technical context."
-                : "Kirim brand, model, kuantitas, dan detail aplikasi agar CSE dapat meninjau kebutuhan dengan konteks teknis yang tepat."}
+                ? "Send a photo, nameplate, drawing, or other technical document. CSE helps find an effective solution for any requirement."
+                : "Kirim foto lama, nameplate, drawing, atau dokumen teknis lainnya. CSE bantu mencari solusi yang efektif untuk setiap kebutuhan."}
             </p>
           </div>
           <WhatsAppInquiryForm lang={lang} />

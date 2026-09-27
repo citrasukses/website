@@ -453,7 +453,7 @@ export default function TohnichiTorsiTepatPage() {
             <div className="flex min-h-72 flex-col justify-center bg-signal-500 p-8 text-white md:p-12">
               <BadgeCheck className="h-10 w-10" aria-hidden="true" />
               <p className="mt-6 text-xs font-bold uppercase tracking-[0.2em] text-white/70">
-                {lang === "en" ? "Authorized distributor" : "Distributor resmi"}
+                {lang === "en" ? "Authorized distributor" : "Authorized distributor"}
               </p>
               <div className="relative mt-5 h-20 w-full max-w-xs bg-white p-3">
                 <Image src="/assets/brands/logos/tohnichi--nobg.png" alt="TOHNICHI" fill sizes="320px" className="object-contain p-3" />

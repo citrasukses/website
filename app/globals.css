@@ -134,6 +134,33 @@ textarea {
     );
 }
 
+.risk-flow {
+  grid-template-columns: minmax(0, 1fr);
+  align-items: stretch;
+}
+
+.risk-flow-arrow {
+  height: 1.75rem;
+}
+
+.risk-flow-arrow svg {
+  transform: rotate(90deg);
+}
+
+@container (min-width: 26rem) {
+  .risk-flow {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+  }
+
+  .risk-flow-arrow {
+    height: auto;
+  }
+
+  .risk-flow-arrow svg {
+    transform: none;
+  }
+}
+
 .tohnichi-catalog-backdrop {
   background-color: #151a22;
   background-image:
@@ -248,6 +275,37 @@ textarea {
   font-size: min(26px, 17cqw);
 }
 
+@keyframes customer-logo-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.customer-logo-marquee {
+  overflow: hidden;
+}
+
+.customer-logo-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: customer-logo-marquee 72s linear infinite;
+  will-change: transform;
+}
+
+.customer-logo-marquee-list {
+  display: flex;
+  flex: none;
+}
+
+.customer-logo-marquee:hover .customer-logo-marquee-track,
+.customer-logo-marquee:focus .customer-logo-marquee-track {
+  animation-play-state: paused;
+}
+
 @keyframes expertise-slide-enter {
   from {
     opacity: 0;
@@ -266,6 +324,19 @@ textarea {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .customer-logo-marquee {
+    overflow-x: auto;
+  }
+
+  .customer-logo-marquee-track {
+    animation: none;
+    will-change: auto;
+  }
+
+  .customer-logo-marquee-copy {
+    display: none;
+  }
+
   .expertise-slide-enter {
     animation: none;
   }

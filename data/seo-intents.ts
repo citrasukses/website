@@ -25,8 +25,8 @@ export const SEO_INTENT_OWNERS = {
       en: "TOHNICHI Indonesia | Official Distributor & Service"
     },
     description: {
-      id: "PT Citra Sukses Ekapratama adalah distributor resmi, agen penjualan dan servis TOHNICHI di Indonesia.",
-      en: "PT Citra Sukses Ekapratama is an official TOHNICHI distributor, sales and service agent in Indonesia."
+      id: "Distributor resmi TOHNICHI Indonesia. Temukan torque wrench, screwdriver, dan tester; hubungi CSE untuk penawaran, pemilihan model, servis, dan kalibrasi.",
+      en: "Official TOHNICHI distributor in Indonesia. Explore torque wrenches, screwdrivers, and testers; contact CSE for quotations, selection, service, and calibration."
     }
   },
   torqueWrenchCategory: {

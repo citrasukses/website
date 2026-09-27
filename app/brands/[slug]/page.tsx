@@ -12,8 +12,8 @@ import { NacBrandOverview } from "@/components/NacBrandOverview";
 import { SankyoRikagakuBrandOverview } from "@/components/SankyoRikagakuBrandOverview";
 import { SectionHeader } from "@/components/SectionHeader";
 import { TohnichiBrandLanding } from "@/components/TohnichiBrandLanding";
-import { TohnichiProductVideo } from "@/components/TohnichiProductVideo";
-import { TohnichiProductPromotionCarousel } from "@/components/TohnichiProductPromotionCarousel";
+import { TohnichiBrandEducation } from "@/components/TohnichiBrandEducation";
+import { TohnichiAuthorization } from "@/components/TohnichiBrandSupport";
 import { UseCaseSection } from "@/components/UseCaseSection";
 import { seedCatalog } from "@/data/catalog-seed";
 import { SEO_INTENT_OWNERS } from "@/data/seo-intents";
@@ -283,7 +283,9 @@ export default async function BrandDetailPage({ params }: PageProps) {
         }
         description={
           isTohnichi
-            ? TOHNICHI_SEO_INTENT.description[lang]
+            ? lang === "en"
+              ? "PT Citra Sukses Ekapratama supplies TOHNICHI torque wrenches, torque screwdrivers, and torque testers for industry in Indonesia. Contact CSE for model selection, quotations, service, and calibration support."
+              : "PT Citra Sukses Ekapratama menyediakan torque wrench, torque screwdriver, dan torque tester TOHNICHI untuk kebutuhan industri di Indonesia. Hubungi CSE untuk pemilihan model, permintaan penawaran, serta dukungan servis dan kalibrasi."
             : isNac
               ? lang === "en"
                 ? "NAC is the industrial socket, bit, and quick-coupling brand of Nagahori Industry Co., Ltd. CSE supports model and custom-product selection in Indonesia."
@@ -291,7 +293,7 @@ export default async function BrandDetailPage({ params }: PageProps) {
               : text(brand.description, lang)
         }
         primaryHref={withLang(`/contact?brand=${brand.slug}`, lang)}
-        primaryLabel={lang === "en" ? "Request this brand" : "Minta brand ini"}
+        primaryLabel={isTohnichi ? (lang === "en" ? "Request a TOHNICHI quote" : "Minta Penawaran TOHNICHI") : (lang === "en" ? "Request this brand" : "Minta brand ini")}
         secondaryHref={withLang(isTohnichi ? "/brands/tohnichi/products" : "/brands", lang)}
         secondaryLabel={
           isTohnichi
@@ -302,12 +304,12 @@ export default async function BrandDetailPage({ params }: PageProps) {
               ? "All brands"
               : "Semua brand"
         }
-        tertiaryHref={isTohnichi ? withLang("/guides", lang) : undefined}
+        tertiaryHref={isTohnichi ? "#tohnichi-services" : undefined}
         tertiaryLabel={
           isTohnichi
             ? lang === "en"
-              ? "Technical guides"
-              : "Panduan teknis"
+              ? "Service & calibration"
+              : "Servis & kalibrasi"
             : undefined
         }
         image={brand.heroImage}
@@ -345,167 +347,10 @@ export default async function BrandDetailPage({ params }: PageProps) {
 
       {isTohnichi ? (
         <>
-          <section className="bg-white py-16">
-            <div className="container-page grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-              <div>
-                <p className="mb-3 border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-signal-600">
-                  TOHNICHI Mfg. Co., Ltd.
-                </p>
-                <h2 className="text-balance text-2xl font-bold tracking-normal text-graphite-900 md:text-4xl">
-                  {lang === "en" ? "Precision technology from Japan since 1949." : "Teknologi presisi dari Jepang sejak tahun 1949."}
-                </h2>
-                <p className="mt-4 text-base leading-7 text-graphite-500">
-                  {lang === "en"
-                    ? "CSE is listed by TOHNICHI as a sales and service agent and as an overseas calibration and repair licensee in Indonesia."
-                    : "CSE tercantum oleh TOHNICHI sebagai agen penjualan dan servis serta licensee kalibrasi dan perbaikan di Indonesia."}
-                </p>
-                <div className="mt-4 flex flex-wrap gap-x-5 gap-y-3">
-                  <a
-                    href={TOHNICHI_DISTRIBUTOR_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="focus-ring inline-flex text-sm font-bold text-industrial-700 underline decoration-industrial-300 underline-offset-4 transition hover:text-industrial-900"
-                  >
-                    {lang === "en" ? "Verify sales & service agent" : "Verifikasi agen penjualan & servis"}
-                  </a>
-                  <a
-                    href={TOHNICHI_SUPPORT_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="focus-ring inline-flex text-sm font-bold text-industrial-700 underline decoration-industrial-300 underline-offset-4 transition hover:text-industrial-900"
-                  >
-                    {lang === "en"
-                      ? "Verify calibration & repair licensee"
-                      : "Verifikasi licensee kalibrasi & perbaikan"}
-                  </a>
-                </div>
-                <div className="mt-6">
-                  <CTAButton href={withLang("/tohnichi-torsi-tepat", lang)} variant="ghost">
-                    {lang === "en" ? "Why correct torque matters" : "Mengapa torsi yang tepat penting"}
-                  </CTAButton>
-                </div>
-                <div className="mt-7 border-t border-graphite-200 pt-6">
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
-                    {lang === "en" ? "Torque wrench" : "Kunci torsi"}
-                  </p>
-                  <h3 className="mt-3 text-xl font-bold leading-snug text-graphite-900 md:text-2xl">
-                    {lang === "en"
-                      ? "Tighten bolts with precision and repeatability."
-                      : "Kencangkan baut dengan mudah, presisi, dan konsisten."}
-                  </h3>
-                  <p className="mt-3 text-sm leading-6 text-graphite-500">
-                    {lang === "en"
-                      ? "CSE helps match torque tools to production, inspection, small torque, calibration, and poka-yoke requirements."
-                      : "CSE membantu mencocokkan torque tools untuk produksi, inspeksi, torsi kecil, kalibrasi, dan kebutuhan poka-yoke."}
-                  </p>
-                </div>
-              </div>
-              <div className="overflow-hidden border border-graphite-200 bg-graphite-900 shadow-panel">
-                <TohnichiProductVideo lang={lang} />
-                <a
-                  href="https://www.youtube.com/watch?v=vtZKwdSp5Ow"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="focus-ring block border-t border-white/15 bg-graphite-900 px-5 py-4 text-sm font-bold leading-6 text-white underline decoration-white/30 underline-offset-4 transition hover:bg-industrial-800 hover:decoration-white"
-                >
-                  &quot;TOHNICHI QL+ CL+ Torque Wrench&quot; Watch in TOHNICHI&apos;s Official Youtube
-                </a>
-              </div>
-            </div>
-          </section>
-
-          <section className="bg-graphite-900 text-white">
-            <div className="container-page py-14 lg:py-16">
-              <div className="grid gap-8 lg:grid-cols-[minmax(18rem,0.62fr)_minmax(0,1.38fr)] lg:items-start">
-                <section
-                  className="border border-white/15 bg-white/[0.025] p-6 sm:p-7"
-                  aria-labelledby="tohnichi-safety-title"
-                >
-                  <p className="border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-white/70">
-                    Safety first
-                  </p>
-                  <h2
-                    id="tohnichi-safety-title"
-                    className="mt-4 text-balance text-2xl font-bold leading-tight tracking-normal sm:text-3xl"
-                  >
-                    {lang === "en"
-                      ? "Avoid under-tightening and over-tightening."
-                      : "Utamakan safety. Hindari baut yang kurang kencang atau terlalu kencang."}
-                  </h2>
-                  <div className="mt-7 border-t border-white/10 pt-5">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/50">
-                      {lang === "en"
-                        ? "Stages to tightening assurance"
-                        : "Tahapan menuju tightening assurance"}
-                    </p>
-                    <ol className="mt-5">
-                      {[
-                        {
-                          number: "01",
-                          title: lang === "en" ? "Define the standard" : "Tentukan standar",
-                          body:
-                            lang === "en"
-                              ? "Set the torque value, tolerance, and work method."
-                              : "Tetapkan nilai torsi, toleransi, dan metode kerja."
-                        },
-                        {
-                          number: "02",
-                          title: lang === "en" ? "Control tightening" : "Kendalikan tightening",
-                          body:
-                            lang === "en"
-                              ? "Use the correct torque tool and prevent missed work."
-                              : "Gunakan torque tool yang tepat dan cegah proses terlewat."
-                        },
-                        {
-                          number: "03",
-                          title: lang === "en" ? "Verify the result" : "Verifikasi hasil",
-                          body:
-                            lang === "en"
-                              ? "Inspect, record, and trace each tightening result."
-                              : "Periksa, rekam, dan telusuri setiap hasil tightening."
-                        }
-                      ].map((stage) => (
-                        <li
-                          key={stage.number}
-                          className="relative grid grid-cols-[2.5rem_1fr] gap-3 pb-6"
-                        >
-                          <span
-                            className="absolute bottom-0 left-[1.22rem] top-10 w-px bg-white/15"
-                            aria-hidden="true"
-                          />
-                          <span className="relative z-10 flex h-10 w-10 items-center justify-center border border-signal-500/45 bg-graphite-900 font-mono text-xs font-black text-signal-500">
-                            {stage.number}
-                          </span>
-                          <div className="pt-0.5">
-                            <p className="text-sm font-bold leading-5 text-white">{stage.title}</p>
-                            <p className="mt-1 text-xs leading-5 text-white/55">{stage.body}</p>
-                          </div>
-                        </li>
-                      ))}
-                      <li className="grid grid-cols-[2.5rem_1fr] gap-3">
-                        <span className="relative z-10 flex h-10 w-10 items-center justify-center bg-[#f4c91d] text-graphite-900">
-                          <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
-                        </span>
-                        <div className="border border-[#f4c91d]/40 bg-[#f4c91d]/10 px-4 py-3">
-                          <p className="text-[9px] font-black uppercase tracking-[0.16em] text-[#f4c91d]">
-                            {lang === "en" ? "Controlled outcome" : "Hasil terkendali"}
-                          </p>
-                          <p className="mt-1 text-sm font-bold leading-5 text-white">
-                            Tightening Assurance System
-                          </p>
-                        </div>
-                      </li>
-                    </ol>
-                  </div>
-                </section>
-
-                <div className="min-w-0">
-                  <TohnichiProductPromotionCarousel lang={lang} />
-                </div>
-              </div>
-            </div>
-          </section>
-          <TohnichiBrandLanding lang={lang} />
+          <TohnichiAuthorization lang={lang} />
+          <TohnichiBrandLanding lang={lang}>
+            <TohnichiBrandEducation lang={lang} />
+          </TohnichiBrandLanding>
         </>
       ) : isNac ? (
         <NacBrandOverview lang={lang} />
@@ -637,7 +482,7 @@ export default async function BrandDetailPage({ params }: PageProps) {
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/70">
               {isTohnichi
-                ? "Tightening assurance"
+                ? (lang === "en" ? "Contact CSE" : "Hubungi CSE")
                 : isNac
                   ? "Fastener selection"
                   : isSankyoRikagaku
@@ -647,8 +492,8 @@ export default async function BrandDetailPage({ params }: PageProps) {
             <h2 className="mt-3 max-w-3xl text-3xl font-bold">
               {isTohnichi
                 ? lang === "en"
-                  ? "How do you prevent miss-tightening in your process?"
-                  : "Bagaimana cara menghindari miss-tightening di proses Anda?"
+                  ? "Need a TOHNICHI quotation or service support?"
+                  : "Butuh penawaran produk atau servis TOHNICHI?"
                 : isNac
                   ? lang === "en"
                     ? "Which drive, fastener profile, and working length does your process need?"
@@ -666,8 +511,8 @@ export default async function BrandDetailPage({ params }: PageProps) {
                 <CheckCircle2 className="h-4 w-4 text-white" aria-hidden="true" />
                 {isTohnichi
                   ? lang === "en"
-                    ? "Consult CSE about building and implementing a tightening assurance system."
-                    : "Konsultasikan cara membangun dan mengimplementasi tightening assurance system."
+                    ? "Send the model, quantity, and application. For service, include the serial number and tool condition so CSE can review your requirement."
+                    : "Kirim model, jumlah, dan aplikasi. Untuk servis, sertakan nomor seri dan kondisi alat agar CSE dapat meninjau kebutuhan Anda."
                   : lang === "en"
                     ? "Share a sample, current abrasive code, finish target, and machine details for a selection review."
                     : "Kirim sample, kode abrasive saat ini, target finish, dan detail mesin untuk review pemilihan."}
@@ -676,7 +521,7 @@ export default async function BrandDetailPage({ params }: PageProps) {
           </div>
           <CTAButton href={withLang(`/contact?brand=${brand.slug}`, lang)}>
             <span className="inline-flex items-center gap-2">
-              {lang === "en" ? "Send product inquiry" : "Kirim inquiry produk"}
+              {isTohnichi ? (lang === "en" ? "Discuss TOHNICHI with CSE" : "Diskusikan TOHNICHI dengan CSE") : (lang === "en" ? "Send product inquiry" : "Kirim inquiry produk")}
               <RadioTower className="h-4 w-4" aria-hidden="true" />
             </span>
           </CTAButton>

@@ -72,7 +72,7 @@ function DistributorTile({ slug, name, lang, className = "", children }: Distrib
 export function AuthorizedDistributorStrip({ lang, className = "" }: AuthorizedDistributorStripProps) {
   return (
     <aside
-      className={`relative isolate overflow-hidden bg-signal-500 text-white shadow-panel ${className}`}
+      className={`container-page relative isolate overflow-hidden bg-signal-500 text-white shadow-panel ${className}`}
       aria-label={lang === "en" ? "Authorized distributors" : "Distributor resmi"}
     >
       <div className="blueprint-dark pointer-events-none absolute inset-0 -z-10 opacity-[0.08]" aria-hidden="true" />
@@ -84,15 +84,21 @@ export function AuthorizedDistributorStrip({ lang, className = "" }: AuthorizedD
               <BadgeCheck className="h-5 w-5 text-white" aria-hidden="true" />
             </span>
             <p className="text-xs font-bold uppercase tracking-[0.22em]">
-              {lang === "en" ? "Official brand partnerships" : "Kemitraan brand resmi"}
+              {lang === "en" ? "Official brand partnerships" : "Distributor resmi"}
             </p>
           </div>
 
           <h2 className="mt-4 text-balance text-xl font-bold leading-snug tracking-normal sm:text-2xl">
             {lang === "en"
-              ? "Authorized distributor for trusted industrial brands."
+              ? "Official distributor for trusted industrial brands."
               : "Distributor resmi untuk brand industrial terpercaya."}
           </h2>
+
+          <p className="mt-3 text-sm leading-6 text-white/75">
+            {lang === "en"
+              ? "Official representation applies to the brands shown here. Other brands are sourced through CSE's broader general-trading network."
+              : "Representasi resmi berlaku untuk brand yang ditampilkan di sini. Brand lainnya dipasok melalui jaringan general trading CSE yang lebih luas."}
+          </p>
 
           <Link
             href={withLang("/brands", lang)}

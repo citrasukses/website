@@ -63,7 +63,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
   return (
     <html lang={lang}>
-      <body>
+      <body className="pb-[calc(4rem+env(safe-area-inset-bottom))] sm:pb-0">
         <AttributionInitializer />
         <Suspense fallback={<div className="h-16 border-b border-graphite-200 bg-white" />}>
           <Navbar />

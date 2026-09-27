@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AlertTriangle, ArrowUpRight, Construction, PackageSearch, Search, X } from "lucide-react";
-import { useDeferredValue, useMemo, useState } from "react";
+import { useDeferredValue, useEffect, useMemo, useState } from "react";
 import { BrandCard } from "@/components/BrandCard";
 import { BrandLogo } from "@/components/BrandLogo";
 import type { SearchableBrandCard } from "@/data/brand-search";
@@ -169,6 +169,12 @@ function TradingBrandCard({ brand, lang, requiresConfirmation = false }: { brand
 
 export function BrandsSearchCatalog({ representedBrands, tradingBrands, tradingBrandCount, confirmationBrands, lang }: BrandsSearchCatalogProps) {
   const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    const initialQuery = new URLSearchParams(window.location.search).get("q");
+    if (initialQuery) setQuery(initialQuery);
+  }, []);
+
   const deferredQuery = useDeferredValue(query);
   const normalizedQuery = normalize(deferredQuery);
 

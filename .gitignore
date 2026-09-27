@@ -23,9 +23,6 @@
 __pycache__/
 *.py[cod]
 
-# Deployment project metadata and local builds
-/.vercel/
-
 # Environment files (keep documented templates)
 .env
 .env.*

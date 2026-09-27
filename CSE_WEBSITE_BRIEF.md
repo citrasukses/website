@@ -226,7 +226,7 @@ Use reusable components such as:
 - IndustryCard
 - CustomerLogoCloud
 - StatsSection
-- WhatsAppInquiryForm
+- Low-friction WhatsApp/email inquiry handoff with required company and industry, plus an optional free-text brand field
 - PartnerInquiryForm
 - Breadcrumb
 - FAQAccordion

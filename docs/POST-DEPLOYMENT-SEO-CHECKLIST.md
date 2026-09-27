@@ -69,7 +69,7 @@ Inspect the homepage, every SEO-sensitive changed page, and at least one represe
 - [ ] Confirm no name, email, phone number, company, or message is placed in analytics events.
 - [ ] Click a visible CSE email link and confirm the `contact_email_click` event is available to the configured analytics collector.
 - [ ] If the form fallback is intentionally tested, confirm `inquiry_email_fallback` is emitted.
-- [ ] Confirm the floating WhatsApp button opens the required Contact-page fields, and the completed inquiry opens the approved destination without displaying the number or exposing the visitor's message or personal data to analytics.
+- [ ] Confirm the floating WhatsApp button opens the lightweight inquiry handoff, and both WhatsApp and email actions require company and industry while keeping those values out of analytics.
 - [ ] Mark the production test inquiry as test/spam or remove it through the approved operational process.
 
 Attribution test URL:

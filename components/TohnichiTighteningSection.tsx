@@ -226,7 +226,7 @@ function RiskFlowStep({
 }) {
   return (
     <div
-      className={`flex min-h-36 flex-col border p-3.5 ${riskStepToneClasses[tone]}`}
+      className={`flex min-h-36 min-w-0 flex-col border p-3 ${riskStepToneClasses[tone]}`}
     >
       <div className="flex items-center gap-2">
         <span className="text-[10px] font-black tracking-[0.16em] text-signal-500">
@@ -234,7 +234,7 @@ function RiskFlowStep({
         </span>
         <span className="h-px flex-1 bg-graphite-200" aria-hidden="true" />
       </div>
-      <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.13em] text-graphite-500">
+      <p className="mt-2 break-normal text-[10px] font-bold uppercase tracking-[0.08em] text-graphite-500">
         {label}
       </p>
       <div className="mt-auto pt-3">{children}</div>
@@ -245,10 +245,10 @@ function RiskFlowStep({
 function RiskFlowArrow() {
   return (
     <span
-      className="flex h-7 items-center justify-center text-graphite-300 sm:h-auto"
+      className="risk-flow-arrow flex items-center justify-center text-graphite-300"
       aria-hidden="true"
     >
-      <ArrowRight className="h-4 w-4 rotate-90 sm:rotate-0" />
+      <ArrowRight className="h-4 w-4" />
     </span>
   );
 }
@@ -262,7 +262,7 @@ function RiskFlow({
 }) {
   return (
     <div
-      className="grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)_auto_minmax(0,1fr)] sm:items-stretch"
+      className="risk-flow grid gap-2"
       role="img"
       aria-label={ariaLabel}
     >
@@ -445,7 +445,7 @@ function TighteningRiskVisual({
           number="01"
           label={lang === "en" ? "Production tool" : "Tool produksi"}
         >
-          <p className="text-base font-black leading-5 text-graphite-900">Nutrunner</p>
+          <p className="break-normal text-sm font-black leading-5 text-graphite-900 2xl:text-base">Nutrunner</p>
           <p className="mt-2 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.12em] text-industrial-700">
             <Play className="h-3.5 w-3.5 fill-current" aria-hidden="true" />
             {lang === "en" ? "On line" : "Di lini"}
@@ -470,8 +470,8 @@ function TighteningRiskVisual({
           label={lang === "en" ? "Line impact" : "Dampak ke lini"}
           tone="risk"
         >
-          <p className="inline-flex items-center gap-2 text-base font-black leading-5 text-signal-600">
-            <Pause className="h-4 w-4 fill-current" aria-hidden="true" />
+          <p className="flex min-w-0 flex-col items-start gap-1 text-sm font-black leading-5 text-signal-600 2xl:flex-row 2xl:items-center 2xl:gap-1.5 2xl:text-base">
+            <Pause className="h-3.5 w-3.5 shrink-0 fill-current 2xl:h-4 2xl:w-4" aria-hidden="true" />
             {lang === "en" ? "Downtime" : "Downtime"}
           </p>
           <p className="mt-2 text-[10px] font-semibold leading-4 text-graphite-600">
@@ -523,7 +523,7 @@ function TighteningRiskVisual({
   }
 
   return (
-    <div className="overflow-hidden border border-graphite-200 bg-graphite-50">
+    <div className="overflow-hidden border border-graphite-200 bg-graphite-50 [container-type:inline-size]">
       <div className="flex items-center justify-between gap-4 border-b border-graphite-200 bg-graphite-900 px-4 py-3 text-white">
         <div className="flex min-w-0 items-center gap-3">
           <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-white/20 bg-white/5">
@@ -791,9 +791,6 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
         >
           <div className="border-b border-graphite-200 px-5 py-6 sm:px-7">
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-signal-600">
-                Application guide
-              </p>
               <h3 className="mt-2 text-2xl font-bold leading-tight text-graphite-900 sm:text-3xl">
                 Tantangan Quality pada Industri Manufaktur
               </h3>
