@@ -274,7 +274,7 @@ export default function HomePage() {
         },
         {
           question: "Brand apa saja yang diwakili secara resmi oleh CSE?",
-          answer: "CSE merupakan distributor resmi untuk brand industrial pilihan termasuk TOHNICHI, NAC, Sankyo Rikagaku / FUJISTAR, Nippon Unit, dan FUJI-DENSHI. Brand lain dapat disuplai melalui general trading dan ditandai secara terpisah."
+          answer: "CSE merupakan distributor resmi untuk barang-barang industri termasuk TOHNICHI, NAC, Sankyo Rikagaku / FUJISTAR, Nippon Unit, dan FUJI-DENSHI. Brand lain dapat disuplai melalui general trading dan ditandai secara terpisah."
         },
         {
           question: "Apakah CSE dapat menyarankan alternatif brand atau model?",

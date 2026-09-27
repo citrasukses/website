@@ -91,7 +91,7 @@ export function AuthorizedDistributorStrip({ lang, className = "" }: AuthorizedD
           <h2 className="mt-4 text-balance text-xl font-bold leading-snug tracking-normal sm:text-2xl">
             {lang === "en"
               ? "Official distributor for trusted industrial brands."
-              : "Distributor resmi untuk brand industrial terpercaya."}
+              : "Distributor resmi brand industrial terpercaya."}
           </h2>
 
           <p className="mt-3 text-sm leading-6 text-white/75">

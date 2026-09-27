@@ -69,7 +69,7 @@ export const customerLogoMetadata: Record<string, CustomerLogoMetadata> = {
 export const stats = [
   {
     value: { id: "30+", en: "30+" },
-    label: { id: "Pengalaman pasokan industri", en: "Industrial supply experience" }
+    label: { id: "Tahun pengalaman di industri", en: "Industrial supply experience" }
   },
   {
     value: { id: "300+", en: "300+" },
@@ -78,7 +78,7 @@ export const stats = [
   {
     value: { id: "Distributor resmi", en: "Official distributor" },
     label: {
-      id: "Untuk brand industrial Jepang pilihan",
+      id: "Brand industrial Jepang terpercaya",
       en: "For selected Japanese industrial brands"
     },
     emphasis: "authorized"

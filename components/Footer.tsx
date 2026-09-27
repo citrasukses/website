@@ -16,10 +16,14 @@ export function Footer() {
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:34px_34px] opacity-30" />
       <div className="container-page relative grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-[1.2fr_0.55fr_0.75fr_0.8fr]">
         <div>
-          <div className="flex items-center gap-3">
-            <span className="flex h-12 w-12 items-center justify-center overflow-hidden border border-white/15 bg-white">
-              <Image src="/assets/company/cse_logo.png" alt="CSE logo" width={48} height={48} className="h-full w-full object-contain" />
-            </span>
+          <div className="flex items-start gap-4">
+            <Image
+              src="/assets/company/cse_logo.png"
+              alt="CSE logo"
+              width={158}
+              height={64}
+              className="mt-1 h-auto w-28 shrink-0 sm:w-32"
+            />
             <div>
               <p className="font-bold">{company.publicName}</p>
               <p className="text-sm text-graphite-200">{text(company.positioning, lang)}</p>
