@@ -5,7 +5,6 @@ import { BrandCard } from "@/components/BrandCard";
 import { CTAButton } from "@/components/CTAButton";
 import { CustomerLogoCloud } from "@/components/CustomerLogoCloud";
 import { HomeBackgroundItems } from "@/components/HomeBackgroundItems";
-import { IndustryCaseStudyExplorer } from "@/components/IndustryCaseStudyExplorer";
 import { RFQForm } from "@/components/InquiryForms";
 import { NewsSection } from "@/components/NewsSection";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -13,7 +12,6 @@ import { TohnichiTighteningSection } from "@/components/TohnichiTighteningSectio
 import { stats } from "@/data/customers";
 import { homeBackgroundImage, homeBackgroundItems } from "@/data/home-background";
 import { company } from "@/data/navigation";
-import { industries } from "@/data/industries";
 import { getCatalogBrands } from "@/lib/catalog";
 import { staticLanguage, text, withLang } from "@/lib/i18n";
 import {
@@ -394,24 +392,6 @@ export default async function HomePage() {
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </span>
           </CTAButton>
-        </div>
-      </section>
-
-      <section className="technical-grid bg-white py-16">
-        <div className="container-page">
-          <SectionHeader
-            eyebrow={lang === "en" ? "Industries" : "Industri"}
-            title={lang === "en" ? "Built around factory and maintenance use cases." : "Dibangun untuk kebutuhan produksi dan maintenance."}
-            description={
-              lang === "en"
-                ? "CSE serves industrial buyers that need credible products, practical model selection, and responsive supply support."
-                : "CSE melayani buyer industrial yang membutuhkan produk kredibel, pemilihan model yang praktis, dan dukungan supply yang responsif."
-            }
-          />
-          <IndustryCaseStudyExplorer
-            industries={industries.filter((industry) => industry.slug !== "oil-gas")}
-            lang={lang}
-          />
         </div>
       </section>
 

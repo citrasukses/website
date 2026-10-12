@@ -2,7 +2,6 @@ import type { MetadataRoute } from "next";
 import { buyerGuides } from "@/data/buyer-guides";
 import { categoryHubs } from "@/data/category-hubs";
 import { seedCatalog } from "@/data/catalog-seed";
-import { industryPages } from "@/data/industry-pages";
 import { solutionPages } from "@/data/solution-pages";
 import { assertUniqueSeoIntentOwnership, SEO_INTENT_OWNERS } from "@/data/seo-intents";
 import { isBrandPubliclyAvailable } from "@/lib/brand-visibility";
@@ -34,7 +33,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/",
     "/about",
     "/brands",
-    "/industries",
     "/products",
     "/solutions",
     "/guides",
@@ -45,10 +43,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const categoryRoutes: MetadataRoute.Sitemap = categoryHubs.flatMap((category) =>
     localizedRoutes(`/${category.slug}`)
-  );
-
-  const industryRoutes: MetadataRoute.Sitemap = industryPages.flatMap((page) =>
-    localizedRoutes(`/industries/${page.industrySlug}`)
   );
 
   const solutionRoutes: MetadataRoute.Sitemap = solutionPages.flatMap((solution) =>
@@ -90,7 +84,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticRoutes,
     ...categoryRoutes,
-    ...industryRoutes,
     ...solutionRoutes,
     ...guideRoutes,
     ...brandRoutes,
