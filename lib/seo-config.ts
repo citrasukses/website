@@ -10,6 +10,12 @@ export const siteConfig = {
 
 export const ORGANIZATION_ID = `${siteConfig.url}/#organization`;
 
+export const defaultSocialImage = {
+  path: "/assets/company/og-authorized-distributor.png",
+  width: 1200,
+  height: 630
+} as const;
+
 export function absoluteUrl(path: string) {
   if (/^https?:\/\//.test(path)) return path;
   return new URL(path || "/", `${siteConfig.url}/`).toString();

@@ -9,6 +9,7 @@ type AssetSlotProps = {
   label?: string;
   className?: string;
   imageClassName?: string;
+  backgroundColor?: string;
   sizes?: string;
   fit?: "cover" | "contain";
   priority?: boolean;
@@ -20,13 +21,15 @@ export function AssetSlot({
   label,
   className = "",
   imageClassName = "",
+  backgroundColor,
   sizes = "(max-width: 768px) 100vw, 50vw",
   fit = "cover",
   priority = false
 }: AssetSlotProps) {
   const fitClassName = fit === "contain" ? "object-contain" : "object-cover";
   const imageBackground = fit === "contain" && src ? backgroundByImage[src] : undefined;
-  const backgroundStyle = imageBackground ? { backgroundColor: imageBackground } : undefined;
+  const resolvedBackgroundColor = backgroundColor ?? imageBackground;
+  const backgroundStyle = resolvedBackgroundColor ? { backgroundColor: resolvedBackgroundColor } : undefined;
 
   return (
     <div

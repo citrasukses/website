@@ -35,13 +35,13 @@ const catalogueFacts = [
 export function SankyoRikagakuBrandOverview({ lang }: { lang: Language }) {
   return (
     <>
-      <section className="overflow-hidden bg-white py-16">
+      <section className="cse-section overflow-hidden bg-white">
         <div className="container-page grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
           <div>
-            <p className="border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-signal-600">
+            <p className="cse-eyebrow text-signal-600">
               SANKYO RIKAGAKU CO., LTD. · FUJISTAR
             </p>
-            <h2 className="mt-5 text-balance text-3xl font-bold leading-tight text-graphite-900 md:text-5xl">
+            <h2 className="cse-heading mt-4 text-graphite-900 md:text-5xl">
               {lang === "en"
                 ? "Polishing technology shaped since 1930."
                 : "Teknologi polishing yang terus diasah sejak 1930."}

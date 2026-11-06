@@ -85,10 +85,10 @@ export default async function BrandCataloguePage({ params }: PageProps) {
       <section className="tohnichi-catalog-backdrop overflow-hidden border-b border-graphite-900 py-7 text-white md:py-8">
         <div className="container-page grid gap-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
           <div>
-            <p className="inline-flex border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.22em] text-white/75">
+            <p className="cse-eyebrow inline-flex text-white/75">
               {lang === "en" ? "TOHNICHI product catalogue / Indonesia" : "Katalog produk TOHNICHI / Indonesia"}
             </p>
-            <h1 className="mt-2 max-w-4xl text-3xl font-bold leading-[1.08] md:text-4xl">{title}</h1>
+            <h1 className="cse-title mt-2 max-w-4xl">{title}</h1>
             <p className="mt-3 max-w-3xl text-sm leading-6 text-white/72">{description}</p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row md:flex-col lg:flex-row">

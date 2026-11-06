@@ -54,7 +54,7 @@ export default function SolutionsPage() {
         imageLabel="CSE industrial solutions"
         highlights={lang === "en" ? ["Application review", "Product selection", "Verification planning"] : ["Review aplikasi", "Pemilihan produk", "Rencana verification"]}
       />
-      <section className="bg-white py-16">
+      <section className="cse-section bg-white">
         <div className="container-page">
           <SectionHeader
             eyebrow={lang === "en" ? "Solution pathways" : "Jalur solusi"}
@@ -63,7 +63,7 @@ export default function SolutionsPage() {
           />
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {solutionPages.map((solution) => (
-              <article key={solution.slug} className="group grid overflow-hidden border border-graphite-200 bg-white shadow-sm transition hover:border-industrial-600 hover:shadow-panel sm:grid-cols-[0.7fr_1.3fr]">
+              <article key={solution.slug} className="cse-card cse-card-link group grid sm:grid-cols-[0.7fr_1.3fr]">
                 <AssetSlot
                   src={solution.image}
                   alt={text(solution.imageAlt, lang)}

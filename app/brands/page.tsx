@@ -43,7 +43,7 @@ export default async function BrandsPage() {
   return (
     <>
       <Breadcrumb homeHref={withLang("/", lang)} items={[{ label: lang === "en" ? "Brands" : "Brand" }]} />
-      <section className="bg-white py-16">
+      <section className="cse-section bg-white">
         <div className="container-page">
           <SectionHeader
             eyebrow={lang === "en" ? "Brand portfolio" : "Portofolio brand"}
@@ -65,7 +65,7 @@ export default async function BrandsPage() {
         </div>
       </section>
       {/* Supply map temporarily hidden.
-      <section className="bg-graphite-50 py-16">
+      <section className="cse-section bg-graphite-50">
         <div className="container-page">
           <SectionHeader
             eyebrow={lang === "en" ? "Supply map" : "Peta supply"}
@@ -80,10 +80,10 @@ export default async function BrandsPage() {
         </div>
       </section>
       */}
-      <section className="bg-white py-16">
+      <section className="cse-section bg-white">
         <div className="container-page grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
-            <h2 className="text-3xl font-bold text-graphite-900">
+            <h2 className="cse-heading text-graphite-900">
               {lang === "en" ? "Cannot find the brand you need?" : "Tidak menemukan brand yang dibutuhkan?"}
             </h2>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-graphite-500">
@@ -92,7 +92,7 @@ export default async function BrandsPage() {
                 : "Kirim brand, model, dan detail aplikasi. CSE dapat membantu review opsi pengadaan."}
             </p>
           </div>
-          <CTAButton href={withLang("/contact", lang)}>{lang === "en" ? "Send RFQ" : "Kirim RFQ"}</CTAButton>
+          <CTAButton href={withLang("/contact", lang)}>{lang === "en" ? "Ask via WhatsApp" : "Tanya via WhatsApp"}</CTAButton>
         </div>
       </section>
     </>

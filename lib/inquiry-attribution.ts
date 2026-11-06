@@ -90,7 +90,12 @@ export function getInquiryAttribution() {
 }
 
 export function trackLeadEvent(
-  event: "inquiry_submit_success" | "inquiry_email_fallback" | "contact_email_click",
+  event:
+    | "inquiry_submit_success"
+    | "inquiry_email_fallback"
+    | "contact_email_click"
+    | "whatsapp_inquiry_click"
+    | "whatsapp_floating_click",
   details: { inquiryType: "rfq" | "partner" | "general"; language: "id" | "en"; context?: string }
 ) {
   if (typeof window === "undefined") return;

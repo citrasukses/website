@@ -220,7 +220,7 @@ export function TohnichiTorqueCarousel({ lang }: { lang: Language }) {
           <button
             type="button"
             onClick={() => setRotationPaused((current) => !current)}
-            className="flex h-8 w-8 items-center justify-center border border-industrial-700/20 bg-white/75 text-industrial-700 transition-colors hover:border-industrial-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-industrial-700"
+            className="cse-control border-industrial-700/20 bg-white/75 text-industrial-700 hover:border-industrial-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-industrial-700"
             aria-label={
               rotationPaused
                 ? lang === "en"
@@ -261,7 +261,7 @@ export function TohnichiTorqueCarousel({ lang }: { lang: Language }) {
           <button
             type="button"
             onClick={showPrevious}
-            className="flex h-10 w-10 items-center justify-center border border-graphite-200 bg-white text-graphite-900 transition-colors hover:border-industrial-700 hover:text-industrial-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-industrial-700"
+            className="cse-control border-graphite-200 bg-white text-graphite-900 hover:border-industrial-700 hover:text-industrial-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-industrial-700"
             aria-label={lang === "en" ? "Previous torque tool" : "Torque tool sebelumnya"}
           >
             <ChevronLeft className="h-4 w-4" aria-hidden="true" />
@@ -269,7 +269,7 @@ export function TohnichiTorqueCarousel({ lang }: { lang: Language }) {
           <button
             type="button"
             onClick={showNext}
-            className="flex h-10 w-10 items-center justify-center border border-graphite-200 bg-white text-graphite-900 transition-colors hover:border-industrial-700 hover:text-industrial-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-industrial-700"
+            className="cse-control border-graphite-200 bg-white text-graphite-900 hover:border-industrial-700 hover:text-industrial-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-industrial-700"
             aria-label={lang === "en" ? "Next torque tool" : "Torque tool berikutnya"}
           >
             <ChevronRight className="h-4 w-4" aria-hidden="true" />

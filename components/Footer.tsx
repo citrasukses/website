@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Mail } from "lucide-react";
+import { Mail, MessageCircle } from "lucide-react";
 import { TrackedEmailLink } from "@/components/TrackedEmailLink";
 import { company, navigationItems } from "@/data/navigation";
 import { staticLanguage, text, withLang } from "@/lib/i18n";
@@ -11,15 +11,21 @@ export function Footer() {
   const lang = staticLanguage();
 
   return (
-    <footer className="relative overflow-hidden bg-graphite-900 text-white">
-      <div className="absolute left-0 top-0 h-1 w-40 bg-signal-500" />
+    <footer className="relative overflow-hidden bg-industrial-900 text-white">
+      <div className="absolute inset-x-0 top-0 h-1 bg-industrial-600" aria-hidden="true">
+        <div className="h-full w-40 bg-signal-500" />
+      </div>
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:34px_34px] opacity-30" />
       <div className="container-page relative grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-[1.2fr_0.55fr_0.75fr_0.8fr]">
         <div>
-          <div className="flex items-center gap-3">
-            <span className="flex h-12 w-12 items-center justify-center overflow-hidden border border-white/15 bg-white">
-              <Image src="/assets/company/cse_logo.png" alt="CSE logo" width={48} height={48} className="h-full w-full object-contain" />
-            </span>
+          <div className="flex items-start gap-4">
+            <Image
+              src="/assets/company/cse_logo.png"
+              alt="CSE logo"
+              width={158}
+              height={64}
+              className="mt-1 h-auto w-28 shrink-0 sm:w-32"
+            />
             <div>
               <p className="font-bold">{company.publicName}</p>
               <p className="text-sm text-graphite-200">{text(company.positioning, lang)}</p>
@@ -62,19 +68,26 @@ export function Footer() {
 
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-graphite-200">Contact</p>
+          <Link
+            href={withLang("/contact#whatsapp-inquiry", lang)}
+            className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-white"
+          >
+            <MessageCircle className="h-4 w-4" aria-hidden="true" />
+            {lang === "en" ? "Contact CSE on WhatsApp" : "Hubungi CSE via WhatsApp"}
+          </Link>
           <TrackedEmailLink
             href={`mailto:${company.email}`}
             lang={lang}
             context="footer"
-            className="mt-4 inline-flex items-center gap-2 text-sm text-white"
+            className="mt-3 inline-flex items-center gap-2 text-sm text-white"
           >
             <Mail className="h-4 w-4" aria-hidden="true" />
             {company.email}
           </TrackedEmailLink>
           <p className="mt-4 text-sm leading-6 text-graphite-200">
             {lang === "en"
-              ? "Send product requests, model questions, or partnership inquiries by email."
-              : "Kirim kebutuhan produk, pertanyaan model, atau inquiry partnership melalui email."}
+              ? "WhatsApp us for product questions. Email remains available for documents and partnership inquiries."
+              : "Hubungi kami via WhatsApp untuk pertanyaan produk. Email tetap tersedia untuk dokumen dan inquiry partnership."}
           </p>
         </div>
       </div>

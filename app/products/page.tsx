@@ -50,7 +50,7 @@ export default function ProductsPage() {
         imageLabel="TOHNICHI torque-tool categories"
         highlights={lang === "en" ? ["Tightening", "Inspection", "Calibration"] : ["Tightening", "Inspection", "Calibration"]}
       />
-      <section className="bg-white py-16">
+      <section className="cse-section bg-white">
         <div className="container-page">
           <SectionHeader
             eyebrow={lang === "en" ? "Three commercial hubs" : "Tiga category hub"}
@@ -59,10 +59,10 @@ export default function ProductsPage() {
           />
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
             {categoryHubs.map((category) => (
-              <article key={category.slug} className="group overflow-hidden border border-graphite-200 bg-white shadow-sm transition hover:border-industrial-600 hover:shadow-panel">
+              <article key={category.slug} className="cse-card cse-card-link group">
                 <AssetSlot src={category.image} alt={text(category.imageAlt, lang)} className="h-60 border-0 border-b border-graphite-200" fit="contain" sizes="(max-width: 1024px) 100vw, 33vw" imageClassName="p-5 group-hover:scale-[1.03]" />
                 <div className="p-6">
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">{category.slug}</p>
+                  <p className="cse-eyebrow text-signal-600">{category.slug}</p>
                   <h2 className="mt-3 text-2xl font-bold text-graphite-900">{text(category.title, lang)}</h2>
                   <p className="mt-3 text-sm leading-6 text-graphite-500">{text(category.description, lang)}</p>
                   <Link href={withLang(`/${category.slug}`, lang)} className="focus-ring mt-6 inline-flex items-center gap-2 text-sm font-bold text-industrial-700 hover:text-signal-600">

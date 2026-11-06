@@ -115,7 +115,7 @@ export default async function BrandsPage() {
                 : "Kirim brand, model, dan detail aplikasi. CSE dapat membantu review opsi pengadaan."}
             </p>
           </div>
-          <CTAButton href={withLang("/contact", lang)}>{lang === "en" ? "Send RFQ" : "Kirim RFQ"}</CTAButton>
+          <CTAButton href={withLang("/contact", lang)}>{lang === "en" ? "Ask via WhatsApp" : "Tanya via WhatsApp"}</CTAButton>
         </div>
       </section>
     </>

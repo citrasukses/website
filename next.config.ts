@@ -4,13 +4,7 @@ const nextConfig: NextConfig = {
   distDir: process.env.NEXT_DIST_DIR ?? ".next",
   output: "export",
   images: {
-    unoptimized: true,
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "*.public.blob.vercel-storage.com"
-      }
-    ]
+    unoptimized: true
   }
 };
 

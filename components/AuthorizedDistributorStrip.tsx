@@ -51,7 +51,7 @@ type DistributorTileProps = {
 function DistributorTile({ slug, name, lang, className = "", children }: DistributorTileProps) {
   const canOpen = slug === "tohnichi" || slug === "nac";
   const tileClassName = `relative flex min-h-24 items-center justify-center overflow-hidden bg-white p-5 lg:min-h-32 ${className} ${
-    canOpen ? "focus-ring group transition-colors hover:bg-graphite-50" : ""
+    canOpen ? "focus-ring group transition-colors hover:bg-industrial-50" : ""
   }`;
 
   if (!canOpen) {
@@ -72,27 +72,33 @@ function DistributorTile({ slug, name, lang, className = "", children }: Distrib
 export function AuthorizedDistributorStrip({ lang, className = "" }: AuthorizedDistributorStripProps) {
   return (
     <aside
-      className={`relative isolate overflow-hidden bg-signal-500 text-white shadow-panel ${className}`}
+      className={`container-page relative isolate overflow-hidden bg-signal-500 text-white shadow-panel ${className}`}
       aria-label={lang === "en" ? "Authorized distributors" : "Distributor resmi"}
     >
       <div className="blueprint-dark pointer-events-none absolute inset-0 -z-10 opacity-[0.08]" aria-hidden="true" />
 
       <div className="grid lg:grid-cols-[0.68fr_1.32fr]">
         <div className="flex flex-col justify-center px-5 py-6 sm:px-7 lg:px-8">
-          <div className="flex items-center gap-3 text-white/80">
+          <div className="flex items-center gap-3 text-white/90">
             <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-white/20 bg-white/5">
               <BadgeCheck className="h-5 w-5 text-white" aria-hidden="true" />
             </span>
             <p className="text-xs font-bold uppercase tracking-[0.22em]">
-              {lang === "en" ? "Official brand partnerships" : "Kemitraan brand resmi"}
+              {lang === "en" ? "Official brand partnerships" : "Distributor resmi"}
             </p>
           </div>
 
           <h2 className="mt-4 text-balance text-xl font-bold leading-snug tracking-normal sm:text-2xl">
             {lang === "en"
-              ? "Authorized distributor for trusted industrial brands."
-              : "Distributor resmi untuk brand industrial terpercaya."}
+              ? "Official distributor for trusted industrial brands."
+              : "Distributor resmi brand industrial terpercaya."}
           </h2>
+
+          <p className="mt-3 text-sm leading-6 text-white/90">
+            {lang === "en"
+              ? "Official representation applies to the brands shown here. Other brands are sourced through CSE's broader general-trading network."
+              : "Representasi resmi berlaku untuk brand yang ditampilkan di sini. Brand lainnya dipasok melalui jaringan general trading CSE yang lebih luas."}
+          </p>
 
           <Link
             href={withLang("/brands", lang)}

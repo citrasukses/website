@@ -79,7 +79,7 @@ export function BrandCard({
       <div className="flex flex-1 flex-col p-6">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">{brand.country}</p>
+            <p className="cse-eyebrow text-signal-600">{brand.country}</p>
             <h3 className="mt-2 text-2xl font-bold text-graphite-900">{displayName}</h3>
           </div>
           <span
@@ -99,7 +99,7 @@ export function BrandCard({
         <p className="mt-4 break-words text-sm font-semibold text-industrial-700">{text(brand.category, lang)}</p>
         <p className="mt-3 text-sm leading-6 text-graphite-500">{text(brand.summary, lang)}</p>
         {!isPublic ? (
-          <p className="mt-5 border-t border-graphite-200 pt-4 text-xs font-bold uppercase tracking-[0.14em] text-signal-600">
+          <p className="cse-eyebrow mt-5 border-t border-graphite-200 pt-4 text-signal-600">
             {lang === "en" ? "Brand page on progress" : "Halaman brand on progress"}
           </p>
         ) : null}
@@ -111,7 +111,7 @@ export function BrandCard({
     return (
       <article
         aria-label={`${brand.name}: on progress`}
-        className="grid overflow-hidden border border-graphite-200 bg-white"
+        className="cse-card grid"
       >
         {content}
       </article>
@@ -121,7 +121,7 @@ export function BrandCard({
   return (
     <Link
       href={withLang(`/brands/${brand.slug}`, lang)}
-      className="group grid overflow-hidden border border-graphite-200 bg-white transition duration-300 hover:-translate-y-1 hover:border-industrial-600 hover:shadow-panel"
+      className="focus-ring cse-card cse-card-link group grid"
     >
       {content}
     </Link>

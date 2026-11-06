@@ -21,12 +21,12 @@ export const SEO_INTENT_OWNERS = {
     primaryIntent: "official TOHNICHI distributor, sales, service, and calibration in Indonesia",
     indexability: "index",
     title: {
-      id: "Distributor Resmi TOHNICHI Indonesia | Sales, Service & Calibration",
-      en: "Official TOHNICHI Distributor Indonesia | Sales, Service & Calibration"
+      id: "TOHNICHI Indonesia | Distributor Resmi & Service",
+      en: "TOHNICHI Indonesia | Official Distributor & Service"
     },
     description: {
-      id: "PT Citra Sukses Ekapratama adalah distributor resmi, agen penjualan dan servis TOHNICHI di Indonesia.",
-      en: "PT Citra Sukses Ekapratama is an official TOHNICHI distributor, sales and service agent in Indonesia."
+      id: "Distributor resmi TOHNICHI Indonesia. Temukan torque wrench, screwdriver, dan tester; hubungi CSE untuk penawaran, pemilihan model, servis, dan kalibrasi.",
+      en: "Official TOHNICHI distributor in Indonesia. Explore torque wrenches, screwdrivers, and testers; contact CSE for quotations, selection, service, and calibration."
     }
   },
   torqueWrenchCategory: {
@@ -34,11 +34,11 @@ export const SEO_INTENT_OWNERS = {
     primaryIntent: "industrial torque wrench selection in Indonesia",
     indexability: "index",
     title: {
-      id: "Torque Wrench Industrial Indonesia | TOHNICHI",
+      id: "Kunci Torsi TOHNICHI Indonesia | Torque Wrench",
       en: "Industrial Torque Wrenches Indonesia | TOHNICHI"
     },
     description: {
-      id: "Panduan memilih torque wrench TOHNICHI untuk assembly, maintenance, dan inspeksi di Indonesia—mulai dari tipe click, preset, dial, hingga digital.",
+      id: "Kunci torsi TOHNICHI untuk produksi, maintenance, dan inspeksi. CSE adalah agen penjualan dan servis resmi TOHNICHI di Indonesia. Temukan tipe click, preset, dial, digital, dan wireless.",
       en: "Choose a TOHNICHI torque wrench for assembly, maintenance, or inspection in Indonesia, from click and preset tools to dial and digital models."
     }
   },
@@ -48,7 +48,7 @@ export const SEO_INTENT_OWNERS = {
     indexability: "index",
     title: {
       id: "Cara Mengencangkan Baut dengan Torsi Tepat | TOHNICHI",
-      en: "How to Achieve Consistent Bolt & Screw Tightening | TOHNICHI"
+      en: "Bolt & Screw Tightening Guide | TOHNICHI"
     },
     description: {
       id: "Pelajari cara mengurangi variasi pengencangan baut dan sekrup dengan target torsi yang jelas, torque wrench TOHNICHI QL, dan torque screwdriver RTD.",

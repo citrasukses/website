@@ -56,14 +56,14 @@ export function NacFamilyDetails({
   const safetyPoints = isCoupling ? couplingSafetyPoints : fastenerSafetyPoints;
 
   return (
-    <section id="catalogue-model-options" className="scroll-mt-24 bg-graphite-50 py-14">
+    <section id="catalogue-model-options" className="cse-section scroll-mt-24 bg-graphite-50">
       <div className="container-page">
         <div className={`grid gap-6 ${hideCatalogueSummary ? "" : "lg:grid-cols-[0.78fr_1.22fr] lg:items-end"}`}>
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
+            <p className="cse-eyebrow text-signal-600">
               {lang === "en" ? "Catalogue family selection" : "Pemilihan keluarga katalog"}
             </p>
-            <h2 className="mt-3 text-balance text-3xl font-bold text-graphite-900">
+            <h2 className="cse-heading mt-4 text-graphite-900">
               {lang === "en"
                 ? `${productName} models and options`
                 : `Model dan pilihan ${productName}`}

@@ -179,7 +179,7 @@ export function BrandProductExplorer({ groups, lang, brandSlug, brandName }: Bra
                         ? "e.g. socket, B-30, H6.35, TORX"
                         : "contoh: socket, B-30, H6.35, TORX"
                   }
-                  className="focus-ring h-12 w-full border border-graphite-300 bg-white pl-12 pr-11 text-sm font-semibold text-graphite-900 placeholder:font-normal placeholder:text-graphite-400"
+                  className="cse-input focus-ring w-full pl-12 pr-11 placeholder:font-normal placeholder:text-graphite-400"
                 />
                 {query ? (
                   <button
@@ -202,7 +202,7 @@ export function BrandProductExplorer({ groups, lang, brandSlug, brandName }: Bra
                 id={`${brandSlug}-purpose`}
                 value={purpose}
                 onChange={(event) => setPurpose(event.target.value)}
-                className="focus-ring mt-2 h-12 w-full border border-graphite-300 bg-white px-3 text-sm font-semibold text-graphite-800"
+                className="cse-input focus-ring mt-2 w-full text-graphite-800"
               >
                 <option value="">{lang === "en" ? "All tasks and purposes" : "Semua tugas dan tujuan"}</option>
                 {purposeOptions.map((option) => (
@@ -221,7 +221,7 @@ export function BrandProductExplorer({ groups, lang, brandSlug, brandName }: Bra
                 id={`${brandSlug}-category`}
                 value={category}
                 onChange={(event) => setCategory(event.target.value)}
-                className="focus-ring mt-2 h-12 w-full border border-graphite-300 bg-white px-3 text-sm font-semibold text-graphite-800"
+                className="cse-input focus-ring mt-2 w-full text-graphite-800"
               >
                 <option value="">{lang === "en" ? "All product lineups" : "Semua lini produk"}</option>
                 {groups.map((group) => (
@@ -267,7 +267,7 @@ export function BrandProductExplorer({ groups, lang, brandSlug, brandName }: Bra
 
         {hasFilters ? (
           <section className="mt-10 border-l-4 border-industrial-700 bg-graphite-50 p-5 md:p-8">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
+            <p className="cse-eyebrow text-signal-600">
               {lang === "en" ? "Search results" : "Hasil pencarian"}
             </p>
             <h3 className="mt-3 text-2xl font-bold text-graphite-900">

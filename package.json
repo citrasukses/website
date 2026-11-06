@@ -1,9 +1,10 @@
 {
   "name": "cse-website",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "generate:image-backgrounds": "node scripts/generate-image-backgrounds.mjs",
+    "convert:backgrounds": "node scripts/convert-background-images.mjs",
     "predev": "npm run generate:image-backgrounds",
     "dev": "node scripts/dev-bilingual-site.mjs",
     "prebuild": "npm run generate:image-backgrounds",
@@ -16,7 +17,13 @@
     "verify:seo": "npm run lint && npm run typecheck && npm run test:inquiry && npm run build && npm run seo:audit && npm run performance:audit",
     "db:generate": "drizzle-kit generate",
     "test:inquiry": "node scripts/test-inquiry-worker.mjs",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "version:check": "node scripts/check-version.mjs",
+    "release:patch": "npm version patch -m \"chore(release): v%s\"",
+    "release:minor": "npm version minor -m \"chore(release): v%s\"",
+    "release:major": "npm version major -m \"chore(release): v%s\"",
+    "preversion": "npm run lint && npm run typecheck",
+    "version": "npm run version:check"
   },
   "dependencies": {
     "drizzle-orm": "^0.45.2",

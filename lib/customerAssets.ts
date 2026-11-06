@@ -3,8 +3,9 @@ import path from "node:path";
 import { customerLogoMetadata, preferredCustomerLogoOrder, type Customer } from "@/data/customers";
 
 const customerLogoDirectory = path.join(process.cwd(), "public", "assets", "customers");
-const supportedLogoExtensions = new Set([".jpeg", ".jpg", ".png", ".webp"]);
+const supportedLogoExtensions = new Set([".jpeg", ".jpg", ".png", ".svg", ".webp"]);
 const preferredLogoIndex = new Map(preferredCustomerLogoOrder.map((fileName, index) => [fileName, index]));
+const maximumHomepageCustomerLogos = 50;
 let cachedCustomerLogos: Customer[] | null = null;
 
 function formatCustomerName(fileName: string) {
@@ -41,9 +42,16 @@ export function getCustomerLogos(): Customer[] {
       return {
         name: metadata?.name ?? formatCustomerName(fileName),
         logo: `/assets/customers/${fileName}`,
-        logoScale: metadata?.logoScale
+        logoScale: metadata?.logoScale,
+        homepageStatus: metadata?.homepageStatus ?? "not_shown"
       };
     });
 
   return cachedCustomerLogos;
+}
+
+export function getHomepageCustomerLogos(): Customer[] {
+  return getCustomerLogos()
+    .filter((customer) => customer.homepageStatus === "shown")
+    .slice(0, maximumHomepageCustomerLogos);
 }

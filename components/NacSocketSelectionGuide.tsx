@@ -242,14 +242,14 @@ export function NacSocketSelectionGuide({ lang }: { lang: Language }) {
   ];
 
   return (
-    <section id="socket-selection-guide" className="border-y border-graphite-200 bg-white py-14">
+    <section id="socket-selection-guide" className="cse-section border-y border-graphite-200 bg-white">
       <div className="container-page">
         <div className="grid gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
+            <p className="cse-eyebrow text-signal-600">
               {localized(lang, "Alur pemilihan socket", "Socket selection flow")}
             </p>
-            <h2 className="mt-3 text-balance text-3xl font-bold text-graphite-900 md:text-4xl">
+            <h2 className="cse-heading mt-4 text-graphite-900">
               {localized(lang, "Tentukan kategori sebelum mencari part number.", "Choose the family before finding a part number.")}
             </h2>
           </div>
@@ -261,7 +261,7 @@ export function NacSocketSelectionGuide({ lang }: { lang: Language }) {
             <select
               value={drive}
               onChange={(event) => setDrive(event.target.value as DriveKey)}
-              className="focus-ring mt-2 min-h-11 w-full border border-graphite-300 bg-white px-3 py-2 text-sm font-medium text-graphite-800"
+              className="cse-input focus-ring mt-2 w-full py-2 font-medium text-graphite-800"
             >
               {driveOptions.map((option) => (
                 <option key={option.value} value={option.value}>{optionLabel(option, lang)}</option>
@@ -274,7 +274,7 @@ export function NacSocketSelectionGuide({ lang }: { lang: Language }) {
             <select
               value={profile}
               onChange={(event) => setProfile(event.target.value as ProfileKey)}
-              className="focus-ring mt-2 min-h-11 w-full border border-graphite-300 bg-white px-3 py-2 text-sm font-medium text-graphite-800"
+              className="cse-input focus-ring mt-2 w-full py-2 font-medium text-graphite-800"
             >
               {profileOptions.map((option) => (
                 <option key={option.value} value={option.value}>{optionLabel(option, lang)}</option>
@@ -287,7 +287,7 @@ export function NacSocketSelectionGuide({ lang }: { lang: Language }) {
             <select
               value={access}
               onChange={(event) => setAccess(event.target.value as AccessKey)}
-              className="focus-ring mt-2 min-h-11 w-full border border-graphite-300 bg-white px-3 py-2 text-sm font-medium text-graphite-800"
+              className="cse-input focus-ring mt-2 w-full py-2 font-medium text-graphite-800"
             >
               {accessOptions.map((option) => (
                 <option key={option.value} value={option.value}>{optionLabel(option, lang)}</option>
@@ -300,7 +300,7 @@ export function NacSocketSelectionGuide({ lang }: { lang: Language }) {
             <select
               value={retention}
               onChange={(event) => setRetention(event.target.value as RetentionKey)}
-              className="focus-ring mt-2 min-h-11 w-full border border-graphite-300 bg-white px-3 py-2 text-sm font-medium text-graphite-800"
+              className="cse-input focus-ring mt-2 w-full py-2 font-medium text-graphite-800"
             >
               {retentionOptions.map((option) => (
                 <option key={option.value} value={option.value}>{optionLabel(option, lang)}</option>
@@ -322,7 +322,7 @@ export function NacSocketSelectionGuide({ lang }: { lang: Language }) {
                       <span className="sr-only">{index + 1}</span>
                     </span>
                     <div className="min-w-0">
-                      <p className="text-xs font-bold uppercase tracking-[0.1em] text-signal-600">
+                      <p className="cse-eyebrow text-signal-600">
                         {index + 1}. {step.label}
                       </p>
                       <p className="mt-1 text-sm font-semibold leading-5 text-graphite-800">{step.value}</p>

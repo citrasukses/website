@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { FeatureGrid } from "@/components/FeatureGrid";
 import { Hero } from "@/components/Hero";
-import { PartnerInquiryForm } from "@/components/InquiryForms";
+import { PartnerInquiryForm } from "@/components/PartnerInquiryForm";
 import { SectionHeader } from "@/components/SectionHeader";
 import { brands } from "@/data/brands";
 import { company } from "@/data/navigation";
@@ -63,7 +63,7 @@ export default function PartnersPage() {
           lang === "en" ? "Lean partner model" : "Model partner ramping"
         ]}
       />
-      <section className="bg-white py-16">
+      <section className="cse-section bg-white">
         <div className="container-page grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
           <SectionHeader
             eyebrow={lang === "en" ? "Distribution fit" : "Kesesuaian distribusi"}
@@ -77,7 +77,7 @@ export default function PartnersPage() {
           <FeatureGrid items={points} />
         </div>
       </section>
-      <section className="bg-graphite-50 py-16">
+      <section className="cse-section bg-graphite-50">
         <div className="container-page">
           <SectionHeader
             eyebrow={lang === "en" ? "Represented brands" : "Brand yang diwakili"}
@@ -86,15 +86,15 @@ export default function PartnersPage() {
           />
         </div>
       </section>
-      <section id="partner-inquiry" className="bg-white py-16">
+      <section id="partner-inquiry" className="cse-section bg-white">
         <div className="container-page grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <SectionHeader
             eyebrow={lang === "en" ? "Partner inquiry" : "Inquiry partner"}
             title={lang === "en" ? "Tell CSE about your product category and Indonesia goals." : "Ceritakan kategori produk dan target Indonesia Anda."}
             description={
               lang === "en"
-                ? "This form is separate from buyer RFQs so overseas principals can send the right context."
-                : "Form ini dipisahkan dari RFQ buyer agar principal luar negeri dapat mengirim konteks yang tepat."
+                ? "This form is separate from buyer product inquiries so overseas principals can send the right context."
+                : "Form ini dipisahkan dari inquiry produk buyer agar principal luar negeri dapat mengirim konteks yang tepat."
             }
           />
           <PartnerInquiryForm lang={lang} />

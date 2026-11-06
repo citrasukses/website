@@ -4,6 +4,8 @@ Use this guide whenever the website is updated. Its purpose is to keep public pa
 
 This website uses the Next.js App Router, a bilingual static export, and Cloudflare. Indonesian pages use the root URL structure and English equivalents use `/en`.
 
+After every production deployment, run `docs/POST-DEPLOYMENT-SEO-CHECKLIST.md` and retain its deployment record.
+
 ## Non-negotiable rules
 
 - Do not redesign a page only for SEO.
@@ -35,6 +37,7 @@ This website uses the Next.js App Router, a bilingual static export, and Cloudfl
 | Performance regression budgets | `scripts/performance-budget.mjs` |
 | Inquiry source attribution | `lib/inquiry-attribution.ts` and `worker/static-export.js` |
 | Authority and outreach preparation | `docs/seo-authority-plan.md` |
+| After-deployment SEO runbook | `docs/POST-DEPLOYMENT-SEO-CHECKLIST.md` |
 
 When changing any of these files, verify both Indonesian and English output.
 
@@ -88,9 +91,9 @@ The first page in a browser session captures a privacy-conscious attribution rec
 
 Stored attribution is limited to the landing pathname, a referrer URL with query and hash removed, a coarse channel, and the five allowlisted UTM fields. Never add arbitrary landing-page query strings or user-entered form fields to analytics events.
 
-Successful RFQ/partner submissions, email fallbacks, and visible CSE email links push non-PII events to `window.dataLayer` and dispatch `cse:lead` browser events. A measurement platform can consume these events later without changing the forms. No analytics account or measurement ID is configured in this repository, so the events are instrumented but are not sent to a third party by this code.
+WhatsApp inquiry handoffs, successful partner submissions, email fallbacks, and visible CSE email links push non-PII events to `window.dataLayer` and dispatch `cse:lead` browser events. A measurement platform can consume these events later without changing the forms. No analytics account or measurement ID is configured in this repository, so the events are instrumented but are not sent to a third party by this code.
 
-There is no confirmed public WhatsApp destination in the current website data. Do not invent one. When CSE provides an approved number or `wa.me` URL, instrument its click with the same non-PII event fields before publishing it.
+The approved WhatsApp destination is configured centrally and is intentionally not displayed as text on the website. WhatsApp actions emit non-PII click events; visitor names, companies, phone numbers, and message content are never included in analytics events.
 
 ## Workflow for every website update
 

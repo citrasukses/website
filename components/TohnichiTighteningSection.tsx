@@ -226,7 +226,7 @@ function RiskFlowStep({
 }) {
   return (
     <div
-      className={`flex min-h-36 flex-col border p-3.5 ${riskStepToneClasses[tone]}`}
+      className={`flex min-h-36 min-w-0 flex-col border p-3 ${riskStepToneClasses[tone]}`}
     >
       <div className="flex items-center gap-2">
         <span className="text-[10px] font-black tracking-[0.16em] text-signal-500">
@@ -234,7 +234,7 @@ function RiskFlowStep({
         </span>
         <span className="h-px flex-1 bg-graphite-200" aria-hidden="true" />
       </div>
-      <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.13em] text-graphite-500">
+      <p className="mt-2 break-normal text-[10px] font-bold uppercase tracking-[0.08em] text-graphite-500">
         {label}
       </p>
       <div className="mt-auto pt-3">{children}</div>
@@ -245,10 +245,10 @@ function RiskFlowStep({
 function RiskFlowArrow() {
   return (
     <span
-      className="flex h-7 items-center justify-center text-graphite-300 sm:h-auto"
+      className="risk-flow-arrow flex items-center justify-center text-graphite-300"
       aria-hidden="true"
     >
-      <ArrowRight className="h-4 w-4 rotate-90 sm:rotate-0" />
+      <ArrowRight className="h-4 w-4" />
     </span>
   );
 }
@@ -262,7 +262,7 @@ function RiskFlow({
 }) {
   return (
     <div
-      className="grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)_auto_minmax(0,1fr)] sm:items-stretch"
+      className="risk-flow grid gap-2"
       role="img"
       aria-label={ariaLabel}
     >
@@ -445,7 +445,7 @@ function TighteningRiskVisual({
           number="01"
           label={lang === "en" ? "Production tool" : "Tool produksi"}
         >
-          <p className="text-base font-black leading-5 text-graphite-900">Nutrunner</p>
+          <p className="break-normal text-sm font-black leading-5 text-graphite-900 2xl:text-base">Nutrunner</p>
           <p className="mt-2 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.12em] text-industrial-700">
             <Play className="h-3.5 w-3.5 fill-current" aria-hidden="true" />
             {lang === "en" ? "On line" : "Di lini"}
@@ -470,8 +470,8 @@ function TighteningRiskVisual({
           label={lang === "en" ? "Line impact" : "Dampak ke lini"}
           tone="risk"
         >
-          <p className="inline-flex items-center gap-2 text-base font-black leading-5 text-signal-600">
-            <Pause className="h-4 w-4 fill-current" aria-hidden="true" />
+          <p className="flex min-w-0 flex-col items-start gap-1 text-sm font-black leading-5 text-signal-600 2xl:flex-row 2xl:items-center 2xl:gap-1.5 2xl:text-base">
+            <Pause className="h-3.5 w-3.5 shrink-0 fill-current 2xl:h-4 2xl:w-4" aria-hidden="true" />
             {lang === "en" ? "Downtime" : "Downtime"}
           </p>
           <p className="mt-2 text-[10px] font-semibold leading-4 text-graphite-600">
@@ -523,7 +523,7 @@ function TighteningRiskVisual({
   }
 
   return (
-    <div className="overflow-hidden border border-graphite-200 bg-graphite-50">
+    <div className="overflow-hidden border border-graphite-200 bg-graphite-50 [container-type:inline-size]">
       <div className="flex items-center justify-between gap-4 border-b border-graphite-200 bg-graphite-900 px-4 py-3 text-white">
         <div className="flex min-w-0 items-center gap-3">
           <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-white/20 bg-white/5">
@@ -680,7 +680,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
       className="tohnichi-calibration-field relative isolate overflow-hidden border-y border-graphite-200 text-graphite-900"
       aria-labelledby="tohnichi-expertise-title"
     >
-      <div className="container-page py-16 lg:py-20">
+      <div className="container-page cse-section">
         <div className="grid gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:items-stretch">
           <div>
             <div className="inline-flex w-fit max-w-full flex-col overflow-hidden border border-graphite-200 bg-white shadow-sm">
@@ -713,12 +713,12 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
               </div>
             </div>
 
-            <p className="mt-8 border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-industrial-700">
+            <p className="cse-eyebrow mt-8 text-industrial-700">
               {lang === "en" ? "Tightening Assurance System" : "Tightening Assurance System"}
             </p>
             <h2
               id="tohnichi-expertise-title"
-              className="mt-5 max-w-3xl text-balance text-3xl font-bold leading-tight tracking-normal sm:text-4xl lg:text-3xl"
+              className="cse-heading mt-4 max-w-3xl"
             >
               {lang === "en"
                 ? "Still relying on operator instinct for tightening? Change now to a controlled process."
@@ -741,7 +741,9 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
                 href={withLang("/brands/tohnichi", lang)}
                 variant="ghost"
               >
-                {lang === "en" ? "Explore TOHNICHI" : "Lihat TOHNICHI"}
+                {lang === "en"
+                  ? "TOHNICHI Indonesia — Distributor, Sales & Service"
+                  : "TOHNICHI Indonesia — Distributor, Penjualan & Servis"}
               </CTAButton>
               <CTAButton
                 href={withLang("/tohnichi-torsi-tepat", lang)}
@@ -752,7 +754,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
             </div>
           </div>
 
-          <div className="relative overflow-hidden border border-graphite-200 bg-white shadow-panel">
+          <div className="cse-card relative">
             <div className="flex items-center justify-between border-b border-graphite-200 bg-white px-5 py-4 sm:px-6">
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-graphite-500">
                 {lang === "en" ? "Controlled tightening architecture" : "Arsitektur tightening terkendali"}
@@ -782,16 +784,13 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
         </div>
 
         <div
-          className="mt-14 overflow-hidden border border-graphite-200 bg-white shadow-panel lg:mt-18"
+          className="cse-card mt-10 lg:mt-12"
           role="region"
           aria-roledescription="carousel"
           aria-label={lang === "en" ? "Manufacturing problems and TOHNICHI solutions" : "Masalah manufaktur dan solusi TOHNICHI"}
         >
           <div className="border-b border-graphite-200 px-5 py-6 sm:px-7">
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-signal-600">
-                Application guide
-              </p>
               <h3 className="mt-2 text-2xl font-bold leading-tight text-graphite-900 sm:text-3xl">
                 Tantangan Quality pada Industri Manufaktur
               </h3>
@@ -885,7 +884,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
 
                 <div className="mt-5 grid flex-1 gap-px overflow-hidden border border-[#dfd4a0] bg-[#dfd4a0] sm:grid-cols-[minmax(13rem,0.72fr)_minmax(0,1.28fr)] sm:items-stretch">
                   <div className="flex min-h-48 flex-col bg-white p-5">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-industrial-700 text-white">
+                    <div className="cse-icon border-industrial-700 bg-industrial-700 text-white">
                       <Check className="h-5 w-5" aria-hidden="true" />
                     </div>
                     <div>
@@ -918,7 +917,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
               <button
                 type="button"
                 onClick={showPreviousProblem}
-                className="flex h-10 w-10 items-center justify-center border border-graphite-200 bg-white text-graphite-900 transition-colors hover:border-industrial-700 hover:text-industrial-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-industrial-700"
+                className="cse-control border-graphite-200 bg-white text-graphite-900 hover:border-industrial-700 hover:text-industrial-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-industrial-700"
                 aria-label={lang === "en" ? "Previous manufacturing problem" : "Masalah manufaktur sebelumnya"}
               >
                 <ChevronLeft className="h-4 w-4" aria-hidden="true" />
@@ -926,7 +925,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
               <button
                 type="button"
                 onClick={showNextProblem}
-                className="flex h-10 w-10 items-center justify-center border border-graphite-200 bg-white text-graphite-900 transition-colors hover:border-industrial-700 hover:text-industrial-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-industrial-700"
+                className="cse-control border-graphite-200 bg-white text-graphite-900 hover:border-industrial-700 hover:text-industrial-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-industrial-700"
                 aria-label={lang === "en" ? "Next manufacturing problem" : "Masalah manufaktur berikutnya"}
               >
                 <ChevronRight className="h-4 w-4" aria-hidden="true" />
@@ -935,7 +934,7 @@ export function TohnichiTighteningSection({ lang }: TohnichiTighteningSectionPro
           </div>
         </div>
 
-        <div className="mt-10 grid gap-px border border-graphite-200 bg-graphite-200 shadow-panel md:grid-cols-[1.2fr_0.8fr]">
+        <div className="mt-10 grid gap-px border border-graphite-200 bg-graphite-200 md:grid-cols-[1.2fr_0.8fr]">
           <div className="bg-signal-500 p-7 sm:p-9">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/70">
               {lang === "en" ? "The tightening objective" : "Tujuan tightening"}

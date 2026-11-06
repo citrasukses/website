@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AlertTriangle, ArrowUpRight, Construction, PackageSearch, Search, X } from "lucide-react";
-import { useDeferredValue, useMemo, useState } from "react";
+import { useDeferredValue, useEffect, useMemo, useState } from "react";
 import { BrandCard } from "@/components/BrandCard";
 import { BrandLogo } from "@/components/BrandLogo";
 import type { SearchableBrandCard } from "@/data/brand-search";
@@ -160,7 +160,7 @@ function TradingBrandCard({ brand, lang, requiresConfirmation = false }: { brand
   return (
     <Link
       href={href}
-      className="group flex min-h-[260px] flex-col border border-dashed border-graphite-300 bg-white transition duration-300 hover:-translate-y-1 hover:border-signal-500 hover:bg-signal-50/50 hover:shadow-panel"
+      className="focus-ring group flex min-h-[260px] flex-col overflow-hidden rounded-brand border border-dashed border-graphite-300 bg-white transition-colors hover:border-industrial-600 hover:bg-industrial-50"
     >
       {content}
     </Link>
@@ -169,6 +169,12 @@ function TradingBrandCard({ brand, lang, requiresConfirmation = false }: { brand
 
 export function BrandsSearchCatalog({ representedBrands, tradingBrands, tradingBrandCount, confirmationBrands, lang }: BrandsSearchCatalogProps) {
   const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    const initialQuery = new URLSearchParams(window.location.search).get("q");
+    if (initialQuery) setQuery(initialQuery);
+  }, []);
+
   const deferredQuery = useDeferredValue(query);
   const normalizedQuery = normalize(deferredQuery);
 
@@ -225,7 +231,7 @@ export function BrandsSearchCatalog({ representedBrands, tradingBrands, tradingB
                   ? "Search brand, product, or application"
                   : "Cari brand, produk, atau aplikasi"
               }
-              className="focus-ring h-12 w-full border border-graphite-300 bg-white pl-12 pr-12 text-sm font-semibold text-graphite-900 placeholder:text-graphite-400"
+              className="cse-input focus-ring w-full pl-12 pr-12 placeholder:text-graphite-400"
             />
             {query ? (
               <button
@@ -256,7 +262,7 @@ export function BrandsSearchCatalog({ representedBrands, tradingBrands, tradingB
       <section className="mt-10">
         <div className="flex flex-col justify-between gap-3 md:flex-row md:items-end">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
+            <p className="cse-eyebrow text-signal-600">
               {lang === "en" ? "Authorized representatives" : "Authorized representative"}
             </p>
             <h2 className="mt-2 text-2xl font-bold text-graphite-900">
@@ -306,7 +312,7 @@ export function BrandsSearchCatalog({ representedBrands, tradingBrands, tradingB
 
         <div className="mt-6 flex flex-col justify-between gap-3 md:flex-row md:items-end">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
+            <p className="cse-eyebrow text-signal-600">
               {lang === "en" ? "Brand directory" : "Direktori brand"}
             </p>
             <h3 className="mt-2 text-2xl font-bold text-graphite-900">
@@ -327,8 +333,8 @@ export function BrandsSearchCatalog({ representedBrands, tradingBrands, tradingB
         ) : (
           <div className="mt-5 border border-graphite-200 bg-white p-6 text-sm font-semibold text-graphite-500">
             {lang === "en"
-              ? "No general trading cards match this search. Send an RFQ if the brand is not published yet."
-              : "Tidak ada kartu general trading yang cocok. Kirim RFQ jika brand belum dipublikasikan."}
+              ? "No general trading cards match this search. Ask CSE on WhatsApp if the brand is not published yet."
+              : "Tidak ada kartu general trading yang cocok. Tanyakan ke CSE via WhatsApp jika brand belum dipublikasikan."}
           </div>
         )}
         <p className="mt-5 border border-dashed border-graphite-300 bg-graphite-50 px-4 py-3 text-xs leading-5 text-graphite-500">

@@ -43,20 +43,20 @@ function inquiryRequest(body, origin = "https://cse.example") {
 
 const database = new MockDatabase();
 const assets = { fetch: () => new Response("asset") };
-const validRfq = {
-  type: "rfq",
+const validPartnerInquiry = {
+  type: "partner",
   lang: "en",
   contactUrl: "",
   fields: {
     name: "Ayu",
     company: "Example Manufacturing",
     email: "ayu@example.com",
-    phone: "+62 812 0000 0000",
-    brand: "Tohnichi",
-    product: "QL100N4",
-    quantity: "2",
-    application: "Assembly line",
-    message: "Please quote this model."
+    country: "Japan",
+    website: "https://example.com",
+    category: "Industrial tooling",
+    markets: "Southeast Asia",
+    support: "Distribution partner",
+    message: "We would like to discuss the Indonesian market."
   },
   attribution: {
     landingPath: "/en/brands/tohnichi/products/ql-qle2",
@@ -70,7 +70,7 @@ const validRfq = {
   }
 };
 
-const successResponse = await worker.fetch(inquiryRequest(validRfq), { DB: database, ASSETS: assets });
+const successResponse = await worker.fetch(inquiryRequest(validPartnerInquiry), { DB: database, ASSETS: assets });
 const successBody = await successResponse.json();
 assert.equal(successResponse.status, 201);
 assert.equal(successBody.ok, true);
@@ -78,20 +78,20 @@ assert.match(successBody.reference, /^CSE-\d{8}-[A-F0-9]{8}$/);
 assert.equal(database.inserts.length, 1);
 assert.equal(database.inserts[0][3], "Ayu");
 const storedPayload = JSON.parse(database.inserts[0][8]);
-assert.equal(storedPayload.product, "QL100N4");
+assert.equal(storedPayload.category, "Industrial tooling");
 assert.equal(storedPayload._attribution.channel, "organic");
 assert.equal(storedPayload._attribution.landingPath, "/en/brands/tohnichi/products/ql-qle2");
 assert.equal(storedPayload._attribution.referrer, "https://www.google.com/search");
 
 const invalidResponse = await worker.fetch(
-  inquiryRequest({ ...validRfq, fields: { ...validRfq.fields, email: "invalid" } }),
+  inquiryRequest({ ...validPartnerInquiry, fields: { ...validPartnerInquiry.fields, email: "invalid" } }),
   { DB: database, ASSETS: assets }
 );
 assert.equal(invalidResponse.status, 400);
 assert.equal(database.inserts.length, 1);
 
 const invalidAttributionResponse = await worker.fetch(
-  inquiryRequest({ ...validRfq, attribution: { ...validRfq.attribution, channel: "forged" } }),
+  inquiryRequest({ ...validPartnerInquiry, attribution: { ...validPartnerInquiry.attribution, channel: "forged" } }),
   { DB: database, ASSETS: assets }
 );
 assert.equal(invalidAttributionResponse.status, 400);
@@ -99,15 +99,15 @@ assert.equal(database.inserts.length, 1);
 
 const queryBearingLandingResponse = await worker.fetch(
   inquiryRequest({
-    ...validRfq,
-    attribution: { ...validRfq.attribution, landingPath: "/contact?email=private@example.com" }
+    ...validPartnerInquiry,
+    attribution: { ...validPartnerInquiry.attribution, landingPath: "/contact?email=private@example.com" }
   }),
   { DB: database, ASSETS: assets }
 );
 assert.equal(queryBearingLandingResponse.status, 400);
 assert.equal(database.inserts.length, 1);
 
-const crossOriginResponse = await worker.fetch(inquiryRequest(validRfq, "https://attacker.example"), {
+const crossOriginResponse = await worker.fetch(inquiryRequest(validPartnerInquiry, "https://attacker.example"), {
   DB: database,
   ASSETS: assets
 });
@@ -115,10 +115,17 @@ assert.equal(crossOriginResponse.status, 403);
 assert.equal(database.inserts.length, 1);
 
 const spamResponse = await worker.fetch(
-  inquiryRequest({ ...validRfq, contactUrl: "https://spam.example" }),
+  inquiryRequest({ ...validPartnerInquiry, contactUrl: "https://spam.example" }),
   { DB: database, ASSETS: assets }
 );
 assert.equal(spamResponse.status, 201);
+assert.equal(database.inserts.length, 1);
+
+const removedRfqResponse = await worker.fetch(
+  inquiryRequest({ ...validPartnerInquiry, type: "rfq" }),
+  { DB: database, ASSETS: assets }
+);
+assert.equal(removedRfqResponse.status, 400);
 assert.equal(database.inserts.length, 1);
 
 console.log("Inquiry worker checks passed.");

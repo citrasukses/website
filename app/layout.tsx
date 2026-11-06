@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Suspense, type ReactNode } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { WhatsAppFloatingButton } from "@/components/WhatsAppFloatingButton";
 import { AttributionInitializer } from "@/components/AttributionInitializer";
 import { staticLanguage } from "@/lib/i18n";
 import { absoluteLocalizedUrl, absoluteUrl, siteConfig } from "@/lib/seo-config";
@@ -62,12 +63,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
   return (
     <html lang={lang}>
-      <body>
+      <body className="pb-[calc(4rem+env(safe-area-inset-bottom))] sm:pb-0">
         <AttributionInitializer />
         <Suspense fallback={<div className="h-16 border-b border-graphite-200 bg-white" />}>
           <Navbar />
         </Suspense>
         <main>{children}</main>
+        <WhatsAppFloatingButton lang={lang} />
         <Suspense fallback={null}>
           <Footer />
         </Suspense>

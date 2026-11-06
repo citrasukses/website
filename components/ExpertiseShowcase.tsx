@@ -88,7 +88,7 @@ export function ExpertiseShowcase({ areas, lang }: ExpertiseShowcaseProps) {
     <section
       ref={sectionRef}
       id="expertise"
-      className="technical-grid border-b border-graphite-200 py-16"
+      className="cse-section technical-grid border-b border-graphite-200"
       aria-label={lang === "en" ? "Industry expertise carousel" : "Carousel keahlian industri"}
       aria-roledescription="carousel"
       onMouseEnter={() => setIsPaused(true)}
@@ -99,7 +99,7 @@ export function ExpertiseShowcase({ areas, lang }: ExpertiseShowcaseProps) {
       <div className="container-page">
         <div className="mb-8 flex flex-col gap-5 border-b border-graphite-200 pb-5 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-signal-600">
+            <p className="cse-eyebrow text-signal-600">
               {lang === "en" ? "Technical expertise" : "Keahlian teknis"}
             </p>
             <p className="mt-2 text-sm font-semibold text-graphite-500" aria-live="polite">
@@ -135,10 +135,10 @@ export function ExpertiseShowcase({ areas, lang }: ExpertiseShowcaseProps) {
           aria-roledescription="slide"
         >
           <div>
-              <p className="border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-industrial-700">
+              <p className="cse-eyebrow text-industrial-700">
                 {text(area.eyebrow, lang)}
               </p>
-              <h2 className="mt-5 max-w-3xl text-balance text-3xl font-bold tracking-normal text-graphite-900 md:text-4xl">
+              <h2 className="cse-heading mt-4 max-w-3xl text-graphite-900">
                 {text(area.title, lang)}
               </h2>
               <p className="mt-5 max-w-2xl text-base leading-7 text-graphite-600">

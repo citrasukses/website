@@ -62,14 +62,14 @@ export function SankyoRikagakuFamilyDetails({
   const modelGroups = groupModels(detail.models, lang);
 
   return (
-    <section className="bg-graphite-50 py-14">
+    <section className="cse-section bg-graphite-50">
       <div className="container-page">
         <div className="grid gap-6 lg:grid-cols-[0.78fr_1.22fr] lg:items-end">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
+            <p className="cse-eyebrow text-signal-600">
               {lang === "en" ? "Official product-family catalogue" : "Katalog resmi keluarga produk"}
             </p>
-            <h2 className="mt-3 text-balance text-3xl font-bold text-graphite-900">
+            <h2 className="cse-heading mt-4 text-graphite-900">
               {lang === "en"
                 ? `${detail.models.length} ${productName} models and options`
                 : `${detail.models.length} model dan pilihan ${productName}`}

@@ -7,6 +7,7 @@
 /.next/
 /.next-dev-id/
 /.next-dev-en/
+/.next-cohesion-*/
 /out/
 
 # Production builds
@@ -17,8 +18,11 @@
 /coverage/
 /.nyc_output/
 
-# Deployment project metadata and local builds
-/.vercel/
+# Locally generated reports and temporary artifacts
+/output/
+/tmp/
+__pycache__/
+*.py[cod]
 
 # Environment files (keep documented templates)
 .env
@@ -55,3 +59,8 @@ Thumbs.db
 .turbo/
 .tmp/
 data/catalog.local.json
+
+# Local source photos can be large; commit optimized public assets instead.
+/source-images/*
+!/source-images/backgrounds/
+!/source-images/backgrounds/.gitkeep
