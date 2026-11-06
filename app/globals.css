@@ -73,6 +73,20 @@
   .cse-control {
     @apply flex h-11 w-11 shrink-0 items-center justify-center rounded-brand border transition-colors duration-200;
   }
+
+  .cse-photo-carousel {
+    container-type: inline-size;
+  }
+
+  .cse-carousel-indicators {
+    display: none;
+  }
+
+  @container (min-width: 22rem) {
+    .cse-carousel-indicators {
+      display: flex;
+    }
+  }
 }
 
 * {

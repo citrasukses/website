@@ -71,7 +71,7 @@ export function TohnichiPhotoCarousel({ id, labelledBy, photos, lang, theme = "l
       aria-roledescription={en ? "carousel" : "karusel"}
       aria-labelledby={labelledBy}
       aria-describedby={`${id}-instructions`}
-      className={`min-w-0 rounded-brand outline-none focus-visible:ring-2 focus-visible:ring-offset-4 ${dark ? "focus-visible:ring-white/75 focus-visible:ring-offset-graphite-900" : "focus-visible:ring-industrial-700 focus-visible:ring-offset-paper-100"}`}
+      className={`cse-photo-carousel min-w-0 rounded-brand outline-none focus-visible:ring-2 focus-visible:ring-offset-4 ${dark ? "focus-visible:ring-white/75 focus-visible:ring-offset-graphite-900" : "focus-visible:ring-industrial-700 focus-visible:ring-offset-paper-100"}`}
       tabIndex={0}
       onKeyDown={handleKeyDown}
       onMouseEnter={() => setHovered(true)}
@@ -82,7 +82,7 @@ export function TohnichiPhotoCarousel({ id, labelledBy, photos, lang, theme = "l
       }}
     >
       <p id={`${id}-instructions`} className="sr-only">
-        {en ? "Use the left and right arrow keys, swipe, or choose a photo below." : "Gunakan tombol panah kiri dan kanan, geser, atau pilih foto di bawah."}
+        {en ? "Use the left and right arrow keys, swipe, or use the photo controls below." : "Gunakan tombol panah kiri dan kanan, geser, atau gunakan kontrol foto di bawah."}
       </p>
       <figure>
         <div
@@ -128,7 +128,7 @@ export function TohnichiPhotoCarousel({ id, labelledBy, photos, lang, theme = "l
           <span className={`text-xs tabular-nums ${dark ? "text-white/60" : "text-graphite-700"}`} aria-hidden="true">
             {String(activeIndex + 1).padStart(2, "0")} / {String(photos.length).padStart(2, "0")}
           </span>
-          <div className="flex items-center">
+          <div className="cse-carousel-indicators items-center">
             {photos.map((photo, index) => (
               <button
                 key={photo.slug}

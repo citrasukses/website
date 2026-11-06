@@ -53,7 +53,7 @@ export function Navbar() {
       <div className="container-page flex min-h-[4.5rem] items-center justify-between gap-4 py-2">
         <Link
           href={withLang("/", lang)}
-          className="focus-ring flex min-w-0 items-center gap-3"
+          className="focus-ring flex min-w-0 items-center gap-2 sm:gap-3"
           aria-label={lang === "en" ? "CSE home" : "Beranda CSE"}
         >
           <Image
@@ -62,13 +62,13 @@ export function Navbar() {
             width={120}
             height={60}
             priority
-            className="h-10 w-auto shrink-0 object-contain sm:h-11"
+            className="h-8 w-auto shrink-0 object-contain sm:h-11"
           />
-          <span className="hidden min-w-0 flex-col sm:flex xl:hidden 2xl:flex">
-            <span className="truncate text-lg font-extrabold leading-none tracking-[-0.03em] text-cse-500 2xl:text-xl">
+          <span className="flex min-w-0 flex-col">
+            <span className="text-[13px] font-extrabold leading-tight tracking-[-0.03em] text-cse-500 sm:text-lg 2xl:text-xl">
               {company.longName}
             </span>
-            <span className="mt-1 self-end text-[10px] italic leading-none text-cse-500">
+            <span className="mt-0.5 text-[8px] italic leading-tight text-cse-500 sm:mt-1 sm:self-end sm:text-[10px]">
               {company.tagline}
             </span>
           </span>
@@ -224,7 +224,7 @@ export function Navbar() {
 
         <button
           type="button"
-          className="focus-ring inline-flex h-11 w-11 items-center justify-center border border-industrial-200 bg-white text-industrial-700 transition hover:bg-industrial-50 xl:hidden"
+          className="focus-ring inline-flex h-11 w-11 shrink-0 items-center justify-center border border-industrial-200 bg-white text-industrial-700 transition hover:bg-industrial-50 xl:hidden"
           onClick={() => setOpen((value) => !value)}
           aria-label={open ? (lang === "en" ? "Close navigation" : "Tutup navigasi") : (lang === "en" ? "Open navigation" : "Buka navigasi")}
           aria-expanded={open}

@@ -5,6 +5,10 @@ real industrial photography, brand assets, red and blue palette, and homepage he
 narration. Build new sections from the shared roles below instead of choosing new
 corner sizes, heading scales, or hover effects for each section.
 
+Keep the company name beside the header logo at every breakpoint. On narrow
+screens, let the name wrap within the brand lockup rather than hiding or
+truncating it. Retain the accompanying tagline.
+
 The implemented source of truth is `app/globals.css` and `tailwind.config.ts`.
 `SectionHeader`, `Hero`, `CTAButton`, `BrandCard`, `ProductCard`, and the inquiry
 forms apply these rules across the homepage, company pages, brand pages, product
@@ -89,6 +93,8 @@ labels, and model names are smaller roles, not additional section-title styles.
   inquiry forms. Preserve appropriate labels, input types, and autocomplete.
 - `cse-icon` provides blue line-icon tiles on a pale-blue surface.
 - `cse-control` provides matching photo, product, and explainer navigation.
+- Photo panels always show the count and the pause/previous/next controls on one
+  row. Direct-selection dots appear when the panel has at least 352px of room.
 - Keep visible keyboard focus, meaningful accessible labels, and existing
   reduced-motion, pause, swipe, and keyboard behavior.
 

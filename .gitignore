@@ -7,7 +7,6 @@
 /.next/
 /.next-dev-id/
 /.next-dev-en/
-/.next-cohesion-*/
 /out/
 
 # Production builds
