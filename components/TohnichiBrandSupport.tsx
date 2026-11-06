@@ -36,10 +36,10 @@ export function TohnichiLocalServices({ lang }: { lang: Language }) {
     { title: "Perbaikan & dukungan teknis", body: "Jelaskan kerusakan atau kendala aplikasi, lalu kirim model, nomor seri, dan foto melalui WhatsApp atau email. Sertakan riwayat jatuh, kelebihan beban, atau perbaikan untuk membantu peninjauan.", detail: "Konfirmasikan pengaturan inspeksi, ketersediaan suku cadang, dan usulan pekerjaan dengan CSE sebelum mengirim alat." }
   ];
   return (
-    <section id="tohnichi-services" className="scroll-mt-24 bg-white py-16">
+    <section id="tohnichi-services" className="cse-section scroll-mt-24 bg-white">
       <div className="container-page">
-        <p className="border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-signal-600">{en ? "TOHNICHI support in Indonesia" : "Dukungan TOHNICHI di Indonesia"}</p>
-        <h2 className="mt-4 max-w-3xl text-3xl font-bold text-graphite-900 md:text-4xl">{en ? "Purchase, calibrate, and service your tools through CSE." : "Pembelian, kalibrasi, dan servis alat melalui CSE."}</h2>
+        <p className="cse-eyebrow text-signal-600">{en ? "TOHNICHI support in Indonesia" : "Dukungan TOHNICHI di Indonesia"}</p>
+        <h2 className="cse-heading mt-4 max-w-3xl text-graphite-900">{en ? "Purchase, calibrate, and service your tools through CSE." : "Pembelian, kalibrasi, dan servis alat melalui CSE."}</h2>
         <div className="mt-9 grid gap-5 lg:grid-cols-3">
           {services.map((service, index) => (
             <div key={service.title} className="border border-graphite-200 bg-graphite-50 p-6">
@@ -71,11 +71,11 @@ export function TohnichiTechnicalExpertise({ lang }: { lang: Language }) {
     { title: "Rencanakan verifikasi", body: "Sertakan pemeriksaan alat, catatan kalibrasi, dan tindakan saat hasil keluar toleransi dalam pembahasan pemilihan alat." }
   ];
   return (
-    <section id="tohnichi-expertise" className="scroll-mt-24 border-y border-graphite-200 bg-[#f3f1ec] py-16">
+    <section id="tohnichi-expertise" className="cse-section scroll-mt-24 border-y border-graphite-200 bg-paper-100">
       <div className="container-page grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
-          <p className="border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-signal-600">{en ? "Technical selection with CSE" : "Pemilihan teknis bersama CSE"}</p>
-          <h2 className="mt-4 text-3xl font-bold text-graphite-900 md:text-4xl">{en ? "Connect the tool choice to your production process." : "Sesuaikan pilihan alat dengan proses produksi Anda."}</h2>
+          <p className="cse-eyebrow text-signal-600">{en ? "Technical selection with CSE" : "Pemilihan teknis bersama CSE"}</p>
+          <h2 className="cse-heading mt-4 text-graphite-900">{en ? "Connect the tool choice to your production process." : "Sesuaikan pilihan alat dengan proses produksi Anda."}</h2>
           <p className="mt-5 text-base leading-7 text-graphite-700">{en ? "Use these three checks to prepare a technical discussion with CSE. Our TOHNICHI guides cover model selection, tightening control, and verification so procurement and engineering can work from the same requirements." : "Gunakan tiga langkah ini untuk menyiapkan diskusi teknis dengan CSE. Panduan TOHNICHI kami membahas pemilihan model, kontrol pengencangan, dan verifikasi agar procurement dan engineering menggunakan kebutuhan yang sama."}</p>
           <Link className="focus-ring mt-6 inline-flex items-center gap-2 font-bold text-industrial-700 underline underline-offset-4" href={withLang("/solutions/torque-control", lang)}>{en ? "Explore torque-control applications" : "Pelajari aplikasi torque control"}<ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" /></Link>
         </div>
@@ -105,10 +105,10 @@ export function TohnichiBuyerQuestions({ lang }: { lang: Language }) {
     { question: "Informasi apa yang diperlukan untuk dokumen kalibrasi?", answer: "Sampaikan persyaratan internal atau pelanggan, titik ukur dan toleransi jika telah ditetapkan, serta kebutuhan ketertelusuran atau sertifikat. Minta CSE mengonfirmasi dokumen dan lingkup layanan yang tersedia untuk alat Anda sebelum melanjutkan." }
   ];
   return (
-    <section id="tohnichi-faq" className="scroll-mt-24 bg-white py-16">
+    <section id="tohnichi-faq" className="cse-section scroll-mt-24 bg-white">
       <div className="container-page max-w-5xl">
-        <p className="border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-signal-600">{en ? "Before you contact CSE" : "Sebelum menghubungi CSE"}</p>
-        <h2 className="mb-8 mt-4 text-3xl font-bold text-graphite-900 md:text-4xl">{en ? "TOHNICHI purchasing & service questions" : "Pertanyaan pembelian & servis TOHNICHI"}</h2>
+        <p className="cse-eyebrow text-signal-600">{en ? "Before you contact CSE" : "Sebelum menghubungi CSE"}</p>
+        <h2 className="cse-heading mb-8 mt-4 text-graphite-900">{en ? "TOHNICHI purchasing & service questions" : "Pertanyaan pembelian & servis TOHNICHI"}</h2>
         <FAQAccordion items={items} />
       </div>
     </section>

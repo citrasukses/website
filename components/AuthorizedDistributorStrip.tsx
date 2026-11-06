@@ -51,7 +51,7 @@ type DistributorTileProps = {
 function DistributorTile({ slug, name, lang, className = "", children }: DistributorTileProps) {
   const canOpen = slug === "tohnichi" || slug === "nac";
   const tileClassName = `relative flex min-h-24 items-center justify-center overflow-hidden bg-white p-5 lg:min-h-32 ${className} ${
-    canOpen ? "focus-ring group transition-colors hover:bg-graphite-50" : ""
+    canOpen ? "focus-ring group transition-colors hover:bg-industrial-50" : ""
   }`;
 
   if (!canOpen) {
@@ -79,7 +79,7 @@ export function AuthorizedDistributorStrip({ lang, className = "" }: AuthorizedD
 
       <div className="grid lg:grid-cols-[0.68fr_1.32fr]">
         <div className="flex flex-col justify-center px-5 py-6 sm:px-7 lg:px-8">
-          <div className="flex items-center gap-3 text-white/80">
+          <div className="flex items-center gap-3 text-white/90">
             <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-white/20 bg-white/5">
               <BadgeCheck className="h-5 w-5 text-white" aria-hidden="true" />
             </span>
@@ -94,7 +94,7 @@ export function AuthorizedDistributorStrip({ lang, className = "" }: AuthorizedD
               : "Distributor resmi brand industrial terpercaya."}
           </h2>
 
-          <p className="mt-3 text-sm leading-6 text-white/75">
+          <p className="mt-3 text-sm leading-6 text-white/90">
             {lang === "en"
               ? "Official representation applies to the brands shown here. Other brands are sourced through CSE's broader general-trading network."
               : "Representasi resmi berlaku untuk brand yang ditampilkan di sini. Brand lainnya dipasok melalui jaringan general trading CSE yang lebih luas."}

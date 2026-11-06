@@ -268,12 +268,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
           { label: product.name }
         ]}
       />
-      <section className="bg-white py-14">
+      <section className="cse-section bg-white">
         <div className="container-page grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-start">
           <ProductGallery images={images} productName={product.name} />
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">{brand.name} / {text(group.title, lang)}</p>
-            <h1 className="mt-3 text-balance text-4xl font-bold text-graphite-900 md:text-5xl">{product.name}</h1>
+            <p className="cse-eyebrow text-signal-600">{brand.name} / {text(group.title, lang)}</p>
+            <h1 className="cse-title mt-4 text-graphite-900">{product.name}</h1>
             {product.model ? <p className="mt-3 text-sm font-bold uppercase tracking-[0.16em] text-industrial-700">Model {product.model}</p> : null}
             <p className="mt-6 text-base leading-7 text-graphite-600">
               {text(familyDetail?.overview ?? product.summary, lang)}
@@ -327,11 +327,11 @@ export default async function ProductDetailPage({ params }: PageProps) {
       ) : sankyoRikagakuDetail ? (
         <SankyoRikagakuFamilyDetails productName={product.name} detail={sankyoRikagakuDetail} lang={lang} />
       ) : (
-        <section className="bg-graphite-50 py-14">
+        <section className="cse-section bg-graphite-50">
           <div className="container-page grid gap-8 lg:grid-cols-[0.55fr_1fr]">
             <div>
               <FileText className="h-6 w-6 text-signal-600" aria-hidden="true" />
-              <h2 className="mt-4 text-3xl font-bold text-graphite-900">{lang === "en" ? "Product specifications" : "Spesifikasi produk"}</h2>
+              <h2 className="cse-heading mt-4 text-graphite-900">{lang === "en" ? "Product specifications" : "Spesifikasi produk"}</h2>
               <p className="mt-3 text-sm leading-6 text-graphite-500">{lang === "en" ? "Confirm the final specification and availability with CSE before ordering." : "Konfirmasi spesifikasi akhir dan ketersediaan dengan CSE sebelum memesan."}</p>
             </div>
             <div className="border border-graphite-200 bg-white">
@@ -348,14 +348,14 @@ export default async function ProductDetailPage({ params }: PageProps) {
         </section>
       )}
       {tohnichiPriorityGuidance ? (
-        <section className="bg-white py-14">
+        <section className="cse-section bg-white">
           <div className="container-page">
             <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
               <div>
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
+                <p className="cse-eyebrow text-signal-600">
                   {lang === "en" ? "Technical selection guide" : "Panduan pemilihan teknis"}
                 </p>
-                <h2 className="mt-3 text-3xl font-bold text-graphite-900">
+                <h2 className="cse-heading mt-4 text-graphite-900">
                   {lang === "en"
                     ? `When to choose ${product.name}`
                     : `Kapan memilih ${product.name}`}
@@ -391,7 +391,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 </article>
 
                 <article className="border border-graphite-200 bg-graphite-50 p-6 shadow-sm">
-                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-signal-600">
+                  <p className="cse-eyebrow text-signal-600">
                     {lang === "en" ? "Include in your inquiry" : "Sertakan dalam inquiry"}
                   </p>
                   <ul className="mt-5 space-y-3">
@@ -416,13 +416,13 @@ export default async function ProductDetailPage({ params }: PageProps) {
           </div>
         </section>
       ) : (
-        <section className="bg-white py-14">
+        <section className="cse-section bg-white">
           <div className="container-page grid gap-8 lg:grid-cols-[0.72fr_1.28fr]">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
+              <p className="cse-eyebrow text-signal-600">
                 {lang === "en" ? "Product selection guidance" : "Panduan pemilihan produk"}
               </p>
-              <h2 className="mt-3 text-3xl font-bold text-graphite-900">
+              <h2 className="cse-heading mt-4 text-graphite-900">
                 {lang === "en"
                   ? `Where ${product.name} fits`
                   : `Kesesuaian ${product.name} untuk aplikasi Anda`}
@@ -443,7 +443,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
         </section>
       )}
       {relatedProducts.length ? (
-        <section className="bg-graphite-50 py-14">
+        <section className="cse-section bg-graphite-50">
           <div className="container-page">
             <SectionHeader
               eyebrow={text(group.title, lang)}
@@ -468,11 +468,11 @@ export default async function ProductDetailPage({ params }: PageProps) {
           </div>
         </section>
       ) : null}
-      <section className="border-t border-graphite-200 bg-white py-12">
+      <section className="cse-section border-t border-graphite-200 bg-white">
         <div className="container-page">
           <div className="grid gap-6 border border-graphite-200 p-6 md:grid-cols-[0.72fr_1.28fr] md:items-start md:p-8">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
+              <p className="cse-eyebrow text-signal-600">
                 {lang === "en" ? `${brand.name} product lineups` : `Lini produk ${brand.name}`}
               </p>
               <h2 className="mt-3 text-2xl font-bold text-graphite-900">

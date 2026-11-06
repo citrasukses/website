@@ -63,8 +63,8 @@ export function ProductCard({
   ].filter((capability): capability is NonNullable<typeof capability> => capability !== null);
 
   return (
-    <article className="group overflow-hidden border border-graphite-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-industrial-600 hover:shadow-panel">
-      <Link href={href}>
+    <article className="cse-card cse-card-link group">
+      <Link href={href} className="focus-ring block">
         <AssetSlot
           src={product.image || product.images[0] || ""}
           alt={product.name}

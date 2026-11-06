@@ -96,12 +96,12 @@ export function TohnichiProductPromotionCarousel({ lang }: { lang: Language }) {
     >
       <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-white/70">
+          <p className="cse-eyebrow text-white/70">
             {lang === "en" ? "New product" : "Produk terbaru"}
           </p>
           <h2
             id="tohnichi-product-promotion-title"
-            className="mt-4 max-w-3xl text-balance text-2xl font-bold text-white md:text-4xl"
+            className="cse-heading mt-4 max-w-3xl text-white"
           >
             {lang === "en"
               ? "Meet the QL+ and CL+ torque wrench series."

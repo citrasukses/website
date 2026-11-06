@@ -70,7 +70,7 @@ export function BuyerGuidePage({ guide, lang }: { guide: BuyerGuide; lang: Langu
       />
 
       <main>
-        <header className="border-y border-graphite-200 bg-[#f3f1ec]">
+        <header className="border-y border-graphite-200 bg-paper-100">
           <div className="container-page grid gap-10 py-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(300px,0.8fr)] lg:items-center lg:py-16">
             <div>
               <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-bold uppercase tracking-[0.14em]">
@@ -78,7 +78,7 @@ export function BuyerGuidePage({ guide, lang }: { guide: BuyerGuide; lang: Langu
                 <span className="h-px w-7 bg-graphite-200" aria-hidden="true" />
                 <span className="text-graphite-500">TOHNICHI</span>
               </div>
-              <h1 className="mt-5 max-w-4xl text-4xl font-black leading-[1.06] tracking-tight text-graphite-900 md:text-5xl lg:text-[3.5rem]">
+              <h1 className="cse-title mt-4 max-w-4xl text-graphite-900">
                 {text(guide.title, lang)}
               </h1>
               <p className="mt-6 max-w-3xl text-base leading-8 text-graphite-500 md:text-lg">
@@ -145,7 +145,7 @@ export function BuyerGuidePage({ guide, lang }: { guide: BuyerGuide; lang: Langu
 
             <div className="min-w-0">
               <section className="border-y border-graphite-200 py-7">
-                <p className="text-xs font-black uppercase tracking-[0.18em] text-signal-600">
+                <p className="cse-eyebrow font-black text-signal-600">
                   {lang === "en" ? "CSE starting recommendation" : "Rekomendasi awal CSE"}
                 </p>
                 <p className="mt-4 text-xl font-semibold leading-8 text-graphite-900 md:text-2xl md:leading-9">
@@ -159,7 +159,7 @@ export function BuyerGuidePage({ guide, lang }: { guide: BuyerGuide; lang: Langu
                     <div className="flex items-start gap-4">
                       <span className="mt-1 font-mono text-sm font-bold text-signal-600">{String(index + 1).padStart(2, "0")}</span>
                       <div>
-                        <h2 className="text-2xl font-black leading-tight tracking-tight text-graphite-900 md:text-3xl">
+                        <h2 className="cse-heading font-black text-graphite-900">
                           {withoutLeadingNumber(text(section.title, lang))}
                         </h2>
                         <p className="mt-5 text-[1.05rem] leading-8 text-graphite-500">{text(section.body, lang)}</p>
@@ -181,10 +181,10 @@ export function BuyerGuidePage({ guide, lang }: { guide: BuyerGuide; lang: Langu
 
               {guide.comparison ? (
                 <section id="comparison" className="mt-16 scroll-mt-28">
-                  <p className="text-xs font-black uppercase tracking-[0.18em] text-signal-600">
+                  <p className="cse-eyebrow font-black text-signal-600">
                     {lang === "en" ? "Decision reference" : "Referensi keputusan"}
                   </p>
-                  <h2 className="mt-3 text-3xl font-black tracking-tight text-graphite-900">
+                  <h2 className="cse-heading mt-4 font-black text-graphite-900">
                     {lang === "en" ? "Quick comparison" : "Perbandingan cepat"}
                   </h2>
                   <div className="mt-6 overflow-x-auto border-y border-graphite-200">
@@ -212,9 +212,9 @@ export function BuyerGuidePage({ guide, lang }: { guide: BuyerGuide; lang: Langu
                 </section>
               ) : null}
 
-              <section id="checklist" className="mt-16 scroll-mt-28 border-y border-graphite-200 bg-[#f3f1ec] px-6 py-8 md:px-8">
+              <section id="checklist" className="mt-16 scroll-mt-28 border-y border-graphite-200 bg-paper-100 px-6 py-8 md:px-8">
                 <FileCheck2 className="h-7 w-7 text-industrial-700" aria-hidden="true" />
-                <h2 className="mt-5 text-3xl font-black tracking-tight text-graphite-900">
+                <h2 className="cse-heading mt-4 font-black text-graphite-900">
                   {lang === "en" ? "Information worth preparing" : "Data yang sebaiknya disiapkan"}
                 </h2>
                 <p className="mt-3 max-w-2xl text-sm leading-6 text-graphite-500">
@@ -235,11 +235,11 @@ export function BuyerGuidePage({ guide, lang }: { guide: BuyerGuide; lang: Langu
           </div>
         </article>
 
-        <section id="questions" className="scroll-mt-28 border-y border-graphite-200 bg-graphite-50 py-16">
+        <section id="questions" className="cse-section scroll-mt-28 border-y border-graphite-200 bg-graphite-50">
           <div className="container-page grid justify-center gap-8 lg:grid-cols-[220px_minmax(0,720px)] lg:gap-16">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-signal-600">FAQ</p>
-              <h2 className="mt-3 text-3xl font-black tracking-tight text-graphite-900">
+              <p className="cse-eyebrow font-black text-signal-600">FAQ</p>
+              <h2 className="cse-heading mt-4 font-black text-graphite-900">
                 {lang === "en" ? "Questions that usually follow" : "Pertanyaan yang biasanya muncul"}
               </h2>
             </div>
@@ -247,12 +247,12 @@ export function BuyerGuidePage({ guide, lang }: { guide: BuyerGuide; lang: Langu
           </div>
         </section>
 
-        <section className="bg-white py-16">
+        <section className="cse-section bg-white">
           <div className="container-page max-w-5xl">
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-signal-600">
+            <p className="cse-eyebrow font-black text-signal-600">
               {lang === "en" ? "Continue the research" : "Lanjutkan pencarian"}
             </p>
-            <h2 className="mt-3 text-3xl font-black tracking-tight text-graphite-900">
+            <h2 className="cse-heading mt-4 font-black text-graphite-900">
               {lang === "en" ? "Related technical pages" : "Halaman teknis terkait"}
             </h2>
             <div className="mt-8 border-y border-graphite-200">
@@ -272,10 +272,10 @@ export function BuyerGuidePage({ guide, lang }: { guide: BuyerGuide; lang: Langu
           </div>
         </section>
 
-        <section className="bg-industrial-700 py-14 text-white">
+        <section className="cse-section bg-industrial-700 text-white">
           <div className="container-page flex max-w-5xl flex-col gap-7 md:flex-row md:items-center md:justify-between">
             <div>
-              <h2 className="max-w-3xl text-3xl font-black tracking-tight">{text(editorial.cta.title, lang)}</h2>
+              <h2 className="cse-heading max-w-3xl font-black">{text(editorial.cta.title, lang)}</h2>
               <p className="mt-3 max-w-2xl text-sm leading-6 text-white/70">{text(editorial.cta.description, lang)}</p>
             </div>
             <CTAButton href={withLang(editorial.cta.href, lang)}>{text(editorial.cta.label, lang)}</CTAButton>

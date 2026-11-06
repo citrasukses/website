@@ -2,11 +2,9 @@ import type { Metadata } from "next";
 import { BrandsSearchCatalog } from "@/components/BrandsSearchCatalog";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTAButton } from "@/components/CTAButton";
-import { IndustryCaseStudyExplorer } from "@/components/IndustryCaseStudyExplorer";
 import { SectionHeader } from "@/components/SectionHeader";
 // import { SupplyMap } from "@/components/SupplyMap";
 import { toSearchableBrandCard } from "@/data/brand-search";
-import { industries } from "@/data/industries";
 // import { supplyCountries } from "@/data/supply-map";
 import { getCatalogBrands } from "@/lib/catalog";
 import { staticLanguage, withLang } from "@/lib/i18n";
@@ -45,7 +43,7 @@ export default async function BrandsPage() {
   return (
     <>
       <Breadcrumb homeHref={withLang("/", lang)} items={[{ label: lang === "en" ? "Brands" : "Brand" }]} />
-      <section className="bg-white py-16">
+      <section className="cse-section bg-white">
         <div className="container-page">
           <SectionHeader
             eyebrow={lang === "en" ? "Brand portfolio" : "Portofolio brand"}
@@ -66,29 +64,8 @@ export default async function BrandsPage() {
           />
         </div>
       </section>
-      <section className="technical-grid bg-white py-16">
-        <div className="container-page">
-          <SectionHeader
-            eyebrow={lang === "en" ? "Brand application case studies" : "Studi kasus aplikasi brand"}
-            title={
-              lang === "en"
-                ? "See how brands work together across industrial applications."
-                : "Lihat bagaimana brand bekerja bersama dalam aplikasi industri."
-            }
-            description={
-              lang === "en"
-                ? "Choose an industry to explore an interactive workflow showing each brand's role, solution, and operational value."
-                : "Pilih industri untuk menjelajahi workflow interaktif yang menunjukkan peran, solusi, dan nilai operasional setiap brand."
-            }
-          />
-          <IndustryCaseStudyExplorer
-            industries={industries.filter((industry) => industry.slug !== "oil-gas")}
-            lang={lang}
-          />
-        </div>
-      </section>
       {/* Supply map temporarily hidden.
-      <section className="bg-graphite-50 py-16">
+      <section className="cse-section bg-graphite-50">
         <div className="container-page">
           <SectionHeader
             eyebrow={lang === "en" ? "Supply map" : "Peta supply"}
@@ -103,10 +80,10 @@ export default async function BrandsPage() {
         </div>
       </section>
       */}
-      <section className="bg-white py-16">
+      <section className="cse-section bg-white">
         <div className="container-page grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
-            <h2 className="text-3xl font-bold text-graphite-900">
+            <h2 className="cse-heading text-graphite-900">
               {lang === "en" ? "Cannot find the brand you need?" : "Tidak menemukan brand yang dibutuhkan?"}
             </h2>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-graphite-500">

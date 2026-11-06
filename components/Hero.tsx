@@ -48,14 +48,16 @@ export function Hero({
       ) : null}
       <div className="absolute inset-0 -z-10 bg-gradient-to-r from-graphite-900 via-graphite-900/90 to-graphite-900/45" />
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.07)_1px,transparent_1px)] bg-[size:36px_36px] opacity-40" />
-      <div className="absolute bottom-0 left-0 h-1 w-28 bg-signal-500 md:w-48" />
+      <div className="absolute inset-x-0 bottom-0 h-1 bg-industrial-600" aria-hidden="true">
+        <div className="h-full w-28 bg-signal-500 md:w-48" />
+      </div>
 
       <div className="container-page flex min-h-[560px] flex-col justify-end py-12 md:min-h-[600px] lg:py-16">
         <div className="max-w-4xl">
-          <p className="mb-4 inline-flex border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.22em] text-white/75">
+          <p className="cse-eyebrow mb-4 inline-flex text-white/75">
             {eyebrow}
           </p>
-          <h1 className="max-w-4xl text-balance text-2xl font-bold leading-tight tracking-normal text-white sm:text-4xl md:text-6xl">
+          <h1 className="cse-title max-w-4xl text-white">
             {title}
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-7 text-white/80 md:text-lg md:leading-8">{description}</p>

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { TohnichiBuyerQuestions, TohnichiLocalServices, TohnichiTechnicalExpertise } from "@/components/TohnichiBrandSupport";
+import { TohnichiFieldSection } from "@/components/TohnichiFieldSection";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BookOpen } from "lucide-react";
@@ -77,13 +78,38 @@ function local<T extends { id: string; en: string }>(value: T, lang: Language) {
 export function TohnichiBrandLanding({ lang, children }: { lang: Language; children: ReactNode }) {
   return (
     <>
-      <section id="tohnichi-products" className="scroll-mt-24 bg-white py-16">
+      <nav
+        aria-label={lang === "en" ? "Explore TOHNICHI" : "Jelajahi TOHNICHI"}
+        className="border-b border-graphite-200 bg-paper-100"
+      >
+        <div className="container-page flex flex-wrap items-center gap-x-6 gap-y-2 py-4 text-sm font-bold">
+          <a href="#tohnichi-guides" className="focus-ring inline-flex min-h-11 items-center gap-2 text-industrial-700 underline underline-offset-4 hover:text-industrial-900">
+            <BookOpen className="h-4 w-4 shrink-0" aria-hidden="true" />
+            {lang === "en" ? "Guides & tutorials" : "Panduan & tutorial"}
+            <span className="bg-white px-2 py-0.5 text-xs text-graphite-600">{tohnichiGuides.length}</span>
+          </a>
+          <a href="#tohnichi-products" className="focus-ring inline-flex min-h-11 items-center text-graphite-700 hover:text-industrial-700">
+            {lang === "en" ? "Product categories" : "Kategori produk"}
+          </a>
+          <a href="#tohnichi-services" className="focus-ring inline-flex min-h-11 items-center text-graphite-700 hover:text-industrial-700">
+            {lang === "en" ? "Service & calibration" : "Servis & kalibrasi"}
+          </a>
+          <a href="#tohnichi-field" className="focus-ring inline-flex min-h-11 items-center text-graphite-700 hover:text-industrial-700">
+            {lang === "en" ? "Seminars & field support" : "Seminar & kegiatan teknis"}
+          </a>
+          <a href="#tohnichi-faq" className="focus-ring inline-flex min-h-11 items-center text-graphite-700 hover:text-industrial-700">
+            {lang === "en" ? "Common questions" : "Pertanyaan umum"}
+          </a>
+        </div>
+      </nav>
+
+      <section id="tohnichi-products" className="cse-section scroll-mt-24 bg-white">
         <div className="container-page">
           <div className="max-w-3xl">
-            <p className="border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-signal-600">
+            <p className="cse-eyebrow text-signal-600">
               {lang === "en" ? "Choose by product category" : "Pilih berdasarkan kategori produk"}
             </p>
-            <h2 className="mt-4 text-balance text-3xl font-bold text-graphite-900 md:text-5xl">
+            <h2 className="cse-heading mt-4 text-graphite-900 md:text-5xl">
               {lang === "en" ? "Start with the work, range, and required control." : "Mulai dari pekerjaan, range, dan tingkat kontrol."}
             </h2>
             <p className="mt-5 text-base leading-7 text-graphite-500">
@@ -98,7 +124,7 @@ export function TohnichiBrandLanding({ lang, children }: { lang: Language; child
               <Link
                 key={category.href}
                 href={withLang(category.href, lang)}
-                className="group border border-graphite-200 bg-graphite-50 transition hover:-translate-y-1 hover:border-industrial-400 hover:shadow-panel"
+                className="group border border-graphite-200 bg-graphite-50 transition hover:border-industrial-400"
               >
                 <div className="relative aspect-[16/9] overflow-hidden bg-white">
                   <Image
@@ -123,14 +149,14 @@ export function TohnichiBrandLanding({ lang, children }: { lang: Language; child
         </div>
       </section>
 
-      <section className="bg-graphite-50 py-16">
+      <section className="cse-section bg-graphite-50">
         <div className="container-page">
           <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div className="max-w-3xl">
-              <p className="border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-signal-600">
+              <p className="cse-eyebrow text-signal-600">
                 {lang === "en" ? "Selected TOHNICHI models" : "KATALOG"}
               </p>
-              <h2 className="mt-4 text-3xl font-bold text-graphite-900 md:text-4xl">
+              <h2 className="cse-heading mt-4 text-graphite-900">
                 {lang === "en"
                   ? "Selected TOHNICHI models for assembly, inspection, and calibration."
                   : "Pilihan model TOHNICHI untuk assembly, inspeksi, dan kalibrasi."}
@@ -168,9 +194,10 @@ export function TohnichiBrandLanding({ lang, children }: { lang: Language; child
 
       <TohnichiLocalServices lang={lang} />
       <TohnichiTechnicalExpertise lang={lang} />
+      <TohnichiFieldSection lang={lang} variant="brand" />
       {children}
 
-      <section id="tohnichi-guides" className="scroll-mt-24 border-y border-graphite-800 bg-graphite-900 py-16">
+      <section id="tohnichi-guides" aria-labelledby="tohnichi-guides-title" className="cse-section scroll-mt-24 border-y border-graphite-800 bg-graphite-900">
         <div className="container-page">
           <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div className="max-w-3xl">
@@ -180,20 +207,24 @@ export function TohnichiBrandLanding({ lang, children }: { lang: Language; child
                   {lang === "en" ? "TOHNICHI guide library" : "Perpustakaan panduan TOHNICHI"}
                 </p>
               </div>
-              <h2 className="mt-4 text-balance text-3xl font-bold text-white md:text-4xl">
+              <h2 id="tohnichi-guides-title" className="cse-heading mt-4 text-white">
                 {lang === "en"
-                  ? "Practical answers for selecting, using, and verifying TOHNICHI tools."
-                  : "Jawaban praktis untuk memilih, menggunakan, dan memverifikasi tool TOHNICHI."}
+                  ? "TOHNICHI guides & tutorials"
+                  : "Panduan & tutorial TOHNICHI"}
               </h2>
               <p className="mt-4 text-sm leading-6 text-white/75">
                 {lang === "en"
-                  ? "Every card below is specifically tagged for TOHNICHI, from tool selection and calibration to poka-yoke and data setup."
-                  : "Setiap panduan di bawah ini khusus ditandai untuk TOHNICHI, mulai dari pemilihan tool dan kalibrasi hingga poka-yoke dan setup data."}
+                  ? "Choose a guide for tool selection, calibration, tightening control, or FDD wireless setup."
+                  : "Pilih panduan untuk pemilihan tool, kalibrasi, kontrol pengencangan, atau setup wireless FDD."}
               </p>
             </div>
-            <span className="self-start border border-white/15 bg-white/5 px-4 py-2 text-sm font-bold text-white md:self-auto">
-              {tohnichiGuides.length} {lang === "en" ? "TOHNICHI guides" : "panduan TOHNICHI"}
-            </span>
+            <Link
+              href={withLang("/guides", lang)}
+              className="focus-ring inline-flex items-center gap-2 self-start border border-white/25 px-4 py-3 text-sm font-bold text-white transition hover:bg-white/10 md:self-auto"
+            >
+              {lang === "en" ? "Browse the guide library" : "Buka perpustakaan panduan"}
+              <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
+            </Link>
           </div>
 
           <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -201,7 +232,7 @@ export function TohnichiBrandLanding({ lang, children }: { lang: Language; child
               <Link
                 key={guide.slug}
                 href={withLang(`/guides/${guide.slug}`, lang)}
-                className="group flex overflow-hidden border border-white/15 bg-white text-graphite-900 transition hover:-translate-y-1 hover:border-signal-400 hover:shadow-panel"
+                className="focus-ring group flex overflow-hidden border border-white/15 bg-white text-graphite-900 transition hover:border-signal-400"
               >
                 <div className="relative hidden w-36 shrink-0 bg-white sm:block">
                   <Image

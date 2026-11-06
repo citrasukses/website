@@ -61,7 +61,6 @@ export const navigationItems: NavItem[] = [
       ]
     }
   },
-  { href: "/industries", label: { id: "Industri", en: "Industries" } },
   {
     href: "/solutions",
     label: { id: "Solusi", en: "Solutions" },
@@ -87,7 +86,7 @@ export const navigationItems: NavItem[] = [
         {
           title: { id: "TOHNICHI", en: "TOHNICHI" },
           links: [
-            { href: "/brands/tohnichi", label: { id: "Ringkasan TOHNICHI Indonesia", en: "TOHNICHI Indonesia overview" } },
+            { href: "/brands/tohnichi", label: { id: "TOHNICHI Overview", en: "TOHNICHI Overview" } },
             {
               href: "/tohnichi-torsi-tepat",
               label: { id: "Mengapa kontrol torsi penting", en: "Why torque control matters" }

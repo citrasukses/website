@@ -168,7 +168,7 @@ export function TohnichiFourMOverview({ lang }: { lang: Language }) {
         {fourMFactors.map((factor) => {
           return (
             <li key={factor.id} className="grid min-w-0 grid-cols-[4.5rem_1fr] bg-white p-3.5">
-              <div className="flex h-16 items-center justify-center bg-[#f3f1ec] text-industrial-700">
+              <div className="flex h-16 items-center justify-center bg-paper-100 text-industrial-700">
                 <FourMVisualization
                   factor={factor.id}
                   label={`${factor.name}: ${text(factor.caption, lang)}`}

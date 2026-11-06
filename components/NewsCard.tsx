@@ -24,7 +24,7 @@ export function NewsCard({ item, lang }: NewsCardProps) {
   const meta = [item.brandName, item.productName].filter(Boolean).join(" / ");
 
   const content = (
-    <article className="group grid h-full overflow-hidden border border-graphite-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-industrial-600 hover:shadow-panel md:grid-cols-[0.82fr_1fr]">
+    <article className="group grid h-full overflow-hidden border border-graphite-200 bg-white shadow-sm transition duration-300 hover:border-industrial-600 md:grid-cols-[0.82fr_1fr]">
       <AssetSlot
         src={item.image}
         alt={text(item.title, lang)}

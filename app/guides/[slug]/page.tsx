@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BuyerGuidePage } from "@/components/BuyerGuidePage";
 import { CspfddRcmConnectionGuide } from "@/components/CspfddRcmConnectionGuide";
+import { SbFh2Guide } from "@/components/SbFh2Guide";
+import { TohnichiQlQspGuide } from "@/components/TohnichiQlQspGuide";
 import { buyerGuides, getBuyerGuide } from "@/data/buyer-guides";
 import { staticLanguage, text } from "@/lib/i18n";
 import { buildPageMetadata } from "@/lib/seo";
@@ -35,6 +37,12 @@ export default async function BuyerGuideRoute({ params }: PageProps) {
   if (!guide) notFound();
   if (guide.slug === "cspfdd-r-cm-connection") {
     return <CspfddRcmConnectionGuide lang={staticLanguage()} />;
+  }
+  if (guide.slug === "cara-menggunakan-sb-fh2") {
+    return <SbFh2Guide lang={staticLanguage()} />;
+  }
+  if (guide.slug === "tohnichi-ql-vs-qsp") {
+    return <TohnichiQlQspGuide lang={staticLanguage()} />;
   }
   return <BuyerGuidePage guide={guide} lang={staticLanguage()} />;
 }

@@ -76,7 +76,7 @@ export default function TohnichiTorsiTepatPage() {
         { label: lang === "en" ? "Consistent tightening" : "Pengencangan konsisten" }
       ]}
     />
-    <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-[#f3f1ec]">
+    <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-paper-100">
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(24,61,97,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(24,61,97,0.055)_1px,transparent_1px)] bg-[size:40px_40px]" />
       <div className="absolute inset-y-0 right-0 -z-10 hidden w-[49%] bg-industrial-700 lg:block" />
 
@@ -89,7 +89,7 @@ export default function TohnichiTorsiTepatPage() {
             </span>
           </div>
 
-          <h1 className="mt-8 text-balance text-[clamp(3rem,6vw,5.25rem)] font-black leading-[0.94] tracking-[-0.055em] text-graphite-900">
+          <h1 className="cse-title mt-8 text-graphite-900">
             {lang === "en" ? (
               <>Tight is not always <span className="text-signal-500">right.</span></>
             ) : (
@@ -225,10 +225,10 @@ export default function TohnichiTorsiTepatPage() {
     <section className="bg-white py-20 md:py-28">
       <div className="container-page">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-signal-600">
+          <p className="cse-eyebrow text-signal-600">
             {lang === "en" ? "Consistency is visible" : "Konsistensi itu terlihat"}
           </p>
-          <h2 className="mt-4 text-balance text-4xl font-black tracking-[-0.04em] text-graphite-900 md:text-6xl">
+          <h2 className="cse-heading mt-4 font-black text-graphite-900 md:text-6xl">
             {lang === "en" ? "The issue is not strength. It is variation." : "Masalahnya bukan tenaga. Tapi variasi."}
           </h2>
         </div>
@@ -314,7 +314,7 @@ export default function TohnichiTorsiTepatPage() {
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-signal-500">
               {lang === "en" ? "Two jobs. Two proven mechanisms." : "Dua pekerjaan. Dua mekanisme teruji."}
             </p>
-            <h2 className="mt-4 text-balance text-4xl font-black tracking-[-0.04em] md:text-6xl">
+            <h2 className="cse-heading mt-4 font-black md:text-6xl">
               {lang === "en" ? "What are you tightening?" : "Apa yang Anda kencangkan?"}
             </h2>
           </div>
@@ -328,9 +328,9 @@ export default function TohnichiTorsiTepatPage() {
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           <article className="group overflow-hidden border border-white/15 bg-white text-graphite-900">
             <div className="grid min-h-[25rem] md:grid-cols-[0.72fr_1.28fr]">
-              <div className="flex flex-col justify-between border-b border-graphite-200 bg-[#f3f1ec] p-6 md:border-b-0 md:border-r">
+              <div className="flex flex-col justify-between border-b border-graphite-200 bg-paper-100 p-6 md:border-b-0 md:border-r">
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">01 · Bolt / Nut</p>
+                  <p className="cse-eyebrow text-signal-600">01 · Bolt / Nut</p>
                   <h3 className="mt-4 text-6xl font-black tracking-[-0.06em]">QL</h3>
                   <p className="mt-1 font-bold text-graphite-500">Adjustable torque wrench</p>
                 </div>
@@ -407,14 +407,14 @@ export default function TohnichiTorsiTepatPage() {
       </div>
     </section>
 
-    <section className="bg-[#f3f1ec] py-20 md:py-28">
+    <section className="bg-paper-100 py-20 md:py-28">
       <div className="container-page">
         <div className="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
           <div className="lg:sticky lg:top-28">
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-signal-600">
+            <p className="cse-eyebrow text-signal-600">
               {lang === "en" ? "From tool to process" : "Dari tool ke proses"}
             </p>
-            <h2 className="mt-4 text-balance text-4xl font-black tracking-[-0.04em] text-graphite-900 md:text-6xl">
+            <h2 className="cse-heading mt-4 font-black text-graphite-900 md:text-6xl">
               {lang === "en" ? "Make consistency easier to repeat." : "Buat konsistensi lebih mudah diulang."}
             </h2>
             <p className="mt-5 max-w-lg text-base leading-7 text-graphite-500">
@@ -461,8 +461,8 @@ export default function TohnichiTorsiTepatPage() {
             </div>
 
             <div className="p-8 md:p-12 lg:p-14">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-signal-600">CSE Technical Support</p>
-              <h2 className="mt-4 max-w-3xl text-balance text-4xl font-black tracking-[-0.04em] text-graphite-900 md:text-6xl">
+              <p className="cse-eyebrow text-signal-600">CSE Technical Support</p>
+              <h2 className="cse-heading mt-4 max-w-3xl font-black text-graphite-900 md:text-6xl">
                 {lang === "en" ? "Bring the application. We will help with the model." : "Bawa aplikasinya. Kami bantu pilih modelnya."}
               </h2>
               <div className="mt-8 grid gap-4 sm:grid-cols-3">

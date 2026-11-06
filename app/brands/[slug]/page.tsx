@@ -304,12 +304,12 @@ export default async function BrandDetailPage({ params }: PageProps) {
               ? "All brands"
               : "Semua brand"
         }
-        tertiaryHref={isTohnichi ? "#tohnichi-services" : undefined}
+        tertiaryHref={isTohnichi ? "#tohnichi-guides" : undefined}
         tertiaryLabel={
           isTohnichi
             ? lang === "en"
-              ? "Service & calibration"
-              : "Servis & kalibrasi"
+              ? "Guides & tutorials"
+              : "Panduan & tutorial"
             : undefined
         }
         image={brand.heroImage}
@@ -357,7 +357,7 @@ export default async function BrandDetailPage({ params }: PageProps) {
       ) : isSankyoRikagaku ? (
         <SankyoRikagakuBrandOverview lang={lang} />
       ) : (
-        <section className="bg-white py-16">
+        <section className="cse-section bg-white">
           <div className="container-page grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
             <div className="border border-graphite-200 bg-graphite-50 p-6">
               {brand.referenceImages && brand.referenceImages.length > 0 ? (
@@ -445,7 +445,7 @@ export default async function BrandDetailPage({ params }: PageProps) {
           brandName={brand.name}
         />
       ) : (
-        <section className="bg-white py-16">
+        <section className="cse-section bg-white">
           <div className="container-page">
             <SectionHeader
               eyebrow={lang === "en" ? "Product lines" : "Lini Produk"}
@@ -477,7 +477,7 @@ export default async function BrandDetailPage({ params }: PageProps) {
         </section>
       )}
 
-      <section className="bg-industrial-800 py-16 text-white">
+      <section className="cse-section bg-industrial-800 text-white">
         <div className="container-page grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/70">
@@ -489,7 +489,7 @@ export default async function BrandDetailPage({ params }: PageProps) {
                     ? "Abrasive selection"
                     : brand.name}
             </p>
-            <h2 className="mt-3 max-w-3xl text-3xl font-bold">
+            <h2 className="cse-heading mt-4 max-w-3xl">
               {isTohnichi
                 ? lang === "en"
                   ? "Need a TOHNICHI quotation or service support?"

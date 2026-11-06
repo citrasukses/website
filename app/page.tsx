@@ -3,7 +3,6 @@ import Link from "next/link";
 import {
   ArrowRight,
   ClipboardCheck,
-  Handshake,
   PackageCheck,
   Search,
   Wrench
@@ -16,8 +15,9 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { FeaturedCustomerStrip } from "@/components/FeaturedCustomerStrip";
 import { HomeBackgroundItems } from "@/components/HomeBackgroundItems";
 import { TohnichiTighteningSection } from "@/components/TohnichiTighteningSection";
+import { TohnichiFieldSection } from "@/components/TohnichiFieldSection";
 import { WhatsAppInquiryForm } from "@/components/WhatsAppInquiryForm";
-import { SectionHeader } from "@/components/SectionHeader";
+import { WhyCseSection } from "@/components/WhyCseSection";
 import { categoryHubs } from "@/data/category-hubs";
 import { stats } from "@/data/customers";
 import { homeBackgroundImage, homeBackgroundItems } from "@/data/home-background";
@@ -121,42 +121,6 @@ export default function HomePage() {
     ...organizationJsonLd,
     description: text(company.positioning, lang)
   };
-  const serviceItems = lang === "en"
-    ? [
-        {
-          icon: PackageCheck,
-          title: "Industrial Procurement",
-          body: "One reliable source for brand sourcing, model requests, and overseas industrial goods."
-        },
-        {
-          icon: Wrench,
-          title: "Technical Consultation",
-          body: "Support for selecting tools by application, torque range, production process, and quality need."
-        },
-        {
-          icon: Handshake,
-          title: "Brand Representation",
-          body: "A lean distribution path for overseas principals entering Indonesian industrial sectors."
-        }
-      ]
-    : [
-        {
-          icon: PackageCheck,
-          title: "Pengadaan Barang",
-          body: "Satu sumber yang jelas untuk sourcing brand, permintaan model, dan produk industrial luar negeri."
-        },
-        {
-          icon: Wrench,
-          title: "Konsultasi Teknis",
-          body: "Dukungan pemilihan tools berdasarkan aplikasi, range torsi, proses produksi, dan kebutuhan quality."
-        },
-        {
-          icon: Handshake,
-          title: "Representasi Brand",
-          body: "Jalur distribusi ramping untuk principal luar negeri yang masuk ke sektor industrial Indonesia."
-        }
-      ];
-
   const processItems = lang === "en"
     ? [
         {
@@ -313,7 +277,7 @@ export default function HomePage() {
           __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c")
         }}
       />
-      <section className="technical-grid relative isolate overflow-hidden bg-white">
+      <section className="relative isolate overflow-hidden bg-white">
         <HomeBackgroundItems items={homeBackgroundItems} singleImage={homeBackgroundImage} />
 
         <div className="container-page relative z-10 py-14 lg:py-16">
@@ -352,16 +316,16 @@ export default function HomePage() {
               </CTAButton>
             </div>
 
-            <div className="mt-9 grid max-w-3xl grid-cols-3 gap-px overflow-hidden border border-graphite-200 bg-graphite-200 shadow-sm">
+            <div className="mt-9 grid max-w-3xl grid-cols-3 gap-px overflow-hidden border border-graphite-200 bg-graphite-200">
               {stats.map((stat) => (
                 <div
                   key={stat.value.en}
-                  className={`min-w-0 px-3 py-4 sm:px-5 sm:py-5 ${stat.emphasis === "authorized" ? "bg-industrial-800" : "bg-white/95"}`}
+                  className={`min-w-0 px-3 py-4 sm:px-5 sm:py-5 ${stat.emphasis === "authorized" ? "bg-industrial-600" : "bg-white/95"}`}
                 >
                   <p className={`font-bold leading-tight ${stat.emphasis === "authorized" ? "text-sm text-white sm:text-lg" : "text-2xl text-graphite-900 sm:text-3xl"}`}>
                     {text(stat.value, lang)}
                   </p>
-                  <p className={`mt-2 text-[9px] font-bold uppercase leading-4 tracking-[0.1em] sm:text-[10px] ${stat.emphasis === "authorized" ? "text-white/70" : "text-graphite-500"}`}>
+                  <p className={`mt-2 text-[9px] font-bold uppercase leading-4 tracking-[0.1em] sm:text-[10px] ${stat.emphasis === "authorized" ? "text-white/90" : "text-graphite-500"}`}>
                     {text(stat.label, lang)}
                   </p>
                 </div>
@@ -373,14 +337,16 @@ export default function HomePage() {
 
       <AuthorizedDistributorStrip lang={lang} />
 
-      <section className="bg-graphite-50 py-12 lg:py-14" aria-labelledby="product-finder-title">
+      <TohnichiFieldSection lang={lang} />
+
+      <section className="cse-section bg-graphite-50" aria-labelledby="product-finder-title">
         <div className="container-page">
           <div className="grid gap-7 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-signal-600">
+              <p className="cse-eyebrow text-signal-600">
                 {lang === "en" ? "Find the right product" : "Temukan produk yang tepat"}
               </p>
-              <h2 id="product-finder-title" className="mt-3 text-balance text-3xl font-bold text-graphite-900 md:text-4xl">
+              <h2 id="product-finder-title" className="cse-heading mt-4 text-graphite-900">
                 {lang === "en" ? "Start with a brand, model, or application." : "Mulai dari brand, model, atau aplikasi."}
               </h2>
               <p className="mt-4 max-w-xl text-sm leading-6 text-graphite-600">
@@ -401,10 +367,10 @@ export default function HomePage() {
                     name="q"
                     type="search"
                     placeholder={lang === "en" ? "e.g. torque wrench, NAC, socket…" : "contoh: torque wrench, NAC, socket…"}
-                    className="focus-ring h-12 w-full border border-graphite-300 bg-white pl-12 pr-4 text-sm font-semibold text-graphite-900 placeholder:text-graphite-400"
+                    className="cse-input focus-ring w-full pl-12 pr-4 placeholder:text-graphite-400"
                   />
                 </div>
-                <button type="submit" className="focus-ring inline-flex h-12 items-center justify-center gap-2 bg-industrial-700 px-6 text-sm font-bold text-white transition hover:bg-industrial-800">
+                <button type="submit" className="focus-ring cse-button bg-industrial-600 text-white hover:bg-industrial-700">
                   {lang === "en" ? "Search catalog" : "Cari katalog"}
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </button>
@@ -450,44 +416,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-white py-12 lg:py-14">
-        <div className="container-page grid gap-8 lg:grid-cols-[0.62fr_1.38fr] lg:items-start">
-          <SectionHeader
-            eyebrow={lang === "en" ? "Why CSE" : "Mengapa CSE"}
-            title={lang === "en" ? "Build reliable supply chains." : "Bersama kami membangun rantai pasok yang handal."}
-            description={
-              lang === "en"
-                ? "Purchasing needs a reliable supply path. Engineering needs technical fit, process control, and verification. CSE works across both perspectives."
-                : "Purchasing membutuhkan jalur supply yang andal. Engineering membutuhkan kecocokan teknis, kontrol proses, dan verifikasi. CSE bekerja dari kedua perspektif tersebut."
-            }
-          />
-          <div className="grid gap-px overflow-hidden border border-graphite-200 bg-graphite-200 md:grid-cols-3">
-            {serviceItems.map((item) => {
-              const Icon = item.icon;
-              return (
-                <article key={item.title} className="bg-white p-5 lg:p-6">
-                  <Icon className="h-6 w-6 text-industrial-700" aria-hidden="true" />
-                  <h3 className="mt-4 text-lg font-bold text-graphite-900">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-graphite-500">{item.body}</p>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <WhyCseSection lang={lang} />
 
       <TohnichiTighteningSection lang={lang} />
 
       <FeaturedCustomerStrip lang={lang} />
 
-      <section className="technical-grid border-y border-graphite-200 bg-graphite-50 py-12 lg:py-14" aria-labelledby="sourcing-process-title">
+      <section className="cse-section technical-grid border-y border-graphite-200 bg-graphite-50" aria-labelledby="sourcing-process-title">
         <div className="container-page">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-signal-600">
+              <p className="cse-eyebrow text-signal-600">
                 {lang === "en" ? "How sourcing works" : "Cara kerja sourcing"}
               </p>
-              <h2 id="sourcing-process-title" className="mt-3 text-3xl font-bold text-graphite-900 md:text-4xl">
+              <h2 id="sourcing-process-title" className="cse-heading mt-4 text-graphite-900">
                 {lang === "en" ? "From request to a clearer shortlist." : "Dari request ke shortlist yang lebih jelas."}
               </h2>
             </div>
@@ -503,7 +445,7 @@ export default function HomePage() {
               return (
                 <li key={item.title} className="bg-white p-5 lg:p-6">
                   <div className="flex items-center justify-between">
-                    <span className="flex h-11 w-11 items-center justify-center border border-graphite-200 bg-graphite-50 text-industrial-700">
+                    <span className="cse-icon">
                       <Icon className="h-5 w-5" aria-hidden="true" />
                     </span>
                     <span className="text-xs font-bold tracking-[0.18em] text-signal-500">{String(index + 1).padStart(2, "0")}</span>
@@ -517,11 +459,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-white py-12 lg:py-14" aria-labelledby="homepage-faq-title">
+      <section className="cse-section bg-white" aria-labelledby="homepage-faq-title">
         <div className="container-page grid gap-8 lg:grid-cols-[0.62fr_1.38fr] lg:items-start">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-signal-600">FAQ</p>
-            <h2 id="homepage-faq-title" className="mt-3 text-3xl font-bold text-graphite-900 md:text-4xl">
+            <p className="cse-eyebrow text-signal-600">FAQ</p>
+            <h2 id="homepage-faq-title" className="cse-heading mt-4 text-graphite-900">
               {lang === "en" ? "Before you send an RFQ." : "Sebelum Anda mengirim RFQ."}
             </h2>
             <p className="mt-4 max-w-md text-sm leading-6 text-graphite-600">
@@ -534,13 +476,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-graphite-900 py-12 text-white lg:py-14">
+      <section className="cse-section bg-graphite-900 text-white">
         <div className="container-page grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
-            <p className="mb-3 border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-white/70">
+            <p className="cse-eyebrow mb-4 text-white/70">
               {lang === "en" ? "Messy requests welcome" : "Inquiry belum rapi? Tidak masalah"}
             </p>
-            <h2 className="text-balance text-3xl font-bold md:text-4xl">
+            <h2 className="cse-heading">
               {lang === "en"
                 ? "You do not need a perfect specification to start."
                 : "Tidak perlu spesifikasi lengkap untuk mulai bertanya."}

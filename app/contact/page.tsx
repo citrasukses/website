@@ -30,7 +30,7 @@ export default function ContactPage() {
   return (
     <>
       <Breadcrumb homeHref={withLang("/", lang)} items={[{ label: lang === "en" ? "Contact CSE" : "Hubungi CSE" }]} />
-      <section className="bg-white py-16">
+      <section className="cse-section bg-white">
         <div className="container-page grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <SectionHeader

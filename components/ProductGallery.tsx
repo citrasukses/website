@@ -13,7 +13,7 @@ export function ProductGallery({ images, productName }: { images: string[]; prod
         src={selected}
         alt={productName}
         label={productName}
-        className="aspect-square border-graphite-200 bg-graphite-50"
+        className="aspect-square rounded-brand border-graphite-200 bg-graphite-50"
         imageClassName="p-8"
         fit="contain"
         priority
@@ -21,8 +21,8 @@ export function ProductGallery({ images, productName }: { images: string[]; prod
       />
       {availableImages.length > 1 ? (
         <div className="mt-3 grid grid-cols-4 gap-3">
-          {availableImages.map((image) => (
-            <button key={image} type="button" onClick={() => setSelected(image)} className={`border bg-white ${selected === image ? "border-signal-500" : "border-graphite-200"}`}>
+          {availableImages.map((image, index) => (
+            <button key={image} type="button" onClick={() => setSelected(image)} aria-label={`${productName}: ${index + 1} / ${availableImages.length}`} aria-pressed={selected === image} className={`focus-ring overflow-hidden rounded-brand border bg-white ${selected === image ? "border-signal-500" : "border-graphite-200"}`}>
               <AssetSlot src={image} alt="" className="aspect-square border-0" imageClassName="p-2" fit="contain" sizes="120px" />
             </button>
           ))}

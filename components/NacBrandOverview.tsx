@@ -48,13 +48,13 @@ const catalogueFacts = [
 export function NacBrandOverview({ lang }: { lang: Language }) {
   return (
     <>
-      <section className="overflow-hidden bg-white py-16">
+      <section className="cse-section overflow-hidden bg-white">
         <div className="container-page grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
           <div>
-            <p className="border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-signal-600">
+            <p className="cse-eyebrow text-signal-600">
               NAC · NAGAHORI INDUSTRY CO., LTD. · JAPAN
             </p>
-            <h2 className="mt-5 text-balance text-3xl font-bold leading-tight text-graphite-900 md:text-5xl">
+            <h2 className="cse-heading mt-4 text-graphite-900 md:text-5xl">
               {lang === "en"
                 ? "One specialist for the connection—at the fastener and in the fluid line."
                 : "Satu spesialis untuk koneksi—pada fastener maupun fluid line."}
@@ -170,13 +170,13 @@ export function NacBrandOverview({ lang }: { lang: Language }) {
         </div>
       </section>
 
-      <section className="overflow-hidden bg-graphite-900 py-16 text-white">
+      <section className="cse-section overflow-hidden bg-graphite-900 text-white">
         <div className="container-page grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-signal-500">
               CNS · Non-drip Safety
             </p>
-            <h2 className="mt-4 text-balance text-3xl font-bold leading-tight md:text-4xl">
+            <h2 className="cse-heading mt-4">
               {lang === "en"
                 ? "See the difference at disconnection."
                 : "Lihat perbedaannya saat disconnection."}

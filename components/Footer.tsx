@@ -11,8 +11,10 @@ export function Footer() {
   const lang = staticLanguage();
 
   return (
-    <footer className="relative overflow-hidden bg-graphite-900 text-white">
-      <div className="absolute left-0 top-0 h-1 w-40 bg-signal-500" />
+    <footer className="relative overflow-hidden bg-industrial-900 text-white">
+      <div className="absolute inset-x-0 top-0 h-1 bg-industrial-600" aria-hidden="true">
+        <div className="h-full w-40 bg-signal-500" />
+      </div>
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:34px_34px] opacity-30" />
       <div className="container-page relative grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-[1.2fr_0.55fr_0.75fr_0.8fr]">
         <div>

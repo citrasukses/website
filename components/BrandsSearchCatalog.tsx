@@ -160,7 +160,7 @@ function TradingBrandCard({ brand, lang, requiresConfirmation = false }: { brand
   return (
     <Link
       href={href}
-      className="group flex min-h-[260px] flex-col border border-dashed border-graphite-300 bg-white transition duration-300 hover:-translate-y-1 hover:border-signal-500 hover:bg-signal-50/50 hover:shadow-panel"
+      className="focus-ring group flex min-h-[260px] flex-col overflow-hidden rounded-brand border border-dashed border-graphite-300 bg-white transition-colors hover:border-industrial-600 hover:bg-industrial-50"
     >
       {content}
     </Link>
@@ -231,7 +231,7 @@ export function BrandsSearchCatalog({ representedBrands, tradingBrands, tradingB
                   ? "Search brand, product, or application"
                   : "Cari brand, produk, atau aplikasi"
               }
-              className="focus-ring h-12 w-full border border-graphite-300 bg-white pl-12 pr-12 text-sm font-semibold text-graphite-900 placeholder:text-graphite-400"
+              className="cse-input focus-ring w-full pl-12 pr-12 placeholder:text-graphite-400"
             />
             {query ? (
               <button
@@ -262,7 +262,7 @@ export function BrandsSearchCatalog({ representedBrands, tradingBrands, tradingB
       <section className="mt-10">
         <div className="flex flex-col justify-between gap-3 md:flex-row md:items-end">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
+            <p className="cse-eyebrow text-signal-600">
               {lang === "en" ? "Authorized representatives" : "Authorized representative"}
             </p>
             <h2 className="mt-2 text-2xl font-bold text-graphite-900">
@@ -312,7 +312,7 @@ export function BrandsSearchCatalog({ representedBrands, tradingBrands, tradingB
 
         <div className="mt-6 flex flex-col justify-between gap-3 md:flex-row md:items-end">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
+            <p className="cse-eyebrow text-signal-600">
               {lang === "en" ? "Brand directory" : "Direktori brand"}
             </p>
             <h3 className="mt-2 text-2xl font-bold text-graphite-900">

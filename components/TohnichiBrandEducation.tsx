@@ -7,13 +7,13 @@ import { withLang, type Language } from "@/lib/i18n";
 export function TohnichiBrandEducation({ lang }: { lang: Language }) {
   return (
     <>
-      <section id="tohnichi-demonstration" className="scroll-mt-24 bg-white py-16">
+      <section id="tohnichi-demonstration" className="cse-section scroll-mt-24 bg-white">
         <div className="container-page grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
           <div>
-            <p className="mb-3 border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-signal-600">
+            <p className="cse-eyebrow mb-4 text-signal-600">
               TOHNICHI Mfg. Co., Ltd.
             </p>
-            <h2 className="text-balance text-2xl font-bold tracking-normal text-graphite-900 md:text-4xl">
+            <h2 className="cse-heading text-graphite-900">
               {lang === "en" ? "Precision technology from Japan since 1949." : "Teknologi presisi dari Jepang sejak tahun 1949."}
             </h2>
             <div className="mt-6">
@@ -22,7 +22,7 @@ export function TohnichiBrandEducation({ lang }: { lang: Language }) {
               </CTAButton>
             </div>
             <div className="mt-7 border-t border-graphite-200 pt-6">
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
+              <p className="cse-eyebrow text-signal-600">
                 {lang === "en" ? "Torque wrench" : "Kunci torsi"}
               </p>
               <h3 className="mt-3 text-xl font-bold leading-snug text-graphite-900 md:text-2xl">
@@ -58,12 +58,12 @@ export function TohnichiBrandEducation({ lang }: { lang: Language }) {
               className="border border-white/15 bg-white/[0.025] p-6 sm:p-7"
               aria-labelledby="tohnichi-safety-title"
             >
-              <p className="border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-white/70">
+              <p className="cse-eyebrow text-white/70">
                 Safety first
               </p>
               <h2
                 id="tohnichi-safety-title"
-                className="mt-4 text-balance text-2xl font-bold leading-tight tracking-normal sm:text-3xl"
+                className="cse-heading mt-4"
               >
                 {lang === "en"
                   ? "Avoid under-tightening and over-tightening."

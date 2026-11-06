@@ -71,7 +71,7 @@ function Field({
         type={type}
         required={required}
         placeholder={placeholder}
-        className="focus-ring min-h-11 border border-graphite-300 bg-white px-3 text-sm font-normal text-graphite-900"
+        className="cse-input focus-ring"
       />
     </label>
   );
@@ -85,7 +85,7 @@ function TextArea({ label, name, required = false }: { label: string; name: stri
         name={name}
         required={required}
         rows={5}
-        className="focus-ring resize-y border border-graphite-300 bg-white px-3 py-3 text-sm font-normal text-graphite-900"
+        className="cse-input focus-ring resize-y py-3"
       />
     </label>
   );
@@ -158,7 +158,7 @@ export function PartnerInquiryForm({ lang }: { lang: Language }) {
   }
 
   return (
-    <form onSubmit={submit} className="relative grid gap-5 border border-graphite-200 bg-white p-6 shadow-panel">
+    <form onSubmit={submit} className="cse-card relative grid gap-5 p-6 sm:p-8">
       <div className="absolute left-[-10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
         <label>
           Leave this field empty
@@ -180,7 +180,7 @@ export function PartnerInquiryForm({ lang }: { lang: Language }) {
         <button
           type="submit"
           disabled={status.state === "sending"}
-          className="focus-ring inline-flex min-h-11 items-center justify-center gap-2 bg-signal-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-signal-600 disabled:cursor-wait disabled:opacity-65"
+          className="cse-button focus-ring bg-signal-500 text-white hover:bg-signal-600 disabled:cursor-wait disabled:opacity-65"
         >
           <Send className="h-4 w-4" aria-hidden="true" />
           {status.state === "sending"

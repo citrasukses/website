@@ -46,6 +46,7 @@ export type GuideFlowTask = {
   title: LocalizedText;
   description: LocalizedText;
   startStepId?: string;
+  stepIds?: string[];
   issueId?: string;
 };
 
@@ -72,6 +73,7 @@ export type GuideFlowDefinition = {
   status: "review" | "pilot" | "published" | "archived";
   lastReviewed: string;
   source: LocalizedText;
+  references?: Array<{ label: LocalizedText; href: string }>;
   title: LocalizedText;
   description: LocalizedText;
   scope: LocalizedText;

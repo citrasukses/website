@@ -18,7 +18,12 @@ const permanentRedirects = new Map([
   ["/brands/tohnichi/products/r-cm-m-fh", "/brands/tohnichi/products/r-cm"],
   ["/brands/tohnichi/products/tme-series", "/brands/tohnichi/products/tme3-g"],
   ["/brands/nac/products/screwdriver-bit-attachments", "/brands/nac/products/fastening-attachments"],
-  ["/brands/fuji-star/products/industrial-brush", "/brands"]
+  ["/brands/fuji-star/products/industrial-brush", "/brands"],
+  ["/industries", "/solutions"],
+  ["/industries/automotive", "/solutions"],
+  ["/industries/heavy-equipment", "/solutions"],
+  ["/industries/oil-gas", "/solutions"],
+  ["/industries/general-industry", "/solutions"]
 ]);
 
 const inquiryTableSql = `CREATE TABLE IF NOT EXISTS inquiries (

@@ -66,7 +66,7 @@ export default function AboutPage() {
         ]}
       />
       <StatsSection lang={lang} />
-      <section className="bg-white py-16">
+      <section className="cse-section bg-white">
         <div className="container-page grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
           <SectionHeader
             eyebrow={lang === "en" ? "How CSE works" : "Cara kerja CSE"}
@@ -80,11 +80,11 @@ export default function AboutPage() {
           <FeatureGrid items={capabilities} />
         </div>
       </section>
-      <section className="bg-graphite-50 py-16">
+      <section className="cse-section bg-graphite-50">
         <div className="container-page flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">Next step</p>
-            <h2 className="mt-3 text-3xl font-bold text-graphite-900">
+            <p className="cse-eyebrow text-signal-600">Next step</p>
+            <h2 className="cse-heading mt-4 text-graphite-900">
               {lang === "en" ? "Send a product request or consultation brief." : "Kirim kebutuhan produk atau konsultasi teknis."}
             </h2>
           </div>

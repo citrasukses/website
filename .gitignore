@@ -58,3 +58,8 @@ Thumbs.db
 .turbo/
 .tmp/
 data/catalog.local.json
+
+# Local source photos can be large; commit optimized public assets instead.
+/source-images/*
+!/source-images/backgrounds/
+!/source-images/backgrounds/.gitkeep

@@ -21,9 +21,7 @@ export type CategoryHub = {
   image: string;
   imageAlt: LocalizedText;
   highlights: LocalizedText[];
-  introTitle: LocalizedText;
-  intro: LocalizedText;
-  useCases: Array<{ title: LocalizedText; description: LocalizedText }>;
+  selectionSummary: LocalizedText;
   criteria: Array<{ title: LocalizedText; description: LocalizedText }>;
   products: CategoryProduct[];
   comparison: {
@@ -46,7 +44,7 @@ export const categoryHubs: CategoryHub[] = [
       en: "Choose a TOHNICHI torque wrench for assembly, maintenance, or inspection in Indonesia, from click and preset tools to dial and digital models."
     },
     heroDescription: {
-      id: "Kunci torsi atau torque wrench TOHNICHI digunakan untuk memastikan baut dikencangkan pada nilai torsi yang tepat dan konsisten. CSE menyediakan berbagai kunci torsi TOHNICHI di Indonesia untuk kebutuhan assembly, maintenance, inspeksi, dan quality control, mulai dari tipe click, preset, dial hingga digital.",
+      id: "Pilih kunci torsi TOHNICHI untuk assembly, maintenance, atau inspeksi. Mulai dari kebutuhan kerja Anda, lalu cocokkan tipe dan range torsinya.",
       en: "Choose a TOHNICHI torque wrench for assembly, maintenance, or inspection in Indonesia, from click and preset tools to dial and digital models."
     },
     eyebrow: { id: "Kategori torque tools", en: "Torque tool category" },
@@ -57,25 +55,10 @@ export const categoryHubs: CategoryHub[] = [
       { id: "Pemilihan berdasarkan aplikasi", en: "Application-based selection" },
       { id: "Dukungan kalibrasi & repair", en: "Calibration & repair support" }
     ],
-    introTitle: { id: "Kunci Torsi TOHNICHI untuk Kebutuhan Industri", en: "Select around the process, not only the torque value." },
-    intro: {
-      id: "TOHNICHI menyediakan berbagai jenis kunci torsi sesuai proses kerja, mulai dari adjustable torque wrench untuk maintenance hingga preset torque wrench untuk produksi massal dan digital torque wrench untuk inspection serta data collection. Torque wrench yang tepat harus mencakup target torque di bagian kerja skala yang sesuai, cocok dengan akses fastener, dan mendukung cara operator bekerja. Untuk produksi berulang, kontrol setelan dan error-proofing lebih penting daripada fleksibilitas. Untuk maintenance, range dan kemudahan perubahan setelan sering menjadi prioritas.",
-      en: "The right torque wrench should place the target torque in a suitable part of its working range, fit the fastener access, and support the operator's workflow. Repetitive production usually prioritizes setting control and error proofing, while maintenance work often values range and easy adjustment."
+    selectionSummary: {
+      id: "Target sering berubah → adjustable. Satu target berulang → preset. Perlu membaca hasil → dial atau digital.",
+      en: "Changing targets → adjustable. One repeated target → preset. Need to read results → dial or digital."
     },
-    useCases: [
-      {
-        title: { id: "Assembly produksi", en: "Production assembly" },
-        description: { id: "Pengencangan berulang dengan target tetap atau beberapa target terkontrol.", en: "Repeated tightening with a fixed target or a controlled set of targets." }
-      },
-      {
-        title: { id: "Maintenance dan overhaul", en: "Maintenance and overhaul" },
-        description: { id: "Satu tool adjustable untuk berbagai fastener dan pekerjaan lapangan atau workshop.", en: "An adjustable tool for varied fasteners in field or workshop work." }
-      },
-      {
-        title: { id: "Inspection dan quality check", en: "Inspection and quality checks" },
-        description: { id: "Pembacaan torque aktual, judgment, atau pencatatan data hasil pemeriksaan.", en: "Actual torque readings, judgment, or data capture for inspection results." }
-      }
-    ],
     criteria: [
       {
         title: { id: "Target dan range torsi", en: "Target and torque range" },
@@ -178,16 +161,10 @@ export const categoryHubs: CategoryHub[] = [
       { id: "Adjustable dan preset", en: "Adjustable and preset options" },
       { id: "Inspection & poka-yoke", en: "Inspection and poka-yoke" }
     ],
-    introTitle: { id: "Kontrol pengencangan tanpa mengandalkan insting operator.", en: "Control small fasteners without relying on operator feel." },
-    intro: {
-      id: "Torque screwdriver digunakan ketika torque target lebih kecil dan fastener digerakkan melalui bit. Mekanisme rotary-slip sangat berguna pada tightening karena tool akan slip setelah target tercapai, membantu mencegah penambahan torque. Untuk inspection atau data, pilih tipe indicating atau digital.",
-      en: "A torque screwdriver is used where the torque target is lower and the fastener is driven through a bit. Rotary-slip mechanisms are valuable for tightening because the tool slips after reaching the target, helping prevent additional torque. Choose indicating or digital types for inspection or data."
+    selectionSummary: {
+      id: "Target berubah → adjustable. Satu target berulang → preset. Perlu membaca hasil → indicating atau digital.",
+      en: "Changing targets → adjustable. One repeated target → preset. Need to read results → indicating or digital."
     },
-    useCases: [
-      { title: { id: "Elektronik dan instrumen", en: "Electronics and instruments" }, description: { id: "Sekrup kecil pada PCB, terminal, enclosure, dan komponen presisi.", en: "Small screws on PCBs, terminals, enclosures, and precision components." } },
-      { title: { id: "Produksi masal", en: "Mass production" }, description: { id: "Preset torque dan rotary-slip untuk pekerjaan yang sama berulang kali.", en: "Preset torque and rotary slip for the same repeated operation." } },
-      { title: { id: "Inspeksi kualitas", en: "Quality inspection" }, description: { id: "Pembacaan torque saat menguji screw, cap, atau komponen kecil.", en: "Torque readings while checking screws, caps, or small components." } }
-    ],
     criteria: [
       { title: { id: "Range dalam cN·m atau N·m", en: "Range in cN·m or N·m" }, description: { id: "Pastikan satuan dan target sesuai; kesalahan konversi berisiko besar pada sekrup kecil.", en: "Confirm the unit and target; conversion mistakes are significant on small fasteners." } },
       { title: { id: "Bit dan bentuk fastener", en: "Bit and fastener profile" }, description: { id: "Tentukan Phillips, hex, TORX, slotted, atau custom serta ukuran bit yang tepat.", en: "Define Phillips, hex, TORX, slotted, or custom profiles and the correct bit size." } },
@@ -240,16 +217,10 @@ export const categoryHubs: CategoryHub[] = [
       { id: "Checker untuk pemeriksaan harian", en: "Checkers for daily verification" },
       { id: "Judgment dan pengelolaan data", en: "Judgment and data management" }
     ],
-    introTitle: { id: "Bedakan calibration tester dan line checker sejak awal.", en: "Separate calibration testers from line checkers at the start." },
-    intro: {
-      id: "Tester digunakan untuk mengevaluasi dan menyetel torque tools secara terkontrol, TOHNICHI dengan pembebanan yang stabil dan pencatatan hasil. Checker mendukung pemeriksaan cepat sebelum atau selama produksi. Pilihan akhir bergantung pada jenis tool, range, arah torque, metode loading, standar kerja, dan format data.",
-      en: "A tester evaluates and adjusts torque tools under controlled loading, usually with stable operation and recorded results. A checker supports quick verification before or during production. The choice depends on tool type, range, torque direction, loading method, work standard, and data format."
+    selectionSummary: {
+      id: "Cek harian di lini → checker. Kalibrasi dan penyetelan → tester. Kelola banyak alat dan riwayat hasil → sistem kalibrasi.",
+      en: "Daily line checks → checker. Calibration and adjustment → tester. Manage many tools and result histories → calibration system."
     },
-    useCases: [
-      { title: { id: "Calibration room", en: "Calibration room" }, description: { id: "Pemeriksaan terjadwal, adjustment, dan sertifikat atau catatan hasil internal.", en: "Scheduled checks, adjustment, and internal certificates or result records." } },
-      { title: { id: "Production line", en: "Production line" }, description: { id: "Daily check sebelum shift atau setelah kejadian yang dapat memengaruhi tool.", en: "Daily checks before a shift or after events that may affect the tool." } },
-      { title: { id: "Tool crib", en: "Tool crib" }, description: { id: "Kontrol status banyak tool, identifikasi, dan histori pemeriksaan.", en: "Status control, identification, and verification history for many tools." } }
-    ],
     criteria: [
       { title: { id: "Jenis tool yang diuji", en: "Tool under test" }, description: { id: "Torque wrench, torque screwdriver, powered tool, atau sensor membutuhkan fixture dan cara loading berbeda.", en: "Torque wrenches, screwdrivers, powered tools, and sensors need different fixtures and loading methods." } },
       { title: { id: "Range dan arah torque", en: "Range and torque direction" }, description: { id: "Pilih kapasitas yang menutup range tool dan pastikan clockwise/counterclockwise sesuai kebutuhan.", en: "Choose capacity that covers the tool range and confirm clockwise/counterclockwise requirements." } },

@@ -73,12 +73,12 @@ export function WhatsAppInquiryForm({ lang }: { lang: Language }) {
     <form
       id="whatsapp-inquiry"
       onSubmit={submit}
-      className="scroll-mt-24 border border-graphite-200 bg-white p-6 text-graphite-900 shadow-panel sm:p-8"
+      className="cse-card scroll-mt-24 p-6 text-graphite-900 sm:p-8"
     >
-      <p className="text-xs font-bold uppercase tracking-[0.2em] text-signal-600">
+      <p className="cse-eyebrow text-signal-600">
         {lang === "en" ? "Start with what you have" : "Mulai dari yang ada"}
       </p>
-      <h3 className="mt-3 text-balance text-2xl font-bold leading-tight sm:text-3xl">
+      <h3 className="cse-panel-title mt-4">
         {lang === "en" ? "Already have a part number or product photo?" : "Sudah punya part number atau foto barang?"}
       </h3>
       <p className="mt-3 text-lg font-bold text-industrial-700">
@@ -101,7 +101,7 @@ export function WhatsAppInquiryForm({ lang }: { lang: Language }) {
             required
             autoComplete="organization"
             placeholder={lang === "en" ? "Your company" : "Nama perusahaan Anda"}
-            className="focus-ring min-h-12 border border-graphite-300 bg-white px-4 text-sm font-normal text-graphite-900"
+            className="cse-input focus-ring"
           />
         </label>
         <label className="grid gap-2 text-sm font-semibold text-graphite-800">
@@ -111,7 +111,7 @@ export function WhatsAppInquiryForm({ lang }: { lang: Language }) {
             name="industry"
             required
             placeholder={lang === "en" ? "e.g. Automotive manufacturing" : "Contoh: Manufaktur otomotif"}
-            className="focus-ring min-h-12 border border-graphite-300 bg-white px-4 text-sm font-normal text-graphite-900"
+            className="cse-input focus-ring"
           />
         </label>
         <label className="grid gap-2 text-sm font-semibold text-graphite-800 sm:col-span-2">
@@ -122,7 +122,7 @@ export function WhatsAppInquiryForm({ lang }: { lang: Language }) {
             value={brandName}
             onChange={(event) => setBrandName(event.target.value)}
             placeholder={lang === "en" ? "Any industrial brand" : "Brand industrial apa pun"}
-            className="focus-ring min-h-12 border border-graphite-300 bg-white px-4 text-sm font-normal text-graphite-900"
+            className="cse-input focus-ring"
           />
         </label>
       </div>
@@ -132,7 +132,7 @@ export function WhatsAppInquiryForm({ lang }: { lang: Language }) {
           type="submit"
           name="channel"
           value="whatsapp"
-          className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 bg-[#128c4a] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#0f7a40]"
+          className="focus-ring cse-button bg-[#128c4a] text-white hover:bg-[#0f7a40]"
         >
           <MessageCircle className="h-5 w-5" aria-hidden="true" />
           {lang === "en" ? "Send via WhatsApp" : "Kirim via WhatsApp"}
@@ -141,7 +141,7 @@ export function WhatsAppInquiryForm({ lang }: { lang: Language }) {
           type="submit"
           name="channel"
           value="email"
-          className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 border border-graphite-300 bg-white px-5 py-3 text-sm font-bold text-graphite-900 transition hover:border-industrial-600 hover:text-industrial-700"
+          className="focus-ring cse-button border border-graphite-300 bg-white text-graphite-900 hover:border-industrial-600 hover:text-industrial-700"
         >
           <Mail className="h-5 w-5" aria-hidden="true" />
           {lang === "en" ? "Send RFQ via Email" : "Kirim RFQ via Email"}

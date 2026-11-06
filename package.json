@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "generate:image-backgrounds": "node scripts/generate-image-backgrounds.mjs",
+    "convert:backgrounds": "node scripts/convert-background-images.mjs",
     "predev": "npm run generate:image-backgrounds",
     "dev": "node scripts/dev-bilingual-site.mjs",
     "prebuild": "npm run generate:image-backgrounds",

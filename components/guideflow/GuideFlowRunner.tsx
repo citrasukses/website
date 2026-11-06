@@ -97,28 +97,36 @@ export function GuideFlowRunner({ guide, lang }: { guide: GuideFlowDefinition; l
   const [selectedIssueId, setSelectedIssueId] = useState<string | null>(null);
   const [completedStepIds, setCompletedStepIds] = useState<string[]>([]);
   const [isFinished, setIsFinished] = useState(false);
+  const [activeStepIds, setActiveStepIds] = useState<string[] | null>(null);
 
   const issueById = useMemo(
     () => new Map(guide.issues.map((issue) => [issue.id, issue])),
     [guide.issues]
   );
-  const currentIndex = Math.max(0, guide.steps.findIndex((step) => step.id === currentStepId));
-  const currentStep = guide.steps[currentIndex];
+  const activeSteps = useMemo(
+    () => activeStepIds ? guide.steps.filter((step) => activeStepIds.includes(step.id)) : guide.steps,
+    [activeStepIds, guide.steps]
+  );
+  const activeStages = guide.stages.filter((stage) => activeSteps.some((step) => step.stageId === stage.id));
+  const currentIndex = Math.max(0, activeSteps.findIndex((step) => step.id === currentStepId));
+  const currentStep = activeSteps[currentIndex];
   const currentStageIndex = Math.max(
     0,
-    guide.stages.findIndex((stage) => stage.id === currentStep?.stageId)
+    activeStages.findIndex((stage) => stage.id === currentStep?.stageId)
   );
-  const currentStage = guide.stages[currentStageIndex];
+  const currentStage = activeStages[currentStageIndex];
   const selectedIssue = selectedIssueId ? issueById.get(selectedIssueId) : undefined;
-  const progress = isFinished ? 100 : ((currentIndex + 1) / guide.steps.length) * 100;
+  const progress = isFinished ? 100 : ((currentIndex + 1) / activeSteps.length) * 100;
   const HeroConnectorIcon = guide.presentation.hero.connectorIcon === "radio" ? Radio : Gauge;
   const contactPath = `/contact?topic=${encodeURIComponent(guide.presentation.contactTopic)}`;
 
   if (!currentStep || !currentStage) return null;
 
-  function startTask(startStepId?: string, issueId?: string) {
-    const nextStepId = startStepId ?? guide.steps[0]?.id;
+  function startTask(startStepId?: string, issueId?: string, stepIds?: string[]) {
+    const selectedSteps = stepIds ? guide.steps.filter((step) => stepIds.includes(step.id)) : guide.steps;
+    const nextStepId = startStepId ?? selectedSteps[0]?.id;
     if (!nextStepId) return;
+    setActiveStepIds(stepIds ?? null);
     setCurrentStepId(nextStepId);
     setCompletedStepIds([]);
     setIsFinished(false);
@@ -143,7 +151,7 @@ export function GuideFlowRunner({ guide, lang }: { guide: GuideFlowDefinition; l
     setHelpOpen(false);
     setSelectedIssueId(null);
 
-    const nextStep = guide.steps[currentIndex + 1];
+    const nextStep = activeSteps[currentIndex + 1];
     if (nextStep) {
       setCurrentStepId(nextStep.id);
       scrollToId("guideflow-runner");
@@ -166,7 +174,7 @@ export function GuideFlowRunner({ guide, lang }: { guide: GuideFlowDefinition; l
   }
 
   function restart() {
-    setCurrentStepId(guide.steps[0]?.id ?? "");
+    setCurrentStepId(activeSteps[0]?.id ?? "");
     setCompletedStepIds([]);
     setSelectedIssueId(null);
     setHelpOpen(false);
@@ -182,13 +190,13 @@ export function GuideFlowRunner({ guide, lang }: { guide: GuideFlowDefinition; l
           <div>
             <div className="flex flex-wrap items-center gap-2 text-[10px] font-black uppercase tracking-[0.16em]">
             </div>
-            <h1 className="mt-5 max-w-4xl text-4xl font-black leading-[1.04] tracking-tight md:text-5xl">
+            <h1 className="cse-title mt-4 max-w-4xl">
               {text(guide.title, lang)}
             </h1>
             <p className="mt-4 max-w-3xl text-base leading-7 text-white/70">{text(guide.description, lang)}</p>
             <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-xs font-bold text-white/65">
               <span className="inline-flex items-center gap-2"><Clock3 className="h-4 w-4 text-signal-500" aria-hidden="true" />{text(guide.estimatedTime, lang)}</span>
-              <span className="inline-flex items-center gap-2"><ListChecks className="h-4 w-4 text-signal-500" aria-hidden="true" />{guide.steps.length} {lang === "en" ? "guided steps" : "guided step"}</span>
+              <span className="inline-flex items-center gap-2"><ListChecks className="h-4 w-4 text-signal-500" aria-hidden="true" />{guide.steps.length} {lang === "en" ? "guided steps" : "langkah terpandu"}</span>
               <span className="inline-flex items-center gap-2"><FileText className="h-4 w-4 text-signal-500" aria-hidden="true" />{lang === "en" ? "Manual-linked" : "Terhubung ke manual"}</span>
             </div>
           </div>
@@ -218,10 +226,10 @@ export function GuideFlowRunner({ guide, lang }: { guide: GuideFlowDefinition; l
         <div className="container-page">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-signal-600">
+              <p className="cse-eyebrow font-black text-signal-600">
                 {lang === "en" ? "Choose a task" : "Pilih yang ingin dilakukan"}
               </p>
-              <h2 className="mt-2 text-3xl font-black text-graphite-900">
+              <h2 className="cse-heading mt-2 font-black text-graphite-900">
                 {lang === "en" ? "What do you need to do?" : "Apa yang ingin Anda lakukan?"}
               </h2>
             </div>
@@ -233,8 +241,8 @@ export function GuideFlowRunner({ guide, lang }: { guide: GuideFlowDefinition; l
                 <button
                   key={task.id}
                   type="button"
-                  onClick={() => startTask(task.startStepId, task.issueId)}
-                  className="focus-ring group flex min-h-36 items-start gap-4 border border-graphite-200 bg-white p-5 text-left transition hover:border-industrial-600 hover:bg-graphite-50 hover:shadow-panel"
+                  onClick={() => startTask(task.startStepId, task.issueId, task.stepIds)}
+                  className="focus-ring group flex min-h-36 items-start gap-4 border border-graphite-200 bg-white p-5 text-left transition hover:border-industrial-600 hover:bg-graphite-50"
                 >
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-industrial-700 text-white transition group-hover:bg-signal-500">
                     <Icon className="h-5 w-5" aria-hidden="true" />
@@ -254,13 +262,13 @@ export function GuideFlowRunner({ guide, lang }: { guide: GuideFlowDefinition; l
         </div>
       </section>
 
-      <section id="guideflow-runner" className="scroll-mt-24 py-12 lg:py-16">
+      <section id="guideflow-runner" className="cse-section scroll-mt-24">
         <div className="container-page">
           {!hasStarted ? (
             <div className="grid gap-6 border border-graphite-200 bg-white p-6 shadow-panel md:grid-cols-[0.72fr_1.28fr] md:p-8">
               <div>
                 <span className="flex h-12 w-12 items-center justify-center bg-graphite-900 text-white"><Flag className="h-5 w-5" aria-hidden="true" /></span>
-                <h2 className="mt-5 text-3xl font-black text-graphite-900">{lang === "en" ? "Before you start" : "Sebelum mulai"}</h2>
+                <h2 className="cse-heading mt-4 font-black text-graphite-900">{lang === "en" ? "Before you start" : "Sebelum mulai"}</h2>
                 <p className="mt-3 text-sm leading-6 text-graphite-500">{lang === "en" ? "Prepare these items, then choose a task above." : "Siapkan item berikut, lalu pilih task di atas."}</p>
               </div>
               <ul className="grid gap-3 sm:grid-cols-2">
@@ -280,7 +288,7 @@ export function GuideFlowRunner({ guide, lang }: { guide: GuideFlowDefinition; l
                     <p className="font-black">{text(currentStage.title, lang)}</p>
                   </div>
                   <p className="text-xs font-bold text-white/60">
-                    {lang === "en" ? `Step ${currentIndex + 1} of ${guide.steps.length}` : `Step ${currentIndex + 1} dari ${guide.steps.length}`}
+                    {lang === "en" ? `Step ${currentIndex + 1} of ${activeSteps.length}` : `Step ${currentIndex + 1} dari ${activeSteps.length}`}
                   </p>
                 </div>
                 <div className="mt-4 h-1.5 bg-white/15" role="progressbar" aria-label={lang === "en" ? "Guide progress" : "Progress guide"} aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(progress)}>
@@ -291,9 +299,9 @@ export function GuideFlowRunner({ guide, lang }: { guide: GuideFlowDefinition; l
               <div className="grid lg:grid-cols-[230px_minmax(0,1fr)]">
                 <aside className="border-b border-graphite-200 bg-graphite-50 p-4 lg:border-b-0 lg:border-r lg:p-5" aria-label={lang === "en" ? "Guide stages" : "Stage guide"}>
                   <ol className="grid grid-cols-2 gap-2 sm:grid-cols-5 lg:grid-cols-1">
-                    {guide.stages.map((stage, stageIndex) => {
-                      const firstStep = guide.steps.find((step) => step.stageId === stage.id);
-                      const stageComplete = guide.steps
+                    {activeStages.map((stage, stageIndex) => {
+                      const firstStep = activeSteps.find((step) => step.stageId === stage.id);
+                      const stageComplete = activeSteps
                         .filter((step) => step.stageId === stage.id)
                         .every((step) => completedStepIds.includes(step.id));
                       const active = stage.id === currentStage.id && !isFinished;
@@ -327,7 +335,7 @@ export function GuideFlowRunner({ guide, lang }: { guide: GuideFlowDefinition; l
                       <div className="max-w-xl">
                         <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-700"><CheckCircle2 className="h-8 w-8" aria-hidden="true" /></span>
                         <p className="mt-6 text-xs font-black uppercase tracking-[0.18em] text-emerald-700">{text(guide.presentation.completion.eyebrow, lang)}</p>
-                        <h2 className="mt-3 text-4xl font-black text-graphite-900">{text(guide.presentation.completion.title, lang)}</h2>
+                        <h2 className="cse-heading mt-4 font-black text-graphite-900">{text(guide.presentation.completion.title, lang)}</h2>
                         <p className="mt-4 text-base leading-7 text-graphite-500">{text(guide.presentation.completion.body, lang)}</p>
                         <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
                           <button type="button" onClick={restart} className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 bg-industrial-700 px-5 text-sm font-bold text-white hover:bg-industrial-800"><RotateCcw className="h-4 w-4" aria-hidden="true" />{lang === "en" ? "Restart guide" : "Ulangi guide"}</button>
@@ -341,7 +349,7 @@ export function GuideFlowRunner({ guide, lang }: { guide: GuideFlowDefinition; l
                         <GuideMedia media={currentStep.media} lang={lang} />
 
                         <div id={currentStep.id} className="scroll-mt-32">
-                          <h2 className="text-3xl font-black leading-tight text-graphite-900">{text(currentStep.title, lang)}</h2>
+                          <h2 className="cse-heading font-black text-graphite-900">{text(currentStep.title, lang)}</h2>
                           <p className="mt-4 text-base font-semibold leading-7 text-graphite-700">{text(currentStep.instruction, lang)}</p>
 
                           <div className="mt-6 border-l-4 border-industrial-600 bg-blue-50 p-4">
@@ -361,7 +369,7 @@ export function GuideFlowRunner({ guide, lang }: { guide: GuideFlowDefinition; l
                           </div>
 
                           <div className="mt-5 flex items-center justify-between gap-3 border-t border-graphite-200 pt-5">
-                            <button type="button" onClick={() => chooseStep(guide.steps[Math.max(0, currentIndex - 1)].id)} disabled={currentIndex === 0} className="focus-ring inline-flex min-h-11 items-center gap-1.5 text-sm font-bold text-graphite-500 hover:text-industrial-700 disabled:cursor-not-allowed disabled:opacity-35"><ChevronLeft className="h-4 w-4" aria-hidden="true" />{lang === "en" ? "Previous" : "Sebelumnya"}</button>
+                            <button type="button" onClick={() => chooseStep(activeSteps[Math.max(0, currentIndex - 1)].id)} disabled={currentIndex === 0} className="focus-ring inline-flex min-h-11 items-center gap-1.5 text-sm font-bold text-graphite-500 hover:text-industrial-700 disabled:cursor-not-allowed disabled:opacity-35"><ChevronLeft className="h-4 w-4" aria-hidden="true" />{lang === "en" ? "Previous" : "Sebelumnya"}</button>
                             <button type="button" onClick={() => setHasStarted(false)} className="focus-ring text-xs font-black uppercase tracking-[0.12em] text-graphite-500 hover:text-signal-600">{lang === "en" ? "Exit to tasks" : "Kembali ke task"}</button>
                           </div>
                         </div>
@@ -408,12 +416,12 @@ export function GuideFlowRunner({ guide, lang }: { guide: GuideFlowDefinition; l
         </div>
       </section>
 
-      <section id="guideflow-fix-path" className="scroll-mt-24 border-y border-graphite-200 bg-white py-12 lg:py-16">
+      <section id="guideflow-fix-path" className="cse-section scroll-mt-24 border-y border-graphite-200 bg-white">
         <div className="container-page">
           <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr]">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-signal-600">Fix Path</p>
-              <h2 className="mt-3 text-3xl font-black text-graphite-900">
+              <p className="cse-eyebrow font-black text-signal-600">Fix Path</p>
+              <h2 className="cse-heading mt-4 font-black text-graphite-900">
                 {selectedIssue ? text(selectedIssue.title, lang) : (lang === "en" ? "Troubleshooting opens here." : "Troubleshooting akan ditampilkan di bagian ini.")}
               </h2>
               <p className="mt-4 text-sm leading-7 text-graphite-500">
@@ -460,6 +468,15 @@ export function GuideFlowRunner({ guide, lang }: { guide: GuideFlowDefinition; l
           <div className="max-w-3xl">
             <p className="text-xs font-black uppercase tracking-[0.18em] text-signal-500">{lang === "en" ? "Versioned technical content" : "Konten teknis berversi"}</p>
             <p className="mt-2 text-sm leading-6 text-white/65">{text(guide.source, lang)} · {lang === "en" ? "Last reviewed" : "Terakhir direview"} {guide.lastReviewed}</p>
+            {guide.references?.length ? (
+              <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-xs font-semibold">
+                {guide.references.map((reference) => (
+                  <a key={reference.href} href={reference.href} target="_blank" rel="noopener noreferrer" className="focus-ring text-white underline decoration-signal-500 underline-offset-4 hover:text-signal-500">
+                    {text(reference.label, lang)}
+                  </a>
+                ))}
+              </div>
+            ) : null}
           </div>
           <Link href={withLang(contactPath, lang)} className="focus-ring inline-flex min-h-12 shrink-0 items-center justify-center gap-2 bg-signal-500 px-5 text-sm font-black text-white hover:bg-signal-600"><LifeBuoy className="h-4 w-4" aria-hidden="true" />{lang === "en" ? "Ask CSE technical support" : "Hubungi technical support CSE"}</Link>
         </div>

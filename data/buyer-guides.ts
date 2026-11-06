@@ -47,7 +47,9 @@ export type BuyerGuide = {
     | "apa-itu-torque-angle"
     | "mencegah-missed-tightening"
     | "cspfdd-r-cm-connection"
+    | "cara-menggunakan-sb-fh2"
     | "cara-memilih-torque-tester"
+    | "tohnichi-ql-vs-qsp"
     | "preset-vs-adjustable-torque-wrench";
   title: LocalizedText;
   seoTitle: LocalizedText;
@@ -115,6 +117,40 @@ export const buyerGuides: BuyerGuide[] = [
       { href: "/brands/tohnichi", title: { id: "TOHNICHI Indonesia", en: "TOHNICHI Indonesia" }, description: { id: "Lihat produk dan support TOHNICHI dari CSE.", en: "Explore TOHNICHI products and support from CSE." } },
       { href: "/solutions/poka-yoke-tightening", title: { id: "Poka-yoke tightening", en: "Poka-yoke tightening" }, description: { id: "Hubungkan tool, receiver, logic, dan interlock.", en: "Connect tools, receivers, logic, and interlocks." } },
       { href: "/contact", title: { id: "Technical support", en: "Technical support" }, description: { id: "Minta review Group, ID, dan limit setting.", en: "Request a review of Group, ID, and limit settings." } }
+    ]
+  },
+  {
+    slug: "cara-menggunakan-sb-fh2",
+    brands: ["tohnichi"],
+    topics: ["process-control", "poka-yoke", "data-traceability"],
+    applications: ["assembly", "mass-production", "maintenance"],
+    title: { id: "Cara Menggunakan TOHNICHI SB-FH2", en: "How to Use the TOHNICHI SB-FH2" },
+    seoTitle: { id: "Cara Setting TOHNICHI SB-FH2 untuk Transmitter dan R-CM", en: "TOHNICHI SB-FH2 Setup Guide for Transmitter and R-CM" },
+    description: { id: "Pelajari cara menggunakan TOHNICHI SB-FH2 untuk mengatur Group, judgment code, dan ID transmitter serta receiver R-CM + M-FH, lalu verifikasi dengan GET.", en: "Learn to use the TOHNICHI SB-FH2 to set Group, judgment code, and IDs on a transmitter and R-CM + M-FH receiver, then verify with GET." },
+    eyebrow: { id: "Panduan setup SB-FH2", en: "SB-FH2 setup guide" },
+    image: "/assets/brands/products/tohnichi/SB-FH2.jpg",
+    imageAlt: { id: "Setting box wireless TOHNICHI SB-FH2", en: "TOHNICHI SB-FH2 wireless setting box" },
+    answer: { id: "Set satu unit pada satu waktu: baca nilai dengan GET, ubah baris NEW, tulis dengan SET, lalu tekan GET lagi untuk memastikan Group, judgment code, dan ID sesuai pada transmitter serta output R-CM.", en: "Set one unit at a time: read with GET, edit the NEW row, write with SET, then press GET again to confirm matching Group, judgment code, and IDs on the transmitter and R-CM output." },
+    sections: [
+      { title: { id: "Siapkan alat dan rencana setting", en: "Prepare the unit and setting plan" }, body: { id: "Gunakan baterai alkaline 9 V, pasang dipole antenna melalui ujung berlekuk, dan catat Group, code, ID, serta output R-CM.", en: "Use a 9 V alkaline battery, attach the dipole antenna at its notched collar, and record Group, code, IDs, and R-CM output." } },
+      { title: { id: "Set R-CM dan transmitter", en: "Configure R-CM and transmitter" }, body: { id: "Pilih mode yang sesuai, masukkan satu target ke setting mode, tulis nilai pada tiap halaman, dan baca kembali hasilnya.", en: "Choose the matching mode, put one target in setting mode, write each page separately, and read the values back." } },
+      { title: { id: "Test atau gunakan remote setting", en: "Test or use remote setting" }, body: { id: "Verifikasi signal pada output R-CM yang benar. Bila receiver sulit dijangkau, gunakan remote ID module M-FH untuk memilih target.", en: "Verify the signal at the correct R-CM output. If the receiver is hard to reach, select it using the M-FH module remote ID." } }
+    ],
+    checklist: [
+      { id: "SB-FH2 memakai baterai alkaline 9 V dan antenna terpasang", en: "SB-FH2 has a 9 V alkaline battery and fitted antenna" },
+      { id: "R-CM memakai module M-FH untuk jalur R-CM(M-FH)", en: "R-CM has an M-FH module for the R-CM(M-FH) route" },
+      { id: "Group, code, ID, dan output R1-R4 sudah dicatat", en: "Group, code, IDs, and R1-R4 output are recorded" },
+      { id: "Setiap penulisan SET diverifikasi dengan GET", en: "Every SET write is verified with GET" },
+      { id: "Test signal dan hasil output sudah dicatat", en: "Signal test and output result are recorded" }
+    ],
+    faqs: [
+      { question: { id: "Apakah SB-FH2 mengatur nilai torque wrench?", en: "Does SB-FH2 set wrench torque?" }, answer: { id: "Tidak. SB-FH2 mengatur parameter komunikasi wireless. Nilai torque mekanis diatur dan diverifikasi sesuai manual wrench.", en: "No. SB-FH2 configures wireless communication. Mechanical torque is adjusted and verified using the wrench manual." } },
+      { question: { id: "Apa arti OK dan NG?", en: "What do OK and NG mean?" }, answer: { id: "OK berarti pembacaan atau penulisan diterima. Jika NG, periksa setting mode target, pastikan hanya satu unit aktif, lalu ulangi GET atau SET.", en: "OK means the read or write was received. For NG, check the target setting mode, ensure only one unit is active, then retry GET or SET." } }
+    ],
+    related: [
+      { href: "/guides/cspfdd-r-cm-connection", title: { id: "FDD ke R-CM + M-FD", en: "FDD to R-CM + M-FD" }, description: { id: "Jalur lain untuk wrench data-transfer FDD.", en: "The separate route for FDD data-transfer wrenches." } },
+      { href: "/brands/tohnichi", title: { id: "TOHNICHI Indonesia", en: "TOHNICHI Indonesia" }, description: { id: "Lihat model dan support yang tersedia.", en: "Explore available models and support." } },
+      { href: "/contact?topic=sb-fh2-setup", title: { id: "Review setup", en: "Setup review" }, description: { id: "Minta CSE memeriksa Group, code, dan ID.", en: "Ask CSE to review Group, code, and IDs." } }
     ]
   },
   {
@@ -259,7 +295,7 @@ export const buyerGuides: BuyerGuide[] = [
     comparison: { headers: [{ id: "Level", en: "Level" }, { id: "Kontrol", en: "Control" }, { id: "Bukti", en: "Evidence" }], rows: [[{ id: "Visual", en: "Visual" }, { id: "Work instruction, color, fixture", en: "Work instruction, color, fixture" }, { id: "Operator confirmation", en: "Operator confirmation" }], [{ id: "Completion", en: "Completion" }, { id: "Switch, wireless, digital, marking", en: "Switch, wireless, digital, marking" }, { id: "Signal per tightening", en: "Signal per tightening" }], [{ id: "Count", en: "Count" }, { id: "Controller compares required quantity", en: "Controller compares required quantity" }, { id: "OK/NG per unit", en: "OK/NG per unit" }], [{ id: "Sequence / interlock", en: "Sequence / interlock" }, { id: "Position or PLC logic", en: "Position or PLC logic" }, { id: "Controlled release and trace", en: "Controlled release and trace" }]] },
     checklist: [{ id: "Fastener count per model", en: "Fastener count per model" }, { id: "Required sequence and position", en: "Required sequence and position" }, { id: "Definition of a valid completion signal", en: "Definition of a valid completion signal" }, { id: "Re-hit and duplicate-signal logic", en: "Re-hit and duplicate-signal logic" }, { id: "Rework, bypass, and supervisor authority", en: "Rework, bypass, and supervisor authority" }, { id: "Communication-loss and tool-failure response", en: "Communication-loss and tool-failure response" }],
     faqs: [{ question: { id: "Apakah counter saja cukup?", en: "Is a counter alone enough?" }, answer: { id: "Counter memastikan jumlah signal, tetapi tidak selalu memastikan posisi atau urutan. Risiko proses menentukan apakah position atau sequence control juga diperlukan.", en: "A counter confirms signal quantity but not always position or order. Process risk determines whether position or sequence control is also needed." } }, { question: { id: "Bagaimana mencegah double count?", en: "How can double counts be prevented?" }, answer: { id: "Atur debounce, minimum time, re-hit logic, reset condition, dan bila perlu position confirmation agar satu fastener tidak dihitung dua kali.", en: "Configure debounce, minimum time, re-hit logic, reset conditions, and, where needed, position confirmation so one fastener is not counted twice." } }],
-    related: [{ href: "/solutions/poka-yoke-tightening", title: { id: "Poka-yoke solution", en: "Poka-yoke solution" }, description: { id: "Susun tool, signal, logic, dan abnormal flow.", en: "Plan tools, signals, logic, and abnormal flow." } }, { href: "/torque-screwdriver", title: { id: "Poka-yoke torque screwdrivers", en: "Poka-yoke torque screwdrivers" }, description: { id: "Lihat limit-switch, wireless, dan digital options.", en: "Explore limit-switch, wireless, and digital options." } }, { href: "/industries/automotive", title: { id: "Automotive workflow", en: "Automotive workflow" }, description: { id: "Lihat torque assurance dalam production flow.", en: "See torque assurance in a production flow." } }]
+    related: [{ href: "/solutions/poka-yoke-tightening", title: { id: "Poka-yoke solution", en: "Poka-yoke solution" }, description: { id: "Susun tool, signal, logic, dan abnormal flow.", en: "Plan tools, signals, logic, and abnormal flow." } }, { href: "/torque-screwdriver", title: { id: "Poka-yoke torque screwdrivers", en: "Poka-yoke torque screwdrivers" }, description: { id: "Lihat limit-switch, wireless, dan digital options.", en: "Explore limit-switch, wireless, and digital options." } }, { href: "/solutions/torque-control", title: { id: "Solusi kontrol torsi", en: "Torque control solution" }, description: { id: "Lihat kontrol torsi untuk proses produksi.", en: "See torque control for production workflows." } }]
   },
   {
     slug: "cara-memilih-torque-tester",
@@ -282,6 +318,23 @@ export const buyerGuides: BuyerGuide[] = [
     checklist: [{ id: "Tool type, model, range, and quantity", en: "Tool type, model, range, and quantity" }, { id: "Clockwise/counterclockwise requirement", en: "Clockwise/counterclockwise requirement" }, { id: "Drive, bit, head, and adapter", en: "Drive, bit, head, and adapter" }, { id: "Manual or motorized loading", en: "Manual or motorized loading" }, { id: "Tolerance, runs, judgment, and statistics", en: "Tolerance, runs, judgment, and statistics" }, { id: "Record, software, export, and audit trail", en: "Record, software, export, and audit trail" }],
     faqs: [{ question: { id: "Bisakah satu tester menguji wrench dan screwdriver?", en: "Can one tester cover wrenches and screwdrivers?" }, answer: { id: "Tergantung range, sensor, fixture, dan method. Sering kali diperlukan setup berbeda untuk menjaga loading dan interface sesuai tool.", en: "It depends on range, sensor, fixtures, and method. Different setups are often required to maintain suitable loading and interfaces." } }, { question: { id: "Apakah motorized tester wajib?", en: "Is a motorized tester mandatory?" }, answer: { id: "Tidak selalu. Motorized loading berguna ketika volume, repeatability, atau standard memerlukan speed dan position yang lebih konsisten.", en: "Not always. Motorized loading is useful when volume, repeatability, or standards require more consistent speed and position." } }],
     related: [{ href: "/torque-tester", title: { id: "Torque tester category", en: "Torque-tester category" }, description: { id: "Lihat DOTE4, TCC2, TDT3, DOT, dan DLC.", en: "Explore DOTE4, TCC2, TDT3, DOT, and DLC." } }, { href: "/solutions/torque-calibration-verification", title: { id: "Verification program", en: "Verification program" }, description: { id: "Hubungkan equipment dengan method dan record.", en: "Connect equipment with methods and records." } }, { href: "/contact", title: { id: "Kirim tool list", en: "Send a tool list" }, description: { id: "Minta shortlist tester berdasarkan inventory.", en: "Request a tester shortlist based on inventory." } }]
+  },
+  {
+    slug: "tohnichi-ql-vs-qsp",
+    brands: ["tohnichi"],
+    topics: ["tool-selection"],
+    applications: ["assembly", "maintenance", "mass-production"],
+    title: { id: "Apa Bedanya TOHNICHI QL dan QSP?", en: "TOHNICHI QL vs QSP: What’s the Difference?" },
+    seoTitle: { id: "Perbedaan Torque Wrench TOHNICHI QL dan QSP", en: "TOHNICHI QL vs QSP Torque Wrenches" },
+    description: { id: "QL bisa diatur lewat skala pada gagang. QSP disetel dengan alat khusus dan tester. Lihat perbedaan dan kapan memilih masing-masing.", en: "QL adjusts at the handle scale. QSP is set with a special tool and tester. See which one fits your work." },
+    eyebrow: { id: "Perbandingan QL & QSP", en: "QL & QSP comparison" },
+    image: "/assets/brands/products/tohnichi/catalog/torque-wrenches/ql-qle2.jpg",
+    imageAlt: { id: "Torque wrench adjustable TOHNICHI QL", en: "TOHNICHI QL adjustable torque wrench" },
+    answer: { id: "Pilih QL jika nilai torsi sering berubah. Pilih QSP jika satu pekerjaan memakai nilai tetap dan operator tidak perlu mengubah setelan.", en: "Choose QL when the torque target changes. Choose QSP when one job uses a fixed target and operators do not need to change it." },
+    sections: [],
+    checklist: [],
+    faqs: [],
+    related: []
   },
   {
     slug: "preset-vs-adjustable-torque-wrench",
@@ -308,6 +361,28 @@ export const buyerGuides: BuyerGuide[] = [
 ];
 
 export const GUIDE_EDITORIAL: Record<BuyerGuide["slug"], GuideEditorial> = {
+  "tohnichi-ql-vs-qsp": {
+    format: { id: "Panduan pembeli", en: "Buyer's guide" },
+    audience: { id: "Produksi, maintenance & pembelian", en: "Production, maintenance & purchasing" },
+    readingMinutes: 3,
+    cta: {
+      title: { id: "Sudah punya target torsi?", en: "Know your torque target?" },
+      description: { id: "Kirim nilai torsi, ukuran square drive, dan apakah setelan perlu berubah. Kami bantu pilih modelnya.", en: "Send the torque value, square-drive size, and whether the setting needs to change. We can help narrow the model." },
+      label: { id: "Tanya CSE", en: "Ask CSE" },
+      href: "/contact?topic=ql-vs-qsp"
+    }
+  },
+  "cara-menggunakan-sb-fh2": {
+    format: { id: "Panduan setup lapangan", en: "Field setup guide" },
+    audience: { id: "Engineering, maintenance & integrator", en: "Engineering, maintenance & integrators" },
+    readingMinutes: 10,
+    cta: {
+      title: { id: "Perlu review setting wireless?", en: "Need a wireless settings review?" },
+      description: { id: "Kirim model transmitter, R-CM, Group, code, dan ID yang digunakan.", en: "Send the transmitter model, R-CM, Group, code, and IDs in use." },
+      label: { id: "Minta review setup", en: "Request a setup review" },
+      href: "/contact?topic=sb-fh2-setup"
+    }
+  },
   "cspfdd-r-cm-connection": {
     format: { id: "Panduan setup lapangan", en: "Field setup guide" },
     audience: { id: "Engineering & integrator", en: "Engineering & integrators" },

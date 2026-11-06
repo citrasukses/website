@@ -11,6 +11,7 @@ import {
   Check,
   ChevronLeft,
   ClipboardCheck,
+  createLucideIcon,
   Database,
   Gauge,
   Monitor,
@@ -33,6 +34,7 @@ type Choice = {
   label: LocalizedText;
   description: LocalizedText;
   icon?: LucideIcon;
+  illustration?: LucideIcon;
   groups?: string[];
   tags?: string[];
   terms?: string[];
@@ -66,6 +68,32 @@ const FINDER_PRODUCT_IMAGES = [
   "/assets/brands/products/tohnichi/CL2NX6D+.png",
   "/assets/brands/products/tohnichi/tohnichi_collage_ftd_ftds.png"
 ];
+
+const ScrewIllustration = createLucideIcon("ScrewIllustration", [
+  ["path", { d: "M5 8V6a7 4 0 0 1 14 0v2Z", key: "head" }],
+  ["path", { d: "M9 4h6M9 8v11l3 3 3-3V8", key: "shaft" }],
+  ["path", { d: "m9 11 6-2m-6 6 6-2m-6 6 6-2", key: "threads" }]
+]);
+
+const BoltAndNutIllustration = createLucideIcon("BoltAndNutIllustration", [
+  ["path", { d: "m2 4 3-2h4l3 2v4l-3 2H5L2 8Z", key: "bolt-head" }],
+  ["path", { d: "M5 10v11h4V10m-4 4 4-1m-4 4 4-1m-4 4 4-1", key: "bolt-threads" }],
+  ["path", { d: "m13 13 4-2 5 2v6l-5 3-4-3Z", key: "hex-nut" }],
+  ["circle", { cx: "17.5", cy: "16.5", r: "2", key: "threaded-hole" }]
+]);
+
+const TightAccessIllustration = createLucideIcon("TightAccessIllustration", [
+  ["path", { d: "M2 2v20h20M22 2v8", key: "surrounding-walls" }],
+  ["path", { d: "m10 5 3-2 3 2v4l-3 2-3-2Z", key: "fastener" }],
+  ["path", { d: "M7 4v5l4 5h4l4-5V4m-8 10v8h4v-8", key: "open-end-head" }]
+]);
+
+const MultiSpindleIllustration = createLucideIcon("MultiSpindleIllustration", [
+  ["rect", { x: "2", y: "2", width: "20", height: "5", rx: "1", key: "common-drive" }],
+  ["path", { d: "M5 7v7m7-7v7m7-7v7", key: "three-spindles" }],
+  ["path", { d: "M3 14h4v4H3Zm7 0h4v4h-4Zm7 0h4v4h-4Z", key: "sockets" }],
+  ["path", { d: "M2 19h20v3H2Zm3-1v3m7-3v3m7-3v3", key: "fasteners-in-workpiece" }]
+]);
 
 const TASKS: TaskChoice[] = [
   {
@@ -130,6 +158,7 @@ const SITUATIONS: Record<TaskId, Choice[]> = {
       id: "small-screws",
       label: { id: "Sekrup kecil", en: "Small screws" },
       description: { id: "Elektronik, instrumen, dan assembly ringan.", en: "Electronics, instruments, and light assembly." },
+      illustration: ScrewIllustration,
       groups: ["torque-screwdrivers"],
       tags: ["power torque screwdriver"],
       terms: ["screwdriver", "screw"]
@@ -138,6 +167,7 @@ const SITUATIONS: Record<TaskId, Choice[]> = {
       id: "bolts-nuts",
       label: { id: "Baut atau mur", en: "Bolts or nuts" },
       description: { id: "Assembly, maintenance, otomotif, dan struktur.", en: "Assembly, maintenance, automotive, and structures." },
+      illustration: BoltAndNutIllustration,
       groups: ["torque-wrenches", "interchangeable-head-torque-wrenches"],
       tags: ["power torque wrench", "torque wrench"]
     },
@@ -145,6 +175,7 @@ const SITUATIONS: Record<TaskId, Choice[]> = {
       id: "restricted-access",
       label: { id: "Akses sempit atau head khusus", en: "Tight access or a special head" },
       description: { id: "Butuh open-end, ring, ratchet, atau custom head.", en: "Needs an open-end, ring, ratchet, or custom head." },
+      illustration: TightAccessIllustration,
       groups: ["interchangeable-head-torque-wrenches"],
       tags: ["interchangeable head"]
     },
@@ -152,6 +183,7 @@ const SITUATIONS: Record<TaskId, Choice[]> = {
       id: "multi-fastener",
       label: { id: "Beberapa fastener sekaligus", en: "Several fasteners at once" },
       description: { id: "Pengencangan serentak dengan multi-spindle.", en: "Simultaneous tightening with multiple spindles." },
+      illustration: MultiSpindleIllustration,
       groups: ["multiple-units"],
       tags: ["multiple unit"]
     }
@@ -541,7 +573,7 @@ function SelectionCard({
   onSelect: () => void;
   lang: Language;
 }) {
-  const Icon = choice.icon;
+  const Icon = choice.illustration ?? choice.icon;
 
   return (
     <button
@@ -551,16 +583,16 @@ function SelectionCard({
       className={`focus-ring group flex min-h-28 w-full items-start gap-4 border p-4 text-left transition sm:p-5 ${
         selected
           ? "border-industrial-700 bg-industrial-700 text-white shadow-panel"
-          : "border-graphite-200 bg-white text-graphite-900 hover:-translate-y-0.5 hover:border-industrial-600 hover:shadow-panel"
+          : "border-graphite-200 bg-white text-graphite-900 hover:-translate-y-0.5 hover:border-industrial-600 "
       }`}
     >
       {Icon ? (
         <span
-          className={`flex h-11 w-11 shrink-0 items-center justify-center border ${
+          className={`flex shrink-0 items-center justify-center border ${choice.illustration ? "h-14 w-14" : "h-11 w-11"} ${
             selected ? "border-white/30 bg-white/10" : "border-industrial-200 bg-industrial-50 text-industrial-700"
           }`}
         >
-          <Icon className="h-5 w-5" aria-hidden="true" />
+          <Icon className={choice.illustration ? "h-10 w-10" : "h-5 w-5"} strokeWidth={choice.illustration ? 1.4 : 2} aria-hidden="true" />
         </span>
       ) : null}
       <span className="min-w-0">
@@ -746,10 +778,10 @@ export function TohnichiToolSelector({
     <section aria-labelledby="tohnichi-selector-title" className="overflow-hidden border border-graphite-200 bg-white shadow-panel">
       <div className="tohnichi-finder-backdrop relative isolate overflow-hidden px-5 py-7 text-white md:px-8 md:py-8">
         <div className="relative z-10 max-w-3xl lg:max-w-[58%]">
-          <p className="inline-flex border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.22em] text-white/75">
+          <p className="cse-eyebrow inline-flex text-white/75">
             {lang === "en" ? "TOHNICHI guided tool finder" : "Panduan pemilihan TOHNICHI"}
           </p>
-          <h2 id="tohnichi-selector-title" className="mt-3 max-w-2xl text-3xl font-bold leading-tight md:text-4xl">
+          <h2 id="tohnichi-selector-title" className="cse-heading mt-4 max-w-2xl">
             {lang === "en" ? "Find the right tool without knowing the model name." : "Temukan alat yang tepat tanpa harus tahu nama model."}
           </h2>
         </div>
@@ -807,7 +839,7 @@ export function TohnichiToolSelector({
       <div className="p-5 md:p-8">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
+            <p className="cse-eyebrow text-signal-600">
               {lang === "en" ? `Question ${step} of 4` : `Pertanyaan ${step} dari 4`}
             </p>
             <h3 className="mt-2 text-2xl font-bold text-graphite-900">{question}</h3>
@@ -920,7 +952,7 @@ export function TohnichiToolSelector({
         <div className="border-t-4 border-signal-600 bg-graphite-50 px-5 py-8 md:px-8 md:py-10" aria-live="polite">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-signal-600">
+              <p className="cse-eyebrow text-signal-600">
                 {lang === "en" ? "Recommended starting points" : "Rekomendasi awal"}
               </p>
               <h3 className="mt-2 max-w-3xl text-2xl font-bold text-graphite-900 md:text-3xl">

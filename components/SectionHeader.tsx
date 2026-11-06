@@ -12,11 +12,11 @@ export function SectionHeader({ eyebrow, title, description, align = "left", hea
   return (
     <div className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
       {eyebrow ? (
-        <p className="mb-3 border-l-2 border-signal-500 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-signal-600">{eyebrow}</p>
+        <p className={`cse-eyebrow mb-4 text-signal-600 ${align === "center" ? "mx-auto w-fit" : ""}`}>{eyebrow}</p>
       ) : null}
-      <Heading className="text-balance text-2xl font-bold tracking-normal text-graphite-900 md:text-4xl">{title}</Heading>
+      <Heading className={`${headingLevel === "h1" ? "cse-title" : "cse-heading"} text-graphite-900`}>{title}</Heading>
       {description ? (
-        <p className="mt-4 text-base leading-7 text-graphite-500 md:text-lg">{description}</p>
+        <p className="cse-description mt-4">{description}</p>
       ) : null}
     </div>
   );

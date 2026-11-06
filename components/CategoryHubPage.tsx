@@ -14,6 +14,7 @@ import { absoluteLocalizedUrl } from "@/lib/seo-config";
 
 export function CategoryHubPage({ category, lang }: { category: CategoryHub; lang: Language }) {
   const categoryPath = `/${category.slug}`;
+  const selectorHref = withLang("/brands/tohnichi/products#tohnichi-products", lang);
   const heroDescription = text(category.heroDescription ?? category.description, lang);
   const jsonLd = [
     {
@@ -57,10 +58,10 @@ export function CategoryHubPage({ category, lang }: { category: CategoryHub; lan
         eyebrow={text(category.eyebrow, lang)}
         title={text(category.title, lang)}
         description={heroDescription}
-        primaryHref={withLang(`/contact?topic=${category.slug}`, lang)}
-        primaryLabel={lang === "en" ? "Discuss your application" : "Diskusikan aplikasi"}
-        secondaryHref={withLang("/brands/tohnichi", lang)}
-        secondaryLabel={lang === "en" ? "View TOHNICHI page" : "Lihat halaman TOHNICHI"}
+        primaryHref={selectorHref}
+        primaryLabel={lang === "en" ? "Help me choose a tool" : "Bantu saya pilih alat"}
+        secondaryHref="#checklist"
+        secondaryLabel={lang === "en" ? "View selection checklist" : "Lihat checklist pemilihan"}
         image={category.image}
         imageLabel={text(category.imageAlt, lang)}
         imageClassName="object-contain object-right opacity-45"
@@ -101,54 +102,59 @@ export function CategoryHubPage({ category, lang }: { category: CategoryHub; lan
         </div>
       </section>
 
-      <section className="bg-white py-16">
-        <div className="container-page grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-          <SectionHeader
-            eyebrow={lang === "en" ? "Selection context" : "Konteks pemilihan"}
-            title={text(category.introTitle, lang)}
-            description={text(category.intro, lang)}
-          />
-          <div className="grid gap-px overflow-hidden border border-graphite-200 bg-graphite-200 sm:grid-cols-3">
-            {category.useCases.map((item) => (
-              <article key={item.title.en} className="bg-graphite-50 p-6">
-                <p className="text-sm font-bold text-graphite-900">{text(item.title, lang)}</p>
-                <p className="mt-3 text-sm leading-6 text-graphite-600">{text(item.description, lang)}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-graphite-50 py-16">
+      <section id="checklist" className="cse-section scroll-mt-28 bg-graphite-50">
         <div className="container-page">
           <SectionHeader
             eyebrow={lang === "en" ? "Selection checklist" : "Checklist pemilihan"}
-            title={lang === "en" ? "Details to confirm before choosing a model." : "Hal-hal yang perlu dikonfirmasi sebelum memilih model."}
-            description={lang === "en" ? "These inputs help CSE narrow the catalogue to a practical shortlist." : "Informasi ini membantu CSE mempersempit katalog menjadi shortlist yang praktis."}
+            title={lang === "en" ? "Check these 6 things before choosing." : "Cek 6 hal ini sebelum memilih."}
           />
-          <div className="mt-9 grid gap-px overflow-hidden border border-graphite-200 bg-graphite-200 md:grid-cols-2 lg:grid-cols-3">
+          <p className="mt-5 max-w-4xl border-l-2 border-industrial-700 pl-4 text-sm font-semibold leading-7 text-graphite-700">
+            {text(category.selectionSummary, lang)}
+          </p>
+          <div className="mt-7 grid gap-px overflow-hidden border border-graphite-200 bg-graphite-200 md:grid-cols-2 lg:grid-cols-3">
             {category.criteria.map((item, index) => (
               <article key={item.title.en} className="bg-white p-6">
                 <div className="flex items-center gap-3">
                   <span className="flex h-8 w-8 items-center justify-center bg-industrial-700 text-xs font-bold text-white">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <h2 className="font-bold text-graphite-900">{text(item.title, lang)}</h2>
+                  <h3 className="font-bold text-graphite-900">{text(item.title, lang)}</h3>
                 </div>
                 <p className="mt-4 text-sm leading-6 text-graphite-600">{text(item.description, lang)}</p>
               </article>
             ))}
           </div>
+          <div className="mt-6 flex flex-col gap-6 bg-industrial-700 p-6 text-white lg:flex-row lg:items-center lg:justify-between lg:p-8">
+            <div>
+              <h3 className="text-xl font-bold">
+                {lang === "en" ? "Not sure which type fits?" : "Belum tahu tipe yang cocok?"}
+              </h3>
+              <p className="mt-2 max-w-xl text-sm leading-6 text-white/80">
+                {lang === "en"
+                  ? "Answer 4 short questions to see suitable TOHNICHI product families. No model name needed."
+                  : "Jawab 4 pertanyaan singkat untuk melihat pilihan alat TOHNICHI. Tidak perlu tahu nama model."}
+              </p>
+            </div>
+            <div className="flex shrink-0 flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
+              <CTAButton href={selectorHref}>
+                {lang === "en" ? "Help me choose a tool" : "Bantu saya pilih alat"}
+                <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+              </CTAButton>
+              <CTAButton href="#product-families" variant="ghost">
+                {lang === "en" ? "View model options" : "Lihat pilihan model"}
+              </CTAButton>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="bg-white py-16">
+      <section id="product-families" className="cse-section scroll-mt-28 bg-white">
         <div className="container-page">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <SectionHeader
               eyebrow={lang === "en" ? "Relevant product families" : "Keluarga produk terkait"}
-              title={lang === "en" ? "Start with the process, then confirm the exact model." : "Mulai dari proses, lalu konfirmasikan model yang tepat."}
-              description={lang === "en" ? "Each link opens the detailed TOHNICHI family page with models and specifications." : "Setiap link membuka halaman keluarga TOHNICHI dengan model dan spesifikasi."}
+              title={lang === "en" ? "Match your needs to a tool type." : "Cocokkan kebutuhan Anda dengan tipe alat."}
+              description={lang === "en" ? "Find your use case below, then open the models and specifications." : "Cari kebutuhan yang sesuai di bawah, lalu buka model dan spesifikasinya."}
             />
             <Link
               href={withLang("/brands/tohnichi/products", lang)}
@@ -160,7 +166,7 @@ export function CategoryHubPage({ category, lang }: { category: CategoryHub; lan
           </div>
           <div className="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {category.products.map((product) => (
-              <article key={product.href} className="group overflow-hidden border border-graphite-200 bg-white shadow-sm transition hover:border-industrial-600 hover:shadow-panel">
+              <article key={product.href} className="cse-card cse-card-link group">
                 <AssetSlot
                   src={product.image}
                   alt={text(product.title, lang)}
@@ -187,11 +193,11 @@ export function CategoryHubPage({ category, lang }: { category: CategoryHub; lan
         </div>
       </section>
 
-      <section className="bg-graphite-900 py-16 text-white">
+      <section className="cse-section bg-graphite-900 text-white">
         <div className="container-page">
           <div className="max-w-3xl">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-signal-500">{lang === "en" ? "Quick comparison" : "Perbandingan cepat"}</p>
-            <h2 className="mt-3 text-3xl font-bold">{text(category.comparison.title, lang)}</h2>
+            <h2 className="cse-heading mt-4">{text(category.comparison.title, lang)}</h2>
             <p className="mt-4 text-base leading-7 text-white/70">{text(category.comparison.description, lang)}</p>
           </div>
           <div className="mt-8 overflow-x-auto border border-white/15">
@@ -219,7 +225,7 @@ export function CategoryHubPage({ category, lang }: { category: CategoryHub; lan
         </div>
       </section>
 
-      <section className="bg-white py-16">
+      <section className="cse-section bg-white">
         <div className="container-page grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
           <SectionHeader
             eyebrow={lang === "en" ? "Next step" : "Langkah berikutnya"}
@@ -240,11 +246,11 @@ export function CategoryHubPage({ category, lang }: { category: CategoryHub; lan
         </div>
       </section>
 
-      <section className="bg-graphite-50 py-16">
+      <section className="cse-section bg-graphite-50">
         <div className="container-page grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-signal-600">FAQ</p>
-            <h2 className="mt-3 text-3xl font-bold text-graphite-900">{lang === "en" ? "Common buyer questions" : "Pertanyaan umum buyer"}</h2>
+            <p className="cse-eyebrow text-signal-600">FAQ</p>
+            <h2 className="cse-heading mt-4 text-graphite-900">{lang === "en" ? "Common buyer questions" : "Pertanyaan umum buyer"}</h2>
             <div className="mt-6 flex items-start gap-3 text-sm leading-6 text-graphite-600">
               <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-industrial-700" aria-hidden="true" />
               <p>{lang === "en" ? "Final selection should always be confirmed against the application and required standard." : "Pemilihan akhir tetap perlu dikonfirmasi terhadap aplikasi dan standar yang digunakan."}</p>
@@ -254,11 +260,11 @@ export function CategoryHubPage({ category, lang }: { category: CategoryHub; lan
         </div>
       </section>
 
-      <section className="bg-industrial-700 py-14 text-white">
+      <section className="cse-section bg-industrial-700 text-white">
         <div className="container-page flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/60">{lang === "en" ? "Prepare your RFQ" : "Siapkan RFQ"}</p>
-            <h2 className="mt-2 max-w-3xl text-3xl font-bold">
+            <h2 className="cse-heading mt-2 max-w-3xl">
               {lang === "en" ? "Send the target, application, tool type, and required quantity." : "Kirim target, aplikasi, jenis tool, dan kuantitas yang dibutuhkan."}
             </h2>
           </div>

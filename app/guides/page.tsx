@@ -47,13 +47,13 @@ export default function GuidesPage() {
       <Breadcrumb homeHref={withLang("/", lang)} items={[{ label: lang === "en" ? "Guides" : "Panduan" }]} />
 
       <main>
-        <header className="border-y border-graphite-200 bg-[#f3f1ec] py-12 md:py-16">
+        <header className="border-y border-graphite-200 bg-paper-100 py-12 md:py-16">
           <div className="container-page grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.2em] text-signal-600">
+              <p className="cse-eyebrow font-black text-signal-600">
                 {lang === "en" ? "CSE technical library" : "Perpustakaan teknis CSE"}
               </p>
-              <h1 className="mt-5 max-w-4xl text-4xl font-black leading-[1.04] tracking-tight text-graphite-900 md:text-6xl">
+              <h1 className="cse-title mt-4 max-w-4xl text-graphite-900">
                 {lang === "en"
                   ? "Technical guidance for better purchasing decisions."
                   : "Panduan teknis untuk keputusan pembelian yang lebih yakin."}
@@ -75,14 +75,14 @@ export default function GuidesPage() {
           </div>
         </header>
 
-        <section className="bg-white py-14 md:py-20">
+        <section className="cse-section bg-white">
           <div className="container-page">
             <div className="flex items-end justify-between gap-6 border-b border-graphite-200 pb-5">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.18em] text-signal-600">
+                <p className="cse-eyebrow font-black text-signal-600">
                   {lang === "en" ? "Field guide" : "Panduan lapangan"}
                 </p>
-                <h2 className="mt-2 text-2xl font-black text-graphite-900 md:text-3xl">
+                <h2 className="cse-heading mt-2 font-black text-graphite-900">
                   {lang === "en" ? "Start with a worked technical setup" : "Mulai dari setup teknis yang lengkap"}
                 </h2>
               </div>
@@ -133,10 +133,10 @@ export default function GuidesPage() {
 
             <div className="mt-16 flex items-end justify-between gap-6 border-b-2 border-graphite-900 pb-5">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.18em] text-signal-600">
+                <p className="cse-eyebrow font-black text-signal-600">
                   {lang === "en" ? "Selection notes & explainers" : "Catatan pemilihan & penjelasan"}
                 </p>
-                <h2 className="mt-2 text-3xl font-black tracking-tight text-graphite-900">
+                <h2 className="cse-heading mt-2 font-black text-graphite-900">
                   {lang === "en" ? "Browse the technical library" : "Jelajahi perpustakaan teknis"}
                 </h2>
               </div>
@@ -196,10 +196,10 @@ export default function GuidesPage() {
           </div>
         </section>
 
-        <section className="border-t border-graphite-200 bg-[#f3f1ec] py-14">
+        <section className="cse-section border-t border-graphite-200 bg-paper-100">
           <div className="container-page flex flex-col gap-7 md:flex-row md:items-center md:justify-between">
             <div>
-              <h2 className="text-3xl font-black tracking-tight text-graphite-900">
+              <h2 className="cse-heading font-black text-graphite-900">
                 {lang === "en" ? "Cannot find the application you are working on?" : "Belum menemukan aplikasi yang sedang Anda kerjakan?"}
               </h2>
               <p className="mt-3 max-w-2xl text-sm leading-6 text-graphite-500">

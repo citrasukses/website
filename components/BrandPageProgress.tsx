@@ -24,10 +24,10 @@ export function BrandPageProgress({ brandName, lang }: BrandPageProgressProps) {
             <span className="mx-auto flex h-14 w-14 items-center justify-center border border-signal-200 bg-signal-50 text-signal-600">
               <Construction className="h-6 w-6" aria-hidden="true" />
             </span>
-            <p className="mt-6 text-xs font-bold uppercase tracking-[0.2em] text-signal-600">
+            <p className="cse-eyebrow mt-6 text-signal-600">
               On progress
             </p>
-            <h1 id="brand-progress-title" className="mt-3 text-balance text-3xl font-bold text-graphite-900 md:text-5xl">
+            <h1 id="brand-progress-title" className="cse-title mt-4 text-graphite-900">
               {lang === "en"
                 ? `${brandName} page is being prepared.`
                 : `Halaman ${brandName} sedang disiapkan.`}
