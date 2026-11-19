@@ -207,6 +207,12 @@ for (const group of tohnichiProductGroups) {
           ],
       standardAccessories: []
     };
+    if (slug === "sp-sp2-sp2-mh") {
+      generatedDetails[slug].notes.unshift({
+        id: "Nilai dimensi dalam tanda kurung berlaku untuk versi -MH. Varian kepala -1, -2, dan -3 mengikuti penamaan pada tabel resmi TOHNICHI.",
+        en: "Dimension values in parentheses apply to the -MH version. Head variants -1, -2, and -3 follow the designations in the official TOHNICHI table."
+      });
+    }
   }
 }
 

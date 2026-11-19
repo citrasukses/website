@@ -11,6 +11,8 @@ const indonesiaLabelReplacements: Array<[RegExp, string]> = [
   [/\bMETRIC MODEL\b/gi, "Model metrik"],
   [/\bMODEL\s*\/\s*TYPE\b/gi, "Model/tipe"],
   [/\bMODEL\b/gi, "Model"],
+  [/\bS\.I\. RANGE\b/gi, "Rentang S.I."],
+  [/\bMETRIC RANGE\b/gi, "Rentang metrik"],
   [/\bTORQUE RANGE\b/gi, "Rentang torsi"],
   [/\bMEASUREMENT RANGE\b/gi, "Rentang pengukuran"],
   [/MIN\.?\s*-\s*MAX\.?/gi, "Min.-maks."],
@@ -22,6 +24,8 @@ const indonesiaLabelReplacements: Array<[RegExp, string]> = [
   [/\bTAPPING SCREW\b/gi, "Sekrup tapping"],
   [/\bALLOWABLE TORQUE\b/gi, "Torsi yang diizinkan"],
   [/\bMAX\.?\s*HAND FORCE\b/gi, "Gaya tangan maksimum"],
+  [/\bWIDTH ACROSS FLATS\b/gi, "Ukuran bukaan kepala"],
+  [/\bHEAD VARIANT\b/gi, "Varian kepala"],
   [/\bDIMENSION\b/gi, "Dimensi"],
   [/\bOVERALL LENGTH\b/gi, "Panjang total"],
   [/\bEFFECTIVE LENGTH\b/gi, "Panjang efektif"],
@@ -58,10 +62,13 @@ const indonesiaLabelReplacements: Array<[RegExp, string]> = [
 ];
 
 function technicalLabel(label: string, lang: Language) {
-  if (lang === "en") return label;
+  const correctedLabel = label
+    .replace(/\bMETIRC\b/gi, "METRIC")
+    .replace(/\bS\.I\.\s*RANGE\b/gi, "S.I. RANGE");
+  if (lang === "en") return correctedLabel;
   return indonesiaLabelReplacements.reduce(
     (result, [pattern, replacement]) => result.replace(pattern, replacement),
-    label
+    correctedLabel
   );
 }
 

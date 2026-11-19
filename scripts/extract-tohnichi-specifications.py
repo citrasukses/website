@@ -79,6 +79,8 @@ CORE_FIELD_PATTERNS = [
         r"\bapplicable\b.*\b(?:bolt|screw|model)\b",
         r"\ballowable\s+torque\b",
         r"\bmax\.?\s*hand\s*force\b",
+        r"\bwidth\s+across\s+flats\b",
+        r"\bhead\s+variant\b",
         r"\beffective\s+length\b",
         r"\boverall\s+length\b",
         r"\bsq\.?\s*drive\b",
@@ -212,7 +214,10 @@ def make_unique_labels(labels: list[str]) -> list[str]:
 def select_core_fields(fields: list[str]) -> list[str]:
     selected: list[str] = []
     for field in fields:
-        if DIRECT_MODEL_LABEL_RE.search(field) and field not in selected:
+        is_identity = DIRECT_MODEL_LABEL_RE.search(field) or re.search(
+            r"\bhead\s+variant\b", field, re.IGNORECASE
+        )
+        if is_identity and field not in selected:
             selected.append(field)
     for field in fields:
         if any(pattern.search(field) for pattern in CORE_FIELD_PATTERNS) and field not in selected:
@@ -279,6 +284,9 @@ def normalize_model_segment(
         ):
             segment_rows = [previous, *segment_rows]
 
+    # Rowspans can repeat an entire dimension row (for example overall length).
+    # Keep genuine alternatives, but do not publish identical copies as '(2)'.
+    segment_rows = [list(row) for row in dict.fromkeys(tuple(row) for row in segment_rows)]
     labels: list[str] = []
     for index, row in enumerate(segment_rows):
         fallback = "MODEL" if index == 0 and not any(row[:descriptor_count]) else ""
@@ -433,6 +441,8 @@ def normalize_table(
     if not rows:
         return []
 
+    rows = merge_model_header_rows(rows)
+
     raw_text = clean_text(" ".join(table.itertext()))
     accuracy = extract_accuracy(rows, raw_text)
     starts = [index for index, row in enumerate(rows) if is_model_start(row)]
@@ -453,6 +463,46 @@ def normalize_table(
         headers, rows, table_index, table_title(table, table_index)
     )
     return [normalized] if normalized else []
+
+
+def merge_model_header_rows(rows: list[list[str]]) -> list[list[str]]:
+    """Keep stacked model names, notes, and head variants in one segment."""
+    result: list[list[str]] = []
+    index = 0
+    note_re = re.compile(r"\(\s*\)\s*dimension\s+is\s+-MH", re.IGNORECASE)
+    while index < len(rows):
+        row = rows[index]
+        if not is_model_start(row):
+            result.append(row)
+            index += 1
+            continue
+
+        descriptor_count = leading_descriptor_count(row)
+        models = [note_re.sub("", value).strip() for value in row]
+        variants = [""] * len(row)
+        index += 1
+        while index < len(rows) and is_model_start(rows[index]):
+            continuation = rows[index]
+            if (
+                leading_descriptor_count(continuation) != descriptor_count
+                or normalize(continuation[0]) != normalize(row[0])
+            ):
+                break
+            values = [note_re.sub("", value).strip() for value in continuation]
+            if any(
+                value and value != models[column] and not re.fullmatch(r"-\d+", value)
+                for column, value in enumerate(values[descriptor_count:], descriptor_count)
+            ):
+                break
+            for column in range(descriptor_count, len(models)):
+                value = values[column]
+                if re.fullmatch(r"-\d+", value):
+                    variants[column] = value
+            index += 1
+        result.append(models)
+        if any(variants):
+            result.append(["HEAD VARIANT"] * descriptor_count + variants[descriptor_count:])
+    return result
 
 
 def technical_field_class(label: str) -> str:

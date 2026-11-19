@@ -20108,74 +20108,28 @@
           "title": "Model options 1",
           "accuracy": "±3%",
           "columns": [
-            "MODEL"
+            "MODEL",
+            "HEAD VARIANT",
+            "S.I.RANGE[N・m]",
+            "METIRC RANGE[kgf・cm]",
+            "WIDTH ACROSS FLATS [mm]",
+            "MAX. HAND FORCE [N]",
+            "DIMENSION [mm] / EFFECTIVE LENGTH / L",
+            "DIMENSION [mm] / OVERALL LENGTH / L'",
+            "WEIGHT[kg]"
           ],
           "rows": [
             {
               "key": "table-1-segment-1-option-1",
               "model": "SP2N2",
               "values": [
-                "SP2N2"
-              ],
-              "details": [
-                {
-                  "label": "MODEL",
-                  "value": "SP2N2"
-                }
-              ]
-            },
-            {
-              "key": "table-1-segment-1-option-2",
-              "model": "SP8N2",
-              "values": [
-                "SP8N2"
-              ],
-              "details": [
-                {
-                  "label": "MODEL",
-                  "value": "SP8N2"
-                }
-              ]
-            },
-            {
-              "key": "table-1-segment-1-option-3",
-              "model": "SP19N2/SP19N2-MH",
-              "values": [
-                "SP19N2/SP19N2-MH"
-              ],
-              "details": [
-                {
-                  "label": "MODEL",
-                  "value": "SP19N2/SP19N2-MH"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Model options 2",
-          "accuracy": "±3%",
-          "columns": [
-            "MODEL",
-            "S.I.RANGE[N・m]",
-            "METIRC RANGE[kgf・cm]",
-            "MAX. HAND FORCE [N]",
-            "DIMENSION [mm] / EFFECTIVE LENGTH / L",
-            "DIMENSION [mm] / OVERALL LENGTH / L'",
-            "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-            "WEIGHT[kg]"
-          ],
-          "rows": [
-            {
-              "key": "table-1-segment-2-option-1",
-              "model": "SP2N2",
-              "values": [
                 "SP2N2",
+                "",
                 "0.4-2",
                 "4-20",
+                "5.5",
                 "16.1",
                 "124",
-                "168",
                 "168",
                 "0.15"
               ],
@@ -20209,10 +20163,6 @@
                   "value": "168"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "168"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "17"
                 },
@@ -20237,10 +20187,6 @@
                   "value": "24"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "24"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.15"
                 },
@@ -20251,15 +20197,16 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-2",
+              "key": "table-1-segment-1-option-2",
               "model": "SP2N2",
               "values": [
                 "SP2N2",
+                "",
                 "0.4-2",
                 "4-20",
+                "7",
                 "16",
                 "125",
-                "169",
                 "169",
                 "0.15"
               ],
@@ -20293,10 +20240,6 @@
                   "value": "169"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "169"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "18"
                 },
@@ -20321,10 +20264,6 @@
                   "value": "24"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "24"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.15"
                 },
@@ -20335,15 +20274,16 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-3",
+              "key": "table-1-segment-1-option-3",
               "model": "SP2N2",
               "values": [
                 "SP2N2",
+                "",
                 "0.4-2",
                 "4-20",
+                "8",
                 "15.9",
                 "126",
-                "171",
                 "171",
                 "0.15"
               ],
@@ -20377,10 +20317,6 @@
                   "value": "171"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "171"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "19"
                 },
@@ -20405,10 +20341,6 @@
                   "value": "24"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "24"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.15"
                 },
@@ -20419,15 +20351,16 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-4",
+              "key": "table-1-segment-1-option-4",
               "model": "SP2N2",
               "values": [
                 "SP2N2",
+                "",
                 "0.4-2",
                 "4-20",
+                "10",
                 "15.7",
                 "127",
-                "173",
                 "173",
                 "0.15"
               ],
@@ -20461,10 +20394,6 @@
                   "value": "173"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "173"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "21"
                 },
@@ -20489,10 +20418,6 @@
                   "value": "24"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "24"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.15"
                 },
@@ -20503,15 +20428,16 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-5",
+              "key": "table-1-segment-1-option-5",
               "model": "SP2N2",
               "values": [
                 "SP2N2",
+                "",
                 "0.4-2",
                 "4-20",
+                "12",
                 "15.5",
                 "129",
-                "175",
                 "175",
                 "0.15"
               ],
@@ -20545,10 +20471,6 @@
                   "value": "175"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "175"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "23"
                 },
@@ -20573,10 +20495,6 @@
                   "value": "24"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "24"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.15"
                 },
@@ -20587,15 +20505,16 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-6",
+              "key": "table-1-segment-1-option-6",
               "model": "SP2N2",
               "values": [
                 "SP2N2",
+                "",
                 "0.4-2",
                 "4-20",
+                "13",
                 "15.5",
                 "129",
-                "176",
                 "176",
                 "0.15"
               ],
@@ -20629,10 +20548,6 @@
                   "value": "176"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "176"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "24"
                 },
@@ -20657,10 +20572,6 @@
                   "value": "24"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "24"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.15"
                 },
@@ -20671,15 +20582,16 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-7",
+              "key": "table-1-segment-1-option-7",
               "model": "SP2N2",
               "values": [
                 "SP2N2",
+                "",
                 "0.4-2",
                 "4-20",
+                "17",
                 "15.3",
                 "131",
-                "180",
                 "180",
                 "0.15"
               ],
@@ -20713,10 +20625,6 @@
                   "value": "180"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "180"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "27"
                 },
@@ -20741,10 +20649,6 @@
                   "value": "24"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "24"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.15"
                 },
@@ -20755,15 +20659,16 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-8",
+              "key": "table-1-segment-1-option-8",
               "model": "SP2N2",
               "values": [
                 "SP2N2",
+                "",
                 "0.4-2",
                 "4-20",
+                "19",
                 "15.3",
                 "131",
-                "180",
                 "180",
                 "0.15"
               ],
@@ -20797,10 +20702,6 @@
                   "value": "180"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "180"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "28"
                 },
@@ -20825,10 +20726,6 @@
                   "value": "24"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "24"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.15"
                 },
@@ -20839,15 +20736,16 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-9",
+              "key": "table-1-segment-1-option-9",
               "model": "SP8N2",
               "values": [
                 "SP8N2",
+                "",
                 "1.5-8",
                 "15-80",
+                "7",
                 "64",
                 "125",
-                "169",
                 "169",
                 "0.15"
               ],
@@ -20881,10 +20779,6 @@
                   "value": "169"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "169"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "18"
                 },
@@ -20909,10 +20803,6 @@
                   "value": "24"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "24"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.15"
                 },
@@ -20923,15 +20813,16 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-10",
+              "key": "table-1-segment-1-option-10",
               "model": "SP8N2",
               "values": [
                 "SP8N2",
+                "",
                 "1.5-8",
                 "15-80",
+                "8",
                 "63.5",
                 "126",
-                "171",
                 "171",
                 "0.15"
               ],
@@ -20965,10 +20856,6 @@
                   "value": "171"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "171"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "19"
                 },
@@ -20993,10 +20880,6 @@
                   "value": "24"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "24"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.15"
                 },
@@ -21007,15 +20890,16 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-11",
+              "key": "table-1-segment-1-option-11",
               "model": "SP8N2",
               "values": [
                 "SP8N2",
+                "",
                 "1.5-8",
                 "15-80",
+                "9",
                 "63",
                 "127",
-                "172",
                 "172",
                 "0.15"
               ],
@@ -21049,10 +20933,6 @@
                   "value": "172"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "172"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "20"
                 },
@@ -21077,10 +20957,6 @@
                   "value": "24"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "24"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.15"
                 },
@@ -21091,15 +20967,16 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-12",
+              "key": "table-1-segment-1-option-12",
               "model": "SP8N2",
               "values": [
                 "SP8N2",
+                "",
                 "1.5-8",
                 "15-80",
+                "10",
                 "63",
                 "127",
-                "173",
                 "173",
                 "0.15"
               ],
@@ -21133,10 +21010,6 @@
                   "value": "173"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "173"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "21"
                 },
@@ -21161,10 +21034,6 @@
                   "value": "24"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "24"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.15"
                 },
@@ -21175,15 +21044,16 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-13",
+              "key": "table-1-segment-1-option-13",
               "model": "SP8N2",
               "values": [
                 "SP8N2",
+                "",
                 "1.5-8",
                 "15-80",
+                "12",
                 "62",
                 "129",
-                "175",
                 "175",
                 "0.15"
               ],
@@ -21217,10 +21087,6 @@
                   "value": "175"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "175"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "23"
                 },
@@ -21245,10 +21111,6 @@
                   "value": "24"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "24"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.15"
                 },
@@ -21259,15 +21121,16 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-14",
+              "key": "table-1-segment-1-option-14",
               "model": "SP8N2",
               "values": [
                 "SP8N2",
+                "",
                 "1.5-8",
                 "15-80",
+                "13",
                 "62",
                 "129",
-                "176",
                 "176",
                 "0.15"
               ],
@@ -21301,10 +21164,6 @@
                   "value": "176"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "176"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "24"
                 },
@@ -21329,10 +21188,6 @@
                   "value": "24"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "24"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.15"
                 },
@@ -21343,15 +21198,16 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-15",
+              "key": "table-1-segment-1-option-15",
               "model": "SP8N2",
               "values": [
                 "SP8N2",
+                "",
                 "1.5-8",
                 "15-80",
+                "19",
                 "61.1",
                 "131",
-                "180",
                 "180",
                 "0.15"
               ],
@@ -21385,10 +21241,6 @@
                   "value": "180"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "180"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "28"
                 },
@@ -21413,10 +21265,6 @@
                   "value": "24"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "24"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.15"
                 },
@@ -21427,15 +21275,16 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-16",
+              "key": "table-1-segment-1-option-16",
               "model": "SP8N2",
               "values": [
                 "SP8N2",
+                "",
                 "1.5-8",
                 "15-80",
+                "24",
                 "59.7",
                 "134",
-                "186",
                 "186",
                 "0.15"
               ],
@@ -21469,10 +21318,6 @@
                   "value": "186"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "186"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "33"
                 },
@@ -21497,10 +21342,6 @@
                   "value": "24"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "24"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.15"
                 },
@@ -21511,15 +21352,16 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-17",
+              "key": "table-1-segment-1-option-17",
               "model": "SP8N2",
               "values": [
                 "SP8N2",
+                "",
                 "1.5-8",
                 "15-80",
+                "27",
                 "58.8",
                 "136",
-                "189",
                 "189",
                 "0.15"
               ],
@@ -21553,10 +21395,6 @@
                   "value": "189"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "189"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "36"
                 },
@@ -21581,10 +21419,6 @@
                   "value": "24"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "24"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.15"
                 },
@@ -21595,22 +21429,23 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-18",
-              "model": "( ) dimension is -MH",
+              "key": "table-1-segment-1-option-18",
+              "model": "SP19N2/SP19N2-MH",
               "values": [
-                "( ) dimension is -MH",
+                "SP19N2/SP19N2-MH",
+                "",
                 "3.5-19",
                 "35-190",
+                "10",
                 "123",
                 "155",
-                "202 (202)",
                 "202 (202)",
                 "0.21"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "( ) dimension is -MH"
+                  "value": "SP19N2/SP19N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -21637,10 +21472,6 @@
                   "value": "202 (202)"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "202 (202)"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "27"
                 },
@@ -21665,10 +21496,6 @@
                   "value": "29"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "29"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.21"
                 },
@@ -21679,22 +21506,23 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-19",
-              "model": "( ) dimension is -MH",
+              "key": "table-1-segment-1-option-19",
+              "model": "SP19N2/SP19N2-MH",
               "values": [
-                "( ) dimension is -MH",
+                "SP19N2/SP19N2-MH",
+                "",
                 "3.5-19",
                 "35-190",
+                "11",
                 "123",
                 "155",
-                "202 (202)",
                 "202 (202)",
                 "0.21"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "( ) dimension is -MH"
+                  "value": "SP19N2/SP19N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -21721,10 +21549,6 @@
                   "value": "202 (202)"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "202 (202)"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "27"
                 },
@@ -21749,10 +21573,6 @@
                   "value": "29"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "29"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.21"
                 },
@@ -21763,22 +21583,23 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-20",
-              "model": "( ) dimension is -MH",
+              "key": "table-1-segment-1-option-20",
+              "model": "SP19N2/SP19N2-MH",
               "values": [
-                "( ) dimension is -MH",
+                "SP19N2/SP19N2-MH",
+                "",
                 "3.5-19",
                 "35-190",
+                "12",
                 "122",
                 "156",
-                "203 (204)",
                 "203 (204)",
                 "0.21"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "( ) dimension is -MH"
+                  "value": "SP19N2/SP19N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -21805,10 +21626,6 @@
                   "value": "203 (204)"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "203 (204)"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "30"
                 },
@@ -21833,10 +21650,6 @@
                   "value": "29"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "29"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.21"
                 },
@@ -21847,22 +21660,23 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-21",
-              "model": "( ) dimension is -MH",
+              "key": "table-1-segment-1-option-21",
+              "model": "SP19N2/SP19N2-MH",
               "values": [
-                "( ) dimension is -MH",
+                "SP19N2/SP19N2-MH",
+                "",
                 "3.5-19",
                 "35-190",
+                "13",
                 "122",
                 "156",
-                "204 (204)",
                 "204 (204)",
                 "0.21"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "( ) dimension is -MH"
+                  "value": "SP19N2/SP19N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -21889,10 +21703,6 @@
                   "value": "204 (204)"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "204 (204)"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "30"
                 },
@@ -21917,10 +21727,6 @@
                   "value": "29"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "29"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.21"
                 },
@@ -21931,22 +21737,23 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-22",
-              "model": "( ) dimension is -MH",
+              "key": "table-1-segment-1-option-22",
+              "model": "SP19N2/SP19N2-MH",
               "values": [
-                "( ) dimension is -MH",
+                "SP19N2/SP19N2-MH",
+                "",
                 "3.5-19",
                 "35-190",
+                "14",
                 "122",
                 "156",
-                "204 (205)",
                 "204 (205)",
                 "0.21"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "( ) dimension is -MH"
+                  "value": "SP19N2/SP19N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -21973,10 +21780,6 @@
                   "value": "204 (205)"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "204 (205)"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "30"
                 },
@@ -22001,10 +21804,6 @@
                   "value": "29"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "29"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.21"
                 },
@@ -22015,22 +21814,23 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-23",
-              "model": "( ) dimension is -MH",
+              "key": "table-1-segment-1-option-23",
+              "model": "SP19N2/SP19N2-MH",
               "values": [
-                "( ) dimension is -MH",
+                "SP19N2/SP19N2-MH",
+                "",
                 "3.5-19",
                 "35-190",
+                "17",
                 "121",
                 "158",
-                "208 (208)",
                 "208 (208)",
                 "0.21"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "( ) dimension is -MH"
+                  "value": "SP19N2/SP19N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -22054,10 +21854,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / OVERALL LENGTH / L'",
-                  "value": "208 (208)"
-                },
-                {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
                   "value": "208 (208)"
                 },
                 {
@@ -22085,10 +21881,6 @@
                   "value": "29"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "29"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.21"
                 },
@@ -22099,22 +21891,23 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-24",
-              "model": "( ) dimension is -MH",
+              "key": "table-1-segment-1-option-24",
+              "model": "SP19N2/SP19N2-MH",
               "values": [
-                "( ) dimension is -MH",
+                "SP19N2/SP19N2-MH",
+                "",
                 "3.5-19",
                 "35-190",
+                "19",
                 "120",
                 "159",
-                "209 (210)",
                 "209 (210)",
                 "0.21"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "( ) dimension is -MH"
+                  "value": "SP19N2/SP19N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -22138,10 +21931,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / OVERALL LENGTH / L'",
-                  "value": "209 (210)"
-                },
-                {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
                   "value": "209 (210)"
                 },
                 {
@@ -22169,10 +21958,6 @@
                   "value": "29"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "29"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.21"
                 },
@@ -22183,22 +21968,23 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-25",
-              "model": "( ) dimension is -MH",
+              "key": "table-1-segment-1-option-25",
+              "model": "SP19N2/SP19N2-MH",
               "values": [
-                "( ) dimension is -MH",
+                "SP19N2/SP19N2-MH",
+                "",
                 "3.5-19",
                 "35-190",
+                "21",
                 "119",
                 "160",
-                "211 (212)",
                 "211 (212)",
                 "0.21"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "( ) dimension is -MH"
+                  "value": "SP19N2/SP19N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -22222,10 +22008,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / OVERALL LENGTH / L'",
-                  "value": "211 (212)"
-                },
-                {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
                   "value": "211 (212)"
                 },
                 {
@@ -22253,10 +22035,6 @@
                   "value": "29"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "29"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.21"
                 },
@@ -22267,21 +22045,26 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-26",
-              "model": "-1",
+              "key": "table-1-segment-1-option-26",
+              "model": "SP19N2/SP19N2-MH",
               "values": [
+                "SP19N2/SP19N2-MH",
                 "-1",
                 "3.5-19",
                 "35-190",
+                "10",
                 "121",
                 "158",
-                "205 (205)",
                 "205 (205)",
                 "0.21"
               ],
               "details": [
                 {
                   "label": "MODEL",
+                  "value": "SP19N2/SP19N2-MH"
+                },
+                {
+                  "label": "HEAD VARIANT",
                   "value": "-1"
                 },
                 {
@@ -22309,10 +22092,6 @@
                   "value": "205 (205)"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "205 (205)"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "24"
                 },
@@ -22337,10 +22116,6 @@
                   "value": "29"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "29"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.21"
                 },
@@ -22355,21 +22130,26 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-27",
-              "model": "-2",
+              "key": "table-1-segment-1-option-27",
+              "model": "SP19N2/SP19N2-MH",
               "values": [
+                "SP19N2/SP19N2-MH",
                 "-2",
                 "3.5-19",
                 "35-190",
+                "10",
                 "121",
                 "158",
-                "204 (204)",
                 "204 (204)",
                 "0.21"
               ],
               "details": [
                 {
                   "label": "MODEL",
+                  "value": "SP19N2/SP19N2-MH"
+                },
+                {
+                  "label": "HEAD VARIANT",
                   "value": "-2"
                 },
                 {
@@ -22397,10 +22177,6 @@
                   "value": "204 (204)"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "204 (204)"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "24"
                 },
@@ -22425,10 +22201,6 @@
                   "value": "29"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "29"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.21"
                 },
@@ -22443,21 +22215,26 @@
               ]
             },
             {
-              "key": "table-1-segment-2-option-28",
-              "model": "-3",
+              "key": "table-1-segment-1-option-28",
+              "model": "SP19N2/SP19N2-MH",
               "values": [
+                "SP19N2/SP19N2-MH",
                 "-3",
                 "3.5-19",
                 "35-190",
+                "10",
                 "121",
                 "158",
-                "205 (205)",
                 "205 (205)",
                 "0.21"
               ],
               "details": [
                 {
                   "label": "MODEL",
+                  "value": "SP19N2/SP19N2-MH"
+                },
+                {
+                  "label": "HEAD VARIANT",
                   "value": "-3"
                 },
                 {
@@ -22485,10 +22262,6 @@
                   "value": "205 (205)"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "205 (205)"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "24"
                 },
@@ -22513,10 +22286,6 @@
                   "value": "29"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "29"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.21"
                 },
@@ -22533,71 +22302,38 @@
           ]
         },
         {
-          "title": "Model options 3",
-          "accuracy": "±3%",
-          "columns": [
-            "MODEL"
-          ],
-          "rows": [
-            {
-              "key": "table-1-segment-3-option-1",
-              "model": "SP38N2/SP38N2-MH",
-              "values": [
-                "SP38N2/SP38N2-MH"
-              ],
-              "details": [
-                {
-                  "label": "MODEL",
-                  "value": "SP38N2/SP38N2-MH"
-                }
-              ]
-            },
-            {
-              "key": "table-1-segment-3-option-2",
-              "model": "SP67N2/SP67N2-MH ( ) dimension is -MH",
-              "values": [
-                "SP67N2/SP67N2-MH ( ) dimension is -MH"
-              ],
-              "details": [
-                {
-                  "label": "MODEL",
-                  "value": "SP67N2/SP67N2-MH ( ) dimension is -MH"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Model options 4",
+          "title": "Model options 2",
           "accuracy": "±3%",
           "columns": [
             "MODEL",
+            "HEAD VARIANT",
             "S.I.RANGE[N・m]",
             "METIRC RANGE[kgf・cm]",
+            "WIDTH ACROSS FLATS [mm]",
             "MAX. HAND FORCE [N]",
             "DIMENSION [mm] / EFFECTIVE LENGTH / L",
             "DIMENSION [mm] / OVERALL LENGTH / L'",
-            "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
             "WEIGHT[kg]"
           ],
           "rows": [
             {
-              "key": "table-1-segment-4-option-1",
-              "model": "( ) dimension is -MH",
+              "key": "table-1-segment-2-option-1",
+              "model": "SP38N2/SP38N2-MH",
               "values": [
-                "( ) dimension is -MH",
+                "SP38N2/SP38N2-MH",
+                "",
                 "8-38",
                 "80-380",
+                "8",
                 "227",
                 "168",
-                "220 (220)",
                 "220 (220)",
                 "0.37"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "( ) dimension is -MH"
+                  "value": "SP38N2/SP38N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -22624,10 +22360,6 @@
                   "value": "220 (220)"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "220 (220)"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "31"
                 },
@@ -22652,10 +22384,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.37"
                 },
@@ -22666,22 +22394,23 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-2",
-              "model": "( ) dimension is -MH",
+              "key": "table-1-segment-2-option-2",
+              "model": "SP38N2/SP38N2-MH",
               "values": [
-                "( ) dimension is -MH",
+                "SP38N2/SP38N2-MH",
+                "",
                 "8-38",
                 "80-380",
+                "9",
                 "225",
                 "169",
-                "222 (221)",
                 "222 (221)",
                 "0.37"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "( ) dimension is -MH"
+                  "value": "SP38N2/SP38N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -22708,10 +22437,6 @@
                   "value": "222 (221)"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "222 (221)"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "31"
                 },
@@ -22736,10 +22461,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.37"
                 },
@@ -22750,22 +22471,23 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-3",
-              "model": "( ) dimension is -MH",
+              "key": "table-1-segment-2-option-3",
+              "model": "SP38N2/SP38N2-MH",
               "values": [
-                "( ) dimension is -MH",
+                "SP38N2/SP38N2-MH",
+                "",
                 "8-38",
                 "80-380",
+                "10",
                 "225",
                 "169",
-                "222 (222)",
                 "222 (222)",
                 "0.37"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "( ) dimension is -MH"
+                  "value": "SP38N2/SP38N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -22792,10 +22514,6 @@
                   "value": "222 (222)"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "222 (222)"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "31"
                 },
@@ -22820,10 +22538,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.37"
                 },
@@ -22834,22 +22548,23 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-4",
-              "model": "( ) dimension is -MH",
+              "key": "table-1-segment-2-option-4",
+              "model": "SP38N2/SP38N2-MH",
               "values": [
-                "( ) dimension is -MH",
+                "SP38N2/SP38N2-MH",
+                "",
                 "8-38",
                 "80-380",
+                "11",
                 "224",
                 "170",
-                "223 (223)",
                 "223 (223)",
                 "0.37"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "( ) dimension is -MH"
+                  "value": "SP38N2/SP38N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -22876,10 +22591,6 @@
                   "value": "223 (223)"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "223 (223)"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "35"
                 },
@@ -22904,10 +22615,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.37"
                 },
@@ -22918,22 +22625,23 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-5",
-              "model": "( ) dimension is -MH",
+              "key": "table-1-segment-2-option-5",
+              "model": "SP38N2/SP38N2-MH",
               "values": [
-                "( ) dimension is -MH",
+                "SP38N2/SP38N2-MH",
+                "",
                 "8-38",
                 "80-380",
+                "12",
                 "223",
                 "171",
-                "225 (225)",
                 "225 (225)",
                 "0.37"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "( ) dimension is -MH"
+                  "value": "SP38N2/SP38N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -22960,10 +22668,6 @@
                   "value": "225 (225)"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "225 (225)"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "35"
                 },
@@ -22988,10 +22692,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.37"
                 },
@@ -23002,22 +22702,23 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-6",
-              "model": "( ) dimension is -MH",
+              "key": "table-1-segment-2-option-6",
+              "model": "SP38N2/SP38N2-MH",
               "values": [
-                "( ) dimension is -MH",
+                "SP38N2/SP38N2-MH",
+                "",
                 "8-38",
                 "80-380",
+                "13",
                 "223",
                 "171",
-                "225 (225)",
                 "225 (225)",
                 "0.37"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "( ) dimension is -MH"
+                  "value": "SP38N2/SP38N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -23044,10 +22745,6 @@
                   "value": "225 (225)"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "225 (225)"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "35"
                 },
@@ -23072,10 +22769,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.37"
                 },
@@ -23086,22 +22779,23 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-7",
-              "model": "( ) dimension is -MH",
+              "key": "table-1-segment-2-option-7",
+              "model": "SP38N2/SP38N2-MH",
               "values": [
-                "( ) dimension is -MH",
+                "SP38N2/SP38N2-MH",
+                "",
                 "8-38",
                 "80-380",
+                "14",
                 "223",
                 "171",
-                "226 (226)",
                 "226 (226)",
                 "0.37"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "( ) dimension is -MH"
+                  "value": "SP38N2/SP38N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -23128,10 +22822,6 @@
                   "value": "226 (226)"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "226 (226)"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "35"
                 },
@@ -23156,10 +22846,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.37"
                 },
@@ -23170,22 +22856,23 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-8",
-              "model": "( ) dimension is -MH",
+              "key": "table-1-segment-2-option-8",
+              "model": "SP38N2/SP38N2-MH",
               "values": [
-                "( ) dimension is -MH",
+                "SP38N2/SP38N2-MH",
+                "",
                 "8-38",
                 "80-380",
+                "16",
                 "219",
                 "174",
-                "230 (230)",
                 "230 (230)",
                 "0.37"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "( ) dimension is -MH"
+                  "value": "SP38N2/SP38N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -23212,10 +22899,6 @@
                   "value": "230 (230)"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "230 (230)"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "38"
                 },
@@ -23240,10 +22923,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.37"
                 },
@@ -23254,22 +22933,23 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-9",
-              "model": "( ) dimension is -MH",
+              "key": "table-1-segment-2-option-9",
+              "model": "SP38N2/SP38N2-MH",
               "values": [
-                "( ) dimension is -MH",
+                "SP38N2/SP38N2-MH",
+                "",
                 "8-38",
                 "80-380",
+                "17",
                 "219",
                 "174",
-                "230 (230)",
                 "230 (230)",
                 "0.37"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "( ) dimension is -MH"
+                  "value": "SP38N2/SP38N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -23296,10 +22976,6 @@
                   "value": "230 (230)"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "230 (230)"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "38"
                 },
@@ -23324,10 +23000,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.37"
                 },
@@ -23338,22 +23010,23 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-10",
-              "model": "( ) dimension is -MH",
+              "key": "table-1-segment-2-option-10",
+              "model": "SP38N2/SP38N2-MH",
               "values": [
-                "( ) dimension is -MH",
+                "SP38N2/SP38N2-MH",
+                "",
                 "8-38",
                 "80-380",
+                "19",
                 "219",
                 "174",
-                "231 (231)",
                 "231 (231)",
                 "0.37"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "( ) dimension is -MH"
+                  "value": "SP38N2/SP38N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -23380,10 +23053,6 @@
                   "value": "231 (231)"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "231 (231)"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "38"
                 },
@@ -23408,10 +23077,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.37"
                 },
@@ -23422,22 +23087,23 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-11",
-              "model": "( ) dimension is -MH",
+              "key": "table-1-segment-2-option-11",
+              "model": "SP38N2/SP38N2-MH",
               "values": [
-                "( ) dimension is -MH",
+                "SP38N2/SP38N2-MH",
+                "",
                 "8-38",
                 "80-380",
+                "22",
                 "216",
                 "176",
-                "234 (234)",
                 "234 (234)",
                 "0.37"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "( ) dimension is -MH"
+                  "value": "SP38N2/SP38N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -23461,10 +23127,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / OVERALL LENGTH / L'",
-                  "value": "234 (234)"
-                },
-                {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
                   "value": "234 (234)"
                 },
                 {
@@ -23492,10 +23154,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.37"
                 },
@@ -23506,22 +23164,23 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-12",
-              "model": "( ) dimension is -MH",
+              "key": "table-1-segment-2-option-12",
+              "model": "SP38N2/SP38N2-MH",
               "values": [
-                "( ) dimension is -MH",
+                "SP38N2/SP38N2-MH",
+                "",
                 "8-38",
                 "80-380",
+                "24",
                 "215",
                 "177",
-                "236 (236)",
                 "236 (236)",
                 "0.37"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "( ) dimension is -MH"
+                  "value": "SP38N2/SP38N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -23545,10 +23204,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / OVERALL LENGTH / L'",
-                  "value": "236 (236)"
-                },
-                {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
                   "value": "236 (236)"
                 },
                 {
@@ -23576,10 +23231,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.37"
                 },
@@ -23590,22 +23241,23 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-13",
-              "model": "( ) dimension is -MH",
+              "key": "table-1-segment-2-option-13",
+              "model": "SP38N2/SP38N2-MH",
               "values": [
-                "( ) dimension is -MH",
+                "SP38N2/SP38N2-MH",
+                "",
                 "8-38",
                 "80-380",
+                "27",
                 "213",
                 "179",
-                "240 (239)",
                 "240 (239)",
                 "0.37"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "( ) dimension is -MH"
+                  "value": "SP38N2/SP38N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -23629,10 +23281,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / OVERALL LENGTH / L'",
-                  "value": "240 (239)"
-                },
-                {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
                   "value": "240 (239)"
                 },
                 {
@@ -23660,10 +23308,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.37"
                 },
@@ -23674,21 +23318,26 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-14",
-              "model": "-1",
+              "key": "table-1-segment-2-option-14",
+              "model": "SP38N2/SP38N2-MH",
               "values": [
+                "SP38N2/SP38N2-MH",
                 "-1",
                 "8-38",
                 "80-380",
+                "10",
                 "227",
                 "168",
-                "221 (221)",
                 "221 (221)",
                 "0.37"
               ],
               "details": [
                 {
                   "label": "MODEL",
+                  "value": "SP38N2/SP38N2-MH"
+                },
+                {
+                  "label": "HEAD VARIANT",
                   "value": "-1"
                 },
                 {
@@ -23716,10 +23365,6 @@
                   "value": "221 (221)"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "221 (221)"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "24"
                 },
@@ -23744,10 +23389,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.37"
                 },
@@ -23758,21 +23399,26 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-15",
-              "model": "-2",
+              "key": "table-1-segment-2-option-15",
+              "model": "SP38N2/SP38N2-MH",
               "values": [
+                "SP38N2/SP38N2-MH",
                 "-2",
                 "8-38",
                 "80-380",
+                "10",
                 "224",
                 "170",
-                "223 (223)",
                 "223 (223)",
                 "0.37"
               ],
               "details": [
                 {
                   "label": "MODEL",
+                  "value": "SP38N2/SP38N2-MH"
+                },
+                {
+                  "label": "HEAD VARIANT",
                   "value": "-2"
                 },
                 {
@@ -23800,10 +23446,6 @@
                   "value": "223 (223)"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "223 (223)"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "25"
                 },
@@ -23828,10 +23470,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.37"
                 },
@@ -23842,21 +23480,26 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-16",
-              "model": "-3",
+              "key": "table-1-segment-2-option-16",
+              "model": "SP38N2/SP38N2-MH",
               "values": [
+                "SP38N2/SP38N2-MH",
                 "-3",
                 "8-38",
                 "80-380",
+                "10",
                 "227",
                 "168",
-                "221 (221)",
                 "221 (221)",
                 "0.37"
               ],
               "details": [
                 {
                   "label": "MODEL",
+                  "value": "SP38N2/SP38N2-MH"
+                },
+                {
+                  "label": "HEAD VARIANT",
                   "value": "-3"
                 },
                 {
@@ -23884,10 +23527,6 @@
                   "value": "221 (221)"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "221 (221)"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "24"
                 },
@@ -23912,10 +23551,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.37"
                 },
@@ -23926,22 +23561,23 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-17",
-              "model": "SP67N2/SP67N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-2-option-17",
+              "model": "SP67N2/SP67N2-MH",
               "values": [
-                "SP67N2/SP67N2-MH ( ) dimension is -MH",
+                "SP67N2/SP67N2-MH",
+                "",
                 "13-67",
                 "130-670",
+                "14",
                 "292",
                 "230",
-                "285 (284)",
                 "285 (284)",
                 "0.48"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP67N2/SP67N2-MH ( ) dimension is -MH"
+                  "value": "SP67N2/SP67N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -23965,10 +23601,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / OVERALL LENGTH / L'",
-                  "value": "285 (284)"
-                },
-                {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
                   "value": "285 (284)"
                 },
                 {
@@ -23996,10 +23628,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.48"
                 },
@@ -24010,22 +23638,23 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-18",
-              "model": "SP67N2/SP67N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-2-option-18",
+              "model": "SP67N2/SP67N2-MH",
               "values": [
-                "SP67N2/SP67N2-MH ( ) dimension is -MH",
+                "SP67N2/SP67N2-MH",
+                "",
                 "13-67",
                 "130-670",
+                "16",
                 "290",
                 "231",
-                "287 (286)",
                 "287 (286)",
                 "0.48"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP67N2/SP67N2-MH ( ) dimension is -MH"
+                  "value": "SP67N2/SP67N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -24049,10 +23678,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / OVERALL LENGTH / L'",
-                  "value": "287 (286)"
-                },
-                {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
                   "value": "287 (286)"
                 },
                 {
@@ -24080,10 +23705,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.48"
                 },
@@ -24094,22 +23715,23 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-19",
-              "model": "SP67N2/SP67N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-2-option-19",
+              "model": "SP67N2/SP67N2-MH",
               "values": [
-                "SP67N2/SP67N2-MH ( ) dimension is -MH",
+                "SP67N2/SP67N2-MH",
+                "",
                 "13-67",
                 "130-670",
+                "17",
                 "289",
                 "232",
-                "288 (287)",
                 "288 (287)",
                 "0.48"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP67N2/SP67N2-MH ( ) dimension is -MH"
+                  "value": "SP67N2/SP67N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -24133,10 +23755,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / OVERALL LENGTH / L'",
-                  "value": "288 (287)"
-                },
-                {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
                   "value": "288 (287)"
                 },
                 {
@@ -24164,10 +23782,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.48"
                 },
@@ -24178,22 +23792,23 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-20",
-              "model": "SP67N2/SP67N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-2-option-20",
+              "model": "SP67N2/SP67N2-MH",
               "values": [
-                "SP67N2/SP67N2-MH ( ) dimension is -MH",
+                "SP67N2/SP67N2-MH",
+                "",
                 "13-67",
                 "130-670",
+                "18",
                 "289",
                 "232",
-                "289 (287)",
                 "289 (287)",
                 "0.48"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP67N2/SP67N2-MH ( ) dimension is -MH"
+                  "value": "SP67N2/SP67N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -24217,10 +23832,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / OVERALL LENGTH / L'",
-                  "value": "289 (287)"
-                },
-                {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
                   "value": "289 (287)"
                 },
                 {
@@ -24248,10 +23859,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.48"
                 },
@@ -24262,22 +23869,23 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-21",
-              "model": "SP67N2/SP67N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-2-option-21",
+              "model": "SP67N2/SP67N2-MH",
               "values": [
-                "SP67N2/SP67N2-MH ( ) dimension is -MH",
+                "SP67N2/SP67N2-MH",
+                "",
                 "13-67",
                 "130-670",
+                "19",
                 "288",
                 "233",
-                "290 (289)",
                 "290 (289)",
                 "0.48"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP67N2/SP67N2-MH ( ) dimension is -MH"
+                  "value": "SP67N2/SP67N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -24301,10 +23909,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / OVERALL LENGTH / L'",
-                  "value": "290 (289)"
-                },
-                {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
                   "value": "290 (289)"
                 },
                 {
@@ -24332,10 +23936,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.48"
                 },
@@ -24346,22 +23946,23 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-22",
-              "model": "SP67N2/SP67N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-2-option-22",
+              "model": "SP67N2/SP67N2-MH",
               "values": [
-                "SP67N2/SP67N2-MH ( ) dimension is -MH",
+                "SP67N2/SP67N2-MH",
+                "",
                 "13-67",
                 "130-670",
+                "21",
                 "287",
                 "234",
-                "292 (291)",
                 "292 (291)",
                 "0.48"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP67N2/SP67N2-MH ( ) dimension is -MH"
+                  "value": "SP67N2/SP67N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -24385,10 +23986,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / OVERALL LENGTH / L'",
-                  "value": "292 (291)"
-                },
-                {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
                   "value": "292 (291)"
                 },
                 {
@@ -24416,10 +24013,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.48"
                 },
@@ -24430,22 +24023,23 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-23",
-              "model": "SP67N2/SP67N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-2-option-23",
+              "model": "SP67N2/SP67N2-MH",
               "values": [
-                "SP67N2/SP67N2-MH ( ) dimension is -MH",
+                "SP67N2/SP67N2-MH",
+                "",
                 "13-67",
                 "130-670",
+                "22",
                 "289",
                 "235",
-                "293 (292)",
                 "293 (292)",
                 "0.48"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP67N2/SP67N2-MH ( ) dimension is -MH"
+                  "value": "SP67N2/SP67N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -24469,10 +24063,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / OVERALL LENGTH / L'",
-                  "value": "293 (292)"
-                },
-                {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
                   "value": "293 (292)"
                 },
                 {
@@ -24500,10 +24090,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.48"
                 },
@@ -24514,22 +24100,23 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-24",
-              "model": "SP67N2/SP67N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-2-option-24",
+              "model": "SP67N2/SP67N2-MH",
               "values": [
-                "SP67N2/SP67N2-MH ( ) dimension is -MH",
+                "SP67N2/SP67N2-MH",
+                "",
                 "13-67",
                 "130-670",
+                "24",
                 "280",
                 "240",
-                "299 (298)",
                 "299 (298)",
                 "0.48"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP67N2/SP67N2-MH ( ) dimension is -MH"
+                  "value": "SP67N2/SP67N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -24553,10 +24140,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / OVERALL LENGTH / L'",
-                  "value": "299 (298)"
-                },
-                {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
                   "value": "299 (298)"
                 },
                 {
@@ -24584,10 +24167,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.48"
                 },
@@ -24598,22 +24177,23 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-25",
-              "model": "SP67N2/SP67N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-2-option-25",
+              "model": "SP67N2/SP67N2-MH",
               "values": [
-                "SP67N2/SP67N2-MH ( ) dimension is -MH",
+                "SP67N2/SP67N2-MH",
+                "",
                 "13-67",
                 "130-670",
+                "27",
                 "277",
                 "242",
-                "303 (301)",
                 "303 (301)",
                 "0.48"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP67N2/SP67N2-MH ( ) dimension is -MH"
+                  "value": "SP67N2/SP67N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -24637,10 +24217,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / OVERALL LENGTH / L'",
-                  "value": "303 (301)"
-                },
-                {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
                   "value": "303 (301)"
                 },
                 {
@@ -24668,10 +24244,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.48"
                 },
@@ -24682,22 +24254,23 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-26",
-              "model": "SP67N2/SP67N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-2-option-26",
+              "model": "SP67N2/SP67N2-MH",
               "values": [
-                "SP67N2/SP67N2-MH ( ) dimension is -MH",
+                "SP67N2/SP67N2-MH",
+                "",
                 "13-67",
                 "130-670",
+                "29",
                 "276",
                 "243",
-                "304 (303)",
                 "304 (303)",
                 "0.48"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP67N2/SP67N2-MH ( ) dimension is -MH"
+                  "value": "SP67N2/SP67N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -24721,10 +24294,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / OVERALL LENGTH / L'",
-                  "value": "304 (303)"
-                },
-                {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
                   "value": "304 (303)"
                 },
                 {
@@ -24752,10 +24321,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.48"
                 },
@@ -24766,22 +24331,23 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-27",
-              "model": "SP67N2/SP67N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-2-option-27",
+              "model": "SP67N2/SP67N2-MH",
               "values": [
-                "SP67N2/SP67N2-MH ( ) dimension is -MH",
+                "SP67N2/SP67N2-MH",
+                "",
                 "13-67",
                 "130-670",
+                "30",
                 "276",
                 "243",
-                "305 (304)",
                 "305 (304)",
                 "0.48"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP67N2/SP67N2-MH ( ) dimension is -MH"
+                  "value": "SP67N2/SP67N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -24805,10 +24371,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / OVERALL LENGTH / L'",
-                  "value": "305 (304)"
-                },
-                {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
                   "value": "305 (304)"
                 },
                 {
@@ -24836,10 +24398,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.48"
                 },
@@ -24854,22 +24412,23 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-28",
-              "model": "SP67N2/SP67N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-2-option-28",
+              "model": "SP67N2/SP67N2-MH",
               "values": [
-                "SP67N2/SP67N2-MH ( ) dimension is -MH",
+                "SP67N2/SP67N2-MH",
+                "",
                 "13-67",
                 "130-670",
+                "32",
                 "275",
                 "244",
-                "307 (306)",
                 "307 (306)",
                 "0.48"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP67N2/SP67N2-MH ( ) dimension is -MH"
+                  "value": "SP67N2/SP67N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -24893,10 +24452,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / OVERALL LENGTH / L'",
-                  "value": "307 (306)"
-                },
-                {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
                   "value": "307 (306)"
                 },
                 {
@@ -24924,10 +24479,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.48"
                 },
@@ -24942,22 +24493,23 @@
               ]
             },
             {
-              "key": "table-1-segment-4-option-29",
-              "model": "SP67N2/SP67N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-2-option-29",
+              "model": "SP67N2/SP67N2-MH",
               "values": [
-                "SP67N2/SP67N2-MH ( ) dimension is -MH",
+                "SP67N2/SP67N2-MH",
+                "",
                 "13-67",
                 "130-670",
+                "33.3",
                 "274",
                 "245",
-                "308 (307)",
                 "308 (307)",
                 "0.48"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP67N2/SP67N2-MH ( ) dimension is -MH"
+                  "value": "SP67N2/SP67N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -24981,10 +24533,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / OVERALL LENGTH / L'",
-                  "value": "308 (307)"
-                },
-                {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
                   "value": "308 (307)"
                 },
                 {
@@ -25012,10 +24560,6 @@
                   "value": "34 (20)"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 (20)"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.48"
                 },
@@ -25032,84 +24576,38 @@
           ]
         },
         {
-          "title": "Model options 5",
-          "accuracy": "±3%",
-          "columns": [
-            "MODEL"
-          ],
-          "rows": [
-            {
-              "key": "table-1-segment-5-option-1",
-              "model": "SP120N2/SP120N2-MH ( ) dimension is -MH",
-              "values": [
-                "SP120N2/SP120N2-MH ( ) dimension is -MH"
-              ],
-              "details": [
-                {
-                  "label": "MODEL",
-                  "value": "SP120N2/SP120N2-MH ( ) dimension is -MH"
-                }
-              ]
-            },
-            {
-              "key": "table-1-segment-5-option-2",
-              "model": "SP160N2/SP160N2-MH ( ) dimension is -MH",
-              "values": [
-                "SP160N2/SP160N2-MH ( ) dimension is -MH"
-              ],
-              "details": [
-                {
-                  "label": "MODEL",
-                  "value": "SP160N2/SP160N2-MH ( ) dimension is -MH"
-                }
-              ]
-            },
-            {
-              "key": "table-1-segment-5-option-3",
-              "model": "SP220N2/SP220N2-MH ( ) dimension is -MH",
-              "values": [
-                "SP220N2/SP220N2-MH ( ) dimension is -MH"
-              ],
-              "details": [
-                {
-                  "label": "MODEL",
-                  "value": "SP220N2/SP220N2-MH ( ) dimension is -MH"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Model options 6",
+          "title": "Model options 3",
           "accuracy": "±3%",
           "columns": [
             "MODEL",
             "S.I.RANGE[N・m]",
             "METIRC RANGE[kgf・cm]",
+            "WIDTH ACROSS FLATS [mm]",
+            "WIDTH ACROSS FLATS [mm] (2)",
             "MAX. HAND FORCE [N]",
             "DIMENSION [mm] / EFFECTIVE LENGTH / L",
             "DIMENSION [mm] / OVERALL LENGTH / L'",
-            "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
             "WEIGHT[kg]"
           ],
           "rows": [
             {
-              "key": "table-1-segment-6-option-1",
-              "model": "SP120N2/SP120N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-3-option-1",
+              "model": "SP120N2/SP120N2-MH",
               "values": [
-                "SP120N2/SP120N2-MH ( ) dimension is -MH",
+                "SP120N2/SP120N2-MH",
                 "24-120",
                 "240-1200",
+                "14",
+                "-",
                 "394",
                 "305",
-                "360 （359）",
                 "360 （359）",
                 "0.75"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP120N2/SP120N2-MH ( ) dimension is -MH"
+                  "value": "SP120N2/SP120N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -25140,10 +24638,6 @@
                   "value": "360 （359）"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "360 （359）"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "42"
                 },
@@ -25168,10 +24662,6 @@
                   "value": "34 （21.5）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 （21.5）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.75"
                 },
@@ -25182,22 +24672,23 @@
               ]
             },
             {
-              "key": "table-1-segment-6-option-2",
-              "model": "SP120N2/SP120N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-3-option-2",
+              "model": "SP120N2/SP120N2-MH",
               "values": [
-                "SP120N2/SP120N2-MH ( ) dimension is -MH",
+                "SP120N2/SP120N2-MH",
                 "24-120",
                 "240-1200",
+                "17",
+                "-",
                 "393",
                 "306",
-                "362 （361）",
                 "362 （361）",
                 "0.75"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP120N2/SP120N2-MH ( ) dimension is -MH"
+                  "value": "SP120N2/SP120N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -25228,10 +24719,6 @@
                   "value": "362 （361）"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "362 （361）"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "45"
                 },
@@ -25256,10 +24743,6 @@
                   "value": "34 （21.5）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 （21.5）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.75"
                 },
@@ -25270,22 +24753,23 @@
               ]
             },
             {
-              "key": "table-1-segment-6-option-3",
-              "model": "SP120N2/SP120N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-3-option-3",
+              "model": "SP120N2/SP120N2-MH",
               "values": [
-                "SP120N2/SP120N2-MH ( ) dimension is -MH",
+                "SP120N2/SP120N2-MH",
                 "24-120",
                 "240-1200",
+                "18",
+                "-",
                 "390",
                 "308",
-                "364 （364）",
                 "364 （364）",
                 "0.75"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP120N2/SP120N2-MH ( ) dimension is -MH"
+                  "value": "SP120N2/SP120N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -25316,10 +24800,6 @@
                   "value": "364 （364）"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "364 （364）"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "46"
                 },
@@ -25344,10 +24824,6 @@
                   "value": "34 （21.5）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 （21.5）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.75"
                 },
@@ -25358,22 +24834,23 @@
               ]
             },
             {
-              "key": "table-1-segment-6-option-4",
-              "model": "SP120N2/SP120N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-3-option-4",
+              "model": "SP120N2/SP120N2-MH",
               "values": [
-                "SP120N2/SP120N2-MH ( ) dimension is -MH",
+                "SP120N2/SP120N2-MH",
                 "24-120",
                 "240-1200",
+                "19",
+                "-",
                 "390",
                 "308",
-                "365 （364）",
                 "365 （364）",
                 "0.75"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP120N2/SP120N2-MH ( ) dimension is -MH"
+                  "value": "SP120N2/SP120N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -25404,10 +24881,6 @@
                   "value": "365 （364）"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "365 （364）"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "47"
                 },
@@ -25432,10 +24905,6 @@
                   "value": "34 （21.5）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 （21.5）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.75"
                 },
@@ -25446,22 +24915,23 @@
               ]
             },
             {
-              "key": "table-1-segment-6-option-5",
-              "model": "SP120N2/SP120N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-3-option-5",
+              "model": "SP120N2/SP120N2-MH",
               "values": [
-                "SP120N2/SP120N2-MH ( ) dimension is -MH",
+                "SP120N2/SP120N2-MH",
                 "24-120",
                 "240-1200",
+                "21",
+                "22",
                 "386",
                 "310",
-                "368 （367）",
                 "368 （367）",
                 "0.75"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP120N2/SP120N2-MH ( ) dimension is -MH"
+                  "value": "SP120N2/SP120N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -25492,10 +24962,6 @@
                   "value": "368 （367）"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "368 （367）"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "50"
                 },
@@ -25520,10 +24986,6 @@
                   "value": "34 （21.5）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 （21.5）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.75"
                 },
@@ -25534,22 +24996,23 @@
               ]
             },
             {
-              "key": "table-1-segment-6-option-6",
-              "model": "SP120N2/SP120N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-3-option-6",
+              "model": "SP120N2/SP120N2-MH",
               "values": [
-                "SP120N2/SP120N2-MH ( ) dimension is -MH",
+                "SP120N2/SP120N2-MH",
                 "24-120",
                 "240-1200",
+                "23",
+                "24",
                 "386",
                 "310",
-                "369 （368）",
                 "369 （368）",
                 "0.75"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP120N2/SP120N2-MH ( ) dimension is -MH"
+                  "value": "SP120N2/SP120N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -25580,10 +25043,6 @@
                   "value": "369 （368）"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "369 （368）"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "51"
                 },
@@ -25608,10 +25067,6 @@
                   "value": "34 （21.5）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 （21.5）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.75"
                 },
@@ -25622,22 +25077,23 @@
               ]
             },
             {
-              "key": "table-1-segment-6-option-7",
-              "model": "SP120N2/SP120N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-3-option-7",
+              "model": "SP120N2/SP120N2-MH",
               "values": [
-                "SP120N2/SP120N2-MH ( ) dimension is -MH",
+                "SP120N2/SP120N2-MH",
                 "24-120",
                 "240-1200",
+                "27",
+                "-",
                 "386",
                 "310",
-                "370 （369）",
                 "370 （369）",
                 "0.75"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP120N2/SP120N2-MH ( ) dimension is -MH"
+                  "value": "SP120N2/SP120N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -25668,10 +25124,6 @@
                   "value": "370 （369）"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "370 （369）"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "53"
                 },
@@ -25696,10 +25148,6 @@
                   "value": "34 （21.5）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 （21.5）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.75"
                 },
@@ -25710,22 +25158,23 @@
               ]
             },
             {
-              "key": "table-1-segment-6-option-8",
-              "model": "SP120N2/SP120N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-3-option-8",
+              "model": "SP120N2/SP120N2-MH",
               "values": [
-                "SP120N2/SP120N2-MH ( ) dimension is -MH",
+                "SP120N2/SP120N2-MH",
                 "24-120",
                 "240-1200",
+                "30",
+                "-",
                 "386",
                 "312",
-                "373 （373）",
                 "373 （373）",
                 "0.75"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP120N2/SP120N2-MH ( ) dimension is -MH"
+                  "value": "SP120N2/SP120N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -25756,10 +25205,6 @@
                   "value": "373 （373）"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "373 （373）"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "55"
                 },
@@ -25784,10 +25229,6 @@
                   "value": "34 （21.5）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 （21.5）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.75"
                 },
@@ -25798,22 +25239,23 @@
               ]
             },
             {
-              "key": "table-1-segment-6-option-9",
-              "model": "SP160N2/SP160N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-3-option-9",
+              "model": "SP160N2/SP160N2-MH",
               "values": [
-                "SP160N2/SP160N2-MH ( ) dimension is -MH",
+                "SP160N2/SP160N2-MH",
                 "30-160",
                 "300-1600",
+                "19",
+                "-",
                 "517",
                 "310",
-                "368 （367）",
                 "368 （367）",
                 "0.75"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP160N2/SP160N2-MH ( ) dimension is -MH"
+                  "value": "SP160N2/SP160N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -25844,10 +25286,6 @@
                   "value": "368 （367）"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "368 （367）"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "50"
                 },
@@ -25872,10 +25310,6 @@
                   "value": "34 （21.5）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 （21.5）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.75"
                 },
@@ -25886,22 +25320,23 @@
               ]
             },
             {
-              "key": "table-1-segment-6-option-10",
-              "model": "SP160N2/SP160N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-3-option-10",
+              "model": "SP160N2/SP160N2-MH",
               "values": [
-                "SP160N2/SP160N2-MH ( ) dimension is -MH",
+                "SP160N2/SP160N2-MH",
                 "30-160",
                 "300-1600",
+                "21",
+                "-",
                 "517",
                 "310",
-                "368 （367）",
                 "368 （367）",
                 "0.75"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP160N2/SP160N2-MH ( ) dimension is -MH"
+                  "value": "SP160N2/SP160N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -25932,10 +25367,6 @@
                   "value": "368 （367）"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "368 （367）"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "51"
                 },
@@ -25960,10 +25391,6 @@
                   "value": "34 （21.5）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 （21.5）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.75"
                 },
@@ -25974,22 +25401,23 @@
               ]
             },
             {
-              "key": "table-1-segment-6-option-11",
-              "model": "SP160N2/SP160N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-3-option-11",
+              "model": "SP160N2/SP160N2-MH",
               "values": [
-                "SP160N2/SP160N2-MH ( ) dimension is -MH",
+                "SP160N2/SP160N2-MH",
                 "30-160",
                 "300-1600",
+                "22",
+                "-",
                 "517",
                 "310",
-                "368 （367）",
                 "368 （367）",
                 "0.75"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP160N2/SP160N2-MH ( ) dimension is -MH"
+                  "value": "SP160N2/SP160N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -26020,10 +25448,6 @@
                   "value": "368 （367）"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "368 （367）"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "52"
                 },
@@ -26048,10 +25472,6 @@
                   "value": "34 （21.5）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 （21.5）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.75"
                 },
@@ -26062,22 +25482,23 @@
               ]
             },
             {
-              "key": "table-1-segment-6-option-12",
-              "model": "SP160N2/SP160N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-3-option-12",
+              "model": "SP160N2/SP160N2-MH",
               "values": [
-                "SP160N2/SP160N2-MH ( ) dimension is -MH",
+                "SP160N2/SP160N2-MH",
                 "30-160",
                 "300-1600",
+                "24",
+                "-",
                 "517",
                 "310",
-                "369 （369）",
                 "369 （369）",
                 "0.75"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP160N2/SP160N2-MH ( ) dimension is -MH"
+                  "value": "SP160N2/SP160N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -26108,10 +25529,6 @@
                   "value": "369 （369）"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "369 （369）"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "53"
                 },
@@ -26136,10 +25553,6 @@
                   "value": "34 （21.5）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 （21.5）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.75"
                 },
@@ -26150,22 +25563,23 @@
               ]
             },
             {
-              "key": "table-1-segment-6-option-13",
-              "model": "SP160N2/SP160N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-3-option-13",
+              "model": "SP160N2/SP160N2-MH",
               "values": [
-                "SP160N2/SP160N2-MH ( ) dimension is -MH",
+                "SP160N2/SP160N2-MH",
                 "30-160",
                 "300-1600",
+                "26",
+                "27",
                 "512",
                 "313",
-                "373 （373）",
                 "373 （373）",
                 "0.75"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP160N2/SP160N2-MH ( ) dimension is -MH"
+                  "value": "SP160N2/SP160N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -26196,10 +25610,6 @@
                   "value": "373 （373）"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "373 （373）"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "55"
                 },
@@ -26224,10 +25634,6 @@
                   "value": "34 （21.5）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 （21.5）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.75"
                 },
@@ -26238,22 +25644,23 @@
               ]
             },
             {
-              "key": "table-1-segment-6-option-14",
-              "model": "SP160N2/SP160N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-3-option-14",
+              "model": "SP160N2/SP160N2-MH",
               "values": [
-                "SP160N2/SP160N2-MH ( ) dimension is -MH",
+                "SP160N2/SP160N2-MH",
                 "30-160",
                 "300-1600",
+                "41",
+                "-",
                 "500",
                 "320",
-                "386 （386）",
                 "386 （386）",
                 "0.75"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP160N2/SP160N2-MH ( ) dimension is -MH"
+                  "value": "SP160N2/SP160N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -26284,10 +25691,6 @@
                   "value": "386 （386）"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "386 （386）"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "70"
                 },
@@ -26312,10 +25715,6 @@
                   "value": "34 （21.5）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "34 （21.5）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "0.75"
                 },
@@ -26326,22 +25725,23 @@
               ]
             },
             {
-              "key": "table-1-segment-6-option-15",
-              "model": "SP220N2/SP220N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-3-option-15",
+              "model": "SP220N2/SP220N2-MH",
               "values": [
-                "SP220N2/SP220N2-MH ( ) dimension is -MH",
+                "SP220N2/SP220N2-MH",
                 "45-220",
                 "450-2200",
+                "19",
+                "-",
                 "561",
                 "393",
-                "448 （447）",
                 "448 （447）",
                 "1.3"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP220N2/SP220N2-MH ( ) dimension is -MH"
+                  "value": "SP220N2/SP220N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -26372,10 +25772,6 @@
                   "value": "448 （447）"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "448 （447）"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "53"
                 },
@@ -26400,10 +25796,6 @@
                   "value": "38 （27）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "38 （27）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "1.3"
                 },
@@ -26414,22 +25806,23 @@
               ]
             },
             {
-              "key": "table-1-segment-6-option-16",
-              "model": "SP220N2/SP220N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-3-option-16",
+              "model": "SP220N2/SP220N2-MH",
               "values": [
-                "SP220N2/SP220N2-MH ( ) dimension is -MH",
+                "SP220N2/SP220N2-MH",
                 "45-220",
                 "450-2200",
+                "22",
+                "-",
                 "558",
                 "394",
-                "451 （450）",
                 "451 （450）",
                 "1.3"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP220N2/SP220N2-MH ( ) dimension is -MH"
+                  "value": "SP220N2/SP220N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -26460,10 +25853,6 @@
                   "value": "451 （450）"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "451 （450）"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "56"
                 },
@@ -26488,10 +25877,6 @@
                   "value": "38 （27）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "38 （27）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "1.3"
                 },
@@ -26502,22 +25887,23 @@
               ]
             },
             {
-              "key": "table-1-segment-6-option-17",
-              "model": "SP220N2/SP220N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-3-option-17",
+              "model": "SP220N2/SP220N2-MH",
               "values": [
-                "SP220N2/SP220N2-MH ( ) dimension is -MH",
+                "SP220N2/SP220N2-MH",
                 "45-220",
                 "450-2200",
+                "24",
+                "-",
                 "557",
                 "395",
-                "453 （452）",
                 "453 （452）",
                 "1.3"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP220N2/SP220N2-MH ( ) dimension is -MH"
+                  "value": "SP220N2/SP220N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -26548,10 +25934,6 @@
                   "value": "453 （452）"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "453 （452）"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "58"
                 },
@@ -26576,10 +25958,6 @@
                   "value": "38 （27）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "38 （27）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "1.3"
                 },
@@ -26590,22 +25968,23 @@
               ]
             },
             {
-              "key": "table-1-segment-6-option-18",
-              "model": "SP220N2/SP220N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-3-option-18",
+              "model": "SP220N2/SP220N2-MH",
               "values": [
-                "SP220N2/SP220N2-MH ( ) dimension is -MH",
+                "SP220N2/SP220N2-MH",
                 "45-220",
                 "450-2200",
+                "27",
+                "-",
                 "554",
                 "397",
-                "456 （455）",
                 "456 （455）",
                 "1.3"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP220N2/SP220N2-MH ( ) dimension is -MH"
+                  "value": "SP220N2/SP220N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -26636,10 +26015,6 @@
                   "value": "456 （455）"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "456 （455）"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "61"
                 },
@@ -26664,10 +26039,6 @@
                   "value": "38 （27）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "38 （27）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "1.3"
                 },
@@ -26678,22 +26049,23 @@
               ]
             },
             {
-              "key": "table-1-segment-6-option-19",
-              "model": "SP220N2/SP220N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-3-option-19",
+              "model": "SP220N2/SP220N2-MH",
               "values": [
-                "SP220N2/SP220N2-MH ( ) dimension is -MH",
+                "SP220N2/SP220N2-MH",
                 "45-220",
                 "450-2200",
+                "29",
+                "-",
                 "552",
                 "399",
-                "458 （458）",
                 "458 （458）",
                 "1.3"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP220N2/SP220N2-MH ( ) dimension is -MH"
+                  "value": "SP220N2/SP220N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -26724,10 +26096,6 @@
                   "value": "458 （458）"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "458 （458）"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "63"
                 },
@@ -26752,10 +26120,6 @@
                   "value": "38 （27）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "38 （27）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "1.3"
                 },
@@ -26766,22 +26130,23 @@
               ]
             },
             {
-              "key": "table-1-segment-6-option-20",
-              "model": "SP220N2/SP220N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-3-option-20",
+              "model": "SP220N2/SP220N2-MH",
               "values": [
-                "SP220N2/SP220N2-MH ( ) dimension is -MH",
+                "SP220N2/SP220N2-MH",
                 "45-220",
                 "450-2200",
+                "30",
+                "-",
                 "550",
                 "400",
-                "460 （460）",
                 "460 （460）",
                 "1.3"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP220N2/SP220N2-MH ( ) dimension is -MH"
+                  "value": "SP220N2/SP220N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -26812,10 +26177,6 @@
                   "value": "460 （460）"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "460 （460）"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "63"
                 },
@@ -26840,10 +26201,6 @@
                   "value": "38 （27）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "38 （27）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "1.3"
                 },
@@ -26854,22 +26211,23 @@
               ]
             },
             {
-              "key": "table-1-segment-6-option-21",
-              "model": "SP220N2/SP220N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-3-option-21",
+              "model": "SP220N2/SP220N2-MH",
               "values": [
-                "SP220N2/SP220N2-MH ( ) dimension is -MH",
+                "SP220N2/SP220N2-MH",
                 "45-220",
                 "450-2200",
+                "32",
+                "-",
                 "546",
                 "403",
-                "464 （464）",
                 "464 （464）",
                 "1.3"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP220N2/SP220N2-MH ( ) dimension is -MH"
+                  "value": "SP220N2/SP220N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -26900,10 +26258,6 @@
                   "value": "464 （464）"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "464 （464）"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "65"
                 },
@@ -26928,10 +26282,6 @@
                   "value": "38 （27）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "38 （27）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "1.3"
                 },
@@ -26946,22 +26296,23 @@
               ]
             },
             {
-              "key": "table-1-segment-6-option-22",
-              "model": "SP220N2/SP220N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-3-option-22",
+              "model": "SP220N2/SP220N2-MH",
               "values": [
-                "SP220N2/SP220N2-MH ( ) dimension is -MH",
+                "SP220N2/SP220N2-MH",
                 "45-220",
                 "450-2200",
+                "34",
+                "-",
                 "549",
                 "401",
-                "463 （463）",
                 "463 （463）",
                 "1.3"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP220N2/SP220N2-MH ( ) dimension is -MH"
+                  "value": "SP220N2/SP220N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -26992,10 +26343,6 @@
                   "value": "463 （463）"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "463 （463）"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "67"
                 },
@@ -27020,10 +26367,6 @@
                   "value": "38 （27）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "38 （27）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "1.3"
                 },
@@ -27038,22 +26381,23 @@
               ]
             },
             {
-              "key": "table-1-segment-6-option-23",
-              "model": "SP220N2/SP220N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-3-option-23",
+              "model": "SP220N2/SP220N2-MH",
               "values": [
-                "SP220N2/SP220N2-MH ( ) dimension is -MH",
+                "SP220N2/SP220N2-MH",
                 "45-220",
                 "450-2200",
+                "36",
+                "-",
                 "543",
                 "405",
-                "468 （467）",
                 "468 （467）",
                 "1.3"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP220N2/SP220N2-MH ( ) dimension is -MH"
+                  "value": "SP220N2/SP220N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -27084,10 +26428,6 @@
                   "value": "468 （467）"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "468 （467）"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "72"
                 },
@@ -27112,10 +26452,6 @@
                   "value": "38 （27）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "38 （27）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "1.3"
                 },
@@ -27132,84 +26468,36 @@
           ]
         },
         {
-          "title": "Model options 7",
-          "accuracy": "±3%",
-          "columns": [
-            "MODEL"
-          ],
-          "rows": [
-            {
-              "key": "table-1-segment-7-option-1",
-              "model": "SP310N2/SP310N2-MH ( ) dimension is -MH",
-              "values": [
-                "SP310N2/SP310N2-MH ( ) dimension is -MH"
-              ],
-              "details": [
-                {
-                  "label": "MODEL",
-                  "value": "SP310N2/SP310N2-MH ( ) dimension is -MH"
-                }
-              ]
-            },
-            {
-              "key": "table-1-segment-7-option-2",
-              "model": "SP420N",
-              "values": [
-                "SP420N"
-              ],
-              "details": [
-                {
-                  "label": "MODEL",
-                  "value": "SP420N"
-                }
-              ]
-            },
-            {
-              "key": "table-1-segment-7-option-3",
-              "model": "SP560N",
-              "values": [
-                "SP560N"
-              ],
-              "details": [
-                {
-                  "label": "MODEL",
-                  "value": "SP560N"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Model options 8",
+          "title": "Model options 4",
           "accuracy": "±3%",
           "columns": [
             "MODEL",
             "S.I.RANGE[N・m]",
             "METIRC RANGE[kgf・cm]",
+            "WIDTH ACROSS FLATS [mm]",
             "MAX. HAND FORCE [N]",
             "DIMENSION [mm] / EFFECTIVE LENGTH / L",
             "DIMENSION [mm] / OVERALL LENGTH / L'",
-            "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
             "WEIGHT[kg]"
           ],
           "rows": [
             {
-              "key": "table-1-segment-8-option-1",
-              "model": "SP310N2/SP310N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-4-option-1",
+              "model": "SP310N2/SP310N2-MH",
               "values": [
-                "SP310N2/SP310N2-MH ( ) dimension is -MH",
+                "SP310N2/SP310N2-MH",
                 "65-310",
                 "650-3100",
+                "22",
                 "525",
                 "590",
-                "647 （646）",
                 "647 （646）",
                 "1.8"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP310N2/SP310N2-MH ( ) dimension is -MH"
+                  "value": "SP310N2/SP310N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -27233,10 +26521,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / OVERALL LENGTH / L'",
-                  "value": "647 （646）"
-                },
-                {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
                   "value": "647 （646）"
                 },
                 {
@@ -27264,10 +26548,6 @@
                   "value": "38 （27）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "38 （27）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "1.8"
                 },
@@ -27278,22 +26558,22 @@
               ]
             },
             {
-              "key": "table-1-segment-8-option-2",
-              "model": "SP310N2/SP310N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-4-option-2",
+              "model": "SP310N2/SP310N2-MH",
               "values": [
-                "SP310N2/SP310N2-MH ( ) dimension is -MH",
+                "SP310N2/SP310N2-MH",
                 "65-310",
                 "650-3100",
+                "24",
                 "525",
                 "590",
-                "648 （647）",
                 "648 （647）",
                 "1.8"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP310N2/SP310N2-MH ( ) dimension is -MH"
+                  "value": "SP310N2/SP310N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -27317,10 +26597,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / OVERALL LENGTH / L'",
-                  "value": "648 （647）"
-                },
-                {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
                   "value": "648 （647）"
                 },
                 {
@@ -27348,10 +26624,6 @@
                   "value": "38 （27）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "38 （27）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "1.8"
                 },
@@ -27362,22 +26634,22 @@
               ]
             },
             {
-              "key": "table-1-segment-8-option-3",
-              "model": "SP310N2/SP310N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-4-option-3",
+              "model": "SP310N2/SP310N2-MH",
               "values": [
-                "SP310N2/SP310N2-MH ( ) dimension is -MH",
+                "SP310N2/SP310N2-MH",
                 "65-310",
                 "650-3100",
+                "27",
                 "524",
                 "592",
-                "651 （650）",
                 "651 （650）",
                 "1.8"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP310N2/SP310N2-MH ( ) dimension is -MH"
+                  "value": "SP310N2/SP310N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -27401,10 +26673,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / OVERALL LENGTH / L'",
-                  "value": "651 （650）"
-                },
-                {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
                   "value": "651 （650）"
                 },
                 {
@@ -27432,10 +26700,6 @@
                   "value": "38 （27）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "38 （27）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "1.8"
                 },
@@ -27446,22 +26710,22 @@
               ]
             },
             {
-              "key": "table-1-segment-8-option-4",
-              "model": "SP310N2/SP310N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-4-option-4",
+              "model": "SP310N2/SP310N2-MH",
               "values": [
-                "SP310N2/SP310N2-MH ( ) dimension is -MH",
+                "SP310N2/SP310N2-MH",
                 "65-310",
                 "650-3100",
+                "30",
                 "522",
                 "594",
-                "654 （653）",
                 "654 （653）",
                 "1.8"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP310N2/SP310N2-MH ( ) dimension is -MH"
+                  "value": "SP310N2/SP310N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -27485,10 +26749,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / OVERALL LENGTH / L'",
-                  "value": "654 （653）"
-                },
-                {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
                   "value": "654 （653）"
                 },
                 {
@@ -27516,10 +26776,6 @@
                   "value": "38 （27）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "38 （27）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "1.8"
                 },
@@ -27530,22 +26786,22 @@
               ]
             },
             {
-              "key": "table-1-segment-8-option-5",
-              "model": "SP310N2/SP310N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-4-option-5",
+              "model": "SP310N2/SP310N2-MH",
               "values": [
-                "SP310N2/SP310N2-MH ( ) dimension is -MH",
+                "SP310N2/SP310N2-MH",
                 "65-310",
                 "650-3100",
+                "32",
                 "521",
                 "595",
-                "655 （654）",
                 "655 （654）",
                 "1.8"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP310N2/SP310N2-MH ( ) dimension is -MH"
+                  "value": "SP310N2/SP310N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -27569,10 +26825,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / OVERALL LENGTH / L'",
-                  "value": "655 （654）"
-                },
-                {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
                   "value": "655 （654）"
                 },
                 {
@@ -27600,10 +26852,6 @@
                   "value": "38 （27）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "38 （27）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "1.8"
                 },
@@ -27614,22 +26862,22 @@
               ]
             },
             {
-              "key": "table-1-segment-8-option-6",
-              "model": "SP310N2/SP310N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-4-option-6",
+              "model": "SP310N2/SP310N2-MH",
               "values": [
-                "SP310N2/SP310N2-MH ( ) dimension is -MH",
+                "SP310N2/SP310N2-MH",
                 "65-310",
                 "650-3100",
+                "41",
                 "512",
                 "605",
-                "670 （670）",
                 "670 （670）",
                 "1.8"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP310N2/SP310N2-MH ( ) dimension is -MH"
+                  "value": "SP310N2/SP310N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -27653,10 +26901,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / OVERALL LENGTH / L'",
-                  "value": "670 （670）"
-                },
-                {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
                   "value": "670 （670）"
                 },
                 {
@@ -27684,10 +26928,6 @@
                   "value": "38 （27）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "38 （27）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "1.8"
                 },
@@ -27698,22 +26938,22 @@
               ]
             },
             {
-              "key": "table-1-segment-8-option-7",
-              "model": "SP310N2/SP310N2-MH ( ) dimension is -MH",
+              "key": "table-1-segment-4-option-7",
+              "model": "SP310N2/SP310N2-MH",
               "values": [
-                "SP310N2/SP310N2-MH ( ) dimension is -MH",
+                "SP310N2/SP310N2-MH",
                 "65-310",
                 "650-3100",
+                "46",
                 "512",
                 "605",
-                "671 （671）",
                 "671 （671）",
                 "1.8"
               ],
               "details": [
                 {
                   "label": "MODEL",
-                  "value": "SP310N2/SP310N2-MH ( ) dimension is -MH"
+                  "value": "SP310N2/SP310N2-MH"
                 },
                 {
                   "label": "S.I.RANGE[N・m]",
@@ -27737,10 +26977,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / OVERALL LENGTH / L'",
-                  "value": "671 （671）"
-                },
-                {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
                   "value": "671 （671）"
                 },
                 {
@@ -27768,10 +27004,6 @@
                   "value": "38 （27）"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "38 （27）"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "1.8"
                 },
@@ -27782,15 +27014,15 @@
               ]
             },
             {
-              "key": "table-1-segment-8-option-8",
+              "key": "table-1-segment-4-option-8",
               "model": "SP420N",
               "values": [
                 "SP420N",
                 "90-420",
                 "900-4200",
+                "27",
                 "553",
                 "760",
-                "837",
                 "837",
                 "3.3"
               ],
@@ -27824,10 +27056,6 @@
                   "value": "837"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "837"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "78"
                 },
@@ -27852,10 +27080,6 @@
                   "value": "45"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "45"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "3.3"
                 },
@@ -27866,15 +27090,15 @@
               ]
             },
             {
-              "key": "table-1-segment-8-option-9",
+              "key": "table-1-segment-4-option-9",
               "model": "SP420N",
               "values": [
                 "SP420N",
                 "90-420",
                 "900-4200",
+                "30",
                 "553",
                 "760",
-                "836",
                 "836",
                 "3.3"
               ],
@@ -27908,10 +27132,6 @@
                   "value": "836"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "836"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "78"
                 },
@@ -27936,10 +27156,6 @@
                   "value": "45"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "45"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "3.3"
                 },
@@ -27950,15 +27166,15 @@
               ]
             },
             {
-              "key": "table-1-segment-8-option-10",
+              "key": "table-1-segment-4-option-10",
               "model": "SP420N",
               "values": [
                 "SP420N",
                 "90-420",
                 "900-4200",
+                "32",
                 "553",
                 "760",
-                "837",
                 "837",
                 "3.3"
               ],
@@ -27992,10 +27208,6 @@
                   "value": "837"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "837"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "78"
                 },
@@ -28020,10 +27232,6 @@
                   "value": "45"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "45"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "3.3"
                 },
@@ -28034,15 +27242,15 @@
               ]
             },
             {
-              "key": "table-1-segment-8-option-11",
+              "key": "table-1-segment-4-option-11",
               "model": "SP420N",
               "values": [
                 "SP420N",
                 "90-420",
                 "900-4200",
+                "34",
                 "553",
                 "760",
-                "838",
                 "838",
                 "3.3"
               ],
@@ -28076,10 +27284,6 @@
                   "value": "838"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "838"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "78"
                 },
@@ -28104,10 +27308,6 @@
                   "value": "45"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "45"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "3.3"
                 },
@@ -28118,15 +27318,15 @@
               ]
             },
             {
-              "key": "table-1-segment-8-option-12",
+              "key": "table-1-segment-4-option-12",
               "model": "SP420N",
               "values": [
                 "SP420N",
                 "90-420",
                 "900-4200",
+                "35",
                 "553",
                 "760",
-                "838",
                 "838",
                 "3.3"
               ],
@@ -28160,10 +27360,6 @@
                   "value": "838"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "838"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "78"
                 },
@@ -28188,10 +27384,6 @@
                   "value": "45"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "45"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "3.3"
                 },
@@ -28202,15 +27394,15 @@
               ]
             },
             {
-              "key": "table-1-segment-8-option-13",
+              "key": "table-1-segment-4-option-13",
               "model": "SP420N",
               "values": [
                 "SP420N",
                 "90-420",
                 "900-4200",
+                "36",
                 "553",
                 "760",
-                "840",
                 "840",
                 "3.3"
               ],
@@ -28244,10 +27436,6 @@
                   "value": "840"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "840"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "78"
                 },
@@ -28272,10 +27460,6 @@
                   "value": "45"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "45"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "3.3"
                 },
@@ -28286,15 +27470,15 @@
               ]
             },
             {
-              "key": "table-1-segment-8-option-14",
+              "key": "table-1-segment-4-option-14",
               "model": "SP560N",
               "values": [
                 "SP560N",
                 "130-560",
                 "1300-5600",
+                "30",
                 "616",
                 "910",
-                "995",
                 "995",
                 "4"
               ],
@@ -28328,10 +27512,6 @@
                   "value": "995"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "995"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "81"
                 },
@@ -28356,10 +27536,6 @@
                   "value": "45"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "45"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "4"
                 },
@@ -28370,15 +27546,15 @@
               ]
             },
             {
-              "key": "table-1-segment-8-option-15",
+              "key": "table-1-segment-4-option-15",
               "model": "SP560N",
               "values": [
                 "SP560N",
                 "130-560",
                 "1300-5600",
+                "32",
                 "616",
                 "910",
-                "995",
                 "995",
                 "4"
               ],
@@ -28412,10 +27588,6 @@
                   "value": "995"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "995"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "83"
                 },
@@ -28440,10 +27612,6 @@
                   "value": "45"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "45"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "4"
                 },
@@ -28454,15 +27622,15 @@
               ]
             },
             {
-              "key": "table-1-segment-8-option-16",
+              "key": "table-1-segment-4-option-16",
               "model": "SP560N",
               "values": [
                 "SP560N",
                 "130-560",
                 "1300-5600",
+                "36",
                 "616",
                 "910",
-                "997",
                 "997",
                 "4"
               ],
@@ -28496,10 +27664,6 @@
                   "value": "997"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "997"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "87"
                 },
@@ -28524,10 +27688,6 @@
                   "value": "45"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "45"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "4"
                 },
@@ -28542,15 +27702,15 @@
               ]
             },
             {
-              "key": "table-1-segment-8-option-17",
+              "key": "table-1-segment-4-option-17",
               "model": "SP560N",
               "values": [
                 "SP560N",
                 "130-560",
                 "1300-5600",
+                "46",
                 "613",
                 "915",
-                "1005",
                 "1005",
                 "4.5"
               ],
@@ -28584,10 +27744,6 @@
                   "value": "1005"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "1005"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "97"
                 },
@@ -28612,10 +27768,6 @@
                   "value": "45"
                 },
                 {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
-                  "value": "45"
-                },
-                {
                   "label": "WEIGHT[kg]",
                   "value": "4.5"
                 },
@@ -28630,15 +27782,15 @@
               ]
             },
             {
-              "key": "table-1-segment-8-option-18",
+              "key": "table-1-segment-4-option-18",
               "model": "SP560N",
               "values": [
                 "SP560N",
                 "130-560",
                 "1300-5600",
+                "55",
                 "613",
                 "915",
-                "1009",
                 "1009",
                 "4.5"
               ],
@@ -28672,10 +27824,6 @@
                   "value": "1009"
                 },
                 {
-                  "label": "DIMENSION [mm] / OVERALL LENGTH / L' (2)",
-                  "value": "1009"
-                },
-                {
                   "label": "DIMENSION [mm] / HEAD / C",
                   "value": "104"
                 },
@@ -28697,10 +27845,6 @@
                 },
                 {
                   "label": "DIMENSION [mm] / BODY / D",
-                  "value": "45"
-                },
-                {
-                  "label": "DIMENSION [mm] / BODY / D (2)",
                   "value": "45"
                 },
                 {
