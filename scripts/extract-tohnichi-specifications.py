@@ -7,7 +7,7 @@ references; the official HTML tables provide a machine-readable representation
 of the same model/specification data and cover product families whose options
 are maintained as online accessory lists.
 
-Required Python packages: lxml, pandas, and pypdf.
+Required Python packages: lxml, pandas, pdfplumber, and pypdf.
 """
 
 from __future__ import annotations
@@ -35,9 +35,12 @@ ACCURACY_RE = re.compile(
     re.IGNORECASE,
 )
 DIRECT_MODEL_LABEL_RE = re.compile(
-    r"^(?:s\.?\s*i\.?\s*)?model(?:\s*/\s*type)?$|^(?:metric|american)\s*model$",
+    r"^(?:s\.?\s*i\.?\s*)?model(?:\s*/\s*type)?$|^(?:metric|american)\s*model$"
+    r"|^model\s*[［\[]body.*$|^part\s*no\.?$",
     re.IGNORECASE,
 )
+MODEL_CATEGORIES = {"receiver", "transmitter", "wireless module", "torque screwdriver", "wireless setting device"}
+UNIT_PREFIX_RE = re.compile(r"^((?:[mc]?N|[km]?gf|lbf|ozf)[・·.](?:cm|m|in|ft))(?:\s+(.*))?$")
 
 GROUP_PAGE_RANGES: dict[str, str] = {
     "torque-screwdrivers": "5-10",
@@ -79,6 +82,8 @@ CORE_FIELD_PATTERNS = [
         r"\bapplicable\b.*\b(?:bolt|screw|model)\b",
         r"\ballowable\s+torque\b",
         r"\bmax\.?\s*hand\s*force\b",
+        r"\bwidth\s+across\s+flats\b",
+        r"\bhead\s+variant\b",
         r"\beffective\s+length\b",
         r"\boverall\s+length\b",
         r"\bsq\.?\s*drive\b",
@@ -178,7 +183,8 @@ def extract_accuracy(rows: list[list[str]], fallback_text: str) -> str:
 def is_model_start(row: list[str]) -> bool:
     first = next((value for value in row if value), "")
     normalized = re.sub(r"[^a-z]", "", first.lower())
-    return normalized in {"model", "simodel"} and len(unique_nonempty(row)) >= 2
+    return (normalized in {"model", "simodel", "partno"}
+            or normalized.startswith("modelbody")) and len(unique_nonempty(row)) >= 2
 
 
 def leading_descriptor_count(row: list[str]) -> int:
@@ -212,7 +218,10 @@ def make_unique_labels(labels: list[str]) -> list[str]:
 def select_core_fields(fields: list[str]) -> list[str]:
     selected: list[str] = []
     for field in fields:
-        if DIRECT_MODEL_LABEL_RE.search(field) and field not in selected:
+        is_identity = DIRECT_MODEL_LABEL_RE.search(field) or re.search(
+            r"\bhead\s+variant\b", field, re.IGNORECASE
+        )
+        if is_identity and field not in selected:
             selected.append(field)
     for field in fields:
         if any(pattern.search(field) for pattern in CORE_FIELD_PATTERNS) and field not in selected:
@@ -228,7 +237,7 @@ def select_core_fields(fields: list[str]) -> list[str]:
 
 def model_label(values: dict[str, str]) -> str:
     direct_models = unique_nonempty(
-        value for label, value in values.items() if DIRECT_MODEL_LABEL_RE.search(label)
+        value for label, value in values.items() if DIRECT_MODEL_LABEL_RE.search(label) and value != "-"
     )
     if direct_models:
         return " / ".join(direct_models)
@@ -263,8 +272,9 @@ def normalize_model_segment(
     table_index: int,
     segment_index: int,
     accuracy: str,
+    descriptor_count: int | None = None,
 ) -> dict[str, Any] | None:
-    descriptor_count = leading_descriptor_count(rows[start])
+    descriptor_count = descriptor_count or leading_descriptor_count(rows[start])
     if descriptor_count <= 0:
         return None
 
@@ -279,10 +289,35 @@ def normalize_model_segment(
         ):
             segment_rows = [previous, *segment_rows]
 
+    # Rowspans can repeat an entire dimension row (for example overall length).
+    # Keep genuine alternatives, but do not publish identical copies as '(2)'.
+    notes = unique_nonempty(value for row in segment_rows if re.match(r"^[※]|^Note\b", row[0], re.I)
+                            for value in row if re.match(r"^[※]|^Note\b", value, re.I))
+    segment_rows = [list(row) for row in dict.fromkeys(tuple(row) for row in segment_rows)
+                    if any(row[:descriptor_count]) and len(unique_nonempty(row)) > 1
+                    and not re.match(r"^[※]|^Note\b", row[0], re.I)]
+    unit_columns: set[int] = set()
+    for row in segment_rows:
+        if not re.search(r"\brange\b", " ".join(row[:descriptor_count]), re.I):
+            continue
+        unit = ""
+        for column in range(descriptor_count, len(row)):
+            value = row[column]
+            match = UNIT_PREFIX_RE.fullmatch(value)
+            if match:
+                unit = match.group(1)
+                if not match.group(2):
+                    unit_columns.add(column)
+            elif unit and re.match(r"^[（(]?[-+\d]", value) and value != "-":
+                row[column] = f"{unit} {value}"
     labels: list[str] = []
     for index, row in enumerate(segment_rows):
         fallback = "MODEL" if index == 0 and not any(row[:descriptor_count]) else ""
-        labels.append(field_label(row, descriptor_count, fallback))
+        parts = unique_nonempty(row[:descriptor_count])
+        data = [value for value in row[descriptor_count:] if value]
+        while len(parts) > 1 and data and all(value == parts[-1] for value in data):
+            parts.pop()
+        labels.append(" / ".join(parts) if parts else fallback)
     labels = make_unique_labels(labels)
 
     last_data_column = descriptor_count
@@ -293,6 +328,8 @@ def normalize_model_segment(
     records: list[dict[str, Any]] = []
     seen_vectors: set[tuple[str, ...]] = set()
     for column in range(descriptor_count, last_data_column):
+        if column in unit_columns:
+            continue
         vector = tuple(row[column] for row in segment_rows)
         if not any(vector) or vector in seen_vectors:
             continue
@@ -301,7 +338,7 @@ def normalize_model_segment(
         if not values:
             continue
         if not any(
-            DIRECT_MODEL_LABEL_RE.search(label) and value
+            DIRECT_MODEL_LABEL_RE.search(label) and value and value != "-"
             for label, value in values.items()
         ):
             continue
@@ -335,6 +372,7 @@ def normalize_model_segment(
             }
             for record in records
         ],
+        **({"commonSpecifications": [{"label": "NOTE", "value": note} for note in notes]} if notes else {}),
     }
 
 
@@ -384,16 +422,35 @@ def normalize_row_table(
             }
 
     specification_rows: list[dict[str, str]] = []
-    for row in rows:
-        values = unique_nonempty(row)
-        if len(values) < 2:
-            continue
-        specification_rows.append(
-            {
-                "label": values[0],
-                "value": " / ".join(values[1:]),
-            }
-        )
+    if len(rows) == 2 and len(rows[0]) > 2 and all(
+        re.search(r"[A-Za-z]", value) and not re.search(r"\d", re.sub(r"\[[^]]*\]", "", value))
+        for value in rows[0] if value
+    ) and not any(not any(row[column] for row in rows) for column in range(len(rows[0]))):
+        # One product with horizontal parameter headings (for example FCON).
+        specification_rows = [{"label": label, "value": value}
+                              for label, value in zip(rows[0], rows[1]) if label and value]
+    else:
+        # Split side-by-side parameter panels instead of mixing their values.
+        separators = [index for index in range(len(rows[0])) if not any(row[index] for row in rows)]
+        bounds = [-1, *separators, len(rows[0])]
+        for start, end in zip(bounds, bounds[1:]):
+            section = ""
+            part_heading = ""
+            for row in rows:
+                values = unique_nonempty(row[start + 1:end])
+                if len(values) == 1:
+                    section = values[0] if "accuracy" not in values[0].lower() else ""
+                elif len(values) >= 2:
+                    if re.fullmatch(r"CATALOGUE NO\.?|PART NO\.?", values[0], re.I) and values[-1].upper() in {"ITEM", "DESCRIPTION"}:
+                        part_heading = values[0]
+                        continue
+                    label = " / ".join(values[:-1])
+                    if part_heading and values[0].isdigit():
+                        label = f"{part_heading} {label}"
+                    else:
+                        part_heading = ""
+                    specification_rows.append({"label": f"{section} / {label}" if section else label,
+                                               "value": values[-1]})
     if not specification_rows:
         return None
     return {
@@ -403,6 +460,134 @@ def normalize_row_table(
         "rows": [],
         "commonSpecifications": specification_rows,
     }
+
+
+def normalize_model_row_panels(
+    rows: list[list[str]], table_index: int, accuracy: str
+) -> list[dict[str, Any]]:
+    """Read model-per-row tables, including several panels printed side by side."""
+    for header_index, header in enumerate(rows):
+        model_columns = [i for i, value in enumerate(header) if DIRECT_MODEL_LABEL_RE.fullmatch(value)]
+        # Repeated MODEL cells at the left are a colspan in a transposed table.
+        if len(model_columns) > 1 and model_columns == list(range(len(model_columns))):
+            continue
+        if not model_columns or not any(
+            re.search(r"\b(?:dimension|weight|mass|torque|range|length|capacity|application|manufacturer|description|item)\b", value, re.I)
+            for value in header
+        ):
+            continue
+        first_data = header_index + 1
+        while first_data < len(rows) and any(
+            DIRECT_MODEL_LABEL_RE.fullmatch(rows[first_data][column])
+            for column in model_columns
+        ):
+            first_data += 1
+        panels = []
+        for panel_index, start in enumerate(model_columns):
+            end = model_columns[panel_index + 1] if panel_index + 1 < len(model_columns) else len(header)
+            active = [column for column in range(start, end) if any(
+                row[column] for row in rows[header_index:first_data]
+            )]
+            columns = make_unique_labels([
+                " / ".join(unique_nonempty(row[column] for row in rows[header_index:first_data]))
+                for column in active
+            ])
+            records = []
+            for row_index, row in enumerate(rows[first_data:]):
+                model = row[start]
+                if (not model or DIRECT_MODEL_LABEL_RE.fullmatch(model)
+                        or re.match(r"^[※●◆■]|^Accuracy", model, re.I)):
+                    continue
+                values = [row[column] for column in active]
+                records.append({
+                    "key": f"table-{table_index + 1}-panel-{panel_index + 1}-row-{row_index + 1}",
+                    "model": model,
+                    "values": values,
+                    "details": [{"label": label, "value": value} for label, value in zip(columns, values) if value],
+                })
+            if records:
+                panels.append({"title": f"Model options {panel_index + 1}", "accuracy": accuracy,
+                               "columns": columns, "rows": records})
+        return panels
+    return []
+
+
+def model_data_start(row: list[str]) -> int:
+    """Exclude descriptor subheadings such as STANDARD and SIMPLEX-BTS."""
+    descriptor = leading_descriptor_count(row)
+    if row[descriptor] in {"FD", "FDD"} and any(value.startswith("CSP") for value in row[descriptor + 1:]):
+        descriptor += 1
+    if re.fullmatch(r"STANDARD|W/MEMORY POINTER|WITH TOP MEMORY POINTER|SIMPLEX-BTS|DUPLEX-BTD|TABLE|ATTACHMENT",
+                    row[descriptor], re.I):
+        label = row[descriptor]
+        while descriptor < len(row) and row[descriptor] == label:
+            descriptor += 1
+    return descriptor
+
+
+def normalize_transposed_segments(
+    rows: list[list[str]], table_index: int, accuracy: str
+) -> list[dict[str, Any]]:
+    starts = [index for index, row in enumerate(rows) if is_model_start(row)]
+    segments = []
+    if starts and starts[0] > 0:
+        common = normalize_row_table([], rows[:starts[0]], table_index, "Specifications")
+        if common:
+            segments.append(common)
+    position = 0
+    while position < len(starts):
+        start = starts[position]
+        header_rows = [rows[start]]
+        end_header = start + 1
+        position += 1
+        while position < len(starts) and starts[position] == end_header:
+            header_rows.append(rows[end_header])
+            end_header += 1
+            position += 1
+        end = starts[position] if position < len(starts) else len(rows)
+        panels = normalize_model_row_panels(rows[start:end], table_index, accuracy)
+        if panels:
+            segments.extend(panels)
+            continue
+        descriptor_count = max(model_data_start(row) for row in header_rows)
+        if len(header_rows) > 1:
+            header_rows = [row for row in header_rows if not all(
+                value.lower() in MODEL_CATEGORIES for value in row[descriptor_count:] if value
+            )]
+        has_standard_row = (
+            start > 0 and not any(rows[start - 1][:descriptor_count])
+            and any(rows[start - 1][descriptor_count:])
+            and not re.search(r"accuracy|±|digit|grad\.", " ".join(rows[start - 1]), re.I)
+            and not any(value.lower() in MODEL_CATEGORIES for value in rows[start - 1][descriptor_count:] if value)
+        )
+        if has_standard_row:
+            header_rows.insert(0, [header_rows[0][0]] * descriptor_count + rows[start - 1][descriptor_count:])
+        # Bluetooth variants can have an empty leading descriptor instead of MODEL.
+        if end_header < end:
+            row = rows[end_header]
+            if re.search(r"bluetooth", " ".join(row[:descriptor_count]), re.I):
+                header_rows.append([header_rows[0][0]] * descriptor_count + row[descriptor_count:])
+                end_header += 1
+        specifications = rows[end_header:end]
+        for header_index, header in enumerate(header_rows):
+            normalized_header = [header[0]] * descriptor_count + header[descriptor_count:]
+            variant_specifications = []
+            for index, row in enumerate(specifications):
+                if has_standard_row and not any(row[:descriptor_count]) and index + 1 < len(specifications) and DIRECT_MODEL_LABEL_RE.fullmatch(specifications[index + 1][0]):
+                    continue
+                if has_standard_row and DIRECT_MODEL_LABEL_RE.fullmatch(row[0]):
+                    values = row[descriptor_count:]
+                    if header_index == 0 and index > 0 and not any(specifications[index - 1][:descriptor_count]):
+                        values = specifications[index - 1][descriptor_count:]
+                    row = [row[0]] * descriptor_count + values
+                variant_specifications.append(row)
+            segment = normalize_model_segment(
+                [normalized_header, *variant_specifications], 0, len(variant_specifications) + 1,
+                table_index, len(segments), accuracy, descriptor_count
+            )
+            if segment:
+                segments.append(segment)
+    return segments
 
 
 def table_title(table: etree._Element, table_index: int) -> str:
@@ -433,26 +618,102 @@ def normalize_table(
     if not rows:
         return []
 
+    sections = [index for index, row in enumerate(rows)
+                if re.search(r"\bcommon specifications?\b", unicodedata.normalize("NFKC", row[0]), re.I)
+                and len(unique_nonempty(row)) == 1]
+    if sections:
+        results = []
+        ranges = [(0, sections[0], "")]
+        ranges.extend((start + 1, sections[index + 1] if index + 1 < len(sections) else len(rows), rows[start][0])
+                      for index, start in enumerate(sections))
+        for section_index, (start, end, section_title) in enumerate(ranges):
+            block = rows[start:end]
+            if not block:
+                continue
+            drive_header = next((index for index, row in enumerate(block) if row[0] == "DRIVE BOX TYPE"), None)
+            if drive_header is not None:
+                model_row = ["MODEL", *block[drive_header][1:]]
+                block = [model_row, *[(["APPLICABLE MODELS", *row[1:]] if row[0] == "ITEM" else row)
+                                      for index, row in enumerate(block) if index != drive_header]]
+            section_table = etree.Element("table")
+            for row in block:
+                element = etree.SubElement(section_table, "tr")
+                for value in row:
+                    etree.SubElement(element, "td").text = value
+            for normalized in normalize_table(section_table, table_index * 100 + section_index):
+                if section_title:
+                    normalized["title"] = section_title
+                    for detail in normalized.get("commonSpecifications", []):
+                        detail["label"] = f"{section_title} / {detail['label']}"
+                results.append(normalized)
+        return results
+
+    if not any(is_model_start(row) for row in rows):
+        # A few official tables omit MODEL above their model-code row.
+        first = rows[0]
+        leading_blanks = next((index for index, value in enumerate(first) if value), 0)
+        codes = [value for value in first[leading_blanks:] if value]
+        if leading_blanks and codes and all(re.search(r"[A-Za-z].*\d|\d.*[A-Za-z]", value) for value in codes):
+            rows[0] = ["MODEL"] * leading_blanks + first[leading_blanks:]
+
+    rows = merge_model_header_rows(rows)
+
     raw_text = clean_text(" ".join(table.itertext()))
     accuracy = extract_accuracy(rows, raw_text)
-    starts = [index for index, row in enumerate(rows) if is_model_start(row)]
-
-    if starts:
-        segments: list[dict[str, Any]] = []
-        for segment_index, start in enumerate(starts):
-            end = starts[segment_index + 1] if segment_index + 1 < len(starts) else len(rows)
-            segment = normalize_model_segment(
-                rows, start, end, table_index, segment_index, accuracy
-            )
-            if segment:
-                segments.append(segment)
-        if segments:
-            return segments
+    first_model = next((i for i, row in enumerate(rows) if is_model_start(row)), None)
+    first_end = next((i for i in range((first_model or 0) + 1, len(rows))
+                      if is_model_start(rows[i]) and not is_model_start(rows[i - 1])), len(rows))
+    panels = normalize_model_row_panels(rows[:first_end], table_index, accuracy)
+    if panels:
+        return panels
+    segments = normalize_transposed_segments(rows, table_index, accuracy)
+    if segments:
+        return segments
 
     normalized = normalize_row_table(
         headers, rows, table_index, table_title(table, table_index)
     )
     return [normalized] if normalized else []
+
+
+def merge_model_header_rows(rows: list[list[str]]) -> list[list[str]]:
+    """Keep stacked model names, notes, and head variants in one segment."""
+    result: list[list[str]] = []
+    index = 0
+    note_re = re.compile(r"\(\s*\)\s*dimension\s+is\s+-MH", re.IGNORECASE)
+    while index < len(rows):
+        row = rows[index]
+        if not is_model_start(row):
+            result.append(row)
+            index += 1
+            continue
+
+        descriptor_count = leading_descriptor_count(row)
+        models = [note_re.sub("", value).strip() for value in row]
+        variants = [""] * len(row)
+        index += 1
+        while index < len(rows) and is_model_start(rows[index]):
+            continuation = rows[index]
+            if (
+                leading_descriptor_count(continuation) != descriptor_count
+                or normalize(continuation[0]) != normalize(row[0])
+            ):
+                break
+            values = [note_re.sub("", value).strip() for value in continuation]
+            if any(
+                value and value != models[column] and not re.fullmatch(r"-\d+", value)
+                for column, value in enumerate(values[descriptor_count:], descriptor_count)
+            ):
+                break
+            for column in range(descriptor_count, len(models)):
+                value = values[column]
+                if re.fullmatch(r"-\d+", value):
+                    variants[column] = value
+            index += 1
+        result.append(models)
+        if any(variants):
+            result.append(["HEAD VARIANT"] * descriptor_count + variants[descriptor_count:])
+    return result
 
 
 def technical_field_class(label: str) -> str:

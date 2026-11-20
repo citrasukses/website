@@ -1,16 +1,18 @@
 import { CheckCircle2, ExternalLink, Info } from "lucide-react";
 import type {
   TohnichiProductFamilyDetail,
-  TohnichiSpecificationTable,
   TohnichiTechnicalDetail
 } from "@/data/tohnichi-product-details";
 import { text, type Language } from "@/lib/i18n";
+import { consolidateTables, groupModelRows, normalizedColumnKey, type ConsolidatedSpecification } from "@/lib/tohnichi-specification-tables";
 
 const indonesiaLabelReplacements: Array<[RegExp, string]> = [
   [/\bS\.?\s*I\.?\s*MODEL\b/gi, "Model S.I."],
   [/\bMETRIC MODEL\b/gi, "Model metrik"],
   [/\bMODEL\s*\/\s*TYPE\b/gi, "Model/tipe"],
   [/\bMODEL\b/gi, "Model"],
+  [/\bS\.I\. RANGE\b/gi, "Rentang S.I."],
+  [/\bMETRIC RANGE\b/gi, "Rentang metrik"],
   [/\bTORQUE RANGE\b/gi, "Rentang torsi"],
   [/\bMEASUREMENT RANGE\b/gi, "Rentang pengukuran"],
   [/MIN\.?\s*-\s*MAX\.?/gi, "Min.-maks."],
@@ -22,6 +24,8 @@ const indonesiaLabelReplacements: Array<[RegExp, string]> = [
   [/\bTAPPING SCREW\b/gi, "Sekrup tapping"],
   [/\bALLOWABLE TORQUE\b/gi, "Torsi yang diizinkan"],
   [/\bMAX\.?\s*HAND FORCE\b/gi, "Gaya tangan maksimum"],
+  [/\bWIDTH ACROSS FLATS\b/gi, "Ukuran bukaan kepala"],
+  [/\bHEAD VARIANT\b/gi, "Varian kepala"],
   [/\bDIMENSION\b/gi, "Dimensi"],
   [/\bOVERALL LENGTH\b/gi, "Panjang total"],
   [/\bEFFECTIVE LENGTH\b/gi, "Panjang efektif"],
@@ -54,219 +58,19 @@ const indonesiaLabelReplacements: Array<[RegExp, string]> = [
   [/\bCOMMON STEEL\b/gi, "Baja umum"],
   [/\bHIGH TENSION\b/gi, "Baja high-tension"],
   [/\bCATEGORY\b/gi, "Kategori"],
+  [/\bNOTE\b/gi, "Catatan"],
   [/\bVALUE\b/gi, "Nilai"]
 ];
 
 function technicalLabel(label: string, lang: Language) {
-  if (lang === "en") return label;
+  const correctedLabel = label
+    .replace(/\bMETIRC\b/gi, "METRIC")
+    .replace(/\bS\.I\.\s*RANGE\b/gi, "S.I. RANGE");
+  if (lang === "en") return correctedLabel;
   return indonesiaLabelReplacements.reduce(
     (result, [pattern, replacement]) => result.replace(pattern, replacement),
-    label
+    correctedLabel
   );
-}
-
-function normalizedColumnKey(label: string) {
-  const normalized = label
-    .normalize("NFKC")
-    .replace(/[’′]/g, "'")
-    .replace(/\bMETIRC\b/gi, "METRIC")
-    .replace(/\bDIMENSIONS\b/gi, "DIMENSION")
-    .replace(/\bS\.I\.\s*RANGE\b/gi, "S.I. RANGE")
-    .replace(/\s+/g, " ")
-    .replace(/\s*([/[\]()])\s*/g, "$1")
-    .replace(/MIN\.?\s*-\s*MAX\.?/gi, "MIN.-MAX.")
-    .trim()
-    .toUpperCase();
-
-  if (/^MODEL\/TYPE(?:\s|$|\()/.test(normalized)) return "MODEL/TYPE";
-  return normalized;
-}
-
-function isGenericTableTitle(title: string) {
-  return /^Model options \d+$/i.test(title) || /^Specifications(?: \d+)?$/i.test(title);
-}
-
-function isAmericanColumn(label: string) {
-  const normalized = normalizedColumnKey(label);
-  if (normalized.includes("AMERICAN") && normalized.includes("MODEL")) return true;
-
-  return /(?:LBF|OZF)\s*[・·.]?\s*(?:IN|FT)/.test(normalized);
-}
-
-function isModelColumn(label: string) {
-  const normalized = normalizedColumnKey(label);
-  return /^(?:(?:S\.I\.|METRIC)\s+)?MODEL(?:\/TYPE)?(?:\s|$|\()/.test(normalized);
-}
-
-type ConsolidatedRow = {
-  key: string;
-  values: string[];
-};
-
-type ConsolidatedSpecification = {
-  columns: string[];
-  rows: ConsolidatedRow[];
-  commonSpecifications: TohnichiTechnicalDetail[];
-};
-
-function modelTableSignature({
-  table,
-  columns
-}: {
-  table: TohnichiSpecificationTable;
-  columns: Array<{ label: string; originalIndex: number }>;
-}) {
-  const titleKey = isGenericTableTitle(table.title)
-    ? "__GENERIC__"
-    : normalizedColumnKey(table.title);
-  const columnKey = columns.map(({ label }) => normalizedColumnKey(label)).join("\u0001");
-  const rowKey = table.rows
-    .map((row) =>
-      columns
-        .map(({ originalIndex }) => row.values[originalIndex]?.trim() ?? "")
-        .join("\u0001")
-    )
-    .join("\u0002");
-
-  return `${titleKey}\u0000${columnKey}\u0000${rowKey}`;
-}
-
-function isEmbeddedHeaderValue(value: string) {
-  const normalized = normalizedColumnKey(value);
-  return /^(?:MIN\.-MAX\.|MIN\s*~\s*MAX|GRAD(?:UATION)?\.?|1 DIGIT|OVERALL LENGTH|APPROX\.? WEIGHT(?: \[KG\])?|WEIGHT(?: \[KG\])?|L'|L|ΦD|Φd|ℓ1|ℓ2)$/.test(
-    normalized
-  );
-}
-
-function isEmbeddedHeaderRow(
-  row: TohnichiSpecificationTable["rows"][number],
-  columns: Array<{ label: string; originalIndex: number }>
-) {
-  if (columns.length < 2) return false;
-
-  const specificationValues = columns
-    .slice(1)
-    .map(({ originalIndex }) => row.values[originalIndex]?.trim() ?? "")
-    .filter(Boolean);
-  if (specificationValues.length < 2) return false;
-
-  const headerValueCount = specificationValues.filter(isEmbeddedHeaderValue).length;
-  return headerValueCount >= 2 && headerValueCount / specificationValues.length >= 0.6;
-}
-
-function consolidateTables(
-  tables: TohnichiSpecificationTable[]
-): ConsolidatedSpecification {
-  const candidateModelTables = tables
-    .map((table) => ({
-      table,
-      columns: table.columns
-        .map((label, originalIndex) => ({ label, originalIndex }))
-        .filter(({ label }) => !isAmericanColumn(label))
-    }))
-    .filter(({ table, columns }) => table.rows.length && columns.length);
-  const seenTableSignatures = new Set<string>();
-  const modelTables = candidateModelTables.filter((modelTable) => {
-    const signature = modelTableSignature(modelTable);
-    if (seenTableSignatures.has(signature)) return false;
-    seenTableSignatures.add(signature);
-    return true;
-  });
-  const commonSpecifications: TohnichiTechnicalDetail[] = [];
-  const commonKeys = new Set<string>();
-
-  for (const table of tables) {
-    for (const specification of table.commonSpecifications ?? []) {
-      const key = `${normalizedColumnKey(specification.label)}\u0000${specification.value}`;
-      if (commonKeys.has(key)) continue;
-      commonKeys.add(key);
-      commonSpecifications.push(specification);
-    }
-  }
-
-  if (!modelTables.length) {
-    return { columns: [], rows: [], commonSpecifications };
-  }
-
-  const includeCategory =
-    modelTables.length > 1 &&
-    modelTables.every(({ table }) => !isGenericTableTitle(table.title));
-  const columnLabels = new Map<string, string>();
-  if (includeCategory) columnLabels.set("__CATEGORY__", "CATEGORY");
-
-  for (const { columns: tableColumns } of modelTables) {
-    for (const column of tableColumns) {
-      const key = normalizedColumnKey(column.label);
-      if (!columnLabels.has(key)) columnLabels.set(key, column.label);
-    }
-  }
-
-  const richerModelNames = new Set(
-    modelTables
-      .filter(({ columns: tableColumns }) => tableColumns.length > 1)
-      .flatMap(({ table, columns: tableColumns }) =>
-        table.rows
-          .filter((row) => !isEmbeddedHeaderRow(row, tableColumns))
-          .map((row) => row.model.trim().toUpperCase())
-      )
-  );
-  const columns = Array.from(columnLabels.values());
-  const columnKeys = Array.from(columnLabels.keys());
-  const modelColumnIndexes = columnKeys
-    .map((key, index) => ({ key, index }))
-    .filter(({ key }) => key !== "__CATEGORY__" && isModelColumn(key))
-    .map(({ index }) => index);
-  const fallbackModelColumnIndex = columnKeys.findIndex(
-    (key) => key !== "__CATEGORY__"
-  );
-  const identityColumnIndexes = new Set(
-    modelColumnIndexes.length
-      ? modelColumnIndexes
-      : fallbackModelColumnIndex >= 0
-        ? [fallbackModelColumnIndex]
-        : []
-  );
-  const specificationColumnIndexes = columnKeys
-    .map((key, index) => ({ key, index }))
-    .filter(
-      ({ key, index }) =>
-        key !== "__CATEGORY__" && !identityColumnIndexes.has(index)
-    )
-    .map(({ index }) => index);
-  const seenRows = new Set<string>();
-  const rows: ConsolidatedRow[] = [];
-
-  for (const [tableIndex, { table, columns: tableColumns }] of modelTables.entries()) {
-    const tableColumnKeys = tableColumns.map(({ label }) => normalizedColumnKey(label));
-    for (const [rowIndex, row] of table.rows.entries()) {
-      if (isEmbeddedHeaderRow(row, tableColumns)) continue;
-
-      const normalizedModel = row.model.trim().toUpperCase();
-      if (tableColumns.length === 1 && richerModelNames.has(normalizedModel)) continue;
-
-      const valuesByColumn = new Map<string, string>();
-      if (includeCategory) valuesByColumn.set("__CATEGORY__", table.title);
-      tableColumnKeys.forEach((key, index) => {
-        valuesByColumn.set(key, row.values[tableColumns[index].originalIndex] ?? "");
-      });
-      const values = columnKeys.map((key) => valuesByColumn.get(key) ?? "");
-      if (
-        specificationColumnIndexes.length > 0 &&
-        specificationColumnIndexes.every((index) => !values[index]?.trim())
-      ) {
-        continue;
-      }
-      const rowSignature = values.join("\u0001");
-      if (seenRows.has(rowSignature)) continue;
-      seenRows.add(rowSignature);
-      rows.push({
-        key: `${tableIndex}-${row.key || rowIndex}`,
-        values
-      });
-    }
-  }
-
-  return { columns, rows, commonSpecifications };
 }
 
 type HeaderTone = "amber" | "emerald" | "sky" | "graphite";
@@ -412,6 +216,7 @@ function ConsolidatedModelTable({
 }) {
   if (!specification.rows.length || !specification.columns.length) return null;
   const { groups, hasSubHeaders } = buildHeaderGroups(specification.columns);
+  const modelGroups = groupModelRows(specification);
   const minimumTableWidth = Math.max(720, specification.columns.length * 130);
 
   return (
@@ -421,8 +226,9 @@ function ConsolidatedModelTable({
           ? "Swipe or scroll sideways to compare every model."
           : "Geser tabel ke samping untuk membandingkan seluruh model."}
       </p>
-      <div className="max-w-full overflow-x-auto border border-graphite-200 bg-white shadow-sm">
+      <div tabIndex={0} role="region" aria-label={lang === "en" ? `${productName} specifications` : `Spesifikasi ${productName}`} className="focus-ring max-w-full overflow-x-auto border border-graphite-200 bg-white shadow-sm">
         <table
+          data-tohnichi-models
           className="w-full border-collapse text-left"
           style={{ minWidth: `${minimumTableWidth}px` }}
         >
@@ -439,7 +245,7 @@ function ConsolidatedModelTable({
                   scope={group.grouped ? "colgroup" : "col"}
                   colSpan={group.grouped ? group.columns.length : undefined}
                   rowSpan={!group.grouped && hasSubHeaders ? 2 : undefined}
-                  className={`min-w-[130px] border-r px-3 py-3 text-center text-xs font-bold uppercase tracking-[0.06em] last:border-r-0 ${headerToneClasses[group.tone].top}`}
+                  className={`min-w-[130px] border-r px-3 py-3 text-center text-xs font-bold tracking-[0.06em] last:border-r-0 ${headerToneClasses[group.tone].top}`}
                 >
                   {technicalLabel(group.label, lang)}
                 </th>
@@ -463,22 +269,30 @@ function ConsolidatedModelTable({
               </tr>
             ) : null}
           </thead>
-          <tbody className="divide-y divide-graphite-200">
-            {specification.rows.map((row, rowIndex) => (
-              <tr key={row.key} className={rowIndex % 2 ? "bg-graphite-50/70" : "bg-white"}>
-                {row.values.map((value, valueIndex) => (
-                  <td
-                    key={`${row.key}-${valueIndex}-${specification.columns[valueIndex]}`}
-                    className={`whitespace-nowrap border-r border-graphite-200 px-3 py-3 text-center text-sm last:border-r-0 ${
-                      valueIndex === 0 ? "font-bold text-graphite-900" : "text-graphite-600"
-                    }`}
-                  >
-                    {value || "—"}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
+          {modelGroups.map((modelGroup, groupIndex) => (
+            <tbody key={modelGroup.key} data-model={modelGroup.model} className={`divide-y divide-graphite-200 border-b-2 border-graphite-300 ${groupIndex % 2 ? "bg-graphite-50" : "bg-white"}`}>
+              {modelGroup.rows.map((row) => (
+                <tr key={row.key}>
+                  {row.values.map((value, columnIndex) => {
+                    const span = row.spans[columnIndex];
+                    if (!span) return null;
+                    const isModel = columnIndex === modelGroup.modelColumnIndex;
+                    const Cell = isModel ? "th" : "td";
+                    return (
+                      <Cell
+                        key={`${row.key}-${columnIndex}`}
+                        scope={isModel ? "rowgroup" : undefined}
+                        rowSpan={span > 1 ? span : undefined}
+                        className={`whitespace-nowrap border-r border-graphite-200 px-3 py-3 align-top text-center text-sm last:border-r-0 ${isModel ? `sticky left-0 z-10 font-bold text-graphite-900 ${groupIndex % 2 ? "bg-graphite-50" : "bg-white"}` : "text-graphite-600"}`}
+                      >
+                        {value || "—"}
+                      </Cell>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          ))}
         </table>
       </div>
     </>
@@ -497,7 +311,7 @@ function CommonSpecificationTable({
   if (!specifications.length) return null;
   return (
     <div className="overflow-hidden border border-graphite-200 bg-white shadow-sm">
-      <table className="w-full border-collapse text-left">
+      <table data-tohnichi-common className="w-full border-collapse text-left">
         <caption className="sr-only">
           {lang === "en"
             ? `${productName} specifications`
@@ -590,68 +404,24 @@ export function TohnichiSpecificationTables({
                 specification={consolidated}
                 lang={lang}
               />
-            ) : (
-              <CommonSpecificationTable
-                productName={productName}
-                specifications={consolidated.commonSpecifications}
-                lang={lang}
-              />
-            )}
+            ) : null}
+            {consolidated.commonSpecifications.length ? (
+              <div className={consolidated.rows.length ? "mt-6" : ""}>
+                {consolidated.rows.length ? <h3 className="mb-3 text-base font-bold text-graphite-900">{lang === "en" ? "Common specifications" : "Spesifikasi umum"}</h3> : null}
+                <CommonSpecificationTable
+                  productName={productName}
+                  specifications={consolidated.commonSpecifications}
+                  lang={lang}
+                />
+              </div>
+            ) : null}
           </div>
         ) : (
-          <div className="mt-8 overflow-hidden border border-graphite-200 bg-white">
-            <table className="w-full border-collapse text-left">
-              <caption className="sr-only">
-                {lang === "en"
-                  ? `${productName} selection information`
-                  : `Informasi pemilihan ${productName}`}
-              </caption>
-              <thead>
-                <tr className="border-b border-graphite-300">
-                  <th
-                    scope="col"
-                    className="border-r border-amber-300 bg-amber-100 px-5 py-3 text-xs font-bold uppercase tracking-[0.08em] text-amber-950"
-                  >
-                    Parameter
-                  </th>
-                  <th
-                    scope="col"
-                    className="bg-emerald-100 px-5 py-3 text-xs font-bold uppercase tracking-[0.08em] text-emerald-950"
-                  >
-                    {lang === "en" ? "Specification" : "Spesifikasi"}
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-graphite-200">
-                <tr>
-                  <th scope="row" className="w-[38%] border-r border-graphite-200 px-5 py-4 text-sm font-bold text-graphite-800">
-                    {lang === "en" ? "Product family" : "Product family"}
-                  </th>
-                  <td className="px-5 py-4 text-sm text-graphite-600">{productName}</td>
-                </tr>
-                <tr className="bg-graphite-50/70">
-                  <th scope="row" className="border-r border-graphite-200 px-5 py-4 text-sm font-bold text-graphite-800">
-                    {lang === "en" ? "Configuration" : "Konfigurasi"}
-                  </th>
-                  <td className="px-5 py-4 text-sm leading-6 text-graphite-600">
-                    {lang === "en"
-                      ? "Selected according to the application, connected equipment, communication method, and quality-control requirements."
-                      : "Dipilih berdasarkan aplikasi, peralatan yang terhubung, metode komunikasi, dan kebutuhan quality control."}
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row" className="border-r border-graphite-200 px-5 py-4 text-sm font-bold text-graphite-800">
-                    {lang === "en" ? "Ordering information" : "Informasi pemesanan"}
-                  </th>
-                  <td className="px-5 py-4 text-sm leading-6 text-graphite-600">
-                    {lang === "en"
-                      ? "Include the application, required function, connected model, quantity, and working environment in the RFQ."
-                      : "Sertakan aplikasi, fungsi yang dibutuhkan, model yang terhubung, kuantitas, dan lingkungan kerja dalam RFQ."}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <p className="mt-8 border border-graphite-200 bg-white p-5 text-sm leading-6 text-graphite-600">
+            {lang === "en"
+              ? "A verified specification table is not available in this catalogue. Contact CSE for the current specifications and configuration."
+              : "Tabel spesifikasi terverifikasi belum tersedia pada katalog ini. Hubungi CSE untuk spesifikasi dan konfigurasi terkini."}
+          </p>
         )}
 
         {detail.notes.length || detail.standardAccessories.length ? (
@@ -669,6 +439,16 @@ export function TohnichiSpecificationTables({
                     <li key={note.en} className="list-decimal">{text(note, lang)}</li>
                   ))}
                 </ol>
+              </article>
+            ) : null}
+            {detail.standardAccessories.length ? (
+              <article className="border border-graphite-200 bg-white p-5">
+                <h3 className="text-base font-bold text-graphite-900">
+                  {lang === "en" ? "Standard accessories" : "Aksesori standar"}
+                </h3>
+                <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-graphite-600">
+                  {detail.standardAccessories.map((accessory) => <li key={accessory.en}>{text(accessory, lang)}</li>)}
+                </ul>
               </article>
             ) : null}
           </div>

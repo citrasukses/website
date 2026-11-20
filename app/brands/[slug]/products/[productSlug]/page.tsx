@@ -11,7 +11,6 @@ import { ProductCard } from "@/components/ProductCard";
 import { ProductGallery } from "@/components/ProductGallery";
 import { SankyoRikagakuFamilyDetails } from "@/components/SankyoRikagakuFamilyDetails";
 import { SectionHeader } from "@/components/SectionHeader";
-import { TohnichiModelTable } from "@/components/TohnichiModelTable";
 import { TohnichiSpecificationTables } from "@/components/TohnichiSpecificationTables";
 import { seedCatalog } from "@/data/catalog-seed";
 import { nacCouplingProductDetails } from "@/data/nac-coupling-product-details";
@@ -313,9 +312,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
       {brand.slug === "nac" && product.slug === "square-drive-sockets" ? (
         <NacSocketSelectionGuide lang={lang} />
       ) : null}
-      {tohnichiDetail?.models.length ? (
-        <TohnichiModelTable productName={product.name} detail={tohnichiDetail} lang={lang} />
-      ) : tohnichiDetail ? (
+      {tohnichiDetail ? (
         <TohnichiSpecificationTables productName={product.name} detail={tohnichiDetail} lang={lang} />
       ) : nacDetail ? (
         <NacFamilyDetails

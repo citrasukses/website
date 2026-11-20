@@ -1,0 +1,23 @@
+[
+  {
+    "slug": "epp16m3",
+    "label": "WEIGHT [kg]",
+    "value": "Thermal Line Dot",
+    "replacementLabel": "PRINTING METHOD",
+    "reference": "TOHNICHI Reference Guide 2025.10, page 69; the website repeats the weight heading above the printing method.",
+    "sourceUrl": "https://en.global-tohnichi.com/download_services/download?category=download&fid=663&filetype=1&subid=284"
+  },
+  {
+    "slug": "dwql-m-dw",
+    "labelPrefix": "S.I. MODEL ［N・m］",
+    "replacementLabel": "TORQUE RANGE [N・m]",
+    "reference": "TOHNICHI Reference Guide 2025.10, page 24 identifies these two rows as torque range and graduation, rather than model names.",
+    "sourceUrl": "https://en.global-tohnichi.com/download_services/download?category=download&fid=663&filetype=1&subid=284"
+  },
+  {
+    "slug": "tdms-app",
+    "replacementSourceUrl": "https://en.global-tohnichi.com/products/categories/43",
+    "reference": "The manufacturer still lists TDMS App here, but its linked detail/317 page returns HTTP 404. The current listing publishes no specification table.",
+    "sourceUrl": "https://en.global-tohnichi.com/products/categories/43"
+  }
+]
