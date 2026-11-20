@@ -11,10 +11,12 @@ opening sizes. Different options are not collapsed into an ambiguous range.
 - All 161 catalogue product pages, in Indonesian and English: 322 rendered pages.
 - 159 manufacturer product sources, plus the M-FD and M-FH pages. Their tables
   derive from the matching, independently checked R-CM records.
-- 1,858 normalized source records. The independent source checker expands the
+- 1,855 normalized source records. The independent source checker expands the
   original HTML spans without pandas, then checks that every record's values
   coexist in a source row or column. It also checks source model-code coverage
   and common parameter values. Numeric `3` and `3.0` are treated as equivalent.
+  A range unit printed at the left applies only to following numeric cells in
+  that source row. Units are made explicit without converting numeric values.
 - Source URLs, SHA-256 fingerprints, and per-family counts are recorded in
   `data/tohnichi-specification-audit.json`.
 
@@ -35,6 +37,9 @@ review a changed snapshot before replacing published data.
 - Common specification sections, horizontal parameter headings, and side-by-side
   parameter lists retain their proper label/value associations.
 - Exact duplicate dimension rows are removed. Genuine alternative values remain.
+- Unit-only cells are not imported as extra model options or numeric ranges.
+  Shared parameter values are not copied into their own column headings, and
+  technical footnotes remain notes rather than becoming specification columns.
 - RTD and LTD use the same verified source pipeline as the rest of the catalogue;
   the competing handwritten model arrays and renderer have been removed.
 - Unit case is preserved in headings. Generic fallback prose is not presented as
@@ -81,7 +86,9 @@ npm run performance:audit
 The rendered audit checks every model name, header grid, rowspan boundary, option
 value, and common parameter on all 322 pages. It expands merged cells and compares
 them with the expected data, detecting missing models and changed size/dimension
-associations. Both TOHNICHI checks are part of `npm run verify:seo` in CI.
+associations. The catalogue checks also ensure every source primary model reaches
+the display and that equivalent spellings are not printed separately. Both
+TOHNICHI checks are part of `npm run verify:seo` in CI.
 
 Browser checks covered the SP table on desktop and a 390-pixel mobile viewport,
 including horizontal scrolling and focus on the scroll region, and the restored

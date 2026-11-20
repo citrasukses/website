@@ -40,6 +40,7 @@ DIRECT_MODEL_LABEL_RE = re.compile(
     re.IGNORECASE,
 )
 MODEL_CATEGORIES = {"receiver", "transmitter", "wireless module", "torque screwdriver", "wireless setting device"}
+UNIT_PREFIX_RE = re.compile(r"^((?:[mc]?N|[km]?gf|lbf|ozf)[・·.](?:cm|m|in|ft))(?:\s+(.*))?$")
 
 GROUP_PAGE_RANGES: dict[str, str] = {
     "torque-screwdrivers": "5-10",
@@ -290,12 +291,33 @@ def normalize_model_segment(
 
     # Rowspans can repeat an entire dimension row (for example overall length).
     # Keep genuine alternatives, but do not publish identical copies as '(2)'.
+    notes = unique_nonempty(value for row in segment_rows if re.match(r"^[※]|^Note\b", row[0], re.I)
+                            for value in row if re.match(r"^[※]|^Note\b", value, re.I))
     segment_rows = [list(row) for row in dict.fromkeys(tuple(row) for row in segment_rows)
-                    if any(row[:descriptor_count])]
+                    if any(row[:descriptor_count]) and len(unique_nonempty(row)) > 1
+                    and not re.match(r"^[※]|^Note\b", row[0], re.I)]
+    unit_columns: set[int] = set()
+    for row in segment_rows:
+        if not re.search(r"\brange\b", " ".join(row[:descriptor_count]), re.I):
+            continue
+        unit = ""
+        for column in range(descriptor_count, len(row)):
+            value = row[column]
+            match = UNIT_PREFIX_RE.fullmatch(value)
+            if match:
+                unit = match.group(1)
+                if not match.group(2):
+                    unit_columns.add(column)
+            elif unit and re.match(r"^[（(]?[-+\d]", value) and value != "-":
+                row[column] = f"{unit} {value}"
     labels: list[str] = []
     for index, row in enumerate(segment_rows):
         fallback = "MODEL" if index == 0 and not any(row[:descriptor_count]) else ""
-        labels.append(field_label(row, descriptor_count, fallback))
+        parts = unique_nonempty(row[:descriptor_count])
+        data = [value for value in row[descriptor_count:] if value]
+        while len(parts) > 1 and data and all(value == parts[-1] for value in data):
+            parts.pop()
+        labels.append(" / ".join(parts) if parts else fallback)
     labels = make_unique_labels(labels)
 
     last_data_column = descriptor_count
@@ -306,6 +328,8 @@ def normalize_model_segment(
     records: list[dict[str, Any]] = []
     seen_vectors: set[tuple[str, ...]] = set()
     for column in range(descriptor_count, last_data_column):
+        if column in unit_columns:
+            continue
         vector = tuple(row[column] for row in segment_rows)
         if not any(vector) or vector in seen_vectors:
             continue
@@ -348,6 +372,7 @@ def normalize_model_segment(
             }
             for record in records
         ],
+        **({"commonSpecifications": [{"label": "NOTE", "value": note} for note in notes]} if notes else {}),
     }
 
 
@@ -594,7 +619,7 @@ def normalize_table(
         return []
 
     sections = [index for index, row in enumerate(rows)
-                if "common specifications" in row[0].lower()
+                if re.search(r"\bcommon specifications?\b", unicodedata.normalize("NFKC", row[0]), re.I)
                 and len(unique_nonempty(row)) == 1]
     if sections:
         results = []

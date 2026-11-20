@@ -58,6 +58,7 @@ const indonesiaLabelReplacements: Array<[RegExp, string]> = [
   [/\bCOMMON STEEL\b/gi, "Baja umum"],
   [/\bHIGH TENSION\b/gi, "Baja high-tension"],
   [/\bCATEGORY\b/gi, "Kategori"],
+  [/\bNOTE\b/gi, "Catatan"],
   [/\bVALUE\b/gi, "Nilai"]
 ];
 

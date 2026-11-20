@@ -81,6 +81,26 @@ def source_models(tables):
     return expected
 
 
+def semantic_axes(rows):
+    """A unit at the left of a range row also applies to following numeric cells."""
+    cells = [[{value} for value in row] for row in rows]
+    unit_prefix = re.compile(r"^((?:[mc]?N|[km]?gf|lbf|ozf)[・·.](?:cm|m|in|ft))(?:\s+(.*))?$")
+    for row_index, row in enumerate(rows):
+        if not any(re.search(r"\brange\b", value, re.I) for value in row[:5]):
+            continue
+        unit = ""
+        for column, value in enumerate(row):
+            match = unit_prefix.fullmatch(value)
+            if match:
+                unit = match.group(1)
+            elif unit and re.match(r"^[（(]?[-+\d]", value) and value != "-":
+                cells[row_index][column].add(f"{unit} {value}")
+    axes = [set().union(*row) for row in cells]
+    if cells:
+        axes.extend(set().union(*(row[column] for row in cells)) for column in range(len(cells[0])))
+    return axes
+
+
 def audit(data, html_dir):
     failures = []
     records = 0
@@ -99,9 +119,7 @@ def audit(data, html_dir):
         axes = []
         for table in source_tables:
             rows = grid(table)
-            axes.extend(set(row) for row in rows)
-            if rows:
-                axes.extend(set(row[column] for row in rows) for column in range(len(rows[0])))
+            axes.extend(semantic_axes(rows))
         observed_models = {clean(detail["value"]) for table in product["specificationTables"] for row in table["rows"]
                            for detail in row["details"] if MODEL_MARKER.match(detail["label"]) or detail["label"].upper() == "NAME"}
         for missing in sorted(source_models(source_tables) - observed_models):

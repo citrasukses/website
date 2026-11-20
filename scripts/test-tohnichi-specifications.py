@@ -114,6 +114,40 @@ class ModelHeaderRegressionTests(unittest.TestCase):
         self.assertEqual(parameters[0], {"label": "VOLTAGE", "value": "DC 5V"})
         self.assertEqual(parameters[2], {"label": "OUTPUT", "value": "RS232C"})
 
+    def test_unit_marker_is_not_an_extra_option(self):
+        table = extract.html.fromstring("""<table>
+          <tr><td>MODEL</td><td>CDB7N4X8D-S</td><td>CDB7N4X8D-S</td></tr>
+          <tr><td>TORQUE RANGE [N・m]</td><td>0.7-7</td><td>0.7-7</td></tr>
+          <tr><td>TORQUE RANGE [kgf・cm/kgf・m]</td><td>kgf・cm</td><td>7-70</td></tr>
+          <tr><td>WEIGHT [kg]</td><td>0.13</td><td>0.13</td></tr>
+        </table>""")
+        result = extract.normalize_table(table, 0)[0]
+        self.assertEqual(len(result["rows"]), 1)
+        record = dict(zip(result["columns"], result["rows"][0]["values"]))
+        self.assertEqual(record["TORQUE RANGE [kgf・cm/kgf・m]"], "kgf・cm 7-70")
+
+    def test_parameter_value_does_not_leak_into_heading(self):
+        table = extract.html.fromstring("""<table>
+          <tr><td colspan="2">MODEL</td><td>CPT20X10D-G</td></tr>
+          <tr><td>DISPLAY</td><td colspan="2">14-segment LCD</td></tr>
+        </table>""")
+        result = extract.normalize_table(table, 0)[0]
+        self.assertIn("DISPLAY", result["columns"])
+        self.assertNotIn("DISPLAY / 14-segment LCD", result["columns"])
+
+    def test_independent_source_checker_rejects_wrong_unit(self):
+        audit_spec = importlib.util.spec_from_file_location(
+            "audit_tohnichi", Path(__file__).with_name("audit-tohnichi-source.py")
+        )
+        audit = importlib.util.module_from_spec(audit_spec)
+        audit_spec.loader.exec_module(audit)
+        axes = audit.semantic_axes([
+            ["MODEL", "CDB7N4X8D-S", "CDB7N4X8D-S"],
+            ["TORQUE RANGE [kgf・cm/kgf・m]", "kgf・cm", "7-70"],
+        ])
+        self.assertTrue(any({"CDB7N4X8D-S", "kgf・cm 7-70"} <= axis for axis in axes))
+        self.assertFalse(any({"CDB7N4X8D-S", "kgf・m 7-70"} <= axis for axis in axes))
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -36,8 +36,25 @@ assert.equal(groupModelRows(consolidateTables([table(["MODEL", "LENGTH"], [["QSP
 
 const report = [];
 for (const [slug, product] of Object.entries(products)) {
+  for (const table of product.specificationTables) {
+    for (const row of table.rows) for (const detail of row.details) {
+      if (!table.columns.includes(detail.label)) continue;
+      assert(!/^[※]/.test(detail.label), `${slug}: a footnote became a column heading`);
+      assert(!(/range/i.test(detail.label) && /^(?:[mc]?N|[km]?gf|lbf|ozf)[・·.](?:cm|m|in|ft)$/.test(detail.value)), `${slug}: unit label used as a numeric range`);
+      if (!/model/i.test(detail.label) && detail.value.length > 5) {
+        assert(!detail.label.includes(detail.value), `${slug}: a parameter value became part of its own heading`);
+      }
+    }
+  }
   const spec = consolidateTables(product.specificationTables);
   const groups = groupModelRows(spec);
+  const expectedModels = new Set(product.specificationTables.flatMap(table => table.rows)
+    .map(row => row.values[0]?.trim()).filter(model => model && model !== "-")
+    .map(model => model.normalize("NFKC").toUpperCase()));
+  const displayedModels = new Set(groups.map(group => group.key));
+  for (const model of expectedModels) assert(displayedModels.has(model), `${slug}: source primary model missing: ${model}`);
+  const canonicalModels = groups.map(group => group.key.replace(/\s+/g, "").replace(/×/g, "X"));
+  assert.equal(new Set(canonicalModels).size, groups.length, `${slug}: equivalent model spellings printed separately`);
   assert.equal(groups.flatMap(group => group.rows).length, spec.rows.length, `${slug}: dropped option`);
   assert.equal(new Set(groups.map(group => group.key)).size, groups.length, `${slug}: duplicate model group`);
   assert.equal(new Set(spec.rows.map(row => row.values.join("\0"))).size, spec.rows.length, `${slug}: duplicate option`);
