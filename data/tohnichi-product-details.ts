@@ -2,21 +2,6 @@ import type { LocalizedText } from "@/lib/i18n";
 import tohnichiProductGroups from "@/data/tohnichi-products.json";
 import specificationSource from "@/data/tohnichi-specifications.json";
 
-export type TohnichiModelRow = {
-  key: string;
-  siModel?: string;
-  siRange?: string;
-  siGraduation?: string;
-  metricModel?: string;
-  metricRange?: string;
-  metricGraduation?: string;
-  americanModel: string;
-  americanRange: string;
-  americanGraduation: string;
-  overallLengthMm: string;
-  weightG: string;
-};
-
 export type TohnichiTechnicalDetail = {
   label: string;
   value: string;
@@ -46,7 +31,6 @@ export type TohnichiProductFamilyDetail = {
   accuracy: string;
   catalogueReference: LocalizedText;
   officialUrl: string;
-  models: TohnichiModelRow[];
   specificationTables: TohnichiSpecificationTable[];
   notes: LocalizedText[];
   standardAccessories: LocalizedText[];
@@ -190,7 +174,6 @@ for (const group of tohnichiProductGroups) {
         source.specificationTables.find((table) => table.accuracy)?.accuracy ?? "",
       catalogueReference: catalogueReference(product.name, source),
       officialUrl: source.sourceUrl,
-      models: [],
       specificationTables: source.specificationTables,
       notes: hasTables
         ? [
@@ -264,7 +247,6 @@ function buildRcmWirelessModuleDetail({
       en: `${model} specifications follow the official TOHNICHI R-CM page and the dedicated ${model} product page.`
     },
     officialUrl,
-    models: [],
     specificationTables: [
       {
         ...sourceTable,
@@ -370,124 +352,6 @@ generatedDetails.rtd = {
     id: "Data model mengikuti TOHNICHI Reference Guide 2025.10, halaman 5.",
     en: "Model data follows the TOHNICHI Reference Guide 2025.10, page 5."
   },
-  models: [
-    {
-      key: "rtd20z",
-      americanModel: "RTD20Z",
-      americanRange: "6-20 ozf·in",
-      americanGraduation: "0.2 ozf·in",
-      overallLengthMm: "100",
-      weightG: "50"
-    },
-    {
-      key: "rtd40z",
-      americanModel: "RTD40Z",
-      americanRange: "15-40 ozf·in",
-      americanGraduation: "0.5 ozf·in",
-      overallLengthMm: "100",
-      weightG: "50"
-    },
-    {
-      key: "rtd80z",
-      americanModel: "RTD80Z",
-      americanRange: "20-80 ozf·in",
-      americanGraduation: "1 ozf·in",
-      overallLengthMm: "110",
-      weightG: "80"
-    },
-    {
-      key: "rtd150z",
-      americanModel: "RTD150Z",
-      americanRange: "30-150 ozf·in",
-      americanGraduation: "2 ozf·in",
-      overallLengthMm: "130",
-      weightG: "160"
-    },
-    {
-      key: "rtd15cn",
-      siModel: "RTD15CN",
-      siRange: "2-15",
-      siGraduation: "0.1",
-      metricModel: "1.5RTD",
-      metricRange: "0.2-1.5",
-      metricGraduation: "0.01",
-      americanModel: "RTD1.3I",
-      americanRange: "0.2-1.3 lbf·in",
-      americanGraduation: "0.01 lbf·in",
-      overallLengthMm: "100",
-      weightG: "50"
-    },
-    {
-      key: "rtd30cn",
-      siModel: "RTD30CN",
-      siRange: "4-30",
-      siGraduation: "0.2",
-      metricModel: "3RTD",
-      metricRange: "0.4-3",
-      metricGraduation: "0.02",
-      americanModel: "RTD2.6I",
-      americanRange: "0.4-2.6 lbf·in",
-      americanGraduation: "0.02 lbf·in",
-      overallLengthMm: "100",
-      weightG: "50"
-    },
-    {
-      key: "rtd60cn",
-      siModel: "RTD60CN",
-      siRange: "10-60",
-      siGraduation: "0.5",
-      metricModel: "6RTD",
-      metricRange: "1-6",
-      metricGraduation: "0.05",
-      americanModel: "RTD5I",
-      americanRange: "1-5 lbf·in",
-      americanGraduation: "0.05 lbf·in",
-      overallLengthMm: "110",
-      weightG: "80"
-    },
-    {
-      key: "rtd120cn",
-      siModel: "RTD120CN",
-      siRange: "20-120",
-      siGraduation: "1",
-      metricModel: "12RTD",
-      metricRange: "2-12",
-      metricGraduation: "0.1",
-      americanModel: "RTD10I",
-      americanRange: "2-10 lbf·in",
-      americanGraduation: "0.1 lbf·in",
-      overallLengthMm: "130",
-      weightG: "160"
-    },
-    {
-      key: "rtd260cn",
-      siModel: "RTD260CN",
-      siRange: "60-260",
-      siGraduation: "2",
-      metricModel: "26RTD",
-      metricRange: "6-26",
-      metricGraduation: "0.2",
-      americanModel: "RTD22I",
-      americanRange: "6-22 lbf·in",
-      americanGraduation: "0.2 lbf·in",
-      overallLengthMm: "150",
-      weightG: "270"
-    },
-    {
-      key: "rtd500cn",
-      siModel: "RTD500CN",
-      siRange: "100-500",
-      siGraduation: "5",
-      metricModel: "50RTD",
-      metricRange: "10-50",
-      metricGraduation: "0.5",
-      americanModel: "RTD40I",
-      americanRange: "10-40 lbf·in",
-      americanGraduation: "0.5 lbf·in",
-      overallLengthMm: "155",
-      weightG: "320"
-    }
-  ],
   notes: [
     {
       id: "Auxiliary tightening tool untuk RTD500CN dijual terpisah.",
@@ -539,148 +403,6 @@ generatedDetails.ltd = {
     id: "Data model mengikuti TOHNICHI Reference Guide 2025.10, halaman 5.",
     en: "Model data follows the TOHNICHI Reference Guide 2025.10, page 5."
   },
-  models: [
-    {
-      key: "ltd20z",
-      americanModel: "LTD20Z",
-      americanRange: "6-20 ozf·in",
-      americanGraduation: "0.2 ozf·in",
-      overallLengthMm: "100",
-      weightG: "50"
-    },
-    {
-      key: "ltd40z",
-      americanModel: "LTD40Z",
-      americanRange: "15-40 ozf·in",
-      americanGraduation: "0.5 ozf·in",
-      overallLengthMm: "100",
-      weightG: "50"
-    },
-    {
-      key: "ltd80z",
-      americanModel: "LTD80Z",
-      americanRange: "20-80 ozf·in",
-      americanGraduation: "1 ozf·in",
-      overallLengthMm: "110",
-      weightG: "80"
-    },
-    {
-      key: "ltd150z",
-      americanModel: "LTD150Z",
-      americanRange: "30-150 ozf·in",
-      americanGraduation: "2 ozf·in",
-      overallLengthMm: "130",
-      weightG: "130"
-    },
-    {
-      key: "ltd15cn",
-      siModel: "LTD15CN",
-      siRange: "2-15",
-      siGraduation: "0.1",
-      metricModel: "1.5LTD",
-      metricRange: "0.2-1.5",
-      metricGraduation: "0.01",
-      americanModel: "LTD1.3I",
-      americanRange: "0.2-1.3 lbf·in",
-      americanGraduation: "0.01 lbf·in",
-      overallLengthMm: "100",
-      weightG: "50"
-    },
-    {
-      key: "ltd30cn",
-      siModel: "LTD30CN",
-      siRange: "4-30",
-      siGraduation: "0.2",
-      metricModel: "3LTD",
-      metricRange: "0.4-3",
-      metricGraduation: "0.02",
-      americanModel: "LTD2.6I",
-      americanRange: "0.4-2.6 lbf·in",
-      americanGraduation: "0.02 lbf·in",
-      overallLengthMm: "100",
-      weightG: "50"
-    },
-    {
-      key: "ltd60cn",
-      siModel: "LTD60CN",
-      siRange: "10-60",
-      siGraduation: "0.5",
-      metricModel: "6LTD",
-      metricRange: "1-6",
-      metricGraduation: "0.05",
-      americanModel: "LTD5I",
-      americanRange: "1-5 lbf·in",
-      americanGraduation: "0.05 lbf·in",
-      overallLengthMm: "110",
-      weightG: "80"
-    },
-    {
-      key: "ltd120cn",
-      siModel: "LTD120CN",
-      siRange: "20-120",
-      siGraduation: "1",
-      metricModel: "12LTD",
-      metricRange: "2-12",
-      metricGraduation: "0.1",
-      americanModel: "LTD10I",
-      americanRange: "2-10 lbf·in",
-      americanGraduation: "0.1 lbf·in",
-      overallLengthMm: "130",
-      weightG: "130"
-    },
-    {
-      key: "ltd260cn",
-      siModel: "LTD260CN",
-      siRange: "60-260",
-      siGraduation: "2",
-      metricModel: "26LTD",
-      metricRange: "6-26",
-      metricGraduation: "0.2",
-      americanModel: "LTD22I",
-      americanRange: "6-22 lbf·in",
-      americanGraduation: "0.2 lbf·in",
-      overallLengthMm: "150",
-      weightG: "220"
-    },
-    {
-      key: "ltd500cn",
-      siModel: "LTD500CN",
-      siRange: "100-500",
-      metricModel: "50LTD",
-      metricRange: "10-50",
-      americanModel: "LTD40I",
-      americanRange: "10-40 lbf·in",
-      americanGraduation: "",
-      overallLengthMm: "155",
-      weightG: "330"
-    },
-    {
-      key: "ltd1000cn",
-      siModel: "LTD1000CN",
-      siRange: "200-1000",
-      siGraduation: "5",
-      metricModel: "100LTD",
-      metricRange: "20-100",
-      metricGraduation: "0.5",
-      americanModel: "LTD90I",
-      americanRange: "20-90 lbf·in",
-      americanGraduation: "0.5 lbf·in",
-      overallLengthMm: "185",
-      weightG: "580"
-    },
-    {
-      key: "ltd2000cn2",
-      siModel: "LTD2000CN2",
-      siRange: "400-2000",
-      metricModel: "LTD200M2",
-      metricRange: "40-200",
-      americanModel: "LTD180I2",
-      americanRange: "40-180 lbf·in",
-      americanGraduation: "",
-      overallLengthMm: "255",
-      weightG: "1150"
-    }
-  ],
   notes: [
     {
       id: "Auxiliary tightening tool untuk LTD500CN dan LTD1000CN tersedia dan dijual terpisah.",
